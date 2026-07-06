@@ -20,6 +20,7 @@ _DUP_PUNCT_RE = re.compile(r"([,;:])\s*\1+")
 _SPACE_BEFORE_PUNCT_RE = re.compile(r"\s+([,.;:!?])")
 _MULTI_SPACE_RE = re.compile(r"[ \t]{2,}")
 _LEFTOVER_COMMA_DOT_RE = re.compile(r",\s*\.")
+_SCRATCHPAD_RE = re.compile(r"<scratchpad>.*?</scratchpad>", re.DOTALL | re.IGNORECASE)
 
 
 @dataclass(frozen=True)
@@ -87,9 +88,14 @@ def _strip_to_rimay(text: str) -> str:
 
     Keep this conservative — we want to faithfully capture model output for
     the analysis, only removing pure formatting noise (markdown fences,
-    leading/trailing blank lines).
+    leading/trailing blank lines) and CoT ``<scratchpad>…</scratchpad>``
+    reasoning blocks the prompt says to keep private. Left in place, a
+    scratchpad corrupts every downstream signal: its prose can mention
+    placeholder tokens (false ``llm_slots``), it dwarfs the Rimay in the
+    similarity metrics, and Paska chokes on it. The unedited response is
+    still recoverable from the MLflow trace (Messages.create span).
     """
-    s = text.strip()
+    s = _SCRATCHPAD_RE.sub("", text).strip()
     if s.startswith("```"):
         first_newline = s.find("\n")
         if first_newline != -1:
