@@ -1,5 +1,0 @@
-anthropic>=0.40.0
-mlflow>=3.0.0
-pandas>=2.0.0
-python-dotenv>=1.0.0
-stanza>=1.10.0
