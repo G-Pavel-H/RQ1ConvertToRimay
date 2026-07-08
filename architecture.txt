@@ -1,0 +1,122 @@
+===============================================================================
+ RQ1 — NL -> Rimay conversion, scored against a human gold standard
+ Two decoupled stages. Stage 1 produces artifacts; Stage 2 reads them offline.
+===============================================================================
+
+
+                         data/gold_annotations.csv
+                    (1 row per requirement x annotator;
+                     adjudicated gold_* cols + canonicalRimay
+                     + nlText + per-annotator rimayText/slots)
+                                    |
+                                    v
+                          +--------------------+
+                          |  src/gold_loader   |
+                          |  reqId -> GoldRecord|
+                          |  (+ human baseline) |
+                          +--------------------+
+                                    |
+                    nlText per reqId | (Stage 1 input)
+                                    v
+
++=============================================================================+
+|  STAGE 1 — CONVERSION            scripts/run_conversion.py                   |
+|  (per requirement, per strategy: zsl | fsl | cot)                           |
+|                                                                             |
+|   nlText                                                                    |
+|     |                                                                       |
+|     v                                                                       |
+|  +---------------------+     system_prompt.md (Rimay grammar + rules)       |
+|  |  prompt_builder     |<--- <strategy>_prompt.md (zsl/fsl/cot template)    |
+|  |  strategy->prompt   |<--- prompts/examples/fsl_examples.json  (FSL only) |
+|  +---------------------+                                                     |
+|     |                                                                       |
+|     v                                                                       |
+|  +---------------------+                                                     |
+|  |  llm_converter      |  Anthropic SDK -> Rimay with <MISSING_*> markers    |
+|  |  convert()          |  extract_final_rimay() recovers leaked CoT lines   |
+|  +---------------------+                                                     |
+|     |                                                                       |
+|     |  raw Rimay (with placeholders)                                        |
+|     v                                                                       |
+|  +---------------------+                                                     |
+|  | strip_missing_      |  remove <MISSING_*> + <NON_ATOMIC>, tidy punct     |
+|  | placeholders()      |                                                     |
+|  +---------------------+                                                     |
+|     |                                                                       |
+|     |  stripped Rimay                                                       |
+|     v                                                                       |
+|  +----------------------------------------------+                           |
+|  |  paska_runner.run_paska()  (THE ONLY PASKA    |                          |
+|  |  CALL IN THE REPO — on LLM Rimay only)        |                          |
+|  |    step 1: parsing_trees.py  (stanza PTB)     |                          |
+|  |    step 2: java -jar smell_detector.jar       |                          |
+|  |    cache: SHA-256 of input -> smells CSV      |                          |
+|  +----------------------------------------------+                           |
+|     |                                                                       |
+|     |  smells -> paska_passed = (no smells)                                 |
+|     v                                                                       |
+|  +---------------------+                                                     |
+|  |   pipeline.py       |  derive llm_slots (missing|filled) from markers    |
+|  |   run_single()      |                                                     |
+|  +---------------------+                                                     |
+|        |                         |                                          |
+|        |                         |                                          |
+|        v                         v                                          |
+|  ----------------------    -------------------------------------------      |
+|  MLflow (gold_<strategy>)   MANIFEST                                        |
+|  1 run / requirement        outputs/conversions/<strategy>.jsonl           |
+|   tags:  strategy,           1 JSON / requirement:                          |
+|          model_name,          reqId, strategy,                              |
+|          req_id,              rimay (raw w/ placeholders),                  |
+|          paska_passed,        rimay_stripped,                              |
+|          is_non_atomic,       llm_slots {slot: missing|filled},            |
+|          llm_stop_reason      paska_passed, paska_smells[],                |
+|   params: temperature,        model, latency_ms, tokens                    |
+|          max_tokens,                                                        |
+|          n_fsl_examples       (This file is the ONLY handoff to Stage 2 —   |
+|   metrics: n_missing_          the scorer never reads MLflow.)              |
+|          placeholders,                                                      |
+|          missing_<slot> 1/0,   also: outputs/llm_rimay/<strategy>/<reqId>.txt|
+|          n_paska_smells,                                                    |
+|          latency_ms, tokens                                                 |
+|   artifacts: nl_text.txt,                                                   |
+|          rimay.txt, rimay_stripped.txt, rimay_raw.txt (if CoT leaked),      |
+|          paska.json, prompt_system.md, prompt_user.md                       |
+|   traces: llm.convert span, paska.run span                                  |
++=============================================================================+
+
+        outputs/conversions/<strategy>.jsonl        data/gold_annotations.csv
+                        |                                      |
+                        +------------------+-------------------+
+                                           |
+                                           v
++=============================================================================+
+|  STAGE 2 — SCORING (OFFLINE)     scripts/run_scoring.py                      |
+|  Pure comparison logic in src/scoring/; the script does IO only.            |
+|  Evaluates reqIds present in BOTH; excludes FSL exemplar IDs.               |
+|                                                                             |
+|   +--------------------------------+   +-------------------------------+     |
+|   | scoring/field_accuracy.py      |   | scoring/conversion_quality.py |     |
+|   | TRACK 1 (missing-detection)    |   | TRACK 2 (conversion quality)  |     |
+|   |  - binary collapse of gold     |   |  - conversion_similarity()    |     |
+|   |    (present+implied->not-miss) |   |    v0: SeqMatcher + Jaccard   |     |
+|   |  - per-slot P/R/F1 (missing)   |   |    (swappable placeholder)    |     |
+|   |  - micro / macro averages      |   |  - LLM-vs-gold  vs            |     |
+|   |  - implied: fill vs over-flag  |   |    human-human distributions  |     |
+|   |  - missing: flag vs silent-fill|   |  - Paska pass rate +          |     |
+|   |  - overall-verdict 2x2         |   |    smell-type frequencies     |     |
+|   +--------------------------------+   +-------------------------------+     |
+|                        |                          |                         |
+|                        +------------+-------------+                         |
+|                                     v                                       |
+|            outputs/scoring/<strategy>/metrics.md                            |
+|            outputs/scoring/<strategy>/per_requirement.md  (review worksheet)|
+|            outputs/scoring/comparison.csv                 (tidy, all strat.)|
++=============================================================================+
+
+-------------------------------------------------------------------------------
+ Boundary: Stage 1 writes the JSONL manifest (+ MLflow for exploration).
+ Stage 2 consumes ONLY the manifest + the gold CSV. No MLflow dependency,
+ no re-running of the LLM or Paska. The two stages are fully decoupled.
+-------------------------------------------------------------------------------
