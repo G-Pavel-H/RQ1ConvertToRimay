@@ -2,7 +2,7 @@
 
 Convert the following natural language requirement to Rimay.
 
-Follow the Rimay grammar and conversion rules from the system prompt. First reason step-by-step inside a `<scratchpad>...</scratchpad>` block:
+Follow the Rimay grammar and conversion rules from the system prompt. Reason step-by-step in a private scratchpad before producing output:
 
 1. Identify the **Scope**, if any (for-each / quantifier phrase). Otherwise use `<MISSING_SCOPE>`.
 2. Identify the **Condition**, if any (trigger, precondition, or temporal). Otherwise use `<MISSING_CONDITION>`.
@@ -12,7 +12,7 @@ Follow the Rimay grammar and conversion rules from the system prompt. First reas
 6. Decide the Rimay pattern (1–10 from the system prompt) that best matches the structural content.
 7. Check **atomicity**: if the source NL contains multiple system responses, select the most concrete primary action and flag the requirement with `<NON_ATOMIC>` at the end.
 
-Put ALL of your reasoning inside the `<scratchpad>...</scratchpad>` block — never outside it. After the closing `</scratchpad>` tag, output ONLY the final Rimay sentence on a single line: no headings, no component list, no commentary.
+After your private reasoning, output ONLY the final Rimay sentence on a single line. Do not include the scratchpad, the component list, or any commentary in the final output.
 
 ## NL Requirement
 
