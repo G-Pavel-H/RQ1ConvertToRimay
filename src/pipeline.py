@@ -159,6 +159,9 @@ def run_single(
             # Artifacts
             tracking.log_text_artifact(nl_text, "nl_text.txt")
             tracking.log_text_artifact(llm.rimay, "rimay.txt")
+            if llm.raw != llm.rimay:
+                # Full model response (e.g. leaked CoT scratchpad) for audit.
+                tracking.log_text_artifact(llm.raw, "rimay_raw.txt")
             tracking.log_text_artifact(rimay_stripped, "rimay_stripped.txt")
             tracking.log_text_artifact(llm.prompt.system, "prompt_system.md")
             tracking.log_text_artifact(llm.prompt.user, "prompt_user.md")

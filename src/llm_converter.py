@@ -31,6 +31,7 @@ _LEFTOVER_COMMA_DOT_RE = re.compile(r",\s*\.")
 @dataclass(frozen=True)
 class LLMResponse:
     rimay: str
+    raw: str
     prompt: BuiltPrompt
     model: str
     input_tokens: Optional[int]
@@ -70,6 +71,49 @@ def strip_missing_placeholders(rimay: str) -> str:
     s = _MULTI_SPACE_RE.sub(" ", s)
     s = _LEADING_PUNCT_RE.sub("", s)
     return s.strip()
+
+
+_FINAL_MARKERS = (
+    "final rimay:",
+    "final answer:",
+    "rimay output:",
+    "final:",
+)
+
+
+def extract_final_rimay(text: str) -> str:
+    """Extract the single-line final Rimay from a model response.
+
+    CoT models sometimes leak their scratchpad despite the instruction to
+    emit only the final sentence. Rimay is always one sentence on one
+    line, so we recover it defensively:
+
+    * If a final-answer marker ("Final Rimay:", etc.) is present, take the
+      first non-empty line after the *last* such marker.
+    * Otherwise take the last non-empty line (a clean single-line ZSL/FSL
+      output is returned unchanged — this pass is idempotent on them).
+
+    Surrounding markdown bold (``**...**``) and blank lines are stripped.
+    The untouched full response is preserved separately as ``raw``.
+    """
+    s = text.strip()
+    low = s.lower()
+    marker_end = -1
+    for m in _FINAL_MARKERS:
+        j = low.rfind(m)
+        if j != -1:
+            marker_end = max(marker_end, j + len(m))
+
+    if marker_end != -1:
+        tail = s[marker_end:]
+        lines = [ln.strip().strip("*").strip() for ln in tail.splitlines()]
+        lines = [ln for ln in lines if ln]
+        if lines:
+            return lines[0]
+
+    lines = [ln.strip().strip("*").strip() for ln in s.splitlines()]
+    lines = [ln for ln in lines if ln]
+    return lines[-1] if lines else s
 
 
 def _strip_to_rimay(text: str) -> str:
@@ -113,11 +157,13 @@ def convert(
         if getattr(block, "type", None) == "text":
             content_text += block.text
 
-    rimay = _strip_to_rimay(content_text)
+    raw = _strip_to_rimay(content_text)
+    rimay = extract_final_rimay(raw)
 
     usage = getattr(msg, "usage", None)
     return LLMResponse(
         rimay=rimay,
+        raw=raw,
         prompt=prompt,
         model=msg.model,
         input_tokens=getattr(usage, "input_tokens", None) if usage else None,
