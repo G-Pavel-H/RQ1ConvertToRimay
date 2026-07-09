@@ -37,8 +37,10 @@ mlruns/
 mlartifacts/
 mlflow.db
 
-# Experiment output artifacts (regenerated)
-outputs/
+# Experiment outputs: track the per-run result folders (manifest, scoring,
+# run_meta) as the experiment record, but ignore the shared, regenerable
+# Paska cache/working files.
+outputs/_paska/
 
 # Jupyter
 .ipynb_checkpoints/
