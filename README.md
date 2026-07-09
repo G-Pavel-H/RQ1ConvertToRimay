@@ -114,26 +114,46 @@ requirement count) from the data, so it keeps working as the set grows.
 
 ## Running
 
+Each conversion run gets its own self-contained, auto-numbered folder under
+`outputs/` (e.g. `run1_zsl`, `run2_fsl-n3`, `run3_cot`) holding that run's Rimay
+files, manifest, scoring reports, and a `run_meta.json` sidecar. The numeric
+prefix auto-increments; override the folder name with `--run-name`.
+
 ```bash
-# Stage 1 — conversion (writes outputs/conversions/<strategy>.jsonl + MLflow)
-python scripts/run_conversion.py --strategy zsl
-python scripts/run_conversion.py --strategy fsl --n-fsl-examples 3
-python scripts/run_conversion.py --strategy cot
+# Stage 1 — conversion (creates outputs/<run_id>/ + MLflow runs)
+python scripts/run_conversion.py --strategy zsl          # -> run1_zsl
+python scripts/run_conversion.py --strategy fsl --n-fsl-examples 3   # -> run2_fsl-n3
+python scripts/run_conversion.py --strategy cot          # -> run3_cot
 #   optional: --n-samples N --model ... --temperature 0.0 --max-tokens 1024
+#             --run-name my_custom_name
 
-# Stage 2 — scoring (offline; reads the manifest + gold)
-python scripts/run_scoring.py --strategy zsl
-python scripts/run_scoring.py --strategy fsl
-python scripts/run_scoring.py --strategy cot
-#   optional: --gold ... --fsl-example-ids id1,id2 --out outputs/scoring
+# Stage 2 — scoring (offline; reads the run's manifest + gold)
+python scripts/run_scoring.py --run run1_zsl
+python scripts/run_scoring.py --run run2_fsl-n3
+python scripts/run_scoring.py --run run3_cot
+#   strategy + gold path are read from run_meta.json
+#   optional: --gold ... --fsl-example-ids id1,id2
 
-# MLflow UI (Stage 1 exploration only)
+# MLflow UI (Stage 1 exploration only; runs tagged with output_run_id)
 mlflow ui --backend-store-uri sqlite:///mlruns/mlflow.db
 ```
 
-Outputs land in `outputs/scoring/<strategy>/metrics.md` (both tracks),
-`outputs/scoring/<strategy>/per_requirement.md` (manual-review worksheet), and
-`outputs/scoring/comparison.csv` (tidy, all strategies).
+Each run folder looks like:
+
+```
+outputs/run1_zsl/
+  run_meta.json                    strategy, model, params, counts, timestamp
+  llm_rimay/<reqId>.txt            raw Rimay per requirement
+  conversions/manifest.jsonl       the scorer's input (Stage 1 -> Stage 2 handoff)
+  scoring/metrics.md               Track 1 + Track 2 tables
+  scoring/per_requirement.md       manual-review worksheet
+  scoring/comparison.csv           tidy, per-requirement (this run)
+outputs/_paska/                    Paska cache + working files, SHARED across runs
+```
+
+The Paska cache lives in `outputs/_paska/` (not inside run folders) so identical
+Rimay text is never re-parsed across runs. To compare strategies, line up the
+per-run `scoring/comparison.csv` files (or the printed summaries).
 
 Default development model is `claude-haiku-4-5-20251001` (override with
 `--model`). Chain-of-thought is expected to reason before answering; if a model
@@ -182,10 +202,11 @@ src/
   scoring/conversion_quality.py  Track 2 (pure functions)
 scripts/
   verify_setup.py             pre-flight checks
-  run_conversion.py           Stage 1 entry point
-  run_scoring.py              Stage 2 entry point
+  run_conversion.py           Stage 1 entry point (creates outputs/<run_id>/)
+  run_scoring.py              Stage 2 entry point (--run <run_id>)
 tests/                        pytest suite for the scoring modules
-outputs/                      generated artifacts (gitignored)
+outputs/<run_id>/             per-run artifacts: llm_rimay, conversions, scoring, meta
+outputs/_paska/               shared Paska cache (gitignored)
 mlruns/                       MLflow SQLite backend (gitignored)
 architecture.txt              ASCII flow diagram (kept in sync with this README)
 ```

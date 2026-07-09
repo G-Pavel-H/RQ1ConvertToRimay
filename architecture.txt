@@ -64,29 +64,30 @@
 |        |                         |                                          |
 |        v                         v                                          |
 |  ----------------------    -------------------------------------------      |
-|  MLflow (gold_<strategy>)   MANIFEST                                        |
-|  1 run / requirement        outputs/conversions/<strategy>.jsonl           |
+|  MLflow (gold_<strategy>)   MANIFEST  (per run: outputs/<run_id>/)          |
+|  1 run / requirement        outputs/<run_id>/conversions/manifest.jsonl    |
 |   tags:  strategy,           1 JSON / requirement:                          |
 |          model_name,          reqId, strategy,                              |
 |          req_id,              rimay (raw w/ placeholders),                  |
 |          paska_passed,        rimay_stripped,                              |
 |          is_non_atomic,       llm_slots {slot: missing|filled},            |
-|          llm_stop_reason      paska_passed, paska_smells[],                |
-|   params: temperature,        model, latency_ms, tokens                    |
-|          max_tokens,                                                        |
-|          n_fsl_examples       (This file is the ONLY handoff to Stage 2 —   |
-|   metrics: n_missing_          the scorer never reads MLflow.)              |
-|          placeholders,                                                      |
-|          missing_<slot> 1/0,   also: outputs/llm_rimay/<strategy>/<reqId>.txt|
+|          llm_stop_reason,     paska_passed, paska_smells[],                |
+|          output_run_id        model, latency_ms, tokens                    |
+|   params: temperature,                                                      |
+|          max_tokens,          (This file is the ONLY handoff to Stage 2 —   |
+|          n_fsl_examples        the scorer never reads MLflow.)              |
+|   metrics: n_missing_                                                       |
+|          placeholders,        also: outputs/<run_id>/llm_rimay/<reqId>.txt  |
+|          missing_<slot> 1/0,        outputs/<run_id>/run_meta.json          |
 |          n_paska_smells,                                                    |
-|          latency_ms, tokens                                                 |
+|          latency_ms, tokens   Paska cache is shared: outputs/_paska/        |
 |   artifacts: nl_text.txt,                                                   |
 |          rimay.txt, rimay_stripped.txt, rimay_raw.txt (if CoT leaked),      |
 |          paska.json, prompt_system.md, prompt_user.md                       |
 |   traces: llm.convert span, paska.run span                                  |
 +=============================================================================+
 
-        outputs/conversions/<strategy>.jsonl        data/gold_annotations.csv
+     outputs/<run_id>/conversions/manifest.jsonl    data/gold_annotations.csv
                         |                                      |
                         +------------------+-------------------+
                                            |
@@ -110,9 +111,9 @@
 |                        |                          |                         |
 |                        +------------+-------------+                         |
 |                                     v                                       |
-|            outputs/scoring/<strategy>/metrics.md                            |
-|            outputs/scoring/<strategy>/per_requirement.md  (review worksheet)|
-|            outputs/scoring/comparison.csv                 (tidy, all strat.)|
+|            outputs/<run_id>/scoring/metrics.md                              |
+|            outputs/<run_id>/scoring/per_requirement.md    (review worksheet)|
+|            outputs/<run_id>/scoring/comparison.csv        (tidy, this run)  |
 +=============================================================================+
 
 -------------------------------------------------------------------------------

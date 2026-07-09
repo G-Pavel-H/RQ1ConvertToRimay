@@ -53,9 +53,8 @@ def _is_non_atomic(rimay: str) -> bool:
     return config.NON_ATOMIC_FLAG in rimay
 
 
-def _persist_rimay(req_id: str, strategy: str, rimay: str) -> Path:
+def _persist_rimay(req_id: str, out_dir: Path, rimay: str) -> Path:
     safe_id = req_id.replace("/", "_").replace(" ", "_")
-    out_dir = config.LLM_RIMAY_DIR / strategy
     out_dir.mkdir(parents=True, exist_ok=True)
     path = out_dir / f"{safe_id}.txt"
     path.write_text(rimay, encoding="utf-8")
@@ -105,14 +104,17 @@ def run_single(
     nl_text: str,
     *,
     run_cfg: config.RunConfig,
+    run_paths: config.RunPaths,
 ) -> dict:
     """Convert one requirement, log to MLflow, return its manifest record."""
     config.ensure_output_dirs()
+    run_paths.ensure()
 
     with tracking.start_run(
         strategy=run_cfg.strategy,
         req_id=req_id,
         model_name=run_cfg.model,
+        output_run_id=run_paths.run_id,
     ):
         params = {
             "temperature": run_cfg.temperature,
@@ -134,7 +136,7 @@ def run_single(
 
             # 1-2. LLM conversion (raw Rimay with placeholders)
             llm: LLMResponse = convert(nl_text, run_cfg=run_cfg)
-            _persist_rimay(req_id, run_cfg.strategy, llm.rimay)
+            _persist_rimay(req_id, run_paths.llm_rimay_dir, llm.rimay)
 
             # 3. Strip placeholders for Paska
             rimay_stripped = strip_missing_placeholders(llm.rimay)

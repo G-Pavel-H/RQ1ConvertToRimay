@@ -39,12 +39,10 @@ SLOTS = config.SLOTS
 # --- loading -----------------------------------------------------------------
 
 
-def load_manifest(strategy: str) -> Dict[str, dict]:
-    path = config.CONVERSIONS_DIR / f"{strategy}.jsonl"
+def load_manifest(path: Path) -> Dict[str, dict]:
     if not path.is_file():
         raise FileNotFoundError(
-            f"No manifest for strategy={strategy!r}: {path}. "
-            "Run scripts/run_conversion.py first."
+            f"No manifest at {path}. Run scripts/run_conversion.py first."
         )
     records: Dict[str, dict] = {}
     with path.open(encoding="utf-8") as f:
@@ -55,6 +53,12 @@ def load_manifest(strategy: str) -> Dict[str, dict]:
             rec = json.loads(line)
             records[rec["reqId"]] = rec
     return records
+
+
+def load_run_meta(run_paths: config.RunPaths) -> dict:
+    if not run_paths.meta_path.is_file():
+        return {}
+    return json.loads(run_paths.meta_path.read_text(encoding="utf-8"))
 
 
 def _default_fsl_ids() -> set[str]:
@@ -290,23 +294,14 @@ def comparison_row(strategy: str, r: dict) -> dict:
     return row
 
 
-def update_comparison_csv(out_dir: Path, strategy: str, rows: List[dict]) -> Path:
-    """Rewrite comparison.csv: keep other strategies' rows, replace this one's."""
-    path = out_dir / "comparison.csv"
+def write_comparison_csv(path: Path, strategy: str, rows: List[dict]) -> Path:
+    """Write this run's tidy per-requirement comparison rows."""
     cols = comparison_columns()
-    existing: List[dict] = []
-    if path.is_file():
-        with path.open(encoding="utf-8", newline="") as f:
-            for row in csv.DictReader(f):
-                if row.get("strategy") != strategy:
-                    existing.append(row)
-    new_rows = [comparison_row(strategy, r) for r in rows]
-    all_rows = existing + new_rows
     with path.open("w", encoding="utf-8", newline="") as f:
         w = csv.DictWriter(f, fieldnames=cols)
         w.writeheader()
-        for row in all_rows:
-            w.writerow({c: row.get(c, "") for c in cols})
+        for r in rows:
+            w.writerow(comparison_row(strategy, r))
     return path
 
 
@@ -315,18 +310,35 @@ def update_comparison_csv(out_dir: Path, strategy: str, rows: List[dict]) -> Pat
 
 def main(argv=None) -> int:
     p = argparse.ArgumentParser(description="Offline scoring against gold (Stage 2)")
-    p.add_argument("--strategy", required=True)
-    p.add_argument("--gold", default=str(config.GOLD_CSV))
+    p.add_argument(
+        "--run",
+        required=True,
+        help="Run id (folder under outputs/), e.g. run1_zsl.",
+    )
+    p.add_argument(
+        "--gold",
+        default=None,
+        help="Gold CSV path. Default: the gold_csv recorded in run_meta.json.",
+    )
     p.add_argument(
         "--fsl-example-ids",
         default="",
         help="Comma-separated reqIds to exclude (defaults to fsl_examples.json ids).",
     )
-    p.add_argument("--out", default=str(config.SCORING_DIR))
     args = p.parse_args(argv)
 
-    gold = load_gold(Path(args.gold))
-    manifest = load_manifest(args.strategy)
+    run_paths = config.RunPaths(args.run)
+    if not run_paths.root.is_dir():
+        raise SystemExit(
+            f"No run folder: {run_paths.root}. "
+            "Run scripts/run_conversion.py first, or check --run."
+        )
+    meta = load_run_meta(run_paths)
+    strategy = meta.get("strategy", args.run.split("_")[-1])
+    gold_path = Path(args.gold) if args.gold else Path(meta.get("gold_csv") or config.GOLD_CSV)
+
+    gold = load_gold(gold_path)
+    manifest = load_manifest(run_paths.manifest_path)
 
     if args.fsl_example_ids.strip():
         fsl_ids = {s.strip() for s in args.fsl_example_ids.split(",") if s.strip()}
@@ -404,21 +416,20 @@ def main(argv=None) -> int:
         "skipped_ids": skipped_ids,
     }
 
-    out_dir = Path(args.out)
-    strat_dir = out_dir / args.strategy
-    strat_dir.mkdir(parents=True, exist_ok=True)
-    (strat_dir / "metrics.md").write_text(
-        render_metrics_md(args.strategy, counts, fa_rep, cqr), encoding="utf-8"
+    scoring_dir = run_paths.scoring_dir
+    scoring_dir.mkdir(parents=True, exist_ok=True)
+    (scoring_dir / "metrics.md").write_text(
+        render_metrics_md(strategy, counts, fa_rep, cqr), encoding="utf-8"
     )
-    (strat_dir / "per_requirement.md").write_text(
-        render_per_requirement_md(args.strategy, per_req_rows), encoding="utf-8"
+    (scoring_dir / "per_requirement.md").write_text(
+        render_per_requirement_md(strategy, per_req_rows), encoding="utf-8"
     )
-    comparison_path = update_comparison_csv(out_dir, args.strategy, per_req_rows)
+    write_comparison_csv(scoring_dir / "comparison.csv", strategy, per_req_rows)
 
     # --- compact stdout summary ---
     lvg = cqr["similarity"]["llm_vs_gold"]["seq_ratio"]
     hh = cqr["similarity"]["human_human"]["seq_ratio"]
-    print(f"Scoring — strategy={args.strategy}")
+    print(f"Scoring — run={args.run} strategy={strategy}")
     print(
         f"  gold={counts['gold']} converted={counts['converted']} "
         f"evaluated={counts['evaluated']} skipped={counts['skipped']}"
@@ -428,7 +439,7 @@ def main(argv=None) -> int:
     print(f"  mean LLM-vs-gold seq_ratio:  {_fmt(lvg['mean'])}")
     print(f"  mean human-human seq_ratio:  {_fmt(hh['mean'])}")
     print(f"  Paska pass rate:             {_fmt(cqr['paska']['pass_rate'])}")
-    print(f"  outputs: {strat_dir}/  and  {comparison_path}")
+    print(f"  outputs: {scoring_dir}/")
     return 0
 
 

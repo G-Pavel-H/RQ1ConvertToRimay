@@ -10,6 +10,7 @@ Two decoupled stages share this module:
 from __future__ import annotations
 
 import os
+import re
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -32,12 +33,13 @@ GOLD_CSV = DATA_DIR / "gold_annotations.csv"
 # --- Paska integration -------------------------------------------------------
 PASKA_JAR = PASKA_DIR / "smell_detector.jar"
 
-LLM_RIMAY_DIR = OUTPUTS_DIR / "llm_rimay"
-CONVERSIONS_DIR = OUTPUTS_DIR / "conversions"
-PASKA_PARSING_TREES_DIR = OUTPUTS_DIR / "paska_parsing_trees"
-PASKA_SMELLS_DIR = OUTPUTS_DIR / "paska_smells"
-PASKA_SMELLS_CACHE_DIR = PASKA_SMELLS_DIR / ".cache"
-SCORING_DIR = OUTPUTS_DIR / "scoring"
+# Paska working files + cache live OUTSIDE the per-run folders and are shared
+# across runs, so identical Rimay text is never re-parsed (cache key = SHA-256
+# of the input). This is transient/derived; safe to delete.
+PASKA_WORK_DIR = OUTPUTS_DIR / "_paska"
+PASKA_PARSING_TREES_DIR = PASKA_WORK_DIR / "parsing_trees"
+PASKA_SMELLS_DIR = PASKA_WORK_DIR / "smells"
+PASKA_SMELLS_CACHE_DIR = PASKA_WORK_DIR / ".cache"
 
 PASKA_POS_TAGGER_PATH = os.environ.get("PASKA_POS_TAGGER_PATH", "")
 
@@ -81,13 +83,77 @@ class RunConfig:
 
 
 def ensure_output_dirs() -> None:
+    """Create the global (non-per-run) output dirs."""
     for d in (
-        LLM_RIMAY_DIR,
-        CONVERSIONS_DIR,
+        OUTPUTS_DIR,
         PASKA_PARSING_TREES_DIR,
         PASKA_SMELLS_DIR,
         PASKA_SMELLS_CACHE_DIR,
-        SCORING_DIR,
         MLRUNS_DIR,
     ):
         d.mkdir(parents=True, exist_ok=True)
+
+
+# --- per-run output layout ---------------------------------------------------
+_RUN_DIR_RE = re.compile(r"^run(\d+)_")
+
+
+@dataclass(frozen=True)
+class RunPaths:
+    """Filesystem layout for one self-contained run under ``outputs/<run_id>/``.
+
+    A run bundles everything produced for a single conversion pass: the LLM
+    Rimay files, the JSONL manifest, the scoring reports, and a metadata
+    sidecar. Stage 2 reads and writes inside the same folder, so a run is a
+    complete, portable record.
+    """
+
+    run_id: str
+
+    @property
+    def root(self) -> Path:
+        return OUTPUTS_DIR / self.run_id
+
+    @property
+    def llm_rimay_dir(self) -> Path:
+        return self.root / "llm_rimay"
+
+    @property
+    def conversions_dir(self) -> Path:
+        return self.root / "conversions"
+
+    @property
+    def manifest_path(self) -> Path:
+        return self.conversions_dir / "manifest.jsonl"
+
+    @property
+    def scoring_dir(self) -> Path:
+        return self.root / "scoring"
+
+    @property
+    def meta_path(self) -> Path:
+        return self.root / "run_meta.json"
+
+    def ensure(self) -> None:
+        for d in (self.llm_rimay_dir, self.conversions_dir, self.scoring_dir):
+            d.mkdir(parents=True, exist_ok=True)
+
+
+def next_run_id(strategy: str, n_fsl_examples: int | None = None) -> str:
+    """Allocate the next run id, e.g. ``run3_fsl-n3``.
+
+    The numeric prefix auto-increments past the highest existing ``runN_*``
+    folder under ``outputs/`` (across all strategies), so runs stay ordered
+    and never clobber each other. The suffix records the strategy (and, for
+    FSL, the exemplar count) so the folder name is self-describing.
+    """
+    highest = 0
+    if OUTPUTS_DIR.is_dir():
+        for p in OUTPUTS_DIR.iterdir():
+            m = _RUN_DIR_RE.match(p.name)
+            if p.is_dir() and m:
+                highest = max(highest, int(m.group(1)))
+    suffix = strategy
+    if strategy == "fsl" and n_fsl_examples is not None:
+        suffix += f"-n{n_fsl_examples}"
+    return f"run{highest + 1}_{suffix}"

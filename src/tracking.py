@@ -60,18 +60,21 @@ def start_run(
     req_id: str,
     model_name: str,
     dataset: str = "gold",
+    output_run_id: str | None = None,
 ) -> Iterator[mlflow.ActiveRun]:
     init_tracking(strategy)
     run_name = f"{strategy}_{req_id}_{int(time.time())}"
     with mlflow.start_run(run_name=run_name) as run:
-        mlflow.set_tags(
-            {
-                "strategy": strategy,
-                "model_name": model_name,
-                "dataset": dataset,
-                "req_id": req_id,
-            }
-        )
+        tags = {
+            "strategy": strategy,
+            "model_name": model_name,
+            "dataset": dataset,
+            "req_id": req_id,
+        }
+        if output_run_id:
+            # Ties MLflow runs back to the outputs/<run_id>/ folder.
+            tags["output_run_id"] = output_run_id
+        mlflow.set_tags(tags)
         yield run
 
 
