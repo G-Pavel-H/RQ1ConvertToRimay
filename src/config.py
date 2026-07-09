@@ -45,7 +45,7 @@ PASKA_POS_TAGGER_PATH = os.environ.get("PASKA_POS_TAGGER_PATH", "")
 DEFAULT_MODEL = os.environ.get("ANTHROPIC_MODEL", "claude-haiku-4-5-20251001")
 DEFAULT_TEMPERATURE = 0.0
 DEFAULT_MAX_TOKENS = 1024
-DEFAULT_N_FSL_EXAMPLES = 2
+DEFAULT_N_FSL_EXAMPLES = 3
 
 # --- MLflow ------------------------------------------------------------------
 MLFLOW_TRACKING_DB = MLRUNS_DIR / "mlflow.db"

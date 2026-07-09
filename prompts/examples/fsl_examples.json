@@ -1,12 +1,23 @@
 [
   {
-    "id": "train_example_complete",
-    "nl": "When I receive a new message, play a notification sound.",
-    "rimay": "When the user receives a \"new message\", then the App must play a \"notification sound\"."
+    "id": "train_5963_scope_action",
+    "source_reqId": "5963-Signal",
+    "nl": "Request Number - 5963 | Request Title - Block numbers outside my contact list | Request Description - Add an option to allow completely blocking messages from contacts not in my contact list. This is very useful for children, to disable the possibility of them being approached by strangers.",
+    "rimay": "For all users, the app must provide an option to block messages from contacts not in the contact list.",
+    "note": "Pattern 1: implied scope realised as 'For all users' + a plain system response (actor+modal+action). No condition."
   },
   {
-    "id": "train_example_missing",
-    "nl": "The notification experience needs improvement.",
-    "rimay": "The App must <MISSING_ACTION>."
+    "id": "train_604_trigger",
+    "source_reqId": "604-Signal",
+    "nl": "Request Number - 604 | Request Title - Number registration (for push messaging) doesn't work with Google Voice | Request Description - The new push based TextSecure doesn't seem to like using Google Voice numbers (which are then forwarded to my phone's real number via SMS).  Although there are of course privacy downsides associated with letting Google see all of your incoming/outgoing SMS data, there are also serious privacy harms associated with letting people know your actual phone number, rather than a number that will just forward texts to you* The first step of the TextSecure number registration process (\"Connecting\") works fine. An incoming text message with the verification code is received by the default Android SMS app, but TextSecure doesn't catch it. Thankfully, after 2 minutes of waiting, I am given the opportunity verify by voice, which does work.",
+    "rimay": "For all users, when an incoming text message with the \"verificaiton code\" is received during number registration, then TextSecure must catch the \"verification code\"",
+    "note": "Pattern 3/7: scope + a 'When ... then ...' trigger condition + system response, with quoted string literals."
+  },
+  {
+    "id": "train_312_quoted_theme",
+    "source_reqId": "312-Signal",
+    "nl": "Request Number - 312 | Request Title - Need Batch Selection Mode for individual messages inside a conversation | Request Description - Deleting individual messages from a conversation is cumbersome and inefficient (Hold down on a message, then select Delete from popup menu, then select Yes on confirmation message, one message at a time). By way of contrast, holding down on a conversation in the Conversations list initiates Batch Selection Mode, allowing user to select multiple conversations for an action (currently Delete is the only option). Being able to trim out fluff from a conversation but keep important messages would be a valuable feature. A similar Batch Selection Mode for individual messages within a conversation (as already exists in the default Android Text Message app) would provide this functionality.",
+    "rimay": "For all users, the app must provide a \"Batch Selection mode\" for messages within each conversation to allow users to delete multiple messages.",
+    "note": "Pattern 1: scope + system response whose action carries a quoted theme ('Batch Selection mode')."
   }
 ]

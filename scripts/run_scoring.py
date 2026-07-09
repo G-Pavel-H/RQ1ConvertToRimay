@@ -58,11 +58,17 @@ def load_manifest(strategy: str) -> Dict[str, dict]:
 
 
 def _default_fsl_ids() -> set[str]:
+    """Exemplar ids + source_reqIds to exclude from scoring (the real join key)."""
     path = config.PROMPTS_DIR / "examples" / "fsl_examples.json"
     if not path.is_file():
         return set()
     examples = json.loads(path.read_text(encoding="utf-8"))
-    return {str(ex.get("id")) for ex in examples if ex.get("id")}
+    ids: set[str] = set()
+    for ex in examples:
+        for key in ("id", "source_reqId"):
+            if ex.get(key):
+                ids.add(str(ex[key]))
+    return ids
 
 
 # --- markdown helpers --------------------------------------------------------

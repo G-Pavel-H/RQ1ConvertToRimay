@@ -117,7 +117,7 @@ requirement count) from the data, so it keeps working as the set grows.
 ```bash
 # Stage 1 — conversion (writes outputs/conversions/<strategy>.jsonl + MLflow)
 python scripts/run_conversion.py --strategy zsl
-python scripts/run_conversion.py --strategy fsl --n-fsl-examples 2
+python scripts/run_conversion.py --strategy fsl --n-fsl-examples 3
 python scripts/run_conversion.py --strategy cot
 #   optional: --n-samples N --model ... --temperature 0.0 --max-tokens 1024
 
@@ -147,13 +147,20 @@ single-line final Rimay and the full response is preserved as the
   placeholder convention. The grammar was carried over from the prior project
   so the pipeline runs out of the box (see the TODO comment at the top of the
   file) — replace it with your authoritative grammar reference when ready.
-- `prompts/examples/fsl_examples.json` is **seeded with two placeholder
-  demonstrations** (one clean complete conversion, one showing a `<MISSING_*>`
-  placeholder). Replace them with your real exemplars. `prompt_builder` reads
-  only the `nl` and `rimay` fields. **Exemplars are in-context demonstrations,
-  never scored items** — they come from a separate training-stage pool and must
-  never overlap with the gold evaluation set. Any `reqId` that appears in the
-  exemplar set is defensively skipped in both stages.
+- `prompts/examples/fsl_examples.json` holds **three exemplars drawn from the
+  training-stage export** (`rimay_export_training.csv`; source reqIds
+  5963-Signal, 604-Signal, 312-Signal), using the adjudicated `canonicalRimay`
+  as the target and the full `nlText` as the input, so the in-context format
+  matches what the model sees at eval time. They cover a plain system response,
+  a `When … then …` trigger condition, and a quoted-theme action. `prompt_builder`
+  reads only the `nl` and `rimay` fields (`id`, `source_reqId`, `note` are
+  metadata). **Exemplars are in-context demonstrations, never scored items** —
+  they come from the training pool and do not overlap with the pilot gold set;
+  both the `id` and the `source_reqId` are defensively skipped in both stages.
+  Note: the training-stage gold canonicals realise implied scope as
+  "For all users" and omit absent conditions rather than emitting `<MISSING_*>`
+  markers, so these exemplars do not demonstrate the placeholder-emitting
+  behaviour — adjust if you want the FSL context to model that explicitly.
 
 ## Layout
 

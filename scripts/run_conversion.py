@@ -34,11 +34,21 @@ from src.prompt_builder import STRATEGIES  # noqa: E402
 
 
 def _fsl_exemplar_ids() -> set[str]:
+    """reqIds/ids to skip: both the exemplar ``id`` and its ``source_reqId``.
+
+    ``source_reqId`` is the real join key, so this defends against an
+    exemplar's source requirement accidentally appearing in the gold set.
+    """
     path = config.PROMPTS_DIR / "examples" / "fsl_examples.json"
     if not path.is_file():
         return set()
     examples = json.loads(path.read_text(encoding="utf-8"))
-    return {str(ex.get("id")) for ex in examples if ex.get("id")}
+    ids: set[str] = set()
+    for ex in examples:
+        for key in ("id", "source_reqId"):
+            if ex.get(key):
+                ids.add(str(ex[key]))
+    return ids
 
 
 def parse_args(argv=None) -> argparse.Namespace:
