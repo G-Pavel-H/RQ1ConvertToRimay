@@ -147,7 +147,17 @@ def convert(
         model=run_cfg.model,
         max_tokens=run_cfg.max_tokens,
         temperature=run_cfg.temperature,
-        system=prompt.system,
+        # Cache the (identical-across-requirements) system prompt. Prefix match,
+        # 5-min TTL: sequential requirements in a batch reuse it. Silently no-ops
+        # if the prefix is under the model's minimum cacheable size (4096 tokens
+        # on Haiku 4.5; lower on Sonnet), so it's safe to leave on for every model.
+        system=[
+            {
+                "type": "text",
+                "text": prompt.system,
+                "cache_control": {"type": "ephemeral"},
+            }
+        ],
         messages=[{"role": "user", "content": prompt.user}],
     )
     latency_ms = int((time.monotonic() - start) * 1000)

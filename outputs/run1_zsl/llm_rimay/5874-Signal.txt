@@ -1,0 +1,1 @@
+For a conversation, when the user long presses a picture message and taps a second or third picture message, the system shall display a save button and allow saving the selected images. <NON_ATOMIC>

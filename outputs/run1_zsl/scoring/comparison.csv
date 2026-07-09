@@ -1,0 +1,11 @@
+strategy,reqId,gold_scope,llm_scope,match_scope,gold_condition,llm_condition,match_condition,gold_actor,llm_actor,match_actor,gold_modalVerb,llm_modalVerb,match_modalVerb,gold_action,llm_action,match_action,gold_overall_incomplete,llm_overall_incomplete,verdict_match,seq_ratio,jaccard,paska_passed
+zsl,72-Signal,implied,filled,1,missing,filled,0,implied,filled,1,implied,filled,1,present,filled,1,0,0,1,0.6667,0.4211,1
+zsl,36-Mastodon,implied,filled,1,missing,filled,0,present,filled,1,implied,filled,1,present,filled,1,0,0,1,0.5025,0.3500,1
+zsl,152-Mastodon,implied,filled,1,missing,filled,0,present,filled,1,implied,filled,1,present,filled,1,0,0,1,0.4503,0.1154,1
+zsl,5874-Signal,implied,filled,1,present,filled,1,implied,filled,1,implied,filled,1,present,filled,1,0,0,1,0.5143,0.3750,0
+zsl,751-Signal,implied,filled,1,present,filled,1,implied,filled,1,implied,filled,1,present,filled,1,0,0,1,0.5306,0.3600,1
+zsl,3192-Signal,implied,filled,1,missing,filled,0,implied,filled,1,implied,filled,1,present,filled,1,0,0,1,0.7218,0.5000,0
+zsl,778-Signal,implied,filled,1,present,filled,1,implied,filled,1,implied,filled,1,present,filled,1,0,0,1,0.3800,0.2059,0
+zsl,1699-Signal,implied,filled,1,missing,filled,0,present,filled,1,implied,filled,1,present,filled,1,0,0,1,0.5589,0.5217,1
+zsl,2159-Signal,implied,filled,1,missing,filled,0,implied,filled,1,implied,filled,1,present,filled,1,0,0,1,0.5087,0.2333,1
+zsl,4049-Signal,implied,filled,1,present,filled,1,implied,filled,1,implied,filled,1,present,filled,1,0,0,1,0.2014,0.4615,1

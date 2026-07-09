@@ -1,0 +1,1 @@
+For the notification bar, the System shall display a preview of the message content in the notification.

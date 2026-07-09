@@ -1,0 +1,1 @@
+For the System, when the light sensor detects low light conditions, then the System shall switch the theme to dark theme based on the light sensor reading.

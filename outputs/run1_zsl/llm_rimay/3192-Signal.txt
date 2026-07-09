@@ -1,0 +1,1 @@
+For the image view in fullscreen, the System shall remove the action bar in the view where you can inspect a received picture to enlarge the image.

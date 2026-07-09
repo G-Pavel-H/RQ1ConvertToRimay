@@ -1,0 +1,1 @@
+For all the TextSecure users, when the TextSecure application receives a notification, the TextSecure application shall provide the ability to answer with predefined answers or voice. <NON_ATOMIC>.

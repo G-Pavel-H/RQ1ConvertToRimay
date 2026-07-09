@@ -1,0 +1,1 @@
+For the device, when the device comes online after being offline, the system shall send a single notification to the user for multiple messages received during the offline period. <NON_ATOMIC>.

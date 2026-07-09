@@ -1,0 +1,1 @@
+For the Mastodon app, when the user creates a Markdown list in a toot, the Mastodon app shall display each list item on a new line.

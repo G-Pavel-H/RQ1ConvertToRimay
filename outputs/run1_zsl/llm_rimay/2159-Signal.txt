@@ -1,0 +1,1 @@
+For the user, when the user selects multiple photos from the gallery, the system shall send the photos to the recipient without requiring individual selection procedures.

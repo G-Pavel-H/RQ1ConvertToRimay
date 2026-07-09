@@ -1,0 +1,1 @@
+For the conversation summary, when the most recent message is outgoing, the System shall display the delivery status in the conversation list item.
