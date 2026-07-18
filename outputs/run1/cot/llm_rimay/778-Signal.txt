@@ -1,0 +1,1 @@
+After the device is offline, then the device shall send a single notification ring for multiple messages received. <NON_ATOMIC>

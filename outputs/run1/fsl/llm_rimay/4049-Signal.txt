@@ -1,0 +1,1 @@
+For all conversations, the app must display the delivery status of the most recent outgoing message in the conversation list item.

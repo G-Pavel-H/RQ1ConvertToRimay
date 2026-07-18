@@ -1,0 +1,1 @@
+For all users, when viewing a received picture in fullscreen, the app must remove the action bar.

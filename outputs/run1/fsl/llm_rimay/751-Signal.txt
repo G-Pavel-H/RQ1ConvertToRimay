@@ -1,0 +1,1 @@
+For all users, when light conditions are low, then the app must switch automatically between light and dark theme using the light sensor.

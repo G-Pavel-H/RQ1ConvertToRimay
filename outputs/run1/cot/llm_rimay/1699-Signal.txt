@@ -1,0 +1,1 @@
+TextSecure shall support "Android Wear" with "predefined answers or voice responses".

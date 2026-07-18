@@ -1,0 +1,1 @@
+For all users, when the device receives multiple messages at once after being offline, then the app must send a single notification instead of multiple notifications. <NON_ATOMIC>

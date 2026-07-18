@@ -1,0 +1,1 @@
+For all users, the app must display a service label indicating which Fediverse service the profile is for.

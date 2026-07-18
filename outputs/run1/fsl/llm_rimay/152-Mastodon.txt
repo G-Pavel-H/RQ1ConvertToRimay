@@ -1,0 +1,1 @@
+For all users with profiles on mstdn.social, the Mastodon app must display Markdown lists with each list item on a new line.

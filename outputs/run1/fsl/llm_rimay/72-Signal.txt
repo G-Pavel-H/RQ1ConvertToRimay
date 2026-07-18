@@ -1,0 +1,1 @@
+For all users, the app must provide a preview of the message content in the notification bar.

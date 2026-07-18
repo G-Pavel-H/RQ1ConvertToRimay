@@ -1,0 +1,1 @@
+Where the light condition is low, the system shall switch the theme between "light theme" and "dark theme" based on the light sensor.

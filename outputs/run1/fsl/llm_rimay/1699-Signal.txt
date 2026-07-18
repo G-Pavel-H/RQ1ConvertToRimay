@@ -1,0 +1,1 @@
+For all users, the app must provide predefined answers and voice response options on Android Wear notifications. <NON_ATOMIC>

@@ -1,0 +1,1 @@
+For all users, the app must provide the ability to select and send multiple photos at once from the gallery.

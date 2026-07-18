@@ -1,0 +1,13 @@
+{
+  "run_id": "run2_fsl-n3",
+  "strategy": "fsl",
+  "model": "claude-haiku-4-5-20251001",
+  "temperature": 0.0,
+  "max_tokens": 1024,
+  "n_fsl_examples": 3,
+  "gold_csv": "/Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/data/gold_annotations.csv",
+  "created_at": "2026-07-18T22:05:56+01:00",
+  "n_processed": 10,
+  "n_skipped": 0,
+  "skipped_ids": []
+}

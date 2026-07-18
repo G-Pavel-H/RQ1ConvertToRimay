@@ -114,23 +114,38 @@ requirement count) from the data, so it keeps working as the set grows.
 
 ## Running
 
-Each conversion run gets its own self-contained, auto-numbered folder under
-`outputs/` (e.g. `run1_zsl`, `run2_fsl-n3`, `run3_cot`) holding that run's Rimay
-files, manifest, scoring reports, and a `run_meta.json` sidecar. The numeric
-prefix auto-increments; override the folder name with `--run-name`.
+The convenience scripts in [`bin/`](bin/) are the easy path — one per strategy
+per stage. A **run** is a batch folder `outputs/runN/` holding one self-contained
+subfolder per strategy (`zsl/`, `fsl/`, `cot/`), each with its own Rimay files,
+manifest, scoring reports, and `run_meta.json` sidecar.
 
 ```bash
-# Stage 1 — conversion (creates outputs/<run_id>/ + MLflow runs)
-python scripts/run_conversion.py --strategy zsl          # -> run1_zsl
-python scripts/run_conversion.py --strategy fsl --n-fsl-examples 3   # -> run2_fsl-n3
-python scripts/run_conversion.py --strategy cot          # -> run3_cot
-#   optional: --n-samples N --model ... --temperature 0.0 --max-tokens 1024
-#             --run-name my_custom_name
+# Convert a strategy into the current batch (creates run1/ if none exists yet)
+bin/convert_zsl.sh          # -> outputs/run1/zsl/
+bin/convert_fsl.sh          # -> outputs/run1/fsl/   (3 FSL exemplars)
+bin/convert_cot.sh          # -> outputs/run1/cot/
 
-# Stage 2 — scoring (offline; reads the run's manifest + gold)
-python scripts/run_scoring.py --run run1_zsl
-python scripts/run_scoring.py --run run2_fsl-n3
-python scripts/run_scoring.py --run run3_cot
+# Score the same strategy in the latest batch (offline; manifest + gold)
+bin/score_zsl.sh            # <- outputs/run1/zsl/
+bin/score_fsl.sh
+bin/score_cot.sh
+
+# Start a fresh batch; subsequent convert scripts write into it
+bin/new_run.sh              # -> creates outputs/run2/ , then convert_*.sh use run2/
+```
+
+The scripts activate `.venv`, target the right folder automatically (the convert
+scripts write into the highest-numbered `runN/`; the score scripts read from it),
+and pass any extra flags straight through, e.g. `bin/convert_zsl.sh --n-samples 3`
+or `bin/score_fsl.sh --gold path/to/gold.csv`.
+
+Under the hood they call the two entry points, which you can also run directly —
+`--run-name runN/<strategy>` selects the nested folder:
+
+```bash
+python scripts/run_conversion.py --strategy zsl --run-name run1/zsl
+#   optional: --n-samples N --model ... --temperature 0.0 --max-tokens 1024
+python scripts/run_scoring.py --run run1/zsl
 #   strategy + gold path are read from run_meta.json
 #   optional: --gold ... --fsl-example-ids id1,id2
 
@@ -138,22 +153,26 @@ python scripts/run_scoring.py --run run3_cot
 mlflow ui --backend-store-uri sqlite:///mlruns/mlflow.db
 ```
 
-Each run folder looks like:
+Each batch looks like:
 
 ```
-outputs/run1_zsl/
-  run_meta.json                    strategy, model, params, counts, timestamp
-  llm_rimay/<reqId>.txt            raw Rimay per requirement
-  conversions/manifest.jsonl       the scorer's input (Stage 1 -> Stage 2 handoff)
-  scoring/metrics.md               Track 1 + Track 2 tables
-  scoring/per_requirement.md       manual-review worksheet
-  scoring/comparison.csv           tidy, per-requirement (this run)
+outputs/run1/
+  zsl/
+    run_meta.json                  strategy, model, params, counts, timestamp
+    llm_rimay/<reqId>.txt          raw Rimay per requirement
+    conversions/manifest.jsonl     the scorer's input (Stage 1 -> Stage 2 handoff)
+    scoring/metrics.md             Track 1 + Track 2 tables
+    scoring/per_requirement.md     manual-review worksheet
+    scoring/comparison.csv         tidy, per-requirement (this run)
+  fsl/  … same layout
+  cot/  … same layout
 outputs/_paska/                    Paska cache + working files, SHARED across runs
 ```
 
 The Paska cache lives in `outputs/_paska/` (not inside run folders) so identical
 Rimay text is never re-parsed across runs. To compare strategies, line up the
-per-run `scoring/comparison.csv` files (or the printed summaries).
+per-strategy `scoring/comparison.csv` files within a batch (or the printed
+summaries).
 
 Default development model is `claude-haiku-4-5-20251001` (override with
 `--model`). Chain-of-thought is expected to reason before answering; if a model
@@ -185,6 +204,7 @@ single-line final Rimay and the full response is preserved as the
 ## Layout
 
 ```
+bin/                          convenience scripts: convert_/score_<strategy>.sh, new_run.sh
 data/gold_annotations.csv     the human gold (Stage 1 input + Stage 2 reference)
 paska/                        Paska jar + files (reused verbatim)
 models/                       Stanford POS tagger (gitignored)
@@ -202,10 +222,10 @@ src/
   scoring/conversion_quality.py  Track 2 (pure functions)
 scripts/
   verify_setup.py             pre-flight checks
-  run_conversion.py           Stage 1 entry point (creates outputs/<run_id>/)
-  run_scoring.py              Stage 2 entry point (--run <run_id>)
+  run_conversion.py           Stage 1 entry point (--run-name runN/<strategy>)
+  run_scoring.py              Stage 2 entry point (--run runN/<strategy>)
 tests/                        pytest suite for the scoring modules
-outputs/<run_id>/             per-run artifacts: llm_rimay, conversions, scoring, meta
+outputs/runN/<strategy>/      per-run artifacts: llm_rimay, conversions, scoring, meta
 outputs/_paska/               shared Paska cache (gitignored)
 mlruns/                       MLflow SQLite backend (gitignored)
 architecture.txt              ASCII flow diagram (kept in sync with this README)

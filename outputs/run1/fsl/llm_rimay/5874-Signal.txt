@@ -1,0 +1,1 @@
+For all users, when the user selects multiple image messages in a conversation, then the app must display a save button to save the selected images.

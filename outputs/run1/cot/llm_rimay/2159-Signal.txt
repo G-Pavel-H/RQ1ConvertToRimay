@@ -1,0 +1,1 @@
+The system shall allow the user to select multiple "photos" from the gallery and send them in a single action.
