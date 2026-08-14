@@ -39,8 +39,9 @@ mlflow.db
 
 # Experiment outputs: track the per-run result folders (manifest, scoring,
 # run_meta) as the experiment record, but ignore the shared, regenerable
-# Paska cache/working files.
+# Paska cache/working files and the generated HTML report.
 outputs/_paska/
+outputs/report.html
 
 # Jupyter
 .ipynb_checkpoints/

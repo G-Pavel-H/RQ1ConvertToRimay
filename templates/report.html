@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RQ1 — scoring report</title>
+<style>
+  :root {
+    color-scheme:light dark;  /* scrollbars + controls follow the theme */
+    --bg:#fbfbfa; --panel:#ffffff; --raise:#f4f4f3;
+    --ink:#2c2e33; --strong:#15171b; --muted:#83868f; --line:#e7e7e6;
+    --accent:#3f6dd8; --accent-soft:rgba(63,109,216,.10);
+    --ok:#3f8f63; --ok-soft:rgba(63,143,99,.12);
+    --bad:#c1553f; --bad-soft:rgba(193,85,63,.12);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg:#121316; --panel:#191b1f; --raise:#1f2126;
+      --ink:#c3c6cc; --strong:#e6e8ec; --muted:#7e838d; --line:#262930;
+      --accent:#7f9cf0; --accent-soft:rgba(127,156,240,.12);
+      --ok:#6cb98c; --ok-soft:rgba(108,185,140,.14);
+      --bad:#dd8570; --bad-soft:rgba(221,133,112,.14);
+    }
+  }
+  * { box-sizing:border-box; }
+  body {
+    margin:0; background:var(--bg); color:var(--ink);
+    font:14px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3 { margin:0; font-weight:500; color:var(--strong); }
+  h1 { font-size:14px; }
+  h2 { font-size:16px; }
+  h3 { font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); }
+  code { font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:.92em; }
+
+  header {
+    display:flex; align-items:center; gap:14px; flex-wrap:wrap;
+    padding:14px 24px; border-bottom:1px solid var(--line); background:var(--bg);
+    position:sticky; top:0; z-index:5;
+  }
+  header .meta { color:var(--muted); font-size:12px; }
+  header .spacer { flex:1; }
+
+  .layout { display:flex; align-items:flex-start; gap:28px; padding:28px 24px; max-width:1280px; margin:0 auto; }
+  nav { width:190px; flex:none; position:sticky; top:74px; display:flex; flex-direction:column; gap:2px; }
+  nav .group {
+    padding:14px 10px 6px; font-size:11px; letter-spacing:.08em;
+    text-transform:uppercase; color:var(--muted);
+  }
+  nav button {
+    display:block; width:100%; text-align:left; padding:7px 10px; cursor:pointer;
+    font:inherit; color:var(--ink); background:none; border:0; border-radius:7px;
+  }
+  nav button:hover { background:var(--raise); }
+  nav button[aria-current="true"] { background:var(--accent-soft); color:var(--accent); }
+  nav button small { display:block; font-size:11px; color:var(--muted); }
+  nav button[aria-current="true"] small { color:inherit; opacity:.75; }
+
+  main { flex:1; min-width:0; display:flex; flex-direction:column; gap:20px; }
+  section { border:1px solid var(--line); border-radius:12px; background:var(--panel); padding:20px 22px; }
+  section > h2 + .note { margin-top:4px; }
+  .note { color:var(--muted); font-size:13px; margin:10px 0 0; }
+  .sub { margin-top:26px; }
+  .sub + * { margin-top:10px; }
+
+  .tiles { display:grid; grid-template-columns:repeat(auto-fit,minmax(148px,1fr)); gap:10px; margin-top:16px; }
+  .tile { background:var(--raise); border-radius:10px; padding:12px 14px; }
+  .tile .k { display:block; font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); }
+  .tile .v { display:block; margin:4px 0 2px; font-size:24px; color:var(--strong); }
+  .tile .s { display:block; font-size:12px; color:var(--muted); }
+
+  .scroll { overflow-x:auto; margin-top:12px; scrollbar-width:thin; }
+  table { border-collapse:collapse; width:100%; font-variant-numeric:tabular-nums; }
+  th,td { padding:9px 12px; text-align:right; white-space:nowrap; border-bottom:1px solid var(--line); }
+  th:first-child, td:first-child { text-align:left; padding-left:2px; }
+  th:last-child, td:last-child { padding-right:2px; }
+  thead th {
+    font-size:11px; font-weight:500; letter-spacing:.06em;
+    text-transform:uppercase; color:var(--muted);
+  }
+  tbody tr:last-child td { border-bottom:0; }
+  tfoot td { border-bottom:0; color:var(--muted); }
+  tbody tr.clickable { cursor:pointer; }
+  tbody tr.clickable:hover td { background:var(--raise); }
+
+  .bar { display:inline-block; width:52px; height:3px; border-radius:2px; background:var(--line); vertical-align:middle; margin-right:10px; }
+  .bar > span { display:block; height:100%; border-radius:2px; background:var(--accent); }
+
+  .chip {
+    display:inline-block; padding:2px 9px; border-radius:999px; font-size:11px;
+    background:var(--raise); color:var(--muted);
+  }
+  .chip.ok { background:var(--ok-soft); color:var(--ok); }
+  .chip.bad { background:var(--bad-soft); color:var(--bad); }
+  .chip.accent { background:var(--accent-soft); color:var(--accent); }
+  .ok { color:var(--ok); } .bad { color:var(--bad); }
+  .strong { color:var(--strong); }
+
+  .legend { margin:16px 0 0; display:grid; gap:7px; font-size:12.5px; line-height:1.5; }
+  .legend > div { display:grid; grid-template-columns:130px 1fr; gap:14px; align-items:baseline; }
+  .legend dt { color:var(--ink); white-space:nowrap; }
+  .legend dt::after { content:" →"; color:var(--muted); }
+  .legend dd { margin:0; color:var(--muted); }
+  @media (max-width:720px) { .legend > div { grid-template-columns:1fr; gap:0; } }
+
+  .verdict { border-radius:10px; padding:14px 16px; background:var(--raise); color:var(--muted); font-size:13px; margin-top:12px; }
+  .verdict.filled { color:var(--ink); white-space:pre-wrap; }
+
+  details.req { border-bottom:1px solid var(--line); }
+  details.req:last-child { border-bottom:0; }
+  details.req > summary {
+    display:flex; gap:10px; align-items:center; flex-wrap:wrap;
+    padding:11px 2px; cursor:pointer; list-style:none;
+  }
+  details.req > summary::-webkit-details-marker { display:none; }
+  details.req > summary:hover .id { color:var(--accent); }
+  details.req > summary .id { color:var(--strong); }
+  details.req > summary .spacer { flex:1; }
+  .req-body { padding:4px 2px 18px; display:grid; gap:16px; }
+  .text { white-space:pre-wrap; word-break:break-word; }
+  .quote { color:var(--strong); border-left:2px solid var(--line); padding-left:12px; margin-top:6px; }
+  ul.humans { margin:6px 0 0; padding-left:16px; color:var(--strong); }
+  ul.humans li { margin-bottom:4px; }
+  .empty { padding:40px; text-align:center; color:var(--muted); }
+</style>
+</head>
+<body>
+<header>
+  <h1>RQ1 · NL → Rimay</h1>
+  <span class="meta" id="stamp"></span>
+  <span class="spacer"></span>
+  <span class="meta" id="runcount"></span>
+</header>
+
+<div class="layout">
+  <nav id="nav"></nav>
+  <main id="main"></main>
+</div>
+
+<script>
+const DATA = __RESULTS_DATA__;
+
+// --- formatting --------------------------------------------------------------
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => (
+  {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const num = x => (x ?? 0).toFixed(3);
+const pct = x => ((x ?? 0) * 100).toFixed(0) + "%";
+const bar = x => `<span class="bar"><span style="width:${Math.max(0, Math.min(1, x || 0)) * 100}%"></span></span>`;
+const yn = ok => ok ? '<span class="ok">✓</span>' : '<span class="bad">✗</span>';
+
+const SLOTS = ["scope", "condition", "actor", "modalVerb", "action"];
+const key = r => r.run;
+
+// --- sections ----------------------------------------------------------------
+function tile(k, v, s) {
+  return `<div class="tile"><span class="k">${esc(k)}</span><span class="v">${esc(v)}</span>
+          <span class="s">${s || "&nbsp;"}</span></div>`;
+}
+
+// What every column means, spelled out under the table it belongs to. The
+// definitions are static text written here — never data from a run.
+function legend(pairs) {
+  return `<dl class="legend">${pairs.map(([term, meaning]) =>
+    `<div><dt>${term}</dt><dd>${meaning}</dd></div>`).join("")}</dl>`;
+}
+
+function overview(runs) {
+  const rows = runs.map(r => {
+    const fa = r.field_accuracy, cq = r.conversion_quality;
+    return `<tr class="clickable" data-run="${esc(key(r))}">
+      <td class="strong">${esc(r.run)}</td>
+      <td>${esc(r.meta.model || "—")}</td>
+      <td>${r.counts.evaluated}</td>
+      <td>${num(fa.macro.f1)}</td>
+      <td>${num(fa.overall_verdict.agreement_rate)}</td>
+      <td>${num(cq.similarity.llm_vs_human.seq_ratio.mean)}</td>
+      <td>${num(cq.similarity.human_human.seq_ratio.mean)}</td>
+      <td>${pct(cq.paska.pass_rate)}</td>
+    </tr>`;
+  }).join("");
+
+  return `<section>
+    <h2>All runs</h2>
+    <p class="note">One row per scored run. Click a row to open it.</p>
+    <div class="scroll"><table>
+      <thead><tr>
+        <th>Run</th><th>Model</th><th>Evaluated</th>
+        <th>Macro F1</th><th>Verdict agr.</th>
+        <th>LLM~human</th><th>Human~human</th><th>Paska pass</th>
+      </tr></thead>
+      <tbody>${rows}</tbody>
+    </table></div>
+    ${legend([
+      ["Evaluated", "requirements present in both the manifest and the gold, minus FSL exemplars"],
+      ["Macro F1", "Track 1: how well the LLM detects <em>missing</em> slots, averaged over the five slots"],
+      ["Verdict agr.", "Track 1: how often LLM and gold agree on whether the requirement is incomplete overall"],
+      ["LLM~human", "Track 2: mean similarity of the LLM conversion to the annotators' own conversions"],
+      ["Human~human", "Track 2: mean similarity <em>between</em> annotators — the ceiling the LLM number is read against"],
+      ["Paska pass", "share of conversions the smell detector accepted without firing a smell"],
+    ])}
+  </section>`;
+}
+
+function verdictSection(r) {
+  const body = r.verdict
+    ? `<div class="verdict filled">${esc(r.verdict.text || r.verdict)}</div>`
+    : `<div class="verdict">No analysis for this run yet — the verdict stage has not
+       been run. It will appear here once it writes into <code>results.json</code>.</div>`;
+  return `<section><h2>Verdict</h2>${body}</section>`;
+}
+
+function headline(r) {
+  const fa = r.field_accuracy, cq = r.conversion_quality, c = r.counts;
+  return `<section>
+    <h2>${esc(r.run)} <span class="chip accent">${esc(r.strategy)}</span></h2>
+    <p class="note">${esc(r.meta.model || "—")} · temp ${esc(r.meta.temperature ?? "—")} ·
+      max tokens ${esc(r.meta.max_tokens ?? "—")}${r.meta.n_fsl_examples
+        ? " · " + esc(r.meta.n_fsl_examples) + " exemplars" : ""}<br>
+      converted ${esc((r.meta.created_at || "—").slice(0, 16).replace("T", " "))} ·
+      scored ${esc(r.scored_at.slice(0, 16).replace("T", " "))}<br>
+      ${c.gold} gold reqs · ${c.converted} converted · ${c.evaluated} evaluated ·
+      ${c.skipped} skipped${c.skipped_ids.length ? " (" + esc(c.skipped_ids.join(", ")) + ")" : ""}</p>
+    <div class="tiles">
+      ${tile("Macro F1 · missing", num(fa.macro.f1), "micro " + num(fa.micro.f1))}
+      ${tile("Verdict agreement", num(fa.overall_verdict.agreement_rate), "n = " + fa.overall_verdict.n)}
+      ${tile("LLM~human sim", num(cq.similarity.llm_vs_human.seq_ratio.mean),
+             "ceiling " + num(cq.similarity.human_human.seq_ratio.mean))}
+      ${tile("Paska pass rate", pct(cq.paska.pass_rate),
+             cq.paska.n_passed + " of " + cq.paska.n_scored + " scored")}
+    </div>
+  </section>`;
+}
+
+function track1(r) {
+  const fa = r.field_accuracy;
+  const slots = SLOTS.map(s => {
+    const d = fa.per_slot[s];
+    return `<tr><td>${esc(s)}</td><td>${d.tp}</td><td>${d.fp}</td><td>${d.fn}</td>
+      <td>${d.tn}</td><td>${num(d.precision)}</td><td>${num(d.recall)}</td>
+      <td class="strong">${bar(d.f1)}${num(d.f1)}</td><td>${d.support_gold_missing}</td></tr>`;
+  }).join("");
+
+  const imp = fa.implied_analysis.overall, mis = fa.missing_analysis.overall;
+  const v = fa.overall_verdict, c = v.confusion;
+
+  return `<section>
+    <h2>Track 1 — field accuracy</h2>
+    <p class="note">Does the LLM notice when the source NL leaves a slot unspecified?
+      The gold is ternary (present / implied / missing), the LLM signal is binary
+      (filled / missing), so gold <code>present</code>+<code>implied</code> collapse to
+      not-missing. <strong class="strong">The positive class is “missing”</strong> — every
+      count and score below is about detecting absence, not about being correct.</p>
+    <div class="scroll"><table>
+      <thead><tr><th>Slot</th><th>TP</th><th>FP</th><th>FN</th><th>TN</th>
+        <th>Prec.</th><th>Recall</th><th>F1</th><th>Support</th></tr></thead>
+      <tbody>${slots}</tbody>
+      <tfoot>
+        <tr><td>micro</td><td colspan="4"></td><td>${num(fa.micro.precision)}</td>
+          <td>${num(fa.micro.recall)}</td><td>${num(fa.micro.f1)}</td><td></td></tr>
+        <tr><td>macro</td><td colspan="4"></td><td>${num(fa.macro.precision)}</td>
+          <td>${num(fa.macro.recall)}</td><td>${num(fa.macro.f1)}</td><td></td></tr>
+      </tfoot>
+    </table></div>
+    ${legend([
+      ["TP", "LLM flagged the slot missing <em>and</em> gold says missing"],
+      ["FP", "LLM flagged missing, but gold says present or implied — an over-flag"],
+      ["FN", "gold says missing, but the LLM filled the slot anyway — a silent fill"],
+      ["TN", "both agree the slot is not missing"],
+      ["Precision", "TP / (TP + FP) — of the slots it flagged, how many really were missing"],
+      ["Recall", "TP / (TP + FN) — of the slots really missing, how many it caught"],
+      ["F1", "harmonic mean of precision and recall"],
+      ["Support", "TP + FN — how many slots the gold marks missing (0 means nothing to detect)"],
+      ["micro", "pooled over all slots — dominated by the slots with the most cases"],
+      ["macro", "the five slots' scores averaged evenly, regardless of support"],
+    ])}
+
+    <h3 class="sub">Secondary lenses</h3>
+    <p class="note">The two error directions that matter for the research question,
+      each read only over the gold rows of that kind.</p>
+    <div class="tiles">
+      ${tile("Implied → filled", num(imp.fill_rate),
+             `${imp.llm_filled} of ${imp.n_implied} · over-flagged ${imp.llm_flagged_missing}`)}
+      ${tile("Missing → flagged", num(mis.flag_rate),
+             `${mis.llm_flagged_missing} of ${mis.n_missing} · silently filled ${mis.llm_silently_filled}`)}
+    </div>
+    ${legend([
+      ["Implied → filled", "among slots the gold calls <em>implied</em>, how often the LLM inferred them from context (good) rather than flagging them missing (over-flag)"],
+      ["Missing → flagged", "among slots the gold calls <em>missing</em>, how often the LLM admitted the absence rather than silently inventing content (compensation / hallucination)"],
+    ])}
+
+    <h3 class="sub">Overall-incomplete verdict</h3>
+    <p class="note">One judgement per requirement, not per slot: the LLM counts as
+      “incomplete” when it flags any mandatory slot (actor, modalVerb, action) missing.</p>
+    <div class="scroll"><table>
+      <thead><tr><th></th><th>Gold incomplete</th><th>Gold complete</th></tr></thead>
+      <tbody>
+        <tr><td>LLM incomplete</td><td>${c.both_incomplete}</td><td>${c.llm_incomplete_gold_complete}</td></tr>
+        <tr><td>LLM complete</td><td>${c.gold_incomplete_llm_complete}</td><td>${c.both_complete}</td></tr>
+      </tbody>
+    </table></div>
+    ${legend([
+      ["Diagonal", "the two agreement cells: both call it incomplete, or both call it complete"],
+      ["Off-diagonal", "the two disagreements — top-right is the LLM over-calling incompleteness, bottom-left is the LLM missing it"],
+      ["Agreement", `${num(v.agreement_rate)} over ${v.n} requirements — the diagonal as a share of all cells`],
+      ["P/R/F1", `${num(v.precision)} / ${num(v.recall)} / ${num(v.f1)}, positive class “incomplete”`],
+    ])}
+  </section>`;
+}
+
+function distRow(name, d) {
+  return `<tr><td>${esc(name)}</td><td>${d.n}</td><td class="strong">${bar(d.mean)}${num(d.mean)}</td>
+    <td>${num(d.median)}</td><td>${num(d.min)}</td><td>${num(d.max)}</td><td>${num(d.std)}</td></tr>`;
+}
+
+function track2(r) {
+  const cq = r.conversion_quality;
+  const lvh = cq.similarity.llm_vs_human, hh = cq.similarity.human_human, p = cq.paska;
+  const smells = Object.entries(p.smell_frequency);
+
+  return `<section>
+    <h2>Track 2 — conversion quality</h2>
+    <p class="note">No gold conversion text: the LLM is compared to each annotator's own
+      Rimay (${lvh.n_pairs} pairs over ${lvh.n_evaluated} requirements), read against the
+      human-human ceiling. Metric v0 (placeholder): SequenceMatcher ratio + token Jaccard.</p>
+    <div class="scroll"><table>
+      <thead><tr><th>Distribution</th><th>n</th><th>Mean</th><th>Median</th>
+        <th>Min</th><th>Max</th><th>Std</th></tr></thead>
+      <tbody>
+        ${distRow("LLM~human · seq_ratio", lvh.seq_ratio)}
+        ${distRow("LLM~human · jaccard", lvh.jaccard)}
+        ${distRow("human~human · seq_ratio", hh.seq_ratio)}
+        ${distRow("human~human · jaccard", hh.jaccard)}
+      </tbody>
+    </table></div>
+    ${legend([
+      ["LLM~human", "one value per (LLM, annotator) pair — how close the conversion lands to each human's"],
+      ["human~human", "one value per pair of annotators on the same requirement — how much humans disagree with each other"],
+      ["seq_ratio", "difflib SequenceMatcher on normalised text: character-level overlap, order-sensitive"],
+      ["jaccard", "shared word types / all word types: vocabulary overlap, order-blind"],
+      ["n", "number of pairs behind the row, not the number of requirements"],
+      ["mean vs median", "far apart means the distribution is skewed by a few outliers"],
+      ["std", "spread — a low LLM~human mean with a high std means it nails some and misses others"],
+      ["How to read", "compare the two seq_ratio rows: the LLM is doing well when its mean approaches the human-human mean, since that is how much humans vary among themselves"],
+    ])}
+
+    <h3 class="sub">Paska validation</h3>
+    <p class="note">An independent structural check: the smell detector runs on the
+      stripped LLM Rimay and knows nothing about the gold.</p>
+    <div class="tiles">
+      ${tile("Pass rate", pct(p.pass_rate),
+             `passed ${p.n_passed} · failed ${p.n_failed} · errors ${p.n_error}`)}
+      ${tile("Reqs with smells", p.n_with_smells, "of " + p.n)}
+    </div>
+    ${smells.length ? `<div class="scroll"><table>
+        <thead><tr><th>Smell</th><th>Count</th></tr></thead>
+        <tbody>${smells.map(([s, n]) => `<tr><td>${esc(s)}</td><td>${n}</td></tr>`).join("")}</tbody>
+      </table></div>` : `<p class="note">No smells fired across the evaluated set.</p>`}
+    ${legend([
+      ["Pass rate", "passed / (passed + failed) — requirements where Paska fired no smell at all"],
+      ["Errors", "Paska could not be run on the text; excluded from the pass rate, not counted as failures"],
+      ["Smell counts", "total firings, so one requirement can contribute to several rows"],
+    ])}
+  </section>`;
+}
+
+function requirement(q) {
+  const sim = q.similarity;
+  const paska = q.paska_passed === null
+    ? '<span class="chip">paska error</span>'
+    : (q.paska_passed ? '<span class="chip ok">paska pass</span>'
+                      : '<span class="chip bad">paska fail</span>');
+  const slots = SLOTS.map(s => `<tr><td>${esc(s)}</td><td>${esc(q.gold_slots[s] || "—")}</td>
+    <td>${esc(q.llm_slots[s] || "—")}</td><td>${yn(q.slot_match[s])}</td></tr>`).join("");
+  const humans = q.human_rimays.length
+    ? `<ul class="humans">${q.human_rimays.map(h => `<li class="text">${esc(h)}</li>`).join("")}</ul>`
+    : `<p class="note">No annotator conversions.</p>`;
+
+  return `<details class="req">
+    <summary>
+      <span class="id">${esc(q.reqId)}</span>
+      <span class="spacer"></span>
+      <span class="chip">sim ${num(sim.seq_ratio_mean)}</span>
+      <span class="chip ${q.verdict_match ? "ok" : "bad"}">verdict ${q.verdict_match ? "match" : "differs"}</span>
+      ${paska}
+    </summary>
+    <div class="req-body">
+      <div><h3>NL</h3><div class="text quote">${esc(q.nl_text)}</div></div>
+      <div><h3>LLM Rimay</h3><div class="text quote">${esc(q.llm_rimay)}</div></div>
+      <div><h3>Annotator conversions</h3>${humans}</div>
+      <div class="scroll"><table>
+        <thead><tr><th>Slot</th><th>Gold</th><th>LLM</th><th>Match</th></tr></thead>
+        <tbody>${slots}</tbody>
+      </table></div>
+      <p class="note">Similarity to annotators — mean ${num(sim.seq_ratio_mean)},
+        best ${num(sim.seq_ratio_max)}, jaccard ${num(sim.jaccard_mean)}
+        (${sim.n_humans} annotators) · gold verdict
+        ${q.gold_overall ? "incomplete" : "complete"} · LLM verdict
+        ${q.llm_overall ? "incomplete" : "complete"}
+        ${q.paska_smells.length ? "<br>Smells: " + esc(q.paska_smells.map(s => s.smell).join(", ")) : ""}</p>
+    </div>
+  </details>`;
+}
+
+function requirements(r) {
+  return `<section>
+    <h2>Requirements <span class="chip">${r.requirements.length}</span></h2>
+    <p class="note">Every evaluated requirement, for manual review. Open one to see the
+      source NL, the conversions, and the slot-by-slot comparison.</p>
+    ${legend([
+      ["sim", "mean similarity of the LLM conversion to this requirement's annotator conversions"],
+      ["verdict", "whether LLM and gold agree on the overall-incomplete judgement"],
+      ["paska", "whether the smell detector accepted the conversion"],
+      ["Gold slot", "present (stated in the NL) · implied (inferable from context) · missing (absent)"],
+      ["LLM slot", "filled or missing — the LLM only signals absence, it cannot say present vs implied"],
+      ["Match", "✓ when the LLM agrees after the binary collapse (present and implied both count as not-missing)"],
+    ])}
+    <div style="margin-top:16px">${r.requirements.map(requirement).join("")}</div>
+  </section>`;
+}
+
+// --- shell -------------------------------------------------------------------
+function renderNav(selected) {
+  const batches = [...new Set(DATA.runs.map(r => r.run.split("/")[0]))];
+  const groups = batches.map(b => {
+    const items = DATA.runs.filter(r => r.run.split("/")[0] === b).map(r => `
+      <button data-run="${esc(key(r))}" aria-current="${key(r) === selected}">
+        ${esc(r.strategy)}<small>F1 ${num(r.field_accuracy.macro.f1)} ·
+        sim ${num(r.conversion_quality.similarity.llm_vs_human.seq_ratio.mean)}</small>
+      </button>`).join("");
+    return `<div class="group">${esc(b)}</div>${items}`;
+  }).join("");
+
+  document.getElementById("nav").innerHTML = `
+    <button data-run="" aria-current="${selected === ""}">All runs</button>${groups}`;
+}
+
+function render(selected) {
+  const main = document.getElementById("main");
+  if (!DATA.runs.length) {
+    main.innerHTML = `<section class="empty">No scored runs found.<br>
+      Run <code>bin/score_zsl.sh &lt;run-folder&gt;</code>, then rebuild this report.</section>`;
+    return;
+  }
+  const r = DATA.runs.find(x => key(x) === selected);
+  main.innerHTML = r
+    ? [headline(r), verdictSection(r), track1(r), track2(r), requirements(r)].join("")
+    : overview(DATA.runs);
+  renderNav(r ? selected : "");
+  window.scrollTo(0, 0);
+}
+
+document.addEventListener("click", e => {
+  const el = e.target.closest("[data-run]");
+  if (!el) return;
+  const run = el.dataset.run;
+  location.hash = run ? "#" + encodeURIComponent(run) : "";
+  render(run);
+});
+
+window.addEventListener("hashchange", () =>
+  render(decodeURIComponent(location.hash.slice(1))));
+
+document.getElementById("stamp").textContent =
+  "generated " + DATA.generated_at.slice(0, 16).replace("T", " ");
+document.getElementById("runcount").textContent =
+  DATA.runs.length + (DATA.runs.length === 1 ? " run" : " runs");
+render(decodeURIComponent(location.hash.slice(1)));
+</script>
+</body>
+</html>

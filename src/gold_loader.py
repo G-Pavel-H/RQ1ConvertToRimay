@@ -2,10 +2,15 @@
 
 The export (``data/gold_annotations.csv``) has one row per
 (requirement, annotator), four annotators per requirement. The
-``gold_*`` columns plus ``canonicalRimay`` and ``nlText`` are
-adjudicated and identical across the rows of a given requirement; the
-per-annotator columns (``rimayText``, ``slot_*``, ``overallIncomplete``,
-``nonAtomic`` ...) differ per row and form the human baseline.
+``gold_*`` columns and ``nlText`` are adjudicated and identical across
+the rows of a given requirement; the per-annotator columns
+(``rimayText``, ``slot_*``, ``overallIncomplete``, ``nonAtomic`` ...)
+differ per row and form the human baseline.
+
+The gold is **categorical only**. There is no adjudicated gold for the
+conversion *text*: the per-annotator ``rimayText`` values are the
+reference the conversion is compared against (the export's legacy
+``canonicalRimay`` column is unused and deliberately not read).
 
 Nothing here hard-codes annotator names or requirement counts — both are
 derived from the data so the loader keeps working as the set grows.
@@ -73,7 +78,6 @@ class GoldRecord:
     gold_condition_type: str
     gold_overall_incomplete: bool
     gold_had_disagreement: bool
-    canonical_rimay: str
     human_annotations: List[HumanAnnotation] = field(default_factory=list)
 
     @property
@@ -139,7 +143,6 @@ def load_gold(csv_path: Optional[Path] = None) -> Dict[str, GoldRecord]:
             gold_condition_type=_norm_str(first.get("gold_conditionType")).lower(),
             gold_overall_incomplete=_norm_bool(first.get("gold_overallIncomplete")),
             gold_had_disagreement=_norm_bool(first.get("gold_hadDisagreement")),
-            canonical_rimay=_norm_str(first.get("canonicalRimay")),
             human_annotations=human_annotations,
         )
     return records

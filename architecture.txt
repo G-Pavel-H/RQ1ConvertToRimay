@@ -1,13 +1,16 @@
 ===============================================================================
- RQ1 — NL -> Rimay conversion, scored against a human gold standard
+ RQ1 — NL -> Rimay conversion, scored against the human annotations
  Two decoupled stages. Stage 1 produces artifacts; Stage 2 reads them offline.
+ A third step renders every scored run into one HTML report.
 ===============================================================================
 
 
                          data/gold_annotations.csv
                     (1 row per requirement x annotator;
-                     adjudicated gold_* cols + canonicalRimay
-                     + nlText + per-annotator rimayText/slots)
+                     adjudicated gold_* cols (CATEGORICAL ONLY)
+                     + nlText + per-annotator rimayText/slots.
+                     No gold conversion text: the legacy
+                     canonicalRimay column is not read.)
                                     |
                                     v
                           +--------------------+
@@ -22,6 +25,8 @@
 +=============================================================================+
 |  STAGE 1 — CONVERSION            scripts/run_conversion.py                   |
 |  (per requirement, per strategy: zsl | fsl | cot)                           |
+|  --run-name <run>/<strategy> is REQUIRED: you name the output folder;       |
+|  nothing is inferred from what already exists under outputs/.               |
 |                                                                             |
 |   nlText                                                                    |
 |     |                                                                       |
@@ -103,21 +108,38 @@
 |   |  - binary collapse of gold     |   |  - conversion_similarity()    |     |
 |   |    (present+implied->not-miss) |   |    v0: SeqMatcher + Jaccard   |     |
 |   |  - per-slot P/R/F1 (missing)   |   |    (swappable placeholder)    |     |
-|   |  - micro / macro averages      |   |  - LLM-vs-gold  vs            |     |
+|   |  - micro / macro averages      |   |  - LLM-vs-ANNOTATOR vs        |     |
 |   |  - implied: fill vs over-flag  |   |    human-human distributions  |     |
-|   |  - missing: flag vs silent-fill|   |  - Paska pass rate +          |     |
-|   |  - overall-verdict 2x2         |   |    smell-type frequencies     |     |
+|   |  - missing: flag vs silent-fill|   |    (NO gold conversion text)  |     |
+|   |  - overall-verdict 2x2         |   |  - Paska pass rate +          |     |
+|   |                                |   |    smell-type frequencies     |     |
 |   +--------------------------------+   +-------------------------------+     |
 |                        |                          |                         |
 |                        +------------+-------------+                         |
 |                                     v                                       |
-|            outputs/<run_id>/scoring/metrics.md                              |
-|            outputs/<run_id>/scoring/per_requirement.md    (review worksheet)|
-|            outputs/<run_id>/scoring/comparison.csv        (tidy, this run)  |
+|            outputs/<run_id>/scoring/results.json    (metrics + per-req;     |
+|                                                      "verdict": null —      |
+|                                                      reserved for a future  |
+|                                                      LLM analysis stage)    |
+|            outputs/<run_id>/scoring/comparison.csv  (tidy, this run)        |
++=============================================================================+
+
+            outputs/*/*/scoring/results.json   (every scored run)
+                                    |
+                                    v
++=============================================================================+
+|  REPORT              src/report.py  (+ scripts/build_report.py to rebuild)   |
+|  Collects the results.json files and injects them into templates/report.html |
+|  -> outputs/report.html: one self-contained page, no server and no           |
+|  dependencies. Run picker, all-runs overview, both tracks per run, a legend  |
+|  under every table, per-requirement drill-down, verdict when one exists.     |
+|  Stage 2 rebuilds it automatically on every run (--no-report opts out), so   |
+|  the page never goes stale; build_report.py is for viewing / re-rendering.   |
 +=============================================================================+
 
 -------------------------------------------------------------------------------
  Boundary: Stage 1 writes the JSONL manifest (+ MLflow for exploration).
  Stage 2 consumes ONLY the manifest + the gold CSV. No MLflow dependency,
- no re-running of the LLM or Paska. The two stages are fully decoupled.
+ no re-running of the LLM or Paska. The report consumes ONLY results.json.
+ The stages are fully decoupled.
 -------------------------------------------------------------------------------

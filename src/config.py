@@ -10,7 +10,6 @@ Two decoupled stages share this module:
 from __future__ import annotations
 
 import os
-import re
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -24,8 +23,13 @@ load_dotenv(PROJECT_ROOT / ".env", override=True)
 DATA_DIR = PROJECT_ROOT / "data"
 PASKA_DIR = PROJECT_ROOT / "paska"
 PROMPTS_DIR = PROJECT_ROOT / "prompts"
+TEMPLATES_DIR = PROJECT_ROOT / "templates"
 OUTPUTS_DIR = PROJECT_ROOT / "outputs"
 MLRUNS_DIR = PROJECT_ROOT / "mlruns"
+
+# --- the results report (Stage 3 view over every scored run) -----------------
+REPORT_TEMPLATE = TEMPLATES_DIR / "report.html"
+REPORT_HTML = OUTPUTS_DIR / "report.html"
 
 # --- the human gold standard (Stage 2 reference; also the Stage 1 input) -----
 GOLD_CSV = DATA_DIR / "gold_annotations.csv"
@@ -95,7 +99,6 @@ def ensure_output_dirs() -> None:
 
 
 # --- per-run output layout ---------------------------------------------------
-_RUN_DIR_RE = re.compile(r"^run(\d+)_")
 
 
 @dataclass(frozen=True)
@@ -103,9 +106,12 @@ class RunPaths:
     """Filesystem layout for one self-contained run under ``outputs/<run_id>/``.
 
     A run bundles everything produced for a single conversion pass: the LLM
-    Rimay files, the JSONL manifest, the scoring reports, and a metadata
+    Rimay files, the JSONL manifest, the scoring results, and a metadata
     sidecar. Stage 2 reads and writes inside the same folder, so a run is a
     complete, portable record.
+
+    The ``run_id`` is always supplied on the command line (the bin/ scripts
+    pass ``<run-folder>/<strategy>``); nothing is inferred from disk.
     """
 
     run_id: str
@@ -131,29 +137,14 @@ class RunPaths:
         return self.root / "scoring"
 
     @property
+    def results_path(self) -> Path:
+        """Stage 2's machine-readable results (the report's input)."""
+        return self.scoring_dir / "results.json"
+
+    @property
     def meta_path(self) -> Path:
         return self.root / "run_meta.json"
 
     def ensure(self) -> None:
         for d in (self.llm_rimay_dir, self.conversions_dir, self.scoring_dir):
             d.mkdir(parents=True, exist_ok=True)
-
-
-def next_run_id(strategy: str, n_fsl_examples: int | None = None) -> str:
-    """Allocate the next run id, e.g. ``run3_fsl-n3``.
-
-    The numeric prefix auto-increments past the highest existing ``runN_*``
-    folder under ``outputs/`` (across all strategies), so runs stay ordered
-    and never clobber each other. The suffix records the strategy (and, for
-    FSL, the exemplar count) so the folder name is self-describing.
-    """
-    highest = 0
-    if OUTPUTS_DIR.is_dir():
-        for p in OUTPUTS_DIR.iterdir():
-            m = _RUN_DIR_RE.match(p.name)
-            if p.is_dir() and m:
-                highest = max(highest, int(m.group(1)))
-    suffix = strategy
-    if strategy == "fsl" and n_fsl_examples is not None:
-        suffix += f"-n{n_fsl_examples}"
-    return f"run{highest + 1}_{suffix}"

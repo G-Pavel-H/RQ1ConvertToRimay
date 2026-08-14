@@ -1,0 +1,710 @@
+{
+  "run": "run1/zsl",
+  "strategy": "zsl",
+  "scored_at": "2026-08-12T01:20:01+01:00",
+  "gold_csv": "/Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/data/gold_annotations.csv",
+  "meta": {
+    "run_id": "run1_zsl",
+    "strategy": "zsl",
+    "model": "claude-haiku-4-5-20251001",
+    "temperature": 0.0,
+    "max_tokens": 1024,
+    "n_fsl_examples": null,
+    "gold_csv": "/Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/data/gold_annotations.csv",
+    "created_at": "2026-07-09T23:15:37+01:00",
+    "n_processed": 10,
+    "n_skipped": 0,
+    "skipped_ids": []
+  },
+  "counts": {
+    "gold": 10,
+    "converted": 10,
+    "evaluated": 10,
+    "skipped": 0,
+    "skipped_ids": []
+  },
+  "field_accuracy": {
+    "n": 10,
+    "per_slot": {
+      "scope": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 10,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support_gold_missing": 0
+      },
+      "condition": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 6,
+        "tn": 4,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support_gold_missing": 6
+      },
+      "actor": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 10,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support_gold_missing": 0
+      },
+      "modalVerb": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 10,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support_gold_missing": 0
+      },
+      "action": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 10,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support_gold_missing": 0
+      }
+    },
+    "micro": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "macro": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "implied_analysis": {
+      "overall": {
+        "n_implied": 27,
+        "llm_filled": 27,
+        "llm_flagged_missing": 0,
+        "fill_rate": 1.0
+      },
+      "per_slot": {
+        "scope": {
+          "n_implied": 10,
+          "llm_filled": 10,
+          "llm_flagged_missing": 0,
+          "fill_rate": 1.0
+        },
+        "condition": {
+          "n_implied": 0,
+          "llm_filled": 0,
+          "llm_flagged_missing": 0,
+          "fill_rate": 0.0
+        },
+        "actor": {
+          "n_implied": 7,
+          "llm_filled": 7,
+          "llm_flagged_missing": 0,
+          "fill_rate": 1.0
+        },
+        "modalVerb": {
+          "n_implied": 10,
+          "llm_filled": 10,
+          "llm_flagged_missing": 0,
+          "fill_rate": 1.0
+        },
+        "action": {
+          "n_implied": 0,
+          "llm_filled": 0,
+          "llm_flagged_missing": 0,
+          "fill_rate": 0.0
+        }
+      }
+    },
+    "missing_analysis": {
+      "overall": {
+        "n_missing": 6,
+        "llm_flagged_missing": 0,
+        "llm_silently_filled": 6,
+        "flag_rate": 0.0
+      },
+      "per_slot": {
+        "scope": {
+          "n_missing": 0,
+          "llm_flagged_missing": 0,
+          "llm_silently_filled": 0,
+          "flag_rate": 0.0
+        },
+        "condition": {
+          "n_missing": 6,
+          "llm_flagged_missing": 0,
+          "llm_silently_filled": 6,
+          "flag_rate": 0.0
+        },
+        "actor": {
+          "n_missing": 0,
+          "llm_flagged_missing": 0,
+          "llm_silently_filled": 0,
+          "flag_rate": 0.0
+        },
+        "modalVerb": {
+          "n_missing": 0,
+          "llm_flagged_missing": 0,
+          "llm_silently_filled": 0,
+          "flag_rate": 0.0
+        },
+        "action": {
+          "n_missing": 0,
+          "llm_flagged_missing": 0,
+          "llm_silently_filled": 0,
+          "flag_rate": 0.0
+        }
+      }
+    },
+    "overall_verdict": {
+      "confusion": {
+        "both_incomplete": 0,
+        "llm_incomplete_gold_complete": 0,
+        "gold_incomplete_llm_complete": 0,
+        "both_complete": 10
+      },
+      "agreement_rate": 1.0,
+      "n": 10,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    }
+  },
+  "conversion_quality": {
+    "similarity": {
+      "llm_vs_human": {
+        "seq_ratio": {
+          "n": 40,
+          "mean": 0.5207243222667726,
+          "median": 0.5092825940860215,
+          "min": 0.08565310492505353,
+          "max": 0.8413284132841329,
+          "std": 0.1432560374891756
+        },
+        "jaccard": {
+          "n": 40,
+          "mean": 0.36191463276945884,
+          "median": 0.3484848484848485,
+          "min": 0.14285714285714285,
+          "max": 0.7083333333333334,
+          "std": 0.13196179525718874
+        },
+        "n_pairs": 40,
+        "n_evaluated": 10,
+        "n_skipped_no_humans": 0,
+        "skipped_req_ids": []
+      },
+      "human_human": {
+        "seq_ratio": {
+          "n": 60,
+          "mean": 0.5981277847450428,
+          "median": 0.5603276353276354,
+          "min": 0.1853448275862069,
+          "max": 0.9518072289156626,
+          "std": 0.1876708707094433
+        },
+        "jaccard": {
+          "n": 60,
+          "mean": 0.4681651089637897,
+          "median": 0.4583333333333333,
+          "min": 0.19444444444444445,
+          "max": 0.8823529411764706,
+          "std": 0.18316020274070166
+        },
+        "n_pairs": 60
+      }
+    },
+    "paska": {
+      "n": 10,
+      "n_passed": 7,
+      "n_failed": 3,
+      "n_error": 0,
+      "n_scored": 10,
+      "pass_rate": 0.7,
+      "n_with_smells": 3,
+      "smell_frequency": {
+        "Non-atomic requirement": 1,
+        "Incorrect order requirement": 1,
+        "Incomplete condition": 1,
+        "Not precise verb": 1
+      }
+    }
+  },
+  "requirements": [
+    {
+      "reqId": "72-Signal",
+      "nl_text": "Request Number - 72 | Request Title - Message content preview in notification bar | Request Description - I'd like to get a preview of the messagge in notification bar. Could be also good a JB-style quick reply fuction. Thanks for your working and this awesome software!",
+      "human_rimays": [
+        "<MISSING_CONDITION> For all users, the system must provide a preview of the message in notification bar.",
+        "For all users the App must show a \"preview of the message\" in the \"notification bar\"",
+        "The App must display a \"preview of the message\" in the \"notification bar\".<MISSING_CONDITION>",
+        "For all users, <MISSING_CONDITION> the app must show a preview of the message in the notificaiton bar."
+      ],
+      "llm_rimay": "For the notification bar, the System shall display a preview of the message content in the notification.",
+      "gold_slots": {
+        "scope": "implied",
+        "condition": "missing",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "filled",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": true,
+        "condition": false,
+        "actor": true,
+        "modalVerb": true,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": false,
+      "verdict_match": true,
+      "similarity": {
+        "n_humans": 4,
+        "seq_ratio_mean": 0.6706112040800064,
+        "seq_ratio_max": 0.6966292134831461,
+        "jaccard_mean": 0.5273219814241485,
+        "jaccard_max": 0.6
+      },
+      "paska_passed": true,
+      "paska_smells": []
+    },
+    {
+      "reqId": "36-Mastodon",
+      "nl_text": "Request Number - 36 | Request Title - Feature request: Fediverse service label | Request Description - For example, Fedilab shows which service the profile is for, i.e. whether it is a Mastodon, Pixelfed, PeerTube, etc. account. Something similar for the official Mastodon app would be desirable, as it shows newcomers that theFediverse is more than just Mastodon.",
+      "human_rimays": [
+        "<MISSING_CONDITION> For all users, the official Mastodon app must provide which service the profile is for.",
+        "For all the users the Mastodon app must display the \"service type\" of each profile",
+        "The App must show the service type of the profile.<MISSING_CONDITION>",
+        "For all users, <MISSING_CONDITION> the app must show which service the profile is for."
+      ],
+      "llm_rimay": "For the official Mastodon app, the app shall display a service label indicating which Fediverse service the profile is for.",
+      "gold_slots": {
+        "scope": "implied",
+        "condition": "missing",
+        "actor": "present",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "filled",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": true,
+        "condition": false,
+        "actor": true,
+        "modalVerb": true,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": false,
+      "verdict_match": true,
+      "similarity": {
+        "n_humans": 4,
+        "seq_ratio_mean": 0.5427802729720113,
+        "seq_ratio_max": 0.6761904761904762,
+        "jaccard_mean": 0.3464912280701754,
+        "jaccard_max": 0.47368421052631576
+      },
+      "paska_passed": true,
+      "paska_smells": []
+    },
+    {
+      "reqId": "152-Mastodon",
+      "nl_text": "Request Number - 152 | Request Title - Display MD lists correctly | Request Description - I'm using the Mastodon app with my profile on mstdn.social which supports Markdown toots. Unfortunately, the Mastodon app isn't able to display MD lists correctly. Instead of putting each list item into a new line, it shrinks the complete list into a single line:  For comparison: Tusky is perfectly capable of at least inserting line breaks:",
+      "human_rimays": [
+        "<MISSING_CONDITION> For all users, the Mastodon app must be able to display Markdown lists correctly.",
+        "For all the users the Mastodon app must display \"Markdown lists\" correctly",
+        "The App must display Markdown lists by rendering each list item on a separate line.<MISSING_CONDITION>",
+        "For all users, <MISSING_CONDITION> the app must be able to display \"MD\" lists correctly."
+      ],
+      "llm_rimay": "For the Mastodon app, when the user creates a Markdown list in a toot, the Mastodon app shall display each list item on a new line.",
+      "gold_slots": {
+        "scope": "implied",
+        "condition": "missing",
+        "actor": "present",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "filled",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": true,
+        "condition": false,
+        "actor": true,
+        "modalVerb": true,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": false,
+      "verdict_match": true,
+      "similarity": {
+        "n_humans": 4,
+        "seq_ratio_mean": 0.4881759860110579,
+        "seq_ratio_max": 0.5327102803738317,
+        "jaccard_mean": 0.2579365079365079,
+        "jaccard_max": 0.4166666666666667
+      },
+      "paska_passed": true,
+      "paska_smells": []
+    },
+    {
+      "reqId": "5874-Signal",
+      "nl_text": "Request Number - 5874 | Request Title - Allow saving multiple images in a conversation | Request Description - I have:   searched open and closed issues for duplicates  read https://github.com/WhisperSystems/Signal-Android/wiki/Submitting-useful-bug-reports  Feature Request. There was #5088 asking for multi-selecting images in \"All images\" and then saving them. It was closed without actually having multi-select & save implemented. I am asking for multi-select images in a conversation and then save them. Steps to reproduce.  go to a conversation long press a picture message tap a second/third/... picture message Actual result: No save button is shown. Expected result: A save button should be shown and allow to save the selected images.",
+      "human_rimays": [
+        "When the user selects multiple pictures, the system must provide a save button to allow save selected images.",
+        "When the user selects multiple \"picture messages\" in a conversation, then the App must show a \"save button\" that saves the selected \"images\"",
+        "When the user selects multiple image messages in conversation, the App must display a \"Save\" button that saves the selected images.",
+        "For all users, when the user long presses a picture message, the app must allow to multi select pictures and save them."
+      ],
+      "llm_rimay": "For a conversation, when the user long presses a picture message and taps a second or third picture message, the system shall display a save button and allow saving the selected images. <NON_ATOMIC>",
+      "gold_slots": {
+        "scope": "implied",
+        "condition": "present",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "filled",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": true,
+        "condition": true,
+        "actor": true,
+        "modalVerb": true,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": false,
+      "verdict_match": true,
+      "similarity": {
+        "n_humans": 4,
+        "seq_ratio_mean": 0.5141315239517629,
+        "seq_ratio_max": 0.5850340136054422,
+        "jaccard_mean": 0.3235294117647059,
+        "jaccard_max": 0.36363636363636365
+      },
+      "paska_passed": false,
+      "paska_smells": [
+        {
+          "segment_id": "5874-Signal_rimay_1",
+          "smell": "Non-atomic requirement",
+          "value": "The requirement has more than one action in the system response."
+        }
+      ]
+    },
+    {
+      "reqId": "751-Signal",
+      "nl_text": "Request Number - 751 | Request Title - Adapt theme to light conditions | Request Description - Under low light conditions the light design is too bright and puts a strain on the eyes. Thus, a nice thing to have would be an option to switch between light and dark theme automagically using the light sensor. Theme light theme ( ) dark theme ( ) depending on light condition (o)",
+      "human_rimays": [
+        "<MISSING_CONDITION> For all users the app must provide an option to switch between light and dark themes.",
+        "For all the users if the ambient \"light conditions\" are low, then the App must switch to the \"dark theme\" using the \"light sensor\"",
+        "The App must automatically switch between the \"light\" and \"dark\" themes, when the light condition change is being observed by the light sensor.",
+        "For all users, when the light sensor senses change, the app must automatically switch between light and dark modes."
+      ],
+      "llm_rimay": "For the System, when the light sensor detects low light conditions, then the System shall switch the theme to dark theme based on the light sensor reading.",
+      "gold_slots": {
+        "scope": "implied",
+        "condition": "present",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "filled",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": true,
+        "condition": true,
+        "actor": true,
+        "modalVerb": true,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": false,
+      "verdict_match": true,
+      "similarity": {
+        "n_humans": 4,
+        "seq_ratio_mean": 0.49199168923427133,
+        "seq_ratio_max": 0.6456140350877193,
+        "jaccard_mean": 0.2718406593406593,
+        "jaccard_max": 0.4230769230769231
+      },
+      "paska_passed": true,
+      "paska_smells": []
+    },
+    {
+      "reqId": "3192-Signal",
+      "nl_text": "Request Number - 3192 | Request Title - Image view in fullscreen | Request Description - Remove the action bar in the view where you can inspect a received picture to enlarge the image.",
+      "human_rimays": [
+        "<MISSING_CONDITION> For all users, the App must remove the action bar in the view where you can inspect a received picture to enlarge the image.",
+        "For all the users the App must remove the \"action bar\" in the \"image-inspection view\" where a received picture is enlarged",
+        "When the user inspects a received picture, the App must remove the \"action bar\" to enlarge the image.",
+        "For all users, <MISSING_CONDITION>, the app should not display the action in the view where user inspects a received picture to enlarge the image."
+      ],
+      "llm_rimay": "For the image view in fullscreen, the System shall remove the action bar in the view where you can inspect a received picture to enlarge the image.",
+      "gold_slots": {
+        "scope": "implied",
+        "condition": "missing",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "filled",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": true,
+        "condition": false,
+        "actor": true,
+        "modalVerb": true,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": false,
+      "verdict_match": true,
+      "similarity": {
+        "n_humans": 4,
+        "seq_ratio_mean": 0.666074479527111,
+        "seq_ratio_max": 0.8413284132841329,
+        "jaccard_mean": 0.4953373015873016,
+        "jaccard_max": 0.7083333333333334
+      },
+      "paska_passed": false,
+      "paska_smells": [
+        {
+          "segment_id": "3192-Signal_rimay_1",
+          "smell": "Incorrect order requirement",
+          "value": "The condition clause of the requirement is after the system response."
+        },
+        {
+          "segment_id": "3192-Signal_rimay_3",
+          "smell": "Incomplete condition",
+          "value": "Actor is missing in the condition."
+        }
+      ]
+    },
+    {
+      "reqId": "778-Signal",
+      "nl_text": "Request Number - 778 | Request Title - Feature Request: Only one notification for multiple messages received at once + Timestamps | Request Description - After being offline (flight mode / no internet connection) my device rings/vibrates multiple times, depending on how many messages have been sent by others in the meantime. Being in a quite active group my device vibrated for about 30 seconds this morning. I can see the point of being notified that not only one but multiple messages have been received but this should be reworked to a less annoying way (e.g., ring twice for multiple messages). Additionally, all messages that get then received are displayed with their receiving time. I would prefer having them displayed with the sending time, which can also be seen by looking in the message details. Maybe a menu entry to switch between both options would be a good idea because I can imagine people who like it the way it is handled now.",
+      "human_rimays": [
+        "For all the users when multiple \"messages\" are received after the device has been offline, then the App must notify the user a limited number of times instead of once per message",
+        "When the App reconnects after being offline, the App must notify the user of multiple received messages using fewer notification sounds or vibrations.\nWhen the App receives messages that were sent while the device was offline, the App must display the messages using their sending time.",
+        "For all users, when the user receives multiple messages in a small timeframe, the app must only ring for a limited time instead of ringing for every message.",
+        "After the device has been offline and multiple messages have been received, the App must notify the user in less annoying way."
+      ],
+      "llm_rimay": "For the device, when the device comes online after being offline, the system shall send a single notification to the user for multiple messages received during the offline period. <NON_ATOMIC>.",
+      "gold_slots": {
+        "scope": "implied",
+        "condition": "present",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "filled",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": true,
+        "condition": true,
+        "actor": true,
+        "modalVerb": true,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": false,
+      "verdict_match": true,
+      "similarity": {
+        "n_humans": 4,
+        "seq_ratio_mean": 0.32370785944203057,
+        "seq_ratio_max": 0.46905537459283386,
+        "jaccard_mean": 0.24146686646686646,
+        "jaccard_max": 0.28205128205128205
+      },
+      "paska_passed": false,
+      "paska_smells": [
+        {
+          "segment_id": "778-Signal_rimay_3",
+          "smell": "Not precise verb",
+          "value": "Not precise verb in the condition."
+        }
+      ]
+    },
+    {
+      "reqId": "1699-Signal",
+      "nl_text": "Request Number - 1699 | Request Title - Add Android Wear support | Request Description - Hangouts has the possibility to answer with predefined answers or voice. Something similar would be awesome for TextSecure. Since all this works over notifications, this should be reasonably easy to intergrate.",
+      "human_rimays": [
+        "<MISSING_CONDITION> For all users, TextSecure must answer with predefined answers or voice.",
+        "For all the users when a \"message notification\" is shown, then the App must allow the user to reply with \"predefined answers\"",
+        "When the user receives a notification, the App must allow the user to reply with predefined answer.\nWhen the user receives a notification, the App must allow the user to reply with voice.",
+        "For all users, <MISSING_CONDITION> TextSecure must provide possibility to answer messages with predefined answers or voice messages."
+      ],
+      "llm_rimay": "For all the TextSecure users, when the TextSecure application receives a notification, the TextSecure application shall provide the ability to answer with predefined answers or voice. <NON_ATOMIC>.",
+      "gold_slots": {
+        "scope": "implied",
+        "condition": "missing",
+        "actor": "present",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "filled",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": true,
+        "condition": false,
+        "actor": true,
+        "modalVerb": true,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": false,
+      "verdict_match": true,
+      "similarity": {
+        "n_humans": 4,
+        "seq_ratio_mean": 0.528242904515586,
+        "seq_ratio_max": 0.5589225589225589,
+        "jaccard_mean": 0.44430998786321124,
+        "jaccard_max": 0.5217391304347826
+      },
+      "paska_passed": true,
+      "paska_smells": []
+    },
+    {
+      "reqId": "2159-Signal",
+      "nl_text": "Request Number - 2159 | Request Title - Share multiple photos (files) | Request Description - Hi, I love TextSecure but there's one thing that I find rather annoying. It often happens that I want to share some pics with someone (more than just one pic), and I have to select them one at a time instead of selecting them all and sending them all at once. It would be cool if I could pick them from the gallery and then click \"share\" and send them without going through the procedure n times. I don't think this should be hard to implement and it would save so much time and improve usability greatly. Thank you",
+      "human_rimays": [
+        "When the user selects more than one picture from gallery to share, the App must provide functionality to share them all at once.",
+        "For all the users the App must allow the user to select multiple \"pictures\" from the \"gallery\" and send them all at once",
+        "When the user shares pictures from the \"gallery\", the App must allow the user to select multiple pictures and send them in a single operation.",
+        "For all users, <MISSING_CONDITION> TextSecure must allow users to send multiple images from the gallery at once."
+      ],
+      "llm_rimay": "For the user, when the user selects multiple photos from the gallery, the system shall send the photos to the recipient without requiring individual selection procedures.",
+      "gold_slots": {
+        "scope": "implied",
+        "condition": "missing",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "filled",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": true,
+        "condition": false,
+        "actor": true,
+        "modalVerb": true,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": false,
+      "verdict_match": true,
+      "similarity": {
+        "n_humans": 4,
+        "seq_ratio_mean": 0.4488693575630972,
+        "seq_ratio_max": 0.5517241379310345,
+        "jaccard_mean": 0.25068511051373954,
+        "jaccard_max": 0.26666666666666666
+      },
+      "paska_passed": true,
+      "paska_smells": []
+    },
+    {
+      "reqId": "4049-Signal",
+      "nl_text": "Request Number - 4049 | Request Title - delivery indicator in conversation list item | Request Description - the conversation summary should show the most recent message's delivery status if it's outgoing",
+      "human_rimays": [
+        "If the most recent message is outgoing, the App must show the delivery status in the conversation summary.",
+        "If the most recent \"message\" is outgoing, then the App must show its \"delivery status\" in the \"conversation summary\"",
+        "When the most recent message in a conversation is outgoing, the App must display its delivery status in the conversation summary.",
+        "For all users, <MISSING_CONDITION> the app must show the most recent message's delivery status."
+      ],
+      "llm_rimay": "For the conversation summary, when the most recent message is outgoing, the System shall display the delivery status in the conversation list item.",
+      "gold_slots": {
+        "scope": "implied",
+        "condition": "present",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "filled",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": true,
+        "condition": true,
+        "actor": true,
+        "modalVerb": true,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": false,
+      "verdict_match": true,
+      "similarity": {
+        "n_humans": 4,
+        "seq_ratio_mean": 0.5326579453707905,
+        "seq_ratio_max": 0.7272727272727273,
+        "jaccard_mean": 0.4602272727272727,
+        "jaccard_max": 0.5909090909090909
+      },
+      "paska_passed": true,
+      "paska_smells": []
+    }
+  ],
+  "verdict": null
+}

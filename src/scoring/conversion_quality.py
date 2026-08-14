@@ -1,19 +1,22 @@
 """Track 2 — conversion quality. Pure functions, no IO.
 
-Two lenses:
+There is **no single gold conversion**: a requirement has as many valid
+Rimay conversions as it has annotators, so the LLM is compared against the
+annotators themselves, never against one canonical reference. Two lenses:
 
-* **Similarity to gold.** Reference = ``canonicalRimay``. The metric is
-  isolated behind one swappable function, :func:`conversion_similarity`.
-  v0 is a deliberate, dependency-light *placeholder*: difflib's
-  ``SequenceMatcher`` ratio on normalised text plus a token Jaccard. Both
-  are reported. This is NOT the final metric — it is a stand-in for a
-  future structural / semantic measure; swap :func:`conversion_similarity`
-  (and, if needed, :func:`similarity_pair`) when that lands.
+* **LLM vs annotators.** Every (LLM, annotator) pair for every
+  requirement. The metric is isolated behind one swappable function,
+  :func:`conversion_similarity`. v0 is a deliberate, dependency-light
+  *placeholder*: difflib's ``SequenceMatcher`` ratio on normalised text
+  plus a token Jaccard. Both are reported. This is NOT the final metric —
+  it is a stand-in for a future structural / semantic measure; swap
+  :func:`conversion_similarity` (and, if needed, :func:`similarity_pair`)
+  when that lands.
 
-* **Human baseline (the ceiling).** The LLM-vs-gold number is only
-  interpretable against how much the human annotators vary among
-  themselves, so we compute the pairwise human-human similarity
-  distribution with the *same* function and report it side by side.
+* **Human baseline (the ceiling).** The LLM number is only interpretable
+  against how much the annotators vary among themselves, so we compute the
+  pairwise human-human similarity distribution with the *same* function
+  over the *same* texts and report it side by side.
 
 Plus a Paska-pass summary (pass rate + smell-type frequencies) as the
 independent structural fidelity signal. All inputs are plain structures.
@@ -89,46 +92,75 @@ def _distribution(values: Sequence[float]) -> Dict[str, float]:
     }
 
 
+def _non_blank(texts: Sequence[str]) -> List[str]:
+    return [t for t in texts if (t or "").strip()]
+
+
 class QualityItem:
     """One requirement's Track-2 inputs."""
 
-    __slots__ = ("req_id", "llm_rimay", "canonical_rimay", "human_rimays",
+    __slots__ = ("req_id", "llm_rimay", "human_rimays",
                  "paska_passed", "paska_smells")
 
     def __init__(
         self,
         req_id: str,
         llm_rimay: str,
-        canonical_rimay: str,
         human_rimays: Sequence[str],
         paska_passed: Optional[bool],
         paska_smells: Sequence[dict],
     ) -> None:
         self.req_id = req_id
         self.llm_rimay = llm_rimay
-        self.canonical_rimay = canonical_rimay
         self.human_rimays = list(human_rimays)
         self.paska_passed = paska_passed
         self.paska_smells = list(paska_smells)
 
 
-def llm_vs_gold_similarity(items: Sequence[QualityItem]) -> Dict[str, object]:
-    """Distribution of LLM-vs-canonical similarity; skips empty canonical."""
+def similarity_to_humans(llm_rimay: str, human_rimays: Sequence[str]) -> Dict[str, float]:
+    """One requirement's LLM-vs-annotator similarity, summarised.
+
+    ``mean`` is how close the LLM is to the annotators in general;
+    ``max`` is how close it got to the annotator it agreed with most.
+    """
+    rimays = _non_blank(human_rimays)
+    if not rimays:
+        return {"n_humans": 0, "seq_ratio_mean": 0.0, "seq_ratio_max": 0.0,
+                "jaccard_mean": 0.0, "jaccard_max": 0.0}
+    pairs = [similarity_pair(llm_rimay, h) for h in rimays]
+    seq = [p["seq_ratio"] for p in pairs]
+    jac = [p["jaccard"] for p in pairs]
+    return {
+        "n_humans": len(rimays),
+        "seq_ratio_mean": statistics.fmean(seq),
+        "seq_ratio_max": max(seq),
+        "jaccard_mean": statistics.fmean(jac),
+        "jaccard_max": max(jac),
+    }
+
+
+def llm_vs_human_similarity(items: Sequence[QualityItem]) -> Dict[str, object]:
+    """Distribution over every (LLM, annotator) pair; skips blank conversions."""
     seq_vals: List[float] = []
     jac_vals: List[float] = []
+    evaluated: List[str] = []
     skipped: List[str] = []
     for it in items:
-        if not (it.canonical_rimay or "").strip():
+        rimays = _non_blank(it.human_rimays)
+        if not rimays:
             skipped.append(it.req_id)
             continue
-        pair = similarity_pair(it.llm_rimay, it.canonical_rimay)
-        seq_vals.append(pair["seq_ratio"])
-        jac_vals.append(pair["jaccard"])
+        evaluated.append(it.req_id)
+        for human in rimays:
+            pair = similarity_pair(it.llm_rimay, human)
+            seq_vals.append(pair["seq_ratio"])
+            jac_vals.append(pair["jaccard"])
     return {
         "seq_ratio": _distribution(seq_vals),
         "jaccard": _distribution(jac_vals),
-        "n_evaluated": len(seq_vals),
-        "n_skipped_no_canonical": len(skipped),
+        "n_pairs": len(seq_vals),
+        "n_evaluated": len(evaluated),
+        "n_skipped_no_humans": len(skipped),
         "skipped_req_ids": skipped,
     }
 
@@ -137,18 +169,15 @@ def human_human_similarity(items: Sequence[QualityItem]) -> Dict[str, object]:
     """Pairwise human-human similarity distribution (the ceiling)."""
     seq_vals: List[float] = []
     jac_vals: List[float] = []
-    n_pairs = 0
     for it in items:
-        rimays = [r for r in it.human_rimays if (r or "").strip()]
-        for a, b in combinations(rimays, 2):
+        for a, b in combinations(_non_blank(it.human_rimays), 2):
             pair = similarity_pair(a, b)
             seq_vals.append(pair["seq_ratio"])
             jac_vals.append(pair["jaccard"])
-            n_pairs += 1
     return {
         "seq_ratio": _distribution(seq_vals),
         "jaccard": _distribution(jac_vals),
-        "n_pairs": n_pairs,
+        "n_pairs": len(seq_vals),
     }
 
 
@@ -179,7 +208,7 @@ def paska_summary(items: Sequence[QualityItem]) -> Dict[str, object]:
 def conversion_quality_report(items: Sequence[QualityItem]) -> Dict[str, object]:
     return {
         "similarity": {
-            "llm_vs_gold": llm_vs_gold_similarity(items),
+            "llm_vs_human": llm_vs_human_similarity(items),
             "human_human": human_human_similarity(items),
         },
         "paska": paska_summary(items),

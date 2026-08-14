@@ -1,20 +1,24 @@
 """Stage 2 entry point: offline scoring against the human gold.
 
-Reads ``outputs/conversions/<strategy>.jsonl`` (the Stage 1 manifest) and
-``data/gold_annotations.csv``. All comparison logic lives in
+Reads the Stage 1 manifest (``outputs/<run>/conversions/manifest.jsonl``)
+and ``data/gold_annotations.csv``. All comparison logic lives in
 ``src/scoring/`` (pure functions); this script does IO only. It never
 touches MLflow.
 
 Evaluates only requirements present in both the manifest and the gold,
-excluding any FSL exemplar IDs. Writes:
+excluding any FSL exemplar IDs. Writes, inside the run folder:
 
-  * ``outputs/scoring/<strategy>/metrics.md``          — Track 1 + Track 2
-  * ``outputs/scoring/<strategy>/per_requirement.md``  — review worksheet
-  * ``outputs/scoring/comparison.csv``                 — tidy, all strategies
+  * ``scoring/results.json``    — every metric + per-requirement detail
+  * ``scoring/comparison.csv``  — tidy per-requirement rows for stats tools
+
+It then rebuilds ``outputs/report.html`` over every scored run, so the
+report is never stale (``--no-report`` skips that; ``scripts/build_report.py``
+rebuilds it on its own).
 
 Usage:
-    python scripts/run_scoring.py --strategy zsl --gold data/gold_annotations.csv
-        [--fsl-example-ids id1,id2] [--out outputs/scoring]
+    python scripts/run_scoring.py --run run2/zsl
+        [--gold data/gold_annotations.csv] [--fsl-example-ids id1,id2]
+        [--no-report]
 """
 from __future__ import annotations
 
@@ -22,6 +26,7 @@ import argparse
 import csv
 import json
 import sys
+from datetime import datetime
 from pathlib import Path
 from typing import Dict, List
 
@@ -30,6 +35,7 @@ sys.path.insert(0, str(THIS_DIR.parent))
 
 from src import config  # noqa: E402
 from src.gold_loader import load_gold  # noqa: E402
+from src.report import collect_results, render_report  # noqa: E402
 from src.scoring import conversion_quality as cq  # noqa: E402
 from src.scoring import field_accuracy as fa  # noqa: E402
 
@@ -75,193 +81,7 @@ def _default_fsl_ids() -> set[str]:
     return ids
 
 
-# --- markdown helpers --------------------------------------------------------
-
-
-def _fmt(x: float) -> str:
-    return f"{x:.3f}"
-
-
-def _dist_row(name: str, d: dict) -> str:
-    return (
-        f"| {name} | {d['n']} | {_fmt(d['mean'])} | {_fmt(d['median'])} | "
-        f"{_fmt(d['min'])} | {_fmt(d['max'])} | {_fmt(d['std'])} |"
-    )
-
-
-def render_metrics_md(strategy: str, counts: dict, fa_rep, cqr: dict) -> str:
-    L: List[str] = []
-    L.append(f"# Scoring metrics — strategy `{strategy}`")
-    L.append("")
-    L.append(
-        f"Gold reqs: {counts['gold']} · converted: {counts['converted']} · "
-        f"evaluated: {counts['evaluated']} · skipped: {counts['skipped']}"
-    )
-    if counts["skipped_ids"]:
-        L.append(f"Skipped: {', '.join(counts['skipped_ids'])}")
-    L.append("")
-
-    # --- Track 1 ---
-    L.append("## Track 1 — field accuracy (missing-detection)")
-    L.append("")
-    L.append("Binary collapse: gold `present`+`implied` → not-missing; `missing` kept.")
-    L.append("P/R/F1 are for the **missing** class (positive = missing).")
-    L.append("")
-    L.append("### Per-slot")
-    L.append("")
-    L.append("| Slot | TP | FP | FN | TN | Precision | Recall | F1 | gold-missing support |")
-    L.append("|------|----|----|----|----|-----------|--------|----|----------------------|")
-    for slot in SLOTS:
-        s = fa_rep.per_slot[slot]
-        L.append(
-            f"| {slot} | {s['tp']} | {s['fp']} | {s['fn']} | {s['tn']} | "
-            f"{_fmt(s['precision'])} | {_fmt(s['recall'])} | {_fmt(s['f1'])} | "
-            f"{s['support_gold_missing']} |"
-        )
-    L.append("")
-    L.append(
-        f"**Micro**: P={_fmt(fa_rep.micro['precision'])} "
-        f"R={_fmt(fa_rep.micro['recall'])} F1={_fmt(fa_rep.micro['f1'])}  ·  "
-        f"**Macro**: P={_fmt(fa_rep.macro['precision'])} "
-        f"R={_fmt(fa_rep.macro['recall'])} F1={_fmt(fa_rep.macro['f1'])}"
-    )
-    L.append("")
-
-    L.append("### Secondary lenses")
-    L.append("")
-    imp = fa_rep.implied["overall"]
-    mis = fa_rep.missing["overall"]
-    L.append(
-        f"- Gold **implied** slots (n={imp['n_implied']}): LLM filled "
-        f"{imp['llm_filled']} (fill-rate {_fmt(imp['fill_rate'])}), "
-        f"over-flagged missing {imp['llm_flagged_missing']}."
-    )
-    L.append(
-        f"- Gold **missing** slots (n={mis['n_missing']}): LLM correctly flagged "
-        f"{mis['llm_flagged_missing']} (flag-rate {_fmt(mis['flag_rate'])}), "
-        f"silently filled {mis['llm_silently_filled']} (possible compensation)."
-    )
-    L.append("")
-
-    L.append("### Overall-incomplete verdict")
-    L.append("")
-    v = fa_rep.verdict
-    c = v["confusion"]
-    L.append(
-        "LLM overall-incomplete = any mandatory slot "
-        f"({', '.join(config.MANDATORY_SLOTS)}) flagged missing."
-    )
-    L.append("")
-    L.append(f"- Agreement rate: **{_fmt(v['agreement_rate'])}** (n={v['n']})")
-    L.append(
-        f"- P/R/F1 (incomplete class): {_fmt(v['precision'])} / "
-        f"{_fmt(v['recall'])} / {_fmt(v['f1'])}"
-    )
-    L.append("")
-    L.append("| | gold incomplete | gold complete |")
-    L.append("|---|---|---|")
-    L.append(f"| **LLM incomplete** | {c['both_incomplete']} | {c['llm_incomplete_gold_complete']} |")
-    L.append(f"| **LLM complete** | {c['gold_incomplete_llm_complete']} | {c['both_complete']} |")
-    L.append("")
-
-    # --- Track 2 ---
-    L.append("## Track 2 — conversion quality")
-    L.append("")
-    sim = cqr["similarity"]
-    lvg, hh = sim["llm_vs_gold"], sim["human_human"]
-    L.append(
-        f"Similarity metric v0 (placeholder): SequenceMatcher ratio + token Jaccard. "
-        f"LLM-vs-gold evaluated on {lvg['n_evaluated']} reqs "
-        f"(skipped {lvg['n_skipped_no_canonical']} with empty canonical)."
-    )
-    L.append("")
-    L.append("### Similarity distributions (side by side)")
-    L.append("")
-    L.append("| Distribution | n | mean | median | min | max | std |")
-    L.append("|--------------|---|------|--------|-----|-----|-----|")
-    L.append(_dist_row("LLM-vs-gold · seq_ratio", lvg["seq_ratio"]))
-    L.append(_dist_row("LLM-vs-gold · jaccard", lvg["jaccard"]))
-    L.append(_dist_row("human-human · seq_ratio", hh["seq_ratio"]))
-    L.append(_dist_row("human-human · jaccard", hh["jaccard"]))
-    L.append("")
-    L.append(
-        "> The LLM-vs-gold number is only interpretable against the human-human "
-        "ceiling (how much annotators vary among themselves)."
-    )
-    L.append("")
-    L.append("### Paska validation (independent structural check)")
-    L.append("")
-    p = cqr["paska"]
-    L.append(
-        f"- Pass rate: **{_fmt(p['pass_rate'])}** "
-        f"({p['n_passed']}/{p['n_scored']} scored; "
-        f"failed {p['n_failed']}, errors {p['n_error']})"
-    )
-    L.append(f"- Requirements with ≥1 smell: {p['n_with_smells']}")
-    if p["smell_frequency"]:
-        L.append("")
-        L.append("| Smell type | Count |")
-        L.append("|------------|-------|")
-        for smell, n in p["smell_frequency"].items():
-            L.append(f"| {smell} | {n} |")
-    else:
-        L.append("- No smells fired across the evaluated set.")
-    L.append("")
-    return "\n".join(L)
-
-
-def render_per_requirement_md(strategy: str, rows: List[dict]) -> str:
-    L: List[str] = [f"# Per-requirement review — strategy `{strategy}`", ""]
-    for r in rows:
-        L.append(f"## {r['reqId']}")
-        L.append("")
-        L.append(f"**NL:** {r['nl_text']}")
-        L.append("")
-        L.append(f"**Gold canonical Rimay:** {r['canonical_rimay'] or '_(empty)_'}")
-        L.append("")
-        L.append("**Human conversions:**")
-        if r["human_rimays"]:
-            for hr in r["human_rimays"]:
-                L.append(f"- {hr}")
-        else:
-            L.append("- _(none)_")
-        L.append("")
-        L.append(f"**LLM Rimay:** {r['llm_rimay']}")
-        L.append("")
-        L.append("**Slot signals (gold ternary vs LLM binary):**")
-        L.append("")
-        L.append("| Slot | Gold | LLM | Match |")
-        L.append("|------|------|-----|-------|")
-        for slot in SLOTS:
-            match = "✓" if r["slot_match"][slot] else "✗"
-            L.append(
-                f"| {slot} | {r['gold_slots'][slot]} | {r['llm_slots'][slot]} | {match} |"
-            )
-        L.append("")
-        L.append(
-            f"**Overall verdict:** gold={'incomplete' if r['gold_overall'] else 'complete'} · "
-            f"LLM={'incomplete' if r['llm_overall'] else 'complete'} · "
-            f"match={'✓' if r['verdict_match'] else '✗'}"
-        )
-        L.append("")
-        L.append(
-            f"**Similarity to gold:** seq_ratio={_fmt(r['seq_ratio'])} · "
-            f"jaccard={_fmt(r['jaccard'])}"
-        )
-        L.append("")
-        passed = r["paska_passed"]
-        passed_str = "error" if passed is None else ("pass" if passed else "FAIL")
-        L.append(f"**Paska:** {passed_str}")
-        if r["paska_smells"]:
-            for s in r["paska_smells"]:
-                L.append(f"- {s.get('smell')}: {s.get('value')}")
-        L.append("")
-        L.append("---")
-        L.append("")
-    return "\n".join(L)
-
-
-# --- comparison.csv (all strategies) -----------------------------------------
+# --- comparison.csv ----------------------------------------------------------
 
 
 def comparison_columns() -> List[str]:
@@ -272,8 +92,10 @@ def comparison_columns() -> List[str]:
         "gold_overall_incomplete",
         "llm_overall_incomplete",
         "verdict_match",
-        "seq_ratio",
-        "jaccard",
+        "n_humans",
+        "seq_ratio_mean",
+        "seq_ratio_max",
+        "jaccard_mean",
         "paska_passed",
     ]
     return cols
@@ -285,20 +107,22 @@ def comparison_row(strategy: str, r: dict) -> dict:
         row[f"gold_{slot}"] = r["gold_slots"][slot]
         row[f"llm_{slot}"] = r["llm_slots"][slot]
         row[f"match_{slot}"] = int(r["slot_match"][slot])
+    sim = r["similarity"]
     row["gold_overall_incomplete"] = int(r["gold_overall"])
     row["llm_overall_incomplete"] = int(r["llm_overall"])
     row["verdict_match"] = int(r["verdict_match"])
-    row["seq_ratio"] = f"{r['seq_ratio']:.4f}"
-    row["jaccard"] = f"{r['jaccard']:.4f}"
+    row["n_humans"] = sim["n_humans"]
+    row["seq_ratio_mean"] = f"{sim['seq_ratio_mean']:.4f}"
+    row["seq_ratio_max"] = f"{sim['seq_ratio_max']:.4f}"
+    row["jaccard_mean"] = f"{sim['jaccard_mean']:.4f}"
     row["paska_passed"] = "" if r["paska_passed"] is None else int(r["paska_passed"])
     return row
 
 
 def write_comparison_csv(path: Path, strategy: str, rows: List[dict]) -> Path:
     """Write this run's tidy per-requirement comparison rows."""
-    cols = comparison_columns()
     with path.open("w", encoding="utf-8", newline="") as f:
-        w = csv.DictWriter(f, fieldnames=cols)
+        w = csv.DictWriter(f, fieldnames=comparison_columns())
         w.writeheader()
         for r in rows:
             w.writerow(comparison_row(strategy, r))
@@ -308,12 +132,16 @@ def write_comparison_csv(path: Path, strategy: str, rows: List[dict]) -> Path:
 # --- main --------------------------------------------------------------------
 
 
+def _fmt(x: float) -> str:
+    return f"{x:.3f}"
+
+
 def main(argv=None) -> int:
     p = argparse.ArgumentParser(description="Offline scoring against gold (Stage 2)")
     p.add_argument(
         "--run",
         required=True,
-        help="Run id (folder under outputs/), e.g. run1_zsl.",
+        help="Run folder under outputs/, e.g. run2/zsl.",
     )
     p.add_argument(
         "--gold",
@@ -325,6 +153,11 @@ def main(argv=None) -> int:
         default="",
         help="Comma-separated reqIds to exclude (defaults to fsl_examples.json ids).",
     )
+    p.add_argument(
+        "--no-report",
+        action="store_true",
+        help="Skip rebuilding outputs/report.html at the end.",
+    )
     args = p.parse_args(argv)
 
     run_paths = config.RunPaths(args.run)
@@ -334,7 +167,7 @@ def main(argv=None) -> int:
             "Run scripts/run_conversion.py first, or check --run."
         )
     meta = load_run_meta(run_paths)
-    strategy = meta.get("strategy", args.run.split("_")[-1])
+    strategy = meta.get("strategy") or Path(args.run).name
     gold_path = Path(args.gold) if args.gold else Path(meta.get("gold_csv") or config.GOLD_CSV)
 
     gold = load_gold(gold_path)
@@ -370,7 +203,6 @@ def main(argv=None) -> int:
             cq.QualityItem(
                 req_id=rid,
                 llm_rimay=m["rimay"],
-                canonical_rimay=g.canonical_rimay,
                 human_rimays=g.human_rimays,
                 paska_passed=m.get("paska_passed"),
                 paska_smells=m.get("paska_smells", []),
@@ -384,12 +216,10 @@ def main(argv=None) -> int:
         }
         gold_overall = g.gold_overall_incomplete
         llm_overall = fa.llm_overall_incomplete(llm_slots)
-        pair = cq.similarity_pair(m["rimay"], g.canonical_rimay)
         per_req_rows.append(
             {
                 "reqId": rid,
                 "nl_text": g.nl_text,
-                "canonical_rimay": g.canonical_rimay,
                 "human_rimays": g.human_rimays,
                 "llm_rimay": m["rimay"],
                 "gold_slots": g.gold_slots,
@@ -398,8 +228,7 @@ def main(argv=None) -> int:
                 "gold_overall": gold_overall,
                 "llm_overall": llm_overall,
                 "verdict_match": gold_overall == llm_overall,
-                "seq_ratio": pair["seq_ratio"],
-                "jaccard": pair["jaccard"],
+                "similarity": cq.similarity_to_humans(m["rimay"], g.human_rimays),
                 "paska_passed": m.get("paska_passed"),
                 "paska_smells": m.get("paska_smells", []),
             }
@@ -408,26 +237,45 @@ def main(argv=None) -> int:
     fa_rep = fa.field_accuracy_report(slot_evals)
     cqr = cq.conversion_quality_report(quality_items)
 
-    counts = {
-        "gold": len(gold),
-        "converted": len(manifest),
-        "evaluated": len(eval_ids),
-        "skipped": len(skipped_ids),
-        "skipped_ids": skipped_ids,
+    results = {
+        "run": args.run,
+        "strategy": strategy,
+        "scored_at": datetime.now().astimezone().isoformat(timespec="seconds"),
+        "gold_csv": str(gold_path),
+        "meta": meta,
+        "counts": {
+            "gold": len(gold),
+            "converted": len(manifest),
+            "evaluated": len(eval_ids),
+            "skipped": len(skipped_ids),
+            "skipped_ids": skipped_ids,
+        },
+        "field_accuracy": fa_rep.as_dict(),
+        "conversion_quality": cqr,
+        "requirements": per_req_rows,
+        # Reserved for the future analysis stage: an LLM reads these results
+        # and writes its verdict here. The report renders it when present.
+        "verdict": None,
     }
 
-    scoring_dir = run_paths.scoring_dir
-    scoring_dir.mkdir(parents=True, exist_ok=True)
-    (scoring_dir / "metrics.md").write_text(
-        render_metrics_md(strategy, counts, fa_rep, cqr), encoding="utf-8"
+    run_paths.scoring_dir.mkdir(parents=True, exist_ok=True)
+    run_paths.results_path.write_text(
+        json.dumps(results, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
     )
-    (scoring_dir / "per_requirement.md").write_text(
-        render_per_requirement_md(strategy, per_req_rows), encoding="utf-8"
+    write_comparison_csv(
+        run_paths.scoring_dir / "comparison.csv", strategy, per_req_rows
     )
-    write_comparison_csv(scoring_dir / "comparison.csv", strategy, per_req_rows)
+
+    # Rebuild the report so outputs/report.html always reflects the runs on
+    # disk; scoring a run is the only thing that changes what it shows.
+    if not args.no_report:
+        config.REPORT_HTML.write_text(
+            render_report(collect_results()), encoding="utf-8"
+        )
 
     # --- compact stdout summary ---
-    lvg = cqr["similarity"]["llm_vs_gold"]["seq_ratio"]
+    counts = results["counts"]
+    lvh = cqr["similarity"]["llm_vs_human"]["seq_ratio"]
     hh = cqr["similarity"]["human_human"]["seq_ratio"]
     print(f"Scoring — run={args.run} strategy={strategy}")
     print(
@@ -436,10 +284,12 @@ def main(argv=None) -> int:
     )
     print(f"  macro-F1 (missing-detection): {_fmt(fa_rep.macro['f1'])}")
     print(f"  overall-verdict agreement:   {_fmt(fa_rep.verdict['agreement_rate'])}")
-    print(f"  mean LLM-vs-gold seq_ratio:  {_fmt(lvg['mean'])}")
+    print(f"  mean LLM-vs-human seq_ratio: {_fmt(lvh['mean'])}")
     print(f"  mean human-human seq_ratio:  {_fmt(hh['mean'])}")
     print(f"  Paska pass rate:             {_fmt(cqr['paska']['pass_rate'])}")
-    print(f"  outputs: {scoring_dir}/")
+    print(f"  outputs: {run_paths.scoring_dir}/")
+    if not args.no_report:
+        print(f"  report:  {config.REPORT_HTML}")
     return 0
 
 

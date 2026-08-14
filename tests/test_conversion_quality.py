@@ -9,8 +9,8 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from src.scoring import conversion_quality as cq
 
 
-def _item(req_id, llm, canonical, humans, passed=True, smells=None):
-    return cq.QualityItem(req_id, llm, canonical, humans, passed, smells or [])
+def _item(req_id, llm, humans, passed=True, smells=None):
+    return cq.QualityItem(req_id, llm, humans, passed, smells or [])
 
 
 def test_normalize_strips_placeholders_and_case():
@@ -38,38 +38,52 @@ def test_conversion_similarity_is_swappable_primary():
     assert cq.conversion_similarity("a b c", "a b c") == cq.seq_ratio("a b c", "a b c")
 
 
-def test_llm_vs_gold_skips_empty_canonical():
+def test_similarity_to_humans_mean_and_max():
+    res = cq.similarity_to_humans("one two", ["one two", "nothing alike"])
+    assert res["n_humans"] == 2
+    assert res["seq_ratio_max"] == 1.0
+    assert res["seq_ratio_mean"] < res["seq_ratio_max"]
+
+
+def test_similarity_to_humans_without_annotators():
+    res = cq.similarity_to_humans("one two", ["", "  "])
+    assert res == {"n_humans": 0, "seq_ratio_mean": 0.0, "seq_ratio_max": 0.0,
+                   "jaccard_mean": 0.0, "jaccard_max": 0.0}
+
+
+def test_llm_vs_human_pairs_one_per_annotator():
     items = [
-        _item("a", "the app must do x", "the app must do x", []),
-        _item("b", "whatever", "", []),  # empty canonical -> skipped
+        _item("a", "the app must do x", ["the app must do x", "the app shall do x"]),
+        _item("b", "whatever", []),  # no annotator conversions -> skipped
     ]
-    res = cq.llm_vs_gold_similarity(items)
+    res = cq.llm_vs_human_similarity(items)
+    assert res["n_pairs"] == 2
     assert res["n_evaluated"] == 1
-    assert res["n_skipped_no_canonical"] == 1
+    assert res["n_skipped_no_humans"] == 1
     assert res["skipped_req_ids"] == ["b"]
-    assert res["seq_ratio"]["mean"] == 1.0
+    assert res["seq_ratio"]["max"] == 1.0
 
 
 def test_human_human_pairs_count():
     # 3 humans -> C(3,2) = 3 pairs
-    items = [_item("a", "x", "x", ["one two", "one three", "two three"])]
+    items = [_item("a", "x", ["one two", "one three", "two three"])]
     res = cq.human_human_similarity(items)
     assert res["n_pairs"] == 3
     assert res["seq_ratio"]["n"] == 3
 
 
 def test_human_human_ignores_blank_conversions():
-    items = [_item("a", "x", "x", ["only one", "", "  "])]
+    items = [_item("a", "x", ["only one", "", "  "])]
     res = cq.human_human_similarity(items)
     assert res["n_pairs"] == 0  # only one non-blank human -> no pairs
 
 
 def test_paska_summary_rates_and_frequency():
     items = [
-        _item("a", "x", "x", [], passed=True, smells=[]),
-        _item("b", "x", "x", [], passed=False,
+        _item("a", "x", [], passed=True, smells=[]),
+        _item("b", "x", [], passed=False,
               smells=[{"smell": "Passive voice"}, {"smell": "Passive voice"}]),
-        _item("c", "x", "x", [], passed=None, smells=[]),  # error, excluded from rate
+        _item("c", "x", [], passed=None, smells=[]),  # error, excluded from rate
     ]
     p = cq.paska_summary(items)
     assert p["n"] == 3
@@ -83,9 +97,9 @@ def test_paska_summary_rates_and_frequency():
 
 
 def test_full_report_shape():
-    items = [_item("a", "the app must show x", "the app must show y",
+    items = [_item("a", "the app must show x",
                    ["the app must show x", "the app should show y"])]
     rep = cq.conversion_quality_report(items)
     assert "similarity" in rep and "paska" in rep
-    assert "llm_vs_gold" in rep["similarity"]
+    assert "llm_vs_human" in rep["similarity"]
     assert "human_human" in rep["similarity"]

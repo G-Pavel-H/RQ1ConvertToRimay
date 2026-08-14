@@ -1,10 +1,12 @@
 """Stage 1 entry point: convert NL -> Rimay, run Paska, log, write manifest.
 
 Reads requirements from the gold CSV (``nlText`` keyed by ``reqId``),
-runs the chosen prompting strategy over each, and writes:
+runs the chosen prompting strategy over each, and writes, under the run
+folder named by ``--run-name``:
 
-  * ``outputs/llm_rimay/<strategy>/<reqId>.txt``  — raw Rimay per req
-  * ``outputs/conversions/<strategy>.jsonl``      — the scorer's manifest
+  * ``outputs/<run-name>/llm_rimay/<reqId>.txt``       — raw Rimay per req
+  * ``outputs/<run-name>/conversions/manifest.jsonl``  — the scorer's manifest
+  * ``outputs/<run-name>/run_meta.json``               — the run's sidecar
   * one MLflow run per requirement under experiment ``gold_<strategy>``
 
 FSL exemplars are demonstrations, never scored items: any reqId that
@@ -13,9 +15,9 @@ appears in ``prompts/examples/fsl_examples.json`` is skipped defensively
 overlap).
 
 Usage:
-    python scripts/run_conversion.py --strategy zsl [--n-samples N]
-        [--model ...] [--temperature 0.0] [--max-tokens 1024]
-        [--n-fsl-examples 2]
+    python scripts/run_conversion.py --strategy zsl --run-name run2/zsl
+        [--n-samples N] [--model ...] [--temperature 0.0]
+        [--max-tokens 1024] [--n-fsl-examples 2]
 """
 from __future__ import annotations
 
@@ -70,8 +72,9 @@ def parse_args(argv=None) -> argparse.Namespace:
     p.add_argument("--gold", default=str(config.GOLD_CSV), help="Gold CSV path.")
     p.add_argument(
         "--run-name",
-        default=None,
-        help="Output folder name under outputs/. Default: auto (runN_<strategy>).",
+        required=True,
+        help="Output folder under outputs/, e.g. run2/zsl. Chosen by you — "
+             "nothing is inferred from what already exists.",
     )
     return p.parse_args(argv)
 
@@ -88,9 +91,7 @@ def main(argv=None) -> int:
 
     config.ensure_output_dirs()
 
-    run_id = args.run_name or config.next_run_id(
-        args.strategy, args.n_fsl_examples if args.strategy == "fsl" else None
-    )
+    run_id = args.run_name
     run_paths = config.RunPaths(run_id)
     run_paths.ensure()
 
