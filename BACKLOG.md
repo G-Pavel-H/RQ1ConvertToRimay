@@ -118,7 +118,14 @@ the run it describes.
 
 ## AnnotationToolForRimay
 
-### A1 — Remove the overall gold standard for the Rimay conversion  ·  `TODO`  ·  **[coupled with R2]**
+### A1 — Remove the overall gold standard for the Rimay conversion  ·  `DONE`  ·  **[coupled with R2]**
+
+**Status: `DONE`.** `canonicalRimay` is gone from the model, the adjudication
+route, the adjudication UI, the exporter and the docs; the gold is now
+categorical only (slot labels + condition type). Current exports no longer carry
+the column — `analysis/conversion_similarity.py` skips its gold-reference section
+for them and only fires on older files. Existing Atlas documents keep the stale
+field harmlessly; Mongoose ignores it.
 
 **What:** Remove the notion of a single adjudicated/canonical gold standard for
 the **Rimay conversion text** (`canonicalRimay`). Conversion scoring is done as
