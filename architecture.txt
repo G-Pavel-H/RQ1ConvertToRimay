@@ -74,11 +74,11 @@
 |   tags:  strategy,           1 JSON / requirement:                          |
 |          model_name,          reqId, strategy,                              |
 |          req_id,              rimay (raw w/ placeholders),                  |
-|          paska_passed,        rimay_stripped,                              |
-|          is_non_atomic,       llm_slots {slot: missing|filled},            |
-|          llm_stop_reason,     paska_passed, paska_smells[],                |
-|          output_run_id        model, latency_ms, tokens                    |
-|   params: temperature,                                                      |
+|          paska_passed,        rimay_stripped, is_non_atomic,                |
+|          is_non_atomic,       llm_slots {slot: missing|filled},             |
+|          llm_stop_reason,     paska_passed, paska_smells[],                 |
+|          output_run_id        paska_error, model, latency_ms,               |
+|   params: temperature,        input_tokens, output_tokens                   |
 |          max_tokens,          (This file is the ONLY handoff to Stage 2 —   |
 |          n_fsl_examples        the scorer never reads MLflow.)              |
 |   metrics: n_missing_                                                       |
@@ -124,7 +124,7 @@
 |            outputs/<run_id>/scoring/comparison.csv  (tidy, this run)        |
 +=============================================================================+
 
-            outputs/*/*/scoring/results.json   (every scored run)
+         outputs/**/scoring/results.json   (every scored run, any depth)
                                     |
                                     v
 +=============================================================================+
