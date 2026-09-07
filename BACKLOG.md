@@ -18,6 +18,83 @@ Ordering: **open items first, completed items at the bottom.**
 
 ---
 
+# Non-atomic handling — the plan (settled process)
+
+The human-side playbook for turning the 15 non-atomic `main` requirements into
+gold. This is the *process*, decided; the reasoning behind it is in the
+**Perspective** section below, and it feeds items **A2** and **R5**. Concept
+only — no implementation detail here.
+
+**Decisions locked (the conceptual frame):**
+- **Non-atomic ≠ incomplete.** They are orthogonal defects: incomplete = missing
+  information; non-atomic = multiple system responses fused. The model emits
+  three distinct verdicts — *convertible*, *incomplete*, *non-atomic* — never
+  collapsing non-atomic into incomplete. (Collapsing them would repeat the exact
+  taxonomy conflation this thesis critiques.)
+- **Keeping the slots on a non-atomic requirement requires decomposition** —
+  there is no valid single-frame representation of multiple actors/conditions/
+  actions. Rimay's atomicity rule *is* "one slot tuple per requirement." So the
+  path is detect-and-decompose, not detect-and-stop, because we want the slots on
+  these 15.
+- **No multi-valued slots, ever.** A slot holding two actions breaks the
+  present/implied/missing scheme and breaks Fleiss' Kappa. Decomposition restores
+  one value per slot per unit.
+- **Parent carries no slots.** A non-atomic requirement is represented as a
+  parent (flag only) + N child units, each an ordinary single-valued annotation.
+
+**The gold-record shape (parent → children):**
+> one requirement → { is it non-atomic? · if yes, an *ordered* list of units ·
+> each unit = one Rimay sentence + five slots + one condition type }.
+> Atomic requirements are the N=1 case of the same shape, so the existing 35 are
+> unchanged.
+
+**Steps:**
+
+1. **Write the atomicity definition first — blocking.** Anchor to the ISO/IEC/IEEE
+   29148 *singular* characteristic (one system response/capability, "stand-alone,
+   not grouped"). Operationalise it against the hardest real cases — the four
+   borderline reqs (`175-Signal`, `4821-Signal`, `5904-Signal`, `7345-Signal`)
+   plus the trickiest of the 15 — until it gives a clean yes/no on each. Output:
+   a short atomicity rule + a decided verdict on the four disputed requirements.
+2. **Fix the unit shape and split convention before the session.** Confirm the
+   parent/children shape above, and set one convention now: **units are listed in
+   source-text order** (this is what later lets any two decompositions — human or
+   model — be aligned unit-by-unit).
+3. **Each annotator decomposes independently, blind.** Every non-atomic
+   requirement is split into units and each unit's slots annotated, per annotator.
+   This deliberately yields two separable things: the *split* (boundaries) and the
+   *slots* inside each unit.
+4. **Measure agreement on the split separately from the slots — before
+   adjudicating.** Fleiss' Kappa assumes predefined shared units and cannot cope
+   with annotators disagreeing on *how many* units exist; use **Krippendorff's
+   unitizing alpha** for the segmentation agreement. Also compute plain binary
+   agreement on the flag itself ("is this non-atomic?") over all 50 — that is the
+   ceiling the model's *detection* can be scored against. Low agreement here means
+   the Step 1 definition is still too loose → loop back and tighten it.
+5. **Adjudicate to one canonical decomposition per requirement.** Annotators +
+   adjudicator reconcile: number and boundaries of units first, then each unit's
+   slots. Every non-obvious call becomes a written amendment to the atomicity
+   guide (iterative guideline development). Requirements that won't converge are
+   explicitly flagged-or-excluded, not forced.
+6. **Freeze the gold and the definition together.** The adjudicated
+   decompositions are the gold; the finalised atomicity definition is frozen
+   alongside them because that exact wording is what the model will later be given
+   (and can only fairly be scored against). Parents stay out of every aggregate;
+   atomic (35) and non-atomic (15) are always reported as separate lines.
+
+**Open decision to lock before scheduling the session:** do **all three
+annotators** decompose, or only the adjudicator? Recommendation: **all three** —
+it costs more session time but is the only way to produce the unitizing-alpha
+ceiling in Step 4, and measuring the reliability of *how to split* is itself part
+of the contribution a reviewer will expect. This choice changes A2's data model,
+so settle it early.
+
+*Methodology anchors: ISO/IEC/IEEE 29148 "singular"; Krippendorff's unitizing
+alpha (segmentation/unitizing agreement); standard double-annotate-then-adjudicate
+gold-standard construction.*
+
+---
+
 # Open
 
 ### A2 — Adjudication space for non-atomic requirements  ·  `TODO`  ·  **[coupled with R5]**
