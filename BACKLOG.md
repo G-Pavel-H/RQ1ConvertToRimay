@@ -20,147 +20,160 @@ Ordering: **open items first, completed items at the bottom.**
 
 # Non-atomic handling — the plan (settled process)
 
-The human-side playbook for turning the 15 non-atomic `main` requirements into
-gold. This is the *process*, decided; the reasoning behind it is in the
-**Perspective** section below, and it feeds items **A2** and **R5**. Concept
-only — no implementation detail here.
+How to handle the 15 non-atomic `main` requirements. Concept only. This is the
+*simplified* plan after reading the Rimay paper (Veizaga et al. 2020); the
+heavier decomposition approach we first sketched is recorded as
+**considered-and-rejected** at the end of this section so the reasoning isn't
+lost.
 
-**Decisions locked (the conceptual frame):**
-- **Non-atomic ≠ incomplete.** They are orthogonal defects: incomplete = missing
-  information; non-atomic = multiple system responses fused. The model emits
-  three distinct verdicts — *convertible*, *incomplete*, *non-atomic* — never
-  collapsing non-atomic into incomplete. (Collapsing them would repeat the exact
-  taxonomy conflation this thesis critiques.)
-- **Keeping the slots on a non-atomic requirement requires decomposition** —
-  there is no valid single-frame representation of multiple actors/conditions/
-  actions. Rimay's atomicity rule *is* "one slot tuple per requirement." So the
-  path is detect-and-decompose, not detect-and-stop, because we want the slots on
-  these 15.
-- **No multi-valued slots, ever.** A slot holding two actions breaks the
-  present/implied/missing scheme and breaks Fleiss' Kappa. Decomposition restores
-  one value per slot per unit.
-- **Parent carries no slots.** A non-atomic requirement is represented as a
-  parent (flag only) + N child units, each an ordinary single-valued annotation.
+**The finding that simplifies everything (Rimay paper §4.3, Listing 5):** Rimay
+does **not** restrict a requirement to one system response. Its `SYSTEM RESPONSE`
+rule has two forms — an itemized block ("do the following actions: • … • …") and
+a logical expression — both explicitly designed to combine *multiple* `ATOMIC
+SYSTEM RESPONSE`s with and/or operators inside **one** requirement. Mandatory
+content is one actor plus *at least one* system response; the multiplicity lives
+*inside* the response. So the earlier premise — "Rimay admits one system response,
+therefore non-atomic requirements must be split into N requirements" — was wrong.
+A requirement with several actions is directly representable as a single Rimay
+statement.
 
-**The gold-record shape (parent → children):**
-> one requirement → { is it non-atomic? · if yes, an *ordered* list of units ·
-> each unit = one Rimay sentence + five slots + one condition type }.
-> Atomic requirements are the N=1 case of the same shape, so the existing 35 are
-> unchanged.
+**Decisions locked (the simplified frame):**
+- **Non-atomic ≠ incomplete.** Orthogonal defects: incomplete = missing
+  information; non-atomic = multiple system responses fused. Kept as distinct
+  labels; never collapsed.
+- **Non-atomic is a smell/flag, not a decomposition task.** A multi-response
+  requirement is *representable* in Rimay (grammar) but is a *quality* defect
+  under ISO/IEC/IEEE 29148 singularity — and Paska already emits a "Non-atomic
+  requirement" smell on the Rimay (seen in the zsl run). The structural detector
+  already exists and already runs; we do not build decomposition machinery.
+- **Convert the whole requirement as one Rimay statement; keep all five slots
+  single-valued.** Actor / scope / condition / modal verb stay one value each.
+  The system response may realise as an itemized *list* — but that is one
+  system-response slot whose Rimay text is compound, judged present/implied/
+  missing as a single call. So the existing slot scheme and Fleiss' Kappa are
+  untouched. (This is the distinction from the rejected plan: the danger was
+  splitting *one slot into several independently-labelled values*; a Rimay
+  itemized response is still one slot.)
+- **Gold barely changes.** It is the existing per-annotator slot annotations plus
+  one adjudicated boolean per requirement — "is this non-atomic?" — which the
+  annotators already gave. No canonical decomposition, no per-unit gold.
 
 **Steps:**
 
-1. **Write the atomicity definition first — blocking.** Anchor to the ISO/IEC/IEEE
-   29148 *singular* characteristic (one system response/capability, "stand-alone,
-   not grouped"). Operationalise it against the hardest real cases — the four
-   borderline reqs (`175-Signal`, `4821-Signal`, `5904-Signal`, `7345-Signal`)
-   plus the trickiest of the 15 — until it gives a clean yes/no on each. Output:
-   a short atomicity rule + a decided verdict on the four disputed requirements.
-2. **Fix the unit shape and split convention before the session.** Confirm the
-   parent/children shape above, and set one convention now: **units are listed in
-   source-text order** (this is what later lets any two decompositions — human or
-   model — be aligned unit-by-unit).
-3. **Each annotator decomposes independently, blind.** Every non-atomic
-   requirement is split into units and each unit's slots annotated, per annotator.
-   This deliberately yields two separable things: the *split* (boundaries) and the
-   *slots* inside each unit.
-4. **Measure agreement on the split separately from the slots — before
-   adjudicating.** Fleiss' Kappa assumes predefined shared units and cannot cope
-   with annotators disagreeing on *how many* units exist; use **Krippendorff's
-   unitizing alpha** for the segmentation agreement. Also compute plain binary
-   agreement on the flag itself ("is this non-atomic?") over all 50 — that is the
-   ceiling the model's *detection* can be scored against. Low agreement here means
-   the Step 1 definition is still too loose → loop back and tighten it.
-5. **Adjudicate to one canonical decomposition per requirement.** Annotators +
-   adjudicator reconcile: number and boundaries of units first, then each unit's
-   slots. Every non-obvious call becomes a written amendment to the atomicity
-   guide (iterative guideline development). Requirements that won't converge are
-   explicitly flagged-or-excluded, not forced.
-6. **Freeze the gold and the definition together.** The adjudicated
-   decompositions are the gold; the finalised atomicity definition is frozen
-   alongside them because that exact wording is what the model will later be given
-   (and can only fairly be scored against). Parents stay out of every aggregate;
-   atomic (35) and non-atomic (15) are always reported as separate lines.
+1. **Write the atomicity/singularity definition — still worth doing, lighter.**
+   Anchor to ISO/IEC/IEEE 29148 *singular* (one capability, "stand-alone, not
+   grouped"). Operationalise against the borderline reqs (`175-Signal`,
+   `4821-Signal`, `5904-Signal`, `7345-Signal`) so the non-atomic flag is applied
+   consistently. Output: a short rule + a decided verdict on those four.
+2. **Two-minute triage of the 15: "multiple actions" vs "genuinely separate
+   requirements".** Most will be multiple actions under one actor/trigger —
+   Rimay swallows these whole as an itemized response, no action needed. The
+   residual case is a requirement whose responses need *different actors or
+   different conditions*; Rimay cannot hold that in one statement. Handle the
+   residual at the **data level**, not with an apparatus: either keep it whole and
+   let the flag/Paska mark it (fine for detection), or split it into separate
+   dataset rows once, by hand, during data prep. Count how many fall in each
+   bucket — the guess is that few are truly separate.
+3. **Adjudicate the flag to a single boolean per requirement.** Standard
+   double-annotate-then-adjudicate on the yes/no non-atomic judgment. Also compute
+   plain inter-annotator agreement on the flag over all 50 — that is the ceiling
+   the model's *detection* metric can be scored against.
+4. **Freeze.** Gold = existing slot annotations + the adjudicated non-atomic
+   boolean, plus the frozen singularity definition (the same wording the model is
+   later given, so detection is scored fairly). Report atomic (35) and non-atomic
+   (15) as separate lines; keep non-atomic parents out of any aggregate that would
+   misread them.
 
-**Open decision to lock before scheduling the session:** do **all three
-annotators** decompose, or only the adjudicator? Recommendation: **all three** —
-it costs more session time but is the only way to produce the unitizing-alpha
-ceiling in Step 4, and measuring the reliability of *how to split* is itself part
-of the contribution a reviewer will expect. This choice changes A2's data model,
-so settle it early.
+**What this drops vs the rejected plan:** the ability to measure whether the LLM
+can *split* a compound requirement into its atomic parts. That was never the
+thesis question (structural incompleteness + silent compensation), so it is scope
+we are deliberately not taking on. If a future paper wants decomposition-as-a-
+capability, the rejected plan below is the starting point.
 
-*Methodology anchors: ISO/IEC/IEEE 29148 "singular"; Krippendorff's unitizing
-alpha (segmentation/unitizing agreement); standard double-annotate-then-adjudicate
-gold-standard construction.*
+**Model side (feeds R5):** the model converts as one Rimay statement (compound
+response allowed) and the non-atomic signal comes from Paska on that Rimay and/or
+the model's own flag. Scoring = existing slot accuracy (unchanged) + a binary
+detection metric on the flag. No decomposition or alignment scoring.
+
+<details>
+<summary><b>Considered and rejected — full decomposition approach</b></summary>
+
+The first sketch treated each non-atomic requirement as a parent with N child
+units, each a full single-valued annotation (Rimay + 5 slots + condition type),
+requiring: per-annotator independent decomposition, Krippendorff's *unitizing
+alpha* for segmentation agreement, an alignment rule (positional vs
+similarity-matched) fixed before scoring, an adjudicated canonical decomposition,
+and three separate model metrics (detection / decomposition / per-unit slots).
+**Rejected** because the Rimay paper (§4.3) shows a multi-response requirement is
+directly representable as one Rimay statement, so decomposition into N separate
+requirements is unnecessary for conversion; the decomposition *capability* is not
+this thesis's question; and the machinery (unitizing alpha, split adjudication,
+alignment rule, decomposition scoring track) is disproportionate to what it buys.
+The methodology anchors it rested on — ISO 29148 singularity, Krippendorff
+unitizing alpha, double-annotate-then-adjudicate — remain sound if that path is
+ever revived.
+</details>
 
 ---
 
 # Open
 
-### A2 — Adjudication space for non-atomic requirements  ·  `TODO`  ·  **[coupled with R5]**
+### A2 — Store the adjudicated non-atomic flag as gold  ·  `TODO`  ·  **[coupled with R5]**
 
-**What:** Extend adjudication so a requirement judged non-atomic can carry the
-panel's canonical decomposition: the parent holds no slot labels, and N child
-units are recorded, each with its own Rimay conversion text, slot labels and
-condition type.
+**What:** Give adjudication a single canonical boolean per requirement —
+`goldNonAtomic` — reconciled from the annotators' per-annotator non-atomic
+verdicts. That is the whole gold change for non-atomic handling; slots stay as
+they are. (Superseded the earlier "canonical decomposition" design — see the
+rejected approach in the top section.)
 
-**Why:** 15 of the 50 `main` requirements are non-atomic. Rimay admits one system
-response per requirement, so these cannot be converted as they stand, and today
-they have no representation in the gold beyond a per-annotator boolean. Without a
-reference decomposition there is nothing for R5 to be scored against.
+**Why:** 15 of 50 `main` requirements are non-atomic. Per the Rimay-paper finding,
+these are converted as a single Rimay statement (compound system response), not
+decomposed, so the gold needs only an adjudicated flag, not a stored
+decomposition. The flag is the reference for R5's detection metric.
 
 **Direction (for the implementer to detail):**
 - Additive schema change in `backend/src/models/Adjudication.js`: `goldNonAtomic:
-  Boolean` and `goldSplits: [{ rimayText, slots, conditionType }]`. Checked
-  read-only against Atlas: existing adjudication documents load and validate
-  unchanged under the extended schema (an absent array reads as `[]`), so **no
-  migration is required**.
-- Guard `goldOverallIncomplete`. It is derived as "any mandatory slot is
-  missing" (`backend/src/utils/incompleteness.js`), so a parent deliberately left
-  all-`missing` would be written as structurally incomplete. That is a
-  decomposition marker, not a finding, and it would contaminate any aggregate.
-- Adjudication UI (`frontend/src/app/features/admin/adjudication.component.*`):
-  a repeatable sub-form — add/remove unit, conversion text + five slot selects +
-  condition type per unit. This is the bulk of the work; the rest is small.
-- Export: splits are one-to-many **per requirement** and do not fit the flat
-  one-row-per-(requirement, annotator) export. Suggested shape is a second
-  artifact, `rimay_splits_<group>.csv`, joined on `reqId`, plus a `gold_nSplits`
-  count column on the main export. Note `rowsToCsv` takes its header from the
-  first row's keys, so any new column must be present on **every** row.
+  Boolean`. Existing documents validate unchanged (absent reads as `false`/unset),
+  so **no migration required**.
+- Export: add a `gold_nonAtomic` column to the existing flat
+  one-row-per-(requirement, annotator) export — no second artifact needed, since
+  there is no one-to-many decomposition anymore. Note `rowsToCsv` takes its header
+  from the first row's keys, so the new column must be present on **every** row.
+- Leave the categorical slot adjudication and `goldOverallIncomplete` exactly as
+  they are; keep the two labels (incomplete vs non-atomic) distinct.
 - The **Atomicity** tab on the admin dashboard already lists the flagged set with
-  each annotator's verdict, and is the natural entry point into this flow.
+  each annotator's verdict — the natural place to adjudicate the flag.
 
-**Data note:** the working set is the 15 `main` requirements flagged via the
-non-atomic checkbox. Four further `main` requirements — `175-Signal`,
-`4821-Signal`, `5904-Signal`, `7345-Signal` — carry a `<NON_ATOMIC>` marker in one
-annotator's conversion text without the box ticked (verified as `main`, not
-`pilot`). Whether they join the set is an open call for the panel.
+**Data note:** working set is the 15 `main` requirements flagged non-atomic. Four
+further `main` reqs — `175-Signal`, `4821-Signal`, `5904-Signal`, `7345-Signal` —
+carry a `<NON_ATOMIC>` marker in one annotator's conversion text without the box
+ticked; the Step-1 singularity definition should decide whether they join the set.
 
-### R5 — Model-side detection and decomposition of non-atomic requirements  ·  `TODO`  ·  **[coupled with A2]**
+### R5 — Model-side non-atomic detection (flag, not decomposition)  ·  `TODO`  ·  **[coupled with A2]**
 
-**What:** Extend the conversion task so the model must decide whether a
-requirement is atomic and, when it is not, return the decomposition — N atomic
-requirements, each with its own conversion and slots — instead of a single
-conversion. Score detection, decomposition and per-unit slot-filling separately.
+**What:** Score whether the model correctly identifies non-atomic requirements.
+The model converts each requirement as a single Rimay statement (compound system
+response allowed); the non-atomic signal comes from Paska's "Non-atomic
+requirement" smell on that Rimay and/or the model's own flag. No decomposition,
+no per-unit scoring. (Superseded the earlier detection+decomposition+per-unit
+design — see the rejected approach in the top section.)
 
-**Why:** 30% of the `main` set is non-atomic. A pipeline that only converts
-pre-cleaned requirements does not answer the research question, and detecting
-non-convertibility is arguably the more valuable capability to measure.
+**Why:** Non-atomicity is a detectable quality smell, and Paska already emits it
+on the Rimay output. Measuring detection against the adjudicated `goldNonAtomic`
+flag answers the relevant question without a decomposition apparatus.
 
 **Direction (for the implementer to detail):**
-- Design the output JSON contract **once**: the same shape serves as A2's
-  `goldSplits` storage and the model's required output. Doing this before either
-  side is built avoids a translation layer between them.
-- Prompt work in `prompts/` for all three strategies (zsl/fsl/cot): the
-  atomicity criterion and the required output shape must both be stated, and the
-  criterion must match the one in the annotation guide verbatim.
-- Scoring (`src/scoring/`): three separate metrics — detection (binary over all
-  50), decomposition (starting with exact-match on N), and the existing
-  categorical slot accuracy applied per unit. Do not blend them into one score.
-- Fix the alignment rule before scoring (see Perspective §5) and record it in the
-  metrics report so the numbers are reproducible.
-- `results.json` / `templates/report.html` need a place for the new metrics, and
-  the per-requirement drill-down needs to render a decomposition.
+- Decide the detection source: Paska's non-atomic smell on the converted Rimay,
+  an explicit model flag in the prompt, or both compared. Keep it one clear
+  signal per requirement.
+- Prompt work in `prompts/` (zsl/fsl/cot) only if an explicit model flag is
+  wanted; the singularity criterion, if stated, must match the annotation guide
+  verbatim.
+- Scoring (`src/scoring/`): one new metric — binary detection (precision / recall
+  / F1) of non-atomic over all 50, against `gold_nonAtomic`. The existing
+  categorical slot accuracy is unchanged and still applies per requirement.
+- `results.json` / `templates/report.html`: a place for the detection metric;
+  no decomposition rendering needed.
 
 ### R4 — LLM verdict stage over the scoring results  ·  `TODO`
 
@@ -186,6 +199,12 @@ the run it describes.
 ---
 
 # Perspective — handling the non-atomic cases
+
+> **⚠ SUPERSEDED.** This section argues the full-decomposition approach, which was
+> **rejected** after reading the Rimay paper (see the top section: a multi-response
+> requirement is directly representable as one Rimay statement, so decomposition
+> is unnecessary). Kept only as the record of the reasoning behind the rejected
+> path. The live plan and the current A2/R5 are at the top of the file.
 
 > **A starting point, not a settled workflow.** Everything here is a default to
 > argue with; the open questions at the end are the ones that actually need
