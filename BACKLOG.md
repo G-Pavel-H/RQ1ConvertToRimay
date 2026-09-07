@@ -1,19 +1,194 @@
 # Shared Backlog — AnnotationToolForRimay & RQ1ConvertToRimay
 
-Forward-looking, **technical** work items for the two coupled repos. This is a
-single shared backlog on purpose: the annotation tool produces the data the RQ1
-experiment consumes, so a change in one usually implies a change in the other.
-Items that span both repos are marked **[coupled]**.
+Forward-looking work items for the two coupled repos. This is a single shared
+backlog on purpose: the annotation tool produces the data the RQ1 experiment
+consumes, so a change in one usually implies a change in the other. Items that
+span both repos are marked **[coupled]**.
 
 Each item is written for a Claude Code CLI implementer to pick up. Scope is
-deliberately technical (workflow, storage, scoring plumbing) — **not** research
-logic, research questions, or annotation-scheme design.
+normally technical (workflow, storage, scoring plumbing) rather than research
+logic — the one deliberate exception is the **Perspective** section below, which
+records a starting position on non-atomic handling so A2/R5 have something to be
+refined against.
+
+Item IDs encode the repo: `A*` = AnnotationToolForRimay, `R*` = RQ1ConvertToRimay.
 
 Status legend: `TODO` = not started · `IN PROGRESS` · `DONE`.
+Ordering: **open items first, completed items at the bottom.**
 
 ---
 
-## RQ1ConvertToRimay
+# Open
+
+### A2 — Adjudication space for non-atomic requirements  ·  `TODO`  ·  **[coupled with R5]**
+
+**What:** Extend adjudication so a requirement judged non-atomic can carry the
+panel's canonical decomposition: the parent holds no slot labels, and N child
+units are recorded, each with its own Rimay conversion text, slot labels and
+condition type.
+
+**Why:** 15 of the 50 `main` requirements are non-atomic. Rimay admits one system
+response per requirement, so these cannot be converted as they stand, and today
+they have no representation in the gold beyond a per-annotator boolean. Without a
+reference decomposition there is nothing for R5 to be scored against.
+
+**Direction (for the implementer to detail):**
+- Additive schema change in `backend/src/models/Adjudication.js`: `goldNonAtomic:
+  Boolean` and `goldSplits: [{ rimayText, slots, conditionType }]`. Checked
+  read-only against Atlas: existing adjudication documents load and validate
+  unchanged under the extended schema (an absent array reads as `[]`), so **no
+  migration is required**.
+- Guard `goldOverallIncomplete`. It is derived as "any mandatory slot is
+  missing" (`backend/src/utils/incompleteness.js`), so a parent deliberately left
+  all-`missing` would be written as structurally incomplete. That is a
+  decomposition marker, not a finding, and it would contaminate any aggregate.
+- Adjudication UI (`frontend/src/app/features/admin/adjudication.component.*`):
+  a repeatable sub-form — add/remove unit, conversion text + five slot selects +
+  condition type per unit. This is the bulk of the work; the rest is small.
+- Export: splits are one-to-many **per requirement** and do not fit the flat
+  one-row-per-(requirement, annotator) export. Suggested shape is a second
+  artifact, `rimay_splits_<group>.csv`, joined on `reqId`, plus a `gold_nSplits`
+  count column on the main export. Note `rowsToCsv` takes its header from the
+  first row's keys, so any new column must be present on **every** row.
+- The **Atomicity** tab on the admin dashboard already lists the flagged set with
+  each annotator's verdict, and is the natural entry point into this flow.
+
+**Data note:** the working set is the 15 `main` requirements flagged via the
+non-atomic checkbox. Four further `main` requirements — `175-Signal`,
+`4821-Signal`, `5904-Signal`, `7345-Signal` — carry a `<NON_ATOMIC>` marker in one
+annotator's conversion text without the box ticked (verified as `main`, not
+`pilot`). Whether they join the set is an open call for the panel.
+
+### R5 — Model-side detection and decomposition of non-atomic requirements  ·  `TODO`  ·  **[coupled with A2]**
+
+**What:** Extend the conversion task so the model must decide whether a
+requirement is atomic and, when it is not, return the decomposition — N atomic
+requirements, each with its own conversion and slots — instead of a single
+conversion. Score detection, decomposition and per-unit slot-filling separately.
+
+**Why:** 30% of the `main` set is non-atomic. A pipeline that only converts
+pre-cleaned requirements does not answer the research question, and detecting
+non-convertibility is arguably the more valuable capability to measure.
+
+**Direction (for the implementer to detail):**
+- Design the output JSON contract **once**: the same shape serves as A2's
+  `goldSplits` storage and the model's required output. Doing this before either
+  side is built avoids a translation layer between them.
+- Prompt work in `prompts/` for all three strategies (zsl/fsl/cot): the
+  atomicity criterion and the required output shape must both be stated, and the
+  criterion must match the one in the annotation guide verbatim.
+- Scoring (`src/scoring/`): three separate metrics — detection (binary over all
+  50), decomposition (starting with exact-match on N), and the existing
+  categorical slot accuracy applied per unit. Do not blend them into one score.
+- Fix the alignment rule before scoring (see Perspective §5) and record it in the
+  metrics report so the numbers are reproducible.
+- `results.json` / `templates/report.html` need a place for the new metrics, and
+  the per-requirement drill-down needs to render a decomposition.
+
+### R4 — LLM verdict stage over the scoring results  ·  `TODO`
+
+**What:** A stage that reads a run's `scoring/results.json`, asks an LLM to
+analyse the metrics, and writes its conclusion back into the `verdict` field
+(currently `null` on every run).
+
+**Why:** The numbers need interpretation — which strategy won, where the LLM
+compensates for missing information, whether the similarity gap to the human
+ceiling is meaningful. Writing that verdict into the results file keeps it with
+the run it describes.
+
+**Direction (for the implementer to detail):**
+- The `verdict` slot already exists in `results.json` and the report already
+  renders it when non-null (it reads `verdict.text`, falling back to the raw
+  value) — decide the final shape (free text? per-track findings? a score?) and
+  update `templates/report.html` to match.
+- Keep the stage offline and re-runnable: input is `results.json` only, no
+  re-conversion, no Paska.
+- Comparing runs (which strategy won) needs more than one `results.json`;
+  decide whether the verdict is per-run, per-batch, or both.
+
+---
+
+# Perspective — handling the non-atomic cases
+
+> **A starting point, not a settled workflow.** Everything here is a default to
+> argue with; the open questions at the end are the ones that actually need
+> deciding, and the answers will change A2 and R5.
+
+**1. Keep them in the study.** 15 of 50 in `main` (30%). Excluding them would
+leave a benchmark built only from requirements that were already clean, which is
+not the population a conversion tool meets in practice — in industrial
+specifications non-atomic requirements are the normal case, not an edge case. It
+would also remove the capability most worth measuring: noticing that a
+requirement cannot be converted as a single unit.
+
+**2. Manual vs. model decomposition is better run as both than chosen between.**
+
+- *Condition A — the model decomposes.* It receives the raw requirement and must
+  detect non-atomicity, emit N atomic units, and slot-fill each. This is the
+  realistic deployment task.
+- *Condition B — the human decomposes first.* The adjudicated units are supplied
+  and the model only slot-fills.
+
+Treated as alternatives you have to give one up. Treated as **A plus B as its
+control**, the gap between them isolates how much of the end-to-end error is
+decomposition and how much is slot-filling — which is the thing you would
+otherwise be guessing at. B costs almost nothing extra once the gold
+decompositions exist, since A needs them anyway. If only one is run, A is the one
+that answers the research question.
+
+**3. Gold decompositions are needed either way.** "Let the model do the
+decoupling" changes the task, not the need for a reference: a model that returns
+three units cannot be judged without a human decomposition to compare against.
+The adjudication session is unavoidable. The only question is whether its output
+is handed to the model (B) or held back for scoring (A).
+
+**4. Score three things separately.**
+
+1. **Detection** — binary over all 50: precision / recall / F1 on "is this non-atomic".
+2. **Decomposition** — did it find the right units? Start with exact-match on N,
+   then unit-level correspondence.
+3. **Slot-filling** — the existing categorical metric, per atomic unit.
+
+A single blended score is uninterpretable. A model that splits into three where
+gold says two will bleed a decomposition error into the slot metric, and "bad at
+slots" becomes indistinguishable from "bad at splitting". Keeping them apart is
+what lets you name the bottleneck.
+
+**5. Fix the alignment rule before scoring, not after.** When the model returns
+three units and gold has two, something must define which maps to which. The
+cheapest defensible starting rule: require units in source-text order and align
+by position. The alternative is greedy similarity matching on unit text — more
+forgiving, but it needs justifying in the methods. Whichever is chosen goes into
+the annotation guide *and* the prompt, so humans and model split under the same
+convention.
+
+**6. Report stratified, and keep parents out of the aggregates.** Atomic (35) and
+non-atomic (15) as separate lines, never one blended number. Related trap on the
+tool side: parents carrying all-`missing` slots will read as *structurally
+incomplete* in any aggregate that uses `overallIncomplete` — an artifact of how
+the decomposition is stored, not a property of the requirements (see A2).
+
+**7. Write down what "atomic" means before the session.** Everything above rests
+on a definition none of the current artifacts state. The working one is "one
+system response per requirement", and the borderline cases are what will actually
+pin it down. Whatever the panel converges on belongs in the annotation guide and,
+verbatim, in the model prompt — otherwise the model is scored against a criterion
+it was never given.
+
+**Open questions to settle**
+
+- Is N part of the gold, or is any decomposition that covers the source acceptable?
+- How is a partially-correct decomposition scored — all-or-nothing on N, or credit per matched unit?
+- Does a wrong split invalidate that requirement's slot scores, or are only matched units scored?
+- Should each annotator produce a decomposition (giving inter-annotator agreement
+  on *how* to split), or is decomposition adjudication-only? This changes A2's
+  data model, so it is worth settling early.
+- Do non-atomic parents keep any slot labels at all, or is "no labels + a
+  decomposition" the only representation?
+
+---
+
+# Done
 
 ### R1 — Pass the output run folder name on the command line; remove `new_run.sh`  ·  `DONE`
 
@@ -93,31 +268,6 @@ legend defining every column, and a per-requirement drill-down. Stage 2 rebuilds
 the page on every scoring run (`--no-report` opts out), so it is never stale;
 `bin/report.sh` builds and opens it.
 
-### R4 — LLM verdict stage over the scoring results  ·  `TODO`
-
-**What:** A stage that reads a run's `scoring/results.json`, asks an LLM to
-analyse the metrics, and writes its conclusion back into the `verdict` field
-(currently `null` on every run).
-
-**Why:** The numbers need interpretation — which strategy won, where the LLM
-compensates for missing information, whether the similarity gap to the human
-ceiling is meaningful. Writing that verdict into the results file keeps it with
-the run it describes.
-
-**Direction (for the implementer to detail):**
-- The `verdict` slot already exists in `results.json` and the report already
-  renders it when non-null (it reads `verdict.text`, falling back to the raw
-  value) — decide the final shape (free text? per-track findings? a score?) and
-  update `templates/report.html` to match.
-- Keep the stage offline and re-runnable: input is `results.json` only, no
-  re-conversion, no Paska.
-- Comparing runs (which strategy won) needs more than one `results.json`;
-  decide whether the verdict is per-run, per-batch, or both.
-
----
-
-## AnnotationToolForRimay
-
 ### A1 — Remove the overall gold standard for the Rimay conversion  ·  `DONE`  ·  **[coupled with R2]**
 
 **Status: `DONE`.** `canonicalRimay` is gone from the model, the adjudication
@@ -151,8 +301,12 @@ field the workflow doesn't use and implies a gold that doesn't exist.
 
 ---
 
-## Coupling notes
+# Coupling notes
 
+- **A2 ↔ R5** are the two halves of the non-atomic workflow: the annotation tool
+  produces the reference decompositions, RQ1 asks the model for its own and
+  scores it against them. The JSON shape of a decomposition should be designed
+  once and shared — settle it before either side is built.
 - **A1 ↔ R2** are the same conceptual change on both sides of the data handoff:
   the annotation tool stops producing an overall gold conversion, and RQ1 stops
   scoring against one. Land them together (or A1 first, then R2) and re-export
