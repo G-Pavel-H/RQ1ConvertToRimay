@@ -1,0 +1,24 @@
+# Excluded from gold_annotations_main_atomic.csv as non-atomic
+# Source: gold_annotations_main.csv
+# Signal key: checkbox = nonAtomic ticked, tag = <NON_ATOMIC> in conversion text, notes = split described in prose
+
+937-Signal	Rafo: notes
+42-Mastodon	Arthur: checkbox+notes
+1055-Signal	Arthur: checkbox; Mko: checkbox+tag; Rafo: notes
+1692-Signal	Mko: checkbox+tag; Rafo: tag+notes
+6390-Signal	Arthur: checkbox+notes; Mko: checkbox+tag; Rafo: tag+notes
+7345-Signal	Rafo: tag+notes
+222-Signal	Arthur: checkbox; Rafo: tag+notes
+175-Signal	Rafo: tag
+1065-Signal	Arthur: checkbox+notes; Mko: checkbox+tag; Rafo: tag
+328-Signal	Arthur: checkbox+notes; Mko: checkbox+tag; Rafo: tag
+6111-Signal	Arthur: checkbox; Mko: checkbox+tag; Rafo: tag
+226-Signal	Arthur: checkbox; Mko: checkbox+tag; Rafo: tag
+4821-Signal	Rafo: tag
+2055-Signal	Arthur: checkbox; Rafo: tag
+6362-Signal	Arthur: checkbox; Mko: tag; Rafo: tag+notes
+6424-Signal	Arthur: checkbox; Rafo: tag+notes
+7567-Signal	Mko: checkbox+tag; Rafo: tag
+802-Signal	Arthur: checkbox; Mko: checkbox+tag; Rafo: tag+notes
+5751-Signal	Arthur: checkbox+notes; Rafo: tag+notes
+5904-Signal	Rafo: tag
