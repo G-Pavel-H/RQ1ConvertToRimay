@@ -53,6 +53,12 @@ DEFAULT_TEMPERATURE = 0.0
 DEFAULT_MAX_TOKENS = 1024
 DEFAULT_N_FSL_EXAMPLES = 3
 
+# Which LLM backend stages send their calls to: "api" (metered ANTHROPIC_API_KEY)
+# or "subscription" (the local `claude` CLI via the Claude Agent SDK, billed to
+# the logged-in Claude account). See src/llm_backend.py — note the subscription
+# backend cannot set temperature.
+DEFAULT_LLM_BACKEND = os.environ.get("RIMAY_LLM_BACKEND", "subscription")
+
 # --- MLflow ------------------------------------------------------------------
 MLFLOW_TRACKING_DB = MLRUNS_DIR / "mlflow.db"
 
@@ -84,6 +90,7 @@ class RunConfig:
     temperature: float = DEFAULT_TEMPERATURE
     max_tokens: int = DEFAULT_MAX_TOKENS
     n_fsl_examples: int = DEFAULT_N_FSL_EXAMPLES
+    backend: str = DEFAULT_LLM_BACKEND
 
 
 def ensure_output_dirs() -> None:

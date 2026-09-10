@@ -31,9 +31,7 @@ from datetime import datetime
 from pathlib import Path
 from typing import List, Optional
 
-from anthropic import Anthropic
-
-from src import config
+from src import config, llm_backend
 
 # How many of the weakest requirements to include with their full text.
 N_WORST_EXAMPLES = 6
@@ -137,12 +135,6 @@ class VerdictResult:
         }
 
 
-def _client() -> Anthropic:
-    if not os.environ.get("ANTHROPIC_API_KEY"):
-        raise RuntimeError("ANTHROPIC_API_KEY is not set. Add it to .env or export it.")
-    return Anthropic()
-
-
 def _requirement_row(req: dict) -> dict:
     """One compact per-requirement line: outcomes only, no prose."""
     sim = req.get("similarity") or {}
@@ -222,6 +214,7 @@ def generate(
     model: str,
     max_tokens: int = 2048,
     temperature: Optional[float] = None,
+    backend: Optional[str] = None,
 ) -> VerdictResult:
     """Ask the model to interpret the digested metrics.
 
@@ -230,18 +223,16 @@ def generate(
     usable with whatever model the analyst picks.
     """
     prompt = build_prompt(payload, scope)
-    kwargs = {}
-    if temperature is not None:
-        kwargs["temperature"] = temperature
-    msg = _client().messages.create(
+    completion = llm_backend.complete(
+        system=SYSTEM_PROMPT,
+        prompt=prompt,
         model=model,
         max_tokens=max_tokens,
-        system=SYSTEM_PROMPT,
-        messages=[{"role": "user", "content": prompt}],
-        **kwargs,
+        temperature=temperature,
+        backend=backend,
     )
-    text = "".join(block.text for block in msg.content if block.type == "text").strip()
-    if msg.stop_reason == "max_tokens":
+    text = completion.text.strip()
+    if completion.truncated:
         # Silently storing a half-finished analysis is worse than failing: the
         # verdict reads as complete prose and the cut is only visible if you
         # notice the last sentence stops mid-clause.
@@ -252,7 +243,7 @@ def generate(
         )
     return VerdictResult(
         text=text,
-        model=model,
+        model=completion.model or model,
         scope=scope,
         digest=hashlib.sha1(
             json.dumps(payload, sort_keys=True, default=str).encode("utf-8")

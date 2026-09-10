@@ -56,6 +56,15 @@ def parse_args(argv=None) -> argparse.Namespace:
     # budget too, so the default is generous.
     p.add_argument("--max-tokens", type=int, default=8192)
     p.add_argument(
+        "--backend",
+        choices=["api", "subscription"],
+        default=None,
+        help="Where to send LLM calls: 'api' (metered ANTHROPIC_API_KEY) or "
+             "'subscription' (the local claude CLI, billed to your Claude "
+             f"account). Default: {config.DEFAULT_LLM_BACKEND}. Note the "
+             "subscription backend cannot set temperature.",
+    )
+    p.add_argument(
         "--temperature",
         type=float,
         default=None,
@@ -98,6 +107,7 @@ def _one_run(path: Path, args, label: str) -> bool:
         model=args.model,
         max_tokens=args.max_tokens,
         temperature=args.temperature,
+        backend=args.backend,
     )
     V.write_verdict(path, result)
     print(f"  {label}: {len(result.text.split())} words -> {path}")
@@ -150,6 +160,7 @@ def main(argv=None) -> int:
         model=args.model,
         max_tokens=args.max_tokens,
         temperature=args.temperature,
+        backend=args.backend,
     )
 
     out = config.OUTPUTS_DIR / args.batch / "verdict.md"
