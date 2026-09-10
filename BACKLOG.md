@@ -175,27 +175,6 @@ flag answers the relevant question without a decomposition apparatus.
 - `results.json` / `templates/report.html`: a place for the detection metric;
   no decomposition rendering needed.
 
-### R4 — LLM verdict stage over the scoring results  ·  `TODO`
-
-**What:** A stage that reads a run's `scoring/results.json`, asks an LLM to
-analyse the metrics, and writes its conclusion back into the `verdict` field
-(currently `null` on every run).
-
-**Why:** The numbers need interpretation — which strategy won, where the LLM
-compensates for missing information, whether the similarity gap to the human
-ceiling is meaningful. Writing that verdict into the results file keeps it with
-the run it describes.
-
-**Direction (for the implementer to detail):**
-- The `verdict` slot already exists in `results.json` and the report already
-  renders it when non-null (it reads `verdict.text`, falling back to the raw
-  value) — decide the final shape (free text? per-track findings? a score?) and
-  update `templates/report.html` to match.
-- Keep the stage offline and re-runnable: input is `results.json` only, no
-  re-conversion, no Paska.
-- Comparing runs (which strategy won) needs more than one `results.json`;
-  decide whether the verdict is per-run, per-batch, or both.
-
 ---
 
 # Perspective — handling the non-atomic cases
@@ -394,6 +373,54 @@ field the workflow doesn't use and implies a gold that doesn't exist.
   mentions), and `WORKFLOW.md` where the canonical conversion is described.
 - The exported CSV is the handoff to RQ1 — coordinate the column change with
   **R2** so the RQ1 gold loader / scorer isn't left expecting a dropped column.
+
+### R4 — LLM verdict stage over the scoring results  ·  `DONE`
+
+**Landed:** Stage 3 is `scripts/run_verdict.py` + `src/verdict.py`, wrapped by
+`bin/verdict.sh`. It reads a scored run's `scoring/results.json` and writes the
+model's analysis into the `verdict` field, which `templates/report.html` already
+renders — no template change was needed.
+
+Shape settled as **both** per-run and per-batch:
+- `--run <batch>/<strategy>` writes that run's verdict into its `results.json`.
+- `--batch <batch>` does every strategy in the folder, then writes a
+  cross-strategy comparison to `outputs/<batch>/verdict.md` (a separate file,
+  since it is about all the runs rather than any one of them).
+- Stored shape is `{text, model, scope, generated_at, results_digest}`; the
+  digest hashes the payload sent, so a verdict left stale by a re-score is
+  detectable.
+
+The payload is a digest, not the raw file: full aggregate metrics, one compact
+row per requirement, and full text for the worst few. `--model` picks the
+analyst (run with `claude-opus-5`), `--dry-run` prints the prompt without
+calling the API, `--skip-existing` leaves already-analysed runs alone.
+`--temperature` is only sent when explicitly passed, because Opus 5 rejects the
+parameter. Stage 3 imports nothing from Stage 1/2 — input is `results.json`
+alone — so it re-runs with a different model at any time.
+
+The system prompt guards against a degenerate Track 1: if `support_gold_missing`
+is 0 on every slot the analyst is told to report the metric as unmeasurable
+rather than as a model failure. First run on `main30` hit exactly that case and
+diagnosed it unprompted.
+
+**What:** A stage that reads a run's `scoring/results.json`, asks an LLM to
+analyse the metrics, and writes its conclusion back into the `verdict` field
+(currently `null` on every run).
+
+**Why:** The numbers need interpretation — which strategy won, where the LLM
+compensates for missing information, whether the similarity gap to the human
+ceiling is meaningful. Writing that verdict into the results file keeps it with
+the run it describes.
+
+**Direction (for the implementer to detail):**
+- The `verdict` slot already exists in `results.json` and the report already
+  renders it when non-null (it reads `verdict.text`, falling back to the raw
+  value) — decide the final shape (free text? per-track findings? a score?) and
+  update `templates/report.html` to match.
+- Keep the stage offline and re-runnable: input is `results.json` only, no
+  re-conversion, no Paska.
+- Comparing runs (which strategy won) needs more than one `results.json`;
+  decide whether the verdict is per-run, per-batch, or both.
 
 ---
 

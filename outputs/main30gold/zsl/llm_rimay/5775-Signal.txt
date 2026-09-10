@@ -1,0 +1,1 @@
+For the disappearing messages feature, if a user wants to retain messages for longer than one week, then the System shall add disappearing message timeout periods up to at least one year. <NON_ATOMIC>

@@ -1,0 +1,1 @@
+For <MISSING_SCOPE>, the User shall request the System to add theme support to TextSecure based on "adoption from competing platforms like Go SMS PRO".

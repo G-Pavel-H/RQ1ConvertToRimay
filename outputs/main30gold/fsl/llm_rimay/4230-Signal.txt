@@ -1,0 +1,1 @@
+For all users, the app must auto-split oversized texts over multiple messages instead of truncating them.

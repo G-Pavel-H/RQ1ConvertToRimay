@@ -1,0 +1,1 @@
+Signal shall deliver an SMS message to the provider number.

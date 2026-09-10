@@ -1,0 +1,1 @@
+TextSecure shall attach the "calendar event" to the message when the user shares it via TextSecure.

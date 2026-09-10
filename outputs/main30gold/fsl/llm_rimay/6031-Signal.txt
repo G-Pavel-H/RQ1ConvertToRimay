@@ -1,0 +1,1 @@
+For all users, the app must support fingerprint unlock as an alternative to passphrase.

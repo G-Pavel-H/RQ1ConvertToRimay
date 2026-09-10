@@ -1,0 +1,1 @@
+For all users with dual SIM mobile devices, the app must display which SIM the message was sent to.

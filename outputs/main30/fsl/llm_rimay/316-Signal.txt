@@ -1,0 +1,1 @@
+For all users, when a user shares a calendar event from the Android Calendar app, then TextSecure must attach the calendar event to the message.

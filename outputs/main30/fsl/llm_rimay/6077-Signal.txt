@@ -1,0 +1,1 @@
+For all users, when the user sends an SMS message to a short code number through Signal, then Signal must deliver the message.

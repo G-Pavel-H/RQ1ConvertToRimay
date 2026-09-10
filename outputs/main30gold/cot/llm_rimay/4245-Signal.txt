@@ -1,0 +1,1 @@
+Signal shall display the "full resolution contact photo" on the calling screen.

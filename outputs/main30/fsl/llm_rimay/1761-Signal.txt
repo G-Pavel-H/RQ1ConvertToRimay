@@ -1,0 +1,1 @@
+For all users, the app must automatically forward all incoming SMS from a certain contact to another contact.

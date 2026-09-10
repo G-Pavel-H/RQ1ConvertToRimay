@@ -1,0 +1,1 @@
+When an external application sends a share Intent with EXTRA_SUBJECT and EXTRA_TEXT, Signal shall include the EXTRA_SUBJECT portion in the shared message. <NON_ATOMIC>.

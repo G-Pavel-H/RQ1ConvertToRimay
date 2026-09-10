@@ -1,0 +1,1 @@
+For the conservation overview, the System shall indicate whether the last message is from the user or from the conversation partner.

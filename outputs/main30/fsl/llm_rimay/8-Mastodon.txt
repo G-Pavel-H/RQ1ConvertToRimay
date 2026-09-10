@@ -1,0 +1,1 @@
+For all users, the app must provide access to local and federated timeline.

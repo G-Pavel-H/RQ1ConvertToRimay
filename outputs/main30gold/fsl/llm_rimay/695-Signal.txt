@@ -1,0 +1,1 @@
+For all users, when SMS mode is disabled, then the app must not show the letter count at the bottom left corner.

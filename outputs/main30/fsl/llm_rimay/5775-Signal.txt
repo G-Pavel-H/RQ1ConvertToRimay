@@ -1,0 +1,1 @@
+For all users, the app must provide longer-term disappearing message timeouts of at least one year.

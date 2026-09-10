@@ -1,0 +1,1 @@
+ChooserTargetService shall allow direct sharing to contacts via the "6.0 ChooserTargetService".

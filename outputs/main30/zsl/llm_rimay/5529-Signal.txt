@@ -1,0 +1,1 @@
+For non-passphrase users, the System shall disable the "Screen security" feature by default.

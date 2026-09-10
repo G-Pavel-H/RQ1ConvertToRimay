@@ -1,0 +1,1 @@
+For the Signal-Android application, when the user interacts with the conversation window, the System shall consolidate the attachment window controls into a single button to open and close the attachment window. <NON_ATOMIC>.

@@ -1,0 +1,1 @@
+For <MISSING_SCOPE>, when the user receives a message from a group or user, the system shall mute notifications for a specified duration. <NON_ATOMIC>.

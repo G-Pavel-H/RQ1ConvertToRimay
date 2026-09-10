@@ -1,0 +1,1 @@
+For all users in the conversation window, the app must provide a single button to open and close the attachment window.

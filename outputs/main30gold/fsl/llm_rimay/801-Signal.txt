@@ -1,0 +1,1 @@
+For all users, the app must provide a "Mute for X minutes/hours" feature for groups.

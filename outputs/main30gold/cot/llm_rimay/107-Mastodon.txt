@@ -1,0 +1,1 @@
+The system must display the image description for each post.
