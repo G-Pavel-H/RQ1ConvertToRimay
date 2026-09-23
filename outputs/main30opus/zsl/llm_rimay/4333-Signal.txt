@@ -1,0 +1,1 @@
+<MISSING_SCOPE> <MISSING_CONDITION> the System shall allow "direct sharing to contacts" through the "6.0 ChooserTargetService".

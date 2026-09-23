@@ -1,0 +1,1 @@
+For all non-passphrase users, the app must disable "Screen security" by default.

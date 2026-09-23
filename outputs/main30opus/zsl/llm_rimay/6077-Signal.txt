@@ -1,0 +1,1 @@
+When the "Signal Android application" sends an SMS message to a "short code number", then the "Signal Android application" must deliver the SMS message to the "short code number" without applying the "country calling code +385".

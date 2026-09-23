@@ -1,0 +1,1 @@
+<MISSING_SCOPE>, <MISSING_CONDITION>, the TextSecure application shall add a "(short) signature" to the "SMS message".

@@ -1,0 +1,1 @@
+For all users, the app must provide an option to cancel running media downloads.

@@ -1,0 +1,1 @@
+<MISSING_SCOPE> When the System receives a "text" that exceeds the "maximum message size", then the System shall split the "oversized text" into multiple "messages".

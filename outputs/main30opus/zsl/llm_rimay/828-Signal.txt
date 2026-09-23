@@ -1,0 +1,1 @@
+For all the "TextSecure groups", <MISSING_CONDITION>, the <MISSING_ACTOR> <MISSING_MODAL_VERB> remove a "participant" from a "group" after the "participant" was added.

@@ -1,0 +1,1 @@
+<MISSING_SCOPE>, <MISSING_CONDITION>, the System <MISSING_MODAL_VERB> send an "SMS message" to a "short code number" through the "libphonenumber library version >= 8.2.0".

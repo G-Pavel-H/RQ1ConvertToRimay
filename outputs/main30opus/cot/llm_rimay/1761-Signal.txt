@@ -1,0 +1,1 @@
+<MISSING_SCOPE>, when the System receives an incoming "SMS" from a "certain contact", then the System shall forward the "SMS" to "another contact".

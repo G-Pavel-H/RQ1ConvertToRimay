@@ -48,7 +48,10 @@ def test_similarity_to_humans_mean_and_max():
 def test_similarity_to_humans_without_annotators():
     res = cq.similarity_to_humans("one two", ["", "  "])
     assert res == {"n_humans": 0, "seq_ratio_mean": 0.0, "seq_ratio_max": 0.0,
-                   "jaccard_mean": 0.0, "jaccard_max": 0.0}
+                   "jaccard_mean": 0.0, "jaccard_max": 0.0,
+                   # None, not 0.0: "no annotators to compare against" is not
+                   # the same claim as "semantically unrelated".
+                   "cosine_mean": None, "cosine_max": None}
 
 
 def test_llm_vs_human_pairs_one_per_annotator():
@@ -103,3 +106,22 @@ def test_full_report_shape():
     assert "similarity" in rep and "paska" in rep
     assert "llm_vs_human" in rep["similarity"]
     assert "human_human" in rep["similarity"]
+
+
+# --- semantic similarity ----------------------------------------------------
+
+
+def test_cosine_handles_empty_text_like_the_lexical_metrics():
+    """Placeholder-only conversions normalise to empty; the convention matches
+    seq_ratio — both empty is a match, one empty is not — and neither case
+    touches the embedding service."""
+    assert cq.cosine_similarity("<MISSING_ACTOR>", "<MISSING_ACTION>") == 1.0
+    assert cq.cosine_similarity("the app must do x", "<MISSING_ACTOR>") == 0.0
+
+
+def test_similarity_pair_reports_every_measure():
+    pair = cq.similarity_pair("the app must do x", "the app shall do x")
+    assert set(pair) == {"seq_ratio", "jaccard", "cosine"}
+    assert 0.0 <= pair["seq_ratio"] <= 1.0
+    # cosine is None only when the embedding service is unreachable.
+    assert pair["cosine"] is None or -1.0 <= pair["cosine"] <= 1.0

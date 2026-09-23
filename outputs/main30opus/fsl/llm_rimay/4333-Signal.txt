@@ -1,0 +1,1 @@
+For all users, when the user selects a contact through the Android 6.0 "ChooserTargetService", then the app must share the content directly to the selected contact.

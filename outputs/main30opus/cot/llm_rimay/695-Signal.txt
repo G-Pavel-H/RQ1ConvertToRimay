@@ -1,0 +1,1 @@
+<MISSING_SCOPE>, if the "SMS mode" is not available, then the System shall not display the "count of letters" in the "bottom left corner".

@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RQ1ConvertToRimay — what lives where</title>
+<style>
+  :root{
+    --bg:#fbfbfc; --card:#fff; --ink:#1b1d21; --muted:#7a8089; --line:#e4e6ea;
+    --data:#1565c0; --data-bg:#e8f0fe;
+    --calc:#b26a00; --calc-bg:#fdf1dc;
+    --out:#2e7d32;  --out-bg:#e8f5e9;
+    --warn:#b71c1c; --warn-bg:#fdecea;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{ --bg:#111315; --card:#181b1e; --ink:#e7e9ec; --muted:#9aa1aa; --line:#2a2e33;
+           --data-bg:#13243a; --calc-bg:#33280f; --out-bg:#13291a; --warn-bg:#331616;
+           --data:#7cb0f0; --calc:#e0a94a; --out:#7fc98a; --warn:#ef8a83; }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+       font:14px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;}
+  .wrap{max-width:1000px;margin:0 auto;padding:32px 20px 64px}
+  h1{font-size:22px;margin:0 0 4px}
+  h2{font-size:15px;margin:32px 0 10px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+  .sub{color:var(--muted);margin:0 0 24px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin-bottom:14px}
+  .flow{display:flex;gap:10px;align-items:center;flex-wrap:wrap;font-size:13px}
+  .flow .box{background:var(--data-bg);color:var(--data);border-radius:6px;padding:6px 10px;font-weight:600}
+  .flow .arrow{color:var(--muted)}
+  table{width:100%;border-collapse:collapse}
+  th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:600}
+  td.k{white-space:nowrap;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px}
+  tr:last-child td{border-bottom:0}
+  pre.tree{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;line-height:1.75;
+           margin:0;overflow-x:auto;white-space:pre}
+  .c{color:var(--muted)}
+  .tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.04em;
+       padding:1px 6px;border-radius:4px;vertical-align:2px}
+  .t-data{background:var(--data-bg);color:var(--data)}
+  .t-calc{background:var(--calc-bg);color:var(--calc)}
+  .t-out{background:var(--out-bg);color:var(--out)}
+  .note{background:var(--warn-bg);color:var(--ink);border-left:3px solid var(--warn);
+        border-radius:0 6px 6px 0;padding:10px 14px;margin:14px 0;font-size:13px}
+  .legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin-bottom:20px}
+  code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>RQ1ConvertToRimay</h1>
+<p class="sub">The experiment. Takes a CSV exported from the annotation tool, asks an LLM to convert NL → Rimay, scores it. <strong>No database.</strong></p>
+
+<div class="card flow">
+  <span class="box">gold CSV</span><span class="arrow">→ Stage 1 convert →</span>
+  <span class="box">llm_rimay/</span><span class="arrow">→ Stage 2 score →</span>
+  <span class="box">results.json</span><span class="arrow">→ Stage 3 verdict →</span>
+  <span class="box">report.html</span>
+</div>
+
+<div class="legend">
+  <span><span class="tag t-data">DATA</span> inputs</span>
+  <span><span class="tag t-calc">CALC</span> where numbers are computed</span>
+  <span><span class="tag t-out">OUT</span> results</span>
+</div>
+
+<h2>Inputs — data/</h2>
+<div class="card">
+<table>
+  <thead><tr><th>File</th><th>What</th></tr></thead>
+  <tbody>
+    <tr><td class="k">gold_annotations_main.csv</td><td>All 50 <code>main</code> requirements, straight from the tool's export. 151 rows.</td></tr>
+    <tr><td class="k">gold_annotations_main_atomic.csv</td><td><strong>The 30.</strong> The above minus non-atomic, minus drafts. 90 rows. <em>This is what runs.</em></td></tr>
+    <tr><td class="k">gold_annotations_main_atomic_excluded.txt</td><td>The 20 excluded, with which annotator gave which signal.</td></tr>
+    <tr><td class="k">gold_annotations.csv</td><td>Old pilot export. Superseded.</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="note">
+  <strong>How the 30 were made:</strong> export all of <code>main</code> from the tool →
+  <code>scripts/make_atomic_gold.py</code> drops drafts, then drops any requirement where
+  <em>any</em> annotator signalled non-atomic by checkbox, <code>&lt;NON_ATOMIC&gt;</code> tag, or notes.
+  50 → 20 excluded → <strong>30 kept</strong>. Re-runnable: re-export, re-run.
+</div>
+
+<h2>Repo tree</h2>
+<div class="card">
+<pre class="tree">
+data/                         <span class="tag t-data">DATA</span> <span class="c">the gold CSVs above</span>
+prompts/
+  system_prompt.md            <span class="tag t-data">DATA</span> <span class="c">shared system prompt</span>
+  zsl_ / fsl_ / cot_prompt.md <span class="tag t-data">DATA</span> <span class="c">the 3 strategies under test</span>
+  examples/fsl_examples.json  <span class="tag t-data">DATA</span> <span class="c">3 few-shot exemplars (from training — no overlap with the 30)</span>
+
+src/
+  gold_loader.py              <span class="c">parses the CSV → GoldRecord per requirement</span>
+  prompt_builder.py           <span class="c">assembles the prompt for a strategy</span>
+  llm_converter.py            <span class="c">one NL → Rimay call</span>
+  llm_backend.py              <span class="tag t-calc">CALC</span> <span class="c">WHERE CALLS GO: 'subscription' (claude CLI, no credits,
+                                   no temperature) or 'api' (ANTHROPIC_API_KEY, deterministic)</span>
+  paska_runner.py             <span class="c">runs the smell detector JAR</span>
+  parsing_trees.py            <span class="c">stanza constituency trees for Paska</span>
+  scoring/
+    field_accuracy.py         <span class="tag t-calc">CALC</span> <span class="c">TRACK 1 — per-slot missing-detection P/R/F1,
+                                   plus the overall complete/incomplete verdict F1</span>
+    conversion_quality.py     <span class="tag t-calc">CALC</span> <span class="c">TRACK 2 — similarity (cosine, seq_ratio, jaccard)
+                                   for LLM~human and human~human, + Paska summary</span>
+    embeddings.py             <span class="tag t-calc">CALC</span> <span class="c">semantic cosine via local Ollama (all-minilm).
+                                   Degrades gracefully if Ollama is off.</span>
+  verdict.py                  <span class="tag t-calc">CALC</span> <span class="c">STAGE 3 — asks an LLM to interpret results.json</span>
+  report.py                   <span class="c">collects every run → report.html</span>
+
+scripts/
+  make_atomic_gold.py         <span class="tag t-calc">CALC</span> <span class="c">builds the 30 from a full export</span>
+  run_conversion.py           <span class="c">Stage 1</span>
+  run_scoring.py              <span class="c">Stage 2 — offline, no LLM calls</span>
+  run_verdict.py              <span class="c">Stage 3 — --run or --batch, --model</span>
+  build_report.py · verify_setup.py
+
+bin/                          <span class="c">thin wrappers: convert_*.sh · score_*.sh · verdict.sh · report.sh
+                                   all take the run folder as arg 1, extra args pass through</span>
+paska/smell_detector.jar      <span class="c">the structural smell detector (Java)</span>
+models/english-left3words…    <span class="c">Stanford POS tagger Paska needs</span>
+templates/report.html         <span class="c">the report template</span>
+
+outputs/                      <span class="tag t-out">OUT</span>
+  main30opus/                 <span class="c">← current run: Opus 5 on the 30</span>
+    {zsl,fsl,cot}/
+      llm_rimay/*.txt         <span class="c">the model's conversions, one file per requirement</span>
+      conversions/            <span class="c">full call records</span>
+      scoring/results.json    <span class="tag t-out">OUT</span> <span class="c">all metrics + the per-run verdict</span>
+      run_meta.json           <span class="c">model, backend, gold csv, timestamps</span>
+    verdict.md                <span class="c">cross-strategy comparison</span>
+  main30gold/                 <span class="c">same 30, Haiku — the earlier baseline</span>
+  main30/ · run1/             <span class="c">older runs (main30 has no gold)</span>
+  report.html                 <span class="tag t-out">OUT</span> <span class="c">★ open this</span>
+  _paska/ · _embeddings/      <span class="c">caches — safe to delete, will rebuild</span>
+  _logs/                      <span class="c">detached run logs</span>
+
+STRUCTURE.html                <span class="c">this file</span>
+BACKLOG.md                    <span class="c">shared backlog (duplicate of the annotation-tool copy)</span>
+</pre>
+</div>
+
+<h2>Which file computes which number</h2>
+<div class="card">
+<table>
+  <thead><tr><th>Number in the report</th><th>Computed in</th></tr></thead>
+  <tbody>
+    <tr><td>Slot F1 (missing-detection, per slot + micro/macro)</td><td class="k">scoring/field_accuracy.py</td></tr>
+    <tr><td>Verdict F1 / precision / recall (complete vs incomplete)</td><td class="k">scoring/field_accuracy.py</td></tr>
+    <tr><td>Implied→filled, Missing→flagged</td><td class="k">scoring/field_accuracy.py</td></tr>
+    <tr><td>Similarity — cosine (semantic), seq_ratio, jaccard</td><td class="k">scoring/conversion_quality.py</td></tr>
+    <tr><td>Human~human ceiling</td><td class="k">scoring/conversion_quality.py</td></tr>
+    <tr><td>Paska pass rate (all, and LLM-said-complete only)</td><td class="k">scoring/conversion_quality.py</td></tr>
+    <tr><td>The written verdict paragraphs</td><td class="k">verdict.py</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="note">
+  <strong>Re-scoring wipes verdicts.</strong> <code>run_scoring.py</code> rewrites <code>results.json</code>,
+  and the per-run verdict lives inside it. After any re-score, re-run
+  <code>scripts/run_verdict.py --batch &lt;run&gt;</code>. The batch <code>verdict.md</code> is a separate file and survives.
+</div>
+
+</div>
+</body>
+</html>

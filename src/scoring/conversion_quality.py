@@ -31,6 +31,7 @@ from itertools import combinations
 from typing import Dict, List, Optional, Sequence
 
 from src import config
+from src.scoring import embeddings
 
 _PLACEHOLDER_RE = re.compile(r"<MISSING_[A-Z_]+>|<NON_ATOMIC>")
 _WS_RE = re.compile(r"\s+")
@@ -64,6 +65,30 @@ def token_jaccard(a: str, b: str) -> float:
     return len(ta & tb) / len(ta | tb)
 
 
+def cosine_similarity(a: str, b: str) -> Optional[float]:
+    """Semantic similarity: cosine between sentence embeddings (0..1-ish).
+
+    The lexical measures above cannot tell that two differently-worded
+    conversions mean the same thing, and Rimay's boilerplate gives them a high
+    floor — two unrelated requirements score ~0.35 on ``seq_ratio`` from shared
+    scaffolding alone. This sees meaning instead.
+
+    Returns ``None`` when the embedding service is unavailable, so the metric
+    drops out of the report rather than breaking the run. Empty/placeholder-only
+    text follows the same convention as the lexical metrics: both empty is a
+    perfect match, one empty is no match.
+    """
+    na, nb = normalize_text(a), normalize_text(b)
+    if not na and not nb:
+        return 1.0
+    if not na or not nb:
+        return 0.0
+    va, vb = embeddings.embed(na), embeddings.embed(nb)
+    if va is None or vb is None:
+        return None
+    return embeddings.cosine(va, vb)
+
+
 def conversion_similarity(a: str, b: str) -> float:
     """The single swappable primary similarity (v0 = SequenceMatcher ratio).
 
@@ -73,9 +98,18 @@ def conversion_similarity(a: str, b: str) -> float:
     return seq_ratio(a, b)
 
 
-def similarity_pair(a: str, b: str) -> Dict[str, float]:
-    """Both v0 measures for one pair, for side-by-side reporting."""
-    return {"seq_ratio": seq_ratio(a, b), "jaccard": token_jaccard(a, b)}
+def similarity_pair(a: str, b: str) -> Dict[str, Optional[float]]:
+    """Every measure for one pair, for side-by-side reporting.
+
+    Both similarity views are built from this one function, so adding a measure
+    here surfaces it in the LLM-vs-annotator and human-human distributions at
+    the same time and on the same texts.
+    """
+    return {
+        "seq_ratio": seq_ratio(a, b),
+        "jaccard": token_jaccard(a, b),
+        "cosine": cosine_similarity(a, b),
+    }
 
 
 def _distribution(values: Sequence[float]) -> Dict[str, float]:
@@ -100,7 +134,7 @@ class QualityItem:
     """One requirement's Track-2 inputs."""
 
     __slots__ = ("req_id", "llm_rimay", "human_rimays",
-                 "paska_passed", "paska_smells")
+                 "paska_passed", "paska_smells", "llm_incomplete")
 
     def __init__(
         self,
@@ -109,12 +143,16 @@ class QualityItem:
         human_rimays: Sequence[str],
         paska_passed: Optional[bool],
         paska_smells: Sequence[dict],
+        llm_incomplete: Optional[bool] = None,
     ) -> None:
         self.req_id = req_id
         self.llm_rimay = llm_rimay
         self.human_rimays = list(human_rimays)
         self.paska_passed = paska_passed
         self.paska_smells = list(paska_smells)
+        # The LLM's own verdict, needed to read the Paska result correctly —
+        # see paska_summary.
+        self.llm_incomplete = llm_incomplete
 
 
 def similarity_to_humans(llm_rimay: str, human_rimays: Sequence[str]) -> Dict[str, float]:
@@ -126,16 +164,20 @@ def similarity_to_humans(llm_rimay: str, human_rimays: Sequence[str]) -> Dict[st
     rimays = _non_blank(human_rimays)
     if not rimays:
         return {"n_humans": 0, "seq_ratio_mean": 0.0, "seq_ratio_max": 0.0,
-                "jaccard_mean": 0.0, "jaccard_max": 0.0}
+                "jaccard_mean": 0.0, "jaccard_max": 0.0,
+                "cosine_mean": None, "cosine_max": None}
     pairs = [similarity_pair(llm_rimay, h) for h in rimays]
     seq = [p["seq_ratio"] for p in pairs]
     jac = [p["jaccard"] for p in pairs]
+    cos = [p["cosine"] for p in pairs if p["cosine"] is not None]
     return {
         "n_humans": len(rimays),
         "seq_ratio_mean": statistics.fmean(seq),
         "seq_ratio_max": max(seq),
         "jaccard_mean": statistics.fmean(jac),
         "jaccard_max": max(jac),
+        "cosine_mean": statistics.fmean(cos) if cos else None,
+        "cosine_max": max(cos) if cos else None,
     }
 
 
@@ -143,6 +185,7 @@ def llm_vs_human_similarity(items: Sequence[QualityItem]) -> Dict[str, object]:
     """Distribution over every (LLM, annotator) pair; skips blank conversions."""
     seq_vals: List[float] = []
     jac_vals: List[float] = []
+    cos_vals: List[float] = []
     evaluated: List[str] = []
     skipped: List[str] = []
     for it in items:
@@ -155,9 +198,12 @@ def llm_vs_human_similarity(items: Sequence[QualityItem]) -> Dict[str, object]:
             pair = similarity_pair(it.llm_rimay, human)
             seq_vals.append(pair["seq_ratio"])
             jac_vals.append(pair["jaccard"])
+            if pair["cosine"] is not None:
+                cos_vals.append(pair["cosine"])
     return {
         "seq_ratio": _distribution(seq_vals),
         "jaccard": _distribution(jac_vals),
+        "cosine": _distribution(cos_vals) if cos_vals else None,
         "n_pairs": len(seq_vals),
         "n_evaluated": len(evaluated),
         "n_skipped_no_humans": len(skipped),
@@ -169,20 +215,50 @@ def human_human_similarity(items: Sequence[QualityItem]) -> Dict[str, object]:
     """Pairwise human-human similarity distribution (the ceiling)."""
     seq_vals: List[float] = []
     jac_vals: List[float] = []
+    cos_vals: List[float] = []
     for it in items:
         for a, b in combinations(_non_blank(it.human_rimays), 2):
             pair = similarity_pair(a, b)
             seq_vals.append(pair["seq_ratio"])
             jac_vals.append(pair["jaccard"])
+            if pair["cosine"] is not None:
+                cos_vals.append(pair["cosine"])
     return {
         "seq_ratio": _distribution(seq_vals),
         "jaccard": _distribution(jac_vals),
+        "cosine": _distribution(cos_vals) if cos_vals else None,
         "n_pairs": len(seq_vals),
     }
 
 
+def _paska_rate(items: Sequence[QualityItem]) -> Dict[str, object]:
+    """passed / failed / rate over one subset, ignoring Paska errors."""
+    passed = sum(1 for it in items if it.paska_passed is True)
+    failed = sum(1 for it in items if it.paska_passed is False)
+    scored = passed + failed
+    return {
+        "n": len(items),
+        "n_passed": passed,
+        "n_failed": failed,
+        "n_scored": scored,
+        "pass_rate": (passed / scored) if scored else None,
+    }
+
+
 def paska_summary(items: Sequence[QualityItem]) -> Dict[str, object]:
-    """Paska pass rate + smell-type frequencies over the evaluated set."""
+    """Paska pass rate + smell-type frequencies over the evaluated set.
+
+    Split by the LLM's own verdict, because an unsplit pass rate is misleading.
+    When the LLM declares a requirement **incomplete** it emits ``<MISSING_*>``
+    placeholders, and the stripped text that reaches Paska is then a fragment
+    with no system response — so Paska rejects it almost by construction. That
+    failure is the LLM correctly reporting an incomplete source, not a bad
+    conversion.
+
+    The meaningful number is therefore ``pass_rate_llm_complete``: of the
+    conversions the LLM asserted were complete requirements, how many are
+    structurally valid Rimay. That is the case Paska is actually adjudicating.
+    """
     n = len(items)
     n_passed = sum(1 for it in items if it.paska_passed is True)
     n_failed = sum(1 for it in items if it.paska_passed is False)
@@ -193,6 +269,13 @@ def paska_summary(items: Sequence[QualityItem]) -> Dict[str, object]:
         for smell in it.paska_smells:
             freq[smell.get("smell", "?")] += 1
     scored = n_passed + n_failed  # exclude Paska errors from the rate
+
+    claimed_complete = [it for it in items if it.llm_incomplete is False]
+    claimed_incomplete = [it for it in items if it.llm_incomplete is True]
+    by_verdict = {
+        "llm_complete": _paska_rate(claimed_complete),
+        "llm_incomplete": _paska_rate(claimed_incomplete),
+    }
     return {
         "n": n,
         "n_passed": n_passed,
@@ -200,6 +283,9 @@ def paska_summary(items: Sequence[QualityItem]) -> Dict[str, object]:
         "n_error": n_error,
         "n_scored": scored,
         "pass_rate": (n_passed / scored) if scored else 0.0,
+        # Headline: validity of the conversions the LLM stood behind.
+        "pass_rate_llm_complete": by_verdict["llm_complete"]["pass_rate"],
+        "by_llm_verdict": by_verdict,
         "n_with_smells": n_with_smells,
         "smell_frequency": dict(freq.most_common()),
     }
@@ -212,4 +298,8 @@ def conversion_quality_report(items: Sequence[QualityItem]) -> Dict[str, object]
             "human_human": human_human_similarity(items),
         },
         "paska": paska_summary(items),
+        "embedding": {
+            "available": embeddings.available(),
+            "model": embeddings.MODEL if embeddings.available() else None,
+        },
     }

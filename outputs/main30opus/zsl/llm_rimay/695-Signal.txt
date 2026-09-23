@@ -1,0 +1,1 @@
+When the User types a "message", the System must not display the "count of letters" in the "bottom left corner" if the "SMS mode" is disabled.

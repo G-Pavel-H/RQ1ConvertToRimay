@@ -1,0 +1,1 @@
+<MISSING_SCOPE>, <MISSING_CONDITION>, <MISSING_ACTOR> <MISSING_MODAL_VERB> indicate in the "conversation overview" whether the "last message" is from the "user" or from the "conversation partner".

@@ -1,0 +1,1 @@
+<MISSING_SCOPE>, <MISSING_CONDITION>, the Signal-Android application <MISSING_MODAL_VERB> support the custom URL scheme "signal://".

@@ -1,0 +1,1 @@
+When the User requests the System to mute a "Group" for a "specified duration", then the System shall mute the "Group" for the "specified duration".
