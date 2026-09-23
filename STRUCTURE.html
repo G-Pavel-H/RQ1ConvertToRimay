@@ -74,12 +74,17 @@
     <tr><td class="k">gold_annotations_main.csv</td><td>All 50 <code>main</code> requirements, straight from the tool's export. 151 rows.</td></tr>
     <tr><td class="k">gold_annotations_main_atomic.csv</td><td><strong>The 30.</strong> The above minus non-atomic, minus drafts. 90 rows. <em>This is what runs.</em></td></tr>
     <tr><td class="k">gold_annotations_main_atomic_excluded.txt</td><td>The 20 excluded, with which annotator gave which signal.</td></tr>
+    <tr><td class="k">refinements.json</td><td>90 hand edits to the annotators' conversions (scope, typos, wording). <em>Edit this to redo.</em></td></tr>
+    <tr><td class="k">gold_annotations_main_atomic_refined.csv</td><td><strong>The 30, refined.</strong> Same 31 columns as the original; <code>rimayText</code>, <code>slot_scope</code>, <code>gold_scope</code> overwritten.</td></tr>
+    <tr><td class="k">…_refined_review.html</td><td>Every edit as a word diff. Open this to check the changes.</td></tr>
     <tr><td class="k">gold_annotations.csv</td><td>Old pilot export. Superseded.</td></tr>
   </tbody>
 </table>
 </div>
 
 <div class="note">
+  <strong>Pipeline:</strong> tool export → <code>make_atomic_gold.py</code> (the 30) →
+  <code>apply_refinements.py</code> (refined text) → run with <code>--gold data/gold_annotations_main_atomic_refined.csv</code>.<br><br>
   <strong>How the 30 were made:</strong> export all of <code>main</code> from the tool →
   <code>scripts/make_atomic_gold.py</code> drops drafts, then drops any requirement where
   <em>any</em> annotator signalled non-atomic by checkbox, <code>&lt;NON_ATOMIC&gt;</code> tag, or notes.
@@ -115,6 +120,8 @@ src/
 
 scripts/
   make_atomic_gold.py         <span class="tag t-calc">CALC</span> <span class="c">builds the 30 from a full export</span>
+  apply_refinements.py        <span class="tag t-calc">CALC</span> <span class="c">original + refinements.json → refined CSV + review page;
+                                   recomputes gold by majority. Never touches the original.</span>
   run_conversion.py           <span class="c">Stage 1</span>
   run_scoring.py              <span class="c">Stage 2 — offline, no LLM calls</span>
   run_verdict.py              <span class="c">Stage 3 — --run or --batch, --model</span>
