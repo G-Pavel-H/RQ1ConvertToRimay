@@ -101,6 +101,7 @@ kbd{font-size:11px;border:1px solid var(--line);border-radius:3px;padding:0 4px}
   <span class="stat" id="stats"></span>
   <span class="spacer"></span>
   <span id="save">loading…</span>
+  <button id="agreeBtn" title="Inter-annotator agreement, before vs after curation">Agreement</button>
   <button id="paskaBtn" title="Check every unit with Paska. Only changed texts are re-run.">Run Paska</button>
   <button id="exportBtn" class="primary" title="Write the curated CSVs to data/curated/">Export CSV</button>
 </header>
@@ -128,7 +129,7 @@ const CTYPES = ["none","precondition","trigger","temporal"];
 const PROV = {"annotator":"annotator","annotator-refined":"refined","annotator-split":"split","claude":"CL","you":"added by you"};
 const MANDATORY = ["actor","modalVerb","action"];
 
-let state = null, paska = null, current = 0, filter = "all", query = "";
+let state = null, paska = null, agreement = null, view = "req", current = 0, filter = "all", query = "";
 let saveTimer = null, saving = false, pendingSave = false;
 
 const $ = s => document.querySelector(s);
@@ -143,7 +144,7 @@ const incomplete = u => MANDATORY.some(s => u.slots[s] === "missing");
 async function load() {
   const res = await fetch("/api/state");
   const data = await res.json();
-  state = data.state; paska = data.paska;
+  state = data.state; paska = data.paska; agreement = data.agreement;
   const fromHash = decodeURIComponent(location.hash.slice(1));
   const i = reqs().findIndex(r => r.reqId === fromHash);
   current = i >= 0 ? i : 0;
@@ -260,6 +261,7 @@ function unitCell(r, ann, i) {
 }
 
 function renderMain() {
+  if (view === "agreement") return renderAgreement();
   const r = reqs()[current];
   if (!r) { $("#main").innerHTML = ""; return; }
   history.replaceState(null, "", "#" + encodeURIComponent(r.reqId));
@@ -308,6 +310,77 @@ function renderMain() {
     <div class="grid" style="--cols:${anns.length}">${grid}</div>`;
 }
 
+// ---------- agreement ----------
+const k3 = x => x === null || x === undefined ? "n/a" : x.toFixed(3);
+function delta(a, b, digits = 3) {
+  if (a === null || a === undefined || b === null || b === undefined) return "";
+  const d = b - a;
+  if (Math.abs(d) < 1e-9) return `<span class="hint">±0</span>`;
+  return `<b style="color:var(${d > 0 ? "--ok" : "--bad"})">${d > 0 ? "+" : ""}${d.toFixed(digits)}</b>`;
+}
+function simTable(before, after) {
+  const rows = [["cosine (semantic)", "cosine"], ["seq_ratio (lexical)", "seq_ratio"], ["jaccard (lexical)", "jaccard"]];
+  const cell = (s, k) => s && s[k] ? s[k].mean : null;
+  return `<table><tr><th>Human~human similarity</th>${before ? "<th>before</th>" : ""}<th>${before ? "after" : "mean"}</th>${before ? "<th>Δ</th>" : ""}</tr>
+    ${rows.map(([label, k]) => `<tr><td>${label}</td>${before ? `<td>${k3(cell(before, k))}</td>` : ""}<td><b>${k3(cell(after, k))}</b></td>${before ? `<td>${delta(cell(before, k), cell(after, k))}</td>` : ""}</tr>`).join("")}
+    <tr><td class="hint">pairs</td>${before ? `<td class="hint">${before.nPairs}</td>` : ""}<td class="hint">${after.nPairs}</td>${before ? "<td></td>" : ""}</tr></table>`;
+}
+function renderAgreement() {
+  const main = $("#main");
+  if (!agreement) { main.innerHTML = `<div class="card">Computing…</div>`; return; }
+  const [o, c, t] = ["orig30", "cur30", "cur20"].map(k => agreement.views.find(v => v.key === k));
+  const byField = v => Object.fromEntries(v.fields.map(f => [f.field, f]));
+  const fo = byField(o), fc = byField(c);
+  const rows30 = c.fields.map(f => {
+    const a = fo[f.field], b = fc[f.field];
+    return `<tr><td>${esc(f.field)}${f.group === "extra" ? ` <span class="hint">(derived)</span>` : ""}</td>
+      <td>${k3(a.kappa)}</td><td><b>${k3(b.kappa)}</b></td><td>${delta(a.kappa, b.kappa)}</td>
+      <td>${k3(a.cohenMean)}</td><td>${k3(b.cohenMean)}</td>
+      <td>${pct(a.unanimous)}</td><td>${pct(b.unanimous)}</td><td class="hint">${esc(b.band)}</td></tr>`;
+  }).join("");
+  const pairs = c.fields.filter(f => f.group === "slot").map(f => `<tr><td>${esc(f.field)}</td>${f.cohenPairs.map(p => `<td>${k3(p.kappa)}</td>`).join("")}</tr>`).join("");
+  const pairHead = c.fields[0].cohenPairs.map(p => `<th>${esc(p.a)} ↔ ${esc(p.b)}</th>`).join("");
+  const rows20 = t.fields.map(f => `<tr><td>${esc(f.field)}</td><td>${k3(f.kappa)}</td><td>${k3(f.cohenMean)}</td><td>${pct(f.unanimous)}</td><td>${f.nSubjects}</td><td class="hint">${esc(f.band)}</td></tr>`).join("");
+  const t20n = Math.max(0, ...t.fields.map(f => f.nSubjects));
+  const excl = Object.entries(agreement.excludedUnits || {}).map(([k, n]) => `${n} ${PROV[k] || k}`).join(", ") || "none";
+
+  main.innerHTML = `
+    <div class="rhead"><h2>Agreement</h2>
+      <span class="stat">computed ${esc(new Date(agreement.computedAt).toLocaleString())} ·
+        cosine ${agreement.embedding.available ? "model " + esc(agreement.embedding.model) : "<b style='color:var(--bad)'>unavailable — start Ollama and recompute</b>"}</span>
+      <span class="spacer"></span><button id="recomputeAgreement" class="primary">Recompute</button></div>
+
+    <div class="card"><p class="label">The 30 — before vs after curation (same requirements, same annotators)</p>
+      <div style="overflow-x:auto"><table>
+        <tr><th>Field</th><th>Fleiss before</th><th>Fleiss after</th><th>Δ</th><th>Cohen before</th><th>Cohen after</th><th>Unan. before</th><th>Unan. after</th><th>Band after</th></tr>
+        ${rows30}</table></div>
+      <div style="margin-top:12px">${simTable(o.similarity, c.similarity)}</div>
+      <details style="margin-top:10px"><summary>Who disagrees with whom — Cohen's κ per pair, curated</summary>
+        <div style="overflow-x:auto"><table><tr><th>Slot</th>${pairHead}</tr>${pairs}</table></div></details>
+      <p class="hint">Fleiss' κ is agreement across all three annotators, chance-corrected; Cohen's κ is the mean over pairs.
+        <b>n/a</b> means one category was used throughout, so κ is undefined — read the unanimous % instead
+        (scope after curation is <i>missing</i> for everyone, hence n/a).</p></div>
+
+    <div class="card"><p class="label">The 20 — curated units, annotator-authored only</p>
+      ${t20n < 10 ? `<p class="flag" style="background:var(--warn-soft);border-radius:6px;padding:8px 10px;margin:0 0 10px">
+        Only <b>${t20n}</b> unit${t20n === 1 ? "" : "s"} have two or more annotators who wrote them — too few for κ to mean anything.
+        The annotators mostly did not convert these requirements, so there is little human agreement to measure. Units left out: ${esc(excl)}.</p>` : ""}
+      <div style="overflow-x:auto"><table><tr><th>Field</th><th>Fleiss</th><th>Cohen</th><th>Unanimous</th><th>n</th><th>Band</th></tr>${rows20}</table></div>
+      <div style="margin-top:12px">${simTable(null, t.similarity)}</div></div>`;
+}
+async function computeAgreement() {
+  const btn = $("#recomputeAgreement");
+  if (btn) { btn.disabled = true; btn.textContent = "Computing…"; }
+  clearTimeout(saveTimer); await save();
+  try {
+    const res = await fetch("/api/agreement", {method:"POST"});
+    const out = await res.json();
+    if (!res.ok) throw new Error(out.error || res.status);
+    agreement = out;
+  } catch (e) { modal(`<h3>Agreement failed</h3><p>${esc(e.message)}</p>`); }
+  if (view === "agreement") renderAgreement();
+}
+
 // ---------- edits ----------
 function blankUnit() {
   return {id: uid(), rimayText: "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must ",
@@ -318,11 +391,12 @@ function structural() { renderAll(); scheduleSave(); }
 
 document.addEventListener("click", e => {
   const go = e.target.closest("[data-go]");
-  if (go) { current = +go.dataset.go; renderList(); renderMain(); $("#main").scrollTop = 0; return; }
+  if (go) { view = "req"; current = +go.dataset.go; renderList(); renderMain(); $("#main").scrollTop = 0; return; }
   const nav = e.target.closest("[data-nav]");
   if (nav) { move(+nav.dataset.nav); return; }
   const f = e.target.closest("#setFilter button");
   if (f) { filter = f.dataset.f; document.querySelectorAll("#setFilter button").forEach(b => b.classList.toggle("on", b === f)); renderList(); return; }
+  if (e.target.closest("#recomputeAgreement")) { computeAgreement(); return; }
   const b = e.target.closest("[data-act]");
   if (!b) return;
   const r = reqs()[current], act = b.dataset.act;
@@ -361,6 +435,7 @@ document.addEventListener("change", e => {
 document.addEventListener("focusout", e => { if (e.target.dataset && e.target.dataset.text) { renderList(); } });
 
 function move(d) {
+  view = "req";
   const next = current + d;
   if (next < 0 || next >= reqs().length) return;
   current = next; renderList(); renderMain(); $("#main").scrollTop = 0;
@@ -376,6 +451,13 @@ function modal(html) {
   $("#closeModal").onclick = () => { $("#modalHost").innerHTML = ""; };
 }
 const pct = x => x === null || x === undefined ? "—" : Math.round(x * 100) + "%";
+
+$("#agreeBtn").onclick = () => {
+  view = "agreement";
+  document.querySelectorAll(".item.on").forEach(el => el.classList.remove("on"));
+  renderAgreement(); $("#main").scrollTop = 0;
+  if (!agreement) computeAgreement();
+};
 
 $("#exportBtn").onclick = async () => {
   clearTimeout(saveTimer); await save();

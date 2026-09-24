@@ -29,7 +29,7 @@ sys.path.insert(0, str(ROOT))
 from src import curation  # noqa: E402
 
 PAGE = ROOT / "templates" / "curation.html"
-DOWNLOADABLE = {"gold_atomic.csv", "gold_units.csv", "gold_all_units.csv", "paska_annotations.json"}
+DOWNLOADABLE = {"gold_atomic.csv", "gold_units.csv", "gold_all_units.csv", "paska_annotations.json", "agreement.json"}
 
 # One Paska run at a time: it is slow and writes a shared results file.
 _paska_lock = threading.Lock()
@@ -66,7 +66,10 @@ class Handler(BaseHTTPRequestHandler):
                 if curation.PASKA_PATH.exists():
                     full = json.loads(curation.PASKA_PATH.read_text(encoding="utf-8"))
                     paska = {k: full[k] for k in ("ranAt", "byUnit", "summary") if k in full}
-                return self._json({"state": curation.load_state(), "paska": paska})
+                agreement = None
+                if curation.AGREEMENT_PATH.exists():
+                    agreement = json.loads(curation.AGREEMENT_PATH.read_text(encoding="utf-8"))
+                return self._json({"state": curation.load_state(), "paska": paska, "agreement": agreement})
             if self.path.startswith("/download/"):
                 name = self.path.rsplit("/", 1)[-1]
                 path = curation.EXPORT_DIR / name
@@ -97,6 +100,8 @@ class Handler(BaseHTTPRequestHandler):
         try:
             if self.path == "/api/export":
                 return self._json(curation.export(curation.load_state()))
+            if self.path == "/api/agreement":
+                return self._json(curation.agreement_report(curation.load_state()))
             if self.path == "/api/paska":
                 if not _paska_lock.acquire(blocking=False):
                     return self._json({"error": "A Paska run is already in progress."}, 409)
@@ -123,7 +128,10 @@ def main(argv=None) -> int:
 
     server = ThreadingHTTPServer(("127.0.0.1", args.port), Handler)
     url = f"http://127.0.0.1:{args.port}"
-    print(f"Curation tool: {url}   (editing {curation.STATE_PATH.relative_to(ROOT)}; Ctrl+C to stop)")
+    shown = curation.STATE_PATH
+    if shown.is_relative_to(ROOT):
+        shown = shown.relative_to(ROOT)
+    print(f"Curation tool: {url}   (editing {shown}; Ctrl+C to stop)")
     if not args.no_browser:
         threading.Timer(0.6, lambda: webbrowser.open(url)).start()
     try:

@@ -1,0 +1,966 @@
+{
+  "computedAt": "2026-09-24T21:37:22+01:00",
+  "embedding": {
+    "available": true,
+    "model": "all-minilm"
+  },
+  "excludedUnits": {
+    "claude": 120
+  },
+  "views": [
+    {
+      "key": "orig30",
+      "label": "The 30 — original annotations",
+      "nRequirements": 30,
+      "nSubjects": 30,
+      "fields": [
+        {
+          "field": "scope",
+          "group": "slot",
+          "kappa": 0.03963414634146329,
+          "band": "slight",
+          "cohenMean": 0.061511115362235864,
+          "cohenPairs": [
+            {
+              "a": "Arthur",
+              "b": "Mko",
+              "n": 30,
+              "kappa": -0.05263157894736787,
+              "band": "poor",
+              "observed": 0.8666666666666667
+            },
+            {
+              "a": "Arthur",
+              "b": "Rafo",
+              "n": 30,
+              "kappa": 0.36619718309859134,
+              "band": "fair",
+              "observed": 0.9
+            },
+            {
+              "a": "Mko",
+              "b": "Rafo",
+              "n": 30,
+              "kappa": -0.12903225806451588,
+              "band": "poor",
+              "observed": 0.7666666666666667
+            }
+          ],
+          "unanimous": 0.7666666666666667,
+          "majority": 1.0,
+          "nSubjects": 30,
+          "distribution": {
+            "implied": 82,
+            "missing": 8
+          }
+        },
+        {
+          "field": "condition",
+          "group": "slot",
+          "kappa": 0.5735944409349337,
+          "band": "moderate",
+          "cohenMean": 0.5697921142294579,
+          "cohenPairs": [
+            {
+              "a": "Arthur",
+              "b": "Mko",
+              "n": 30,
+              "kappa": 0.38053097345132747,
+              "band": "fair",
+              "observed": 0.7666666666666667
+            },
+            {
+              "a": "Arthur",
+              "b": "Rafo",
+              "n": 30,
+              "kappa": 0.7674418604651163,
+              "band": "substantial",
+              "observed": 0.9
+            },
+            {
+              "a": "Mko",
+              "b": "Rafo",
+              "n": 30,
+              "kappa": 0.5614035087719299,
+              "band": "moderate",
+              "observed": 0.8333333333333334
+            }
+          ],
+          "unanimous": 0.7666666666666667,
+          "majority": 0.9666666666666667,
+          "nSubjects": 30,
+          "distribution": {
+            "missing": 67,
+            "present": 21,
+            "implied": 2
+          }
+        },
+        {
+          "field": "actor",
+          "group": "slot",
+          "kappa": 0.028194361127774386,
+          "band": "slight",
+          "cohenMean": 0.07670197850132406,
+          "cohenPairs": [
+            {
+              "a": "Arthur",
+              "b": "Mko",
+              "n": 30,
+              "kappa": -0.05000000000000035,
+              "band": "poor",
+              "observed": 0.7666666666666667
+            },
+            {
+              "a": "Arthur",
+              "b": "Rafo",
+              "n": 30,
+              "kappa": 0.0816326530612245,
+              "band": "slight",
+              "observed": 0.5
+            },
+            {
+              "a": "Mko",
+              "b": "Rafo",
+              "n": 30,
+              "kappa": 0.19847328244274803,
+              "band": "slight",
+              "observed": 0.5333333333333333
+            }
+          ],
+          "unanimous": 0.43333333333333335,
+          "majority": 0.9333333333333333,
+          "nSubjects": 30,
+          "distribution": {
+            "implied": 67,
+            "missing": 9,
+            "present": 14
+          }
+        },
+        {
+          "field": "modalVerb",
+          "group": "slot",
+          "kappa": 0.0868094701240135,
+          "band": "slight",
+          "cohenMean": 0.13104008667388922,
+          "cohenPairs": [
+            {
+              "a": "Arthur",
+              "b": "Mko",
+              "n": 30,
+              "kappa": -0.05000000000000035,
+              "band": "poor",
+              "observed": 0.7666666666666667
+            },
+            {
+              "a": "Arthur",
+              "b": "Rafo",
+              "n": 30,
+              "kappa": 0.36619718309859134,
+              "band": "fair",
+              "observed": 0.9
+            },
+            {
+              "a": "Mko",
+              "b": "Rafo",
+              "n": 30,
+              "kappa": 0.07692307692307666,
+              "band": "slight",
+              "observed": 0.7333333333333333
+            }
+          ],
+          "unanimous": 0.7,
+          "majority": 1.0,
+          "nSubjects": 30,
+          "distribution": {
+            "implied": 79,
+            "missing": 9,
+            "present": 2
+          }
+        },
+        {
+          "field": "action",
+          "group": "slot",
+          "kappa": 0.3216080402010049,
+          "band": "fair",
+          "cohenMean": 0.35450333979745735,
+          "cohenPairs": [
+            {
+              "a": "Arthur",
+              "b": "Mko",
+              "n": 30,
+              "kappa": 0.1538461538461538,
+              "band": "slight",
+              "observed": 0.6333333333333333
+            },
+            {
+              "a": "Arthur",
+              "b": "Rafo",
+              "n": 30,
+              "kappa": 0.5714285714285714,
+              "band": "moderate",
+              "observed": 0.8666666666666667
+            },
+            {
+              "a": "Mko",
+              "b": "Rafo",
+              "n": 30,
+              "kappa": 0.33823529411764686,
+              "band": "fair",
+              "observed": 0.7
+            }
+          ],
+          "unanimous": 0.6,
+          "majority": 1.0,
+          "nSubjects": 30,
+          "distribution": {
+            "present": 68,
+            "missing": 16,
+            "implied": 6
+          }
+        },
+        {
+          "field": "overallIncomplete",
+          "group": "extra",
+          "kappa": 0.31587837837837873,
+          "band": "fair",
+          "cohenMean": 0.33822869587104254,
+          "cohenPairs": [
+            {
+              "a": "Arthur",
+              "b": "Mko",
+              "n": 30,
+              "kappa": 0.17241379310344804,
+              "band": "slight",
+              "observed": 0.7333333333333333
+            },
+            {
+              "a": "Arthur",
+              "b": "Rafo",
+              "n": 30,
+              "kappa": 0.608695652173913,
+              "band": "substantial",
+              "observed": 0.9
+            },
+            {
+              "a": "Mko",
+              "b": "Rafo",
+              "n": 30,
+              "kappa": 0.2335766423357665,
+              "band": "fair",
+              "observed": 0.7666666666666667
+            }
+          ],
+          "unanimous": 0.7,
+          "majority": 1.0,
+          "nSubjects": 30,
+          "distribution": {
+            "false": 74,
+            "true": 16
+          }
+        },
+        {
+          "field": "conditionType",
+          "group": "extra",
+          "kappa": null,
+          "band": "undefined (no category variation)",
+          "cohenMean": null,
+          "cohenPairs": [
+            {
+              "a": "Arthur",
+              "b": "Mko",
+              "n": 30,
+              "kappa": null,
+              "band": "undefined (no category variation)",
+              "observed": 1.0
+            },
+            {
+              "a": "Arthur",
+              "b": "Rafo",
+              "n": 30,
+              "kappa": null,
+              "band": "undefined (no category variation)",
+              "observed": 1.0
+            },
+            {
+              "a": "Mko",
+              "b": "Rafo",
+              "n": 30,
+              "kappa": null,
+              "band": "undefined (no category variation)",
+              "observed": 1.0
+            }
+          ],
+          "unanimous": 1.0,
+          "majority": 1.0,
+          "nSubjects": 30,
+          "distribution": {
+            "none": 90
+          }
+        }
+      ],
+      "similarity": {
+        "nPairs": 88,
+        "seq_ratio": {
+          "n": 88,
+          "mean": 0.5766368834070782,
+          "median": 0.6588666835314951,
+          "min": 0.0,
+          "max": 1.0,
+          "std": 0.3109772796225359
+        },
+        "jaccard": {
+          "n": 88,
+          "mean": 0.4730511101013027,
+          "median": 0.5108695652173914,
+          "min": 0.0,
+          "max": 1.0,
+          "std": 0.2732354992922532
+        },
+        "cosine": {
+          "n": 88,
+          "mean": 0.6626918341841335,
+          "median": 0.7832768548040898,
+          "min": 0.0,
+          "max": 1.0,
+          "std": 0.35004095495010723
+        }
+      }
+    },
+    {
+      "key": "cur30",
+      "label": "The 30 — curated",
+      "nRequirements": 30,
+      "nSubjects": 30,
+      "fields": [
+        {
+          "field": "scope",
+          "group": "slot",
+          "kappa": null,
+          "band": "undefined (no category variation)",
+          "cohenMean": null,
+          "cohenPairs": [
+            {
+              "a": "Arthur",
+              "b": "Mko",
+              "n": 30,
+              "kappa": null,
+              "band": "undefined (no category variation)",
+              "observed": 1.0
+            },
+            {
+              "a": "Arthur",
+              "b": "Rafo",
+              "n": 30,
+              "kappa": null,
+              "band": "undefined (no category variation)",
+              "observed": 1.0
+            },
+            {
+              "a": "Mko",
+              "b": "Rafo",
+              "n": 30,
+              "kappa": null,
+              "band": "undefined (no category variation)",
+              "observed": 1.0
+            }
+          ],
+          "unanimous": 1.0,
+          "majority": 1.0,
+          "nSubjects": 30,
+          "distribution": {
+            "missing": 90
+          }
+        },
+        {
+          "field": "condition",
+          "group": "slot",
+          "kappa": 0.5735944409349337,
+          "band": "moderate",
+          "cohenMean": 0.5697921142294579,
+          "cohenPairs": [
+            {
+              "a": "Arthur",
+              "b": "Mko",
+              "n": 30,
+              "kappa": 0.38053097345132747,
+              "band": "fair",
+              "observed": 0.7666666666666667
+            },
+            {
+              "a": "Arthur",
+              "b": "Rafo",
+              "n": 30,
+              "kappa": 0.7674418604651163,
+              "band": "substantial",
+              "observed": 0.9
+            },
+            {
+              "a": "Mko",
+              "b": "Rafo",
+              "n": 30,
+              "kappa": 0.5614035087719299,
+              "band": "moderate",
+              "observed": 0.8333333333333334
+            }
+          ],
+          "unanimous": 0.7666666666666667,
+          "majority": 0.9666666666666667,
+          "nSubjects": 30,
+          "distribution": {
+            "missing": 67,
+            "present": 21,
+            "implied": 2
+          }
+        },
+        {
+          "field": "actor",
+          "group": "slot",
+          "kappa": 0.028194361127774386,
+          "band": "slight",
+          "cohenMean": 0.07670197850132406,
+          "cohenPairs": [
+            {
+              "a": "Arthur",
+              "b": "Mko",
+              "n": 30,
+              "kappa": -0.05000000000000035,
+              "band": "poor",
+              "observed": 0.7666666666666667
+            },
+            {
+              "a": "Arthur",
+              "b": "Rafo",
+              "n": 30,
+              "kappa": 0.0816326530612245,
+              "band": "slight",
+              "observed": 0.5
+            },
+            {
+              "a": "Mko",
+              "b": "Rafo",
+              "n": 30,
+              "kappa": 0.19847328244274803,
+              "band": "slight",
+              "observed": 0.5333333333333333
+            }
+          ],
+          "unanimous": 0.43333333333333335,
+          "majority": 0.9333333333333333,
+          "nSubjects": 30,
+          "distribution": {
+            "implied": 67,
+            "missing": 9,
+            "present": 14
+          }
+        },
+        {
+          "field": "modalVerb",
+          "group": "slot",
+          "kappa": 0.0868094701240135,
+          "band": "slight",
+          "cohenMean": 0.13104008667388922,
+          "cohenPairs": [
+            {
+              "a": "Arthur",
+              "b": "Mko",
+              "n": 30,
+              "kappa": -0.05000000000000035,
+              "band": "poor",
+              "observed": 0.7666666666666667
+            },
+            {
+              "a": "Arthur",
+              "b": "Rafo",
+              "n": 30,
+              "kappa": 0.36619718309859134,
+              "band": "fair",
+              "observed": 0.9
+            },
+            {
+              "a": "Mko",
+              "b": "Rafo",
+              "n": 30,
+              "kappa": 0.07692307692307666,
+              "band": "slight",
+              "observed": 0.7333333333333333
+            }
+          ],
+          "unanimous": 0.7,
+          "majority": 1.0,
+          "nSubjects": 30,
+          "distribution": {
+            "implied": 79,
+            "missing": 9,
+            "present": 2
+          }
+        },
+        {
+          "field": "action",
+          "group": "slot",
+          "kappa": 0.3216080402010049,
+          "band": "fair",
+          "cohenMean": 0.35450333979745735,
+          "cohenPairs": [
+            {
+              "a": "Arthur",
+              "b": "Mko",
+              "n": 30,
+              "kappa": 0.1538461538461538,
+              "band": "slight",
+              "observed": 0.6333333333333333
+            },
+            {
+              "a": "Arthur",
+              "b": "Rafo",
+              "n": 30,
+              "kappa": 0.5714285714285714,
+              "band": "moderate",
+              "observed": 0.8666666666666667
+            },
+            {
+              "a": "Mko",
+              "b": "Rafo",
+              "n": 30,
+              "kappa": 0.33823529411764686,
+              "band": "fair",
+              "observed": 0.7
+            }
+          ],
+          "unanimous": 0.6,
+          "majority": 1.0,
+          "nSubjects": 30,
+          "distribution": {
+            "present": 68,
+            "missing": 16,
+            "implied": 6
+          }
+        },
+        {
+          "field": "overallIncomplete",
+          "group": "extra",
+          "kappa": 0.31587837837837873,
+          "band": "fair",
+          "cohenMean": 0.33822869587104254,
+          "cohenPairs": [
+            {
+              "a": "Arthur",
+              "b": "Mko",
+              "n": 30,
+              "kappa": 0.17241379310344804,
+              "band": "slight",
+              "observed": 0.7333333333333333
+            },
+            {
+              "a": "Arthur",
+              "b": "Rafo",
+              "n": 30,
+              "kappa": 0.608695652173913,
+              "band": "substantial",
+              "observed": 0.9
+            },
+            {
+              "a": "Mko",
+              "b": "Rafo",
+              "n": 30,
+              "kappa": 0.2335766423357665,
+              "band": "fair",
+              "observed": 0.7666666666666667
+            }
+          ],
+          "unanimous": 0.7,
+          "majority": 1.0,
+          "nSubjects": 30,
+          "distribution": {
+            "false": 74,
+            "true": 16
+          }
+        },
+        {
+          "field": "conditionType",
+          "group": "extra",
+          "kappa": null,
+          "band": "undefined (no category variation)",
+          "cohenMean": null,
+          "cohenPairs": [
+            {
+              "a": "Arthur",
+              "b": "Mko",
+              "n": 30,
+              "kappa": null,
+              "band": "undefined (no category variation)",
+              "observed": 1.0
+            },
+            {
+              "a": "Arthur",
+              "b": "Rafo",
+              "n": 30,
+              "kappa": null,
+              "band": "undefined (no category variation)",
+              "observed": 1.0
+            },
+            {
+              "a": "Mko",
+              "b": "Rafo",
+              "n": 30,
+              "kappa": null,
+              "band": "undefined (no category variation)",
+              "observed": 1.0
+            }
+          ],
+          "unanimous": 1.0,
+          "majority": 1.0,
+          "nSubjects": 30,
+          "distribution": {
+            "none": 90
+          }
+        }
+      ],
+      "similarity": {
+        "nPairs": 90,
+        "seq_ratio": {
+          "n": 90,
+          "mean": 0.6288617696118599,
+          "median": 0.7182089552238806,
+          "min": 0.08695652173913043,
+          "max": 1.0,
+          "std": 0.26049263703988035
+        },
+        "jaccard": {
+          "n": 90,
+          "mean": 0.48029050988529604,
+          "median": 0.5,
+          "min": 0.0,
+          "max": 1.0,
+          "std": 0.2927038480067657
+        },
+        "cosine": {
+          "n": 90,
+          "mean": 0.7082044100018684,
+          "median": 0.8176907423333826,
+          "min": -0.04379037868589146,
+          "max": 1.0,
+          "std": 0.3137246338201208
+        }
+      }
+    },
+    {
+      "key": "cur20",
+      "label": "The 20 — curated units (annotator-authored only)",
+      "nRequirements": 12,
+      "nSubjects": 16,
+      "fields": [
+        {
+          "field": "scope",
+          "group": "slot",
+          "kappa": null,
+          "band": "undefined (no category variation)",
+          "cohenMean": null,
+          "cohenPairs": [
+            {
+              "a": "Arthur",
+              "b": "Mko",
+              "n": 4,
+              "kappa": null,
+              "band": "undefined (no category variation)",
+              "observed": 1.0
+            },
+            {
+              "a": "Arthur",
+              "b": "Rafo",
+              "n": 0,
+              "kappa": null,
+              "band": "undefined (no category variation)",
+              "observed": null
+            },
+            {
+              "a": "Mko",
+              "b": "Rafo",
+              "n": 1,
+              "kappa": null,
+              "band": "undefined (no category variation)",
+              "observed": 1.0
+            }
+          ],
+          "unanimous": 1.0,
+          "majority": 1.0,
+          "nSubjects": 5,
+          "distribution": {
+            "missing": 21
+          }
+        },
+        {
+          "field": "condition",
+          "group": "slot",
+          "kappa": 1.0,
+          "band": "almost perfect",
+          "cohenMean": 1.0,
+          "cohenPairs": [
+            {
+              "a": "Arthur",
+              "b": "Mko",
+              "n": 4,
+              "kappa": 1.0,
+              "band": "almost perfect",
+              "observed": 1.0
+            },
+            {
+              "a": "Arthur",
+              "b": "Rafo",
+              "n": 0,
+              "kappa": null,
+              "band": "undefined (no category variation)",
+              "observed": null
+            },
+            {
+              "a": "Mko",
+              "b": "Rafo",
+              "n": 1,
+              "kappa": null,
+              "band": "undefined (no category variation)",
+              "observed": 1.0
+            }
+          ],
+          "unanimous": 1.0,
+          "majority": 1.0,
+          "nSubjects": 5,
+          "distribution": {
+            "missing": 6,
+            "present": 13,
+            "implied": 2
+          }
+        },
+        {
+          "field": "actor",
+          "group": "slot",
+          "kappa": -0.11111111111111124,
+          "band": "poor",
+          "cohenMean": 0.0,
+          "cohenPairs": [
+            {
+              "a": "Arthur",
+              "b": "Mko",
+              "n": 4,
+              "kappa": null,
+              "band": "undefined (no category variation)",
+              "observed": 1.0
+            },
+            {
+              "a": "Arthur",
+              "b": "Rafo",
+              "n": 0,
+              "kappa": null,
+              "band": "undefined (no category variation)",
+              "observed": null
+            },
+            {
+              "a": "Mko",
+              "b": "Rafo",
+              "n": 1,
+              "kappa": 0.0,
+              "band": "slight",
+              "observed": 0.0
+            }
+          ],
+          "unanimous": 0.8,
+          "majority": 1.0,
+          "nSubjects": 5,
+          "distribution": {
+            "implied": 20,
+            "missing": 1
+          }
+        },
+        {
+          "field": "modalVerb",
+          "group": "slot",
+          "kappa": -0.11111111111111124,
+          "band": "poor",
+          "cohenMean": 0.0,
+          "cohenPairs": [
+            {
+              "a": "Arthur",
+              "b": "Mko",
+              "n": 4,
+              "kappa": null,
+              "band": "undefined (no category variation)",
+              "observed": 1.0
+            },
+            {
+              "a": "Arthur",
+              "b": "Rafo",
+              "n": 0,
+              "kappa": null,
+              "band": "undefined (no category variation)",
+              "observed": null
+            },
+            {
+              "a": "Mko",
+              "b": "Rafo",
+              "n": 1,
+              "kappa": 0.0,
+              "band": "slight",
+              "observed": 0.0
+            }
+          ],
+          "unanimous": 0.8,
+          "majority": 1.0,
+          "nSubjects": 5,
+          "distribution": {
+            "implied": 18,
+            "missing": 1,
+            "present": 2
+          }
+        },
+        {
+          "field": "action",
+          "group": "slot",
+          "kappa": -0.17647058823529468,
+          "band": "poor",
+          "cohenMean": 0.0,
+          "cohenPairs": [
+            {
+              "a": "Arthur",
+              "b": "Mko",
+              "n": 4,
+              "kappa": 0.0,
+              "band": "slight",
+              "observed": 0.75
+            },
+            {
+              "a": "Arthur",
+              "b": "Rafo",
+              "n": 0,
+              "kappa": null,
+              "band": "undefined (no category variation)",
+              "observed": null
+            },
+            {
+              "a": "Mko",
+              "b": "Rafo",
+              "n": 1,
+              "kappa": 0.0,
+              "band": "slight",
+              "observed": 0.0
+            }
+          ],
+          "unanimous": 0.6,
+          "majority": 1.0,
+          "nSubjects": 5,
+          "distribution": {
+            "present": 19,
+            "missing": 1,
+            "implied": 1
+          }
+        },
+        {
+          "field": "overallIncomplete",
+          "group": "extra",
+          "kappa": -0.11111111111111124,
+          "band": "poor",
+          "cohenMean": 0.0,
+          "cohenPairs": [
+            {
+              "a": "Arthur",
+              "b": "Mko",
+              "n": 4,
+              "kappa": null,
+              "band": "undefined (no category variation)",
+              "observed": 1.0
+            },
+            {
+              "a": "Arthur",
+              "b": "Rafo",
+              "n": 0,
+              "kappa": null,
+              "band": "undefined (no category variation)",
+              "observed": null
+            },
+            {
+              "a": "Mko",
+              "b": "Rafo",
+              "n": 1,
+              "kappa": 0.0,
+              "band": "slight",
+              "observed": 0.0
+            }
+          ],
+          "unanimous": 0.8,
+          "majority": 1.0,
+          "nSubjects": 5,
+          "distribution": {
+            "false": 20,
+            "true": 1
+          }
+        },
+        {
+          "field": "conditionType",
+          "group": "extra",
+          "kappa": 0.4285714285714285,
+          "band": "moderate",
+          "cohenMean": 0.3333333333333333,
+          "cohenPairs": [
+            {
+              "a": "Arthur",
+              "b": "Mko",
+              "n": 4,
+              "kappa": 0.3333333333333333,
+              "band": "fair",
+              "observed": 0.5
+            },
+            {
+              "a": "Arthur",
+              "b": "Rafo",
+              "n": 0,
+              "kappa": null,
+              "band": "undefined (no category variation)",
+              "observed": null
+            },
+            {
+              "a": "Mko",
+              "b": "Rafo",
+              "n": 1,
+              "kappa": null,
+              "band": "undefined (no category variation)",
+              "observed": 1.0
+            }
+          ],
+          "unanimous": 0.6,
+          "majority": 1.0,
+          "nSubjects": 5,
+          "distribution": {
+            "none": 6,
+            "trigger": 8,
+            "precondition": 6,
+            "temporal": 1
+          }
+        }
+      ],
+      "similarity": {
+        "nPairs": 5,
+        "seq_ratio": {
+          "n": 5,
+          "mean": 0.5735197344436476,
+          "median": 0.6521739130434783,
+          "min": 0.15625,
+          "max": 0.7777777777777778,
+          "std": 0.2154530677313725
+        },
+        "jaccard": {
+          "n": 5,
+          "mean": 0.3941176470588236,
+          "median": 0.47058823529411764,
+          "min": 0.0,
+          "max": 0.65,
+          "std": 0.2360925994054891
+        },
+        "cosine": {
+          "n": 5,
+          "mean": 0.6786777874418704,
+          "median": 0.7686246099760734,
+          "min": 0.11958061871730863,
+          "max": 0.9542832819063368,
+          "std": 0.2997382348352235
+        }
+      }
+    }
+  ]
+}

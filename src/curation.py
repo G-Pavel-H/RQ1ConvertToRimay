@@ -284,6 +284,116 @@ def run_paska_on_units(state: dict, results_path: Path = PASKA_PATH, log=print) 
     return out
 
 
+# --- inter-annotator agreement ---------------------------------------------------
+
+AGREEMENT_PATH = EXPORT_DIR / "agreement.json"
+
+# Units whose text and slots are a human annotator's judgment. "claude" units are
+# identical across the three annotators and "you" units are curator additions —
+# counting either would report agreement that no annotators actually reached.
+HUMAN_PROVENANCE = {"annotator", "annotator-refined", "annotator-split"}
+
+EXTRA_FIELDS = [("overallIncomplete", ["true", "false"]), ("conditionType", CONDITION_TYPES)]
+
+
+def _view(label: str, key: str, ratings: List[dict]) -> dict:
+    """Agreement + similarity for one set of ratings.
+
+    ``ratings``: one dict per (subject, annotator) — subject, annotator, text,
+    slots, conditionType.
+    """
+    from src.agreement import analyze
+    from src.scoring.conversion_quality import _distribution, similarity_pair
+
+    def subjects(value_of) -> Dict[str, Dict[str, str]]:
+        out: Dict[str, Dict[str, str]] = {}
+        for r in ratings:
+            out.setdefault(r["subject"], {})[r["annotator"]] = value_of(r)
+        return out
+
+    fields = []
+    for s in SLOTS:
+        fields.append({"field": s, "group": "slot", **analyze(subjects(lambda r, s=s: r["slots"][s]), SLOT_VALUES)})
+    fields.append({"field": "overallIncomplete", "group": "extra",
+                   **analyze(subjects(lambda r: "true" if overall_incomplete(r["slots"]) else "false"), ["true", "false"])})
+    fields.append({"field": "conditionType", "group": "extra",
+                   **analyze(subjects(lambda r: (r.get("conditionType") or "none").lower()), CONDITION_TYPES)})
+
+    # Human~human conversion similarity: every pair of annotators on a subject.
+    by_subject: Dict[str, List[str]] = {}
+    for r in ratings:
+        if (r["text"] or "").strip():
+            by_subject.setdefault(r["subject"], []).append(r["text"])
+    seq, jac, cos = [], [], []
+    for texts in by_subject.values():
+        for i in range(len(texts)):
+            for j in range(i + 1, len(texts)):
+                p = similarity_pair(texts[i], texts[j])
+                seq.append(p["seq_ratio"])
+                jac.append(p["jaccard"])
+                if p["cosine"] is not None:
+                    cos.append(p["cosine"])
+
+    return {
+        "key": key,
+        "label": label,
+        "nRequirements": len({r["subject"].split("#")[0] for r in ratings}),
+        "nSubjects": len({r["subject"] for r in ratings}),
+        "fields": fields,
+        "similarity": {
+            "nPairs": len(seq),
+            "seq_ratio": _distribution(seq),
+            "jaccard": _distribution(jac),
+            "cosine": _distribution(cos) if cos else None,
+        },
+    }
+
+
+def agreement_report(state: dict, path: Path = AGREEMENT_PATH) -> dict:
+    """Agreement before and after curation.
+
+    * the 30 originally-atomic requirements, **original** annotations;
+    * the same 30, **curated** — so the two are directly comparable;
+    * the 20 flagged non-atomic, curated, per unit (a subject is one aligned
+      unit), counting only annotator-authored units.
+    """
+    from src.scoring import embeddings
+
+    original, curated_30, curated_20 = [], [], []
+    excluded = Counter()
+    for req in state["requirements"]:
+        for ann, a in req["annotations"].items():
+            if req["set"] == "atomic":
+                original.append({
+                    "subject": req["reqId"], "annotator": ann, "text": a["original"],
+                    "slots": a["originalSlots"], "conditionType": a["base"].get("conditionType", "none"),
+                })
+            multi = len(a["units"]) > 1 or not is_atomic(req)
+            for i, u in enumerate(a["units"]):
+                if u.get("provenance") not in HUMAN_PROVENANCE:
+                    excluded[u.get("provenance", "?")] += 1
+                    continue
+                row = {"subject": f"{req['reqId']}#{i + 1}" if multi else req["reqId"], "annotator": ann,
+                       "text": u["rimayText"], "slots": u["slots"], "conditionType": u.get("conditionType", "none")}
+                (curated_30 if req["set"] == "atomic" else curated_20).append(row)
+
+    views = [
+        _view("The 30 — original annotations", "orig30", original),
+        _view("The 30 — curated", "cur30", curated_30),
+        _view("The 20 — curated units (annotator-authored only)", "cur20", curated_20),
+    ]
+    embeddings.save_cache()
+    out = {
+        "computedAt": now(),
+        "embedding": {"available": embeddings.available(), "model": embeddings.MODEL if embeddings.available() else None},
+        "excludedUnits": dict(excluded),
+        "views": views,
+    }
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(out, indent=2, ensure_ascii=False), encoding="utf-8")
+    return out
+
+
 def state_req(state: dict, req_id: str) -> dict:
     for r in state["requirements"]:
         if r["reqId"] == req_id:

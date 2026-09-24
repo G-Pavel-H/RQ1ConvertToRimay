@@ -1,6 +1,6 @@
 {
   "about": "Local curation of the human annotations. The database is never modified. Edit in scripts/curate.py; export to data/curated/.",
-  "createdAt": "2026-09-24T21:14:19+01:00",
+  "createdAt": "2026-09-24T21:19:17+01:00",
   "annotators": [
     "Arthur",
     "Mko",
@@ -97,7 +97,7 @@
           },
           "units": [
             {
-              "id": "7e3700ada5",
+              "id": "662116c866",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow the user to cancel \"running media downloads\".",
               "slots": {
                 "scope": "missing",
@@ -160,7 +160,7 @@
           },
           "units": [
             {
-              "id": "5134333f6c",
+              "id": "51f5200698",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user cancel a running \"media download\".",
               "slots": {
                 "scope": "missing",
@@ -225,7 +225,7 @@
           },
           "units": [
             {
-              "id": "3d10e2b6fd",
+              "id": "28d153e219",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide an option to cancel running media downloads.",
               "slots": {
                 "scope": "missing",
@@ -302,7 +302,7 @@
           },
           "units": [
             {
-              "id": "8e808ed4b8",
+              "id": "7008347c7a",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, <MISSING_ACTOR> <MISSING_MODAL_VERB> <MISSING_ACTION>.",
               "slots": {
                 "scope": "missing",
@@ -365,7 +365,7 @@
           },
           "units": [
             {
-              "id": "cb690ce288",
+              "id": "adfeb6a1a2",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow direct sharing to contacts through the ChooserTargetService.",
               "slots": {
                 "scope": "missing",
@@ -430,7 +430,7 @@
           },
           "units": [
             {
-              "id": "316767103a",
+              "id": "fb18e6d71a",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, <MISSING_ACTOR> <MISSING_MODAL_VERB> <MISSING_ACTION>.",
               "slots": {
                 "scope": "missing",
@@ -506,7 +506,7 @@
           },
           "units": [
             {
-              "id": "559ef7a689",
+              "id": "9617e6c8c1",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow the user to add a \"signature\" to \"SMS messages\".",
               "slots": {
                 "scope": "missing",
@@ -570,7 +570,7 @@
           },
           "units": [
             {
-              "id": "f0fd3cf3e9",
+              "id": "9f5fe0ee2d",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user add a short signature to messages.",
               "slots": {
                 "scope": "missing",
@@ -635,7 +635,7 @@
           },
           "units": [
             {
-              "id": "6e69534d78",
+              "id": "befa9aeacd",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure must provide an option to add a short signature to messages.",
               "slots": {
                 "scope": "missing",
@@ -711,7 +711,7 @@
           },
           "units": [
             {
-              "id": "96d70c4880",
+              "id": "45e779fb9d",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must make the \"Screen security\" feature depend on the \"passphrase setting\".",
               "slots": {
                 "scope": "missing",
@@ -775,7 +775,7 @@
           },
           "units": [
             {
-              "id": "d46b58c8d5",
+              "id": "6ee04c5d2c",
               "rimayText": "<MISSING_SCOPE>, if the passphrase setting is enabled, then the App must enable screen security.",
               "slots": {
                 "scope": "missing",
@@ -839,7 +839,7 @@
           },
           "units": [
             {
-              "id": "1e692b7461",
+              "id": "15d406737b",
               "rimayText": "<MISSING_SCOPE>, if the user does not use a passphrase, then Signal must disable screen security by default.",
               "slots": {
                 "scope": "missing",
@@ -916,7 +916,7 @@
           },
           "units": [
             {
-              "id": "f82d9c8f32",
+              "id": "23446734dd",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must visually indicate whether an image has a \"description\".",
               "slots": {
                 "scope": "missing",
@@ -980,7 +980,7 @@
           },
           "units": [
             {
-              "id": "e96aa87164",
+              "id": "4d37668122",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must show whether a post has an image description.",
               "slots": {
                 "scope": "missing",
@@ -1045,7 +1045,7 @@
           },
           "units": [
             {
-              "id": "624fd8f9a7",
+              "id": "a6911d75d5",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must show whether an image has a description.",
               "slots": {
                 "scope": "missing",
@@ -1122,7 +1122,7 @@
           },
           "units": [
             {
-              "id": "e67d3057ee",
+              "id": "42c1e1b228",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide \"better identity key synchronization\".",
               "slots": {
                 "scope": "missing",
@@ -1185,7 +1185,7 @@
           },
           "units": [
             {
-              "id": "94314e232d",
+              "id": "90b8555470",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, <MISSING_ACTOR> <MISSING_MODAL_VERB> <MISSING_ACTION>.",
               "slots": {
                 "scope": "missing",
@@ -1249,7 +1249,7 @@
           },
           "units": [
             {
-              "id": "3909d66855",
+              "id": "0c5f944257",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, <MISSING_ACTOR> <MISSING_MODAL_VERB> <MISSING_ACTION>.",
               "slots": {
                 "scope": "missing",
@@ -1325,7 +1325,7 @@
           },
           "units": [
             {
-              "id": "ea009c87eb",
+              "id": "0abcdcceb4",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow the user to copy \"partial text\" from a \"message\".",
               "slots": {
                 "scope": "missing",
@@ -1388,7 +1388,7 @@
           },
           "units": [
             {
-              "id": "25b18bf424",
+              "id": "5ea42d63f6",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user copy partial text from a message.",
               "slots": {
                 "scope": "missing",
@@ -1452,7 +1452,7 @@
           },
           "units": [
             {
-              "id": "e084e6f97d",
+              "id": "01071063a3",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide an option to copy partial text from a message.",
               "slots": {
                 "scope": "missing",
@@ -1529,7 +1529,7 @@
           },
           "units": [
             {
-              "id": "f0b03b2fbf",
+              "id": "82d4f9d613",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow the user to mute a \"group\" for a \"specific duration\".",
               "slots": {
                 "scope": "missing",
@@ -1592,7 +1592,7 @@
           },
           "units": [
             {
-              "id": "bf5c02baed",
+              "id": "d0a992a00f",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user mute a conversation for a chosen duration.",
               "slots": {
                 "scope": "missing",
@@ -1657,7 +1657,7 @@
           },
           "units": [
             {
-              "id": "d09d12b526",
+              "id": "2304ed5ce7",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide an option to mute a group or a user for \"X minutes/hours\".",
               "slots": {
                 "scope": "missing",
@@ -1735,7 +1735,7 @@
           },
           "units": [
             {
-              "id": "691a0c447a",
+              "id": "cbc2d4d3b5",
               "rimayText": "<MISSING_SCOPE>, when there are unread messages, then the App must show the unread notifications badge on the app icon.",
               "slots": {
                 "scope": "missing",
@@ -1800,7 +1800,7 @@
           },
           "units": [
             {
-              "id": "bd70cc73a6",
+              "id": "c30729b849",
               "rimayText": "<MISSING_SCOPE>, when there are unread messages, then the App must show an unread badge on the app icon.",
               "slots": {
                 "scope": "missing",
@@ -1865,7 +1865,7 @@
           },
           "units": [
             {
-              "id": "af8ebdad11",
+              "id": "b6676fb1a9",
               "rimayText": "<MISSING_SCOPE>, when Signal receives new messages, then Signal must show an unread notification badge on the app icon.",
               "slots": {
                 "scope": "missing",
@@ -1941,7 +1941,7 @@
           },
           "units": [
             {
-              "id": "f0539df918",
+              "id": "28c9a02df4",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must <MISSING_ACTION>.",
               "slots": {
                 "scope": "missing",
@@ -2004,7 +2004,7 @@
           },
           "units": [
             {
-              "id": "5da5eee317",
+              "id": "5543cab1ed",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must bring back the old text-based smileys.",
               "slots": {
                 "scope": "missing",
@@ -2069,7 +2069,7 @@
           },
           "units": [
             {
-              "id": "76fa935c52",
+              "id": "112f781d87",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide the old text-based smileys.",
               "slots": {
                 "scope": "missing",
@@ -2146,7 +2146,7 @@
           },
           "units": [
             {
-              "id": "46e03d4499",
+              "id": "0456dcb033",
               "rimayText": "<MISSING_SCOPE>, when the user sends an \"SMS message\" to the number \"13977\" to check the account status, then the App must deliver the \"SMS message\".",
               "slots": {
                 "scope": "missing",
@@ -2211,7 +2211,7 @@
           },
           "units": [
             {
-              "id": "9e5bd44093",
+              "id": "591d3b7f62",
               "rimayText": "<MISSING_SCOPE>, if the recipient is a short number, then Signal must deliver the SMS.",
               "slots": {
                 "scope": "missing",
@@ -2275,7 +2275,7 @@
           },
           "units": [
             {
-              "id": "14b68168a4",
+              "id": "7e18afffff",
               "rimayText": "<MISSING_SCOPE>, when the user sends an SMS message to the provider number 13977, then Signal must deliver the SMS message.",
               "slots": {
                 "scope": "missing",
@@ -2353,7 +2353,7 @@
           },
           "units": [
             {
-              "id": "86cf5600cb",
+              "id": "47f47282e1",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must indicate in the \"conversation overview\" whether the \"last message\" is from the user or the \"conversation partner\".",
               "slots": {
                 "scope": "missing",
@@ -2416,7 +2416,7 @@
           },
           "units": [
             {
-              "id": "e386aa12d0",
+              "id": "78214da164",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must show in the conversation overview whether the last message is from the user or from the conversation partner.",
               "slots": {
                 "scope": "missing",
@@ -2481,7 +2481,7 @@
           },
           "units": [
             {
-              "id": "4d3ae945da",
+              "id": "b11ae36b01",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must indicate in the conversation overview whether the last message is from the user or the conversation partner.",
               "slots": {
                 "scope": "missing",
@@ -2559,7 +2559,7 @@
           },
           "units": [
             {
-              "id": "074d8b4ca9",
+              "id": "1a56365490",
               "rimayText": "<MISSING_SCOPE>, when the App receives a \"share intent\", then the App must include the \"EXTRA_SUBJECT\" along with the \"EXTRA_TEXT\" in the shared message.",
               "slots": {
                 "scope": "missing",
@@ -2624,7 +2624,7 @@
           },
           "units": [
             {
-              "id": "23e9613d64",
+              "id": "25d0118678",
               "rimayText": "<MISSING_SCOPE>, when a share intent is received, then Signal must include its subject as well as its body.",
               "slots": {
                 "scope": "missing",
@@ -2689,7 +2689,7 @@
           },
           "units": [
             {
-              "id": "913d1f242e",
+              "id": "9b70ef6378",
               "rimayText": "<MISSING_SCOPE>, when Signal receives a share Intent with an EXTRA_SUBJECT portion, then Signal must include the EXTRA_SUBJECT portion in the shared message.",
               "slots": {
                 "scope": "missing",
@@ -2765,7 +2765,7 @@
           },
           "units": [
             {
-              "id": "e290758074",
+              "id": "5b6a27be55",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide only a single way to open and close the attachment window.",
               "slots": {
                 "scope": "missing",
@@ -2828,7 +2828,7 @@
           },
           "units": [
             {
-              "id": "6907e139d0",
+              "id": "ec79a932dd",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide only one way to open and close the attachment window.",
               "slots": {
                 "scope": "missing",
@@ -2893,7 +2893,7 @@
           },
           "units": [
             {
-              "id": "bfa227a8e5",
+              "id": "3b7c1af2b0",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide a single way to open and close the attachment window in the conversation window.",
               "slots": {
                 "scope": "missing",
@@ -2969,7 +2969,7 @@
           },
           "units": [
             {
-              "id": "9f6441a46d",
+              "id": "e5bf5d0a73",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow the user to remove \"participants\" from \"groups\".",
               "slots": {
                 "scope": "missing",
@@ -3032,7 +3032,7 @@
           },
           "units": [
             {
-              "id": "061770d0c7",
+              "id": "92cfff32f1",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, <MISSING_ACTOR> <MISSING_MODAL_VERB> <MISSING_ACTION>.",
               "slots": {
                 "scope": "missing",
@@ -3095,7 +3095,7 @@
           },
           "units": [
             {
-              "id": "dcf2683841",
+              "id": "cdb027f7d6",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure must allow the user to remove participants from groups after they were added.",
               "slots": {
                 "scope": "missing",
@@ -3172,7 +3172,7 @@
           },
           "units": [
             {
-              "id": "3404bbbc93",
+              "id": "6721a6556b",
               "rimayText": "<MISSING_SCOPE>, if the user is using a \"dual SIM mobile\", then the App must indicate to which \"SIM\" the \"message\" is sent.",
               "slots": {
                 "scope": "missing",
@@ -3235,7 +3235,7 @@
           },
           "units": [
             {
-              "id": "f7eaf6d473",
+              "id": "ba5f3c24b4",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must <MISSING_ACTION>.",
               "slots": {
                 "scope": "missing",
@@ -3299,7 +3299,7 @@
           },
           "units": [
             {
-              "id": "9353779db9",
+              "id": "7c5afa7c1d",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure must show which SIM a message is sent through on dual SIM devices.",
               "slots": {
                 "scope": "missing",
@@ -3376,7 +3376,7 @@
           },
           "units": [
             {
-              "id": "57ac8fa633",
+              "id": "e2eb53aac9",
               "rimayText": "<MISSING_SCOPE>, when the user shares a \"calendar event\" to the App, then the App must attach the \"calendar event\" to the \"message\".",
               "slots": {
                 "scope": "missing",
@@ -3441,7 +3441,7 @@
           },
           "units": [
             {
-              "id": "1b4a122e73",
+              "id": "a882e31b65",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user share calendar events.",
               "slots": {
                 "scope": "missing",
@@ -3506,7 +3506,7 @@
           },
           "units": [
             {
-              "id": "aefafb45b1",
+              "id": "f768f9ce77",
               "rimayText": "<MISSING_SCOPE>, when the user shares a calendar event from the Android Calendar app, then TextSecure must attach the calendar event to the message.",
               "slots": {
                 "scope": "missing",
@@ -3582,7 +3582,7 @@
           },
           "units": [
             {
-              "id": "883f307ca5",
+              "id": "1a72095252",
               "rimayText": "<MISSING_SCOPE>, when the user starts \"typing\" and \"SMS mode\" is disabled, then the App must not show the \"count of letters\".",
               "slots": {
                 "scope": "missing",
@@ -3647,7 +3647,7 @@
           },
           "units": [
             {
-              "id": "8c8d3855e6",
+              "id": "9f104ea715",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, <MISSING_ACTOR> <MISSING_MODAL_VERB> <MISSING_ACTION>.",
               "slots": {
                 "scope": "missing",
@@ -3710,7 +3710,7 @@
           },
           "units": [
             {
-              "id": "7d594f8ca5",
+              "id": "8e6da3b5fa",
               "rimayText": "<MISSING_SCOPE>, if SMS mode is disabled and the user starts typing a message, then the App must hide the letter count.",
               "slots": {
                 "scope": "missing",
@@ -3786,7 +3786,7 @@
           },
           "units": [
             {
-              "id": "28ce1896fc",
+              "id": "03b9315db6",
               "rimayText": "<MISSING_SCOPE>, when the App receives an \"incoming SMS\" from a \"certain contact\", then the App must automatically forward the \"SMS\" to \"another contact\".",
               "slots": {
                 "scope": "missing",
@@ -3851,7 +3851,7 @@
           },
           "units": [
             {
-              "id": "6fa727a770",
+              "id": "9f6e093dd5",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user automatically forward SMS from one contact to another.",
               "slots": {
                 "scope": "missing",
@@ -3916,7 +3916,7 @@
           },
           "units": [
             {
-              "id": "b1a74b148d",
+              "id": "1edebbe3f2",
               "rimayText": "<MISSING_SCOPE>, when the App receives an SMS from a certain contact, then the App must automatically forward the SMS to another contact.",
               "slots": {
                 "scope": "missing",
@@ -3992,7 +3992,7 @@
           },
           "units": [
             {
-              "id": "46caccf823",
+              "id": "034b3856e8",
               "rimayText": "<MISSING_SCOPE>, if the user is on the \"calling screen\", then the App must show the \"full resolution contact photo\".",
               "slots": {
                 "scope": "missing",
@@ -4055,7 +4055,7 @@
           },
           "units": [
             {
-              "id": "a7b7973222",
+              "id": "3104daf39a",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, <MISSING_ACTOR> <MISSING_MODAL_VERB> <MISSING_ACTION>.",
               "slots": {
                 "scope": "missing",
@@ -4118,7 +4118,7 @@
           },
           "units": [
             {
-              "id": "64ec7ceb36",
+              "id": "88ec0e9f1b",
               "rimayText": "<MISSING_SCOPE>, when Signal is on the calling screen, then Signal must show the contact photo in full resolution.",
               "slots": {
                 "scope": "missing",
@@ -4197,7 +4197,7 @@
           },
           "units": [
             {
-              "id": "95694c053d",
+              "id": "014594241a",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must add further \"disappearing message\" periods of up to at least one year.",
               "slots": {
                 "scope": "missing",
@@ -4262,7 +4262,7 @@
           },
           "units": [
             {
-              "id": "2c53fc0a02",
+              "id": "6459d18c81",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must offer longer disappearing-message periods, up to at least one year.",
               "slots": {
                 "scope": "missing",
@@ -4327,7 +4327,7 @@
           },
           "units": [
             {
-              "id": "b2dd927ec1",
+              "id": "3cf2a3eaed",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, Signal must provide disappearing message periods of up to at least 12 months.",
               "slots": {
                 "scope": "missing",
@@ -4405,7 +4405,7 @@
           },
           "units": [
             {
-              "id": "821e07d254",
+              "id": "7aed55ee18",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must <MISSING_ACTION>.",
               "slots": {
                 "scope": "missing",
@@ -4468,7 +4468,7 @@
           },
           "units": [
             {
-              "id": "242249526e",
+              "id": "9230292402",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user set a notification color for a contact or a group.",
               "slots": {
                 "scope": "missing",
@@ -4533,7 +4533,7 @@
           },
           "units": [
             {
-              "id": "6ba92d89a2",
+              "id": "20ae65809c",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, <MISSING_ACTOR> <MISSING_MODAL_VERB> <MISSING_ACTION>.",
               "slots": {
                 "scope": "missing",
@@ -4609,7 +4609,7 @@
           },
           "units": [
             {
-              "id": "366462b303",
+              "id": "89dd266667",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide a way to access the \"local timeline\" and \"federated timeline\".",
               "slots": {
                 "scope": "missing",
@@ -4672,7 +4672,7 @@
           },
           "units": [
             {
-              "id": "1319fe9801",
+              "id": "e3357171c7",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let users access the local and federated timelines.",
               "slots": {
                 "scope": "missing",
@@ -4737,7 +4737,7 @@
           },
           "units": [
             {
-              "id": "cdb06b5e2b",
+              "id": "e7b150c983",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide access to the local and federated timelines.",
               "slots": {
                 "scope": "missing",
@@ -4814,7 +4814,7 @@
           },
           "units": [
             {
-              "id": "3557be453d",
+              "id": "0cd99115d5",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must <MISSING_ACTION>.",
               "slots": {
                 "scope": "missing",
@@ -4877,7 +4877,7 @@
           },
           "units": [
             {
-              "id": "b7a210e196",
+              "id": "b32a3be419",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must <MISSING_ACTION>.",
               "slots": {
                 "scope": "missing",
@@ -4941,7 +4941,7 @@
           },
           "units": [
             {
-              "id": "72e9b314f8",
+              "id": "4dd9230aa2",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide emojis.",
               "slots": {
                 "scope": "missing",
@@ -5018,7 +5018,7 @@
           },
           "units": [
             {
-              "id": "0a6d7828aa",
+              "id": "819427cbd6",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide \"fingerprint support\" to unlock the App as an alternative to the \"passphrase\".",
               "slots": {
                 "scope": "missing",
@@ -5082,7 +5082,7 @@
           },
           "units": [
             {
-              "id": "0ce9a44e4e",
+              "id": "ffd085c7f4",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user unlock the app with a fingerprint instead of a passphrase.",
               "slots": {
                 "scope": "missing",
@@ -5147,7 +5147,7 @@
           },
           "units": [
             {
-              "id": "3e5af9869e",
+              "id": "27e1e11e47",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must support fingerprint for unlocking the app.",
               "slots": {
                 "scope": "missing",
@@ -5224,7 +5224,7 @@
           },
           "units": [
             {
-              "id": "97ea94eae0",
+              "id": "ad48cfdaae",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must <MISSING_ACTION>.",
               "slots": {
                 "scope": "missing",
@@ -5287,7 +5287,7 @@
           },
           "units": [
             {
-              "id": "75a2465b50",
+              "id": "550336dd6f",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must <MISSING_ACTION>.",
               "slots": {
                 "scope": "missing",
@@ -5351,7 +5351,7 @@
           },
           "units": [
             {
-              "id": "0b12c08aa3",
+              "id": "ead332ba2d",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, <MISSING_ACTOR> <MISSING_MODAL_VERB> <MISSING_ACTION>.",
               "slots": {
                 "scope": "missing",
@@ -5427,7 +5427,7 @@
           },
           "units": [
             {
-              "id": "be9122292a",
+              "id": "2616957c9a",
               "rimayText": "<MISSING_SCOPE>, if a \"text\" is \"oversized\", then the App must auto-split the \"text\" over \"multiple messages\".",
               "slots": {
                 "scope": "missing",
@@ -5490,7 +5490,7 @@
           },
           "units": [
             {
-              "id": "c23266a842",
+              "id": "9a52c54ef3",
               "rimayText": "<MISSING_SCOPE>, if a text is too long, then the App must split it across multiple messages.",
               "slots": {
                 "scope": "missing",
@@ -5555,7 +5555,7 @@
           },
           "units": [
             {
-              "id": "3be9fc0d3a",
+              "id": "3b05e7c3fa",
               "rimayText": "<MISSING_SCOPE>, if a text is oversized, then the App must split it over multiple messages.",
               "slots": {
                 "scope": "missing",
@@ -5633,7 +5633,7 @@
           },
           "units": [
             {
-              "id": "b867de7deb",
+              "id": "1306b10dca",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow the user to change the \"notification settings\" for \"groups\" independently from the \"personal chats\".",
               "slots": {
                 "scope": "missing",
@@ -5696,7 +5696,7 @@
           },
           "units": [
             {
-              "id": "96d92f6957",
+              "id": "40bf445e9f",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user set notification settings for group chats separately from personal chats.",
               "slots": {
                 "scope": "missing",
@@ -5761,7 +5761,7 @@
           },
           "units": [
             {
-              "id": "49da9406af",
+              "id": "846e04dffe",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide functionality to change the notification settings for groups independently from personal chats.",
               "slots": {
                 "scope": "missing",
@@ -5838,7 +5838,7 @@
           },
           "units": [
             {
-              "id": "662ec8b618",
+              "id": "aa30a1816e",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide \"themes\" similar to \"GO SMS PRO\".",
               "slots": {
                 "scope": "missing",
@@ -5901,7 +5901,7 @@
           },
           "units": [
             {
-              "id": "cb348c22d8",
+              "id": "32abd2203d",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must support themes.",
               "slots": {
                 "scope": "missing",
@@ -5966,7 +5966,7 @@
           },
           "units": [
             {
-              "id": "6360d9a32d",
+              "id": "10fa4e661e",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure must support themes.",
               "slots": {
                 "scope": "missing",
@@ -6043,7 +6043,7 @@
           },
           "units": [
             {
-              "id": "f918be0da0",
+              "id": "6a0681eaff",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must support a \"custom URL scheme\" for sharing.",
               "slots": {
                 "scope": "missing",
@@ -6106,7 +6106,7 @@
           },
           "units": [
             {
-              "id": "e5de421607",
+              "id": "4f74baba60",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must support a \"signal://\" URL scheme.",
               "slots": {
                 "scope": "missing",
@@ -6171,7 +6171,7 @@
           },
           "units": [
             {
-              "id": "252932eb45",
+              "id": "b1f11d3983",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, Signal must support a custom URL scheme for opening Signal from webpages.",
               "slots": {
                 "scope": "missing",
@@ -6243,7 +6243,7 @@
           },
           "units": [
             {
-              "id": "8752c542a0",
+              "id": "b22e572c28",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must sort the \"messages\" in the \"conversation view\" by \"sent timestamp\", \"sequence numbers\" or \"vector clocks\".",
               "slots": {
                 "scope": "missing",
@@ -6302,7 +6302,7 @@
           },
           "units": [
             {
-              "id": "4902a61ed8",
+              "id": "cbf76b8719",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must sort the \"conversation view\" by \"sent\" time.",
               "slots": {
                 "scope": "missing",
@@ -6361,7 +6361,7 @@
           },
           "units": [
             {
-              "id": "75540269ab",
+              "id": "0178c814ee",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must display the \"messages\" in the \"conversation view\" in the same order for all \"chat participants\".",
               "slots": {
                 "scope": "missing",
@@ -6429,7 +6429,7 @@
           },
           "units": [
             {
-              "id": "291bda337b",
+              "id": "333b717822",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide a view of the posts in the \"public timeline\".",
               "slots": {
                 "scope": "missing",
@@ -6488,7 +6488,7 @@
           },
           "units": [
             {
-              "id": "828d1ada4d",
+              "id": "2fde7aae30",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide a view of posts from other people.",
               "slots": {
                 "scope": "missing",
@@ -6547,7 +6547,7 @@
           },
           "units": [
             {
-              "id": "e38965ad24",
+              "id": "47d7ccf224",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, <MISSING_ACTOR> <MISSING_MODAL_VERB> <MISSING_ACTION>.",
               "slots": {
                 "scope": "missing",
@@ -6615,7 +6615,7 @@
           },
           "units": [
             {
-              "id": "de2ab54083",
+              "id": "1874a967e1",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must automatically move the \"message drafts\" to the top of the \"message list\".",
               "slots": {
                 "scope": "missing",
@@ -6628,7 +6628,7 @@
               "provenance": "claude"
             },
             {
-              "id": "1e1ffd8083",
+              "id": "e3e3925912",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must visually mark the \"message drafts\", such as with a different color or a \"Draft\" label.",
               "slots": {
                 "scope": "missing",
@@ -6687,7 +6687,7 @@
           },
           "units": [
             {
-              "id": "7587f3042b",
+              "id": "3d95cebd2b",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must automatically move the \"message drafts\" to the top of the \"message list\".",
               "slots": {
                 "scope": "missing",
@@ -6700,7 +6700,7 @@
               "provenance": "claude"
             },
             {
-              "id": "ce74ad81c2",
+              "id": "8d62a3121a",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must visually mark the \"message drafts\", such as with a different color or a \"Draft\" label.",
               "slots": {
                 "scope": "missing",
@@ -6759,7 +6759,7 @@
           },
           "units": [
             {
-              "id": "d0eff455ca",
+              "id": "324f238f4e",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must automatically move the \"message drafts\" to the top of the \"message list\".",
               "slots": {
                 "scope": "missing",
@@ -6772,7 +6772,7 @@
               "provenance": "claude"
             },
             {
-              "id": "81d0efbbcb",
+              "id": "321833ba6c",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must visually mark the \"message drafts\", such as with a different color or a \"Draft\" label.",
               "slots": {
                 "scope": "missing",
@@ -6840,7 +6840,7 @@
           },
           "units": [
             {
-              "id": "dc1167b7a0",
+              "id": "06b4541c49",
               "rimayText": "<MISSING_SCOPE>, when an SMS delivery report is received, then the App must save the time the message was actually received.",
               "slots": {
                 "scope": "missing",
@@ -6853,7 +6853,7 @@
               "provenance": "annotator-split"
             },
             {
-              "id": "40e4d4df33",
+              "id": "32f531d5d9",
               "rimayText": "<MISSING_SCOPE>, when an SMS delivery report is received, then the App must show that time in the message details.",
               "slots": {
                 "scope": "missing",
@@ -6912,8 +6912,8 @@
           },
           "units": [
             {
-              "id": "a1a4271540",
-              "rimayText": "<MISSING_SCOPE>, when an \"SMS delivery report\" is received, then the App must save the time at which the recipient received the message.",
+              "id": "cf47095a17",
+              "rimayText": "<MISSING_SCOPE>, when the App receives an \"SMS delivery report\", then the App must save the time at which the recipient received the message.",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -6925,7 +6925,7 @@
               "provenance": "claude"
             },
             {
-              "id": "9b2a0ae3a1",
+              "id": "a653a2cb37",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must show the saved \"received time\" in the \"message details\".",
               "slots": {
                 "scope": "missing",
@@ -6984,8 +6984,8 @@
           },
           "units": [
             {
-              "id": "ccc79c3969",
-              "rimayText": "<MISSING_SCOPE>, when an \"SMS delivery report\" is received, then the App must save the time at which the recipient received the message.",
+              "id": "2cac7a9cf0",
+              "rimayText": "<MISSING_SCOPE>, when the App receives an \"SMS delivery report\", then the App must save the time at which the recipient received the message.",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -6997,7 +6997,7 @@
               "provenance": "claude"
             },
             {
-              "id": "5d7ecce058",
+              "id": "0b59311da9",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must show the saved \"received time\" in the \"message details\".",
               "slots": {
                 "scope": "missing",
@@ -7065,8 +7065,8 @@
           },
           "units": [
             {
-              "id": "4cae681464",
-              "rimayText": "<MISSING_SCOPE>, if a sent \"Signal message\" is not delivered within a \"timeout\", then the App must notify the \"sender\".",
+              "id": "7bbae2ddd4",
+              "rimayText": "<MISSING_SCOPE>, if the recipient does not receive a sent \"Signal message\" within a \"timeout\", then the App must notify the \"sender\".",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -7078,8 +7078,8 @@
               "provenance": "claude"
             },
             {
-              "id": "37ec52df39",
-              "rimayText": "<MISSING_SCOPE>, if a sent \"Signal message\" is not delivered within a \"timeout\", then the App must offer the \"sender\" an option to resend the message via \"insecure SMS\".",
+              "id": "2c55555f61",
+              "rimayText": "<MISSING_SCOPE>, if the recipient does not receive a sent \"Signal message\" within a \"timeout\", then the App must offer the \"sender\" an option to resend the message via \"insecure SMS\".",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -7137,8 +7137,8 @@
           },
           "units": [
             {
-              "id": "9380a02a9f",
-              "rimayText": "<MISSING_SCOPE>, if a sent \"Signal message\" is not delivered within a \"timeout\", then the App must notify the \"sender\".",
+              "id": "cb13bd69b8",
+              "rimayText": "<MISSING_SCOPE>, if the recipient does not receive a sent \"Signal message\" within a \"timeout\", then the App must notify the \"sender\".",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -7150,8 +7150,8 @@
               "provenance": "claude"
             },
             {
-              "id": "b2a953ca71",
-              "rimayText": "<MISSING_SCOPE>, if a sent \"Signal message\" is not delivered within a \"timeout\", then the App must offer the \"sender\" an option to resend the message via \"insecure SMS\".",
+              "id": "3cca4ed5b3",
+              "rimayText": "<MISSING_SCOPE>, if the recipient does not receive a sent \"Signal message\" within a \"timeout\", then the App must offer the \"sender\" an option to resend the message via \"insecure SMS\".",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -7209,8 +7209,8 @@
           },
           "units": [
             {
-              "id": "1b1eff24ea",
-              "rimayText": "<MISSING_SCOPE>, if a sent \"Signal message\" is not delivered within a \"timeout\", then the App must notify the \"sender\".",
+              "id": "352f9a8412",
+              "rimayText": "<MISSING_SCOPE>, if the recipient does not receive a sent \"Signal message\" within a \"timeout\", then the App must notify the \"sender\".",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -7222,8 +7222,8 @@
               "provenance": "claude"
             },
             {
-              "id": "a4cece332f",
-              "rimayText": "<MISSING_SCOPE>, if a sent \"Signal message\" is not delivered within a \"timeout\", then the App must offer the \"sender\" an option to resend the message via \"insecure SMS\".",
+              "id": "184ea8e525",
+              "rimayText": "<MISSING_SCOPE>, if the recipient does not receive a sent \"Signal message\" within a \"timeout\", then the App must offer the \"sender\" an option to resend the message via \"insecure SMS\".",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -7290,7 +7290,7 @@
           },
           "units": [
             {
-              "id": "bf66aced2c",
+              "id": "2d4d4139e7",
               "rimayText": "<MISSING_SCOPE>, if the \"media item\" has already been saved, then the App must change the \"save icon\" to a \"view/share icon\".",
               "slots": {
                 "scope": "missing",
@@ -7349,7 +7349,7 @@
           },
           "units": [
             {
-              "id": "d53f1c116a",
+              "id": "70c158220e",
               "rimayText": "<MISSING_SCOPE>, if a picture has already been saved, then the App must show a view or share icon instead of the save button.",
               "slots": {
                 "scope": "missing",
@@ -7408,8 +7408,8 @@
           },
           "units": [
             {
-              "id": "4a74a21c90",
-              "rimayText": "<MISSING_SCOPE>, if a \"media item\" has already been saved, then the App must show a \"view\" or \"share\" icon instead of the \"save\" button.",
+              "id": "4af7c3548e",
+              "rimayText": "<MISSING_SCOPE>, if the user has already saved a \"media item\", then the App must show a \"view\" or \"share\" icon instead of the \"save\" button.",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -7476,7 +7476,7 @@
           },
           "units": [
             {
-              "id": "16bc53c49b",
+              "id": "3915cc8825",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user block a user-specified \"phone number\".",
               "slots": {
                 "scope": "missing",
@@ -7489,8 +7489,8 @@
               "provenance": "claude"
             },
             {
-              "id": "9385902e23",
-              "rimayText": "<MISSING_SCOPE>, when a message from a \"blocked number\" is received, then the App must delete the message.",
+              "id": "ec03a65f14",
+              "rimayText": "<MISSING_SCOPE>, when the App receives a message from a \"blocked number\", then the App must delete the message.",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -7502,8 +7502,8 @@
               "provenance": "claude"
             },
             {
-              "id": "31c70557b8",
-              "rimayText": "<MISSING_SCOPE>, when a message from a \"blocked number\" is received, then the App must not show a \"notification\".",
+              "id": "e9d9a413fa",
+              "rimayText": "<MISSING_SCOPE>, when the App receives a message from a \"blocked number\", then the App must not show a \"notification\".",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -7561,7 +7561,7 @@
           },
           "units": [
             {
-              "id": "ae552a3852",
+              "id": "53b8806e55",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user block a user-specified \"phone number\".",
               "slots": {
                 "scope": "missing",
@@ -7574,7 +7574,7 @@
               "provenance": "claude"
             },
             {
-              "id": "4c70526696",
+              "id": "00d73754d3",
               "rimayText": "<MISSING_SCOPE>, when a message from a blocked number is received, then the App must delete it.",
               "slots": {
                 "scope": "missing",
@@ -7587,7 +7587,7 @@
               "provenance": "annotator-split"
             },
             {
-              "id": "3f6e084ff2",
+              "id": "36d51913b6",
               "rimayText": "<MISSING_SCOPE>, when a message from a blocked number is received, then the App must not show a notification.",
               "slots": {
                 "scope": "missing",
@@ -7646,7 +7646,7 @@
           },
           "units": [
             {
-              "id": "42db195815",
+              "id": "ccb45e263e",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user block a user-specified \"phone number\".",
               "slots": {
                 "scope": "missing",
@@ -7659,8 +7659,8 @@
               "provenance": "claude"
             },
             {
-              "id": "a67ab07e63",
-              "rimayText": "<MISSING_SCOPE>, when a message from a \"blocked number\" is received, then the App must delete the message.",
+              "id": "1b7bc6aae9",
+              "rimayText": "<MISSING_SCOPE>, when the App receives a message from a \"blocked number\", then the App must delete the message.",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -7672,8 +7672,8 @@
               "provenance": "claude"
             },
             {
-              "id": "2cc3bd869f",
-              "rimayText": "<MISSING_SCOPE>, when a message from a \"blocked number\" is received, then the App must not show a \"notification\".",
+              "id": "712fcc6894",
+              "rimayText": "<MISSING_SCOPE>, when the App receives a message from a \"blocked number\", then the App must not show a \"notification\".",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -7740,7 +7740,7 @@
           },
           "units": [
             {
-              "id": "feb68170f8",
+              "id": "e45e0ee6a0",
               "rimayText": "<MISSING_SCOPE>, when the user triggers a \"specific button combo\" and confirms the \"confirm dialogue\", then the App must wipe the \"text message database\".",
               "slots": {
                 "scope": "missing",
@@ -7799,7 +7799,7 @@
           },
           "units": [
             {
-              "id": "1f95142113",
+              "id": "a07168b560",
               "rimayText": "<MISSING_SCOPE>, if the user is being coerced to disclose their password, then the App must let them quickly wipe the message database.",
               "slots": {
                 "scope": "missing",
@@ -7858,7 +7858,7 @@
           },
           "units": [
             {
-              "id": "ef1602193d",
+              "id": "c554f6ecc9",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide a quick way, such as a \"button combo\" with a \"confirm dialogue\", to wipe the \"text message database\".",
               "slots": {
                 "scope": "missing",
@@ -7926,7 +7926,7 @@
           },
           "units": [
             {
-              "id": "32c4a0b817",
+              "id": "dadb57b437",
               "rimayText": "<MISSING_SCOPE>, when the user starts the App for the first time, then the App must ask the user to choose between \"only use push\", \"use SMS fallback\", and \"use as default SMS/MMS app\".",
               "slots": {
                 "scope": "missing",
@@ -7939,7 +7939,7 @@
               "provenance": "claude"
             },
             {
-              "id": "a5a829b976",
+              "id": "bf0fe7f82e",
               "rimayText": "<MISSING_SCOPE>, when the user presses the \"what does that mean?\" button, then the App must show a \"pop-up\" that explains each mode.",
               "slots": {
                 "scope": "missing",
@@ -7998,7 +7998,7 @@
           },
           "units": [
             {
-              "id": "2aac389433",
+              "id": "6e35bd2fc7",
               "rimayText": "<MISSING_SCOPE>, when the user starts the App for the first time, then the App must ask the user to choose between \"only use push\", \"use SMS fallback\", and \"use as default SMS/MMS app\".",
               "slots": {
                 "scope": "missing",
@@ -8011,7 +8011,7 @@
               "provenance": "claude"
             },
             {
-              "id": "62f3332208",
+              "id": "9407a627eb",
               "rimayText": "<MISSING_SCOPE>, when the user presses the \"what does that mean?\" button, then the App must show a \"pop-up\" that explains each mode.",
               "slots": {
                 "scope": "missing",
@@ -8070,7 +8070,7 @@
           },
           "units": [
             {
-              "id": "fe64b2b956",
+              "id": "c1c5605469",
               "rimayText": "<MISSING_SCOPE>, when the user starts the App for the first time, then the App must ask the user to choose between \"only use push\", \"use SMS fallback\", and \"use as default SMS/MMS app\".",
               "slots": {
                 "scope": "missing",
@@ -8083,7 +8083,7 @@
               "provenance": "claude"
             },
             {
-              "id": "bacc66131b",
+              "id": "1bf2d6300d",
               "rimayText": "<MISSING_SCOPE>, when the user presses the \"what does that mean?\" button, then the App must show a \"pop-up\" that explains each mode.",
               "slots": {
                 "scope": "missing",
@@ -8151,7 +8151,7 @@
           },
           "units": [
             {
-              "id": "e5b98f675a",
+              "id": "9f4c91bd3c",
               "rimayText": "<MISSING_SCOPE>, if the user has enabled \"dummy messaging\", then the App must send \"dummy messages\" to random TextSecure contacts at random times.",
               "slots": {
                 "scope": "missing",
@@ -8164,7 +8164,7 @@
               "provenance": "claude"
             },
             {
-              "id": "50ce51b656",
+              "id": "aaa8121c9d",
               "rimayText": "<MISSING_SCOPE>, when the App receives a \"dummy message\", then the App must discard it automatically.",
               "slots": {
                 "scope": "missing",
@@ -8177,7 +8177,7 @@
               "provenance": "claude"
             },
             {
-              "id": "f4d527c257",
+              "id": "650a878e0c",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user define the quantity of \"dummy messages\".",
               "slots": {
                 "scope": "missing",
@@ -8190,7 +8190,7 @@
               "provenance": "claude"
             },
             {
-              "id": "a017295e6f",
+              "id": "3341dbb034",
               "rimayText": "<MISSING_SCOPE>, if the device is \"roaming\", then the App must not send \"dummy messages\" unless the user has enabled it.",
               "slots": {
                 "scope": "missing",
@@ -8203,7 +8203,7 @@
               "provenance": "claude"
             },
             {
-              "id": "73e8df796c",
+              "id": "d3a1c0ed79",
               "rimayText": "<MISSING_SCOPE>, if the \"battery level\" is below a \"threshold\", then the App must not send \"dummy messages\".",
               "slots": {
                 "scope": "missing",
@@ -8262,7 +8262,7 @@
           },
           "units": [
             {
-              "id": "6d0b38967f",
+              "id": "c33a70f108",
               "rimayText": "<MISSING_SCOPE>, if the user has enabled \"dummy messaging\", then the App must send \"dummy messages\" to random TextSecure contacts at random times.",
               "slots": {
                 "scope": "missing",
@@ -8275,7 +8275,7 @@
               "provenance": "claude"
             },
             {
-              "id": "25b9d132ff",
+              "id": "968507e1a9",
               "rimayText": "<MISSING_SCOPE>, when the App receives a \"dummy message\", then the App must discard it automatically.",
               "slots": {
                 "scope": "missing",
@@ -8288,7 +8288,7 @@
               "provenance": "claude"
             },
             {
-              "id": "8e06ac99ea",
+              "id": "bf5093bf2d",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user define the quantity of \"dummy messages\".",
               "slots": {
                 "scope": "missing",
@@ -8301,7 +8301,7 @@
               "provenance": "claude"
             },
             {
-              "id": "36dee1f6f9",
+              "id": "53f3a68801",
               "rimayText": "<MISSING_SCOPE>, if the device is \"roaming\", then the App must not send \"dummy messages\" unless the user has enabled it.",
               "slots": {
                 "scope": "missing",
@@ -8314,7 +8314,7 @@
               "provenance": "claude"
             },
             {
-              "id": "6202344f47",
+              "id": "85f0b7b384",
               "rimayText": "<MISSING_SCOPE>, if the \"battery level\" is below a \"threshold\", then the App must not send \"dummy messages\".",
               "slots": {
                 "scope": "missing",
@@ -8373,7 +8373,7 @@
           },
           "units": [
             {
-              "id": "af2868ad24",
+              "id": "76c450f184",
               "rimayText": "<MISSING_SCOPE>, if the user has enabled \"dummy messaging\", then the App must send \"dummy messages\" to random TextSecure contacts at random times.",
               "slots": {
                 "scope": "missing",
@@ -8386,7 +8386,7 @@
               "provenance": "claude"
             },
             {
-              "id": "fc7032fc8d",
+              "id": "c3257e1942",
               "rimayText": "<MISSING_SCOPE>, when the App receives a \"dummy message\", then the App must discard it automatically.",
               "slots": {
                 "scope": "missing",
@@ -8399,7 +8399,7 @@
               "provenance": "claude"
             },
             {
-              "id": "1f11be06f1",
+              "id": "9a2b8b5e03",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user define the quantity of \"dummy messages\".",
               "slots": {
                 "scope": "missing",
@@ -8412,7 +8412,7 @@
               "provenance": "claude"
             },
             {
-              "id": "1f08f6adbc",
+              "id": "671e46f1a3",
               "rimayText": "<MISSING_SCOPE>, if the device is \"roaming\", then the App must not send \"dummy messages\" unless the user has enabled it.",
               "slots": {
                 "scope": "missing",
@@ -8425,7 +8425,7 @@
               "provenance": "claude"
             },
             {
-              "id": "bfab604815",
+              "id": "83ebe3b71f",
               "rimayText": "<MISSING_SCOPE>, if the \"battery level\" is below a \"threshold\", then the App must not send \"dummy messages\".",
               "slots": {
                 "scope": "missing",
@@ -8493,8 +8493,8 @@
           },
           "units": [
             {
-              "id": "b1fd50071c",
-              "rimayText": "<MISSING_SCOPE>, when the \"image gallery\" is open, then the App must let the user select multiple \"images/media\" and delete them.",
+              "id": "c005c34545",
+              "rimayText": "<MISSING_SCOPE>, when the user opens the \"image gallery\", then the App must let the user select multiple \"images/media\" and delete them.",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -8506,8 +8506,8 @@
               "provenance": "claude"
             },
             {
-              "id": "8ddce3f7ab",
-              "rimayText": "<MISSING_SCOPE>, when an \"image/media\" is opened, then the App must let the user delete it.",
+              "id": "ffa44c615f",
+              "rimayText": "<MISSING_SCOPE>, when the user opens an \"image/media\", then the App must let the user delete it.",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -8519,7 +8519,7 @@
               "provenance": "claude"
             },
             {
-              "id": "b4d59ed856",
+              "id": "57c5b9fd5f",
               "rimayText": "<MISSING_SCOPE>, when the user deletes \"images/media\", then the App must show a \"confirmation dialog\".",
               "slots": {
                 "scope": "missing",
@@ -8578,8 +8578,8 @@
           },
           "units": [
             {
-              "id": "cfc6c02dfa",
-              "rimayText": "<MISSING_SCOPE>, when the \"image gallery\" is open, then the App must let the user select multiple \"images/media\" and delete them.",
+              "id": "533f5460e9",
+              "rimayText": "<MISSING_SCOPE>, when the user opens the \"image gallery\", then the App must let the user select multiple \"images/media\" and delete them.",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -8591,8 +8591,8 @@
               "provenance": "claude"
             },
             {
-              "id": "5537ff656f",
-              "rimayText": "<MISSING_SCOPE>, when an \"image/media\" is opened, then the App must let the user delete it.",
+              "id": "3386c22312",
+              "rimayText": "<MISSING_SCOPE>, when the user opens an \"image/media\", then the App must let the user delete it.",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -8604,7 +8604,7 @@
               "provenance": "claude"
             },
             {
-              "id": "6493a19fb6",
+              "id": "ea879ad854",
               "rimayText": "<MISSING_SCOPE>, when the user deletes \"images/media\", then the App must show a \"confirmation dialog\".",
               "slots": {
                 "scope": "missing",
@@ -8663,8 +8663,8 @@
           },
           "units": [
             {
-              "id": "8f7c4c35f3",
-              "rimayText": "<MISSING_SCOPE>, when the \"image gallery\" is open, then the App must let the user select multiple \"images/media\" and delete them.",
+              "id": "7543fe7b0f",
+              "rimayText": "<MISSING_SCOPE>, when the user opens the \"image gallery\", then the App must let the user select multiple \"images/media\" and delete them.",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -8676,8 +8676,8 @@
               "provenance": "claude"
             },
             {
-              "id": "76e20738c0",
-              "rimayText": "<MISSING_SCOPE>, when an \"image/media\" is opened, then the App must let the user delete it.",
+              "id": "42a65d71ba",
+              "rimayText": "<MISSING_SCOPE>, when the user opens an \"image/media\", then the App must let the user delete it.",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -8689,7 +8689,7 @@
               "provenance": "claude"
             },
             {
-              "id": "5bf1e05525",
+              "id": "16bb19bfb3",
               "rimayText": "<MISSING_SCOPE>, when the user deletes \"images/media\", then the App must show a \"confirmation dialog\".",
               "slots": {
                 "scope": "missing",
@@ -8757,7 +8757,7 @@
           },
           "units": [
             {
-              "id": "ff3acac02b",
+              "id": "0d7b76a02f",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user edit any message from the \"Android context menu\".",
               "slots": {
                 "scope": "missing",
@@ -8770,7 +8770,7 @@
               "provenance": "claude"
             },
             {
-              "id": "ba3c132ceb",
+              "id": "7e25d921c5",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user insert a new message next to an existing message.",
               "slots": {
                 "scope": "missing",
@@ -8829,7 +8829,7 @@
           },
           "units": [
             {
-              "id": "19d4c43573",
+              "id": "98e9fda488",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user edit any message from the \"Android context menu\".",
               "slots": {
                 "scope": "missing",
@@ -8842,7 +8842,7 @@
               "provenance": "claude"
             },
             {
-              "id": "9e1a196687",
+              "id": "bbd5a3f8ae",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user insert a new message next to an existing message.",
               "slots": {
                 "scope": "missing",
@@ -8901,7 +8901,7 @@
           },
           "units": [
             {
-              "id": "827620b893",
+              "id": "1f6f3bb1c9",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user edit any message from the \"Android context menu\".",
               "slots": {
                 "scope": "missing",
@@ -8914,7 +8914,7 @@
               "provenance": "claude"
             },
             {
-              "id": "4d32d117a0",
+              "id": "44038a9820",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user insert a new message next to an existing message.",
               "slots": {
                 "scope": "missing",
@@ -8982,7 +8982,7 @@
           },
           "units": [
             {
-              "id": "b583f1b235",
+              "id": "cf96573607",
               "rimayText": "<MISSING_SCOPE>, when the user long-presses a \"received message\", then the App must offer an \"acknowledge message\" option.",
               "slots": {
                 "scope": "missing",
@@ -8995,7 +8995,7 @@
               "provenance": "claude"
             },
             {
-              "id": "c0da02927d",
+              "id": "8c40f5c102",
               "rimayText": "<MISSING_SCOPE>, when the user selects \"acknowledge message\" after long-pressing a \"received message\", then the App must replace the \"received or seen indicator\" with an \"indicator for acknowledgement\".",
               "slots": {
                 "scope": "missing",
@@ -9054,7 +9054,7 @@
           },
           "units": [
             {
-              "id": "7602b4d159",
+              "id": "7aff5c3b0a",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user acknowledge a received message.",
               "slots": {
                 "scope": "missing",
@@ -9067,7 +9067,7 @@
               "provenance": "annotator"
             },
             {
-              "id": "c52e0d5829",
+              "id": "6f5fd4a87b",
               "rimayText": "<MISSING_SCOPE>, when the user selects \"acknowledge message\", then the App must replace the \"received\" indicator with an \"acknowledgement\" indicator.",
               "slots": {
                 "scope": "missing",
@@ -9126,7 +9126,7 @@
           },
           "units": [
             {
-              "id": "774da8ddf3",
+              "id": "f14f96e841",
               "rimayText": "<MISSING_SCOPE>, when the user long-presses a \"received message\", then the App must offer an \"acknowledge message\" option.",
               "slots": {
                 "scope": "missing",
@@ -9139,7 +9139,7 @@
               "provenance": "claude"
             },
             {
-              "id": "cb3c7aac0b",
+              "id": "f003803470",
               "rimayText": "<MISSING_SCOPE>, when the user selects \"acknowledge message\", then the App must replace the \"received\" indicator with an \"acknowledgement\" indicator.",
               "slots": {
                 "scope": "missing",
@@ -9207,7 +9207,7 @@
           },
           "units": [
             {
-              "id": "e9f69c0ce1",
+              "id": "f5839628e9",
               "rimayText": "<MISSING_SCOPE>, if a message is outgoing, then the App must show its \"received time\", taken from the \"delivery receipt\", in the \"message details\".",
               "slots": {
                 "scope": "missing",
@@ -9266,7 +9266,7 @@
           },
           "units": [
             {
-              "id": "535aa1c94f",
+              "id": "7fc943a447",
               "rimayText": "<MISSING_SCOPE>, if a message is outgoing, then the App must show its received time in the message details.",
               "slots": {
                 "scope": "missing",
@@ -9325,7 +9325,7 @@
           },
           "units": [
             {
-              "id": "0964c4b874",
+              "id": "5fc52cdd75",
               "rimayText": "<MISSING_SCOPE>, if a message is outgoing, then the App must show its \"received time\", taken from the \"delivery receipt\", in the \"message details\".",
               "slots": {
                 "scope": "missing",
@@ -9393,7 +9393,7 @@
           },
           "units": [
             {
-              "id": "5d1a0f124c",
+              "id": "edf93e04e7",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must show a \"pie chart\" of how many of the user's contacts are on Signal.",
               "slots": {
                 "scope": "missing",
@@ -9406,7 +9406,7 @@
               "provenance": "claude"
             },
             {
-              "id": "b99a6ad087",
+              "id": "eee622d4a0",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must show how many of the user's sent messages are encrypted.",
               "slots": {
                 "scope": "missing",
@@ -9419,7 +9419,7 @@
               "provenance": "claude"
             },
             {
-              "id": "66cf409038",
+              "id": "46b751f20e",
               "rimayText": "<MISSING_SCOPE>, when the user taps an element of the \"pie chart\", then the App must show the list of people in that category.",
               "slots": {
                 "scope": "missing",
@@ -9432,7 +9432,7 @@
               "provenance": "claude"
             },
             {
-              "id": "ad7faa08c3",
+              "id": "3946e2d7b4",
               "rimayText": "<MISSING_SCOPE>, if most but not all of the user's contacts use Signal, then the App must display a \"progress message\" such as \"Almost there!\".",
               "slots": {
                 "scope": "missing",
@@ -9491,7 +9491,7 @@
           },
           "units": [
             {
-              "id": "337fbde669",
+              "id": "6229c9874a",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must show a \"pie chart\" of how many of the user's contacts are on Signal.",
               "slots": {
                 "scope": "missing",
@@ -9504,7 +9504,7 @@
               "provenance": "claude"
             },
             {
-              "id": "fad2e936e2",
+              "id": "7148c8dabd",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must show how many of the user's sent messages are encrypted.",
               "slots": {
                 "scope": "missing",
@@ -9517,7 +9517,7 @@
               "provenance": "claude"
             },
             {
-              "id": "32dd91d34c",
+              "id": "7f44ea4572",
               "rimayText": "<MISSING_SCOPE>, when the user taps an element of the \"pie chart\", then the App must show the list of people in that category.",
               "slots": {
                 "scope": "missing",
@@ -9530,7 +9530,7 @@
               "provenance": "claude"
             },
             {
-              "id": "2561ba8878",
+              "id": "b360c655d9",
               "rimayText": "<MISSING_SCOPE>, if most but not all of the user's contacts use Signal, then the App must display a \"progress message\" such as \"Almost there!\".",
               "slots": {
                 "scope": "missing",
@@ -9589,7 +9589,7 @@
           },
           "units": [
             {
-              "id": "59bbba7335",
+              "id": "e26cfa7759",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must show a \"pie chart\" of how many of the user's contacts are on Signal.",
               "slots": {
                 "scope": "missing",
@@ -9602,7 +9602,7 @@
               "provenance": "claude"
             },
             {
-              "id": "a1a4a20c7c",
+              "id": "5467c361cb",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must show how many of the user's sent messages are encrypted.",
               "slots": {
                 "scope": "missing",
@@ -9615,7 +9615,7 @@
               "provenance": "claude"
             },
             {
-              "id": "ec32a93935",
+              "id": "264bc1745e",
               "rimayText": "<MISSING_SCOPE>, when the user taps an element of the \"pie chart\", then the App must show the list of people in that category.",
               "slots": {
                 "scope": "missing",
@@ -9628,7 +9628,7 @@
               "provenance": "claude"
             },
             {
-              "id": "1319efb92f",
+              "id": "f4a22734bf",
               "rimayText": "<MISSING_SCOPE>, if most but not all of the user's contacts use Signal, then the App must display a \"progress message\" such as \"Almost there!\".",
               "slots": {
                 "scope": "missing",
@@ -9696,7 +9696,7 @@
           },
           "units": [
             {
-              "id": "a591b16217",
+              "id": "c62ee0afc7",
               "rimayText": "<MISSING_SCOPE>, when the user searches for a non-contact by \"phone number\", then the App must find the number whether it is entered with the \"+\" prefix, without it, or without the \"calling code\".",
               "slots": {
                 "scope": "missing",
@@ -9709,7 +9709,7 @@
               "provenance": "claude"
             },
             {
-              "id": "818ac764ca",
+              "id": "9445efc1f8",
               "rimayText": "<MISSING_SCOPE>, when the user searches by a \"phone number\" without a \"calling code\", then the App must try the \"calling code\" of the user's own phone number.",
               "slots": {
                 "scope": "missing",
@@ -9722,7 +9722,7 @@
               "provenance": "claude"
             },
             {
-              "id": "209ab83cd5",
+              "id": "7184f1e015",
               "rimayText": "<MISSING_SCOPE>, when the user searches by a \"phone number\" without a \"calling code\", then the App must try the \"calling code\" of the device's default region.",
               "slots": {
                 "scope": "missing",
@@ -9781,7 +9781,7 @@
           },
           "units": [
             {
-              "id": "5dd2dabf22",
+              "id": "7dfbde10d7",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must find a user by phone number whether or not the calling code is included.",
               "slots": {
                 "scope": "missing",
@@ -9794,7 +9794,7 @@
               "provenance": "annotator"
             },
             {
-              "id": "4d9ca05f59",
+              "id": "78ccb2caa6",
               "rimayText": "<MISSING_SCOPE>, when the user searches by a \"phone number\" without a \"calling code\", then the App must try the \"calling code\" of the user's own phone number.",
               "slots": {
                 "scope": "missing",
@@ -9807,7 +9807,7 @@
               "provenance": "claude"
             },
             {
-              "id": "cc338bc73c",
+              "id": "4003dec1df",
               "rimayText": "<MISSING_SCOPE>, when the user searches by a \"phone number\" without a \"calling code\", then the App must try the \"calling code\" of the device's default region.",
               "slots": {
                 "scope": "missing",
@@ -9866,7 +9866,7 @@
           },
           "units": [
             {
-              "id": "aaaffee9ad",
+              "id": "28282d196c",
               "rimayText": "<MISSING_SCOPE>, when the user searches for a non-contact by \"phone number\", then the App must find the number whether it is entered with the \"+\" prefix, without it, or without the \"calling code\".",
               "slots": {
                 "scope": "missing",
@@ -9879,7 +9879,7 @@
               "provenance": "claude"
             },
             {
-              "id": "596fc5ea0d",
+              "id": "dac19e1ee8",
               "rimayText": "<MISSING_SCOPE>, when the user searches by a \"phone number\" without a \"calling code\", then the App must try the \"calling code\" of the user's own phone number.",
               "slots": {
                 "scope": "missing",
@@ -9892,7 +9892,7 @@
               "provenance": "claude"
             },
             {
-              "id": "f78c654b88",
+              "id": "ba9354912f",
               "rimayText": "<MISSING_SCOPE>, when the user searches by a \"phone number\" without a \"calling code\", then the App must try the \"calling code\" of the device's default region.",
               "slots": {
                 "scope": "missing",
@@ -9960,7 +9960,7 @@
           },
           "units": [
             {
-              "id": "e6f92945f9",
+              "id": "c59a1f61ff",
               "rimayText": "<MISSING_SCOPE>, if the \"App\" is the \"default SMS manager\", then the App must provide an option to use the \"Android notification profile\" for \"regular SMS/MMS\".",
               "slots": {
                 "scope": "missing",
@@ -9973,7 +9973,7 @@
               "provenance": "annotator-split"
             },
             {
-              "id": "c3efeba8d3",
+              "id": "3d9ba65d4f",
               "rimayText": "<MISSING_SCOPE>, if the \"App\" is the \"default SMS manager\", then the App must provide an option to use the \"Signal settings\" for \"secure messages\".",
               "slots": {
                 "scope": "missing",
@@ -10032,7 +10032,7 @@
           },
           "units": [
             {
-              "id": "1100f4ee41",
+              "id": "7f559417c9",
               "rimayText": "<MISSING_SCOPE>, if the App is the \"default SMS app\", then the App must use the \"Android notification profile\" for regular \"SMS/MMS\".",
               "slots": {
                 "scope": "missing",
@@ -10045,7 +10045,7 @@
               "provenance": "claude"
             },
             {
-              "id": "0e89cf3ea9",
+              "id": "ee5eebfbe6",
               "rimayText": "<MISSING_SCOPE>, if the App is the \"default SMS app\", then the App must use the \"Signal notification settings\" for \"secure messages\" and \"calls\".",
               "slots": {
                 "scope": "missing",
@@ -10104,7 +10104,7 @@
           },
           "units": [
             {
-              "id": "22496f1eda",
+              "id": "3f61f142ab",
               "rimayText": "<MISSING_SCOPE>, if the App is the \"default SMS app\", then the App must use the \"Android notification profile\" for regular \"SMS/MMS\".",
               "slots": {
                 "scope": "missing",
@@ -10117,7 +10117,7 @@
               "provenance": "claude"
             },
             {
-              "id": "7705dbfe07",
+              "id": "fdd8cc4c65",
               "rimayText": "<MISSING_SCOPE>, if the App is the \"default SMS app\", then the App must use the \"Signal notification settings\" for \"secure messages\" and \"calls\".",
               "slots": {
                 "scope": "missing",
@@ -10185,7 +10185,7 @@
           },
           "units": [
             {
-              "id": "767bacde29",
+              "id": "24cbad4dc9",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user export the \"private key\" to a \"file\".",
               "slots": {
                 "scope": "missing",
@@ -10198,7 +10198,7 @@
               "provenance": "claude"
             },
             {
-              "id": "196e5d4310",
+              "id": "37411472e5",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user import the \"private key\" from a \"file\".",
               "slots": {
                 "scope": "missing",
@@ -10211,7 +10211,7 @@
               "provenance": "claude"
             },
             {
-              "id": "159bc54d4f",
+              "id": "757a394bb5",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user export \"public keys\" to a \"file\".",
               "slots": {
                 "scope": "missing",
@@ -10224,7 +10224,7 @@
               "provenance": "claude"
             },
             {
-              "id": "2651a303c0",
+              "id": "e1347b4c4f",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user import \"public keys\" from a \"file\".",
               "slots": {
                 "scope": "missing",
@@ -10237,7 +10237,7 @@
               "provenance": "claude"
             },
             {
-              "id": "031f10f91e",
+              "id": "a5a8584009",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user export \"public keys\" via \"Bluetooth\", \"NFC\", and \"QR code\".",
               "slots": {
                 "scope": "missing",
@@ -10250,7 +10250,7 @@
               "provenance": "claude"
             },
             {
-              "id": "ecd539c2ef",
+              "id": "0ead991ffd",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user import \"public keys\" via \"Bluetooth\", \"NFC\", and \"QR code\".",
               "slots": {
                 "scope": "missing",
@@ -10309,7 +10309,7 @@
           },
           "units": [
             {
-              "id": "48fff24499",
+              "id": "11fc960581",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user export the \"private key\" to a \"file\".",
               "slots": {
                 "scope": "missing",
@@ -10322,7 +10322,7 @@
               "provenance": "claude"
             },
             {
-              "id": "1db1f22975",
+              "id": "6fee3f1174",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user import the \"private key\" from a \"file\".",
               "slots": {
                 "scope": "missing",
@@ -10335,7 +10335,7 @@
               "provenance": "claude"
             },
             {
-              "id": "d1c2e4e0a6",
+              "id": "6b3e1fa168",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user export \"public keys\" to a \"file\".",
               "slots": {
                 "scope": "missing",
@@ -10348,7 +10348,7 @@
               "provenance": "claude"
             },
             {
-              "id": "83f67dcd4d",
+              "id": "c10fc5ad86",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user import \"public keys\" from a \"file\".",
               "slots": {
                 "scope": "missing",
@@ -10361,7 +10361,7 @@
               "provenance": "claude"
             },
             {
-              "id": "d9f26d580a",
+              "id": "b8ac2d5ba1",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user export \"public keys\" via \"Bluetooth\", \"NFC\", and \"QR code\".",
               "slots": {
                 "scope": "missing",
@@ -10374,7 +10374,7 @@
               "provenance": "claude"
             },
             {
-              "id": "63c0d4c8f2",
+              "id": "97684c836c",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user import \"public keys\" via \"Bluetooth\", \"NFC\", and \"QR code\".",
               "slots": {
                 "scope": "missing",
@@ -10433,7 +10433,7 @@
           },
           "units": [
             {
-              "id": "c61b560058",
+              "id": "12ee4b65a4",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user export the \"private key\" to a \"file\".",
               "slots": {
                 "scope": "missing",
@@ -10446,7 +10446,7 @@
               "provenance": "claude"
             },
             {
-              "id": "81801be8e7",
+              "id": "f703899f9d",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user import the \"private key\" from a \"file\".",
               "slots": {
                 "scope": "missing",
@@ -10459,7 +10459,7 @@
               "provenance": "claude"
             },
             {
-              "id": "6bc1f3f615",
+              "id": "e3f34dc7cc",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user export \"public keys\" to a \"file\".",
               "slots": {
                 "scope": "missing",
@@ -10472,7 +10472,7 @@
               "provenance": "claude"
             },
             {
-              "id": "daee187d05",
+              "id": "5fb0f6a580",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user import \"public keys\" from a \"file\".",
               "slots": {
                 "scope": "missing",
@@ -10485,7 +10485,7 @@
               "provenance": "claude"
             },
             {
-              "id": "0308cc2ab6",
+              "id": "98146acf17",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user export \"public keys\" via \"Bluetooth\", \"NFC\", and \"QR code\".",
               "slots": {
                 "scope": "missing",
@@ -10498,7 +10498,7 @@
               "provenance": "claude"
             },
             {
-              "id": "ba9302d7e4",
+              "id": "ae764d4850",
               "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user import \"public keys\" via \"Bluetooth\", \"NFC\", and \"QR code\".",
               "slots": {
                 "scope": "missing",
@@ -10566,7 +10566,7 @@
           },
           "units": [
             {
-              "id": "fd5840a28e",
+              "id": "9b695e6b1e",
               "rimayText": "<MISSING_SCOPE>, when the user swipes away a \"notification\", then the App must not display that \"notification\" again.",
               "slots": {
                 "scope": "missing",
@@ -10579,8 +10579,8 @@
               "provenance": "claude"
             },
             {
-              "id": "786a5d840f",
-              "rimayText": "<MISSING_SCOPE>, when a new message is received from the same contact, then the App must show a new \"notification\" with the new message.",
+              "id": "c1f6bfd841",
+              "rimayText": "<MISSING_SCOPE>, when the App receives a new message from the same contact, then the App must show a new \"notification\" with the new message.",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -10638,7 +10638,7 @@
           },
           "units": [
             {
-              "id": "585c347a2d",
+              "id": "ca1fca5793",
               "rimayText": "<MISSING_SCOPE>, when a notification is swiped away, then the App must not show it again.",
               "slots": {
                 "scope": "missing",
@@ -10651,8 +10651,8 @@
               "provenance": "annotator"
             },
             {
-              "id": "6bad7b7a94",
-              "rimayText": "<MISSING_SCOPE>, when a new message is received from the same contact, then the App must show a new \"notification\" with the new message.",
+              "id": "fbf5df6078",
+              "rimayText": "<MISSING_SCOPE>, when the App receives a new message from the same contact, then the App must show a new \"notification\" with the new message.",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -10710,7 +10710,7 @@
           },
           "units": [
             {
-              "id": "d15fc4f7f4",
+              "id": "39b00f4963",
               "rimayText": "<MISSING_SCOPE>, when the user swipes away a \"notification\", then the App must not display that \"notification\" again.",
               "slots": {
                 "scope": "missing",
@@ -10723,8 +10723,8 @@
               "provenance": "claude"
             },
             {
-              "id": "91a0f01e5e",
-              "rimayText": "<MISSING_SCOPE>, when a new message is received from the same contact, then the App must show a new \"notification\" with the new message.",
+              "id": "1474d46f12",
+              "rimayText": "<MISSING_SCOPE>, when the App receives a new message from the same contact, then the App must show a new \"notification\" with the new message.",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -10791,7 +10791,7 @@
           },
           "units": [
             {
-              "id": "44a22ab195",
+              "id": "beac0bab0c",
               "rimayText": "<MISSING_SCOPE>, when the App creates an \".xml backup\", then the App must include the \"archive\" and \"blocked\" flags of the messages.",
               "slots": {
                 "scope": "missing",
@@ -10804,7 +10804,7 @@
               "provenance": "claude"
             },
             {
-              "id": "da74201aa5",
+              "id": "880ce7bbf9",
               "rimayText": "<MISSING_SCOPE>, after importing \"messages\" from an \".xml backup\", then the App must preserve the \"archive\" and \"blocked\" flags.",
               "slots": {
                 "scope": "missing",
@@ -10863,7 +10863,7 @@
           },
           "units": [
             {
-              "id": "580a35bb7c",
+              "id": "44520d720f",
               "rimayText": "<MISSING_SCOPE>, when the App creates an \".xml backup\", then the App must include the \"archive\" and \"blocked\" flags of the messages.",
               "slots": {
                 "scope": "missing",
@@ -10876,7 +10876,7 @@
               "provenance": "claude"
             },
             {
-              "id": "33ce689c0d",
+              "id": "c8ae3030fc",
               "rimayText": "<MISSING_SCOPE>, when messages are imported from an .xml backup, then the App must keep the archive and blocked flags.",
               "slots": {
                 "scope": "missing",
@@ -10935,7 +10935,7 @@
           },
           "units": [
             {
-              "id": "c8b855b68e",
+              "id": "524e525457",
               "rimayText": "<MISSING_SCOPE>, when the App creates an \".xml backup\", then the App must include the \"archive\" and \"blocked\" flags of the messages.",
               "slots": {
                 "scope": "missing",
@@ -10948,7 +10948,7 @@
               "provenance": "claude"
             },
             {
-              "id": "0873996f23",
+              "id": "276546dbf7",
               "rimayText": "<MISSING_SCOPE>, when the App imports messages from an \".xml backup\", then the App must restore the \"archive\" and \"blocked\" flags.",
               "slots": {
                 "scope": "missing",
@@ -10965,5 +10965,5 @@
       }
     }
   ],
-  "savedAt": "2026-09-24T21:18:34+01:00"
+  "savedAt": "2026-09-24T21:41:21+01:00"
 }
