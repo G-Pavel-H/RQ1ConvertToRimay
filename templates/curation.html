@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rimay curation</title>
+<style>
+:root{
+  --bg:#f6f7f9; --panel:#fff; --ink:#1b1d21; --muted:#737a84; --line:#e2e5ea; --soft:#f1f3f6;
+  --accent:#1f5fbf; --accent-soft:#e7effb;
+  --ok:#1b7a32; --ok-soft:#e5f4e8; --bad:#b3261e; --bad-soft:#fbe9e7; --warn:#9a5b00; --warn-soft:#fbf0dc;
+  --present:#1b7a32; --implied:#9a5b00; --missing:#b3261e;
+}
+@media (prefers-color-scheme:dark){
+  :root{ --bg:#101214; --panel:#171a1d; --ink:#e6e8eb; --muted:#9aa1aa; --line:#2a2f35; --soft:#1e2226;
+    --accent:#7aa7ec; --accent-soft:#1b2a40; --ok:#79c98a; --ok-soft:#15291a; --bad:#ef8a83; --bad-soft:#33181a;
+    --warn:#e3ad55; --warn-soft:#2f2412; --present:#79c98a; --implied:#e3ad55; --missing:#ef8a83; }
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{background:var(--bg);color:var(--ink);font:13.5px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;display:flex;flex-direction:column}
+button,select,input,textarea{font:inherit;color:inherit}
+button{cursor:pointer;border:1px solid var(--line);background:var(--panel);border-radius:6px;padding:4px 10px}
+button:hover:not(:disabled){border-color:var(--accent)}
+button:disabled{opacity:.4;cursor:default}
+button.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+button.ghost{border-color:transparent;background:transparent;padding:2px 6px;color:var(--muted)}
+button.ghost:hover:not(:disabled){color:var(--ink);border-color:var(--line)}
+header{display:flex;align-items:center;gap:14px;padding:10px 18px;border-bottom:1px solid var(--line);background:var(--panel);flex-wrap:wrap}
+header h1{font-size:15px;margin:0}
+.stat{color:var(--muted);font-size:12.5px}
+.spacer{flex:1}
+#save{font-size:12px;color:var(--muted);min-width:110px;text-align:right}
+#save.err{color:var(--bad)}
+.layout{flex:1;display:flex;min-height:0}
+aside{width:270px;flex:none;border-right:1px solid var(--line);background:var(--panel);display:flex;flex-direction:column;min-height:0}
+.filters{padding:10px;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:8px}
+.seg{display:flex;border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.seg button{flex:1;border:0;border-radius:0;padding:4px 0;font-size:12px}
+.seg button.on{background:var(--accent-soft);color:var(--accent);font-weight:600}
+.filters input{border:1px solid var(--line);border-radius:6px;padding:5px 8px;background:var(--bg)}
+#list{overflow:auto;flex:1}
+.item{padding:7px 12px;border-bottom:1px solid var(--line);cursor:pointer;display:flex;align-items:center;gap:6px}
+.item:hover{background:var(--soft)}
+.item.on{background:var(--accent-soft)}
+.item .id{font-weight:600;font-size:12.5px}
+.item .meta{font-size:11px;color:var(--muted)}
+.dot{width:7px;height:7px;border-radius:50%;flex:none;background:var(--line)}
+.dot.ok{background:var(--ok)} .dot.bad{background:var(--bad)} .dot.stale{background:var(--warn)}
+main{flex:1;overflow:auto;padding:16px 20px 60px;min-width:0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:12px}
+.rhead{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.rhead h2{margin:0;font-size:18px}
+.tag{font-size:10.5px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;padding:1px 6px;border-radius:4px;background:var(--soft);color:var(--muted)}
+.tag.split{background:var(--warn-soft);color:var(--warn)}
+.tag.atomic{background:var(--accent-soft);color:var(--accent)}
+.label{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin:0 0 5px}
+.nl{max-height:150px;overflow:auto;white-space:pre-wrap;font-size:12.5px;background:var(--soft);border-radius:6px;padding:8px 10px}
+textarea{width:100%;border:1px solid var(--line);border-radius:6px;padding:6px 8px;background:var(--bg);resize:vertical;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;line-height:1.45}
+textarea:focus,select:focus,input:focus{outline:2px solid var(--accent-soft);border-color:var(--accent)}
+.llm div{margin-bottom:4px;font-size:12.5px}
+.llm b{display:inline-block;width:34px;font-size:10.5px;color:var(--muted);text-transform:uppercase}
+.bar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+.grid{display:grid;grid-template-columns:70px repeat(var(--cols),minmax(0,1fr));gap:10px;align-items:start}
+@media (max-width:1100px){.grid{grid-template-columns:1fr}.rowlabel{display:none}}
+.colhead{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:8px 10px}
+.colhead .name{font-weight:700;font-size:14px}
+details summary{cursor:pointer;color:var(--muted);font-size:12px;margin-top:4px}
+.orig{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;white-space:pre-wrap;background:var(--soft);border-radius:6px;padding:6px 8px;margin-top:5px}
+.onote{font-size:12px;color:var(--muted);margin-top:4px}
+.rowlabel{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;padding-top:10px;text-align:right}
+.unit{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:8px 10px}
+.unit.edited{border-color:var(--accent)}
+.utop{display:flex;align-items:center;gap:5px;flex-wrap:wrap;margin-bottom:6px}
+.chip{font-size:10.5px;font-weight:600;padding:0 6px;border-radius:4px;border:1px solid var(--line);color:var(--muted)}
+.chip.p-claude{color:var(--warn);border-color:var(--warn)}
+.chip.p-you,.chip.edited{color:var(--accent);border-color:var(--accent)}
+.chip.ok{color:var(--ok);border-color:var(--ok);background:var(--ok-soft)}
+.chip.bad{color:var(--bad);border-color:var(--bad);background:var(--bad-soft)}
+.chip.exp{color:var(--warn);border-color:var(--warn);background:var(--warn-soft)}
+.slots{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px 6px;margin-top:6px}
+.slots label{font-size:10.5px;color:var(--muted);display:flex;flex-direction:column}
+.slots select{border:1px solid var(--line);border-radius:5px;padding:2px 4px;background:var(--bg);font-size:12px;font-weight:600}
+select.v-present{color:var(--present)} select.v-implied{color:var(--implied)} select.v-missing{color:var(--missing)}
+.smells{font-size:11.5px;color:var(--bad);margin:5px 0 0;padding-left:16px}
+.enote{font-size:11.5px;color:var(--muted);margin-top:4px}
+.empty{border:1px dashed var(--line);border-radius:10px;padding:14px;text-align:center;color:var(--muted);font-size:12px}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.35);display:flex;align-items:center;justify-content:center;padding:20px;z-index:10}
+.modal .box{background:var(--panel);border-radius:12px;padding:18px 20px;max-width:680px;width:100%;max-height:85vh;overflow:auto}
+.modal h3{margin:0 0 10px}
+table{border-collapse:collapse;width:100%;font-size:12.5px}
+th,td{text-align:left;padding:5px 8px;border-bottom:1px solid var(--line)}
+th{font-size:11px;color:var(--muted);text-transform:uppercase}
+.hint{font-size:12px;color:var(--muted)}
+kbd{font-size:11px;border:1px solid var(--line);border-radius:3px;padding:0 4px}
+</style>
+</head>
+<body>
+<header>
+  <h1>Rimay curation</h1>
+  <span class="stat" id="stats"></span>
+  <span class="spacer"></span>
+  <span id="save">loading…</span>
+  <button id="paskaBtn" title="Check every unit with Paska. Only changed texts are re-run.">Run Paska</button>
+  <button id="exportBtn" class="primary" title="Write the curated CSVs to data/curated/">Export CSV</button>
+</header>
+<div class="layout">
+  <aside>
+    <div class="filters">
+      <div class="seg" id="setFilter">
+        <button data-f="all" class="on">All</button><button data-f="atomic">Atomic</button><button data-f="split">Split</button>
+      </div>
+      <input id="search" placeholder="Search reqId or text…">
+      <div class="hint"><kbd>Alt</kbd>+<kbd>←</kbd>/<kbd>→</kbd> previous / next</div>
+    </div>
+    <div id="list"></div>
+  </aside>
+  <main id="main"></main>
+</div>
+<div id="modalHost"></div>
+
+<script>
+const SLOTS = [["scope","Scope"],["condition","Condition"],["actor","Actor"],["modalVerb","Modal"],["action","Action"]];
+const VALUES = ["present","implied","missing"];
+const CTYPES = ["none","precondition","trigger","temporal"];
+// Short labels for the provenance badges. The full provenance is still stored
+// on every unit in curation.json, so it stays reportable.
+const PROV = {"annotator":"annotator","annotator-refined":"refined","annotator-split":"split","claude":"CL","you":"added by you"};
+const MANDATORY = ["actor","modalVerb","action"];
+
+let state = null, paska = null, current = 0, filter = "all", query = "";
+let saveTimer = null, saving = false, pendingSave = false;
+
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+const uid = () => Math.random().toString(16).slice(2, 12);
+const reqs = () => state.requirements;
+const nUnits = r => Math.max(...Object.values(r.annotations).map(a => a.units.length));
+const isAtomic = r => Object.values(r.annotations).every(a => a.units.length === 1);
+const incomplete = u => MANDATORY.some(s => u.slots[s] === "missing");
+
+// ---------- persistence ----------
+async function load() {
+  const res = await fetch("/api/state");
+  const data = await res.json();
+  state = data.state; paska = data.paska;
+  const fromHash = decodeURIComponent(location.hash.slice(1));
+  const i = reqs().findIndex(r => r.reqId === fromHash);
+  current = i >= 0 ? i : 0;
+  renderAll();
+  setSave(`saved ${time(state.savedAt)}`);
+}
+function time(iso) { return iso ? new Date(iso).toLocaleTimeString([], {hour:"2-digit",minute:"2-digit",second:"2-digit"}) : ""; }
+function setSave(text, err) { const el = $("#save"); el.textContent = text; el.classList.toggle("err", !!err); }
+function scheduleSave() {
+  setSave("unsaved…");
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(save, 600);
+}
+async function save() {
+  if (saving) { pendingSave = true; return; }
+  saving = true; setSave("saving…");
+  try {
+    const res = await fetch("/api/state", {method:"PUT", headers:{"Content-Type":"application/json"}, body: JSON.stringify(state)});
+    const out = await res.json();
+    if (!res.ok) throw new Error(out.error || res.status);
+    state.savedAt = out.savedAt;
+    setSave(`saved ${time(out.savedAt)}`);
+  } catch (e) {
+    setSave(`save failed: ${e.message}`, true);
+  } finally {
+    saving = false;
+    if (pendingSave) { pendingSave = false; save(); }
+  }
+}
+window.addEventListener("beforeunload", e => { if (saveTimer && $("#save").textContent !== "" && !$("#save").textContent.startsWith("saved")) { e.preventDefault(); e.returnValue = ""; } });
+
+// ---------- paska status ----------
+function paskaFor(u) {
+  const p = paska && paska.byUnit && paska.byUnit[u.id];
+  if (!p) return {cls:"", text:"Paska —", title:"Not checked yet — press Run Paska"};
+  if (p.text !== u.rimayText) return {cls:"", text:"Paska stale", title:"Edited since the last run", stale:true};
+  if (p.passed === null) return {cls:"", text:"Paska n/a", title: p.note || p.error || ""};
+  if (p.passed) return {cls:"ok", text:"Paska ✓", title:"No smells"};
+  const n = p.smells.length;
+  if (incomplete(u)) return {cls:"exp", text:`Paska ✗ ${n} (expected)`, title:"Judged incomplete: a fragment is expected to fail", smells:p.smells};
+  return {cls:"bad", text:`Paska ✗ ${n}`, title:"", smells:p.smells};
+}
+function reqPaskaDot(r) {
+  let seen = false, bad = false, stale = false;
+  for (const a of Object.values(r.annotations)) for (const u of a.units) {
+    const s = paskaFor(u);
+    if (s.stale) stale = true;
+    if (s.cls === "bad") bad = true;
+    if (s.cls) seen = true;
+  }
+  return bad ? "bad" : stale ? "stale" : seen ? "ok" : "";
+}
+
+// ---------- render ----------
+function renderAll() { renderStats(); renderList(); renderMain(); }
+
+function renderStats() {
+  const atomic = reqs().filter(isAtomic).length;
+  const units = reqs().reduce((n, r) => n + nUnits(r), 0);
+  $("#stats").textContent = `${reqs().length} requirements · ${atomic} atomic · ${reqs().length - atomic} split · ${units} units`;
+}
+
+function visible() {
+  return reqs().map((r, i) => [r, i]).filter(([r]) => {
+    if (filter === "atomic" && !isAtomic(r)) return false;
+    if (filter === "split" && isAtomic(r)) return false;
+    if (!query) return true;
+    const hay = (r.reqId + " " + r.nlText + " " + Object.values(r.annotations).flatMap(a => a.units.map(u => u.rimayText)).join(" ")).toLowerCase();
+    return hay.includes(query);
+  });
+}
+
+function renderList() {
+  $("#list").innerHTML = visible().map(([r, i]) => {
+    const counts = Object.values(r.annotations).map(a => a.units.length).join("/");
+    const edited = Object.values(r.annotations).some(a => a.units.some(u => u.edited));
+    return `<div class="item ${i === current ? "on" : ""}" data-go="${i}">
+      <span class="dot ${reqPaskaDot(r)}" title="Paska"></span>
+      <div style="flex:1;min-width:0"><div class="id">${esc(r.reqId)}</div>
+      <div class="meta">${isAtomic(r) ? "atomic" : nUnits(r) + " units"} · ${counts}${r.set === "non-atomic" ? " · flagged" : ""}${edited ? " · <b style='color:var(--accent)'>edited</b>" : ""}</div></div>
+    </div>`;
+  }).join("") || `<div class="empty" style="margin:12px">No match</div>`;
+}
+
+function unitCell(r, ann, i) {
+  const a = r.annotations[ann];
+  const u = a.units[i];
+  if (!u) return `<div class="empty">no unit ${i + 1}<br><button class="ghost" data-act="addAt" data-ann="${esc(ann)}">+ add</button></div>`;
+  const p = paskaFor(u);
+  const prov = u.edited && u.provenance !== "you" ? "" : `<span class="chip p-${esc(u.provenance)}">${esc(PROV[u.provenance] || u.provenance)}</span>`;
+  const reasons = (u.reasons || []).map(x => `<span class="chip">${esc(x)}</span>`).join("");
+  const selects = SLOTS.map(([k, label]) => `<label>${label}
+      <select class="v-${esc(u.slots[k])}" data-slot="${k}" data-ann="${esc(ann)}" data-i="${i}">
+        ${VALUES.map(v => `<option ${v === u.slots[k] ? "selected" : ""}>${v}</option>`).join("")}
+      </select></label>`).join("") + `<label>Cond. type
+      <select data-ctype="1" data-ann="${esc(ann)}" data-i="${i}">
+        ${CTYPES.map(v => `<option ${v === (u.conditionType || "none") ? "selected" : ""}>${v}</option>`).join("")}
+      </select></label>`;
+  const smells = p.smells && p.smells.length
+    ? `<ul class="smells">${p.smells.map(s => `<li><b>${esc(s.smell)}</b> — ${esc(s.value)}</li>`).join("")}</ul>` : "";
+  return `<div class="unit ${u.edited ? "edited" : ""}">
+    <div class="utop">${prov}${u.edited ? `<span class="chip edited">edited by you</span>` : ""}${reasons}
+      <span class="chip ${p.cls}" title="${esc(p.title)}">${esc(p.text)}</span>
+      <span class="spacer"></span>
+      <button class="ghost" title="Move up" data-act="up" data-ann="${esc(ann)}" data-i="${i}" ${i === 0 ? "disabled" : ""}>↑</button>
+      <button class="ghost" title="Move down" data-act="down" data-ann="${esc(ann)}" data-i="${i}" ${i === a.units.length - 1 ? "disabled" : ""}>↓</button>
+      <button class="ghost" title="Remove this unit" data-act="del" data-ann="${esc(ann)}" data-i="${i}" ${a.units.length === 1 ? "disabled" : ""}>✕</button>
+    </div>
+    <textarea rows="3" data-text="1" data-ann="${esc(ann)}" data-i="${i}">${esc(u.rimayText)}</textarea>
+    <div class="slots">${selects}</div>
+    ${u.editNote ? `<div class="enote">${esc(u.editNote)}</div>` : ""}
+    ${smells}
+  </div>`;
+}
+
+function renderMain() {
+  const r = reqs()[current];
+  if (!r) { $("#main").innerHTML = ""; return; }
+  history.replaceState(null, "", "#" + encodeURIComponent(r.reqId));
+  const anns = state.annotators;
+  const n = nUnits(r);
+  const counts = anns.map(a => `${a[0]} ${r.annotations[a].units.length}`).join(" · ");
+  const llm = r.llm ? `<div class="card llm"><p class="label">Reference — Opus (main30opus) · guidance, not gold</p>
+      ${Object.entries(r.llm).map(([k, v]) => `<div><b>${esc(k)}</b>${esc(v)}</div>`).join("")}</div>` : "";
+
+  let grid = `<div></div>` + anns.map(ann => {
+    const a = r.annotations[ann];
+    const os = Object.entries(a.originalSlots).map(([k, v]) => `${k}=${v}`).join(" · ");
+    return `<div class="colhead"><div class="name">${esc(ann)}</div>
+      <details><summary>annotator's original</summary>
+        <div class="orig">${esc(a.original || "(blank)")}</div>
+        <div class="onote">${esc(os)}</div>
+        ${a.originalNotes ? `<div class="onote">notes: ${esc(a.originalNotes)}</div>` : ""}
+      </details></div>`;
+  }).join("");
+  for (let i = 0; i < n; i++) {
+    grid += `<div class="rowlabel">Unit ${i + 1}</div>` + anns.map(ann => unitCell(r, ann, i)).join("");
+  }
+  grid += `<div></div>` + anns.map(ann => `<div><button class="ghost" data-act="add" data-ann="${esc(ann)}">+ add unit for ${esc(ann)}</button></div>`).join("");
+
+  const pos = visible().findIndex(([, i]) => i === current);
+  $("#main").innerHTML = `
+    <div class="rhead">
+      <button data-nav="-1" ${current === 0 ? "disabled" : ""}>←</button>
+      <button data-nav="1" ${current === reqs().length - 1 ? "disabled" : ""}>→</button>
+      <h2>${esc(r.reqId)}</h2>
+      <span class="tag ${isAtomic(r) ? "atomic" : "split"}">${isAtomic(r) ? "atomic" : n + " units"}</span>
+      <span class="tag">${r.set === "non-atomic" ? "flagged non-atomic" : "originally atomic"}</span>
+      <span class="stat">${counts}</span>
+      <span class="spacer"></span>
+      <span class="stat">${current + 1} / ${reqs().length}</span>
+    </div>
+    <div class="card"><p class="label">Source requirement (NL)</p><div class="nl">${esc(r.nlText)}</div></div>
+    ${llm}
+    <div class="card"><p class="label">Decision note</p>
+      <textarea rows="2" id="decisionNote" placeholder="Why this many units? (kept in curation.json)">${esc(r.decisionNote || "")}</textarea></div>
+    <div class="bar">
+      <button data-act="addAll">+ add a unit to every annotator</button>
+      <button data-act="popAll" ${Object.values(r.annotations).every(a => a.units.length === 1) ? "disabled" : ""}>− remove the last unit from every annotator</button>
+      <span class="hint">Units are aligned by position — unit 2 of each annotator is the same atomic requirement.</span>
+    </div>
+    <div class="grid" style="--cols:${anns.length}">${grid}</div>`;
+}
+
+// ---------- edits ----------
+function blankUnit() {
+  return {id: uid(), rimayText: "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must ",
+    slots: {scope:"missing", condition:"missing", actor:"implied", modalVerb:"implied", action:"present"},
+    conditionType: "none", provenance: "you", edited: true};
+}
+function structural() { renderAll(); scheduleSave(); }
+
+document.addEventListener("click", e => {
+  const go = e.target.closest("[data-go]");
+  if (go) { current = +go.dataset.go; renderList(); renderMain(); $("#main").scrollTop = 0; return; }
+  const nav = e.target.closest("[data-nav]");
+  if (nav) { move(+nav.dataset.nav); return; }
+  const f = e.target.closest("#setFilter button");
+  if (f) { filter = f.dataset.f; document.querySelectorAll("#setFilter button").forEach(b => b.classList.toggle("on", b === f)); renderList(); return; }
+  const b = e.target.closest("[data-act]");
+  if (!b) return;
+  const r = reqs()[current], act = b.dataset.act;
+  if (act === "addAll") { Object.values(r.annotations).forEach(a => a.units.push(blankUnit())); return structural(); }
+  if (act === "popAll") {
+    if (!confirm("Remove the last unit from every annotator that has more than one?")) return;
+    Object.values(r.annotations).forEach(a => { if (a.units.length > 1) a.units.pop(); }); return structural();
+  }
+  const units = r.annotations[b.dataset.ann].units, i = +b.dataset.i;
+  if (act === "add" || act === "addAt") units.push(blankUnit());
+  else if (act === "del") { if (units.length > 1 && confirm(`Remove unit ${i + 1} of ${b.dataset.ann}?`)) units.splice(i, 1); else return; }
+  else if (act === "up" && i > 0) [units[i - 1], units[i]] = [units[i], units[i - 1]];
+  else if (act === "down" && i < units.length - 1) [units[i + 1], units[i]] = [units[i], units[i + 1]];
+  structural();
+});
+
+document.addEventListener("input", e => {
+  const t = e.target;
+  if (t.id === "search") { query = t.value.trim().toLowerCase(); renderList(); return; }
+  if (t.id === "decisionNote") { reqs()[current].decisionNote = t.value; scheduleSave(); return; }
+  if (t.dataset.text) {
+    const u = reqs()[current].annotations[t.dataset.ann].units[+t.dataset.i];
+    u.rimayText = t.value; u.edited = true; scheduleSave();
+  }
+});
+document.addEventListener("change", e => {
+  const t = e.target;
+  if (!t.dataset.ann) return;
+  const u = reqs()[current].annotations[t.dataset.ann].units[+t.dataset.i];
+  if (t.dataset.slot) { u.slots[t.dataset.slot] = t.value; t.className = "v-" + t.value; }
+  else if (t.dataset.ctype) u.conditionType = t.value;
+  u.edited = true; scheduleSave();
+});
+// Re-render on leaving a text box so badges (edited, Paska stale) catch up
+// without stealing focus while typing.
+document.addEventListener("focusout", e => { if (e.target.dataset && e.target.dataset.text) { renderList(); } });
+
+function move(d) {
+  const next = current + d;
+  if (next < 0 || next >= reqs().length) return;
+  current = next; renderList(); renderMain(); $("#main").scrollTop = 0;
+}
+document.addEventListener("keydown", e => {
+  if (e.altKey && e.key === "ArrowRight") { e.preventDefault(); move(1); }
+  if (e.altKey && e.key === "ArrowLeft") { e.preventDefault(); move(-1); }
+});
+
+// ---------- actions ----------
+function modal(html) {
+  $("#modalHost").innerHTML = `<div class="modal"><div class="box">${html}<p style="text-align:right;margin:14px 0 0"><button id="closeModal">Close</button></p></div></div>`;
+  $("#closeModal").onclick = () => { $("#modalHost").innerHTML = ""; };
+}
+const pct = x => x === null || x === undefined ? "—" : Math.round(x * 100) + "%";
+
+$("#exportBtn").onclick = async () => {
+  clearTimeout(saveTimer); await save();
+  const res = await fetch("/api/export", {method:"POST"});
+  const s = await res.json();
+  if (!res.ok) return modal(`<h3>Export failed</h3><p>${esc(s.error)}</p>`);
+  modal(`<h3>Exported</h3>
+    <p class="hint">Written to <code>${esc(s.dir)}</code></p>
+    <table><tr><th>File</th><th>What</th><th></th></tr>
+      <tr><td>gold_atomic.csv</td><td>${s.atomicRequirements} atomic requirements, ${s.atomicRows} rows — original 31 columns, a drop-in <code>--gold</code></td><td><a href="/download/gold_atomic.csv">download</a></td></tr>
+      <tr><td>gold_units.csv</td><td>${s.splitRequirements} split requirements → ${s.splitUnits} units, ${s.unitRows} rows (+ unit, nUnits)</td><td><a href="/download/gold_units.csv">download</a></td></tr>
+      <tr><td>gold_all_units.csv</td><td>both together, for analysis</td><td><a href="/download/gold_all_units.csv">download</a></td></tr>
+    </table>
+    ${s.movedToAtomic.length ? `<p class="hint">Flagged non-atomic but curated to one unit (now in gold_atomic.csv): ${s.movedToAtomic.map(esc).join(", ")}</p>` : ""}
+    ${s.movedToSplit.length ? `<p class="hint">Originally atomic but now split (now in gold_units.csv): ${s.movedToSplit.map(esc).join(", ")}</p>` : ""}`);
+};
+
+$("#paskaBtn").onclick = async () => {
+  const btn = $("#paskaBtn");
+  clearTimeout(saveTimer); await save();
+  btn.disabled = true; btn.textContent = "Running Paska…";
+  try {
+    const res = await fetch("/api/paska", {method:"POST"});
+    const out = await res.json();
+    if (!res.ok) throw new Error(out.error || res.status);
+    paska = out; renderAll();
+    const rows = Object.entries(out.summary).filter(([g]) => g !== "all").concat([["all", out.summary.all]])
+      .map(([g, c]) => `<tr><td>${esc(g.replace("set:", "set: "))}</td><td><b>${pct(c.pass_rate_complete)}</b></td>
+        <td>${(c.complete_pass || 0)}/${(c.complete_pass || 0) + (c.complete_fail || 0)}</td>
+        <td>${(c.incomplete_fail || 0)} fail · ${(c.incomplete_pass || 0)} pass</td><td>${c.skipped || 0}</td></tr>`).join("");
+    modal(`<h3>Paska over the annotations</h3>
+      <table><tr><th>Group</th><th>Pass · complete</th><th>n</th><th>Judged incomplete</th><th>No text</th></tr>${rows}</table>
+      <p class="hint">"Pass · complete" is the number to read: units the annotator judged complete, and whether Paska accepts them.
+      Units with a mandatory slot missing are left as fragments once placeholders are removed, so they fail by construction —
+      the same split used for the LLM output. Units that are only placeholders are skipped.</p>`);
+  } catch (e) {
+    modal(`<h3>Paska failed</h3><p>${esc(e.message)}</p>`);
+  } finally {
+    btn.disabled = false; btn.textContent = "Run Paska";
+  }
+};
+
+load().catch(e => { $("#main").innerHTML = `<div class="card">Could not load: ${esc(e.message)}</div>`; });
+</script>
+</body>
+</html>

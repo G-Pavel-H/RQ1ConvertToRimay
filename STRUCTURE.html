@@ -77,6 +77,10 @@
     <tr><td class="k">refinements.json</td><td>90 hand edits to the annotators' conversions (scope, typos, wording). <em>Edit this to redo.</em></td></tr>
     <tr><td class="k">gold_annotations_main_atomic_refined.csv</td><td><strong>The 30, refined.</strong> Same 31 columns as the original; <code>rimayText</code>, <code>slot_scope</code>, <code>gold_scope</code> overwritten.</td></tr>
     <tr><td class="k">…_refined_review.html</td><td>Every edit as a word diff. Open this to check the changes.</td></tr>
+    <tr><td class="k"><strong>curation.json</strong></td><td><strong>The curation — source of truth.</strong> All 50 requirements, per annotator a list of atomic units with slots. Edited by <code>scripts/curate.py</code>; <code>.bak</code> = previous save.</td></tr>
+    <tr><td class="k">curated/gold_atomic.csv</td><td>Export: every requirement with one unit per annotator. Original 31 columns — drop-in <code>--gold</code>.</td></tr>
+    <tr><td class="k">curated/gold_units.csv</td><td>Export: every split requirement, one row per unit, + <code>unit</code>, <code>nUnits</code>.</td></tr>
+    <tr><td class="k">curated/paska_annotations.json</td><td>Paska verdict per annotator unit.</td></tr>
     <tr><td class="k">gold_annotations.csv</td><td>Old pilot export. Superseded.</td></tr>
   </tbody>
 </table>
@@ -108,6 +112,7 @@ src/
                                    no temperature) or 'api' (ANTHROPIC_API_KEY, deterministic)</span>
   paska_runner.py             <span class="c">runs the smell detector JAR</span>
   parsing_trees.py            <span class="c">stanza constituency trees for Paska</span>
+  curation.py                 <span class="tag t-calc">CALC</span> <span class="c">curation state, export, per-unit gold, Paska over units</span>
   scoring/
     field_accuracy.py         <span class="tag t-calc">CALC</span> <span class="c">TRACK 1 — per-slot missing-detection P/R/F1,
                                    plus the overall complete/incomplete verdict F1</span>
@@ -120,6 +125,9 @@ src/
 
 scripts/
   make_atomic_gold.py         <span class="tag t-calc">CALC</span> <span class="c">builds the 30 from a full export</span>
+  curate.py                   <span class="c">★ the local curation tool — python scripts/curate.py → browser</span>
+  build_curation.py           <span class="c">seeds data/curation.json (once; refuses to overwrite)</span>
+  paska_annotations.py        <span class="tag t-calc">CALC</span> <span class="c">Paska over every annotator unit (same rule as the LLM)</span>
   apply_refinements.py        <span class="tag t-calc">CALC</span> <span class="c">original + refinements.json → refined CSV + review page;
                                    recomputes gold by majority. Never touches the original.</span>
   run_conversion.py           <span class="c">Stage 1</span>

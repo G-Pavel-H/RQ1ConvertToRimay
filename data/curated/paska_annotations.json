@@ -1,0 +1,2467 @@
+{
+  "ranAt": "2026-09-24T21:19:23+01:00",
+  "byUnit": {
+    "662116c866": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow the user to cancel \"running media downloads\"."
+    },
+    "51f5200698": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user cancel a running \"media download\"."
+    },
+    "28d153e219": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide an option to cancel running media downloads."
+    },
+    "7008347c7a": {
+      "passed": null,
+      "smells": [],
+      "note": "no text left after removing placeholders",
+      "expectedFail": true,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, <MISSING_ACTOR> <MISSING_MODAL_VERB> <MISSING_ACTION>."
+    },
+    "adfeb6a1a2": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow direct sharing to contacts through the ChooserTargetService."
+    },
+    "fb18e6d71a": {
+      "passed": null,
+      "smells": [],
+      "note": "no text left after removing placeholders",
+      "expectedFail": true,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, <MISSING_ACTOR> <MISSING_MODAL_VERB> <MISSING_ACTION>."
+    },
+    "9617e6c8c1": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow the user to add a \"signature\" to \"SMS messages\"."
+    },
+    "9f5fe0ee2d": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user add a short signature to messages."
+    },
+    "befa9aeacd": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure must provide an option to add a short signature to messages."
+    },
+    "45e779fb9d": {
+      "passed": false,
+      "smells": [
+        {
+          "segment_id": "ud5bcc510dc23f3acc8927006dda1e8a455d1a16a_14",
+          "smell": "Not precise verb",
+          "value": "Not precise verb in the system response."
+        }
+      ],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must make the \"Screen security\" feature depend on the \"passphrase setting\"."
+    },
+    "6ee04c5d2c": {
+      "passed": false,
+      "smells": [
+        {
+          "segment_id": "u803f29df7f1f22b839457b490716a8f4b40f36f2_16",
+          "smell": "Passive voice",
+          "value": "Passive voice in the condition."
+        }
+      ],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, if the passphrase setting is enabled, then the App must enable screen security."
+    },
+    "15d406737b": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, if the user does not use a passphrase, then Signal must disable screen security by default."
+    },
+    "23446734dd": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must visually indicate whether an image has a \"description\"."
+    },
+    "4d37668122": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must show whether a post has an image description."
+    },
+    "a6911d75d5": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must show whether an image has a description."
+    },
+    "42c1e1b228": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide \"better identity key synchronization\"."
+    },
+    "90b8555470": {
+      "passed": null,
+      "smells": [],
+      "note": "no text left after removing placeholders",
+      "expectedFail": true,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, <MISSING_ACTOR> <MISSING_MODAL_VERB> <MISSING_ACTION>."
+    },
+    "0c5f944257": {
+      "passed": null,
+      "smells": [],
+      "note": "no text left after removing placeholders",
+      "expectedFail": true,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, <MISSING_ACTOR> <MISSING_MODAL_VERB> <MISSING_ACTION>."
+    },
+    "0abcdcceb4": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow the user to copy \"partial text\" from a \"message\"."
+    },
+    "5ea42d63f6": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user copy partial text from a message."
+    },
+    "01071063a3": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide an option to copy partial text from a message."
+    },
+    "82d4f9d613": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow the user to mute a \"group\" for a \"specific duration\"."
+    },
+    "d0a992a00f": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user mute a conversation for a chosen duration."
+    },
+    "2304ed5ce7": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide an option to mute a group or a user for \"X minutes/hours\"."
+    },
+    "cbc2d4d3b5": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, when there are unread messages, then the App must show the unread notifications badge on the app icon."
+    },
+    "c30729b849": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, when there are unread messages, then the App must show an unread badge on the app icon."
+    },
+    "b6676fb1a9": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, when Signal receives new messages, then Signal must show an unread notification badge on the app icon."
+    },
+    "28c9a02df4": {
+      "passed": false,
+      "smells": [
+        {
+          "segment_id": "u4526584e29810782a0c95b64fdacd5e4fdc105a1_53",
+          "smell": "Incomplete system response",
+          "value": "Verb is missing in the SR."
+        }
+      ],
+      "expectedFail": true,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must <MISSING_ACTION>."
+    },
+    "5543cab1ed": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must bring back the old text-based smileys."
+    },
+    "112f781d87": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide the old text-based smileys."
+    },
+    "0456dcb033": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, when the user sends an \"SMS message\" to the number \"13977\" to check the account status, then the App must deliver the \"SMS message\"."
+    },
+    "591d3b7f62": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, if the recipient is a short number, then Signal must deliver the SMS."
+    },
+    "7e18afffff": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, when the user sends an SMS message to the provider number 13977, then Signal must deliver the SMS message."
+    },
+    "47f47282e1": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must indicate in the \"conversation overview\" whether the \"last message\" is from the user or the \"conversation partner\"."
+    },
+    "78214da164": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must show in the conversation overview whether the last message is from the user or from the conversation partner."
+    },
+    "b11ae36b01": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must indicate in the conversation overview whether the last message is from the user or the conversation partner."
+    },
+    "1a56365490": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, when the App receives a \"share intent\", then the App must include the \"EXTRA_SUBJECT\" along with the \"EXTRA_TEXT\" in the shared message."
+    },
+    "25d0118678": {
+      "passed": false,
+      "smells": [
+        {
+          "segment_id": "u3bbe57e552651706a78d9c936ca6c766a91d920b_80",
+          "smell": "Passive voice",
+          "value": "Passive voice in the condition."
+        }
+      ],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, when a share intent is received, then Signal must include its subject as well as its body."
+    },
+    "9b70ef6378": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, when Signal receives a share Intent with an EXTRA_SUBJECT portion, then Signal must include the EXTRA_SUBJECT portion in the shared message."
+    },
+    "5b6a27be55": {
+      "passed": false,
+      "smells": [
+        {
+          "segment_id": "u6bd743c775349d27808b9b38c6acb27b5c5965c5_88",
+          "smell": "Non-atomic requirement",
+          "value": "The requirement has more than one action in the system response."
+        }
+      ],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide only a single way to open and close the attachment window."
+    },
+    "ec79a932dd": {
+      "passed": false,
+      "smells": [
+        {
+          "segment_id": "u5a413b5859f1c3fca1af58df28c98f1130c7e1e1_90",
+          "smell": "Non-atomic requirement",
+          "value": "The requirement has more than one action in the system response."
+        }
+      ],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide only one way to open and close the attachment window."
+    },
+    "3b7c1af2b0": {
+      "passed": false,
+      "smells": [
+        {
+          "segment_id": "ub56cea641a922b802814b050aa9f08d2f622b2dd_92",
+          "smell": "Non-atomic requirement",
+          "value": "The requirement has more than one action in the system response."
+        }
+      ],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide a single way to open and close the attachment window in the conversation window."
+    },
+    "e5bf5d0a73": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow the user to remove \"participants\" from \"groups\"."
+    },
+    "92cfff32f1": {
+      "passed": null,
+      "smells": [],
+      "note": "no text left after removing placeholders",
+      "expectedFail": true,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, <MISSING_ACTOR> <MISSING_MODAL_VERB> <MISSING_ACTION>."
+    },
+    "cdb027f7d6": {
+      "passed": false,
+      "smells": [
+        {
+          "segment_id": "u965a790408f391caa09b37e4e1900b21e5d698ec_96",
+          "smell": "Incorrect order requirement",
+          "value": "The condition clause of the requirement is after the system response."
+        },
+        {
+          "segment_id": "u965a790408f391caa09b37e4e1900b21e5d698ec_97",
+          "smell": "Passive voice",
+          "value": "Passive voice in the condition."
+        }
+      ],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure must allow the user to remove participants from groups after they were added."
+    },
+    "6721a6556b": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, if the user is using a \"dual SIM mobile\", then the App must indicate to which \"SIM\" the \"message\" is sent."
+    },
+    "ba5f3c24b4": {
+      "passed": false,
+      "smells": [
+        {
+          "segment_id": "u4526584e29810782a0c95b64fdacd5e4fdc105a1_53",
+          "smell": "Incomplete system response",
+          "value": "Verb is missing in the SR."
+        }
+      ],
+      "expectedFail": true,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must <MISSING_ACTION>."
+    },
+    "7c5afa7c1d": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure must show which SIM a message is sent through on dual SIM devices."
+    },
+    "e2eb53aac9": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, when the user shares a \"calendar event\" to the App, then the App must attach the \"calendar event\" to the \"message\"."
+    },
+    "a882e31b65": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user share calendar events."
+    },
+    "f768f9ce77": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, when the user shares a calendar event from the Android Calendar app, then TextSecure must attach the calendar event to the message."
+    },
+    "1a72095252": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, when the user starts \"typing\" and \"SMS mode\" is disabled, then the App must not show the \"count of letters\"."
+    },
+    "9f104ea715": {
+      "passed": null,
+      "smells": [],
+      "note": "no text left after removing placeholders",
+      "expectedFail": true,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, <MISSING_ACTOR> <MISSING_MODAL_VERB> <MISSING_ACTION>."
+    },
+    "8e6da3b5fa": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, if SMS mode is disabled and the user starts typing a message, then the App must hide the letter count."
+    },
+    "03b9315db6": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, when the App receives an \"incoming SMS\" from a \"certain contact\", then the App must automatically forward the \"SMS\" to \"another contact\"."
+    },
+    "9f6e093dd5": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user automatically forward SMS from one contact to another."
+    },
+    "1edebbe3f2": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, when the App receives an SMS from a certain contact, then the App must automatically forward the SMS to another contact."
+    },
+    "034b3856e8": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, if the user is on the \"calling screen\", then the App must show the \"full resolution contact photo\"."
+    },
+    "3104daf39a": {
+      "passed": null,
+      "smells": [],
+      "note": "no text left after removing placeholders",
+      "expectedFail": true,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, <MISSING_ACTOR> <MISSING_MODAL_VERB> <MISSING_ACTION>."
+    },
+    "88ec0e9f1b": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, when Signal is on the calling screen, then Signal must show the contact photo in full resolution."
+    },
+    "014594241a": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must add further \"disappearing message\" periods of up to at least one year."
+    },
+    "6459d18c81": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must offer longer disappearing-message periods, up to at least one year."
+    },
+    "3cf2a3eaed": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, Signal must provide disappearing message periods of up to at least 12 months."
+    },
+    "7aed55ee18": {
+      "passed": false,
+      "smells": [
+        {
+          "segment_id": "u4526584e29810782a0c95b64fdacd5e4fdc105a1_53",
+          "smell": "Incomplete system response",
+          "value": "Verb is missing in the SR."
+        }
+      ],
+      "expectedFail": true,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must <MISSING_ACTION>."
+    },
+    "9230292402": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user set a notification color for a contact or a group."
+    },
+    "20ae65809c": {
+      "passed": null,
+      "smells": [],
+      "note": "no text left after removing placeholders",
+      "expectedFail": true,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, <MISSING_ACTOR> <MISSING_MODAL_VERB> <MISSING_ACTION>."
+    },
+    "89dd266667": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide a way to access the \"local timeline\" and \"federated timeline\"."
+    },
+    "e3357171c7": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let users access the local and federated timelines."
+    },
+    "e7b150c983": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide access to the local and federated timelines."
+    },
+    "0cd99115d5": {
+      "passed": false,
+      "smells": [
+        {
+          "segment_id": "u4526584e29810782a0c95b64fdacd5e4fdc105a1_53",
+          "smell": "Incomplete system response",
+          "value": "Verb is missing in the SR."
+        }
+      ],
+      "expectedFail": true,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must <MISSING_ACTION>."
+    },
+    "b32a3be419": {
+      "passed": false,
+      "smells": [
+        {
+          "segment_id": "u4526584e29810782a0c95b64fdacd5e4fdc105a1_53",
+          "smell": "Incomplete system response",
+          "value": "Verb is missing in the SR."
+        }
+      ],
+      "expectedFail": true,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must <MISSING_ACTION>."
+    },
+    "4dd9230aa2": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide emojis."
+    },
+    "819427cbd6": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide \"fingerprint support\" to unlock the App as an alternative to the \"passphrase\"."
+    },
+    "ffd085c7f4": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user unlock the app with a fingerprint instead of a passphrase."
+    },
+    "27e1e11e47": {
+      "passed": false,
+      "smells": [
+        {
+          "segment_id": "u143204db15064f89770d2ed94896ea22afeae958_158",
+          "smell": "Not precise verb",
+          "value": "Not precise verb in the system response."
+        }
+      ],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must support fingerprint for unlocking the app."
+    },
+    "ad48cfdaae": {
+      "passed": false,
+      "smells": [
+        {
+          "segment_id": "u4526584e29810782a0c95b64fdacd5e4fdc105a1_53",
+          "smell": "Incomplete system response",
+          "value": "Verb is missing in the SR."
+        }
+      ],
+      "expectedFail": true,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must <MISSING_ACTION>."
+    },
+    "550336dd6f": {
+      "passed": false,
+      "smells": [
+        {
+          "segment_id": "u4526584e29810782a0c95b64fdacd5e4fdc105a1_53",
+          "smell": "Incomplete system response",
+          "value": "Verb is missing in the SR."
+        }
+      ],
+      "expectedFail": true,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must <MISSING_ACTION>."
+    },
+    "ead332ba2d": {
+      "passed": null,
+      "smells": [],
+      "note": "no text left after removing placeholders",
+      "expectedFail": true,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, <MISSING_ACTOR> <MISSING_MODAL_VERB> <MISSING_ACTION>."
+    },
+    "2616957c9a": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, if a \"text\" is \"oversized\", then the App must auto-split the \"text\" over \"multiple messages\"."
+    },
+    "9a52c54ef3": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, if a text is too long, then the App must split it across multiple messages."
+    },
+    "3b05e7c3fa": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, if a text is oversized, then the App must split it over multiple messages."
+    },
+    "1306b10dca": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow the user to change the \"notification settings\" for \"groups\" independently from the \"personal chats\"."
+    },
+    "40bf445e9f": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user set notification settings for group chats separately from personal chats."
+    },
+    "846e04dffe": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide functionality to change the notification settings for groups independently from personal chats."
+    },
+    "aa30a1816e": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide \"themes\" similar to \"GO SMS PRO\"."
+    },
+    "32abd2203d": {
+      "passed": false,
+      "smells": [
+        {
+          "segment_id": "uf052e48d752b3b70177e7fb191b79f245a23fa1e_180",
+          "smell": "Not precise verb",
+          "value": "Not precise verb in the system response."
+        }
+      ],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must support themes."
+    },
+    "10fa4e661e": {
+      "passed": false,
+      "smells": [
+        {
+          "segment_id": "ua5e1388ff2d4846e7f567498edf04bdfbcc71c02_182",
+          "smell": "Not precise verb",
+          "value": "Not precise verb in the system response."
+        }
+      ],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure must support themes."
+    },
+    "6a0681eaff": {
+      "passed": false,
+      "smells": [
+        {
+          "segment_id": "u46640a9571d63159ac7a74c08d960cf14eec3672_184",
+          "smell": "Not precise verb",
+          "value": "Not precise verb in the system response."
+        }
+      ],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must support a \"custom URL scheme\" for sharing."
+    },
+    "4f74baba60": {
+      "passed": false,
+      "smells": [
+        {
+          "segment_id": "u29c3677f5ad55068559137a0f2e5de7ccee0495e_187",
+          "smell": "Not precise verb",
+          "value": "Not precise verb in the system response."
+        }
+      ],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must support a \"signal://\" URL scheme."
+    },
+    "b1f11d3983": {
+      "passed": false,
+      "smells": [
+        {
+          "segment_id": "u7e13213a09aefb49ccb1a5053d330d19797e2557_189",
+          "smell": "Not precise verb",
+          "value": "Not precise verb in the system response."
+        }
+      ],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, Signal must support a custom URL scheme for opening Signal from webpages."
+    },
+    "b22e572c28": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must sort the \"messages\" in the \"conversation view\" by \"sent timestamp\", \"sequence numbers\" or \"vector clocks\"."
+    },
+    "cbf76b8719": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must sort the \"conversation view\" by \"sent\" time."
+    },
+    "0178c814ee": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must display the \"messages\" in the \"conversation view\" in the same order for all \"chat participants\"."
+    },
+    "333b717822": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide a view of the posts in the \"public timeline\"."
+    },
+    "2fde7aae30": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide a view of posts from other people."
+    },
+    "47d7ccf224": {
+      "passed": null,
+      "smells": [],
+      "note": "no text left after removing placeholders",
+      "expectedFail": true,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, <MISSING_ACTOR> <MISSING_MODAL_VERB> <MISSING_ACTION>."
+    },
+    "1874a967e1": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must automatically move the \"message drafts\" to the top of the \"message list\"."
+    },
+    "e3e3925912": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must visually mark the \"message drafts\", such as with a different color or a \"Draft\" label."
+    },
+    "3d95cebd2b": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must automatically move the \"message drafts\" to the top of the \"message list\"."
+    },
+    "8d62a3121a": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must visually mark the \"message drafts\", such as with a different color or a \"Draft\" label."
+    },
+    "324f238f4e": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must automatically move the \"message drafts\" to the top of the \"message list\"."
+    },
+    "321833ba6c": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must visually mark the \"message drafts\", such as with a different color or a \"Draft\" label."
+    },
+    "06b4541c49": {
+      "passed": false,
+      "smells": [
+        {
+          "segment_id": "u25f0e0f0ccfd268a0798f5d6d6e8bc4d45045f36_205",
+          "smell": "Passive voice",
+          "value": "Passive voice in the condition."
+        }
+      ],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, when an SMS delivery report is received, then the App must save the time the message was actually received."
+    },
+    "32f531d5d9": {
+      "passed": false,
+      "smells": [
+        {
+          "segment_id": "uc8c0d00c78ba72cc5300faf6d6de01fc48369c0c_209",
+          "smell": "Passive voice",
+          "value": "Passive voice in the condition."
+        }
+      ],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, when an SMS delivery report is received, then the App must show that time in the message details."
+    },
+    "cf47095a17": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, when the App receives an \"SMS delivery report\", then the App must save the time at which the recipient received the message."
+    },
+    "a653a2cb37": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must show the saved \"received time\" in the \"message details\"."
+    },
+    "2cac7a9cf0": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, when the App receives an \"SMS delivery report\", then the App must save the time at which the recipient received the message."
+    },
+    "0b59311da9": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must show the saved \"received time\" in the \"message details\"."
+    },
+    "7bbae2ddd4": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, if the recipient does not receive a sent \"Signal message\" within a \"timeout\", then the App must notify the \"sender\"."
+    },
+    "2c55555f61": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, if the recipient does not receive a sent \"Signal message\" within a \"timeout\", then the App must offer the \"sender\" an option to resend the message via \"insecure SMS\"."
+    },
+    "cb13bd69b8": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, if the recipient does not receive a sent \"Signal message\" within a \"timeout\", then the App must notify the \"sender\"."
+    },
+    "3cca4ed5b3": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, if the recipient does not receive a sent \"Signal message\" within a \"timeout\", then the App must offer the \"sender\" an option to resend the message via \"insecure SMS\"."
+    },
+    "352f9a8412": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, if the recipient does not receive a sent \"Signal message\" within a \"timeout\", then the App must notify the \"sender\"."
+    },
+    "184ea8e525": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, if the recipient does not receive a sent \"Signal message\" within a \"timeout\", then the App must offer the \"sender\" an option to resend the message via \"insecure SMS\"."
+    },
+    "2d4d4139e7": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, if the \"media item\" has already been saved, then the App must change the \"save icon\" to a \"view/share icon\"."
+    },
+    "70c158220e": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, if a picture has already been saved, then the App must show a view or share icon instead of the save button."
+    },
+    "4af7c3548e": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, if the user has already saved a \"media item\", then the App must show a \"view\" or \"share\" icon instead of the \"save\" button."
+    },
+    "3915cc8825": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user block a user-specified \"phone number\"."
+    },
+    "ec03a65f14": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, when the App receives a message from a \"blocked number\", then the App must delete the message."
+    },
+    "e9d9a413fa": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, when the App receives a message from a \"blocked number\", then the App must not show a \"notification\"."
+    },
+    "53b8806e55": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user block a user-specified \"phone number\"."
+    },
+    "00d73754d3": {
+      "passed": false,
+      "smells": [
+        {
+          "segment_id": "u0b036642966af2ffa24fe3fe2c3dffb3fa8c0926_249",
+          "smell": "Passive voice",
+          "value": "Passive voice in the condition."
+        }
+      ],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, when a message from a blocked number is received, then the App must delete it."
+    },
+    "36d51913b6": {
+      "passed": false,
+      "smells": [
+        {
+          "segment_id": "u1bae7de1bde3cb9981f4c492172b6554000ed854_253",
+          "smell": "Passive voice",
+          "value": "Passive voice in the condition."
+        }
+      ],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, when a message from a blocked number is received, then the App must not show a notification."
+    },
+    "ccb45e263e": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user block a user-specified \"phone number\"."
+    },
+    "1b7bc6aae9": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, when the App receives a message from a \"blocked number\", then the App must delete the message."
+    },
+    "712fcc6894": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, when the App receives a message from a \"blocked number\", then the App must not show a \"notification\"."
+    },
+    "e45e0ee6a0": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, when the user triggers a \"specific button combo\" and confirms the \"confirm dialogue\", then the App must wipe the \"text message database\"."
+    },
+    "a07168b560": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, if the user is being coerced to disclose their password, then the App must let them quickly wipe the message database."
+    },
+    "c554f6ecc9": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide a quick way, such as a \"button combo\" with a \"confirm dialogue\", to wipe the \"text message database\"."
+    },
+    "dadb57b437": {
+      "passed": false,
+      "smells": [
+        {
+          "segment_id": "ub1a3a6cca8836cd86743c8b6185ea4e56ea50fc0_267",
+          "smell": "Non-atomic requirement",
+          "value": "The requirement has more than one action in the system response."
+        }
+      ],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, when the user starts the App for the first time, then the App must ask the user to choose between \"only use push\", \"use SMS fallback\", and \"use as default SMS/MMS app\"."
+    },
+    "bf0fe7f82e": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, when the user presses the \"what does that mean?\" button, then the App must show a \"pop-up\" that explains each mode."
+    },
+    "6e35bd2fc7": {
+      "passed": false,
+      "smells": [
+        {
+          "segment_id": "ub1a3a6cca8836cd86743c8b6185ea4e56ea50fc0_267",
+          "smell": "Non-atomic requirement",
+          "value": "The requirement has more than one action in the system response."
+        }
+      ],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, when the user starts the App for the first time, then the App must ask the user to choose between \"only use push\", \"use SMS fallback\", and \"use as default SMS/MMS app\"."
+    },
+    "9407a627eb": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, when the user presses the \"what does that mean?\" button, then the App must show a \"pop-up\" that explains each mode."
+    },
+    "c1c5605469": {
+      "passed": false,
+      "smells": [
+        {
+          "segment_id": "ub1a3a6cca8836cd86743c8b6185ea4e56ea50fc0_267",
+          "smell": "Non-atomic requirement",
+          "value": "The requirement has more than one action in the system response."
+        }
+      ],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, when the user starts the App for the first time, then the App must ask the user to choose between \"only use push\", \"use SMS fallback\", and \"use as default SMS/MMS app\"."
+    },
+    "1bf2d6300d": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, when the user presses the \"what does that mean?\" button, then the App must show a \"pop-up\" that explains each mode."
+    },
+    "9f4c91bd3c": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, if the user has enabled \"dummy messaging\", then the App must send \"dummy messages\" to random TextSecure contacts at random times."
+    },
+    "aaa8121c9d": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, when the App receives a \"dummy message\", then the App must discard it automatically."
+    },
+    "650a878e0c": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user define the quantity of \"dummy messages\"."
+    },
+    "3341dbb034": {
+      "passed": false,
+      "smells": [
+        {
+          "segment_id": "uec734a106fe86595ae4e93072c7c0158313731f4_283",
+          "smell": "Incorrect order requirement",
+          "value": "The condition clause of the requirement is after the system response."
+        }
+      ],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, if the device is \"roaming\", then the App must not send \"dummy messages\" unless the user has enabled it."
+    },
+    "d3a1c0ed79": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, if the \"battery level\" is below a \"threshold\", then the App must not send \"dummy messages\"."
+    },
+    "c33a70f108": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, if the user has enabled \"dummy messaging\", then the App must send \"dummy messages\" to random TextSecure contacts at random times."
+    },
+    "968507e1a9": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, when the App receives a \"dummy message\", then the App must discard it automatically."
+    },
+    "bf5093bf2d": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user define the quantity of \"dummy messages\"."
+    },
+    "53f3a68801": {
+      "passed": false,
+      "smells": [
+        {
+          "segment_id": "uec734a106fe86595ae4e93072c7c0158313731f4_283",
+          "smell": "Incorrect order requirement",
+          "value": "The condition clause of the requirement is after the system response."
+        }
+      ],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, if the device is \"roaming\", then the App must not send \"dummy messages\" unless the user has enabled it."
+    },
+    "85f0b7b384": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, if the \"battery level\" is below a \"threshold\", then the App must not send \"dummy messages\"."
+    },
+    "76c450f184": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, if the user has enabled \"dummy messaging\", then the App must send \"dummy messages\" to random TextSecure contacts at random times."
+    },
+    "c3257e1942": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, when the App receives a \"dummy message\", then the App must discard it automatically."
+    },
+    "9a2b8b5e03": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user define the quantity of \"dummy messages\"."
+    },
+    "671e46f1a3": {
+      "passed": false,
+      "smells": [
+        {
+          "segment_id": "uec734a106fe86595ae4e93072c7c0158313731f4_283",
+          "smell": "Incorrect order requirement",
+          "value": "The condition clause of the requirement is after the system response."
+        }
+      ],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, if the device is \"roaming\", then the App must not send \"dummy messages\" unless the user has enabled it."
+    },
+    "83ebe3b71f": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, if the \"battery level\" is below a \"threshold\", then the App must not send \"dummy messages\"."
+    },
+    "c005c34545": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, when the user opens the \"image gallery\", then the App must let the user select multiple \"images/media\" and delete them."
+    },
+    "ffa44c615f": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, when the user opens an \"image/media\", then the App must let the user delete it."
+    },
+    "57c5b9fd5f": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, when the user deletes \"images/media\", then the App must show a \"confirmation dialog\"."
+    },
+    "533f5460e9": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, when the user opens the \"image gallery\", then the App must let the user select multiple \"images/media\" and delete them."
+    },
+    "3386c22312": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, when the user opens an \"image/media\", then the App must let the user delete it."
+    },
+    "ea879ad854": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, when the user deletes \"images/media\", then the App must show a \"confirmation dialog\"."
+    },
+    "7543fe7b0f": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, when the user opens the \"image gallery\", then the App must let the user select multiple \"images/media\" and delete them."
+    },
+    "42a65d71ba": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, when the user opens an \"image/media\", then the App must let the user delete it."
+    },
+    "16bb19bfb3": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, when the user deletes \"images/media\", then the App must show a \"confirmation dialog\"."
+    },
+    "0d7b76a02f": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user edit any message from the \"Android context menu\"."
+    },
+    "7e25d921c5": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user insert a new message next to an existing message."
+    },
+    "98e9fda488": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user edit any message from the \"Android context menu\"."
+    },
+    "bbd5a3f8ae": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user insert a new message next to an existing message."
+    },
+    "1f6f3bb1c9": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user edit any message from the \"Android context menu\"."
+    },
+    "44038a9820": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user insert a new message next to an existing message."
+    },
+    "cf96573607": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, when the user long-presses a \"received message\", then the App must offer an \"acknowledge message\" option."
+    },
+    "8c40f5c102": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, when the user selects \"acknowledge message\" after long-pressing a \"received message\", then the App must replace the \"received or seen indicator\" with an \"indicator for acknowledgement\"."
+    },
+    "7aff5c3b0a": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user acknowledge a received message."
+    },
+    "6f5fd4a87b": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, when the user selects \"acknowledge message\", then the App must replace the \"received\" indicator with an \"acknowledgement\" indicator."
+    },
+    "f14f96e841": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, when the user long-presses a \"received message\", then the App must offer an \"acknowledge message\" option."
+    },
+    "f003803470": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, when the user selects \"acknowledge message\", then the App must replace the \"received\" indicator with an \"acknowledgement\" indicator."
+    },
+    "f5839628e9": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, if a message is outgoing, then the App must show its \"received time\", taken from the \"delivery receipt\", in the \"message details\"."
+    },
+    "7fc943a447": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, if a message is outgoing, then the App must show its received time in the message details."
+    },
+    "5fc52cdd75": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, if a message is outgoing, then the App must show its \"received time\", taken from the \"delivery receipt\", in the \"message details\"."
+    },
+    "edf93e04e7": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must show a \"pie chart\" of how many of the user's contacts are on Signal."
+    },
+    "eee622d4a0": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must show how many of the user's sent messages are encrypted."
+    },
+    "46b751f20e": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, when the user taps an element of the \"pie chart\", then the App must show the list of people in that category."
+    },
+    "3946e2d7b4": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, if most but not all of the user's contacts use Signal, then the App must display a \"progress message\" such as \"Almost there!\"."
+    },
+    "6229c9874a": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must show a \"pie chart\" of how many of the user's contacts are on Signal."
+    },
+    "7148c8dabd": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must show how many of the user's sent messages are encrypted."
+    },
+    "7f44ea4572": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, when the user taps an element of the \"pie chart\", then the App must show the list of people in that category."
+    },
+    "b360c655d9": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, if most but not all of the user's contacts use Signal, then the App must display a \"progress message\" such as \"Almost there!\"."
+    },
+    "e26cfa7759": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must show a \"pie chart\" of how many of the user's contacts are on Signal."
+    },
+    "5467c361cb": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must show how many of the user's sent messages are encrypted."
+    },
+    "264bc1745e": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, when the user taps an element of the \"pie chart\", then the App must show the list of people in that category."
+    },
+    "f4a22734bf": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, if most but not all of the user's contacts use Signal, then the App must display a \"progress message\" such as \"Almost there!\"."
+    },
+    "c62ee0afc7": {
+      "passed": false,
+      "smells": [
+        {
+          "segment_id": "u528bbb2fea822d8a2a410d56368bb75f5ff703e9_340",
+          "smell": "Incorrect order requirement",
+          "value": "The condition clause of the requirement is after the system response."
+        },
+        {
+          "segment_id": "u528bbb2fea822d8a2a410d56368bb75f5ff703e9_343",
+          "smell": "Passive voice",
+          "value": "Passive voice in the condition."
+        }
+      ],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, when the user searches for a non-contact by \"phone number\", then the App must find the number whether it is entered with the \"+\" prefix, without it, or without the \"calling code\"."
+    },
+    "9445efc1f8": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, when the user searches by a \"phone number\" without a \"calling code\", then the App must try the \"calling code\" of the user's own phone number."
+    },
+    "7184f1e015": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, when the user searches by a \"phone number\" without a \"calling code\", then the App must try the \"calling code\" of the device's default region."
+    },
+    "7dfbde10d7": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must find a user by phone number whether or not the calling code is included."
+    },
+    "78ccb2caa6": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, when the user searches by a \"phone number\" without a \"calling code\", then the App must try the \"calling code\" of the user's own phone number."
+    },
+    "4003dec1df": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, when the user searches by a \"phone number\" without a \"calling code\", then the App must try the \"calling code\" of the device's default region."
+    },
+    "28282d196c": {
+      "passed": false,
+      "smells": [
+        {
+          "segment_id": "u528bbb2fea822d8a2a410d56368bb75f5ff703e9_340",
+          "smell": "Incorrect order requirement",
+          "value": "The condition clause of the requirement is after the system response."
+        },
+        {
+          "segment_id": "u528bbb2fea822d8a2a410d56368bb75f5ff703e9_343",
+          "smell": "Passive voice",
+          "value": "Passive voice in the condition."
+        }
+      ],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, when the user searches for a non-contact by \"phone number\", then the App must find the number whether it is entered with the \"+\" prefix, without it, or without the \"calling code\"."
+    },
+    "dac19e1ee8": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, when the user searches by a \"phone number\" without a \"calling code\", then the App must try the \"calling code\" of the user's own phone number."
+    },
+    "ba9354912f": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, when the user searches by a \"phone number\" without a \"calling code\", then the App must try the \"calling code\" of the device's default region."
+    },
+    "c59a1f61ff": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, if the \"App\" is the \"default SMS manager\", then the App must provide an option to use the \"Android notification profile\" for \"regular SMS/MMS\"."
+    },
+    "3d9ba65d4f": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, if the \"App\" is the \"default SMS manager\", then the App must provide an option to use the \"Signal settings\" for \"secure messages\"."
+    },
+    "7f559417c9": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, if the App is the \"default SMS app\", then the App must use the \"Android notification profile\" for regular \"SMS/MMS\"."
+    },
+    "ee5eebfbe6": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, if the App is the \"default SMS app\", then the App must use the \"Signal notification settings\" for \"secure messages\" and \"calls\"."
+    },
+    "3f61f142ab": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, if the App is the \"default SMS app\", then the App must use the \"Android notification profile\" for regular \"SMS/MMS\"."
+    },
+    "fdd8cc4c65": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, if the App is the \"default SMS app\", then the App must use the \"Signal notification settings\" for \"secure messages\" and \"calls\"."
+    },
+    "24cbad4dc9": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user export the \"private key\" to a \"file\"."
+    },
+    "37411472e5": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user import the \"private key\" from a \"file\"."
+    },
+    "757a394bb5": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user export \"public keys\" to a \"file\"."
+    },
+    "e1347b4c4f": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user import \"public keys\" from a \"file\"."
+    },
+    "a5a8584009": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user export \"public keys\" via \"Bluetooth\", \"NFC\", and \"QR code\"."
+    },
+    "0ead991ffd": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user import \"public keys\" via \"Bluetooth\", \"NFC\", and \"QR code\"."
+    },
+    "11fc960581": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user export the \"private key\" to a \"file\"."
+    },
+    "6fee3f1174": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user import the \"private key\" from a \"file\"."
+    },
+    "6b3e1fa168": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user export \"public keys\" to a \"file\"."
+    },
+    "c10fc5ad86": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user import \"public keys\" from a \"file\"."
+    },
+    "b8ac2d5ba1": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user export \"public keys\" via \"Bluetooth\", \"NFC\", and \"QR code\"."
+    },
+    "97684c836c": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user import \"public keys\" via \"Bluetooth\", \"NFC\", and \"QR code\"."
+    },
+    "12ee4b65a4": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user export the \"private key\" to a \"file\"."
+    },
+    "f703899f9d": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user import the \"private key\" from a \"file\"."
+    },
+    "e3f34dc7cc": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user export \"public keys\" to a \"file\"."
+    },
+    "5fb0f6a580": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user import \"public keys\" from a \"file\"."
+    },
+    "98146acf17": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user export \"public keys\" via \"Bluetooth\", \"NFC\", and \"QR code\"."
+    },
+    "ae764d4850": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user import \"public keys\" via \"Bluetooth\", \"NFC\", and \"QR code\"."
+    },
+    "9b695e6b1e": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, when the user swipes away a \"notification\", then the App must not display that \"notification\" again."
+    },
+    "c1f6bfd841": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, when the App receives a new message from the same contact, then the App must show a new \"notification\" with the new message."
+    },
+    "ca1fca5793": {
+      "passed": false,
+      "smells": [
+        {
+          "segment_id": "uf0643f7aa28edf1af7a6ac9975846628adf89f2d_392",
+          "smell": "Passive voice",
+          "value": "Passive voice in the condition."
+        }
+      ],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, when a notification is swiped away, then the App must not show it again."
+    },
+    "fbf5df6078": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, when the App receives a new message from the same contact, then the App must show a new \"notification\" with the new message."
+    },
+    "39b00f4963": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, when the user swipes away a \"notification\", then the App must not display that \"notification\" again."
+    },
+    "1474d46f12": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, when the App receives a new message from the same contact, then the App must show a new \"notification\" with the new message."
+    },
+    "beac0bab0c": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, when the App creates an \".xml backup\", then the App must include the \"archive\" and \"blocked\" flags of the messages."
+    },
+    "880ce7bbf9": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, after importing \"messages\" from an \".xml backup\", then the App must preserve the \"archive\" and \"blocked\" flags."
+    },
+    "44520d720f": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, when the App creates an \".xml backup\", then the App must include the \"archive\" and \"blocked\" flags of the messages."
+    },
+    "c8ae3030fc": {
+      "passed": false,
+      "smells": [
+        {
+          "segment_id": "uc1f9e946851b57a8b888301515b574f2693562ba_403",
+          "smell": "Non-atomic requirement",
+          "value": "The requirement has more than one action in the system response."
+        },
+        {
+          "segment_id": "uc1f9e946851b57a8b888301515b574f2693562ba_403",
+          "smell": "Passive voice",
+          "value": "Passive voice in the condition."
+        }
+      ],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, when messages are imported from an .xml backup, then the App must keep the archive and blocked flags."
+    },
+    "524e525457": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, when the App creates an \".xml backup\", then the App must include the \"archive\" and \"blocked\" flags of the messages."
+    },
+    "276546dbf7": {
+      "passed": true,
+      "smells": [],
+      "expectedFail": false,
+      "text": "<MISSING_SCOPE>, when the App imports messages from an \".xml backup\", then the App must restore the \"archive\" and \"blocked\" flags."
+    }
+  },
+  "summary": {
+    "Arthur": {
+      "complete_pass": 64,
+      "skipped": 1,
+      "complete_fail": 8,
+      "incomplete_fail": 4,
+      "pass_rate_complete": 0.8888888888888888
+    },
+    "set:atomic": {
+      "complete_pass": 75,
+      "skipped": 10,
+      "complete_fail": 13,
+      "incomplete_fail": 7,
+      "pass_rate_complete": 0.8522727272727273
+    },
+    "all": {
+      "complete_pass": 187,
+      "skipped": 10,
+      "complete_fail": 27,
+      "incomplete_fail": 7,
+      "pass_rate_complete": 0.8738317757009346
+    },
+    "Mko": {
+      "complete_pass": 59,
+      "complete_fail": 11,
+      "skipped": 4,
+      "incomplete_fail": 3,
+      "pass_rate_complete": 0.8428571428571429
+    },
+    "Rafo": {
+      "complete_pass": 64,
+      "skipped": 5,
+      "complete_fail": 8,
+      "pass_rate_complete": 0.8888888888888888
+    },
+    "set:split": {
+      "complete_pass": 112,
+      "complete_fail": 14,
+      "pass_rate_complete": 0.8888888888888888
+    }
+  },
+  "byText": {
+    "6d116021ace61f0d9d78f27ba15873b6cc477884": {
+      "passed": true,
+      "smells": []
+    },
+    "ae85757396715d7d1d5cc39cc268cb5815e2c49b": {
+      "passed": true,
+      "smells": []
+    },
+    "1346070c0657fe736866cabd0d9efdcef763bce7": {
+      "passed": true,
+      "smells": []
+    },
+    "0e43bc7736b640ce9d5fc7c2eb7218b5cfe9cacf": {
+      "passed": true,
+      "smells": []
+    },
+    "d1fcc97bbc6257d5d044cdd3710d1a249a4a6252": {
+      "passed": true,
+      "smells": []
+    },
+    "3be4b35783dd6ae49b0fc6b1cad43f3671b7a326": {
+      "passed": true,
+      "smells": []
+    },
+    "9e0061cf4efe5512e1e10b47795d4a823fbaa93c": {
+      "passed": true,
+      "smells": []
+    },
+    "d5bcc510dc23f3acc8927006dda1e8a455d1a16a": {
+      "passed": false,
+      "smells": [
+        {
+          "segment_id": "ud5bcc510dc23f3acc8927006dda1e8a455d1a16a_14",
+          "smell": "Not precise verb",
+          "value": "Not precise verb in the system response."
+        }
+      ]
+    },
+    "803f29df7f1f22b839457b490716a8f4b40f36f2": {
+      "passed": false,
+      "smells": [
+        {
+          "segment_id": "u803f29df7f1f22b839457b490716a8f4b40f36f2_16",
+          "smell": "Passive voice",
+          "value": "Passive voice in the condition."
+        }
+      ]
+    },
+    "6e5ca3582ffac01853f3507a541e515d9d571da4": {
+      "passed": true,
+      "smells": []
+    },
+    "e66c53809738e5b3ee9f6fb178eb645b1a48aea4": {
+      "passed": true,
+      "smells": []
+    },
+    "89bac6e716aa7c3b49ff4179175fed332fdb617d": {
+      "passed": true,
+      "smells": []
+    },
+    "35992aa97863c91808d92c07b0e0c837c0310e51": {
+      "passed": true,
+      "smells": []
+    },
+    "fa0e423ba1cf42ad789df9436a347e7814517b24": {
+      "passed": true,
+      "smells": []
+    },
+    "3efe685eefa40075f501099ca09df122d2aca9c4": {
+      "passed": true,
+      "smells": []
+    },
+    "9aad8237e3c0e575ea3b0cc6f66e30f95c618c84": {
+      "passed": true,
+      "smells": []
+    },
+    "b130058d31ae251314cc2a4dc840af4a749c03db": {
+      "passed": true,
+      "smells": []
+    },
+    "9d907a205f51fdb5628f5dc087ffa6e03a899bd4": {
+      "passed": true,
+      "smells": []
+    },
+    "5a7937a1c42c9b780c5646c3ac699c8d72caaa36": {
+      "passed": true,
+      "smells": []
+    },
+    "47d38017f3fcfdcaf1e5979814c4067998a675f5": {
+      "passed": true,
+      "smells": []
+    },
+    "8ec8eaf9f51ee13cd30effe9fbf5c47f05341b4e": {
+      "passed": true,
+      "smells": []
+    },
+    "c2a461f3b2ffe1d6060fd9c6094e64e4ebfe63c3": {
+      "passed": true,
+      "smells": []
+    },
+    "a4b9306b344c9b6d7a2bc4de15b548b8b9a2d673": {
+      "passed": true,
+      "smells": []
+    },
+    "4526584e29810782a0c95b64fdacd5e4fdc105a1": {
+      "passed": false,
+      "smells": [
+        {
+          "segment_id": "u4526584e29810782a0c95b64fdacd5e4fdc105a1_53",
+          "smell": "Incomplete system response",
+          "value": "Verb is missing in the SR."
+        }
+      ]
+    },
+    "872c45ca051f12762b625008930af6efd447b9de": {
+      "passed": true,
+      "smells": []
+    },
+    "0f524d4eb6e4277d959f1b2c8275ee53079cd63f": {
+      "passed": true,
+      "smells": []
+    },
+    "d1d764e6c7e66b91d5843cb8cad48e931f7f0a73": {
+      "passed": true,
+      "smells": []
+    },
+    "23256d5c45548aadacd16061cf2dc4b169af1d81": {
+      "passed": true,
+      "smells": []
+    },
+    "460613bdf7261dc139ec4a0f610e7cfa6e2f4599": {
+      "passed": true,
+      "smells": []
+    },
+    "0b992400c842f82b81a8a701a71f04f336a866cc": {
+      "passed": true,
+      "smells": []
+    },
+    "92691ea913522b512f8135f102076582cfe7d2f0": {
+      "passed": true,
+      "smells": []
+    },
+    "8f8a9d847e9dd09450fbd7b6aba58aead36008d2": {
+      "passed": true,
+      "smells": []
+    },
+    "427276fc0ca6dc32eb7b0adf422f4e74f38f390a": {
+      "passed": true,
+      "smells": []
+    },
+    "3bbe57e552651706a78d9c936ca6c766a91d920b": {
+      "passed": false,
+      "smells": [
+        {
+          "segment_id": "u3bbe57e552651706a78d9c936ca6c766a91d920b_80",
+          "smell": "Passive voice",
+          "value": "Passive voice in the condition."
+        }
+      ]
+    },
+    "2624b952fc1ea779d697d9489d2ede840d4cc3a5": {
+      "passed": true,
+      "smells": []
+    },
+    "6bd743c775349d27808b9b38c6acb27b5c5965c5": {
+      "passed": false,
+      "smells": [
+        {
+          "segment_id": "u6bd743c775349d27808b9b38c6acb27b5c5965c5_88",
+          "smell": "Non-atomic requirement",
+          "value": "The requirement has more than one action in the system response."
+        }
+      ]
+    },
+    "5a413b5859f1c3fca1af58df28c98f1130c7e1e1": {
+      "passed": false,
+      "smells": [
+        {
+          "segment_id": "u5a413b5859f1c3fca1af58df28c98f1130c7e1e1_90",
+          "smell": "Non-atomic requirement",
+          "value": "The requirement has more than one action in the system response."
+        }
+      ]
+    },
+    "b56cea641a922b802814b050aa9f08d2f622b2dd": {
+      "passed": false,
+      "smells": [
+        {
+          "segment_id": "ub56cea641a922b802814b050aa9f08d2f622b2dd_92",
+          "smell": "Non-atomic requirement",
+          "value": "The requirement has more than one action in the system response."
+        }
+      ]
+    },
+    "708e211c1c04792859b6c947ad0645ac952bfa43": {
+      "passed": true,
+      "smells": []
+    },
+    "965a790408f391caa09b37e4e1900b21e5d698ec": {
+      "passed": false,
+      "smells": [
+        {
+          "segment_id": "u965a790408f391caa09b37e4e1900b21e5d698ec_96",
+          "smell": "Incorrect order requirement",
+          "value": "The condition clause of the requirement is after the system response."
+        },
+        {
+          "segment_id": "u965a790408f391caa09b37e4e1900b21e5d698ec_97",
+          "smell": "Passive voice",
+          "value": "Passive voice in the condition."
+        }
+      ]
+    },
+    "53b485f1bd8aaa0bdf23cb2ef7a1c644f12ea13f": {
+      "passed": true,
+      "smells": []
+    },
+    "5dfd23268afb3ef389abd9df9d983a9b5cd5b359": {
+      "passed": true,
+      "smells": []
+    },
+    "865f65020936aa065e8bf07c400df5c669365a40": {
+      "passed": true,
+      "smells": []
+    },
+    "a53f8d7533b1d093ac29a7508611e511a220c212": {
+      "passed": true,
+      "smells": []
+    },
+    "40b5aa7cf83a3bf8fb71e37a12542e8c4502c35e": {
+      "passed": true,
+      "smells": []
+    },
+    "f5f9ece015dd464991383030bd53f09c7cc17828": {
+      "passed": true,
+      "smells": []
+    },
+    "dab116865e3c8958bc59ff1b2c3a6ae4c6facfa6": {
+      "passed": true,
+      "smells": []
+    },
+    "e6854b0521d06661dd17e1b1541237ad17afb762": {
+      "passed": true,
+      "smells": []
+    },
+    "13db29da861706d9088db9d412459439aeab1911": {
+      "passed": true,
+      "smells": []
+    },
+    "8fc36beffc7cc89524e283055df346d0e3b08f50": {
+      "passed": true,
+      "smells": []
+    },
+    "37d579830e3ceddc66ec8331d563259f0b7873f6": {
+      "passed": true,
+      "smells": []
+    },
+    "8afccef8af508a4980433cf642c0157744c2174e": {
+      "passed": true,
+      "smells": []
+    },
+    "74df20c1d1e40788c3ada17178f36709286cdc6d": {
+      "passed": true,
+      "smells": []
+    },
+    "44f4466f627734672a7b7e4b7469852ba29e0020": {
+      "passed": true,
+      "smells": []
+    },
+    "42087392f6348e1fd4eb13dd2e088a75adbce7d2": {
+      "passed": true,
+      "smells": []
+    },
+    "e0b92d9a7b339b41460dc0f0ff8b3f9c51b29929": {
+      "passed": true,
+      "smells": []
+    },
+    "ae1139dad07042863686219f56e8b94dffebb716": {
+      "passed": true,
+      "smells": []
+    },
+    "27df77165bcf9eb3f4f2c10dc95f9805005fbba3": {
+      "passed": true,
+      "smells": []
+    },
+    "a1191ca1c30def232a615c878c6031c8ef5a4850": {
+      "passed": true,
+      "smells": []
+    },
+    "e5db82bc67f19e24093bc7078729cc4a950e35a5": {
+      "passed": true,
+      "smells": []
+    },
+    "20d8e852538888fe1922154739d8b32e2f505635": {
+      "passed": true,
+      "smells": []
+    },
+    "35548d51733e5f52aa4ab321a6d9bffd7a7e1c23": {
+      "passed": true,
+      "smells": []
+    },
+    "143204db15064f89770d2ed94896ea22afeae958": {
+      "passed": false,
+      "smells": [
+        {
+          "segment_id": "u143204db15064f89770d2ed94896ea22afeae958_158",
+          "smell": "Not precise verb",
+          "value": "Not precise verb in the system response."
+        }
+      ]
+    },
+    "d56f1e299abeb2287b4d1b9313732de8bfa4e122": {
+      "passed": true,
+      "smells": []
+    },
+    "895f2f4044961b4cf44e9852263612db7f1de10c": {
+      "passed": true,
+      "smells": []
+    },
+    "2834166d702cc789335ce1042c9aec65823d3a7e": {
+      "passed": true,
+      "smells": []
+    },
+    "7400b6118d48cf37de77752f80997adcbb67716d": {
+      "passed": true,
+      "smells": []
+    },
+    "60d6cddf09ed9746ea72567ff045efa791a7d8f7": {
+      "passed": true,
+      "smells": []
+    },
+    "c4c153dd69429e60d605ee3655d9665b8374093a": {
+      "passed": true,
+      "smells": []
+    },
+    "f8da44bf1fb636677d2434b47075541d77f5ab4b": {
+      "passed": true,
+      "smells": []
+    },
+    "f052e48d752b3b70177e7fb191b79f245a23fa1e": {
+      "passed": false,
+      "smells": [
+        {
+          "segment_id": "uf052e48d752b3b70177e7fb191b79f245a23fa1e_180",
+          "smell": "Not precise verb",
+          "value": "Not precise verb in the system response."
+        }
+      ]
+    },
+    "a5e1388ff2d4846e7f567498edf04bdfbcc71c02": {
+      "passed": false,
+      "smells": [
+        {
+          "segment_id": "ua5e1388ff2d4846e7f567498edf04bdfbcc71c02_182",
+          "smell": "Not precise verb",
+          "value": "Not precise verb in the system response."
+        }
+      ]
+    },
+    "46640a9571d63159ac7a74c08d960cf14eec3672": {
+      "passed": false,
+      "smells": [
+        {
+          "segment_id": "u46640a9571d63159ac7a74c08d960cf14eec3672_184",
+          "smell": "Not precise verb",
+          "value": "Not precise verb in the system response."
+        }
+      ]
+    },
+    "29c3677f5ad55068559137a0f2e5de7ccee0495e": {
+      "passed": false,
+      "smells": [
+        {
+          "segment_id": "u29c3677f5ad55068559137a0f2e5de7ccee0495e_187",
+          "smell": "Not precise verb",
+          "value": "Not precise verb in the system response."
+        }
+      ]
+    },
+    "7e13213a09aefb49ccb1a5053d330d19797e2557": {
+      "passed": false,
+      "smells": [
+        {
+          "segment_id": "u7e13213a09aefb49ccb1a5053d330d19797e2557_189",
+          "smell": "Not precise verb",
+          "value": "Not precise verb in the system response."
+        }
+      ]
+    },
+    "f393886599aa4b8ef07923a2cf4c479e2ec3d7bb": {
+      "passed": true,
+      "smells": []
+    },
+    "1b4fd4d747518ad2f8aeda0856b5d572a3423998": {
+      "passed": true,
+      "smells": []
+    },
+    "856a46c14e6ffabab0d69069960cec5b12477ad0": {
+      "passed": true,
+      "smells": []
+    },
+    "466525a6f847ac0e7901c161bb1c4b2628940386": {
+      "passed": true,
+      "smells": []
+    },
+    "7c55e490aac675020fb58edf9a2db9661afb3843": {
+      "passed": true,
+      "smells": []
+    },
+    "dc73b105ca2074eefa8cdda3bcc5f1910e116867": {
+      "passed": true,
+      "smells": []
+    },
+    "bdc3083700909a0d8f40bcd86c16e14a76c87d80": {
+      "passed": true,
+      "smells": []
+    },
+    "25f0e0f0ccfd268a0798f5d6d6e8bc4d45045f36": {
+      "passed": false,
+      "smells": [
+        {
+          "segment_id": "u25f0e0f0ccfd268a0798f5d6d6e8bc4d45045f36_205",
+          "smell": "Passive voice",
+          "value": "Passive voice in the condition."
+        }
+      ]
+    },
+    "c8c0d00c78ba72cc5300faf6d6de01fc48369c0c": {
+      "passed": false,
+      "smells": [
+        {
+          "segment_id": "uc8c0d00c78ba72cc5300faf6d6de01fc48369c0c_209",
+          "smell": "Passive voice",
+          "value": "Passive voice in the condition."
+        }
+      ]
+    },
+    "35733e9fb35f5e7f64fe11c927fa0ea6c931edd9": {
+      "passed": false,
+      "smells": [
+        {
+          "segment_id": "u35733e9fb35f5e7f64fe11c927fa0ea6c931edd9_213",
+          "smell": "Passive voice",
+          "value": "Passive voice in the condition."
+        }
+      ]
+    },
+    "944d7658ba7d7f2a8c587bf83f8cfe0c78f00018": {
+      "passed": true,
+      "smells": []
+    },
+    "b7bbfcee257005dd8111849d2ed214f4c9e9ce42": {
+      "passed": false,
+      "smells": [
+        {
+          "segment_id": "ub7bbfcee257005dd8111849d2ed214f4c9e9ce42_219",
+          "smell": "Passive voice",
+          "value": "Passive voice in the condition."
+        }
+      ]
+    },
+    "c9df0e5a8ad22fde7dbae4e12c2f57cf32d4a298": {
+      "passed": false,
+      "smells": [
+        {
+          "segment_id": "uc9df0e5a8ad22fde7dbae4e12c2f57cf32d4a298_223",
+          "smell": "Passive voice",
+          "value": "Passive voice in the condition."
+        }
+      ]
+    },
+    "7eabff1d6a2a6519f3deba19d0eec9b6b8849028": {
+      "passed": true,
+      "smells": []
+    },
+    "520f9bf330235cdcc7691dfeb063be9b920f3819": {
+      "passed": true,
+      "smells": []
+    },
+    "66afbaf04eeebbedefef947d4c98045e9744e09e": {
+      "passed": true,
+      "smells": []
+    },
+    "2510498544174fd69f09c0e2f6d1edbac50a8a78": {
+      "passed": true,
+      "smells": []
+    },
+    "080710810cab5068af693d0c0ee7beee65e528c3": {
+      "passed": false,
+      "smells": [
+        {
+          "segment_id": "u080710810cab5068af693d0c0ee7beee65e528c3_241",
+          "smell": "Passive voice",
+          "value": "Passive voice in the condition."
+        }
+      ]
+    },
+    "b071b21c97efa17c90332363faa58c25762344a8": {
+      "passed": false,
+      "smells": [
+        {
+          "segment_id": "ub071b21c97efa17c90332363faa58c25762344a8_245",
+          "smell": "Passive voice",
+          "value": "Passive voice in the condition."
+        }
+      ]
+    },
+    "0b036642966af2ffa24fe3fe2c3dffb3fa8c0926": {
+      "passed": false,
+      "smells": [
+        {
+          "segment_id": "u0b036642966af2ffa24fe3fe2c3dffb3fa8c0926_249",
+          "smell": "Passive voice",
+          "value": "Passive voice in the condition."
+        }
+      ]
+    },
+    "1bae7de1bde3cb9981f4c492172b6554000ed854": {
+      "passed": false,
+      "smells": [
+        {
+          "segment_id": "u1bae7de1bde3cb9981f4c492172b6554000ed854_253",
+          "smell": "Passive voice",
+          "value": "Passive voice in the condition."
+        }
+      ]
+    },
+    "6194f20cbc82038f43bc191aabbe1907f3d7b1cb": {
+      "passed": true,
+      "smells": []
+    },
+    "be728137f39b645dd0459b67694ac35255749597": {
+      "passed": true,
+      "smells": []
+    },
+    "11f318c462fa468f737104a2def224961ad92c6d": {
+      "passed": true,
+      "smells": []
+    },
+    "b1a3a6cca8836cd86743c8b6185ea4e56ea50fc0": {
+      "passed": false,
+      "smells": [
+        {
+          "segment_id": "ub1a3a6cca8836cd86743c8b6185ea4e56ea50fc0_267",
+          "smell": "Non-atomic requirement",
+          "value": "The requirement has more than one action in the system response."
+        }
+      ]
+    },
+    "73e536449e7822a07396ce659e2182f0fdb59fac": {
+      "passed": true,
+      "smells": []
+    },
+    "e22bf2aa4bb33624edd5067c236bfaac90bafcaf": {
+      "passed": true,
+      "smells": []
+    },
+    "e09ae2651b0f005ae8b4683eee3fc350a217786d": {
+      "passed": true,
+      "smells": []
+    },
+    "6a8b35e04ac63ec11bcb0ccd8ca46fded0db36cf": {
+      "passed": true,
+      "smells": []
+    },
+    "ec734a106fe86595ae4e93072c7c0158313731f4": {
+      "passed": false,
+      "smells": [
+        {
+          "segment_id": "uec734a106fe86595ae4e93072c7c0158313731f4_283",
+          "smell": "Incorrect order requirement",
+          "value": "The condition clause of the requirement is after the system response."
+        }
+      ]
+    },
+    "d78a426a0fef60ca0c1493ba562e763b3581f5a3": {
+      "passed": true,
+      "smells": []
+    },
+    "f8a65ca5f238d87d6a2ad2719ed769f199cd91ac": {
+      "passed": true,
+      "smells": []
+    },
+    "3f3b955aace9420d619655e0dc026a3a047d94a7": {
+      "passed": false,
+      "smells": [
+        {
+          "segment_id": "u3f3b955aace9420d619655e0dc026a3a047d94a7_296",
+          "smell": "Passive voice",
+          "value": "Passive voice in the condition."
+        }
+      ]
+    },
+    "6e2f098fcc386ccd4429563c9f18a16f94006a89": {
+      "passed": true,
+      "smells": []
+    },
+    "e57377c0b531d057036bdfcb7fd379c2c2f64ae3": {
+      "passed": true,
+      "smells": []
+    },
+    "3b39f40df84958bc552d4e8f38af9c006d4cd5fa": {
+      "passed": true,
+      "smells": []
+    },
+    "d931c400afb7cb93ede5dff6a2b7e6c1829c52af": {
+      "passed": true,
+      "smells": []
+    },
+    "0dbdd86748acc48295431fbd7eb9ed910e265141": {
+      "passed": true,
+      "smells": []
+    },
+    "7b1ad623dae204950faa8c9972e03c645095e2b4": {
+      "passed": true,
+      "smells": []
+    },
+    "695041d9a3e49f1b29dfd2d64a7b6bb5680ed576": {
+      "passed": true,
+      "smells": []
+    },
+    "67316117083c486238153cdc74ada8f2b91d5c0e": {
+      "passed": true,
+      "smells": []
+    },
+    "54d26810644e4a82ba0b0380a9f0b239ca104a4f": {
+      "passed": true,
+      "smells": []
+    },
+    "5350f436c1b894b3da6f7552e177b752ce2c6335": {
+      "passed": true,
+      "smells": []
+    },
+    "6c4c4c41092527aa20154474fe504955e06f81a3": {
+      "passed": true,
+      "smells": []
+    },
+    "018db7ae15fa0edbccb0c9ef7b8c020f38168474": {
+      "passed": true,
+      "smells": []
+    },
+    "ee49ca0632d33e087054a229c500f1a9f7e971bf": {
+      "passed": true,
+      "smells": []
+    },
+    "528bbb2fea822d8a2a410d56368bb75f5ff703e9": {
+      "passed": false,
+      "smells": [
+        {
+          "segment_id": "u528bbb2fea822d8a2a410d56368bb75f5ff703e9_340",
+          "smell": "Incorrect order requirement",
+          "value": "The condition clause of the requirement is after the system response."
+        },
+        {
+          "segment_id": "u528bbb2fea822d8a2a410d56368bb75f5ff703e9_343",
+          "smell": "Passive voice",
+          "value": "Passive voice in the condition."
+        }
+      ]
+    },
+    "36a7d4eea8a86b8bf5937b6c39892fce4cb63c78": {
+      "passed": true,
+      "smells": []
+    },
+    "5595c8d6cf037d261b23f8a60db972b3997131b3": {
+      "passed": true,
+      "smells": []
+    },
+    "ee362f3bd082fdcc7671586b5b26089a78b18aa5": {
+      "passed": true,
+      "smells": []
+    },
+    "f85a00a935baab4ae26f5507bc8b106d93ddd665": {
+      "passed": true,
+      "smells": []
+    },
+    "09d80c9dbb8291696706edbee76f3e6c405feecc": {
+      "passed": true,
+      "smells": []
+    },
+    "6f3228f8aa5d9a19a61806528c0558a8ee83944d": {
+      "passed": true,
+      "smells": []
+    },
+    "1dfc32fe0e0f26a0a6406f8c4b8e122a3d65c9de": {
+      "passed": true,
+      "smells": []
+    },
+    "469e4d2499cf157ca70c8de5a35c225cf0d224bb": {
+      "passed": true,
+      "smells": []
+    },
+    "c9a1bf79d7638d7f5275cfc09a55b5d509d2bef2": {
+      "passed": true,
+      "smells": []
+    },
+    "966484b6d5c64ed4a0c3684bbc13d34a56260def": {
+      "passed": true,
+      "smells": []
+    },
+    "d121c3516b436fbc13fde16bbe7549e3c99d20d1": {
+      "passed": true,
+      "smells": []
+    },
+    "4cd1edb85c87348e8be51607c1d7c5539b9343fe": {
+      "passed": true,
+      "smells": []
+    },
+    "2578ab26d992671d1b476f26f05c174da8beef29": {
+      "passed": true,
+      "smells": []
+    },
+    "d7d4ef57fc82955fe222eaaf79ffa1acaa7dec4c": {
+      "passed": true,
+      "smells": []
+    },
+    "7d27832d2ac82c6c653e674773f7e5fed357f2f8": {
+      "passed": false,
+      "smells": [
+        {
+          "segment_id": "u7d27832d2ac82c6c653e674773f7e5fed357f2f8_388",
+          "smell": "Passive voice",
+          "value": "Passive voice in the condition."
+        }
+      ]
+    },
+    "f0643f7aa28edf1af7a6ac9975846628adf89f2d": {
+      "passed": false,
+      "smells": [
+        {
+          "segment_id": "uf0643f7aa28edf1af7a6ac9975846628adf89f2d_392",
+          "smell": "Passive voice",
+          "value": "Passive voice in the condition."
+        }
+      ]
+    },
+    "23a47a247965220f20f6b7e9837e5512f4bae37c": {
+      "passed": true,
+      "smells": []
+    },
+    "1fbbd6a1cf816a9bca8ebc10c169723b695417cf": {
+      "passed": true,
+      "smells": []
+    },
+    "c1f9e946851b57a8b888301515b574f2693562ba": {
+      "passed": false,
+      "smells": [
+        {
+          "segment_id": "uc1f9e946851b57a8b888301515b574f2693562ba_403",
+          "smell": "Non-atomic requirement",
+          "value": "The requirement has more than one action in the system response."
+        },
+        {
+          "segment_id": "uc1f9e946851b57a8b888301515b574f2693562ba_403",
+          "smell": "Passive voice",
+          "value": "Passive voice in the condition."
+        }
+      ]
+    },
+    "fc665c7fcf2803c8d457ef4ecdea4d3af82c32f6": {
+      "passed": true,
+      "smells": []
+    },
+    "a3298e346253235ff4f4d1fed4af57dd6b222f62": {
+      "passed": true,
+      "smells": []
+    },
+    "3ad5606e7940a0af37cbfc6ad379d8a03a1ca18f": {
+      "passed": true,
+      "smells": []
+    },
+    "61ab21ae66ef47e7324abea79e67eaeae7dac402": {
+      "passed": true,
+      "smells": []
+    },
+    "ae330fa701d735c11c44b8fddbd07dbcce7c6fc6": {
+      "passed": true,
+      "smells": []
+    },
+    "594cebc7281a0945f0f19b0063b22208957ff77c": {
+      "passed": true,
+      "smells": []
+    },
+    "be9b2756ea635c55fb832a37daa76f4833effe83": {
+      "passed": true,
+      "smells": []
+    },
+    "72476b8e8b32acbdb71ffad5ac718907175ca4dd": {
+      "passed": true,
+      "smells": []
+    },
+    "c125340398a32de803482bcc5a7ddc3034f284eb": {
+      "passed": true,
+      "smells": []
+    },
+    "344e08143d6574a23470fa48a2f4bd53618d3472": {
+      "passed": true,
+      "smells": []
+    }
+  }
+}
