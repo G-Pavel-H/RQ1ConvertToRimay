@@ -6639,6 +6639,20 @@
               },
               "conditionType": "none",
               "provenance": "claude"
+            },
+            {
+              "id": "4ac6030da8",
+              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must ",
+              "slots": {
+                "scope": "missing",
+                "condition": "missing",
+                "actor": "implied",
+                "modalVerb": "implied",
+                "action": "present"
+              },
+              "conditionType": "none",
+              "provenance": "you",
+              "edited": true
             }
           ]
         },
@@ -10965,5 +10979,5 @@
       }
     }
   ],
-  "savedAt": "2026-09-24T21:41:21+01:00"
+  "savedAt": "2026-09-25T00:10:02+01:00"
 }
