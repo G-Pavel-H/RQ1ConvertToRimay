@@ -1,5 +1,5 @@
 {
-  "computedAt": "2026-10-07T01:18:30+01:00",
+  "computedAt": "2026-10-07T01:28:56+01:00",
   "embedding": {
     "available": true,
     "model": "all-minilm"
@@ -337,9 +337,9 @@
         {
           "field": "scope",
           "group": "slot",
-          "kappa": -0.011235955056187779,
-          "band": "poor",
-          "cohenMean": 0.0,
+          "kappa": 0.4886363636363633,
+          "band": "moderate",
+          "cohenMean": 0.3333333333333333,
           "cohenPairs": [
             {
               "a": "Arthur",
@@ -353,25 +353,25 @@
               "a": "Arthur",
               "b": "Rafo",
               "n": 30,
-              "kappa": 0.0,
-              "band": "slight",
-              "observed": 0.9666666666666667
+              "kappa": 1.0,
+              "band": "almost perfect",
+              "observed": 1.0
             },
             {
               "a": "Mko",
               "b": "Rafo",
               "n": 30,
-              "kappa": null,
-              "band": "undefined (no category variation)",
-              "observed": 1.0
+              "kappa": 0.0,
+              "band": "slight",
+              "observed": 0.9666666666666667
             }
           ],
           "unanimous": 0.9666666666666667,
           "majority": 1.0,
           "nSubjects": 30,
           "distribution": {
-            "missing": 89,
-            "present": 1
+            "missing": 88,
+            "present": 2
           }
         },
         {
@@ -418,41 +418,41 @@
         {
           "field": "actor",
           "group": "slot",
-          "kappa": -0.0006738544474395258,
-          "band": "poor",
-          "cohenMean": 0.06910569105691054,
+          "kappa": 0.04255319148936174,
+          "band": "slight",
+          "cohenMean": 0.12549220160365337,
           "cohenPairs": [
             {
               "a": "Arthur",
               "b": "Mko",
               "n": 30,
-              "kappa": 0.0,
-              "band": "slight",
-              "observed": 0.8333333333333334
+              "kappa": 0.32584269662921356,
+              "band": "fair",
+              "observed": 0.8
             },
             {
               "a": "Arthur",
               "b": "Rafo",
               "n": 30,
-              "kappa": 0.0,
-              "band": "slight",
-              "observed": 0.5
+              "kappa": -0.045751633986928074,
+              "band": "poor",
+              "observed": 0.4666666666666667
             },
             {
               "a": "Mko",
               "b": "Rafo",
               "n": 30,
-              "kappa": 0.20731707317073164,
-              "band": "fair",
-              "observed": 0.5666666666666667
+              "kappa": 0.09638554216867463,
+              "band": "slight",
+              "observed": 0.5
             }
           ],
-          "unanimous": 0.4666666666666667,
+          "unanimous": 0.4,
           "majority": 0.9666666666666667,
           "nSubjects": 30,
           "distribution": {
-            "implied": 70,
-            "present": 14,
+            "implied": 65,
+            "present": 19,
             "missing": 6
           }
         },
@@ -622,27 +622,27 @@
         "nPairs": 90,
         "seq_ratio": {
           "n": 90,
-          "mean": 0.6479835186121709,
-          "median": 0.7123756218905473,
+          "mean": 0.647248232377773,
+          "median": 0.7041666666666666,
           "min": 0.08695652173913043,
           "max": 1.0,
-          "std": 0.2340259214114597
+          "std": 0.23358829411505655
         },
         "jaccard": {
           "n": 90,
-          "mean": 0.4953786825124376,
+          "mean": 0.4957933707049036,
           "median": 0.5,
           "min": 0.0,
           "max": 1.0,
-          "std": 0.2729281398507975
+          "std": 0.27221329777219744
         },
         "cosine": {
           "n": 90,
-          "mean": 0.7355044156453909,
-          "median": 0.829986739794293,
+          "mean": 0.7353663654673314,
+          "median": 0.8280751825162005,
           "min": -0.04379037868589146,
           "max": 1.0,
-          "std": 0.28225873553198233
+          "std": 0.2821890611155885
         }
       }
     },
@@ -976,9 +976,9 @@
         {
           "field": "scope",
           "group": "slot",
-          "kappa": 0.02931069334950895,
-          "band": "slight",
-          "cohenMean": 0.0,
+          "kappa": 0.5095996732026163,
+          "band": "moderate",
+          "cohenMean": 0.3333333333333333,
           "cohenPairs": [
             {
               "a": "Arthur",
@@ -992,25 +992,25 @@
               "a": "Arthur",
               "b": "Rafo",
               "n": 30,
-              "kappa": 0.0,
-              "band": "slight",
-              "observed": 0.9666666666666667
+              "kappa": 1.0,
+              "band": "almost perfect",
+              "observed": 1.0
             },
             {
               "a": "Mko",
               "b": "Rafo",
               "n": 31,
-              "kappa": null,
-              "band": "undefined (no category variation)",
-              "observed": 1.0
+              "kappa": 0.0,
+              "band": "slight",
+              "observed": 0.967741935483871
             }
           ],
           "unanimous": 0.9705882352941176,
           "majority": 1.0,
           "nSubjects": 34,
           "distribution": {
-            "missing": 98,
-            "present": 1
+            "missing": 97,
+            "present": 2
           }
         },
         {
@@ -1057,41 +1057,41 @@
         {
           "field": "actor",
           "group": "slot",
-          "kappa": 0.011764705882353208,
+          "kappa": 0.06077942398904712,
           "band": "slight",
-          "cohenMean": 0.06292834890965729,
+          "cohenMean": 0.1235869989811494,
           "cohenPairs": [
             {
               "a": "Arthur",
               "b": "Mko",
               "n": 33,
-              "kappa": 0.0,
-              "band": "slight",
-              "observed": 0.8484848484848485
+              "kappa": 0.33333333333333376,
+              "band": "fair",
+              "observed": 0.8181818181818182
             },
             {
               "a": "Arthur",
               "b": "Rafo",
               "n": 30,
-              "kappa": 0.0,
-              "band": "slight",
-              "observed": 0.5
+              "kappa": -0.045751633986928074,
+              "band": "poor",
+              "observed": 0.4666666666666667
             },
             {
               "a": "Mko",
               "b": "Rafo",
               "n": 31,
-              "kappa": 0.18878504672897187,
+              "kappa": 0.08317929759704253,
               "band": "slight",
-              "observed": 0.5483870967741935
+              "observed": 0.4838709677419355
             }
           ],
-          "unanimous": 0.5,
+          "unanimous": 0.4411764705882353,
           "majority": 0.9705882352941176,
           "nSubjects": 34,
           "distribution": {
-            "implied": 78,
-            "present": 14,
+            "implied": 73,
+            "present": 19,
             "missing": 7
           }
         },
@@ -1263,27 +1263,27 @@
         "nPairs": 94,
         "seq_ratio": {
           "n": 94,
-          "mean": 0.6426418890376154,
-          "median": 0.6964285714285714,
+          "mean": 0.6419378915791493,
+          "median": 0.6920168067226891,
           "min": 0.08695652173913043,
           "max": 1.0,
-          "std": 0.23450780542598212
+          "std": 0.23407366194756654
         },
         "jaccard": {
           "n": 94,
-          "mean": 0.4883475495895053,
+          "mean": 0.48874459147590893,
           "median": 0.5,
           "min": 0.0,
           "max": 1.0,
-          "std": 0.2729954408304299
+          "std": 0.2723214893200794
         },
         "cosine": {
           "n": 94,
-          "mean": 0.7301542879083852,
-          "median": 0.8214702864149002,
+          "mean": 0.7300221122059878,
+          "median": 0.8231080725643847,
           "min": -0.04379037868589146,
           "max": 1.0,
-          "std": 0.2840644589016831
+          "std": 0.2839956852077534
         }
       }
     },
@@ -1297,9 +1297,9 @@
         {
           "field": "scope",
           "group": "slot",
-          "kappa": -0.009615384615390047,
-          "band": "poor",
-          "cohenMean": 0.0,
+          "kappa": 0.4902912621359259,
+          "band": "moderate",
+          "cohenMean": 0.3333333333333333,
           "cohenPairs": [
             {
               "a": "Arthur",
@@ -1313,25 +1313,25 @@
               "a": "Arthur",
               "b": "Rafo",
               "n": 35,
-              "kappa": 0.0,
-              "band": "slight",
-              "observed": 0.9714285714285714
+              "kappa": 1.0,
+              "band": "almost perfect",
+              "observed": 1.0
             },
             {
               "a": "Mko",
               "b": "Rafo",
               "n": 35,
-              "kappa": null,
-              "band": "undefined (no category variation)",
-              "observed": 1.0
+              "kappa": 0.0,
+              "band": "slight",
+              "observed": 0.9714285714285714
             }
           ],
           "unanimous": 0.9714285714285714,
           "majority": 1.0,
           "nSubjects": 35,
           "distribution": {
-            "missing": 104,
-            "present": 1
+            "missing": 103,
+            "present": 2
           }
         },
         {
@@ -1378,41 +1378,41 @@
         {
           "field": "actor",
           "group": "slot",
-          "kappa": 0.013157894736841539,
+          "kappa": 0.0637860082304526,
           "band": "slight",
-          "cohenMean": 0.06946688206785138,
+          "cohenMean": 0.14292230043161172,
           "cohenPairs": [
             {
               "a": "Arthur",
               "b": "Mko",
               "n": 35,
-              "kappa": 0.0,
-              "band": "slight",
-              "observed": 0.8571428571428571
+              "kappa": 0.33753943217665633,
+              "band": "fair",
+              "observed": 0.8285714285714286
             },
             {
               "a": "Arthur",
               "b": "Rafo",
               "n": 35,
-              "kappa": 0.0,
-              "band": "slight",
-              "observed": 0.5428571428571428
+              "kappa": -0.024096385542168728,
+              "band": "poor",
+              "observed": 0.5142857142857142
             },
             {
               "a": "Mko",
               "b": "Rafo",
               "n": 35,
-              "kappa": 0.20840064620355417,
-              "band": "fair",
-              "observed": 0.6
+              "kappa": 0.11532385466034754,
+              "band": "slight",
+              "observed": 0.5428571428571428
             }
           ],
-          "unanimous": 0.5142857142857142,
+          "unanimous": 0.45714285714285713,
           "majority": 0.9714285714285714,
           "nSubjects": 35,
           "distribution": {
-            "implied": 84,
-            "present": 14,
+            "implied": 79,
+            "present": 19,
             "missing": 7
           }
         },
@@ -1584,27 +1584,27 @@
         "nPairs": 105,
         "seq_ratio": {
           "n": 105,
-          "mean": 0.6442883036193564,
-          "median": 0.6928571428571428,
+          "mean": 0.6436580582755868,
+          "median": 0.6911764705882353,
           "min": 0.08695652173913043,
           "max": 1.0,
-          "std": 0.23398372006400095
+          "std": 0.23359876566382407
         },
         "jaccard": {
           "n": 105,
-          "mean": 0.4926869029898229,
+          "mean": 0.4930423500119366,
           "median": 0.5,
           "min": 0.0,
           "max": 1.0,
-          "std": 0.2750783155733504
+          "std": 0.2744740320920812
         },
         "cosine": {
           "n": 105,
-          "mean": 0.7368052767110016,
-          "median": 0.821806472101068,
+          "mean": 0.7366869479869506,
+          "median": 0.8244096730277013,
           "min": -0.04379037868589146,
           "max": 1.0,
-          "std": 0.28105579326445107
+          "std": 0.28099636967969993
         }
       }
     },

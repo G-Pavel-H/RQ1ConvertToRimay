@@ -720,7 +720,7 @@
               "slots": {
                 "scope": "present",
                 "condition": "missing",
-                "actor": "implied",
+                "actor": "present",
                 "modalVerb": "implied",
                 "action": "present"
               },
@@ -846,9 +846,9 @@
           "units": [
             {
               "id": "15d406737b",
-              "rimayText": "<MISSING_SCOPE>, if the user does not use a passphrase, then the System must disable screen security by default.",
+              "rimayText": "For all non-passphrase users, if the user does not use a passphrase, then the System must disable screen security by default.",
               "slots": {
-                "scope": "missing",
+                "scope": "present",
                 "condition": "present",
                 "actor": "present",
                 "modalVerb": "implied",
@@ -2369,7 +2369,7 @@
               "slots": {
                 "scope": "missing",
                 "condition": "missing",
-                "actor": "implied",
+                "actor": "present",
                 "modalVerb": "implied",
                 "action": "present"
               },
@@ -2378,7 +2378,8 @@
               "reasons": [
                 "scope"
               ],
-              "editNote": ""
+              "editNote": "",
+              "edited": true
             }
           ]
         },
@@ -2432,7 +2433,7 @@
               "slots": {
                 "scope": "missing",
                 "condition": "missing",
-                "actor": "implied",
+                "actor": "present",
                 "modalVerb": "implied",
                 "action": "present"
               },
@@ -2443,7 +2444,8 @@
                 "grid",
                 "word"
               ],
-              "editNote": "\"yours / your partner's\" -> third person."
+              "editNote": "\"yours / your partner's\" -> third person.",
+              "edited": true
             }
           ]
         },
@@ -5656,7 +5658,7 @@
               "slots": {
                 "scope": "missing",
                 "condition": "missing",
-                "actor": "implied",
+                "actor": "present",
                 "modalVerb": "implied",
                 "action": "present"
               },
@@ -5665,7 +5667,8 @@
               "reasons": [
                 "scope"
               ],
-              "editNote": ""
+              "editNote": "",
+              "edited": true
             }
           ]
         },
@@ -5719,7 +5722,7 @@
               "slots": {
                 "scope": "missing",
                 "condition": "missing",
-                "actor": "implied",
+                "actor": "present",
                 "modalVerb": "implied",
                 "action": "present"
               },
@@ -5730,7 +5733,8 @@
                 "grid",
                 "typo"
               ],
-              "editNote": ""
+              "editNote": "",
+              "edited": true
             }
           ]
         },
@@ -10988,5 +10992,5 @@
       }
     }
   ],
-  "savedAt": "2026-10-07T01:13:12+01:00"
+  "savedAt": "2026-10-07T01:28:48+01:00"
 }
