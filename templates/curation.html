@@ -64,6 +64,35 @@ main{flex:1;overflow:auto;padding:16px 20px 60px;min-width:0}
 .jump{cursor:pointer;color:var(--accent);white-space:nowrap}
 .jump:hover{text-decoration:underline}
 td.num{text-align:right;font-variant-numeric:tabular-nums}
+/* Insights. Present → implied → missing is an ordered scale, so it wears one hue,
+   darker = more explicitly stated. Both ramps pass the ordinal checks against
+   this tool's card surfaces (light #fff, dark #171a1d). */
+.ins{--r-present:#104281;--r-implied:#2a78d6;--r-missing:#86b6ef;--bar:#2a78d6;--track:#cde2fb}
+@media (prefers-color-scheme:dark){.ins{--r-present:#9ec5f4;--r-implied:#3987e5;--r-missing:#184f95;--bar:#3987e5;--track:#184f95}}
+.ins h3{font-size:12.5px;font-weight:600;margin:20px 0 10px}
+.ins-cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;align-items:start}
+@media (max-width:1250px){.ins-cols{grid-template-columns:minmax(0,1fr)}}
+.ins-grid{display:grid;column-gap:14px;row-gap:9px;align-items:center}
+.ins-slots{grid-template-columns:max-content minmax(60px,1fr) repeat(3,54px)}
+.ins-3{grid-template-columns:minmax(max-content,1fr) repeat(3,86px)}
+.ins-bars{grid-template-columns:max-content minmax(60px,1fr) 30px}
+.ins-h{font-size:11px;font-weight:600;color:var(--muted);text-align:right}
+.ins-n{text-align:right;font-variant-numeric:tabular-nums}
+.ins-name{display:flex;gap:7px;align-items:center;white-space:nowrap}
+.ins-legend{display:flex;gap:16px;font-size:12px;color:var(--muted);margin-bottom:10px}
+.sw{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+.sw-present{background:var(--r-present)}.sw-implied{background:var(--r-implied)}.sw-missing{background:var(--r-missing)}
+.stack{display:flex;gap:2px;height:16px}
+.stack .seg{display:block;min-width:3px}
+.stack .seg:last-child{border-radius:0 4px 4px 0}
+.hbar{height:14px}
+.hbar i{display:block;height:100%;min-width:2px;background:var(--bar);border-radius:0 4px 4px 0}
+.meter{height:8px;border-radius:4px;background:var(--track);overflow:hidden;margin:8px 0 6px}
+.meter i{display:block;height:100%;background:var(--bar)}
+.ins-verdict .big{font-size:30px;font-weight:600;line-height:1.1}
+.ins-verdict .of{color:var(--muted);margin-left:4px}
+#tip{position:fixed;display:none;pointer-events:none;z-index:20;max-width:300px;background:var(--ink);color:var(--bg);
+  font-size:12px;line-height:1.35;padding:5px 9px;border-radius:6px}
 .label{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin:0 0 5px}
 .nl{max-height:150px;overflow:auto;white-space:pre-wrap;font-size:12.5px;background:var(--soft);border-radius:6px;padding:8px 10px}
 textarea{width:100%;border:1px solid var(--line);border-radius:6px;padding:6px 8px;background:var(--bg);resize:vertical;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;line-height:1.45}
@@ -130,6 +159,7 @@ kbd{font-size:11px;border:1px solid var(--line);border-radius:3px;padding:0 4px}
   <main id="main"></main>
 </div>
 <div id="modalHost"></div>
+<div id="tip" role="tooltip"></div>
 
 <script>
 const SLOTS = [["scope","Scope"],["condition","Condition"],["actor","Actor"],["modalVerb","Modal"],["action","Action"]];
@@ -157,9 +187,11 @@ async function load() {
   const data = await res.json();
   state = data.state; paska = data.paska; agreement = data.agreement;
   const fromHash = decodeURIComponent(location.hash.slice(1));
+  if (fromHash === "insights" || fromHash === "agreement") view = fromHash;  // reload stays on the same screen
   const i = reqs().findIndex(r => r.reqId === fromHash);
   current = i >= 0 ? i : 0;
   renderAll();
+  if (view === "agreement" && !agreement) computeAgreement();
   setSave(`saved ${time(state.savedAt)}`);
 }
 function time(iso) { return iso ? new Date(iso).toLocaleTimeString([], {hour:"2-digit",minute:"2-digit",second:"2-digit"}) : ""; }
@@ -405,66 +437,90 @@ function computeInsights() {
   };
 }
 function renderInsights() {
+  history.replaceState(null, "", "#insights");
   const d = computeInsights();
   const idx = id => reqs().findIndex(r => r.reqId === id);
   const jump = (id, label) => `<span class="jump" data-go="${idx(id)}">${esc(label || id)}</span>`;
-  const share = (n, t) => t ? `${n} <span class="hint">(${Math.round(100 * n / t)}%)</span>` : "0";
-  const slotTable = g => { const t = g.subjects.length; return `<div style="overflow-x:auto"><table>
-      <tr><th>Gold slot</th><th>Present</th><th>Implied</th><th>Missing</th>
-        <th style="border-left:1px solid var(--line)">Unanimous</th><th>2 of 3</th><th>3-way tie → implied</th></tr>
-      ${SLOTS.map(([k]) => `<tr><td>${fieldLabel(k)}</td>
-        <td class="num">${share(g.slots[k].present, t)}</td><td class="num">${share(g.slots[k].implied, t)}</td>
-        <td class="num"><b>${share(g.slots[k].missing, t)}</b></td>
-        <td class="num" style="border-left:1px solid var(--line)">${g.decided[k].unanimous}</td><td class="num">${g.decided[k].majority}</td>
-        <td class="num">${g.decided[k].tie}${g.decided[k].single ? ` <span class="hint">+${g.decided[k].single} single</span>` : ""}</td></tr>`).join("")}
-    </table></div>`; };
-  const causeLine = g => g.incomplete.length
-    ? `<p class="hint">Missing required slot behind the incomplete verdicts: ${MANDATORY.map(k => `${k} ${g.cause[k]}`).join(" · ")} (one unit can lack several).</p>` : "";
-  const annTable = g => `<table><tr><th>Annotator's own verdict</th><th>Units</th><th>Incomplete</th><th>Complete</th></tr>
-      ${g.annotators.map(a => `<tr><td>${esc(a.name)}</td><td class="num">${a.units}</td><td class="num">${share(a.incomplete, a.units)}</td><td class="num">${a.units - a.incomplete}</td></tr>`).join("")}</table>`;
+  const pc = (n, t) => t ? Math.round(100 * n / t) : 0;
+  const LEVELS = [["present", "Present"], ["implied", "Implied"], ["missing", "Missing"]];
+  const slotCell = (k, name) => `<div class="ins-name">${esc(name)} ${REQUIRED.has(k)
+    ? `<span class="tag reqd" title="Required by the Rimay grammar">required</span>`
+    : `<span class="tag" title="Optional in the Rimay grammar">optional</span>`}</div>`;
+
+  // One 100% bar per slot; the three counts sit in aligned columns beside it,
+  // so every value is readable without hovering.
+  const slotChart = g => { const t = g.subjects.length; return `
+    <div class="ins-legend">${LEVELS.map(([lv, l]) => `<span><i class="sw sw-${lv}"></i>${l}</span>`).join("")}</div>
+    <div class="ins-grid ins-slots">
+      <div></div><div></div>${LEVELS.map(([, l]) => `<div class="ins-h">${l}</div>`).join("")}
+      ${SLOTS.map(([k, name]) => `${slotCell(k, name)}
+        <div class="stack">${LEVELS.filter(([lv]) => g.slots[k][lv]).map(([lv, l]) =>
+          `<i class="seg sw-${lv}" style="flex:${g.slots[k][lv]} 1 0"
+              data-tip="${esc(name)} — ${l.toLowerCase()}: ${g.slots[k][lv]} of ${t} (${pc(g.slots[k][lv], t)}%)"></i>`).join("")}</div>
+        ${LEVELS.map(([lv]) => `<div class="ins-n">${g.slots[k][lv]}</div>`).join("")}`).join("")}
+    </div>`; };
+  const decided = g => `<div class="ins-grid ins-3">
+      <div></div><div class="ins-h">Unanimous</div><div class="ins-h">2 of 3</div><div class="ins-h">3-way tie</div>
+      ${SLOTS.map(([k, name]) => `${slotCell(k, name)}<div class="ins-n">${g.decided[k].unanimous}</div>
+        <div class="ins-n">${g.decided[k].majority}</div><div class="ins-n">${g.decided[k].tie}</div>`).join("")}</div>`;
+  const annotators = g => `<div class="ins-grid ins-3">
+      <div></div><div class="ins-h">Units</div><div class="ins-h">Incomplete</div><div class="ins-h">Complete</div>
+      ${g.annotators.map(a => `<div class="ins-name">${esc(a.name)}</div><div class="ins-n">${a.units}</div>
+        <div class="ins-n">${a.incomplete}</div><div class="ins-n">${a.units - a.incomplete}</div>`).join("")}</div>`;
+  const verdict = (g, noun, links) => { const t = g.subjects.length, n = g.incomplete.length; return `
+    <div class="ins-verdict"><span class="big">${n}</span><span class="of">of ${t} ${noun} incomplete · ${t - n} complete</span>
+      <div class="meter" data-tip="${n} incomplete · ${t - n} complete (${pc(n, t)}% incomplete)"><i style="width:${t ? 100 * n / t : 0}%"></i></div>
+      ${n ? `<div class="hint">${links}</div>
+        <div class="hint">Required slot missing in the gold: ${MANDATORY.map(k => `${Object.fromEntries(SLOTS)[k].toLowerCase()} ${g.cause[k]}`).join(" · ")}</div>`
+          : `<div class="hint">No required slot is missing in the gold.</div>`}</div>`; };
+  const barList = rows => { const max = Math.max(1, ...rows.map(r => r.n)); return `<div class="ins-grid ins-bars">
+      ${rows.map(r => `<div class="ins-name">${r.label}</div>
+        <div class="hbar"><i style="width:${100 * r.n / max}%" data-tip="${esc(r.tip)}"></i></div><div class="ins-n">${r.n}</div>`).join("")}</div>`; };
+  const group = (g) => `
+      <h3>Gold label per slot</h3>${slotChart(g)}
+      <h3>How each gold label was decided</h3>${decided(g)}
+      <h3>Each annotator's own verdict</h3>${annotators(g)}`;
+
   const A = d.atomic, S = d.split, nA = A.subjects.length, nS = S.subjects.length;
   const dist = {}; d.unitsPerSplit.forEach(x => dist[x.n] = (dist[x.n] || 0) + 1);
+  const unitRows = [...d.unitsPerSplit].sort((x, y) => y.n - x.n).map(x => ({
+    label: jump(x.reqId) + (new Set(x.per).size > 1 ? ` <span class="chip bad" title="Annotators have ${x.per.join(" / ")} units">differs</span>` : ""),
+    n: x.n, tip: `${x.reqId}: ${x.n} units (${state.annotators.map((a, i) => a + " " + x.per[i]).join(", ")})`}));
+  const provRows = Object.entries(d.provenance).sort((a, b) => b[1] - a[1]).map(([k, n]) => ({label: esc(k), n, tip: `${k}: ${n} annotator-units`}));
 
-  $("#main").innerHTML = `
+  $("#main").innerHTML = `<div class="ins">
     <div class="rhead"><h2>Insights</h2><span class="stat">live — computed from your curation as it is now</span></div>
     <div class="tiles">
-      <div class="tile"><b>${d.total}</b><span>requirements</span></div>
-      <div class="tile"><b>${A.requirements}</b><span>atomic</span></div>
-      <div class="tile"><b>${S.requirements}</b><span>non-atomic (split)</span></div>
-      <div class="tile"><b>${nS}</b><span>units from the split ones</span></div>
-      <div class="tile"><b>${nA + nS}</b><span>units in total (atomic + split)</span></div>
-      <div class="tile"><b>${A.incomplete.length + S.incomplete.length}</b><span>incomplete by gold verdict</span></div>
-      <div class="tile"><b>${d.flagged}</b><span>⚑ flagged by you</span></div>
+      <div class="tile"><b>${d.total}</b><span>Requirements</span></div>
+      <div class="tile"><b>${A.requirements}</b><span>Atomic</span></div>
+      <div class="tile"><b>${S.requirements}</b><span>Non-atomic (split)</span></div>
+      <div class="tile"><b>${nS}</b><span>Units from the split ones</span></div>
+      <div class="tile"><b>${nA + nS}</b><span>Units in total</span></div>
+      <div class="tile"><b>${A.incomplete.length + S.incomplete.length}</b><span>Incomplete by gold verdict</span></div>
+      <div class="tile"><b>${d.flagged}</b><span>Flagged by you</span></div>
     </div>
     <div class="card">${GRAMMAR_NOTE}
       <p class="hint" style="margin-bottom:0"><b>Gold</b> = the majority of the three annotators' labels at that unit position.
         If all three differ, the gold is <i>implied</i>. The verdict is derived from the gold slots.</p></div>
 
-    <div class="card"><p class="label">Atomic requirements — ${A.requirements}</p>
-      <p style="margin:0 0 10px"><b>${A.incomplete.length}</b> incomplete · <b>${nA - A.incomplete.length}</b> complete, by gold verdict.
-        ${A.incomplete.length ? `<br><span class="hint">Incomplete:</span> ${A.incomplete.map(x => jump(x.r.reqId)).join(", ")}` : ""}</p>
-      ${causeLine(A)}
-      ${slotTable(A)}
-      <div style="margin-top:12px">${annTable(A)}</div>
-      ${d.movedToAtomic.length ? `<p class="hint">Originally flagged non-atomic, now one unit: ${d.movedToAtomic.map(id => jump(id)).join(", ")}</p>` : ""}</div>
+    <div class="ins-cols">
+      <div class="card"><p class="label">Atomic requirements — ${A.requirements}</p>
+        ${verdict(A, "requirements", "Incomplete: " + A.incomplete.map(x => jump(x.r.reqId)).join(", "))}
+        ${group(A)}
+        ${d.movedToAtomic.length ? `<p class="hint" style="margin-top:16px">Originally flagged non-atomic, now one unit: ${d.movedToAtomic.map(id => jump(id)).join(", ")}</p>` : ""}</div>
 
-    <div class="card"><p class="label">Non-atomic (split) requirements — ${S.requirements} → ${nS} units</p>
-      <p style="margin:0 0 10px"><b>${S.incomplete.length}</b> incomplete unit${S.incomplete.length === 1 ? "" : "s"} ·
-        <b>${nS - S.incomplete.length}</b> complete, by gold verdict${S.incomplete.length ? ` — in ${S.reqsWithIncomplete} requirement${S.reqsWithIncomplete === 1 ? "" : "s"}` : ""}.
-        ${S.incomplete.length ? `<br><span class="hint">Incomplete units:</span> ${S.incomplete.map(x => jump(x.r.reqId, x.r.reqId + " #" + (x.i + 1))).join(", ")}` : ""}</p>
-      ${causeLine(S)}
-      <p class="hint" style="margin:0 0 6px">Units per requirement — ${Object.keys(dist).sort((a, b) => a - b).map(n => `${dist[n]} × ${n} units`).join(" · ")}
-        · mean ${S.requirements ? (nS / S.requirements).toFixed(1) : "—"}</p>
-      <div style="overflow-x:auto"><table><tr><th>Requirement</th><th>Units</th><th>${state.annotators.map(a => esc(a)).join(" / ")}</th></tr>
-        ${d.unitsPerSplit.map(x => `<tr><td>${jump(x.reqId)}</td><td class="num"><b>${x.n}</b></td>
-          <td class="num">${x.per.join(" / ")}${new Set(x.per).size > 1 ? ` <span class="chip bad">differs</span>` : ""}</td></tr>`).join("")}</table></div>
-      <div style="margin-top:12px">${slotTable(S)}</div>
-      <div style="margin-top:12px">${annTable(S)}</div>
-      ${d.movedToSplit.length ? `<p class="hint">Originally atomic, now split: ${d.movedToSplit.map(id => jump(id)).join(", ")}</p>` : ""}</div>
+      <div class="card"><p class="label">Non-atomic (split) requirements — ${S.requirements} → ${nS} units</p>
+        ${verdict(S, "units", "Incomplete: " + S.incomplete.map(x => jump(x.r.reqId, x.r.reqId + " #" + (x.i + 1))).join(", "))}
+        ${group(S)}
+        <h3>Units per requirement</h3>
+        <p class="hint" style="margin:-4px 0 10px">${Object.keys(dist).sort((a, b) => a - b).map(n => `${dist[n]} with ${n} units`).join(" · ")}
+          · mean ${S.requirements ? (nS / S.requirements).toFixed(1) : "—"}</p>
+        ${barList(unitRows)}
+        ${d.movedToSplit.length ? `<p class="hint" style="margin-top:16px">Originally atomic, now split: ${d.movedToSplit.map(id => jump(id)).join(", ")}</p>` : ""}</div>
+    </div>
 
-    <div class="card"><p class="label">Where the unit texts come from</p>
-      <table><tr><th>Source</th><th>Annotator-units</th></tr>
-        ${Object.entries(d.provenance).sort((a, b) => b[1] - a[1]).map(([k, n]) => `<tr><td>${esc(k)}</td><td class="num">${n}</td></tr>`).join("")}</table></div>`;
+    <div class="card" style="max-width:560px"><p class="label">Where the unit texts come from</p>${barList(provRows)}</div>
+  </div>`;
 }
 
 // ---------- agreement ----------
@@ -522,6 +578,7 @@ function groupCard(title, file, v, caveat) {
 }
 
 function renderAgreement() {
+  history.replaceState(null, "", "#agreement");
   const main = $("#main");
   if (!agreement) { main.innerHTML = `<div class="card">Computing…</div>`; return; }
   const [o, c] = ["orig30", "cur30"].map(k => agreement.views.find(v => v.key === k));
@@ -632,6 +689,13 @@ function move(d) {
   if (next < 0 || next >= reqs().length) return;
   current = next; renderList(); renderMain(); $("#main").scrollTop = 0;
 }
+document.addEventListener("mousemove", e => {
+  const tip = $("#tip"), t = e.target.closest ? e.target.closest("[data-tip]") : null;
+  if (!t) { tip.style.display = "none"; return; }
+  tip.textContent = t.dataset.tip; tip.style.display = "block";
+  tip.style.left = Math.min(e.clientX + 12, window.innerWidth - 310) + "px";
+  tip.style.top = (e.clientY + 16) + "px";
+});
 document.addEventListener("keydown", e => {
   if (e.altKey && e.key === "ArrowRight") { e.preventDefault(); move(1); }
   if (e.altKey && e.key === "ArrowLeft") { e.preventDefault(); move(-1); }
