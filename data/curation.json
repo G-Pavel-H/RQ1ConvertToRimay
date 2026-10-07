@@ -6715,7 +6715,7 @@
           "units": [
             {
               "id": "3d95cebd2b",
-              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must automatically move the \"message drafts\" to the top of the \"message list\".",
+              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must automatically move the message drafts to the top of the list.",
               "slots": {
                 "scope": "missing",
                 "condition": "missing",
@@ -6724,11 +6724,12 @@
                 "action": "present"
               },
               "conditionType": "none",
-              "provenance": "claude"
+              "provenance": "claude",
+              "edited": true
             },
             {
               "id": "8d62a3121a",
-              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must visually mark the \"message drafts\", such as with a different color or a \"Draft\" label.",
+              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must mark the \"message drafts\", with a different color or a \"Draft\" label.",
               "slots": {
                 "scope": "missing",
                 "condition": "missing",
@@ -6737,7 +6738,8 @@
                 "action": "present"
               },
               "conditionType": "none",
-              "provenance": "claude"
+              "provenance": "claude",
+              "edited": true
             }
           ]
         },
@@ -6787,7 +6789,7 @@
           "units": [
             {
               "id": "324f238f4e",
-              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must automatically move the \"message drafts\" to the top of the \"message list\".",
+              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the System must automatically move the \"message drafts\" to the top of the list.",
               "slots": {
                 "scope": "missing",
                 "condition": "missing",
@@ -6796,7 +6798,8 @@
                 "action": "present"
               },
               "conditionType": "none",
-              "provenance": "claude"
+              "provenance": "claude",
+              "edited": true
             },
             {
               "id": "321833ba6c",
@@ -6868,7 +6871,7 @@
           "units": [
             {
               "id": "06b4541c49",
-              "rimayText": "<MISSING_SCOPE>, when an SMS delivery report is received, then the App must save the time the message was actually received.",
+              "rimayText": "<MISSING_SCOPE>, when user receives SMS delivery report, then the App must save the time the message was actually received.",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -6877,11 +6880,12 @@
                 "action": "present"
               },
               "conditionType": "trigger",
-              "provenance": "annotator-split"
+              "provenance": "annotator-split",
+              "edited": true
             },
             {
               "id": "32f531d5d9",
-              "rimayText": "<MISSING_SCOPE>, when an SMS delivery report is received, then the App must show that time in the message details.",
+              "rimayText": "<MISSING_SCOPE>, when user receives SMS delivery report, then the App must show that time in the message details.",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -6890,7 +6894,8 @@
                 "action": "present"
               },
               "conditionType": "trigger",
-              "provenance": "annotator-split"
+              "provenance": "annotator-split",
+              "edited": true
             }
           ]
         },
@@ -6953,16 +6958,17 @@
             },
             {
               "id": "a653a2cb37",
-              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must show the saved \"received time\" in the \"message details\".",
+              "rimayText": "<MISSING_SCOPE>, when the App receives an \"SMS delivery report\", the App must show the saved \"received time\" in the \"message details\".",
               "slots": {
                 "scope": "missing",
-                "condition": "missing",
+                "condition": "present",
                 "actor": "implied",
                 "modalVerb": "implied",
                 "action": "present"
               },
               "conditionType": "none",
-              "provenance": "claude"
+              "provenance": "claude",
+              "edited": true
             }
           ]
         },
@@ -7012,7 +7018,7 @@
           "units": [
             {
               "id": "2cac7a9cf0",
-              "rimayText": "<MISSING_SCOPE>, when the App receives an \"SMS delivery report\", then the App must save the time at which the recipient received the message.",
+              "rimayText": "<MISSING_SCOPE>, when the App receives an \"SMS delivery report\", then the App must save the time at which the user received the message.",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -7021,7 +7027,8 @@
                 "action": "present"
               },
               "conditionType": "trigger",
-              "provenance": "claude"
+              "provenance": "claude",
+              "edited": true
             },
             {
               "id": "0b59311da9",
@@ -7093,7 +7100,7 @@
           "units": [
             {
               "id": "7bbae2ddd4",
-              "rimayText": "<MISSING_SCOPE>, if the recipient does not receive a sent \"Signal message\" within a \"timeout\", then the App must notify the \"sender\".",
+              "rimayText": "<MISSING_SCOPE>, if the recipient does not receive a sent \"Signal message\" within a timeout, then the App must notify the \"sender\".",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -7102,11 +7109,12 @@
                 "action": "present"
               },
               "conditionType": "precondition",
-              "provenance": "claude"
+              "provenance": "claude",
+              "edited": true
             },
             {
               "id": "2c55555f61",
-              "rimayText": "<MISSING_SCOPE>, if the recipient does not receive a sent \"Signal message\" within a \"timeout\", then the App must offer the \"sender\" an option to resend the message via \"insecure SMS\".",
+              "rimayText": "<MISSING_SCOPE>, if the recipient does not receive a sent \"Signal message\" within a \"timeout\", then the App must provide the \"sender\" an option to resend the message via insecure SMS.",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -7115,7 +7123,8 @@
                 "action": "present"
               },
               "conditionType": "precondition",
-              "provenance": "claude"
+              "provenance": "claude",
+              "edited": true
             }
           ]
         },
@@ -7178,7 +7187,7 @@
             },
             {
               "id": "3cca4ed5b3",
-              "rimayText": "<MISSING_SCOPE>, if the recipient does not receive a sent \"Signal message\" within a \"timeout\", then the App must offer the \"sender\" an option to resend the message via \"insecure SMS\".",
+              "rimayText": "<MISSING_SCOPE>, if the recipient does not receive a sent \"Signal message\" within a \"timeout\", then the App must allow the \"sender\" an option to resend the message via \"insecure SMS\".",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -7187,7 +7196,8 @@
                 "action": "present"
               },
               "conditionType": "precondition",
-              "provenance": "claude"
+              "provenance": "claude",
+              "edited": true
             }
           ]
         },
@@ -7250,7 +7260,7 @@
             },
             {
               "id": "184ea8e525",
-              "rimayText": "<MISSING_SCOPE>, if the recipient does not receive a sent \"Signal message\" within a \"timeout\", then the App must offer the \"sender\" an option to resend the message via \"insecure SMS\".",
+              "rimayText": "<MISSING_SCOPE>, if the recipient does not receive a sent \"Signal message\" within a timeout, then the App must offer the \"sender\" an option to resend the message via \"insecure SMS\".",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -7259,7 +7269,8 @@
                 "action": "present"
               },
               "conditionType": "precondition",
-              "provenance": "claude"
+              "provenance": "claude",
+              "edited": true
             }
           ]
         }
@@ -7504,7 +7515,7 @@
           "units": [
             {
               "id": "3915cc8825",
-              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user block a user-specified \"phone number\".",
+              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user block a user-specified phone number.",
               "slots": {
                 "scope": "missing",
                 "condition": "missing",
@@ -7513,7 +7524,8 @@
                 "action": "present"
               },
               "conditionType": "none",
-              "provenance": "claude"
+              "provenance": "claude",
+              "edited": true
             },
             {
               "id": "ec03a65f14",
@@ -7602,7 +7614,7 @@
             },
             {
               "id": "00d73754d3",
-              "rimayText": "<MISSING_SCOPE>, when a message from a blocked number is received, then the App must delete it.",
+              "rimayText": "<MISSING_SCOPE>, when the user receives a message from a blocked number, then the App must delete it.",
               "slots": {
                 "scope": "missing",
                 "condition": "implied",
@@ -7611,20 +7623,22 @@
                 "action": "present"
               },
               "conditionType": "trigger",
-              "provenance": "annotator-split"
+              "provenance": "annotator-split",
+              "edited": true
             },
             {
               "id": "36d51913b6",
-              "rimayText": "<MISSING_SCOPE>, when a message from a blocked number is received, then the App must not show a notification.",
+              "rimayText": "<MISSING_SCOPE>, when the user receives a message from a blocked number, then the App must not show a notification.",
               "slots": {
                 "scope": "missing",
-                "condition": "implied",
+                "condition": "present",
                 "actor": "implied",
                 "modalVerb": "implied",
                 "action": "present"
               },
               "conditionType": "trigger",
-              "provenance": "annotator-split"
+              "provenance": "annotator-split",
+              "edited": true
             }
           ]
         },
@@ -7954,7 +7968,7 @@
           "units": [
             {
               "id": "dadb57b437",
-              "rimayText": "<MISSING_SCOPE>, when the user starts the App for the first time, then the App must ask the user to choose between \"only use push\", \"use SMS fallback\", and \"use as default SMS/MMS app\".",
+              "rimayText": "<MISSING_SCOPE>, when the user starts the App for the first time, then the App must ask the user to choose between \"only use push\" / \"use SMS fallback\" / \"use as default SMS/MMS app\".",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -7963,7 +7977,8 @@
                 "action": "present"
               },
               "conditionType": "trigger",
-              "provenance": "claude"
+              "provenance": "claude",
+              "edited": true
             },
             {
               "id": "bf0fe7f82e",
@@ -8026,7 +8041,7 @@
           "units": [
             {
               "id": "6e35bd2fc7",
-              "rimayText": "<MISSING_SCOPE>, when the user starts the App for the first time, then the App must ask the user to choose between \"only use push\", \"use SMS fallback\", and \"use as default SMS/MMS app\".",
+              "rimayText": "<MISSING_SCOPE>, when the user starts the App for the first time, then the App must provide the user a choice between \"only use push\" / \"use SMS fallback\" / \"use as default SMS/MMS app\".",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -8035,7 +8050,8 @@
                 "action": "present"
               },
               "conditionType": "trigger",
-              "provenance": "claude"
+              "provenance": "claude",
+              "edited": true
             },
             {
               "id": "9407a627eb",
@@ -8098,7 +8114,7 @@
           "units": [
             {
               "id": "c1c5605469",
-              "rimayText": "<MISSING_SCOPE>, when the user starts the App for the first time, then the App must ask the user to choose between \"only use push\", \"use SMS fallback\", and \"use as default SMS/MMS app\".",
+              "rimayText": "<MISSING_SCOPE>, when the user starts the App for the first time, then the App must allow the user to choose between \"only use push\" / \"use SMS fallback\" / \"use as default SMS/MMS app\".",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -8107,11 +8123,12 @@
                 "action": "present"
               },
               "conditionType": "trigger",
-              "provenance": "claude"
+              "provenance": "claude",
+              "edited": true
             },
             {
               "id": "1bf2d6300d",
-              "rimayText": "<MISSING_SCOPE>, when the user presses the \"what does that mean?\" button, then the App must show a \"pop-up\" that explains each mode.",
+              "rimayText": "<MISSING_SCOPE>, when the user presses the \"what does that mean?\" button, then the App must explain each mode in a \"pop-up\".",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -8120,7 +8137,8 @@
                 "action": "present"
               },
               "conditionType": "trigger",
-              "provenance": "claude"
+              "provenance": "claude",
+              "edited": true
             }
           ]
         }
@@ -9723,8 +9741,8 @@
           },
           "units": [
             {
-              "id": "9445efc1f8",
-              "rimayText": "<MISSING_SCOPE>, when the user searches by a \"phone number\" without a \"calling code\", then the App must try the \"calling code\" of the user's own phone number.",
+              "id": "c62ee0afc7",
+              "rimayText": "<MISSING_SCOPE>, when the user searches for a non-contact by \"phone number\" whether it has the \"+\" prefix, the \"calling code\" or neither, then the App must find the number.",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -9733,11 +9751,12 @@
                 "action": "present"
               },
               "conditionType": "trigger",
-              "provenance": "claude"
+              "provenance": "claude",
+              "edited": true
             },
             {
-              "id": "c62ee0afc7",
-              "rimayText": "<MISSING_SCOPE>, when the user searches for a non-contact by \"phone number\", then the App must find the number whether it is entered with the \"+\" prefix, without it, or without the \"calling code\".",
+              "id": "9445efc1f8",
+              "rimayText": "<MISSING_SCOPE>, when the user searches by a \"phone number\" without a \"calling code\", then the App must try the \"calling code\" of the user's own phone number.",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -9894,7 +9913,7 @@
           "units": [
             {
               "id": "28282d196c",
-              "rimayText": "<MISSING_SCOPE>, when the user searches for a non-contact by \"phone number\", then the App must find the number whether it is entered with the \"+\" prefix, without it, or without the \"calling code\".",
+              "rimayText": "<MISSING_SCOPE>, when the user searches for a non-contact by \"phone number\" whether it has the \"+\" prefix, the \"calling code\" or none of those, then the App must find the number.",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -9903,7 +9922,8 @@
                 "action": "present"
               },
               "conditionType": "trigger",
-              "provenance": "claude"
+              "provenance": "claude",
+              "edited": true
             },
             {
               "id": "dac19e1ee8",
@@ -10666,7 +10686,7 @@
           "units": [
             {
               "id": "ca1fca5793",
-              "rimayText": "<MISSING_SCOPE>, when a notification is swiped away, then the App must not show it again.",
+              "rimayText": "<MISSING_SCOPE>, when the user swipes notification away, then the App must not show it again.",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -10675,7 +10695,8 @@
                 "action": "present"
               },
               "conditionType": "trigger",
-              "provenance": "annotator"
+              "provenance": "annotator",
+              "edited": true
             },
             {
               "id": "fbf5df6078",
@@ -10904,7 +10925,7 @@
             },
             {
               "id": "c8ae3030fc",
-              "rimayText": "<MISSING_SCOPE>, when messages are imported from an .xml backup, then the App must keep the archive and blocked flags.",
+              "rimayText": "<MISSING_SCOPE>, when the user imports messages from an .xml backup, then the App must keep the archive and blocked flags.",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -10913,7 +10934,8 @@
                 "action": "implied"
               },
               "conditionType": "trigger",
-              "provenance": "annotator"
+              "provenance": "annotator",
+              "edited": true
             }
           ]
         },
@@ -10992,5 +11014,5 @@
       }
     }
   ],
-  "savedAt": "2026-10-07T01:28:56+01:00"
+  "savedAt": "2026-10-07T22:50:58+01:00"
 }
