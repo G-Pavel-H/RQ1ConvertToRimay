@@ -303,20 +303,21 @@
           "units": [
             {
               "id": "7008347c7a",
-              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, <MISSING_ACTOR> <MISSING_MODAL_VERB> <MISSING_ACTION>.",
+              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the System must allow direct sharing to contacts via \"6.0 ChooserTargetService\"",
               "slots": {
                 "scope": "missing",
                 "condition": "missing",
-                "actor": "missing",
-                "modalVerb": "missing",
-                "action": "missing"
+                "actor": "implied",
+                "modalVerb": "implied",
+                "action": "present"
               },
               "conditionType": "none",
               "provenance": "annotator-refined",
               "reasons": [
                 "grid"
               ],
-              "editNote": "Was blank, but every slot was judged missing."
+              "editNote": "Was blank, but every slot was judged missing.",
+              "edited": true
             }
           ]
         },
@@ -431,20 +432,21 @@
           "units": [
             {
               "id": "fb18e6d71a",
-              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, <MISSING_ACTOR> <MISSING_MODAL_VERB> <MISSING_ACTION>.",
+              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow \"direct sharing\" to contacts through \"6.0 ChooserTargetService\"",
               "slots": {
                 "scope": "missing",
                 "condition": "missing",
-                "actor": "missing",
-                "modalVerb": "missing",
-                "action": "missing"
+                "actor": "implied",
+                "modalVerb": "implied",
+                "action": "present"
               },
               "conditionType": "none",
               "provenance": "annotator-refined",
               "reasons": [
                 "typo"
               ],
-              "editNote": ""
+              "editNote": "",
+              "edited": true
             }
           ]
         }
@@ -507,10 +509,10 @@
           "units": [
             {
               "id": "9617e6c8c1",
-              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow the user to add a \"signature\" to \"SMS messages\".",
+              "rimayText": "<MISSING_SCOPE>, when user wants to advertise the App to his friends, the App must allow the user to add a \"signature\" to \"SMS messages\".",
               "slots": {
                 "scope": "missing",
-                "condition": "missing",
+                "condition": "present",
                 "actor": "implied",
                 "modalVerb": "implied",
                 "action": "present"
@@ -521,7 +523,8 @@
                 "scope",
                 "word"
               ],
-              "editNote": "Added the object (\"SMS messages\") from the NL title."
+              "editNote": "Added the object (\"SMS messages\") from the NL title.",
+              "edited": true
             }
           ]
         },
@@ -636,7 +639,7 @@
           "units": [
             {
               "id": "befa9aeacd",
-              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure must provide an option to add a short signature to messages.",
+              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide an option to add a short signature to messages.",
               "slots": {
                 "scope": "missing",
                 "condition": "missing",
@@ -649,7 +652,8 @@
               "reasons": [
                 "scope"
               ],
-              "editNote": ""
+              "editNote": "",
+              "edited": true
             }
           ]
         }
@@ -712,9 +716,9 @@
           "units": [
             {
               "id": "45e779fb9d",
-              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must make the \"Screen security\" feature depend on the \"passphrase setting\".",
+              "rimayText": "For non-passphase users, <MISSING_CONDITION>, the App must enable the \"Screen security\" feature depend on the \"passphrase setting\".",
               "slots": {
-                "scope": "missing",
+                "scope": "present",
                 "condition": "missing",
                 "actor": "implied",
                 "modalVerb": "implied",
@@ -726,7 +730,8 @@
                 "scope",
                 "typo"
               ],
-              "editNote": "Removed a stray trailing \"set\"."
+              "editNote": "Removed a stray trailing \"set\".",
+              "edited": true
             }
           ]
         },
@@ -776,7 +781,7 @@
           "units": [
             {
               "id": "6ee04c5d2c",
-              "rimayText": "<MISSING_SCOPE>, if the passphrase setting is enabled, then the App must enable screen security.",
+              "rimayText": "<MISSING_SCOPE>, if the user has enabled the passphrase, then the App must enable screen security.",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -790,7 +795,8 @@
                 "scope",
                 "typo"
               ],
-              "editNote": ""
+              "editNote": "",
+              "edited": true
             }
           ]
         },
@@ -840,7 +846,7 @@
           "units": [
             {
               "id": "15d406737b",
-              "rimayText": "<MISSING_SCOPE>, if the user does not use a passphrase, then Signal must disable screen security by default.",
+              "rimayText": "<MISSING_SCOPE>, if the user does not use a passphrase, then the System must disable screen security by default.",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -854,7 +860,8 @@
                 "scope",
                 "word"
               ],
-              "editNote": "\"remove\" -> \"disable\", matching the NL title."
+              "editNote": "\"remove\" -> \"disable\", matching the NL title.",
+              "edited": true
             }
           ]
         }
@@ -1326,10 +1333,10 @@
           "units": [
             {
               "id": "0abcdcceb4",
-              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow the user to copy \"partial text\" from a \"message\".",
+              "rimayText": "<MISSING_SCOPE>, when the user receives \"long validation tokens/one-time passwords\", the App must allow the user to copy \"partial text\" from a \"message\".",
               "slots": {
                 "scope": "missing",
-                "condition": "missing",
+                "condition": "present",
                 "actor": "implied",
                 "modalVerb": "implied",
                 "action": "present"
@@ -1339,7 +1346,8 @@
               "reasons": [
                 "scope"
               ],
-              "editNote": ""
+              "editNote": "",
+              "edited": true
             }
           ]
         },
@@ -1453,10 +1461,10 @@
           "units": [
             {
               "id": "01071063a3",
-              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide an option to copy partial text from a message.",
+              "rimayText": "<MISSING_SCOPE>, when the \"user\" receives a \"message\" containing \"long validation tokens/one-time passwords\", the App must provide an option to copy partial text from a message.",
               "slots": {
                 "scope": "missing",
-                "condition": "missing",
+                "condition": "present",
                 "actor": "implied",
                 "modalVerb": "implied",
                 "action": "present"
@@ -1467,7 +1475,8 @@
                 "scope",
                 "typo"
               ],
-              "editNote": ""
+              "editNote": "",
+              "edited": true
             }
           ]
         }
@@ -1530,10 +1539,10 @@
           "units": [
             {
               "id": "82d4f9d613",
-              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow the user to mute a \"group\" for a \"specific duration\".",
+              "rimayText": "<MISSING_SCOPE>, when the user activates the \"Mute\" option for a group or a user, the App must mute notifications from a \"group\" for a \"specific duration\".",
               "slots": {
                 "scope": "missing",
-                "condition": "missing",
+                "condition": "present",
                 "actor": "implied",
                 "modalVerb": "implied",
                 "action": "present"
@@ -1543,7 +1552,8 @@
               "reasons": [
                 "scope"
               ],
-              "editNote": ""
+              "editNote": "",
+              "edited": true
             }
           ]
         },
@@ -1658,10 +1668,10 @@
           "units": [
             {
               "id": "2304ed5ce7",
-              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide an option to mute a group or a user for \"X minutes/hours\".",
+              "rimayText": "<MISSING_SCOPE>, when the \"user\" mutes a group or user for a \"specified duration\", the App must mute a group or a user for \"X minutes/hours\".",
               "slots": {
                 "scope": "missing",
-                "condition": "missing",
+                "condition": "present",
                 "actor": "implied",
                 "modalVerb": "implied",
                 "action": "present"
@@ -1673,7 +1683,8 @@
                 "word",
                 "opus"
               ],
-              "editNote": "Was \"provide a mute for x minutes/hours feature\" - no object."
+              "editNote": "Was \"provide a mute for x minutes/hours feature\" - no object.",
+              "edited": true
             }
           ]
         }
@@ -2625,7 +2636,7 @@
           "units": [
             {
               "id": "25d0118678",
-              "rimayText": "<MISSING_SCOPE>, when a share intent is received, then Signal must include its subject as well as its body.",
+              "rimayText": "<MISSING_SCOPE>, when the App receives share Intent, then Signal must include its subject as well as its body.",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -2640,7 +2651,8 @@
                 "then",
                 "typo"
               ],
-              "editNote": ""
+              "editNote": "",
+              "edited": true
             }
           ]
         },
@@ -2766,7 +2778,7 @@
           "units": [
             {
               "id": "5b6a27be55",
-              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide only a single way to open and close the attachment window.",
+              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide only a single way to open/close the attachment window.",
               "slots": {
                 "scope": "missing",
                 "condition": "missing",
@@ -2779,7 +2791,8 @@
               "reasons": [
                 "scope"
               ],
-              "editNote": ""
+              "editNote": "",
+              "edited": true
             }
           ]
         },
@@ -2829,7 +2842,7 @@
           "units": [
             {
               "id": "ec79a932dd",
-              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide only one way to open and close the attachment window.",
+              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide only one way to \"open/close\" the attachment window.",
               "slots": {
                 "scope": "missing",
                 "condition": "missing",
@@ -2844,7 +2857,8 @@
                 "grid",
                 "typo"
               ],
-              "editNote": ""
+              "editNote": "",
+              "edited": true
             }
           ]
         },
@@ -2894,7 +2908,7 @@
           "units": [
             {
               "id": "3b7c1af2b0",
-              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide a single way to open and close the attachment window in the conversation window.",
+              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide a single way to \"open/close\" the attachment window in the conversation window.",
               "slots": {
                 "scope": "missing",
                 "condition": "missing",
@@ -2907,7 +2921,8 @@
               "reasons": [
                 "scope"
               ],
-              "editNote": ""
+              "editNote": "",
+              "edited": true
             }
           ]
         }
@@ -3033,20 +3048,21 @@
           "units": [
             {
               "id": "92cfff32f1",
-              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, <MISSING_ACTOR> <MISSING_MODAL_VERB> <MISSING_ACTION>.",
+              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the System must provide an option to remove partiipants from a group.",
               "slots": {
                 "scope": "missing",
                 "condition": "missing",
-                "actor": "missing",
-                "modalVerb": "missing",
-                "action": "missing"
+                "actor": "implied",
+                "modalVerb": "implied",
+                "action": "present"
               },
               "conditionType": "none",
               "provenance": "annotator-refined",
               "reasons": [
                 "grid"
               ],
-              "editNote": "Placeholders were out of segment order."
+              "editNote": "Placeholders were out of segment order.",
+              "edited": true
             }
           ]
         },
@@ -3096,7 +3112,7 @@
           "units": [
             {
               "id": "cdb027f7d6",
-              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure must allow the user to remove participants from groups after they were added.",
+              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure must allow the user to remove participants.",
               "slots": {
                 "scope": "missing",
                 "condition": "missing",
@@ -3110,7 +3126,8 @@
                 "scope",
                 "typo"
               ],
-              "editNote": ""
+              "editNote": "",
+              "edited": true
             }
           ]
         }
@@ -5148,7 +5165,7 @@
           "units": [
             {
               "id": "27e1e11e47",
-              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must support fingerprint for unlocking the app.",
+              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide fingerprint for unlocking the app.",
               "slots": {
                 "scope": "missing",
                 "condition": "missing",
@@ -5162,7 +5179,8 @@
                 "scope",
                 "typo"
               ],
-              "editNote": ""
+              "editNote": "",
+              "edited": true
             }
           ]
         }
@@ -5902,7 +5920,7 @@
           "units": [
             {
               "id": "32abd2203d",
-              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must support themes.",
+              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide \"themes\".",
               "slots": {
                 "scope": "missing",
                 "condition": "missing",
@@ -5917,7 +5935,8 @@
                 "grid",
                 "typo"
               ],
-              "editNote": ""
+              "editNote": "",
+              "edited": true
             }
           ]
         },
@@ -5967,7 +5986,7 @@
           "units": [
             {
               "id": "10fa4e661e",
-              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure must support themes.",
+              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure should provide themes.",
               "slots": {
                 "scope": "missing",
                 "condition": "missing",
@@ -5981,7 +6000,8 @@
                 "scope",
                 "word"
               ],
-              "editNote": "\"have\" is an imprecise verb (a Paska smell)."
+              "editNote": "\"have\" is an imprecise verb (a Paska smell).",
+              "edited": true
             }
           ]
         }
@@ -6044,7 +6064,7 @@
           "units": [
             {
               "id": "6a0681eaff",
-              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must support a \"custom URL scheme\" for sharing.",
+              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide a \"custom URL scheme\" for sharing.",
               "slots": {
                 "scope": "missing",
                 "condition": "missing",
@@ -6057,7 +6077,8 @@
               "reasons": [
                 "scope"
               ],
-              "editNote": ""
+              "editNote": "",
+              "edited": true
             }
           ]
         },
@@ -6107,7 +6128,7 @@
           "units": [
             {
               "id": "4f74baba60",
-              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must support a \"signal://\" URL scheme.",
+              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide a \"signal://\" URL scheme.",
               "slots": {
                 "scope": "missing",
                 "condition": "missing",
@@ -6122,7 +6143,8 @@
                 "grid",
                 "typo"
               ],
-              "editNote": ""
+              "editNote": "",
+              "edited": true
             }
           ]
         },
@@ -6172,7 +6194,7 @@
           "units": [
             {
               "id": "b1f11d3983",
-              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, Signal must support a custom URL scheme for opening Signal from webpages.",
+              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, Signal must provide a custom URL scheme for opening Signal from webpages.",
               "slots": {
                 "scope": "missing",
                 "condition": "missing",
@@ -6185,7 +6207,8 @@
               "reasons": [
                 "scope"
               ],
-              "editNote": ""
+              "editNote": "",
+              "edited": true
             }
           ]
         }
@@ -6639,20 +6662,6 @@
               },
               "conditionType": "none",
               "provenance": "claude"
-            },
-            {
-              "id": "4ac6030da8",
-              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must ",
-              "slots": {
-                "scope": "missing",
-                "condition": "missing",
-                "actor": "implied",
-                "modalVerb": "implied",
-                "action": "present"
-              },
-              "conditionType": "none",
-              "provenance": "you",
-              "edited": true
             }
           ]
         },
@@ -9360,7 +9369,7 @@
       "set": "non-atomic",
       "nlText": "Request Number - 6362 | Request Title - Visual display for how many contacts are on Signal | Request Description - I have:   searched open and closed issues for duplicates  read https://github.com/WhisperSystems/Signal-Android/wiki/Submitting-useful-bug-reports  It'd be nice if Signal had a screen that would show e.g. a pie chart that indicated how many of my contacts were on Signal. Or how many of the messages I send are encrypted. Tapping an element of the pie chart would then show a list of people in that category - this would be a nice way to get an overview of contacts I still need to convince to convert. There's probably also room for some gamification in here - the app could display something like e.g. \"Almost there! __\" when most, but not all, of my contacts were using Signal.",
       "llm": null,
-      "decisionNote": "4 units. The second (encrypted-message count) and fourth (gamification) are softer in the NL (\"Or...\", \"probably also room for...\") - remove if you read them as not requested.",
+      "decisionNote": "4 units. The second (encrypted-message count) and fourth (gamification) are softer in the NL (\"Or...\", \"probably also room for...\")",
       "annotations": {
         "Arthur": {
           "original": "",
@@ -9710,8 +9719,8 @@
           },
           "units": [
             {
-              "id": "c62ee0afc7",
-              "rimayText": "<MISSING_SCOPE>, when the user searches for a non-contact by \"phone number\", then the App must find the number whether it is entered with the \"+\" prefix, without it, or without the \"calling code\".",
+              "id": "9445efc1f8",
+              "rimayText": "<MISSING_SCOPE>, when the user searches by a \"phone number\" without a \"calling code\", then the App must try the \"calling code\" of the user's own phone number.",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -9723,8 +9732,8 @@
               "provenance": "claude"
             },
             {
-              "id": "9445efc1f8",
-              "rimayText": "<MISSING_SCOPE>, when the user searches by a \"phone number\" without a \"calling code\", then the App must try the \"calling code\" of the user's own phone number.",
+              "id": "c62ee0afc7",
+              "rimayText": "<MISSING_SCOPE>, when the user searches for a non-contact by \"phone number\", then the App must find the number whether it is entered with the \"+\" prefix, without it, or without the \"calling code\".",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -10979,5 +10988,5 @@
       }
     }
   ],
-  "savedAt": "2026-09-25T00:10:02+01:00"
+  "savedAt": "2026-10-07T01:13:12+01:00"
 }

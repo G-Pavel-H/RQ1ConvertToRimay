@@ -107,6 +107,19 @@ def unit_gold(req: dict, index: int) -> Dict[str, str]:
     return {s: majority([u["slots"][s] for u in units]) for s in SLOTS}
 
 
+def unit_gold_condition_type(req: dict, index: int) -> str:
+    """Majority condition type for the unit at ``index``; no majority -> "none".
+
+    Same rule the annotation tool's majority-gold script uses for this field.
+    """
+    values = [(a["units"][index].get("conditionType") or "none")
+              for a in req["annotations"].values() if len(a["units"]) > index]
+    counts = Counter(values)
+    top = max(counts.values())
+    winners = [v for v, n in counts.items() if n == top]
+    return winners[0] if len(winners) == 1 else "none"
+
+
 def n_units(req: dict) -> int:
     """How many atomic requirements this one decomposes into (max over annotators)."""
     return max(len(a["units"]) for a in req["annotations"].values())
@@ -123,13 +136,15 @@ def overall_incomplete(slots: Dict[str, str]) -> bool:
 # --- export ---------------------------------------------------------------------
 
 
-def _row(req: dict, annotator: str, unit: dict, gold: Dict[str, str], disagreement: bool) -> dict:
+def _row(req: dict, annotator: str, unit: dict, gold: Dict[str, str], gold_ctype: str,
+         disagreement: bool) -> dict:
     base = dict(req["annotations"][annotator]["base"])
     base["rimayText"] = unit["rimayText"]
     for s in SLOTS:
         base[f"slot_{s}"] = unit["slots"][s]
         base[f"gold_{s}"] = gold[s]
     base["conditionType"] = unit.get("conditionType", "none")
+    base["gold_conditionType"] = gold_ctype
     base["overallIncomplete"] = "true" if overall_incomplete(unit["slots"]) else "false"
     base["gold_overallIncomplete"] = "true" if overall_incomplete(gold) else "false"
     base["gold_hadDisagreement"] = "true" if disagreement else "false"
@@ -155,12 +170,13 @@ def export(state: dict, out_dir: Path = EXPORT_DIR) -> dict:
         n = n_units(req)
         for i in range(n):
             gold = unit_gold(req, i)
+            gold_ctype = unit_gold_condition_type(req, i)
             present = [a["units"][i] for a in req["annotations"].values() if len(a["units"]) > i]
             disagreement = any(len({u["slots"][s] for u in present}) > 1 for s in SLOTS)
             for annotator, a in req["annotations"].items():
                 if len(a["units"]) <= i:
                     continue
-                row = _row(req, annotator, a["units"][i], gold, disagreement)
+                row = _row(req, annotator, a["units"][i], gold, gold_ctype, disagreement)
                 if is_atomic(req):
                     atomic_rows.append(row)
                 else:
@@ -209,9 +225,12 @@ def run_paska_on_units(state: dict, results_path: Path = PASKA_PATH, log=print) 
     by the stripped text, so only units whose text changed since the last run
     are sent — re-checking after a few edits takes seconds, not minutes.
 
-    A unit whose annotator judged a mandatory slot missing is expected to fail
-    (what is left after stripping is a fragment), so the summary reports that
-    group separately, exactly as the LLM report does.
+    The check is a comparison of two verdicts, not a pass rate. The annotator's
+    verdict is complete/incomplete (incomplete = a mandatory slot is missing);
+    Paska's is valid/invalid Rimay. A unit **passes when they coincide** —
+    complete and valid, or incomplete and rejected — and **fails when they
+    differ**. Text that is nothing but placeholders counts as invalid: there is
+    no sentence left for Paska to accept.
     """
     # Heavy imports kept local: the browser tool should start instantly.
     from src.llm_converter import strip_missing_placeholders
@@ -251,10 +270,16 @@ def run_paska_on_units(state: dict, results_path: Path = PASKA_PATH, log=print) 
     tally: Dict[str, Counter] = {}
     for req_id, annotator, i, u, stripped in units:
         if not stripped:
-            entry = {"passed": None, "smells": [], "note": "no text left after removing placeholders"}
+            # Nothing but placeholders: there is no sentence for Paska to accept.
+            entry = {"passed": None, "smells": [], "valid": False, "noText": True}
         else:
             entry = dict(cache[_paska_key(stripped)])
-        entry["expectedFail"] = overall_incomplete(u["slots"])
+            entry["valid"] = entry.get("passed")  # None when Paska could not run on it
+        incomplete = overall_incomplete(u["slots"])
+        entry["annotatorIncomplete"] = incomplete
+        # The check passes when the two verdicts coincide: complete + valid Rimay,
+        # or incomplete + rejected by Paska.
+        entry["agrees"] = None if entry["valid"] is None else (entry["valid"] != incomplete)
         # The text this verdict is about, so the tool can mark it stale once the
         # unit is edited.
         entry["text"] = u["rimayText"]
@@ -262,20 +287,23 @@ def run_paska_on_units(state: dict, results_path: Path = PASKA_PATH, log=print) 
 
         for group in (annotator, f"set:{'atomic' if len(state_req(state, req_id)['annotations'][annotator]['units']) == 1 else 'split'}", "all"):
             c = tally.setdefault(group, Counter())
-            if entry["passed"] is None:
-                c["skipped"] += 1
-            elif entry["expectedFail"]:
-                c["incomplete_" + ("pass" if entry["passed"] else "fail")] += 1
+            if entry["agrees"] is None:
+                c["unknown"] += 1
             else:
-                c["complete_" + ("pass" if entry["passed"] else "fail")] += 1
+                c[("agree_" if entry["agrees"] else "differ_") + ("incomplete" if incomplete else "complete")] += 1
 
     summary = {}
     for group, c in tally.items():
-        scored = c["complete_pass"] + c["complete_fail"]
+        agree = c["agree_complete"] + c["agree_incomplete"]
+        scored = agree + c["differ_complete"] + c["differ_incomplete"]
         summary[group] = {
-            **dict(c),
-            # Headline: validity of the units the annotator judged complete.
-            "pass_rate_complete": (c["complete_pass"] / scored) if scored else None,
+            "agree_complete": c["agree_complete"],        # says complete, Paska accepts
+            "agree_incomplete": c["agree_incomplete"],    # says incomplete, Paska rejects
+            "differ_complete": c["differ_complete"],      # says complete, Paska rejects
+            "differ_incomplete": c["differ_incomplete"],  # says incomplete, Paska accepts
+            "unknown": c["unknown"],
+            "n": scored,
+            "agreement": (agree / scored) if scored else None,
         }
 
     out = {"ranAt": now(), "byUnit": by_unit, "summary": summary, "byText": cache}

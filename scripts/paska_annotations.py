@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
 """Run Paska over the human annotations — the pipeline step behind "Run Paska".
 
-Reads ``data/curation.json``, checks every annotator unit with Paska using the
-same preprocessing and pass rule as the LLM output (placeholders stripped; pass
-= no smells), and writes ``data/curated/paska_annotations.json``. Only texts that
-changed since the last run are re-checked.
+Reads ``data/curation.json``, runs every annotator unit through Paska with the
+same preprocessing as the LLM output (placeholders stripped; Paska's verdict is
+"valid" when it fires no smell), and writes
+``data/curated/paska_annotations.json``. Only texts that changed since the last
+run are re-checked.
 
     python scripts/paska_annotations.py
 
-The headline is the pass rate over units the annotator judged **complete**;
-units with a mandatory slot missing are fragments once stripped and fail by
-construction, so they are counted separately.
+A unit passes when the annotator's verdict and Paska's coincide — complete and
+valid Rimay, or incomplete and rejected — and fails when they differ.
 """
 from __future__ import annotations
 
@@ -33,14 +33,14 @@ def main() -> int:
         return "  —  " if x is None else f"{x:5.0%}"
 
     print()
-    print(f"{'group':14} {'pass·complete':>13} {'n':>6} {'incomplete f/p':>15} {'no text':>8}")
+    print("pass = the annotator's verdict and Paska's coincide")
+    print(f"{'group':12} {'pass':>6} {'n':>5} | {'complete+valid':>14} {'incompl+rejected':>16} | {'complete BUT rejected':>21} {'incompl BUT accepted':>20}")
     order = [g for g in out["summary"] if not g.startswith("set:") and g != "all"]
     order += sorted(g for g in out["summary"] if g.startswith("set:")) + ["all"]
     for g in order:
         c = out["summary"][g]
-        n = c.get("complete_pass", 0) + c.get("complete_fail", 0)
-        inc = f"{c.get('incomplete_fail', 0)}/{c.get('incomplete_pass', 0)}"
-        print(f"{g:14} {pct(c['pass_rate_complete']):>13} {n:>6} {inc:>15} {c.get('skipped', 0):>8}")
+        print(f"{g:12} {pct(c['agreement']):>6} {c['n']:>5} | {c['agree_complete']:>14} {c['agree_incomplete']:>16} | "
+              f"{c['differ_complete']:>21} {c['differ_incomplete']:>20}")
     print(f"\nWrote {curation.PASKA_PATH.relative_to(ROOT)}")
     return 0
 

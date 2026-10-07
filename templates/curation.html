@@ -181,11 +181,18 @@ function paskaFor(u) {
   const p = paska && paska.byUnit && paska.byUnit[u.id];
   if (!p) return {cls:"", text:"Paska —", title:"Not checked yet — press Run Paska"};
   if (p.text !== u.rimayText) return {cls:"", text:"Paska stale", title:"Edited since the last run", stale:true};
-  if (p.passed === null) return {cls:"", text:"Paska n/a", title: p.note || p.error || ""};
-  if (p.passed) return {cls:"ok", text:"Paska ✓", title:"No smells"};
-  const n = p.smells.length;
-  if (incomplete(u)) return {cls:"exp", text:`Paska ✗ ${n} (expected)`, title:"Judged incomplete: a fragment is expected to fail", smells:p.smells};
-  return {cls:"bad", text:`Paska ✗ ${n}`, title:"", smells:p.smells};
+  // Paska's own verdict on the text. Placeholder-only text has no sentence to accept.
+  const valid = p.valid !== undefined ? p.valid : (p.passed === null ? (p.note ? false : null) : p.passed);
+  if (valid === null) return {cls:"", text:"Paska n/a", title: p.error || "Paska could not check this text"};
+  // Pass = the two verdicts coincide. Uses the slots as they are now, so
+  // changing a mandatory slot updates the result without a new Paska run.
+  const inc = incomplete(u);
+  if (valid !== inc) return {cls:"ok", text:"Paska ✓", title: inc
+    ? "Marked incomplete, and Paska rejects it — the verdicts agree"
+    : "Marked complete, and Paska accepts it — the verdicts agree"};
+  if (inc) return {cls:"bad", text:"Paska ✗ differs", title:"Marked incomplete, but Paska accepts it",
+    why:"Paska accepts this as valid Rimay, but a mandatory slot is marked missing."};
+  return {cls:"bad", text:`Paska ✗ ${p.smells.length}`, title:"Marked complete, but Paska rejects it", smells:p.smells};
 }
 function reqPaskaDot(r) {
   let seen = false, bad = false, stale = false;
@@ -244,7 +251,8 @@ function unitCell(r, ann, i) {
         ${CTYPES.map(v => `<option ${v === (u.conditionType || "none") ? "selected" : ""}>${v}</option>`).join("")}
       </select></label>`;
   const smells = p.smells && p.smells.length
-    ? `<ul class="smells">${p.smells.map(s => `<li><b>${esc(s.smell)}</b> — ${esc(s.value)}</li>`).join("")}</ul>` : "";
+    ? `<ul class="smells">${p.smells.map(s => `<li><b>${esc(s.smell)}</b> — ${esc(s.value)}</li>`).join("")}</ul>`
+    : p.why ? `<ul class="smells"><li>${esc(p.why)}</li></ul>` : "";
   return `<div class="unit ${u.edited ? "edited" : ""}">
     <div class="utop">${prov}${u.edited ? `<span class="chip edited">edited by you</span>` : ""}${reasons}
       <span class="chip ${p.cls}" title="${esc(p.title)}">${esc(p.text)}</span>
@@ -426,9 +434,10 @@ document.addEventListener("change", e => {
   const t = e.target;
   if (!t.dataset.ann) return;
   const u = reqs()[current].annotations[t.dataset.ann].units[+t.dataset.i];
-  if (t.dataset.slot) { u.slots[t.dataset.slot] = t.value; t.className = "v-" + t.value; }
+  if (t.dataset.slot) u.slots[t.dataset.slot] = t.value;
   else if (t.dataset.ctype) u.conditionType = t.value;
   u.edited = true; scheduleSave();
+  if (t.dataset.slot) renderAll();
 });
 // Re-render on leaving a text box so badges (edited, Paska stale) catch up
 // without stealing focus while typing.
@@ -485,14 +494,15 @@ $("#paskaBtn").onclick = async () => {
     if (!res.ok) throw new Error(out.error || res.status);
     paska = out; renderAll();
     const rows = Object.entries(out.summary).filter(([g]) => g !== "all").concat([["all", out.summary.all]])
-      .map(([g, c]) => `<tr><td>${esc(g.replace("set:", "set: "))}</td><td><b>${pct(c.pass_rate_complete)}</b></td>
-        <td>${(c.complete_pass || 0)}/${(c.complete_pass || 0) + (c.complete_fail || 0)}</td>
-        <td>${(c.incomplete_fail || 0)} fail · ${(c.incomplete_pass || 0)} pass</td><td>${c.skipped || 0}</td></tr>`).join("");
+      .map(([g, c]) => `<tr><td>${esc(g.replace("set:", "set: "))}</td><td><b>${pct(c.agreement)}</b></td><td>${c.n}</td>
+        <td>${c.agree_complete}</td><td>${c.agree_incomplete}</td>
+        <td style="color:var(--bad)">${c.differ_complete}</td><td style="color:var(--bad)">${c.differ_incomplete}</td></tr>`).join("");
     modal(`<h3>Paska over the annotations</h3>
-      <table><tr><th>Group</th><th>Pass · complete</th><th>n</th><th>Judged incomplete</th><th>No text</th></tr>${rows}</table>
-      <p class="hint">"Pass · complete" is the number to read: units the annotator judged complete, and whether Paska accepts them.
-      Units with a mandatory slot missing are left as fragments once placeholders are removed, so they fail by construction —
-      the same split used for the LLM output. Units that are only placeholders are skipped.</p>`);
+      <table><tr><th>Group</th><th>Pass</th><th>n</th><th>Complete · valid</th><th>Incomplete · rejected</th>
+        <th>Complete but rejected</th><th>Incomplete but accepted</th></tr>${rows}</table>
+      <p class="hint"><b>Pass = the two verdicts coincide.</b> The annotation says complete or incomplete (a mandatory slot missing);
+      Paska says valid or invalid Rimay. Complete + valid and incomplete + rejected both pass; the two red columns are the
+      disagreements. Text that is only placeholders counts as rejected.</p>`);
   } catch (e) {
     modal(`<h3>Paska failed</h3><p>${esc(e.message)}</p>`);
   } finally {

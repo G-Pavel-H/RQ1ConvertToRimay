@@ -1,182 +1,222 @@
 {
-  "ranAt": "2026-09-24T21:41:23+01:00",
+  "ranAt": "2026-10-07T01:12:27+01:00",
   "byUnit": {
     "662116c866": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow the user to cancel \"running media downloads\"."
     },
     "51f5200698": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user cancel a running \"media download\"."
     },
     "28d153e219": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide an option to cancel running media downloads."
     },
     "7008347c7a": {
-      "passed": null,
+      "passed": true,
       "smells": [],
-      "note": "no text left after removing placeholders",
-      "expectedFail": true,
-      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, <MISSING_ACTOR> <MISSING_MODAL_VERB> <MISSING_ACTION>."
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the System must allow direct sharing to contacts via \"6.0 ChooserTargetService\""
     },
     "adfeb6a1a2": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow direct sharing to contacts through the ChooserTargetService."
     },
     "fb18e6d71a": {
-      "passed": null,
+      "passed": true,
       "smells": [],
-      "note": "no text left after removing placeholders",
-      "expectedFail": true,
-      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, <MISSING_ACTOR> <MISSING_MODAL_VERB> <MISSING_ACTION>."
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow \"direct sharing\" to contacts through \"6.0 ChooserTargetService\""
     },
     "9617e6c8c1": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
-      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow the user to add a \"signature\" to \"SMS messages\"."
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
+      "text": "<MISSING_SCOPE>, when user wants to advertise the App to his friends, the App must allow the user to add a \"signature\" to \"SMS messages\"."
     },
     "9f5fe0ee2d": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user add a short signature to messages."
     },
     "befa9aeacd": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
-      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure must provide an option to add a short signature to messages."
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide an option to add a short signature to messages."
     },
     "45e779fb9d": {
-      "passed": false,
-      "smells": [
-        {
-          "segment_id": "ud5bcc510dc23f3acc8927006dda1e8a455d1a16a_14",
-          "smell": "Not precise verb",
-          "value": "Not precise verb in the system response."
-        }
-      ],
-      "expectedFail": false,
-      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must make the \"Screen security\" feature depend on the \"passphrase setting\"."
+      "passed": true,
+      "smells": [],
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
+      "text": "For non-passphase users, <MISSING_CONDITION>, the App must enable the \"Screen security\" feature depend on the \"passphrase setting\"."
     },
     "6ee04c5d2c": {
-      "passed": false,
-      "smells": [
-        {
-          "segment_id": "u803f29df7f1f22b839457b490716a8f4b40f36f2_16",
-          "smell": "Passive voice",
-          "value": "Passive voice in the condition."
-        }
-      ],
-      "expectedFail": false,
-      "text": "<MISSING_SCOPE>, if the passphrase setting is enabled, then the App must enable screen security."
+      "passed": true,
+      "smells": [],
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
+      "text": "<MISSING_SCOPE>, if the user has enabled the passphrase, then the App must enable screen security."
     },
     "15d406737b": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
-      "text": "<MISSING_SCOPE>, if the user does not use a passphrase, then Signal must disable screen security by default."
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
+      "text": "<MISSING_SCOPE>, if the user does not use a passphrase, then the System must disable screen security by default."
     },
     "23446734dd": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must visually indicate whether an image has a \"description\"."
     },
     "4d37668122": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must show whether a post has an image description."
     },
     "a6911d75d5": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must show whether an image has a description."
     },
     "42c1e1b228": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide \"better identity key synchronization\"."
     },
     "90b8555470": {
       "passed": null,
       "smells": [],
-      "note": "no text left after removing placeholders",
-      "expectedFail": true,
+      "valid": false,
+      "noText": true,
+      "annotatorIncomplete": true,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, <MISSING_ACTOR> <MISSING_MODAL_VERB> <MISSING_ACTION>."
     },
     "0c5f944257": {
       "passed": null,
       "smells": [],
-      "note": "no text left after removing placeholders",
-      "expectedFail": true,
+      "valid": false,
+      "noText": true,
+      "annotatorIncomplete": true,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, <MISSING_ACTOR> <MISSING_MODAL_VERB> <MISSING_ACTION>."
     },
     "0abcdcceb4": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
-      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow the user to copy \"partial text\" from a \"message\"."
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
+      "text": "<MISSING_SCOPE>, when the user receives \"long validation tokens/one-time passwords\", the App must allow the user to copy \"partial text\" from a \"message\"."
     },
     "5ea42d63f6": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user copy partial text from a message."
     },
     "01071063a3": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
-      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide an option to copy partial text from a message."
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
+      "text": "<MISSING_SCOPE>, when the \"user\" receives a \"message\" containing \"long validation tokens/one-time passwords\", the App must provide an option to copy partial text from a message."
     },
     "82d4f9d613": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
-      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow the user to mute a \"group\" for a \"specific duration\"."
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
+      "text": "<MISSING_SCOPE>, when the user activates the \"Mute\" option for a group or a user, the App must mute notifications from a \"group\" for a \"specific duration\"."
     },
     "d0a992a00f": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user mute a conversation for a chosen duration."
     },
     "2304ed5ce7": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
-      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide an option to mute a group or a user for \"X minutes/hours\"."
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
+      "text": "<MISSING_SCOPE>, when the \"user\" mutes a group or user for a \"specified duration\", the App must mute a group or a user for \"X minutes/hours\"."
     },
     "cbc2d4d3b5": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, when there are unread messages, then the App must show the unread notifications badge on the app icon."
     },
     "c30729b849": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, when there are unread messages, then the App must show an unread badge on the app icon."
     },
     "b6676fb1a9": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, when Signal receives new messages, then Signal must show an unread notification badge on the app icon."
     },
     "28c9a02df4": {
@@ -188,151 +228,153 @@
           "value": "Verb is missing in the SR."
         }
       ],
-      "expectedFail": true,
+      "valid": false,
+      "annotatorIncomplete": true,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must <MISSING_ACTION>."
     },
     "5543cab1ed": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must bring back the old text-based smileys."
     },
     "112f781d87": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide the old text-based smileys."
     },
     "0456dcb033": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, when the user sends an \"SMS message\" to the number \"13977\" to check the account status, then the App must deliver the \"SMS message\"."
     },
     "591d3b7f62": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, if the recipient is a short number, then Signal must deliver the SMS."
     },
     "7e18afffff": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, when the user sends an SMS message to the provider number 13977, then Signal must deliver the SMS message."
     },
     "47f47282e1": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must indicate in the \"conversation overview\" whether the \"last message\" is from the user or the \"conversation partner\"."
     },
     "78214da164": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must show in the conversation overview whether the last message is from the user or from the conversation partner."
     },
     "b11ae36b01": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must indicate in the conversation overview whether the last message is from the user or the conversation partner."
     },
     "1a56365490": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, when the App receives a \"share intent\", then the App must include the \"EXTRA_SUBJECT\" along with the \"EXTRA_TEXT\" in the shared message."
     },
     "25d0118678": {
-      "passed": false,
-      "smells": [
-        {
-          "segment_id": "u3bbe57e552651706a78d9c936ca6c766a91d920b_80",
-          "smell": "Passive voice",
-          "value": "Passive voice in the condition."
-        }
-      ],
-      "expectedFail": false,
-      "text": "<MISSING_SCOPE>, when a share intent is received, then Signal must include its subject as well as its body."
+      "passed": true,
+      "smells": [],
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
+      "text": "<MISSING_SCOPE>, when the App receives share Intent, then Signal must include its subject as well as its body."
     },
     "9b70ef6378": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, when Signal receives a share Intent with an EXTRA_SUBJECT portion, then Signal must include the EXTRA_SUBJECT portion in the shared message."
     },
     "5b6a27be55": {
-      "passed": false,
-      "smells": [
-        {
-          "segment_id": "u6bd743c775349d27808b9b38c6acb27b5c5965c5_88",
-          "smell": "Non-atomic requirement",
-          "value": "The requirement has more than one action in the system response."
-        }
-      ],
-      "expectedFail": false,
-      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide only a single way to open and close the attachment window."
+      "passed": true,
+      "smells": [],
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide only a single way to open/close the attachment window."
     },
     "ec79a932dd": {
-      "passed": false,
-      "smells": [
-        {
-          "segment_id": "u5a413b5859f1c3fca1af58df28c98f1130c7e1e1_90",
-          "smell": "Non-atomic requirement",
-          "value": "The requirement has more than one action in the system response."
-        }
-      ],
-      "expectedFail": false,
-      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide only one way to open and close the attachment window."
+      "passed": true,
+      "smells": [],
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide only one way to \"open/close\" the attachment window."
     },
     "3b7c1af2b0": {
-      "passed": false,
-      "smells": [
-        {
-          "segment_id": "ub56cea641a922b802814b050aa9f08d2f622b2dd_92",
-          "smell": "Non-atomic requirement",
-          "value": "The requirement has more than one action in the system response."
-        }
-      ],
-      "expectedFail": false,
-      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide a single way to open and close the attachment window in the conversation window."
+      "passed": true,
+      "smells": [],
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide a single way to \"open/close\" the attachment window in the conversation window."
     },
     "e5bf5d0a73": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow the user to remove \"participants\" from \"groups\"."
     },
     "92cfff32f1": {
-      "passed": null,
+      "passed": true,
       "smells": [],
-      "note": "no text left after removing placeholders",
-      "expectedFail": true,
-      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, <MISSING_ACTOR> <MISSING_MODAL_VERB> <MISSING_ACTION>."
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the System must provide an option to remove partiipants from a group."
     },
     "cdb027f7d6": {
-      "passed": false,
-      "smells": [
-        {
-          "segment_id": "u965a790408f391caa09b37e4e1900b21e5d698ec_96",
-          "smell": "Incorrect order requirement",
-          "value": "The condition clause of the requirement is after the system response."
-        },
-        {
-          "segment_id": "u965a790408f391caa09b37e4e1900b21e5d698ec_97",
-          "smell": "Passive voice",
-          "value": "Passive voice in the condition."
-        }
-      ],
-      "expectedFail": false,
-      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure must allow the user to remove participants from groups after they were added."
+      "passed": true,
+      "smells": [],
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure must allow the user to remove participants."
     },
     "6721a6556b": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, if the user is using a \"dual SIM mobile\", then the App must indicate to which \"SIM\" the \"message\" is sent."
     },
     "ba5f3c24b4": {
@@ -344,105 +386,139 @@
           "value": "Verb is missing in the SR."
         }
       ],
-      "expectedFail": true,
+      "valid": false,
+      "annotatorIncomplete": true,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must <MISSING_ACTION>."
     },
     "7c5afa7c1d": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure must show which SIM a message is sent through on dual SIM devices."
     },
     "e2eb53aac9": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, when the user shares a \"calendar event\" to the App, then the App must attach the \"calendar event\" to the \"message\"."
     },
     "a882e31b65": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user share calendar events."
     },
     "f768f9ce77": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, when the user shares a calendar event from the Android Calendar app, then TextSecure must attach the calendar event to the message."
     },
     "1a72095252": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, when the user starts \"typing\" and \"SMS mode\" is disabled, then the App must not show the \"count of letters\"."
     },
     "9f104ea715": {
       "passed": null,
       "smells": [],
-      "note": "no text left after removing placeholders",
-      "expectedFail": true,
+      "valid": false,
+      "noText": true,
+      "annotatorIncomplete": true,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, <MISSING_ACTOR> <MISSING_MODAL_VERB> <MISSING_ACTION>."
     },
     "8e6da3b5fa": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, if SMS mode is disabled and the user starts typing a message, then the App must hide the letter count."
     },
     "03b9315db6": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, when the App receives an \"incoming SMS\" from a \"certain contact\", then the App must automatically forward the \"SMS\" to \"another contact\"."
     },
     "9f6e093dd5": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user automatically forward SMS from one contact to another."
     },
     "1edebbe3f2": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, when the App receives an SMS from a certain contact, then the App must automatically forward the SMS to another contact."
     },
     "034b3856e8": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, if the user is on the \"calling screen\", then the App must show the \"full resolution contact photo\"."
     },
     "3104daf39a": {
       "passed": null,
       "smells": [],
-      "note": "no text left after removing placeholders",
-      "expectedFail": true,
+      "valid": false,
+      "noText": true,
+      "annotatorIncomplete": true,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, <MISSING_ACTOR> <MISSING_MODAL_VERB> <MISSING_ACTION>."
     },
     "88ec0e9f1b": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, when Signal is on the calling screen, then Signal must show the contact photo in full resolution."
     },
     "014594241a": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must add further \"disappearing message\" periods of up to at least one year."
     },
     "6459d18c81": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must offer longer disappearing-message periods, up to at least one year."
     },
     "3cf2a3eaed": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, Signal must provide disappearing message periods of up to at least 12 months."
     },
     "7aed55ee18": {
@@ -454,38 +530,50 @@
           "value": "Verb is missing in the SR."
         }
       ],
-      "expectedFail": true,
+      "valid": false,
+      "annotatorIncomplete": true,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must <MISSING_ACTION>."
     },
     "9230292402": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user set a notification color for a contact or a group."
     },
     "20ae65809c": {
       "passed": null,
       "smells": [],
-      "note": "no text left after removing placeholders",
-      "expectedFail": true,
+      "valid": false,
+      "noText": true,
+      "annotatorIncomplete": true,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, <MISSING_ACTOR> <MISSING_MODAL_VERB> <MISSING_ACTION>."
     },
     "89dd266667": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide a way to access the \"local timeline\" and \"federated timeline\"."
     },
     "e3357171c7": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let users access the local and federated timelines."
     },
     "e7b150c983": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide access to the local and federated timelines."
     },
     "0cd99115d5": {
@@ -497,7 +585,9 @@
           "value": "Verb is missing in the SR."
         }
       ],
-      "expectedFail": true,
+      "valid": false,
+      "annotatorIncomplete": true,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must <MISSING_ACTION>."
     },
     "b32a3be419": {
@@ -509,38 +599,42 @@
           "value": "Verb is missing in the SR."
         }
       ],
-      "expectedFail": true,
+      "valid": false,
+      "annotatorIncomplete": true,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must <MISSING_ACTION>."
     },
     "4dd9230aa2": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide emojis."
     },
     "819427cbd6": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide \"fingerprint support\" to unlock the App as an alternative to the \"passphrase\"."
     },
     "ffd085c7f4": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user unlock the app with a fingerprint instead of a passphrase."
     },
     "27e1e11e47": {
-      "passed": false,
-      "smells": [
-        {
-          "segment_id": "u143204db15064f89770d2ed94896ea22afeae958_158",
-          "smell": "Not precise verb",
-          "value": "Not precise verb in the system response."
-        }
-      ],
-      "expectedFail": false,
-      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must support fingerprint for unlocking the app."
+      "passed": true,
+      "smells": [],
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide fingerprint for unlocking the app."
     },
     "ad48cfdaae": {
       "passed": false,
@@ -551,7 +645,9 @@
           "value": "Verb is missing in the SR."
         }
       ],
-      "expectedFail": true,
+      "valid": false,
+      "annotatorIncomplete": true,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must <MISSING_ACTION>."
     },
     "550336dd6f": {
@@ -563,189 +659,211 @@
           "value": "Verb is missing in the SR."
         }
       ],
-      "expectedFail": true,
+      "valid": false,
+      "annotatorIncomplete": true,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must <MISSING_ACTION>."
     },
     "ead332ba2d": {
       "passed": null,
       "smells": [],
-      "note": "no text left after removing placeholders",
-      "expectedFail": true,
+      "valid": false,
+      "noText": true,
+      "annotatorIncomplete": true,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, <MISSING_ACTOR> <MISSING_MODAL_VERB> <MISSING_ACTION>."
     },
     "2616957c9a": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, if a \"text\" is \"oversized\", then the App must auto-split the \"text\" over \"multiple messages\"."
     },
     "9a52c54ef3": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, if a text is too long, then the App must split it across multiple messages."
     },
     "3b05e7c3fa": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, if a text is oversized, then the App must split it over multiple messages."
     },
     "1306b10dca": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow the user to change the \"notification settings\" for \"groups\" independently from the \"personal chats\"."
     },
     "40bf445e9f": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user set notification settings for group chats separately from personal chats."
     },
     "846e04dffe": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide functionality to change the notification settings for groups independently from personal chats."
     },
     "aa30a1816e": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide \"themes\" similar to \"GO SMS PRO\"."
     },
     "32abd2203d": {
-      "passed": false,
-      "smells": [
-        {
-          "segment_id": "uf052e48d752b3b70177e7fb191b79f245a23fa1e_180",
-          "smell": "Not precise verb",
-          "value": "Not precise verb in the system response."
-        }
-      ],
-      "expectedFail": false,
-      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must support themes."
+      "passed": true,
+      "smells": [],
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide \"themes\"."
     },
     "10fa4e661e": {
-      "passed": false,
-      "smells": [
-        {
-          "segment_id": "ua5e1388ff2d4846e7f567498edf04bdfbcc71c02_182",
-          "smell": "Not precise verb",
-          "value": "Not precise verb in the system response."
-        }
-      ],
-      "expectedFail": false,
-      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure must support themes."
+      "passed": true,
+      "smells": [],
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure should provide themes."
     },
     "6a0681eaff": {
-      "passed": false,
-      "smells": [
-        {
-          "segment_id": "u46640a9571d63159ac7a74c08d960cf14eec3672_184",
-          "smell": "Not precise verb",
-          "value": "Not precise verb in the system response."
-        }
-      ],
-      "expectedFail": false,
-      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must support a \"custom URL scheme\" for sharing."
+      "passed": true,
+      "smells": [],
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide a \"custom URL scheme\" for sharing."
     },
     "4f74baba60": {
-      "passed": false,
-      "smells": [
-        {
-          "segment_id": "u29c3677f5ad55068559137a0f2e5de7ccee0495e_187",
-          "smell": "Not precise verb",
-          "value": "Not precise verb in the system response."
-        }
-      ],
-      "expectedFail": false,
-      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must support a \"signal://\" URL scheme."
+      "passed": true,
+      "smells": [],
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide a \"signal://\" URL scheme."
     },
     "b1f11d3983": {
-      "passed": false,
-      "smells": [
-        {
-          "segment_id": "u7e13213a09aefb49ccb1a5053d330d19797e2557_189",
-          "smell": "Not precise verb",
-          "value": "Not precise verb in the system response."
-        }
-      ],
-      "expectedFail": false,
-      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, Signal must support a custom URL scheme for opening Signal from webpages."
+      "passed": true,
+      "smells": [],
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
+      "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, Signal must provide a custom URL scheme for opening Signal from webpages."
     },
     "b22e572c28": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must sort the \"messages\" in the \"conversation view\" by \"sent timestamp\", \"sequence numbers\" or \"vector clocks\"."
     },
     "cbf76b8719": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must sort the \"conversation view\" by \"sent\" time."
     },
     "0178c814ee": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must display the \"messages\" in the \"conversation view\" in the same order for all \"chat participants\"."
     },
     "333b717822": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide a view of the posts in the \"public timeline\"."
     },
     "2fde7aae30": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide a view of posts from other people."
     },
     "47d7ccf224": {
       "passed": null,
       "smells": [],
-      "note": "no text left after removing placeholders",
-      "expectedFail": true,
+      "valid": false,
+      "noText": true,
+      "annotatorIncomplete": true,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, <MISSING_ACTOR> <MISSING_MODAL_VERB> <MISSING_ACTION>."
     },
     "1874a967e1": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must automatically move the \"message drafts\" to the top of the \"message list\"."
     },
     "e3e3925912": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must visually mark the \"message drafts\", such as with a different color or a \"Draft\" label."
     },
     "3d95cebd2b": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must automatically move the \"message drafts\" to the top of the \"message list\"."
     },
     "8d62a3121a": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must visually mark the \"message drafts\", such as with a different color or a \"Draft\" label."
     },
     "324f238f4e": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must automatically move the \"message drafts\" to the top of the \"message list\"."
     },
     "321833ba6c": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must visually mark the \"message drafts\", such as with a different color or a \"Draft\" label."
     },
     "06b4541c49": {
@@ -757,7 +875,9 @@
           "value": "Passive voice in the condition."
         }
       ],
-      "expectedFail": false,
+      "valid": false,
+      "annotatorIncomplete": false,
+      "agrees": false,
       "text": "<MISSING_SCOPE>, when an SMS delivery report is received, then the App must save the time the message was actually received."
     },
     "32f531d5d9": {
@@ -769,109 +889,145 @@
           "value": "Passive voice in the condition."
         }
       ],
-      "expectedFail": false,
+      "valid": false,
+      "annotatorIncomplete": false,
+      "agrees": false,
       "text": "<MISSING_SCOPE>, when an SMS delivery report is received, then the App must show that time in the message details."
     },
     "cf47095a17": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, when the App receives an \"SMS delivery report\", then the App must save the time at which the recipient received the message."
     },
     "a653a2cb37": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must show the saved \"received time\" in the \"message details\"."
     },
     "2cac7a9cf0": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, when the App receives an \"SMS delivery report\", then the App must save the time at which the recipient received the message."
     },
     "0b59311da9": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must show the saved \"received time\" in the \"message details\"."
     },
     "7bbae2ddd4": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, if the recipient does not receive a sent \"Signal message\" within a \"timeout\", then the App must notify the \"sender\"."
     },
     "2c55555f61": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, if the recipient does not receive a sent \"Signal message\" within a \"timeout\", then the App must offer the \"sender\" an option to resend the message via \"insecure SMS\"."
     },
     "cb13bd69b8": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, if the recipient does not receive a sent \"Signal message\" within a \"timeout\", then the App must notify the \"sender\"."
     },
     "3cca4ed5b3": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, if the recipient does not receive a sent \"Signal message\" within a \"timeout\", then the App must offer the \"sender\" an option to resend the message via \"insecure SMS\"."
     },
     "352f9a8412": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, if the recipient does not receive a sent \"Signal message\" within a \"timeout\", then the App must notify the \"sender\"."
     },
     "184ea8e525": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, if the recipient does not receive a sent \"Signal message\" within a \"timeout\", then the App must offer the \"sender\" an option to resend the message via \"insecure SMS\"."
     },
     "2d4d4139e7": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, if the \"media item\" has already been saved, then the App must change the \"save icon\" to a \"view/share icon\"."
     },
     "70c158220e": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, if a picture has already been saved, then the App must show a view or share icon instead of the save button."
     },
     "4af7c3548e": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, if the user has already saved a \"media item\", then the App must show a \"view\" or \"share\" icon instead of the \"save\" button."
     },
     "3915cc8825": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user block a user-specified \"phone number\"."
     },
     "ec03a65f14": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, when the App receives a message from a \"blocked number\", then the App must delete the message."
     },
     "e9d9a413fa": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, when the App receives a message from a \"blocked number\", then the App must not show a \"notification\"."
     },
     "53b8806e55": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user block a user-specified \"phone number\"."
     },
     "00d73754d3": {
@@ -883,7 +1039,9 @@
           "value": "Passive voice in the condition."
         }
       ],
-      "expectedFail": false,
+      "valid": false,
+      "annotatorIncomplete": false,
+      "agrees": false,
       "text": "<MISSING_SCOPE>, when a message from a blocked number is received, then the App must delete it."
     },
     "36d51913b6": {
@@ -895,43 +1053,57 @@
           "value": "Passive voice in the condition."
         }
       ],
-      "expectedFail": false,
+      "valid": false,
+      "annotatorIncomplete": false,
+      "agrees": false,
       "text": "<MISSING_SCOPE>, when a message from a blocked number is received, then the App must not show a notification."
     },
     "ccb45e263e": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user block a user-specified \"phone number\"."
     },
     "1b7bc6aae9": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, when the App receives a message from a \"blocked number\", then the App must delete the message."
     },
     "712fcc6894": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, when the App receives a message from a \"blocked number\", then the App must not show a \"notification\"."
     },
     "e45e0ee6a0": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, when the user triggers a \"specific button combo\" and confirms the \"confirm dialogue\", then the App must wipe the \"text message database\"."
     },
     "a07168b560": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, if the user is being coerced to disclose their password, then the App must let them quickly wipe the message database."
     },
     "c554f6ecc9": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide a quick way, such as a \"button combo\" with a \"confirm dialogue\", to wipe the \"text message database\"."
     },
     "dadb57b437": {
@@ -943,13 +1115,17 @@
           "value": "The requirement has more than one action in the system response."
         }
       ],
-      "expectedFail": false,
+      "valid": false,
+      "annotatorIncomplete": false,
+      "agrees": false,
       "text": "<MISSING_SCOPE>, when the user starts the App for the first time, then the App must ask the user to choose between \"only use push\", \"use SMS fallback\", and \"use as default SMS/MMS app\"."
     },
     "bf0fe7f82e": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, when the user presses the \"what does that mean?\" button, then the App must show a \"pop-up\" that explains each mode."
     },
     "6e35bd2fc7": {
@@ -961,13 +1137,17 @@
           "value": "The requirement has more than one action in the system response."
         }
       ],
-      "expectedFail": false,
+      "valid": false,
+      "annotatorIncomplete": false,
+      "agrees": false,
       "text": "<MISSING_SCOPE>, when the user starts the App for the first time, then the App must ask the user to choose between \"only use push\", \"use SMS fallback\", and \"use as default SMS/MMS app\"."
     },
     "9407a627eb": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, when the user presses the \"what does that mean?\" button, then the App must show a \"pop-up\" that explains each mode."
     },
     "c1c5605469": {
@@ -979,31 +1159,41 @@
           "value": "The requirement has more than one action in the system response."
         }
       ],
-      "expectedFail": false,
+      "valid": false,
+      "annotatorIncomplete": false,
+      "agrees": false,
       "text": "<MISSING_SCOPE>, when the user starts the App for the first time, then the App must ask the user to choose between \"only use push\", \"use SMS fallback\", and \"use as default SMS/MMS app\"."
     },
     "1bf2d6300d": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, when the user presses the \"what does that mean?\" button, then the App must show a \"pop-up\" that explains each mode."
     },
     "9f4c91bd3c": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, if the user has enabled \"dummy messaging\", then the App must send \"dummy messages\" to random TextSecure contacts at random times."
     },
     "aaa8121c9d": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, when the App receives a \"dummy message\", then the App must discard it automatically."
     },
     "650a878e0c": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user define the quantity of \"dummy messages\"."
     },
     "3341dbb034": {
@@ -1015,31 +1205,41 @@
           "value": "The condition clause of the requirement is after the system response."
         }
       ],
-      "expectedFail": false,
+      "valid": false,
+      "annotatorIncomplete": false,
+      "agrees": false,
       "text": "<MISSING_SCOPE>, if the device is \"roaming\", then the App must not send \"dummy messages\" unless the user has enabled it."
     },
     "d3a1c0ed79": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, if the \"battery level\" is below a \"threshold\", then the App must not send \"dummy messages\"."
     },
     "c33a70f108": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, if the user has enabled \"dummy messaging\", then the App must send \"dummy messages\" to random TextSecure contacts at random times."
     },
     "968507e1a9": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, when the App receives a \"dummy message\", then the App must discard it automatically."
     },
     "bf5093bf2d": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user define the quantity of \"dummy messages\"."
     },
     "53f3a68801": {
@@ -1051,31 +1251,41 @@
           "value": "The condition clause of the requirement is after the system response."
         }
       ],
-      "expectedFail": false,
+      "valid": false,
+      "annotatorIncomplete": false,
+      "agrees": false,
       "text": "<MISSING_SCOPE>, if the device is \"roaming\", then the App must not send \"dummy messages\" unless the user has enabled it."
     },
     "85f0b7b384": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, if the \"battery level\" is below a \"threshold\", then the App must not send \"dummy messages\"."
     },
     "76c450f184": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, if the user has enabled \"dummy messaging\", then the App must send \"dummy messages\" to random TextSecure contacts at random times."
     },
     "c3257e1942": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, when the App receives a \"dummy message\", then the App must discard it automatically."
     },
     "9a2b8b5e03": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user define the quantity of \"dummy messages\"."
     },
     "671e46f1a3": {
@@ -1087,230 +1297,314 @@
           "value": "The condition clause of the requirement is after the system response."
         }
       ],
-      "expectedFail": false,
+      "valid": false,
+      "annotatorIncomplete": false,
+      "agrees": false,
       "text": "<MISSING_SCOPE>, if the device is \"roaming\", then the App must not send \"dummy messages\" unless the user has enabled it."
     },
     "83ebe3b71f": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, if the \"battery level\" is below a \"threshold\", then the App must not send \"dummy messages\"."
     },
     "c005c34545": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, when the user opens the \"image gallery\", then the App must let the user select multiple \"images/media\" and delete them."
     },
     "ffa44c615f": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, when the user opens an \"image/media\", then the App must let the user delete it."
     },
     "57c5b9fd5f": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, when the user deletes \"images/media\", then the App must show a \"confirmation dialog\"."
     },
     "533f5460e9": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, when the user opens the \"image gallery\", then the App must let the user select multiple \"images/media\" and delete them."
     },
     "3386c22312": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, when the user opens an \"image/media\", then the App must let the user delete it."
     },
     "ea879ad854": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, when the user deletes \"images/media\", then the App must show a \"confirmation dialog\"."
     },
     "7543fe7b0f": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, when the user opens the \"image gallery\", then the App must let the user select multiple \"images/media\" and delete them."
     },
     "42a65d71ba": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, when the user opens an \"image/media\", then the App must let the user delete it."
     },
     "16bb19bfb3": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, when the user deletes \"images/media\", then the App must show a \"confirmation dialog\"."
     },
     "0d7b76a02f": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user edit any message from the \"Android context menu\"."
     },
     "7e25d921c5": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user insert a new message next to an existing message."
     },
     "98e9fda488": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user edit any message from the \"Android context menu\"."
     },
     "bbd5a3f8ae": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user insert a new message next to an existing message."
     },
     "1f6f3bb1c9": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user edit any message from the \"Android context menu\"."
     },
     "44038a9820": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user insert a new message next to an existing message."
     },
     "cf96573607": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, when the user long-presses a \"received message\", then the App must offer an \"acknowledge message\" option."
     },
     "8c40f5c102": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, when the user selects \"acknowledge message\" after long-pressing a \"received message\", then the App must replace the \"received or seen indicator\" with an \"indicator for acknowledgement\"."
     },
     "7aff5c3b0a": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user acknowledge a received message."
     },
     "6f5fd4a87b": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, when the user selects \"acknowledge message\", then the App must replace the \"received\" indicator with an \"acknowledgement\" indicator."
     },
     "f14f96e841": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, when the user long-presses a \"received message\", then the App must offer an \"acknowledge message\" option."
     },
     "f003803470": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, when the user selects \"acknowledge message\", then the App must replace the \"received\" indicator with an \"acknowledgement\" indicator."
     },
     "f5839628e9": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, if a message is outgoing, then the App must show its \"received time\", taken from the \"delivery receipt\", in the \"message details\"."
     },
     "7fc943a447": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, if a message is outgoing, then the App must show its received time in the message details."
     },
     "5fc52cdd75": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, if a message is outgoing, then the App must show its \"received time\", taken from the \"delivery receipt\", in the \"message details\"."
     },
     "edf93e04e7": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must show a \"pie chart\" of how many of the user's contacts are on Signal."
     },
     "eee622d4a0": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must show how many of the user's sent messages are encrypted."
     },
     "46b751f20e": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, when the user taps an element of the \"pie chart\", then the App must show the list of people in that category."
     },
     "3946e2d7b4": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, if most but not all of the user's contacts use Signal, then the App must display a \"progress message\" such as \"Almost there!\"."
     },
     "6229c9874a": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must show a \"pie chart\" of how many of the user's contacts are on Signal."
     },
     "7148c8dabd": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must show how many of the user's sent messages are encrypted."
     },
     "7f44ea4572": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, when the user taps an element of the \"pie chart\", then the App must show the list of people in that category."
     },
     "b360c655d9": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, if most but not all of the user's contacts use Signal, then the App must display a \"progress message\" such as \"Almost there!\"."
     },
     "e26cfa7759": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must show a \"pie chart\" of how many of the user's contacts are on Signal."
     },
     "5467c361cb": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must show how many of the user's sent messages are encrypted."
     },
     "264bc1745e": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, when the user taps an element of the \"pie chart\", then the App must show the list of people in that category."
     },
     "f4a22734bf": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, if most but not all of the user's contacts use Signal, then the App must display a \"progress message\" such as \"Almost there!\"."
+    },
+    "9445efc1f8": {
+      "passed": true,
+      "smells": [],
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
+      "text": "<MISSING_SCOPE>, when the user searches by a \"phone number\" without a \"calling code\", then the App must try the \"calling code\" of the user's own phone number."
     },
     "c62ee0afc7": {
       "passed": false,
@@ -1326,37 +1620,41 @@
           "value": "Passive voice in the condition."
         }
       ],
-      "expectedFail": false,
+      "valid": false,
+      "annotatorIncomplete": false,
+      "agrees": false,
       "text": "<MISSING_SCOPE>, when the user searches for a non-contact by \"phone number\", then the App must find the number whether it is entered with the \"+\" prefix, without it, or without the \"calling code\"."
-    },
-    "9445efc1f8": {
-      "passed": true,
-      "smells": [],
-      "expectedFail": false,
-      "text": "<MISSING_SCOPE>, when the user searches by a \"phone number\" without a \"calling code\", then the App must try the \"calling code\" of the user's own phone number."
     },
     "7184f1e015": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, when the user searches by a \"phone number\" without a \"calling code\", then the App must try the \"calling code\" of the device's default region."
     },
     "7dfbde10d7": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must find a user by phone number whether or not the calling code is included."
     },
     "78ccb2caa6": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, when the user searches by a \"phone number\" without a \"calling code\", then the App must try the \"calling code\" of the user's own phone number."
     },
     "4003dec1df": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, when the user searches by a \"phone number\" without a \"calling code\", then the App must try the \"calling code\" of the device's default region."
     },
     "28282d196c": {
@@ -1373,175 +1671,233 @@
           "value": "Passive voice in the condition."
         }
       ],
-      "expectedFail": false,
+      "valid": false,
+      "annotatorIncomplete": false,
+      "agrees": false,
       "text": "<MISSING_SCOPE>, when the user searches for a non-contact by \"phone number\", then the App must find the number whether it is entered with the \"+\" prefix, without it, or without the \"calling code\"."
     },
     "dac19e1ee8": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, when the user searches by a \"phone number\" without a \"calling code\", then the App must try the \"calling code\" of the user's own phone number."
     },
     "ba9354912f": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, when the user searches by a \"phone number\" without a \"calling code\", then the App must try the \"calling code\" of the device's default region."
     },
     "c59a1f61ff": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, if the \"App\" is the \"default SMS manager\", then the App must provide an option to use the \"Android notification profile\" for \"regular SMS/MMS\"."
     },
     "3d9ba65d4f": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, if the \"App\" is the \"default SMS manager\", then the App must provide an option to use the \"Signal settings\" for \"secure messages\"."
     },
     "7f559417c9": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, if the App is the \"default SMS app\", then the App must use the \"Android notification profile\" for regular \"SMS/MMS\"."
     },
     "ee5eebfbe6": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, if the App is the \"default SMS app\", then the App must use the \"Signal notification settings\" for \"secure messages\" and \"calls\"."
     },
     "3f61f142ab": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, if the App is the \"default SMS app\", then the App must use the \"Android notification profile\" for regular \"SMS/MMS\"."
     },
     "fdd8cc4c65": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, if the App is the \"default SMS app\", then the App must use the \"Signal notification settings\" for \"secure messages\" and \"calls\"."
     },
     "24cbad4dc9": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user export the \"private key\" to a \"file\"."
     },
     "37411472e5": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user import the \"private key\" from a \"file\"."
     },
     "757a394bb5": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user export \"public keys\" to a \"file\"."
     },
     "e1347b4c4f": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user import \"public keys\" from a \"file\"."
     },
     "a5a8584009": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user export \"public keys\" via \"Bluetooth\", \"NFC\", and \"QR code\"."
     },
     "0ead991ffd": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user import \"public keys\" via \"Bluetooth\", \"NFC\", and \"QR code\"."
     },
     "11fc960581": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user export the \"private key\" to a \"file\"."
     },
     "6fee3f1174": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user import the \"private key\" from a \"file\"."
     },
     "6b3e1fa168": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user export \"public keys\" to a \"file\"."
     },
     "c10fc5ad86": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user import \"public keys\" from a \"file\"."
     },
     "b8ac2d5ba1": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user export \"public keys\" via \"Bluetooth\", \"NFC\", and \"QR code\"."
     },
     "97684c836c": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user import \"public keys\" via \"Bluetooth\", \"NFC\", and \"QR code\"."
     },
     "12ee4b65a4": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user export the \"private key\" to a \"file\"."
     },
     "f703899f9d": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user import the \"private key\" from a \"file\"."
     },
     "e3f34dc7cc": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user export \"public keys\" to a \"file\"."
     },
     "5fb0f6a580": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user import \"public keys\" from a \"file\"."
     },
     "98146acf17": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user export \"public keys\" via \"Bluetooth\", \"NFC\", and \"QR code\"."
     },
     "ae764d4850": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user import \"public keys\" via \"Bluetooth\", \"NFC\", and \"QR code\"."
     },
     "9b695e6b1e": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, when the user swipes away a \"notification\", then the App must not display that \"notification\" again."
     },
     "c1f6bfd841": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, when the App receives a new message from the same contact, then the App must show a new \"notification\" with the new message."
     },
     "ca1fca5793": {
@@ -1553,43 +1909,57 @@
           "value": "Passive voice in the condition."
         }
       ],
-      "expectedFail": false,
+      "valid": false,
+      "annotatorIncomplete": false,
+      "agrees": false,
       "text": "<MISSING_SCOPE>, when a notification is swiped away, then the App must not show it again."
     },
     "fbf5df6078": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, when the App receives a new message from the same contact, then the App must show a new \"notification\" with the new message."
     },
     "39b00f4963": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, when the user swipes away a \"notification\", then the App must not display that \"notification\" again."
     },
     "1474d46f12": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, when the App receives a new message from the same contact, then the App must show a new \"notification\" with the new message."
     },
     "beac0bab0c": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, when the App creates an \".xml backup\", then the App must include the \"archive\" and \"blocked\" flags of the messages."
     },
     "880ce7bbf9": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, after importing \"messages\" from an \".xml backup\", then the App must preserve the \"archive\" and \"blocked\" flags."
     },
     "44520d720f": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, when the App creates an \".xml backup\", then the App must include the \"archive\" and \"blocked\" flags of the messages."
     },
     "c8ae3030fc": {
@@ -1606,61 +1976,82 @@
           "value": "Passive voice in the condition."
         }
       ],
-      "expectedFail": false,
+      "valid": false,
+      "annotatorIncomplete": false,
+      "agrees": false,
       "text": "<MISSING_SCOPE>, when messages are imported from an .xml backup, then the App must keep the archive and blocked flags."
     },
     "524e525457": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, when the App creates an \".xml backup\", then the App must include the \"archive\" and \"blocked\" flags of the messages."
     },
     "276546dbf7": {
       "passed": true,
       "smells": [],
-      "expectedFail": false,
+      "valid": true,
+      "annotatorIncomplete": false,
+      "agrees": true,
       "text": "<MISSING_SCOPE>, when the App imports messages from an \".xml backup\", then the App must restore the \"archive\" and \"blocked\" flags."
     }
   },
   "summary": {
     "Arthur": {
-      "complete_pass": 64,
-      "skipped": 1,
-      "complete_fail": 8,
-      "incomplete_fail": 4,
-      "pass_rate_complete": 0.8888888888888888
+      "agree_complete": 68,
+      "agree_incomplete": 4,
+      "differ_complete": 5,
+      "differ_incomplete": 0,
+      "unknown": 0,
+      "n": 77,
+      "agreement": 0.935064935064935
     },
     "set:atomic": {
-      "complete_pass": 75,
-      "skipped": 10,
-      "complete_fail": 13,
-      "incomplete_fail": 7,
-      "pass_rate_complete": 0.8522727272727273
+      "agree_complete": 91,
+      "agree_incomplete": 14,
+      "differ_complete": 0,
+      "differ_incomplete": 0,
+      "unknown": 0,
+      "n": 105,
+      "agreement": 1.0
     },
     "all": {
-      "complete_pass": 187,
-      "skipped": 10,
-      "complete_fail": 27,
-      "incomplete_fail": 7,
-      "pass_rate_complete": 0.8738317757009346
+      "agree_complete": 203,
+      "agree_incomplete": 14,
+      "differ_complete": 14,
+      "differ_incomplete": 0,
+      "unknown": 0,
+      "n": 231,
+      "agreement": 0.9393939393939394
     },
     "Mko": {
-      "complete_pass": 59,
-      "complete_fail": 11,
-      "skipped": 4,
-      "incomplete_fail": 3,
-      "pass_rate_complete": 0.8428571428571429
+      "agree_complete": 65,
+      "agree_incomplete": 6,
+      "differ_complete": 6,
+      "differ_incomplete": 0,
+      "unknown": 0,
+      "n": 77,
+      "agreement": 0.922077922077922
     },
     "Rafo": {
-      "complete_pass": 64,
-      "skipped": 5,
-      "complete_fail": 8,
-      "pass_rate_complete": 0.8888888888888888
+      "agree_complete": 70,
+      "agree_incomplete": 4,
+      "differ_complete": 3,
+      "differ_incomplete": 0,
+      "unknown": 0,
+      "n": 77,
+      "agreement": 0.961038961038961
     },
     "set:split": {
-      "complete_pass": 112,
-      "complete_fail": 14,
-      "pass_rate_complete": 0.8888888888888888
+      "agree_complete": 112,
+      "agree_incomplete": 0,
+      "differ_complete": 14,
+      "differ_incomplete": 0,
+      "unknown": 0,
+      "n": 126,
+      "agreement": 0.8888888888888888
     }
   },
   "byText": {
@@ -2460,6 +2851,118 @@
       "smells": []
     },
     "344e08143d6574a23470fa48a2f4bd53618d3472": {
+      "passed": true,
+      "smells": []
+    },
+    "2a536195cfe82ffc6543b9b7d68d7ec60e14e8d5": {
+      "passed": true,
+      "smells": []
+    },
+    "fcdbca10c46144fd2abba95562423a24a63a9a8c": {
+      "passed": true,
+      "smells": []
+    },
+    "6322c768b4467a5f0f49ef1385be381e3ba7c84e": {
+      "passed": true,
+      "smells": []
+    },
+    "00bd51d10cf89cb811db689a5c0239a730aa9f21": {
+      "passed": true,
+      "smells": []
+    },
+    "d60101da104d5ff099b7bec892aa5680f27e9ed5": {
+      "passed": false,
+      "smells": [
+        {
+          "segment_id": "ud60101da104d5ff099b7bec892aa5680f27e9ed5_12",
+          "smell": "Not precise verb",
+          "value": "Not precise verb in the system response."
+        }
+      ]
+    },
+    "b2a9390cf698dbfd1f579fc9ea4bafcf7a77bdce": {
+      "passed": true,
+      "smells": []
+    },
+    "6e8e992b148af99bf6e920b71cdfa9881ea6d1f3": {
+      "passed": true,
+      "smells": []
+    },
+    "8e899901b5c2d66b759b5a44a38a8cdcc6bc63bc": {
+      "passed": true,
+      "smells": []
+    },
+    "6dcd23939b8ed77b1343b46422b6b02f49f7c6c7": {
+      "passed": true,
+      "smells": []
+    },
+    "12656232ec669d45a27f2267289421e9ea93a22b": {
+      "passed": true,
+      "smells": []
+    },
+    "f08065b5a794fc8651ba4ec94ad8d9bc643f50bd": {
+      "passed": false,
+      "smells": [
+        {
+          "segment_id": "uf08065b5a794fc8651ba4ec94ad8d9bc643f50bd_34",
+          "smell": "Coordination ambiguity",
+          "value": "Requirement contains multiple conditions separated by conjunction OR."
+        }
+      ]
+    },
+    "798c7e2d1fab47ae2b4647770ee53ed865035c4f": {
+      "passed": true,
+      "smells": []
+    },
+    "174e69ee39a32b8341859850dcfeacb0b50615ad": {
+      "passed": true,
+      "smells": []
+    },
+    "42ecf39449c23a8e02be4d475c552250f238c8e9": {
+      "passed": true,
+      "smells": []
+    },
+    "4bf71af26c397261cd7c94f18615c392a77dc970": {
+      "passed": true,
+      "smells": []
+    },
+    "61c2b5b685f1ccea14946e1205d75046a14fc1eb": {
+      "passed": true,
+      "smells": []
+    },
+    "5e1694d30ba890aa757f0589b29f5ccf7b25884c": {
+      "passed": true,
+      "smells": []
+    },
+    "fcc030b82b50c24e7da2e939490a17594fa5ae05": {
+      "passed": true,
+      "smells": []
+    },
+    "afef2fb1529892eb5e1b2100032ea09f20e5ef84": {
+      "passed": true,
+      "smells": []
+    },
+    "313220e67e2347e62b498b193126961dbb0273bf": {
+      "passed": true,
+      "smells": []
+    },
+    "1730b8454e2d5635641020952178f7e4c8fdb75d": {
+      "passed": true,
+      "smells": []
+    },
+    "65976fb48d7b6be7ee2aee2ee59bc144b211eff1": {
+      "passed": true,
+      "smells": []
+    },
+    "9ef3ac03599ab1d42d65d854aade50803a96d5fa": {
+      "passed": true,
+      "smells": []
+    },
+    "5ad1a849998692b347339899e5b8590c1824cfbb": {
+      "passed": true,
+      "smells": []
+    },
+    "8162aee52bda8c4bba66feae661eb2fb6cccd663": {
       "passed": true,
       "smells": []
     }
