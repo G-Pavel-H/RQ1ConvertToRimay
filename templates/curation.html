@@ -482,11 +482,36 @@ function simTable(before, after) {
     ${rows.map(([label, k]) => `<tr><td>${label}</td>${before ? `<td>${k3(cell(before, k))}</td>` : ""}<td><b>${k3(cell(after, k))}</b></td>${before ? `<td>${delta(cell(before, k), cell(after, k))}</td>` : ""}</tr>`).join("")}
     <tr><td class="hint">pairs</td>${before ? `<td class="hint">${before.nPairs}</td>` : ""}<td class="hint">${after.nPairs}</td>${before ? "<td></td>" : ""}</tr></table>`;
 }
+// κ cannot be computed when every label is identical. That is perfect agreement,
+// not a failure, so the cell says which label everyone chose instead of "n/a".
+function kap(f, key = "kappa") {
+  const v = f[key];
+  if (v !== null && v !== undefined) return v.toFixed(3);
+  const labels = Object.keys(f.distribution || {});
+  if (labels.length === 1) return key === "kappa"
+    ? `<span class="chip ok" title="Every label is '${esc(labels[0])}', so the annotators agree completely. κ compares agreement with chance and cannot be computed when there is no variation.">all ${esc(labels[0])}</span>`
+    : `<span class="hint" title="Same reason: no variation in the labels">—</span>`;
+  return `<span class="hint" title="Too few ratings to compute">n/a</span>`;
+}
+function bandOf(f) {
+  const counts = Object.values(f.distribution || {}), total = counts.reduce((a, b) => a + b, 0);
+  if ((f.kappa === null || f.kappa === undefined) && counts.length === 1) return "identical labels";
+  // A low κ with one label on 90%+ of ratings is the prevalence effect, not disagreement.
+  if (f.kappa !== null && f.kappa !== undefined && f.kappa < 0.4 && total && Math.max(...counts) / total >= 0.9)
+    return `${f.band} — one label dominates, read Unanimous`;
+  return f.band;
+}
+const HOW_TO_READ = `<p class="hint" style="margin:6px 0 0"><b>How to read this.</b>
+  <b>Unanimous</b> is the plain agreement: the share of units where all three annotators chose the same label.
+  <b>Fleiss</b> (all three at once) and <b>Cohen</b> (average over pairs) are the same agreement with chance agreement subtracted:
+  1 = perfect, 0 = no better than chance. When nearly every label is the same, they fall towards 0 even though the annotators agree,
+  so read Unanimous alongside them. <span class="chip ok">all …</span> means every label is identical — complete agreement.</p>`;
+
 // One exported group (atomic or split): agreement over its units as curated.
 function groupCard(title, file, v, caveat) {
   if (!v) return `<div class="card"><p class="label">${esc(title)}</p><p class="hint">Not computed yet — press Recompute.</p></div>`;
-  const rows = v.fields.map(f => `<tr><td>${fieldLabel(f.field)}</td><td><b>${k3(f.kappa)}</b></td><td>${k3(f.cohenMean)}</td>
-      <td>${pct(f.unanimous)}</td><td class="hint">${f.nSubjects}</td><td class="hint">${esc(f.band)}</td></tr>`).join("");
+  const rows = v.fields.map(f => `<tr><td>${fieldLabel(f.field)}</td><td><b>${kap(f)}</b></td><td>${kap(f, "cohenMean")}</td>
+      <td>${pct(f.unanimous)}</td><td class="hint">${f.nSubjects}</td><td class="hint">${esc(bandOf(f))}</td></tr>`).join("");
   return `<div class="card"><p class="label">${esc(title)}</p>
     <p class="hint" style="margin:0 0 10px">${v.nRequirements} requirements · ${v.nSubjects} unit${v.nSubjects === 1 ? "" : "s"} per annotator ·
       exported as <code>${esc(file)}</code></p>
@@ -499,22 +524,19 @@ function groupCard(title, file, v, caveat) {
 function renderAgreement() {
   const main = $("#main");
   if (!agreement) { main.innerHTML = `<div class="card">Computing…</div>`; return; }
-  const [o, c, t] = ["orig30", "cur30", "cur20"].map(k => agreement.views.find(v => v.key === k));
+  const [o, c] = ["orig30", "cur30"].map(k => agreement.views.find(v => v.key === k));
   const vw = k => agreement.views.find(v => v.key === k);
   const byField = v => Object.fromEntries(v.fields.map(f => [f.field, f]));
   const fo = byField(o), fc = byField(c);
   const rows30 = c.fields.map(f => {
     const a = fo[f.field], b = fc[f.field];
     return `<tr><td>${fieldLabel(f.field)}</td>
-      <td>${k3(a.kappa)}</td><td><b>${k3(b.kappa)}</b></td><td>${delta(a.kappa, b.kappa)}</td>
-      <td>${k3(a.cohenMean)}</td><td>${k3(b.cohenMean)}</td>
-      <td>${pct(a.unanimous)}</td><td>${pct(b.unanimous)}</td><td class="hint">${esc(b.band)}</td></tr>`;
+      <td>${kap(a)}</td><td><b>${kap(b)}</b></td><td>${delta(a.kappa, b.kappa)}</td>
+      <td>${kap(a, "cohenMean")}</td><td>${kap(b, "cohenMean")}</td>
+      <td>${pct(a.unanimous)}</td><td>${pct(b.unanimous)}</td><td class="hint">${esc(bandOf(b))}</td></tr>`;
   }).join("");
   const pairs = c.fields.filter(f => f.group === "slot").map(f => `<tr><td>${fieldLabel(f.field)}</td>${f.cohenPairs.map(p => `<td>${k3(p.kappa)}</td>`).join("")}</tr>`).join("");
   const pairHead = c.fields[0].cohenPairs.map(p => `<th>${esc(p.a)} ↔ ${esc(p.b)}</th>`).join("");
-  const rows20 = t.fields.map(f => `<tr><td>${fieldLabel(f.field)}</td><td>${k3(f.kappa)}</td><td>${k3(f.cohenMean)}</td><td>${pct(f.unanimous)}</td><td>${f.nSubjects}</td><td class="hint">${esc(f.band)}</td></tr>`).join("");
-  const t20n = Math.max(0, ...t.fields.map(f => f.nSubjects));
-  const excl = Object.entries(agreement.excludedUnits || {}).map(([k, n]) => `${n} ${PROV[k] || k}`).join(", ") || "none";
 
   main.innerHTML = `
     <div class="rhead"><h2>Agreement</h2>
@@ -522,7 +544,7 @@ function renderAgreement() {
         cosine ${agreement.embedding.available ? "model " + esc(agreement.embedding.model) : "<b style='color:var(--bad)'>unavailable — start Ollama and recompute</b>"}</span>
       <span class="spacer"></span><button id="recomputeAgreement" class="primary">Recompute</button></div>
 
-    <div class="card">${GRAMMAR_NOTE.replace('<p class="hint">', '<p class="hint" style="margin:0">')}</div>
+    <div class="card">${GRAMMAR_NOTE.replace('<p class="hint">', '<p class="hint" style="margin:0">')}${HOW_TO_READ}</div>
 
     <div class="card"><p class="label">The 30 — before vs after curation (same requirements, same annotators)</p>
       <div style="overflow-x:auto"><table>
@@ -531,26 +553,10 @@ function renderAgreement() {
       <div style="margin-top:12px">${simTable(o.similarity, c.similarity)}</div>
       <details style="margin-top:10px"><summary>Who disagrees with whom — Cohen's κ per pair, curated</summary>
         <div style="overflow-x:auto"><table><tr><th>Slot</th>${pairHead}</tr>${pairs}</table></div></details>
-      <p class="hint">Fleiss' κ is agreement across all three annotators, chance-corrected; Cohen's κ is the mean over pairs.
-        <b>n/a</b> means one category was used throughout, so κ is undefined — read the unanimous % instead
-        (scope after curation is <i>missing</i> for everyone, hence n/a).</p></div>
+</div>
 
     ${groupCard("Atomic requirements — after your curation", "gold_atomic.csv", vw("atomicAll"))}
-    ${groupCard("Split requirements — per unit, after your curation", "gold_units.csv", vw("splitAll"), (() => {
-      const all = vw("splitAll"), own = vw("splitHuman");
-      if (!all || !own) return "";
-      const same = all.nUnits - own.nUnits;
-      return same ? `<p class="flag" style="background:var(--warn-soft);border-radius:6px;padding:8px 10px;margin:0 0 10px">
-        ${same} of ${all.nUnits} annotator-units here are CL or added by you, so the three columns mostly hold the same text.
-        The high agreement below reflects that, not the annotators agreeing.</p>` : "";
-    })())}
-
-    <div class="card"><p class="label">The 20 originally flagged non-atomic — curated units, annotator-authored only</p>
-      ${t20n < 10 ? `<p class="flag" style="background:var(--warn-soft);border-radius:6px;padding:8px 10px;margin:0 0 10px">
-        Only <b>${t20n}</b> unit${t20n === 1 ? "" : "s"} have two or more annotators who wrote them — too few for κ to mean anything.
-        The annotators mostly did not convert these requirements, so there is little human agreement to measure. Units left out: ${esc(excl)}.</p>` : ""}
-      <div style="overflow-x:auto"><table><tr><th>Field</th><th>Fleiss</th><th>Cohen</th><th>Unanimous</th><th>n</th><th>Band</th></tr>${rows20}</table></div>
-      <div style="margin-top:12px">${simTable(null, t.similarity)}</div></div>`;
+    ${groupCard("Split requirements — per unit, after your curation", "gold_units.csv", vw("splitAll"))}`;
 }
 async function computeAgreement() {
   const btn = $("#recomputeAgreement");
