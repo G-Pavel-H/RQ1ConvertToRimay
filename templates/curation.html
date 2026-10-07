@@ -45,6 +45,8 @@ aside{width:270px;flex:none;border-right:1px solid var(--line);background:var(--
 .item.on{background:var(--accent-soft)}
 .item .id{font-weight:600;font-size:12.5px}
 .item .meta{font-size:11px;color:var(--muted)}
+.flagmark{color:#d97706;font-size:14px;flex:none}
+button.flag.on{color:#d97706;border-color:#d97706;font-weight:600}
 .dot{width:7px;height:7px;border-radius:50%;flex:none;background:var(--line)}
 .dot.ok{background:var(--ok)} .dot.bad{background:var(--bad)} .dot.stale{background:var(--warn)}
 main{flex:1;overflow:auto;padding:16px 20px 60px;min-width:0}
@@ -54,6 +56,14 @@ main{flex:1;overflow:auto;padding:16px 20px 60px;min-width:0}
 .tag{font-size:10.5px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;padding:1px 6px;border-radius:4px;background:var(--soft);color:var(--muted)}
 .tag.split{background:var(--warn-soft);color:var(--warn)}
 .tag.atomic{background:var(--accent-soft);color:var(--accent)}
+.tag.reqd{background:var(--bad-soft);color:var(--bad)}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-bottom:12px}
+.tile{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.tile b{display:block;font-size:22px;line-height:1.2}
+.tile span{font-size:11.5px;color:var(--muted)}
+.jump{cursor:pointer;color:var(--accent);white-space:nowrap}
+.jump:hover{text-decoration:underline}
+td.num{text-align:right;font-variant-numeric:tabular-nums}
 .label{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin:0 0 5px}
 .nl{max-height:150px;overflow:auto;white-space:pre-wrap;font-size:12.5px;background:var(--soft);border-radius:6px;padding:8px 10px}
 textarea{width:100%;border:1px solid var(--line);border-radius:6px;padding:6px 8px;background:var(--bg);resize:vertical;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;line-height:1.45}
@@ -101,6 +111,7 @@ kbd{font-size:11px;border:1px solid var(--line);border-radius:3px;padding:0 4px}
   <span class="stat" id="stats"></span>
   <span class="spacer"></span>
   <span id="save">loading…</span>
+  <button id="insightBtn" title="Counts and gold-slot breakdown for the curated data">Insights</button>
   <button id="agreeBtn" title="Inter-annotator agreement, before vs after curation">Agreement</button>
   <button id="paskaBtn" title="Check every unit with Paska. Only changed texts are re-run.">Run Paska</button>
   <button id="exportBtn" class="primary" title="Write the curated CSVs to data/curated/">Export CSV</button>
@@ -109,10 +120,10 @@ kbd{font-size:11px;border:1px solid var(--line);border-radius:3px;padding:0 4px}
   <aside>
     <div class="filters">
       <div class="seg" id="setFilter">
-        <button data-f="all" class="on">All</button><button data-f="atomic">Atomic</button><button data-f="split">Split</button>
+        <button data-f="all" class="on">All</button><button data-f="atomic">Atomic</button><button data-f="split">Split</button><button data-f="flagged" title="Requirements you flagged as worth discussing">⚑</button>
       </div>
       <input id="search" placeholder="Search reqId or text…">
-      <div class="hint"><kbd>Alt</kbd>+<kbd>←</kbd>/<kbd>→</kbd> previous / next</div>
+      <div class="hint"><kbd>Alt</kbd>+<kbd>←</kbd>/<kbd>→</kbd> previous / next · <kbd>Alt</kbd>+<kbd>F</kbd> flag</div>
     </div>
     <div id="list"></div>
   </aside>
@@ -211,13 +222,15 @@ function renderAll() { renderStats(); renderList(); renderMain(); }
 function renderStats() {
   const atomic = reqs().filter(isAtomic).length;
   const units = reqs().reduce((n, r) => n + nUnits(r), 0);
-  $("#stats").textContent = `${reqs().length} requirements · ${atomic} atomic · ${reqs().length - atomic} split · ${units} units`;
+  const nFlag = reqs().filter(r => r.flagged).length;
+  $("#stats").textContent = `${reqs().length} requirements · ${atomic} atomic · ${reqs().length - atomic} split · ${units} units` + (nFlag ? ` · ⚑ ${nFlag} flagged` : "");
 }
 
 function visible() {
   return reqs().map((r, i) => [r, i]).filter(([r]) => {
     if (filter === "atomic" && !isAtomic(r)) return false;
     if (filter === "split" && isAtomic(r)) return false;
+    if (filter === "flagged" && !r.flagged) return false;
     if (!query) return true;
     const hay = (r.reqId + " " + r.nlText + " " + Object.values(r.annotations).flatMap(a => a.units.map(u => u.rimayText)).join(" ")).toLowerCase();
     return hay.includes(query);
@@ -231,7 +244,8 @@ function renderList() {
     return `<div class="item ${i === current ? "on" : ""}" data-go="${i}">
       <span class="dot ${reqPaskaDot(r)}" title="Paska"></span>
       <div style="flex:1;min-width:0"><div class="id">${esc(r.reqId)}</div>
-      <div class="meta">${isAtomic(r) ? "atomic" : nUnits(r) + " units"} · ${counts}${r.set === "non-atomic" ? " · flagged" : ""}${edited ? " · <b style='color:var(--accent)'>edited</b>" : ""}</div></div>
+      <div class="meta">${isAtomic(r) ? "atomic" : nUnits(r) + " units"} · ${counts}${r.set === "non-atomic" ? " · was non-atomic" : ""}${edited ? " · <b style='color:var(--accent)'>edited</b>" : ""}</div></div>
+      ${r.flagged ? `<span class="flagmark" title="Flagged — worth discussing">⚑</span>` : ""}
     </div>`;
   }).join("") || `<div class="empty" style="margin:12px">No match</div>`;
 }
@@ -243,7 +257,7 @@ function unitCell(r, ann, i) {
   const p = paskaFor(u);
   const prov = u.edited && u.provenance !== "you" ? "" : `<span class="chip p-${esc(u.provenance)}">${esc(PROV[u.provenance] || u.provenance)}</span>`;
   const reasons = (u.reasons || []).map(x => `<span class="chip">${esc(x)}</span>`).join("");
-  const selects = SLOTS.map(([k, label]) => `<label>${label}
+  const selects = SLOTS.map(([k, label]) => `<label title="${REQUIRED.has(k) ? "Required by the Rimay grammar" : "Optional in the Rimay grammar"}">${label}${REQUIRED.has(k) ? ` <b style="color:var(--bad)">*</b>` : ""}
       <select class="v-${esc(u.slots[k])}" data-slot="${k}" data-ann="${esc(ann)}" data-i="${i}">
         ${VALUES.map(v => `<option ${v === u.slots[k] ? "selected" : ""}>${v}</option>`).join("")}
       </select></label>`).join("") + `<label>Cond. type
@@ -270,6 +284,7 @@ function unitCell(r, ann, i) {
 
 function renderMain() {
   if (view === "agreement") return renderAgreement();
+  if (view === "insights") return renderInsights();
   const r = reqs()[current];
   if (!r) { $("#main").innerHTML = ""; return; }
   history.replaceState(null, "", "#" + encodeURIComponent(r.reqId));
@@ -301,7 +316,8 @@ function renderMain() {
       <button data-nav="1" ${current === reqs().length - 1 ? "disabled" : ""}>→</button>
       <h2>${esc(r.reqId)}</h2>
       <span class="tag ${isAtomic(r) ? "atomic" : "split"}">${isAtomic(r) ? "atomic" : n + " units"}</span>
-      <span class="tag">${r.set === "non-atomic" ? "flagged non-atomic" : "originally atomic"}</span>
+      <span class="tag">${r.set === "non-atomic" ? "originally non-atomic" : "originally atomic"}</span>
+      <button class="flag ${r.flagged ? "on" : ""}" data-act="flag" title="Mark this requirement as worth discussing (Alt+F)">⚑ ${r.flagged ? "Flagged" : "Flag"}</button>
       <span class="stat">${counts}</span>
       <span class="spacer"></span>
       <span class="stat">${current + 1} / ${reqs().length}</span>
@@ -313,9 +329,142 @@ function renderMain() {
     <div class="bar">
       <button data-act="addAll">+ add a unit to every annotator</button>
       <button data-act="popAll" ${Object.values(r.annotations).every(a => a.units.length === 1) ? "disabled" : ""}>− remove the last unit from every annotator</button>
-      <span class="hint">Units are aligned by position — unit 2 of each annotator is the same atomic requirement.</span>
+      <span class="hint">Units are aligned by position — unit 2 of each annotator is the same atomic requirement.
+        <b style="color:var(--bad)">*</b> = slot required by the Rimay grammar.</span>
     </div>
     <div class="grid" style="--cols:${anns.length}">${grid}</div>`;
+}
+
+// ---------- slot labels ----------
+// Rimay grammar: actor, modal verb and action are required; scope and
+// condition are optional. Shown wherever a slot is named.
+const REQUIRED = new Set(MANDATORY);
+const isSlot = k => SLOTS.some(([key]) => key === k);
+function fieldLabel(field) {
+  if (!isSlot(field)) return `${esc(field)} <span class="hint">(derived)</span>`;
+  return `${esc(field)} ${REQUIRED.has(field)
+    ? `<span class="tag reqd" title="Required by the Rimay grammar">required</span>`
+    : `<span class="tag" title="Optional in the Rimay grammar">optional</span>`}`;
+}
+const GRAMMAR_NOTE = `<p class="hint"><b>Rimay grammar:</b> <span class="tag reqd">required</span> actor, modal verb, action ·
+  <span class="tag">optional</span> scope, condition. A requirement is <b>incomplete</b> when a required slot is <i>missing</i>;
+  a missing optional slot does not make it incomplete.</p>`;
+
+// ---------- insights ----------
+// Gold = majority of the annotators at a unit position; a three-way tie is
+// "implied". Mirrors unit_gold() in src/curation.py, which the export uses.
+function goldAt(r, i) {
+  const units = Object.values(r.annotations).map(a => a.units[i]).filter(Boolean);
+  const gold = {}, how = {};
+  for (const [k] of SLOTS) {
+    const counts = {};
+    units.forEach(u => { counts[u.slots[k]] = (counts[u.slots[k]] || 0) + 1; });
+    const top = Math.max(...Object.values(counts));
+    const winners = Object.keys(counts).filter(v => counts[v] === top);
+    gold[k] = winners.length === 1 ? winners[0] : "implied";
+    how[k] = units.length < 2 ? "single" : winners.length > 1 ? "tie" : top === units.length ? "unanimous" : "majority";
+  }
+  return {gold, how, n: units.length};
+}
+function insightGroup(list) {
+  const subjects = [];
+  list.forEach(r => { for (let i = 0; i < nUnits(r); i++) subjects.push({r, i, ...goldAt(r, i)}); });
+  const slots = {}, decided = {};
+  for (const [k] of SLOTS) { slots[k] = {present: 0, implied: 0, missing: 0}; decided[k] = {unanimous: 0, majority: 0, tie: 0, single: 0}; }
+  const cause = {}; MANDATORY.forEach(k => cause[k] = 0);
+  const incomplete = [];
+  subjects.forEach(sub => {
+    for (const [k] of SLOTS) { slots[k][sub.gold[k]]++; decided[k][sub.how[k]]++; }
+    const miss = MANDATORY.filter(k => sub.gold[k] === "missing");
+    miss.forEach(k => cause[k]++);
+    if (miss.length) incomplete.push(sub);
+  });
+  const annotators = state.annotators.map(name => {
+    let units = 0, inc = 0;
+    list.forEach(r => r.annotations[name].units.forEach(u => { units++; if (incomplete_(u)) inc++; }));
+    return {name, units, incomplete: inc};
+  });
+  return {requirements: list.length, subjects, slots, decided, cause, incomplete,
+    reqsWithIncomplete: new Set(incomplete.map(x => x.r.reqId)).size, annotators};
+}
+const incomplete_ = u => MANDATORY.some(k => u.slots[k] === "missing");
+function computeInsights() {
+  const all = reqs();
+  const atomic = all.filter(isAtomic), split = all.filter(r => !isAtomic(r));
+  const prov = {};
+  all.forEach(r => Object.values(r.annotations).forEach(a => a.units.forEach(u => {
+    const k = u.edited && u.provenance !== "you" ? "edited by you" : (PROV[u.provenance] || u.provenance);
+    prov[k] = (prov[k] || 0) + 1; })));
+  return {
+    total: all.length, flagged: all.filter(r => r.flagged).length,
+    movedToAtomic: atomic.filter(r => r.set === "non-atomic").map(r => r.reqId),
+    movedToSplit: split.filter(r => r.set === "atomic").map(r => r.reqId),
+    provenance: prov,
+    atomic: insightGroup(atomic), split: insightGroup(split),
+    unitsPerSplit: split.map(r => ({reqId: r.reqId, n: nUnits(r), per: state.annotators.map(a => r.annotations[a].units.length)})),
+  };
+}
+function renderInsights() {
+  const d = computeInsights();
+  const idx = id => reqs().findIndex(r => r.reqId === id);
+  const jump = (id, label) => `<span class="jump" data-go="${idx(id)}">${esc(label || id)}</span>`;
+  const share = (n, t) => t ? `${n} <span class="hint">(${Math.round(100 * n / t)}%)</span>` : "0";
+  const slotTable = g => { const t = g.subjects.length; return `<div style="overflow-x:auto"><table>
+      <tr><th>Gold slot</th><th>Present</th><th>Implied</th><th>Missing</th>
+        <th style="border-left:1px solid var(--line)">Unanimous</th><th>2 of 3</th><th>3-way tie → implied</th></tr>
+      ${SLOTS.map(([k]) => `<tr><td>${fieldLabel(k)}</td>
+        <td class="num">${share(g.slots[k].present, t)}</td><td class="num">${share(g.slots[k].implied, t)}</td>
+        <td class="num"><b>${share(g.slots[k].missing, t)}</b></td>
+        <td class="num" style="border-left:1px solid var(--line)">${g.decided[k].unanimous}</td><td class="num">${g.decided[k].majority}</td>
+        <td class="num">${g.decided[k].tie}${g.decided[k].single ? ` <span class="hint">+${g.decided[k].single} single</span>` : ""}</td></tr>`).join("")}
+    </table></div>`; };
+  const causeLine = g => g.incomplete.length
+    ? `<p class="hint">Missing required slot behind the incomplete verdicts: ${MANDATORY.map(k => `${k} ${g.cause[k]}`).join(" · ")} (one unit can lack several).</p>` : "";
+  const annTable = g => `<table><tr><th>Annotator's own verdict</th><th>Units</th><th>Incomplete</th><th>Complete</th></tr>
+      ${g.annotators.map(a => `<tr><td>${esc(a.name)}</td><td class="num">${a.units}</td><td class="num">${share(a.incomplete, a.units)}</td><td class="num">${a.units - a.incomplete}</td></tr>`).join("")}</table>`;
+  const A = d.atomic, S = d.split, nA = A.subjects.length, nS = S.subjects.length;
+  const dist = {}; d.unitsPerSplit.forEach(x => dist[x.n] = (dist[x.n] || 0) + 1);
+
+  $("#main").innerHTML = `
+    <div class="rhead"><h2>Insights</h2><span class="stat">live — computed from your curation as it is now</span></div>
+    <div class="tiles">
+      <div class="tile"><b>${d.total}</b><span>requirements</span></div>
+      <div class="tile"><b>${A.requirements}</b><span>atomic</span></div>
+      <div class="tile"><b>${S.requirements}</b><span>non-atomic (split)</span></div>
+      <div class="tile"><b>${nS}</b><span>units from the split ones</span></div>
+      <div class="tile"><b>${nA + nS}</b><span>units in total (atomic + split)</span></div>
+      <div class="tile"><b>${A.incomplete.length + S.incomplete.length}</b><span>incomplete by gold verdict</span></div>
+      <div class="tile"><b>${d.flagged}</b><span>⚑ flagged by you</span></div>
+    </div>
+    <div class="card">${GRAMMAR_NOTE}
+      <p class="hint" style="margin-bottom:0"><b>Gold</b> = the majority of the three annotators' labels at that unit position.
+        If all three differ, the gold is <i>implied</i>. The verdict is derived from the gold slots.</p></div>
+
+    <div class="card"><p class="label">Atomic requirements — ${A.requirements}</p>
+      <p style="margin:0 0 10px"><b>${A.incomplete.length}</b> incomplete · <b>${nA - A.incomplete.length}</b> complete, by gold verdict.
+        ${A.incomplete.length ? `<br><span class="hint">Incomplete:</span> ${A.incomplete.map(x => jump(x.r.reqId)).join(", ")}` : ""}</p>
+      ${causeLine(A)}
+      ${slotTable(A)}
+      <div style="margin-top:12px">${annTable(A)}</div>
+      ${d.movedToAtomic.length ? `<p class="hint">Originally flagged non-atomic, now one unit: ${d.movedToAtomic.map(id => jump(id)).join(", ")}</p>` : ""}</div>
+
+    <div class="card"><p class="label">Non-atomic (split) requirements — ${S.requirements} → ${nS} units</p>
+      <p style="margin:0 0 10px"><b>${S.incomplete.length}</b> incomplete unit${S.incomplete.length === 1 ? "" : "s"} ·
+        <b>${nS - S.incomplete.length}</b> complete, by gold verdict${S.incomplete.length ? ` — in ${S.reqsWithIncomplete} requirement${S.reqsWithIncomplete === 1 ? "" : "s"}` : ""}.
+        ${S.incomplete.length ? `<br><span class="hint">Incomplete units:</span> ${S.incomplete.map(x => jump(x.r.reqId, x.r.reqId + " #" + (x.i + 1))).join(", ")}` : ""}</p>
+      ${causeLine(S)}
+      <p class="hint" style="margin:0 0 6px">Units per requirement — ${Object.keys(dist).sort((a, b) => a - b).map(n => `${dist[n]} × ${n} units`).join(" · ")}
+        · mean ${S.requirements ? (nS / S.requirements).toFixed(1) : "—"}</p>
+      <div style="overflow-x:auto"><table><tr><th>Requirement</th><th>Units</th><th>${state.annotators.map(a => esc(a)).join(" / ")}</th></tr>
+        ${d.unitsPerSplit.map(x => `<tr><td>${jump(x.reqId)}</td><td class="num"><b>${x.n}</b></td>
+          <td class="num">${x.per.join(" / ")}${new Set(x.per).size > 1 ? ` <span class="chip bad">differs</span>` : ""}</td></tr>`).join("")}</table></div>
+      <div style="margin-top:12px">${slotTable(S)}</div>
+      <div style="margin-top:12px">${annTable(S)}</div>
+      ${d.movedToSplit.length ? `<p class="hint">Originally atomic, now split: ${d.movedToSplit.map(id => jump(id)).join(", ")}</p>` : ""}</div>
+
+    <div class="card"><p class="label">Where the unit texts come from</p>
+      <table><tr><th>Source</th><th>Annotator-units</th></tr>
+        ${Object.entries(d.provenance).sort((a, b) => b[1] - a[1]).map(([k, n]) => `<tr><td>${esc(k)}</td><td class="num">${n}</td></tr>`).join("")}</table></div>`;
 }
 
 // ---------- agreement ----------
@@ -336,7 +485,7 @@ function simTable(before, after) {
 // One exported group (atomic or split): agreement over its units as curated.
 function groupCard(title, file, v, caveat) {
   if (!v) return `<div class="card"><p class="label">${esc(title)}</p><p class="hint">Not computed yet — press Recompute.</p></div>`;
-  const rows = v.fields.map(f => `<tr><td>${esc(f.field)}</td><td><b>${k3(f.kappa)}</b></td><td>${k3(f.cohenMean)}</td>
+  const rows = v.fields.map(f => `<tr><td>${fieldLabel(f.field)}</td><td><b>${k3(f.kappa)}</b></td><td>${k3(f.cohenMean)}</td>
       <td>${pct(f.unanimous)}</td><td class="hint">${f.nSubjects}</td><td class="hint">${esc(f.band)}</td></tr>`).join("");
   return `<div class="card"><p class="label">${esc(title)}</p>
     <p class="hint" style="margin:0 0 10px">${v.nRequirements} requirements · ${v.nSubjects} unit${v.nSubjects === 1 ? "" : "s"} per annotator ·
@@ -356,14 +505,14 @@ function renderAgreement() {
   const fo = byField(o), fc = byField(c);
   const rows30 = c.fields.map(f => {
     const a = fo[f.field], b = fc[f.field];
-    return `<tr><td>${esc(f.field)}${f.group === "extra" ? ` <span class="hint">(derived)</span>` : ""}</td>
+    return `<tr><td>${fieldLabel(f.field)}</td>
       <td>${k3(a.kappa)}</td><td><b>${k3(b.kappa)}</b></td><td>${delta(a.kappa, b.kappa)}</td>
       <td>${k3(a.cohenMean)}</td><td>${k3(b.cohenMean)}</td>
       <td>${pct(a.unanimous)}</td><td>${pct(b.unanimous)}</td><td class="hint">${esc(b.band)}</td></tr>`;
   }).join("");
-  const pairs = c.fields.filter(f => f.group === "slot").map(f => `<tr><td>${esc(f.field)}</td>${f.cohenPairs.map(p => `<td>${k3(p.kappa)}</td>`).join("")}</tr>`).join("");
+  const pairs = c.fields.filter(f => f.group === "slot").map(f => `<tr><td>${fieldLabel(f.field)}</td>${f.cohenPairs.map(p => `<td>${k3(p.kappa)}</td>`).join("")}</tr>`).join("");
   const pairHead = c.fields[0].cohenPairs.map(p => `<th>${esc(p.a)} ↔ ${esc(p.b)}</th>`).join("");
-  const rows20 = t.fields.map(f => `<tr><td>${esc(f.field)}</td><td>${k3(f.kappa)}</td><td>${k3(f.cohenMean)}</td><td>${pct(f.unanimous)}</td><td>${f.nSubjects}</td><td class="hint">${esc(f.band)}</td></tr>`).join("");
+  const rows20 = t.fields.map(f => `<tr><td>${fieldLabel(f.field)}</td><td>${k3(f.kappa)}</td><td>${k3(f.cohenMean)}</td><td>${pct(f.unanimous)}</td><td>${f.nSubjects}</td><td class="hint">${esc(f.band)}</td></tr>`).join("");
   const t20n = Math.max(0, ...t.fields.map(f => f.nSubjects));
   const excl = Object.entries(agreement.excludedUnits || {}).map(([k, n]) => `${n} ${PROV[k] || k}`).join(", ") || "none";
 
@@ -372,6 +521,8 @@ function renderAgreement() {
       <span class="stat">computed ${esc(new Date(agreement.computedAt).toLocaleString())} ·
         cosine ${agreement.embedding.available ? "model " + esc(agreement.embedding.model) : "<b style='color:var(--bad)'>unavailable — start Ollama and recompute</b>"}</span>
       <span class="spacer"></span><button id="recomputeAgreement" class="primary">Recompute</button></div>
+
+    <div class="card">${GRAMMAR_NOTE.replace('<p class="hint">', '<p class="hint" style="margin:0">')}</div>
 
     <div class="card"><p class="label">The 30 — before vs after curation (same requirements, same annotators)</p>
       <div style="overflow-x:auto"><table>
@@ -433,6 +584,7 @@ document.addEventListener("click", e => {
   const b = e.target.closest("[data-act]");
   if (!b) return;
   const r = reqs()[current], act = b.dataset.act;
+  if (act === "flag") { r.flagged = !r.flagged; return structural(); }
   if (act === "addAll") { Object.values(r.annotations).forEach(a => a.units.push(blankUnit())); return structural(); }
   if (act === "popAll") {
     if (!confirm("Remove the last unit from every annotator that has more than one?")) return;
@@ -477,6 +629,8 @@ function move(d) {
 document.addEventListener("keydown", e => {
   if (e.altKey && e.key === "ArrowRight") { e.preventDefault(); move(1); }
   if (e.altKey && e.key === "ArrowLeft") { e.preventDefault(); move(-1); }
+  // e.code, not e.key: on a Mac keyboard Alt+F types "ƒ".
+  if (e.altKey && e.code === "KeyF" && view === "req") { e.preventDefault(); const r = reqs()[current]; r.flagged = !r.flagged; structural(); }
 });
 
 // ---------- actions ----------
@@ -485,6 +639,12 @@ function modal(html) {
   $("#closeModal").onclick = () => { $("#modalHost").innerHTML = ""; };
 }
 const pct = x => x === null || x === undefined ? "—" : Math.round(x * 100) + "%";
+
+$("#insightBtn").onclick = () => {
+  view = "insights";
+  document.querySelectorAll(".item.on").forEach(el => el.classList.remove("on"));
+  renderInsights(); $("#main").scrollTop = 0;
+};
 
 $("#agreeBtn").onclick = () => {
   view = "agreement";
