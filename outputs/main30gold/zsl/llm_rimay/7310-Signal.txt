@@ -1,0 +1,1 @@
+For the Signal-Android system, when a website contains a share button, the system shall support a custom URL scheme signal:// to enable navigation to the Signal application. <NON_ATOMIC>.

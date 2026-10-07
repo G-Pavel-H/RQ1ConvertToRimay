@@ -1,0 +1,1 @@
+When the System receives an oversized text, the System shall send the text split over multiple messages.

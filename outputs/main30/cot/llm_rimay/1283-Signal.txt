@@ -1,0 +1,1 @@
+TextSecure must support the "themes" similar to "Go SMS PRO".

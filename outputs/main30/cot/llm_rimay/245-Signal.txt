@@ -1,0 +1,1 @@
+The system must indicate the "SIM destination" for each sent message.

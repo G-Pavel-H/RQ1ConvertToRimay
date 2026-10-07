@@ -1,0 +1,1 @@
+<MISSING_SCOPE> When the "user" selects a group or user to mute for a "specified duration", then the System shall mute the "notifications" for the "selected group or user" for the "specified duration".

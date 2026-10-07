@@ -1,0 +1,1 @@
+If the user receives a message in TextSecure on a dual SIM mobile, then the system shall display the SIM card identifier to which the message was sent.

@@ -1,0 +1,13 @@
+# Cross-strategy verdict — main30
+
+Model: `claude-opus-5` · generated 2026-09-10T03:41:55+01:00 · runs: cot, fsl, zsl
+
+Track 1 is not measurable on this data. Every slot in all three runs has `support_gold_missing = 0`, meaning no requirement in this set was judged by the humans to be genuinely missing a slot. The zeros for precision, recall and F1 are therefore arithmetic artifacts of an empty positive class, not model failures. The most likely cause is that the gold `missing`/`implied` labels have not been adjudicated — note that `n_implied` is also 0 everywhere, which is implausible for 30 real requirements and confirms the label fields are empty rather than genuinely all-present. Nothing about fabrication risk can be concluded here in either direction.
+
+The one usable signal in Track 1 is the false-positive column, which counts cases where the LLM declared a slot absent that gold did not. This is over-flagging, the inverse of the risk the study targets. CoT does it 15 times across slots (concentrated on actor and modalVerb, 5 each) and ZSL 16 times (7 on scope), while FSL does it twice. Correspondingly, the overall verdict disagrees with gold on 5 requirements for CoT and 3 for ZSL, and none for FSL. With 30 items these counts are small, but the direction is consistent with the Track 2 results rather than independent of them.
+
+On conversion quality FSL is the clear winner and the only run that reaches the ceiling: seq_ratio 0.637 and Jaccard 0.515 against a human-human ceiling of 0.576/0.473. It is effectively at the limit the task allows, and it attains exact matches (max 1.0 on both metrics), which the others never do. CoT (0.438/0.296) and ZSL (0.422/0.265) sit far below the ceiling. Treating the 89 pairs as roughly 30 independent requirements, the FSL-vs-others gap of about 0.2 is several standard errors wide and worth believing; the CoT-vs-ZSL gap of 0.016 seq_ratio is indistinguishable from noise.
+
+Paska pass rates (0.83 / 0.73 / 0.70) differ by only three to four requirements and are within binomial noise. The smell *types* are more informative. "Not requirement" fires 5 times under CoT and 3 under ZSL but never under FSL — a distinct CoT failure mode where the output is not recognisable as a requirement at all, consistent with its depressed similarity scores and its over-flagging. ZSL uniquely produces "Incomplete requirement" (2) and "Incomplete condition" (1): under-specification rather than malformation. FSL's residual smells are stylistic ("Not precise verb", one passive voice).
+
+One caveat: seq_ratio rewards surface-form mimicry, and FSL's exemplars may share the gold standard's phrasing conventions. Part of its lead may be template matching rather than better semantics.

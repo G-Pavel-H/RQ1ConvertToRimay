@@ -1,0 +1,1577 @@
+{
+  "run": "main30gold/fsl",
+  "strategy": "fsl",
+  "scored_at": "2026-09-10T23:26:01+01:00",
+  "gold_csv": "data/gold_annotations_main_atomic.csv",
+  "meta": {
+    "run_id": "main30gold/fsl",
+    "strategy": "fsl",
+    "model": "claude-haiku-4-5-20251001",
+    "temperature": 0.0,
+    "max_tokens": 1024,
+    "n_fsl_examples": 3,
+    "gold_csv": "data/gold_annotations_main_atomic.csv",
+    "created_at": "2026-09-10T23:23:11+01:00",
+    "n_processed": 30,
+    "n_skipped": 0,
+    "skipped_ids": []
+  },
+  "counts": {
+    "gold": 30,
+    "converted": 30,
+    "evaluated": 30,
+    "skipped": 0,
+    "skipped_ids": []
+  },
+  "field_accuracy": {
+    "n": 30,
+    "per_slot": {
+      "scope": {
+        "tp": 0,
+        "fp": 1,
+        "fn": 1,
+        "tn": 28,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support_gold_missing": 1
+      },
+      "condition": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 20,
+        "tn": 9,
+        "precision": 1.0,
+        "recall": 0.047619047619047616,
+        "f1": 0.0909090909090909,
+        "support_gold_missing": 21
+      },
+      "actor": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 2,
+        "tn": 28,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support_gold_missing": 2
+      },
+      "modalVerb": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 2,
+        "tn": 28,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support_gold_missing": 2
+      },
+      "action": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 5,
+        "tn": 25,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support_gold_missing": 5
+      }
+    },
+    "micro": {
+      "precision": 0.5,
+      "recall": 0.03225806451612903,
+      "f1": 0.06060606060606061
+    },
+    "macro": {
+      "precision": 0.2,
+      "recall": 0.009523809523809523,
+      "f1": 0.01818181818181818
+    },
+    "implied_analysis": {
+      "overall": {
+        "n_implied": 86,
+        "llm_filled": 85,
+        "llm_flagged_missing": 1,
+        "fill_rate": 0.9883720930232558
+      },
+      "per_slot": {
+        "scope": {
+          "n_implied": 29,
+          "llm_filled": 28,
+          "llm_flagged_missing": 1,
+          "fill_rate": 0.9655172413793104
+        },
+        "condition": {
+          "n_implied": 1,
+          "llm_filled": 1,
+          "llm_flagged_missing": 0,
+          "fill_rate": 1.0
+        },
+        "actor": {
+          "n_implied": 26,
+          "llm_filled": 26,
+          "llm_flagged_missing": 0,
+          "fill_rate": 1.0
+        },
+        "modalVerb": {
+          "n_implied": 28,
+          "llm_filled": 28,
+          "llm_flagged_missing": 0,
+          "fill_rate": 1.0
+        },
+        "action": {
+          "n_implied": 2,
+          "llm_filled": 2,
+          "llm_flagged_missing": 0,
+          "fill_rate": 1.0
+        }
+      }
+    },
+    "missing_analysis": {
+      "overall": {
+        "n_missing": 31,
+        "llm_flagged_missing": 1,
+        "llm_silently_filled": 30,
+        "flag_rate": 0.03225806451612903
+      },
+      "per_slot": {
+        "scope": {
+          "n_missing": 1,
+          "llm_flagged_missing": 0,
+          "llm_silently_filled": 1,
+          "flag_rate": 0.0
+        },
+        "condition": {
+          "n_missing": 21,
+          "llm_flagged_missing": 1,
+          "llm_silently_filled": 20,
+          "flag_rate": 0.047619047619047616
+        },
+        "actor": {
+          "n_missing": 2,
+          "llm_flagged_missing": 0,
+          "llm_silently_filled": 2,
+          "flag_rate": 0.0
+        },
+        "modalVerb": {
+          "n_missing": 2,
+          "llm_flagged_missing": 0,
+          "llm_silently_filled": 2,
+          "flag_rate": 0.0
+        },
+        "action": {
+          "n_missing": 5,
+          "llm_flagged_missing": 0,
+          "llm_silently_filled": 5,
+          "flag_rate": 0.0
+        }
+      }
+    },
+    "overall_verdict": {
+      "confusion": {
+        "both_incomplete": 0,
+        "llm_incomplete_gold_complete": 0,
+        "gold_incomplete_llm_complete": 5,
+        "both_complete": 25
+      },
+      "agreement_rate": 0.8333333333333334,
+      "n": 30,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    }
+  },
+  "conversion_quality": {
+    "similarity": {
+      "llm_vs_human": {
+        "seq_ratio": {
+          "n": 89,
+          "mean": 0.6358939833927193,
+          "median": 0.6885245901639344,
+          "min": 0.0,
+          "max": 1.0,
+          "std": 0.26673001861069257
+        },
+        "jaccard": {
+          "n": 89,
+          "mean": 0.5118862977549189,
+          "median": 0.5333333333333333,
+          "min": 0.0,
+          "max": 1.0,
+          "std": 0.25371202495997885
+        },
+        "n_pairs": 89,
+        "n_evaluated": 30,
+        "n_skipped_no_humans": 0,
+        "skipped_req_ids": []
+      },
+      "human_human": {
+        "seq_ratio": {
+          "n": 88,
+          "mean": 0.5756966776924742,
+          "median": 0.6638418079096045,
+          "min": 0.0,
+          "max": 1.0,
+          "std": 0.3102805038416533
+        },
+        "jaccard": {
+          "n": 88,
+          "mean": 0.4730511101013027,
+          "median": 0.5108695652173914,
+          "min": 0.0,
+          "max": 1.0,
+          "std": 0.2732354992922532
+        },
+        "n_pairs": 88
+      }
+    },
+    "paska": {
+      "n": 30,
+      "n_passed": 24,
+      "n_failed": 6,
+      "n_error": 0,
+      "n_scored": 30,
+      "pass_rate": 0.8,
+      "n_with_smells": 6,
+      "smell_frequency": {
+        "Not precise verb": 3,
+        "Passive voice": 2,
+        "Non-atomic requirement": 1
+      }
+    }
+  },
+  "requirements": [
+    {
+      "reqId": "4031-Signal",
+      "nl_text": "Request Number - 4031 | Request Title - Cancel media download  | Request Description - Add option to cancel running media downloads Once we go large media this is really needed",
+      "human_rimays": [
+        "For all users, <MISSING_CONDITION> the app must provide an option to cancel running media downloads.",
+        "<MISSING_CONDITION>\nFor all users, the App must let the user cancel a running \"media download\"",
+        "For all users, <MISSING_CONDITION> the App must allow the user to cancel \"running media downloads\"."
+      ],
+      "llm_rimay": "For all users, the app must provide an option to cancel running media downloads.",
+      "gold_slots": {
+        "scope": "implied",
+        "condition": "missing",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "filled",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": true,
+        "condition": false,
+        "actor": true,
+        "modalVerb": true,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": false,
+      "verdict_match": true,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.8698031528220208,
+        "seq_ratio_max": 1.0,
+        "jaccard_mean": 0.7291666666666666,
+        "jaccard_max": 1.0
+      },
+      "paska_passed": true,
+      "paska_smells": []
+    },
+    {
+      "reqId": "4333-Signal",
+      "nl_text": "Request Number - 4333 | Request Title - allow direct sharing to contacts via 6.0 ChooserTargetService | Request Description - https://developer.android.com/reference/android/service/chooser/ChooserTargetService.html",
+      "human_rimays": [
+        "<MISSING_SCOPE><MISSING_CONDITION><MISSING_ACTOR><MISSING_MODAL_VERB><MISSING_ACTION>",
+        "<MISSING_CONDITION>\nFor all users, the App must allow direct sharing to contacts through the ChooserTargetService"
+      ],
+      "llm_rimay": "For all users, the app must provide direct sharing to contacts via ChooserTargetService.",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "missing",
+        "actor": "missing",
+        "modalVerb": "missing",
+        "action": "missing"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "filled",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": false,
+        "condition": false,
+        "actor": false,
+        "modalVerb": false,
+        "action": false
+      },
+      "gold_overall": true,
+      "llm_overall": false,
+      "verdict_match": false,
+      "similarity": {
+        "n_humans": 2,
+        "seq_ratio_mean": 0.430939226519337,
+        "seq_ratio_max": 0.861878453038674,
+        "jaccard_mean": 0.36666666666666664,
+        "jaccard_max": 0.7333333333333333
+      },
+      "paska_passed": true,
+      "paska_smells": []
+    },
+    {
+      "reqId": "455-Signal",
+      "nl_text": "Request Number - 455 | Request Title - Signature below SMS message | Request Description - Hi, in oder to advertise TextSecure to my friends I'd like to add a (short) signature. E.g.  I use TextSecure for private and secure communication!  do you find this worth implementing?",
+      "human_rimays": [
+        "For all users, <MISSING_CONDITION> TextSecure must provide an option to add a short signature to messages.",
+        "<MISSING_CONDITION>\nFor all users, the App must let the user add a short signature to messages",
+        "For all users, <MISSING_CONDITION> the App must allow the user to add a \"signature\"."
+      ],
+      "llm_rimay": "For all users, the app must provide an option to add a signature below SMS messages.",
+      "gold_slots": {
+        "scope": "implied",
+        "condition": "missing",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "filled",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": true,
+        "condition": false,
+        "actor": true,
+        "modalVerb": true,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": false,
+      "verdict_match": true,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.7486674313926733,
+        "seq_ratio_max": 0.8352941176470589,
+        "jaccard_mean": 0.6003898635477584,
+        "jaccard_max": 0.6666666666666666
+      },
+      "paska_passed": true,
+      "paska_smells": []
+    },
+    {
+      "reqId": "5529-Signal",
+      "nl_text": "Request Number - 5529 | Request Title - Disable \"Screen security\" by default | Request Description - I have:   searched open and closed issues for duplicates  read https://github.com/WhisperSystems/Signal-Android/wiki/Submitting-useful-bug-reports  Feature description. It's quite common to see non-passphrase users wonder why screenshots in Signal don't work. It probably doesn't make sense to have Screen security enabled by default for them. For passphrase users it makes sense. One option would be to remove the feature completely from settings and make it an implicit feature which depends on the passphrase setting. In #1431 (comment) moxie0 wrote: [The Screen security feature i]s not designed to prevent screenshots, it's designed to notify the task manager that it shouldn't cache screenshots of conversations. The side effect is that it prevents screenshots.",
+      "human_rimays": [
+        "For all users, if the user does not use a passphrase then Signal must remove screen security by default.",
+        "For all users, if the passphrase setting is enabled, then the App must enable screen security",
+        "For all users, <MISSING_CONDITION> the App must make the \"Screen security\" feature depend on the \"passphrase setting\" set."
+      ],
+      "llm_rimay": "For all non-passphrase users, the app must disable \"Screen security\" by default.",
+      "gold_slots": {
+        "scope": "implied",
+        "condition": "present",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "filled",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": true,
+        "condition": true,
+        "actor": true,
+        "modalVerb": true,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": false,
+      "verdict_match": true,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.642132873409576,
+        "seq_ratio_max": 0.6630434782608695,
+        "jaccard_mean": 0.467304625199362,
+        "jaccard_max": 0.47368421052631576
+      },
+      "paska_passed": true,
+      "paska_smells": []
+    },
+    {
+      "reqId": "107-Mastodon",
+      "nl_text": "Request Number - 107 | Request Title - Can't view image descriptions | Request Description - I know a screen reader can still read them, but it's important to me to see if there IS a description so I know if I can boost these posts to my disabled followers",
+      "human_rimays": [
+        "<MISSING_CONDITION>\nFor all users, the App must show whether a post has an image description",
+        "For all users, <MISSING_CONDITION> the App must visually indicate iff there is a \"description\".",
+        "For all users, <MISSING_CONDITION> the App must show if there is a description."
+      ],
+      "llm_rimay": "For all users, the app must display an indicator showing whether an image has a description.",
+      "gold_slots": {
+        "scope": "implied",
+        "condition": "missing",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "filled",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": true,
+        "condition": false,
+        "actor": true,
+        "modalVerb": true,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": false,
+      "verdict_match": true,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.7546891357004938,
+        "seq_ratio_max": 0.7784431137724551,
+        "jaccard_mean": 0.5089783281733746,
+        "jaccard_max": 0.7058823529411765
+      },
+      "paska_passed": true,
+      "paska_smells": []
+    },
+    {
+      "reqId": "83-Signal",
+      "nl_text": "Request Number - 83 | Request Title - Better identity key synchronization | Request Description - No description provided.",
+      "human_rimays": [
+        "<MISSING_SCOPE><MISSING_CONDITION><MISSING_ACTOR><MISSING_MODAL_VERB><MISSING_ACTION>",
+        "<MISSING_CONDITION><MISSING_ACTOR><MISSING_MODAL_VERB><MISSING_ACTION>",
+        "For all users, <MISSING_CONDITION> the App must provide \"better identity key synchronization\"."
+      ],
+      "llm_rimay": "For all users, the system must synchronize identity keys.",
+      "gold_slots": {
+        "scope": "implied",
+        "condition": "missing",
+        "actor": "missing",
+        "modalVerb": "missing",
+        "action": "missing"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "filled",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": true,
+        "condition": false,
+        "actor": false,
+        "modalVerb": false,
+        "action": false
+      },
+      "gold_overall": true,
+      "llm_overall": false,
+      "verdict_match": false,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.22391857506361323,
+        "seq_ratio_max": 0.6717557251908397,
+        "jaccard_mean": 0.14285714285714285,
+        "jaccard_max": 0.42857142857142855
+      },
+      "paska_passed": true,
+      "paska_smells": []
+    },
+    {
+      "reqId": "5555-Signal",
+      "nl_text": "Request Number - 5555 | Request Title - Partial message copying feature request | Request Description - Copying partial text from a message would be nice. I.e. when receiving long validation tokens/one-time passwords to be entered in some web form. See #2845",
+      "human_rimays": [
+        "For all users, <MISSING_CONDITION> the App must provide an option to copy partial text from a message.",
+        "<MISSING_CONDITION>\nFor all users, the App must let the user copy partial text from a message.",
+        "For all users, <MISSING_CONDITION> the App must allow the user to copy \"partial text\" from a \"message\"."
+      ],
+      "llm_rimay": "For all users, the app must provide the ability to copy partial text from a message.",
+      "gold_slots": {
+        "scope": "implied",
+        "condition": "missing",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "filled",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": true,
+        "condition": false,
+        "actor": true,
+        "modalVerb": true,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": false,
+      "verdict_match": true,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.8715577842332721,
+        "seq_ratio_max": 0.9036144578313253,
+        "jaccard_mean": 0.7647058823529411,
+        "jaccard_max": 0.8235294117647058
+      },
+      "paska_passed": true,
+      "paska_smells": []
+    },
+    {
+      "reqId": "801-Signal",
+      "nl_text": "Request Number - 801 | Request Title - Feature request: Mute Group (or any user) | Request Description - Sometimes friends in a group are discussing something I'm not interested in and my phone would go nuts vibrating and ringing all the time. A \"Mute for X minutes/hours\" feature would be awesome.",
+      "human_rimays": [
+        "For all users, <MISSING_CONDITION> the app must provide a mute for x minutes/hours feature.",
+        "<MISSING_CONDITION>\nFor all users, the App must let the user mute a conversation for a chosen duration",
+        "For all users, <MISSING_CONDITION> the App must allow the user to mute a \"group\" for a \"specific duration\"."
+      ],
+      "llm_rimay": "For all users, the app must provide a \"Mute for X minutes/hours\" feature for groups.",
+      "gold_slots": {
+        "scope": "implied",
+        "condition": "missing",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "filled",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": true,
+        "condition": false,
+        "actor": true,
+        "modalVerb": true,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": false,
+      "verdict_match": true,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.6972126953389867,
+        "seq_ratio_max": 0.9161290322580645,
+        "jaccard_mean": 0.5832080200501254,
+        "jaccard_max": 0.9285714285714286
+      },
+      "paska_passed": true,
+      "paska_smells": []
+    },
+    {
+      "reqId": "6069-Signal",
+      "nl_text": "Request Number - 6069 | Request Title - Unread notification badges do not work on Huawei EMUI | Request Description - I have:   searched open and closed issues for duplicates  read https://github.com/WhisperSystems/Signal-Android/wiki/Submitting-useful-bug-reports  Bug description. I've installed Signal on a Honor 8 (made by Huawei) with EMUI 4.1 (Android 6.0). I've noticed that Signal receives notifications on new messages and they are also listed in the notification area, but the unread notifications badge on the app icon on the home screen is not shown. In Signal support articles there is mentioned, that badge icons are supported for some launchers, see https://support.whispersystems.org/hc/en-us/articles/215766077-How-can-I-see-my-unread-badge-count-What-launcher-should-I-use- So far I could not find out if this is a Signal or EMUI problem, but Threema and Conversations show the notification badges. Device info. Device: Honor 8 Android version: 6.0 Signal version: 3.26.2",
+      "human_rimays": [
+        "For all users, when Signal receives new messages, then Signal must show an unread notification badge on the app icon.",
+        "For all users, when there are unread messages, the App must show an unread badge on the app icon",
+        "For all users, when there are unread messages, the App must show the unread notifications badge on the app icon"
+      ],
+      "llm_rimay": "For all users on Huawei EMUI devices, when Signal receives a notification on a new message, then the app must display an unread notification badge on the app icon on the home screen.",
+      "gold_slots": {
+        "scope": "implied",
+        "condition": "present",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "filled",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": true,
+        "condition": true,
+        "actor": true,
+        "modalVerb": true,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": false,
+      "verdict_match": true,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.6537228513900329,
+        "seq_ratio_max": 0.7224080267558528,
+        "jaccard_mean": 0.47002979991485744,
+        "jaccard_max": 0.6296296296296297
+      },
+      "paska_passed": true,
+      "paska_smells": []
+    },
+    {
+      "reqId": "2943-Signal",
+      "nl_text": "Request Number - 2943 | Request Title - Where are the old text-only smileys? | Request Description - Why did you remove the old text based smileys? I don't like all this emoji crap and preferred the other ones.",
+      "human_rimays": [
+        "For all users, <MISSING_CONDITION> the app must provide the old text based smileys.",
+        "<MISSING_CONDITION>\nFor all users, the App must bring back the old text-based smileys",
+        "For all users, <MISSING_CONDITION> the App must <MISSING_ACTION>."
+      ],
+      "llm_rimay": "For all users, the app must restore the old text-based smileys.",
+      "gold_slots": {
+        "scope": "implied",
+        "condition": "missing",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "implied"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "filled",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": true,
+        "condition": false,
+        "actor": true,
+        "modalVerb": true,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": false,
+      "verdict_match": true,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.8086899010812054,
+        "seq_ratio_max": 0.9206349206349206,
+        "jaccard_mean": 0.7160062160062161,
+        "jaccard_max": 0.8333333333333334
+      },
+      "paska_passed": true,
+      "paska_smells": []
+    },
+    {
+      "reqId": "6077-Signal",
+      "nl_text": "Request Number - 6077 | Request Title - Update libphonenumber to >=8.2.0 (Cannot send SMS to my mobile provider) | Request Description - I have:   searched open and closed issues for duplicates  read https://github.com/WhisperSystems/Signal-Android/wiki/Submitting-useful-bug-reports  Bug description. My friend made me aware of this as I'm never checking my account status via SMS, but it doesn't work for me neither. To check our account status, we have to send an SMS message to 13977, but Signal fails to deliver it. I tried sending it through the native Oneplus SMS app and it goes through just fine, with an immediate response. I can send an SMS to other people, though, so it has something to do with that number. (Signal adds +385 to it for Croatia, maybe that's it?) Steps to reproduce.  send an SMS to my provider through Signal Actual result: it doesn't go through, \"Failed to send\", \"Some issues need your attention.\" Expected result: Message should go through and I should get a response. Device info. Device: OnePlus3T Android version: 7.0 Signal version: 3.27.1 Link to debug log. https://gist.github.com/anonymous/f656572561ea3a91d0f4bbdeb98e587b",
+      "human_rimays": [
+        "For all users, when sending SMS message to the 13977, to validate the account status, the App must deliver the response successfully.",
+        "For all users, if the recipient is a short number, Signal must deliver the SMS.",
+        "For all users, when the user sends an SMS message to the provider number 13977 the Signal must deliver the account status."
+      ],
+      "llm_rimay": "For all users, when the user sends an SMS message to a short code number through Signal, then Signal must deliver the message.",
+      "gold_slots": {
+        "scope": "implied",
+        "condition": "present",
+        "actor": "present",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "filled",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": true,
+        "condition": true,
+        "actor": true,
+        "modalVerb": true,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": false,
+      "verdict_match": true,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.6929591106223679,
+        "seq_ratio_max": 0.782258064516129,
+        "jaccard_mean": 0.48680124223602483,
+        "jaccard_max": 0.625
+      },
+      "paska_passed": true,
+      "paska_smells": []
+    },
+    {
+      "reqId": "1363-Signal",
+      "nl_text": "Request Number - 1363 | Request Title - Indicating in the conservation overview whether the last message is yours or from your conversation partner | Request Description - Description given.",
+      "human_rimays": [
+        "For all users, <MISSING_CONDITION> the app must indicate if the last message is from the user or the conversation partner.",
+        "For all users, <MISSING_CONDITION> the App must indicate in the \"conversation overview\" whether the \"last message\" is from the user or the \"conversation partner\".",
+        "For all users, the App must show in the conversation overview whether the last message is yours or your partner's"
+      ],
+      "llm_rimay": "For all users, the app must indicate in the conversation overview whether the last message is from the user or from the conversation partner.",
+      "gold_slots": {
+        "scope": "implied",
+        "condition": "missing",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "filled",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": true,
+        "condition": false,
+        "actor": true,
+        "modalVerb": true,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": false,
+      "verdict_match": true,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.8625606842550867,
+        "seq_ratio_max": 0.9611307420494699,
+        "jaccard_mean": 0.8237639553429027,
+        "jaccard_max": 1.0
+      },
+      "paska_passed": true,
+      "paska_smells": []
+    },
+    {
+      "reqId": "6459-Signal",
+      "nl_text": "Request Number - 6459 | Request Title - Feature Request: Use Share Intent Subject When Sharing to Signal | Request Description - At the moment, sending a share Intent to Signal will include the EXTRA_TEXT portion of the Intent but not the EXTRA_SUBJECT For example, using this code from another app Intent sendIntent = new Intent (); sendIntent . setAction ( Intent . ACTION_SEND ); sendIntent . putExtra ( Intent . EXTRA_SUBJECT , \"This is the intent title\" ); sendIntent . putExtra ( Intent . EXTRA_TEXT , \"This is the intent body\" ); sendIntent . setType ( \"text/plain\" ); startActivity ( Intent . createChooser ( sendIntent , getResources (). getText ( R . string . send_to ))); Signal will only use the body: \"This is the intent body\" but not use the subject: \"This is the intent title\" This would make it easier to get page titles and other subjects shared from browsers and other apps that set the share Intent's EXTRA_SUBJECT",
+      "human_rimays": [
+        "For all users, when receiving a \"share intent\", the App must include the \"EXTRA_SUBJECT\" along with the \"EXTRA_TEXT\" in the shared message.",
+        "For all users, when a share intent is received, Signal must include its subject as well as its body",
+        "For all users, when Signal receives a share Intent with an EXTRA_SUBJECT portion, then Signal must include the EXTRA_SUBJECT portion in the shared message."
+      ],
+      "llm_rimay": "For all users, when another app sends a share Intent with the \"EXTRA_SUBJECT\" to Signal, then Signal must include the \"EXTRA_SUBJECT\" in the shared message.",
+      "gold_slots": {
+        "scope": "implied",
+        "condition": "present",
+        "actor": "present",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "filled",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": true,
+        "condition": true,
+        "actor": true,
+        "modalVerb": true,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": false,
+      "verdict_match": true,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.6988326909233001,
+        "seq_ratio_max": 0.8360128617363344,
+        "jaccard_mean": 0.5976190476190476,
+        "jaccard_max": 0.72
+      },
+      "paska_passed": true,
+      "paska_smells": []
+    },
+    {
+      "reqId": "6457-Signal",
+      "nl_text": "Request Number - 6457 | Request Title - Use single button to open attachment window. | Request Description - I have:   searched open and closed issues for duplicates  read https://github.com/WhisperSystems/Signal-Android/wiki/Submitting-useful-bug-reports  Bug description. In the conversation window, there are 3 ways to open/close the attachment window. Steps to reproduce. The paperclip will open and close the attachment window. The green down arrow (that is visible in the attachment window) will close the attachment window. The ellipses in the upper right of the conversation window have an option to open the attachment window. Actual result: As described above. Expected result: From a usability and attractiveness perspective, there should be only a single way to open and close the attachment window. Screenshots. See the thread on Discourse Hosting for screenshots and discussion of alternatives. Device info. Device: Moto X Pure Edition Android version: 6.0.0 Signal version: 4.1.0",
+      "human_rimays": [
+        "<MISSING_CONDITION>\nFor all users, the App must provide only one way to open and close the attachment window",
+        "For all users, <MISSING_CONDITION> the App must provide only a single way to open and close the attachment window.",
+        "For all users, <MISSING_CONDITION> the App must provide a single way to open and close the attachment window in the conversation window."
+      ],
+      "llm_rimay": "For all users in the conversation window, the app must provide a single button to open and close the attachment window.",
+      "gold_slots": {
+        "scope": "implied",
+        "condition": "missing",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "filled",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": true,
+        "condition": false,
+        "actor": true,
+        "modalVerb": true,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": false,
+      "verdict_match": true,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.7707911635365349,
+        "seq_ratio_max": 0.8075117370892019,
+        "jaccard_mean": 0.7545948203842942,
+        "jaccard_max": 0.8947368421052632
+      },
+      "paska_passed": false,
+      "paska_smells": [
+        {
+          "segment_id": "6457-Signal_rimay_1",
+          "smell": "Non-atomic requirement",
+          "value": "The requirement has more than one action in the system response."
+        }
+      ]
+    },
+    {
+      "reqId": "828-Signal",
+      "nl_text": "Request Number - 828 | Request Title - Feature Request: Group Administration | Request Description - TextSecure groups lack the possibility to remove participants after they were added.",
+      "human_rimays": [
+        "For all users, <MISSING_CONDITION> the App must allow the user to remove \"participants\" from \"groups\".",
+        "<MISSING_ACTOR><MISSING_ACTION><MISSING_MODAL_VERB><MISSING_CONDITION>",
+        "For all users, <MISSING_CONDITION> TextSecure must allow the user to remove participants from groups after they were added."
+      ],
+      "llm_rimay": "For all TextSecure groups, the group administrator must remove participants from the group.",
+      "gold_slots": {
+        "scope": "implied",
+        "condition": "missing",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "filled",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": true,
+        "condition": false,
+        "actor": true,
+        "modalVerb": true,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": false,
+      "verdict_match": true,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.4254216077706931,
+        "seq_ratio_max": 0.6473988439306358,
+        "jaccard_mean": 0.3245614035087719,
+        "jaccard_max": 0.5
+      },
+      "paska_passed": true,
+      "paska_smells": []
+    },
+    {
+      "reqId": "245-Signal",
+      "nl_text": "Request Number - 245 | Request Title - Unable to find to which SIM message was sent | Request Description - Hi, I am using dual sim mobile. I installed TextSecure, but I am unable to know to which SIM the message is sent ? Please help me.",
+      "human_rimays": [
+        "For all users, if the user is using a \"dual SIM mobile\", then the App must indicate to which \"SIM\" the \"message\" is sent.",
+        "<MISSING_ACTION><MISSING_CONDITION>",
+        "For all users, <MISSING_CONDITION> TextSecure must show which SIM a message is sent through on the dual SIM devices."
+      ],
+      "llm_rimay": "For all users with dual SIM mobile devices, the app must display which SIM the message was sent to.",
+      "gold_slots": {
+        "scope": "implied",
+        "condition": "missing",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "filled",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": true,
+        "condition": false,
+        "actor": true,
+        "modalVerb": true,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": false,
+      "verdict_match": true,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.4331002331002331,
+        "seq_ratio_max": 0.7454545454545455,
+        "jaccard_mean": 0.33997584541062803,
+        "jaccard_max": 0.5416666666666666
+      },
+      "paska_passed": true,
+      "paska_smells": []
+    },
+    {
+      "reqId": "316-Signal",
+      "nl_text": "Request Number - 316 | Request Title - Feature request: Allow sharing Android calendar events via TextSecure | Request Description - Originally a bug, which should have been titled \"Shared calendar events are not actually attached.\" The fix in #1025 removed TS from the \"share with\" list of calendar events, so no longer a bug, but would like to be able to share calendar events via TS, same as can be done with default Android text app. Original (bug) text: Android default Calendar app lets you send a calendar entry. TextSecure is one of the apps that comes up as an option to use for sending. Choosing it, you get to TextSecure, but there is no attachment, just an empty message. (If you choose the regular default Android Text Messaging app, the calendar entry does get properly attached, which is why I suspect the issue is with TextSecure.) Only tried doing this from Calendar, don't know if it's an issue sending via TextSecure from other apps.",
+      "human_rimays": [
+        "For all users, when sharing a \"calendar event\" to the \"App\", the App must attach the \"calendar event\" to the \"message\".",
+        "<MISSING_CONDITION>\nFor all users, the App must let the user share calendar events through it",
+        "For all users, when the user shares a calendar event from the Android Calendar app, then TextSecure must attach the calendar event to the message."
+      ],
+      "llm_rimay": "For all users, when a calendar event is shared from the Android Calendar app, then TextSecure must attach the calendar event to the message.",
+      "gold_slots": {
+        "scope": "implied",
+        "condition": "present",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "filled",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": true,
+        "condition": true,
+        "actor": true,
+        "modalVerb": true,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": false,
+      "verdict_match": true,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.7103148511599215,
+        "seq_ratio_max": 0.9090909090909091,
+        "jaccard_mean": 0.5798412698412698,
+        "jaccard_max": 0.8095238095238095
+      },
+      "paska_passed": false,
+      "paska_smells": [
+        {
+          "segment_id": "316-Signal_rimay_3",
+          "smell": "Passive voice",
+          "value": "Passive voice in the condition."
+        }
+      ]
+    },
+    {
+      "reqId": "695-Signal",
+      "nl_text": "Request Number - 695 | Request Title - Don't show letter count, when SMS mode disabled | Request Description - When I start typing, the count of letters is shown at the bottom left corner, though I have the SMS mode completely disabled.",
+      "human_rimays": [
+        "For all users, when the user starts \"typing\" and \"SMS mode\" is disabled, the App must not show the \"count of letters\" .",
+        "<MISSING_ACTION><MISSING_CONDITION><MISSING_ACTOR><MISSING_MODAL_VERB>",
+        "For all users, if SMS mode is disabled and the user starts typing a message, then the App must hide the letter count."
+      ],
+      "llm_rimay": "For all users, when SMS mode is disabled, then the app must not show the letter count at the bottom left corner.",
+      "gold_slots": {
+        "scope": "implied",
+        "condition": "present",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "filled",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": true,
+        "condition": true,
+        "actor": true,
+        "modalVerb": true,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": false,
+      "verdict_match": true,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.4376768306899311,
+        "seq_ratio_max": 0.658008658008658,
+        "jaccard_mean": 0.3342490842490842,
+        "jaccard_max": 0.5384615384615384
+      },
+      "paska_passed": true,
+      "paska_smells": []
+    },
+    {
+      "reqId": "1761-Signal",
+      "nl_text": "Request Number - 1761 | Request Title - Automatic SMS forwarding | Request Description - It would be awesome to be able to automatically forward all incoming SMS from a certain contact to another contact.",
+      "human_rimays": [
+        "For all users, when receiving an \"incoming SMS\" from a \"certain contract\", then the App must automatically forward the \"SMS\" to \"another contract\".",
+        "For all users, the App must let the user automatically forward SMS from one contact to another",
+        "For all users, when the App receives an SMS from a certain contact, then the App must automatically forward the SMS to another contact."
+      ],
+      "llm_rimay": "For all users, the app must automatically forward all incoming SMS from a certain contact to another contact.",
+      "gold_slots": {
+        "scope": "implied",
+        "condition": "present",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "filled",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": true,
+        "condition": true,
+        "actor": true,
+        "modalVerb": true,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": false,
+      "verdict_match": true,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.65433583340063,
+        "seq_ratio_max": 0.7783251231527094,
+        "jaccard_mean": 0.7161654135338346,
+        "jaccard_max": 0.75
+      },
+      "paska_passed": true,
+      "paska_smells": []
+    },
+    {
+      "reqId": "4245-Signal",
+      "nl_text": "Request Number - 4245 | Request Title - Low quality contact photo during call | Request Description - Calling screen doesn't show the full resolution contact photo on Signal 3.0.3",
+      "human_rimays": [
+        "For all users, if the user is on the \"calling screen\", then the App must show the \"full resolution contact photo\".",
+        "<MISSING_ACTION><MISSING_MODAL_VERB>",
+        "For all users, when signal is on calling screen it must show contact photo in full resolution."
+      ],
+      "llm_rimay": "For all users, when a call is initiated, then the calling screen must display the full resolution contact photo.",
+      "gold_slots": {
+        "scope": "implied",
+        "condition": "implied",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "filled",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": true,
+        "condition": true,
+        "actor": true,
+        "modalVerb": true,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": false,
+      "verdict_match": true,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.4613798436291778,
+        "seq_ratio_max": 0.7433628318584071,
+        "jaccard_mean": 0.36231884057971014,
+        "jaccard_max": 0.5652173913043478
+      },
+      "paska_passed": false,
+      "paska_smells": [
+        {
+          "segment_id": "4245-Signal_rimay_3",
+          "smell": "Passive voice",
+          "value": "Passive voice in the condition."
+        }
+      ]
+    },
+    {
+      "reqId": "5775-Signal",
+      "nl_text": "Request Number - 5775 | Request Title - Add longer-term disappearing timeouts | Request Description - I have looked at all open and closed issues containing \"disappearing\" here and in the libsignal-java repo. I hope the bug belongs to this repo, sorry if not! For my use case, the 30s/.../1 week periods for disappearing messages are not useful. I quite often want to have a look at messages written within the last month. I'd thus not use the feature at all, even though in principle I think it is a good idea. I'd suggest to add further periods up to at least one year or something. (As I'm thinking of it, maybe it should even be 13 months rather than 12, so you can re-read what you were discussing on your last year's birthday or last christmas or whatever, and it only disappears little after) (Signal 3.19.1 on Android 6.0.1 / CM 13)",
+      "human_rimays": [
+        "<MISSING_CONDITION>\nFor all users, the App must offer longer disappearing-message periods, up to at least one year",
+        "For all users, <MISSING_CONDITION> the App must add further periods - up to at least one year or 13 months for \"disappearing messages\"",
+        "For all users, <MISSING_CONDITION> Signal must provide disappearing message periods for up to 12 months."
+      ],
+      "llm_rimay": "For all users, the app must provide longer-term disappearing message timeouts of at least one year.",
+      "gold_slots": {
+        "scope": "implied",
+        "condition": "missing",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "filled",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": true,
+        "condition": false,
+        "actor": true,
+        "modalVerb": true,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": false,
+      "verdict_match": true,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.6801475538774898,
+        "seq_ratio_max": 0.7979274611398963,
+        "jaccard_mean": 0.44882412273716626,
+        "jaccard_max": 0.6190476190476191
+      },
+      "paska_passed": true,
+      "paska_smells": []
+    },
+    {
+      "reqId": "1504-Signal",
+      "nl_text": "Request Number - 1504 | Request Title - Notification Color for Individual Contacts or Groups | Request Description - how about we edit this one too?  or just delete it..... üôà",
+      "human_rimays": [
+        "For all users, <MISSING_CONDITION> the App must <MISSING_ACTION>.",
+        "<MISSING_CONDITION>\nFor all users, the App must let the user set a notification color for a contact or a group",
+        "<MISSING_SCOPE><MISSING_CONDITION><MISSING_ACTOR><MISSING_MODAL_VERB><MISSING_ACTION>"
+      ],
+      "llm_rimay": "For <MISSING_SCOPE>, <MISSING_CONDITION> the system must edit the notification color for individual contacts or groups.",
+      "gold_slots": {
+        "scope": "implied",
+        "condition": "missing",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "missing"
+      },
+      "llm_slots": {
+        "scope": "missing",
+        "condition": "missing",
+        "actor": "filled",
+        "modalVerb": "filled",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": false,
+        "condition": true,
+        "actor": true,
+        "modalVerb": true,
+        "action": false
+      },
+      "gold_overall": true,
+      "llm_overall": false,
+      "verdict_match": false,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.3455057132200861,
+        "seq_ratio_max": 0.735632183908046,
+        "jaccard_mean": 0.1714285714285714,
+        "jaccard_max": 0.3
+      },
+      "paska_passed": true,
+      "paska_smells": []
+    },
+    {
+      "reqId": "8-Mastodon",
+      "nl_text": "Request Number - 8 | Request Title - Add local and federated timeline | Request Description - At the moment there seems to be no way to access local and federated timeline. Please consider adding that feature.",
+      "human_rimays": [
+        "For all users, <MISSING_CONDITION> the App must provide a way to access the \"local timeline\" and \"federated timeline\".",
+        "<MISSING_CONDITION>\nFor all users, the App must let users access the local and federated timelines",
+        "For all users, <MISSING_CONDITION> the App must provide an access to local and federated timelines."
+      ],
+      "llm_rimay": "For all users, the app must provide access to local and federated timeline.",
+      "gold_slots": {
+        "scope": "implied",
+        "condition": "missing",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "filled",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": true,
+        "condition": false,
+        "actor": true,
+        "modalVerb": true,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": false,
+      "verdict_match": true,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.9017780989899317,
+        "seq_ratio_max": 0.974025974025974,
+        "jaccard_mean": 0.7777777777777778,
+        "jaccard_max": 0.8666666666666667
+      },
+      "paska_passed": true,
+      "paska_smells": []
+    },
+    {
+      "reqId": "592-Signal",
+      "nl_text": "Request Number - 592 | Request Title - Feature - Emoji | Request Description - I hate emoji, but this guy on this issue requested it and I figure I'll help him/you out by making a new issue/feature request.",
+      "human_rimays": [
+        "For all users, <MISSING_CONDITION> the App must <MISSING_ACTION>.",
+        "<MISSING_CONDITION><MISSING_ACTION>",
+        "For all users, <MISSING_CONDITION> the App must provide emojis."
+      ],
+      "llm_rimay": "For all users, the app must support emoji.",
+      "gold_slots": {
+        "scope": "implied",
+        "condition": "missing",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "missing"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "filled",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": true,
+        "condition": false,
+        "actor": true,
+        "modalVerb": true,
+        "action": false
+      },
+      "gold_overall": true,
+      "llm_overall": false,
+      "verdict_match": false,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.5624965479149406,
+        "seq_ratio_max": 0.8705882352941177,
+        "jaccard_mean": 0.45,
+        "jaccard_max": 0.75
+      },
+      "paska_passed": false,
+      "paska_smells": [
+        {
+          "segment_id": "592-Signal_rimay_3",
+          "smell": "Not precise verb",
+          "value": "Not precise verb in the system response."
+        }
+      ]
+    },
+    {
+      "reqId": "6031-Signal",
+      "nl_text": "Request Number - 6031 | Request Title - Fingerprint unlock | Request Description - Please add fingerprint support for unlocking the app as an alternative to passphrase",
+      "human_rimays": [
+        "For all users, <MISSING_CONDITION> the App must support fingerprint for unlocking the app.",
+        "For all users, <MISSING_CONDITION> the App must provide \"fingerprint support\" to unlock the \"app\" as an alternative to \"passphrase\".",
+        "<MISSING_CONDITION>\nFor all users, the App must let the user unlock the app with a fingerprint instead of a passphrase"
+      ],
+      "llm_rimay": "For all users, the app must support fingerprint unlock as an alternative to passphrase.",
+      "gold_slots": {
+        "scope": "implied",
+        "condition": "missing",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "filled",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": true,
+        "condition": false,
+        "actor": true,
+        "modalVerb": true,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": false,
+      "verdict_match": true,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.7450574730541444,
+        "seq_ratio_max": 0.8241206030150754,
+        "jaccard_mean": 0.638888888888889,
+        "jaccard_max": 0.9333333333333333
+      },
+      "paska_passed": false,
+      "paska_smells": [
+        {
+          "segment_id": "6031-Signal_rimay_3",
+          "smell": "Not precise verb",
+          "value": "Not precise verb in the system response."
+        }
+      ]
+    },
+    {
+      "reqId": "496-Signal",
+      "nl_text": "Request Number - 496 | Request Title - Feature Request: Ability to change maximum size of MMS | Request Description - I have seen this feature on other third party messaging apps it'd be great.  Thanks!",
+      "human_rimays": [
+        "<MISSING_SCOPE><MISSING_CONDITION><MISSING_ACTOR><MISSING_MODAL_VERB><MISSING_ACTION>",
+        "For all users, <MISSING_CONDITION> the App must <MISSING_ACTION>.",
+        "<MISSING_CONDITION><MISSING_ACTION>"
+      ],
+      "llm_rimay": "For all users, the app must provide an ability to change the maximum size of MMS.",
+      "gold_slots": {
+        "scope": "implied",
+        "condition": "missing",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "missing"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "filled",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": true,
+        "condition": false,
+        "actor": true,
+        "modalVerb": true,
+        "action": false
+      },
+      "gold_overall": true,
+      "llm_overall": false,
+      "verdict_match": false,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.17575757575757575,
+        "seq_ratio_max": 0.5272727272727272,
+        "jaccard_mean": 0.13333333333333333,
+        "jaccard_max": 0.4
+      },
+      "paska_passed": true,
+      "paska_smells": []
+    },
+    {
+      "reqId": "4230-Signal",
+      "nl_text": "Request Number - 4230 | Request Title - Auto-split oversized texts | Request Description - Feature Request: Auto-split oversized texts over multiple messages. At the moment they will be truncated. (Telegram messenger auto-splits oversized texts into multiple messages.)",
+      "human_rimays": [
+        "For all users, if text is oversized, the App must split it over multiple messages.",
+        "For all users, if a \"text\" is \"oversized\", then the App must auto-split the \"text\" over \"multiple messages\".",
+        "For all users, if a text is too long, the App must split it across multiple messages"
+      ],
+      "llm_rimay": "For all users, the app must auto-split oversized texts over multiple messages instead of truncating them.",
+      "gold_slots": {
+        "scope": "implied",
+        "condition": "present",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "filled",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": true,
+        "condition": true,
+        "actor": true,
+        "modalVerb": true,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": false,
+      "verdict_match": true,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.6238697119669226,
+        "seq_ratio_max": 0.647887323943662,
+        "jaccard_mean": 0.4764213564213564,
+        "jaccard_max": 0.5454545454545454
+      },
+      "paska_passed": true,
+      "paska_smells": []
+    },
+    {
+      "reqId": "757-Signal",
+      "nl_text": "Request Number - 757 | Request Title - different notification settings for group chats | Request Description - It would be very nice to be able to change the notification settings for goups independently from other (personal) chats, as group chats might have a lower priority for the user.",
+      "human_rimays": [
+        "For all users, <MISSING_CONDITION> the app must provide functionality to change the notification settings for groups independently from personal chats.",
+        "For all users, <MISSING_CONDITION> the App must allow the user to change the \"notification settings\" for \"groups\" independently from the \"personal chats\".",
+        "<MISSING_CONDITION>\nFor all users, the App must let the user set notification settings for group chats separately from personal chats"
+      ],
+      "llm_rimay": "For all users, the app must allow changing notification settings for group chats independently from personal chats.",
+      "gold_slots": {
+        "scope": "implied",
+        "condition": "missing",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "filled",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": true,
+        "condition": false,
+        "actor": true,
+        "modalVerb": true,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": false,
+      "verdict_match": true,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.8488098736409051,
+        "seq_ratio_max": 0.8594377510040161,
+        "jaccard_mean": 0.6385964912280702,
+        "jaccard_max": 0.6842105263157895
+      },
+      "paska_passed": true,
+      "paska_smells": []
+    },
+    {
+      "reqId": "1283-Signal",
+      "nl_text": "Request Number - 1283 | Request Title -Theme Support | Request Description - I\\'m trying to convince a friend to use TextSecure but the themes from stuff like Go SMS PRO is keeping them on that platform unfortunately :( Maybe not a top priority feature, but it might help with adoption.",
+      "human_rimays": [
+        "For all users, <MISSING_CONDITION> TextSecure must have themes.",
+        "For all users, <MISSING_CONDITION> the App must provide \"themes\" similar to the \"GO SMS PRO\".",
+        "For all users, the App must support themes"
+      ],
+      "llm_rimay": "For all users, the app must provide theme support to increase adoption.",
+      "gold_slots": {
+        "scope": "implied",
+        "condition": "missing",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "implied"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "filled",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": true,
+        "condition": false,
+        "actor": true,
+        "modalVerb": true,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": false,
+      "verdict_match": true,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.6730709517155722,
+        "seq_ratio_max": 0.75,
+        "jaccard_mean": 0.4252388134741076,
+        "jaccard_max": 0.5384615384615384
+      },
+      "paska_passed": true,
+      "paska_smells": []
+    },
+    {
+      "reqId": "7310-Signal",
+      "nl_text": "Request Number - 7310 | Request Title - Feature: add support for custom url sceme signal:// so we can have share buttons | Request Description - [x ] searched open and closed issues for duplicates [x ] read https://github.com/WhisperSystems/Signal-Android/wiki/Submitting-useful-bug-reports  Bug description. I maintain a website, and I would love to put signal share buttons on my articles. To do so, there needs to be a way to point to the signal app from webpages. The manner to do this without many compatibility issues is a custom url sceme: signal:// I know, custom url scemes could be considered bad practice since they pollude the namespace. I agree, but for now signal can't compete with other social media from a buisness standpoint because of missing features like these. This may keep a lot of people from using signal as their favorite messenger app. (world domination is not the goal, but we don't want to shoot ourselfs in the foot either, private messaging will only happen if your contacts are also willing to accept signal on their phone.) Lets consider having share buttons on websites. A custom url sceme would be a good start to make that possible. Send message to Signal Private Messenger Read more about this here",
+      "human_rimays": [
+        "For all users, <MISSING_CONDITION> Signal must support a custom url scheme for opening Signal from webpages.",
+        "For all users, <MISSING_CONDITION> the App must support a \"custom URL scheme\" for sharing.",
+        "<MISSING_CONDITION>\nFor all users, the App must support a \"signal://\" URL scheme."
+      ],
+      "llm_rimay": "For all websites, the Signal app must support a custom URL scheme \"signal://\" to enable share buttons that point to the Signal app.",
+      "gold_slots": {
+        "scope": "implied",
+        "condition": "missing",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "filled",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": true,
+        "condition": false,
+        "actor": true,
+        "modalVerb": true,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": false,
+      "verdict_match": true,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.6033012733137962,
+        "seq_ratio_max": 0.6368159203980099,
+        "jaccard_mean": 0.4784688995215311,
+        "jaccard_max": 0.5263157894736842
+      },
+      "paska_passed": false,
+      "paska_smells": [
+        {
+          "segment_id": "7310-Signal_rimay_3",
+          "smell": "Not precise verb",
+          "value": "Not precise verb in the system response."
+        }
+      ]
+    }
+  ],
+  "verdict": {
+    "text": "Track 1 is measurable here — there are 31 genuinely-missing gold slots — and the result is unambiguous: few-shot flagged one of them. The model filled 30 of 31 missing slots with invented content, and the single flag it did produce (`condition` on 1504-Signal) came paired with a false positive on `scope` in the same requirement, so even that hit looks more like noise than judgment. Precision of 0.5 on two predictions carries no information. The macro/per-slot zeros for scope, actor, modalVerb and action rest on 1, 2, 2 and 5 instances respectively and should not be read as slot-specific findings; the aggregate 3% flag rate, however, is far too lopsided to be sampling noise.\n\nThe failure mode is visible and consistent in the worst examples, and it is fabrication from titles. 4333-Signal has a description that is nothing but a URL; the model emitted a complete, confident requirement built entirely from the issue title. 83-Signal's description is literally \"No description provided\", and the output invents \"the system must synchronize identity keys\". 496-Signal and 592-Signal turn feature titles into actions (\"change the maximum size of MMS\", \"support emoji\") where the adjudicated gold marks the action missing — two of three humans declined to write an action at all. 828-Signal is the most instructive: the model invented an actor (\"the group administrator\") that no annotator proposed and a scope (\"for all TextSecure groups\") that is not a user scope. 1504-Signal shows the model parsing annotator chatter (\"how about we edit this one too?\") as the system response. The pattern is that vague or empty descriptions do not trigger abstention; they trigger plausible completion.\n\nSimilarity sits at or just above the human-human ceiling (0.636 vs 0.576 seq_ratio; 0.512 vs 0.473 Jaccard), but that gap is well inside noise given std ≈0.27–0.31 and non-independent pairs from only 30 requirements. More importantly, the ceiling is itself depressed by a convention split: some annotators write all-MISSING placeholder strings while others write a full sentence (see 83-Signal and 1504-Signal). Always producing fluent prose scores well against the verbose annotator and terribly against the placeholder annotator, which is exactly why the fabrication cases are also the lowest-similarity cases (496 at 0.18, 83 at 0.22, 1504 at 0.35). Read that as a usable signal, not as parity with humans.\n\nPaska's 80% pass rate is largely orthogonal to the real problem: 4333, 83, 496 and 1504 all pass cleanly despite being invention. The smells it does find are real but minor — imprecise verbs in vague requirements (592, 6031, 7310), passive conditions (316, 4245), and one compound system response the model itself introduced at 6457-Signal. Paska cannot serve as a hallucination guard.\n\nNext step: the few-shot exemplars almost certainly contain no `<MISSING_*>` outputs. Add exemplars with empty or noise descriptions that abstain, and target `condition` first — it holds 21 of 31 missing labels and a simple rule (emit `<MISSING_CONDITION>` unless a trigger appears in the source) would recover most of the deficit. Also add a direct entailment check on filled slots, since slot-level labels conflate abstention convention with fabrication. Results apply only to this pre-filtered atomic subset.",
+    "model": "claude-opus-5",
+    "scope": "run",
+    "generated_at": "2026-09-10T23:34:59+01:00",
+    "results_digest": "9781f61bf23c"
+  }
+}

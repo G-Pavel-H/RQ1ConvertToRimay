@@ -1,0 +1,1 @@
+For <MISSING_SCOPE>, the System shall provide an option to cancel running media downloads.

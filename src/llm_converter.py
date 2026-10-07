@@ -1,4 +1,4 @@
-"""NL -> Rimay conversion via the Anthropic SDK.
+"""NL -> Rimay conversion via the configured LLM backend (see llm_backend).
 
 Also exposes :func:`strip_missing_placeholders`, which removes the
 ``<MISSING_*>`` placeholders and the ``<NON_ATOMIC>`` flag so the raw
@@ -14,7 +14,7 @@ from dataclasses import dataclass
 from typing import Optional
 
 import mlflow
-from anthropic import Anthropic
+from src import llm_backend
 
 from src import config
 from src.prompt_builder import BuiltPrompt, build_prompt
@@ -38,20 +38,6 @@ class LLMResponse:
     output_tokens: Optional[int]
     latency_ms: int
     stop_reason: Optional[str]
-
-
-_client: Optional[Anthropic] = None
-
-
-def _get_client() -> Anthropic:
-    global _client
-    if _client is None:
-        if not os.environ.get("ANTHROPIC_API_KEY"):
-            raise RuntimeError(
-                "ANTHROPIC_API_KEY is not set. Add it to .env or export it."
-            )
-        _client = Anthropic()
-    return _client
 
 
 def strip_missing_placeholders(rimay: str) -> str:
@@ -140,46 +126,33 @@ def convert(
     run_cfg: config.RunConfig,
 ) -> LLMResponse:
     prompt = build_prompt(nl_text, run_cfg=run_cfg)
-    client = _get_client()
 
     start = time.monotonic()
-    msg = client.messages.create(
+    # cache_system: the system prompt is identical across requirements in a
+    # batch, so the api backend caches it. Ignored by the subscription backend.
+    completion = llm_backend.complete(
+        system=prompt.system,
+        prompt=prompt.user,
         model=run_cfg.model,
         max_tokens=run_cfg.max_tokens,
         temperature=run_cfg.temperature,
-        # Cache the (identical-across-requirements) system prompt. Prefix match,
-        # 5-min TTL: sequential requirements in a batch reuse it. Silently no-ops
-        # if the prefix is under the model's minimum cacheable size (4096 tokens
-        # on Haiku 4.5; lower on Sonnet), so it's safe to leave on for every model.
-        system=[
-            {
-                "type": "text",
-                "text": prompt.system,
-                "cache_control": {"type": "ephemeral"},
-            }
-        ],
-        messages=[{"role": "user", "content": prompt.user}],
+        backend=run_cfg.backend,
+        cache_system=True,
     )
     latency_ms = int((time.monotonic() - start) * 1000)
 
-    content_text = ""
-    for block in msg.content:
-        if getattr(block, "type", None) == "text":
-            content_text += block.text
-
-    raw = _strip_to_rimay(content_text)
+    raw = _strip_to_rimay(completion.text)
     rimay = extract_final_rimay(raw)
 
-    usage = getattr(msg, "usage", None)
     return LLMResponse(
         rimay=rimay,
         raw=raw,
         prompt=prompt,
-        model=msg.model,
-        input_tokens=getattr(usage, "input_tokens", None) if usage else None,
-        output_tokens=getattr(usage, "output_tokens", None) if usage else None,
+        model=completion.model,
+        input_tokens=completion.input_tokens,
+        output_tokens=completion.output_tokens,
         latency_ms=latency_ms,
-        stop_reason=getattr(msg, "stop_reason", None),
+        stop_reason=completion.stop_reason,
     )
 
 

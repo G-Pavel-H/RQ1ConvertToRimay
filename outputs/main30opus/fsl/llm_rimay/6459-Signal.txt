@@ -1,0 +1,1 @@
+For all users, when a user sends a "share Intent" to Signal, then Signal must use the "EXTRA_SUBJECT" of the Intent.

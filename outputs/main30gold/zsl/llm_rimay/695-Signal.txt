@@ -1,0 +1,1 @@
+When the user starts typing, the System shall not display the letter count at the bottom left corner if SMS mode is disabled.

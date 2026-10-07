@@ -1,0 +1,1 @@
+For all users, the app must indicate in the conversation overview whether the last message is from the user or from the conversation partner.

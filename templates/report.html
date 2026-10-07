@@ -122,6 +122,8 @@
   .quote { color:var(--strong); border-left:2px solid var(--line); padding-left:12px; margin-top:6px; }
   ul.humans { margin:6px 0 0; padding-left:16px; color:var(--strong); }
   ul.humans li { margin-bottom:4px; }
+  ul.smells { margin:6px 0 0; padding-left:0; list-style:none; }
+  ul.smells li { margin-bottom:6px; display:flex; gap:8px; align-items:baseline; flex-wrap:wrap; }
   .empty { padding:40px; text-align:center; color:var(--muted); }
 </style>
 </head>
@@ -173,9 +175,15 @@ function overview(runs) {
       <td>${esc(r.meta.model || "—")}</td>
       <td>${r.counts.evaluated}</td>
       <td>${num(fa.macro.f1)}</td>
+      <td class="strong">${num(fa.overall_verdict.f1)}</td>
       <td>${num(fa.overall_verdict.agreement_rate)}</td>
+      <td class="strong">${cq.similarity.llm_vs_human.cosine
+            ? num(cq.similarity.llm_vs_human.cosine.mean) : "—"}</td>
+      <td>${cq.similarity.human_human.cosine
+            ? num(cq.similarity.human_human.cosine.mean) : "—"}</td>
       <td>${num(cq.similarity.llm_vs_human.seq_ratio.mean)}</td>
       <td>${num(cq.similarity.human_human.seq_ratio.mean)}</td>
+      <td class="strong">${pct(cq.paska.pass_rate_llm_complete)}</td>
       <td>${pct(cq.paska.pass_rate)}</td>
     </tr>`;
   }).join("");
@@ -186,18 +194,22 @@ function overview(runs) {
     <div class="scroll"><table>
       <thead><tr>
         <th>Run</th><th>Model</th><th>Evaluated</th>
-        <th>Macro F1</th><th>Verdict agr.</th>
-        <th>LLM~human</th><th>Human~human</th><th>Paska pass</th>
+        <th>Slot F1</th><th>Verdict F1</th><th>Verdict agr.</th>
+        <th>LLM~human (cos)</th><th>Ceiling (cos)</th><th>LLM~human (lex)</th><th>Ceiling (lex)</th><th>Paska (LLM-complete)</th><th>Paska (all)</th>
       </tr></thead>
       <tbody>${rows}</tbody>
     </table></div>
     ${legend([
       ["Evaluated", "requirements present in both the manifest and the gold, minus FSL exemplars"],
-      ["Macro F1", "Track 1: how well the LLM detects <em>missing</em> slots, averaged over the five slots"],
-      ["Verdict agr.", "Track 1: how often LLM and gold agree on whether the requirement is incomplete overall"],
-      ["LLM~human", "Track 2: mean similarity of the LLM conversion to the annotators' own conversions"],
-      ["Human~human", "Track 2: mean similarity <em>between</em> annotators — the ceiling the LLM number is read against"],
-      ["Paska pass", "share of conversions the smell detector accepted without firing a smell"],
+      ["Slot F1", "Track 1, per-slot: how well the LLM detects <em>missing</em> slots, macro-averaged over the five slots"],
+      ["Verdict F1", "Track 1, per-requirement: F1 on the overall complete/incomplete judgement — one call per requirement, not per slot. Positive class “incomplete”"],
+      ["Verdict agr.", "plain accuracy of that same judgement — read it next to Verdict F1, which ignores the true-negatives that inflate it"],
+      ["LLM~human (cos)", "Track 2, <em>semantic</em>: mean embedding cosine between the LLM conversion and each annotator's. Prefer this — it sees meaning, not wording"],
+      ["Ceiling (cos)", "the same measure <em>between</em> annotators. The LLM number is only meaningful read against this"],
+      ["LLM~human (lex)", "the old lexical SequenceMatcher score, kept for continuity. Rimay boilerplate gives it a high floor — two unrelated requirements still score ~0.35"],
+      ["Ceiling (lex)", "lexical ceiling, same caveat"],
+      ["Paska (LLM-complete)", "the meaningful one: of the conversions the LLM asserted were <em>complete</em> requirements, the share Paska accepts as structurally valid Rimay"],
+      ["Paska (all)", "the same over every conversion. Reads low by construction: when the LLM declares a requirement incomplete it emits <code>&lt;MISSING_*&gt;</code> placeholders, leaving a fragment Paska rejects — that is the LLM being right, not a bad conversion"],
     ])}
   </section>`;
 }
@@ -222,12 +234,17 @@ function headline(r) {
       ${c.gold} gold reqs · ${c.converted} converted · ${c.evaluated} evaluated ·
       ${c.skipped} skipped${c.skipped_ids.length ? " (" + esc(c.skipped_ids.join(", ")) + ")" : ""}</p>
     <div class="tiles">
-      ${tile("Macro F1 · missing", num(fa.macro.f1), "micro " + num(fa.micro.f1))}
-      ${tile("Verdict agreement", num(fa.overall_verdict.agreement_rate), "n = " + fa.overall_verdict.n)}
-      ${tile("LLM~human sim", num(cq.similarity.llm_vs_human.seq_ratio.mean),
-             "ceiling " + num(cq.similarity.human_human.seq_ratio.mean))}
-      ${tile("Paska pass rate", pct(cq.paska.pass_rate),
-             cq.paska.n_passed + " of " + cq.paska.n_scored + " scored")}
+      ${tile("Slot F1 · missing", num(fa.macro.f1), "macro · micro " + num(fa.micro.f1))}
+      ${tile("Verdict F1 · incomplete", num(fa.overall_verdict.f1),
+             "P " + num(fa.overall_verdict.precision) + " · R " + num(fa.overall_verdict.recall)
+             + " · agr " + num(fa.overall_verdict.agreement_rate))}
+      ${tile("LLM~human · semantic", cq.similarity.llm_vs_human.cosine
+               ? num(cq.similarity.llm_vs_human.cosine.mean) : "—",
+             cq.similarity.human_human.cosine
+               ? "ceiling " + num(cq.similarity.human_human.cosine.mean) + " · embedding cosine"
+               : "embedding service unavailable")}
+      ${tile("Paska · LLM-complete", pct(cq.paska.pass_rate_llm_complete),
+             `${cq.paska.by_llm_verdict.llm_complete.n_passed} of ${cq.paska.by_llm_verdict.llm_complete.n_scored} the LLM called complete`)}
     </div>
   </section>`;
 }
@@ -299,11 +316,19 @@ function track1(r) {
         <tr><td>LLM complete</td><td>${c.gold_incomplete_llm_complete}</td><td>${c.both_complete}</td></tr>
       </tbody>
     </table></div>
+    <div class="tiles">
+      ${tile("Verdict F1", num(v.f1), `positive class “incomplete” · n = ${v.n}`)}
+      ${tile("Verdict precision", num(v.precision),
+             `${c.both_incomplete} of ${c.both_incomplete + c.llm_incomplete_gold_complete} called incomplete were`)}
+      ${tile("Verdict recall", num(v.recall),
+             `${c.both_incomplete} of ${c.both_incomplete + c.gold_incomplete_llm_complete} truly incomplete caught`)}
+      ${tile("Verdict accuracy", num(v.agreement_rate), `diagonal over all ${v.n} cells`)}
+    </div>
     ${legend([
       ["Diagonal", "the two agreement cells: both call it incomplete, or both call it complete"],
       ["Off-diagonal", "the two disagreements — top-right is the LLM over-calling incompleteness, bottom-left is the LLM missing it"],
-      ["Agreement", `${num(v.agreement_rate)} over ${v.n} requirements — the diagonal as a share of all cells`],
-      ["P/R/F1", `${num(v.precision)} / ${num(v.recall)} / ${num(v.f1)}, positive class “incomplete”`],
+      ["Verdict F1", "the headline for this judgement, computed independently of the per-slot F1 above: this one is scored once per requirement"],
+      ["Accuracy vs F1", "accuracy counts the both-complete cell, which is usually the biggest, so it reads high even when the LLM never catches an incomplete requirement. F1 ignores it — prefer F1 here"],
     ])}
   </section>`;
 }
@@ -315,7 +340,9 @@ function distRow(name, d) {
 
 function track2(r) {
   const cq = r.conversion_quality;
+  const failed = (r.requirements || []).filter(q => q.paska_passed === false && q.paska_smells.length);
   const lvh = cq.similarity.llm_vs_human, hh = cq.similarity.human_human, p = cq.paska;
+  const emb = cq.embedding || {};
   const smells = Object.entries(p.smell_frequency);
 
   return `<section>
@@ -327,6 +354,8 @@ function track2(r) {
       <thead><tr><th>Distribution</th><th>n</th><th>Mean</th><th>Median</th>
         <th>Min</th><th>Max</th><th>Std</th></tr></thead>
       <tbody>
+        ${lvh.cosine ? distRow("LLM~human · cosine", lvh.cosine) : ""}
+        ${hh.cosine ? distRow("human~human · cosine", hh.cosine) : ""}
         ${distRow("LLM~human · seq_ratio", lvh.seq_ratio)}
         ${distRow("LLM~human · jaccard", lvh.jaccard)}
         ${distRow("human~human · seq_ratio", hh.seq_ratio)}
@@ -344,11 +373,24 @@ function track2(r) {
       ["How to read", "compare the two seq_ratio rows: the LLM is doing well when its mean approaches the human-human mean, since that is how much humans vary among themselves"],
     ])}
 
+    <p class="note">${emb.available
+      ? `Semantic rows use embedding cosine (model <code>${esc(emb.model || "?")}</code>, run locally). Read those first: the lexical rows below them cannot tell that two differently-worded conversions mean the same thing, and Rimay's shared boilerplate keeps them artificially high.`
+      : `Embedding service unavailable when this run was scored, so only the lexical measures are shown. Start Ollama and re-score to add the semantic rows.`}</p>
+
     <h3 class="sub">Paska validation</h3>
     <p class="note">An independent structural check: the smell detector runs on the
       stripped LLM Rimay and knows nothing about the gold.</p>
+    <p class="note">Read the first tile, not the second. When the LLM calls a requirement
+      incomplete it emits <code>&lt;MISSING_*&gt;</code> placeholders, so the stripped text
+      Paska sees is a fragment with no system response and is rejected almost by
+      construction — that is the LLM correctly reporting an incomplete source, not a
+      defective conversion. Paska is only adjudicating the conversions the LLM stood behind.</p>
     <div class="tiles">
-      ${tile("Pass rate", pct(p.pass_rate),
+      ${tile("Pass rate · LLM said complete", pct(p.pass_rate_llm_complete),
+             `${p.by_llm_verdict.llm_complete.n_passed} of ${p.by_llm_verdict.llm_complete.n_scored} · the number that matters`)}
+      ${tile("Pass rate · LLM said incomplete", pct(p.by_llm_verdict.llm_incomplete.pass_rate),
+             `${p.by_llm_verdict.llm_incomplete.n_passed} of ${p.by_llm_verdict.llm_incomplete.n_scored} · expected to be low`)}
+      ${tile("Pass rate · all", pct(p.pass_rate),
              `passed ${p.n_passed} · failed ${p.n_failed} · errors ${p.n_error}`)}
       ${tile("Reqs with smells", p.n_with_smells, "of " + p.n)}
     </div>
@@ -356,10 +398,27 @@ function track2(r) {
         <thead><tr><th>Smell</th><th>Count</th></tr></thead>
         <tbody>${smells.map(([s, n]) => `<tr><td>${esc(s)}</td><td>${n}</td></tr>`).join("")}</tbody>
       </table></div>` : `<p class="note">No smells fired across the evaluated set.</p>`}
+
+    ${failed.length ? `<h3 class="sub">Why each failure fired</h3>
+      <p class="note">Every requirement Paska rejected, with the detector's own reason.
+        The same list is on each requirement in the drill-down below.</p>
+      <div class="scroll"><table>
+        <thead><tr><th>Requirement</th><th>LLM verdict</th><th>Smell</th><th>Reason</th><th>LLM Rimay</th></tr></thead>
+        <tbody>${failed.flatMap(q => q.paska_smells.map((sm, i) => `<tr>
+          <td class="strong">${i === 0 ? esc(q.reqId) : ""}</td>
+          <td>${i === 0 ? (q.llm_overall
+                ? '<span class="chip">said incomplete — expected</span>'
+                : '<span class="chip bad">said complete</span>') : ""}</td>
+          <td>${esc(sm.smell)}</td>
+          <td class="text">${esc(sm.value || "—")}</td>
+          <td class="text">${i === 0 ? esc(q.llm_rimay) : ""}</td>
+        </tr>`)).join("")}</tbody>
+      </table></div>` : ""}
     ${legend([
       ["Pass rate", "passed / (passed + failed) — requirements where Paska fired no smell at all"],
       ["Errors", "Paska could not be run on the text; excluded from the pass rate, not counted as failures"],
       ["Smell counts", "total firings, so one requirement can contribute to several rows"],
+      ["Reason", "the smell detector's own explanation for that firing — what structurally was wrong with the sentence"],
     ])}
   </section>`;
 }
@@ -397,7 +456,11 @@ function requirement(q) {
         (${sim.n_humans} annotators) · gold verdict
         ${q.gold_overall ? "incomplete" : "complete"} · LLM verdict
         ${q.llm_overall ? "incomplete" : "complete"}
-        ${q.paska_smells.length ? "<br>Smells: " + esc(q.paska_smells.map(s => s.smell).join(", ")) : ""}</p>
+        </p>
+      ${q.paska_smells.length ? `<div><h3>Why Paska flagged this</h3>
+        <ul class="smells">${q.paska_smells.map(sm =>
+          `<li><span class="chip bad">${esc(sm.smell)}</span> <span class="text">${esc(sm.value || "")}</span></li>`
+        ).join("")}</ul></div>` : ""}
     </div>
   </details>`;
 }

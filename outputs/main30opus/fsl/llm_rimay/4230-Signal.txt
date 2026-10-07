@@ -1,0 +1,1 @@
+For all users, when the user sends a text message exceeding the "maximum message size", then the app must split the text message into multiple messages.

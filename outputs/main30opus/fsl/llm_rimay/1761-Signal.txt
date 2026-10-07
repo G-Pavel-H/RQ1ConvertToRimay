@@ -1,0 +1,1 @@
+For all users, when TextSecure receives an incoming SMS from a "certain contact", then TextSecure must forward the incoming SMS to "another contact".

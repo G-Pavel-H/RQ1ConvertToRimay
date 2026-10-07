@@ -1,0 +1,1 @@
+<MISSING_SCOPE>, <MISSING_CONDITION>, the user shall change the "notification settings" for "groups" in the System independently from "other (personal) chats".

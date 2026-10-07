@@ -1,0 +1,1 @@
+For all users, the app must provide an option to copy partial text from a message.

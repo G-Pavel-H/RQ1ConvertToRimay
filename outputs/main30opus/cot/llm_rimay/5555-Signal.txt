@@ -1,0 +1,1 @@
+<MISSING_SCOPE>, when the "user" receives a "message" containing a "long validation token or one-time password", then the System shall allow the "user" to copy "partial text" from the "message".

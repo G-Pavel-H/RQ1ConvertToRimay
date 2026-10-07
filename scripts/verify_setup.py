@@ -13,7 +13,7 @@ Required:
   - gold_annotations.csv present
 
 Warned (not failed):
-  - ANTHROPIC_API_KEY missing (needed at run time, not at verify time)
+  - credentials for the selected LLM backend (api key, or the claude CLI)
 """
 from __future__ import annotations
 
@@ -171,15 +171,41 @@ def check_dataset() -> bool:
     return True
 
 
-def check_api_key() -> None:
-    if not os.environ.get("ANTHROPIC_API_KEY"):
-        _print(
-            WARN,
-            "ANTHROPIC_API_KEY",
-            "not set in environment / .env (required to run the LLM step)",
-        )
+def check_llm_backend() -> None:
+    """Check credentials for whichever backend the run will actually use.
+
+    The default backend is the Claude subscription (the local `claude` CLI), so
+    a missing ANTHROPIC_API_KEY is only a problem when the api backend is
+    selected — and vice versa for a missing CLI.
+    """
+    from src import config
+
+    backend = config.DEFAULT_LLM_BACKEND
+    has_key = bool(os.environ.get("ANTHROPIC_API_KEY"))
+    cli = shutil.which("claude")
+
+    if backend == "subscription":
+        if cli:
+            _print(PASS, "claude CLI", f"{cli} (subscription backend — no API credits used)")
+        else:
+            _print(
+                FAIL,
+                "claude CLI",
+                "not found, but RIMAY_LLM_BACKEND=subscription. Install Claude Code "
+                "or switch with --backend api.",
+            )
+        note = "present (unused: backend is 'subscription')" if has_key else "not set (not needed for this backend)"
+        _print(PASS, "ANTHROPIC_API_KEY", note)
     else:
-        _print(PASS, "ANTHROPIC_API_KEY", "present")
+        if has_key:
+            _print(PASS, "ANTHROPIC_API_KEY", "present (api backend — billed as API credits)")
+        else:
+            _print(
+                FAIL,
+                "ANTHROPIC_API_KEY",
+                "not set, but the api backend is selected. Add it to .env or use "
+                "--backend subscription.",
+            )
 
 
 def main() -> int:
@@ -194,7 +220,7 @@ def main() -> int:
         check_dataset(),
         check_pos_tagger(),
     ]
-    check_api_key()
+    check_llm_backend()
     print("=" * 60)
     if all(results):
         print("All required checks passed.")

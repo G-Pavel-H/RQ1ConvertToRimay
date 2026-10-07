@@ -1,0 +1,1 @@
+For <MISSING_SCOPE>, the User shall send a message with a signature appended to the SMS message.

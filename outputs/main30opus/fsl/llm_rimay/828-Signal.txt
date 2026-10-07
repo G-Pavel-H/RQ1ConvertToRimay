@@ -1,0 +1,1 @@
+For all users, the app must provide an option to remove participants from a group after they were added.

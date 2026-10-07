@@ -1,0 +1,1 @@
+<MISSING_SCOPE>, <MISSING_CONDITION>, the System <MISSING_MODAL_VERB> disable the "Screen security" feature by default.

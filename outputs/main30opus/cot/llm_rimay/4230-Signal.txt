@@ -1,0 +1,1 @@
+<MISSING_SCOPE>, when the System receives a "text" whose length exceeds the "maximum message length", then the System shall split the "text" into multiple "messages".

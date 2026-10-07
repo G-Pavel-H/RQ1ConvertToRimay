@@ -1,0 +1,1 @@
+For the app, the System shall add fingerprint support for unlocking as an alternative to passphrase.

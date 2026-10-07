@@ -1,0 +1,1 @@
+For all users, the app must provide an option to add a signature below SMS messages.

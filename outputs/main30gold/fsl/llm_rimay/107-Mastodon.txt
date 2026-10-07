@@ -1,0 +1,1 @@
+For all users, the app must display an indicator showing whether an image has a description.

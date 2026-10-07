@@ -1,0 +1,1 @@
+<MISSING_SCOPE>, <MISSING_CONDITION>, the User must change the "notification settings" for "group chats" independently from "personal chats" in the System.

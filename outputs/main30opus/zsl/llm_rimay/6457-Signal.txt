@@ -1,0 +1,1 @@
+For the "attachment window", <MISSING_CONDITION>, the Signal-Android application must provide only one "way to open and close the attachment window".

@@ -1,0 +1,1 @@
+For all users, the app must provide access to the "local timeline" and the "federated timeline". <NON_ATOMIC>

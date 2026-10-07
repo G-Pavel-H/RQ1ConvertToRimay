@@ -35,6 +35,7 @@ sys.path.insert(0, str(THIS_DIR.parent))
 
 from src import config  # noqa: E402
 from src.gold_loader import load_gold  # noqa: E402
+from src.scoring import embeddings  # noqa: E402
 from src.report import collect_results, render_report  # noqa: E402
 from src.scoring import conversion_quality as cq  # noqa: E402
 from src.scoring import field_accuracy as fa  # noqa: E402
@@ -206,6 +207,7 @@ def main(argv=None) -> int:
                 human_rimays=g.human_rimays,
                 paska_passed=m.get("paska_passed"),
                 paska_smells=m.get("paska_smells", []),
+                llm_incomplete=fa.llm_overall_incomplete(llm_slots),
             )
         )
 
@@ -286,6 +288,7 @@ def main(argv=None) -> int:
     print(f"  overall-verdict agreement:   {_fmt(fa_rep.verdict['agreement_rate'])}")
     print(f"  mean LLM-vs-human seq_ratio: {_fmt(lvh['mean'])}")
     print(f"  mean human-human seq_ratio:  {_fmt(hh['mean'])}")
+    embeddings.save_cache()
     print(f"  Paska pass rate:             {_fmt(cqr['paska']['pass_rate'])}")
     print(f"  outputs: {run_paths.scoring_dir}/")
     if not args.no_report:

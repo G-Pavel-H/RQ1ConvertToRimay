@@ -1,0 +1,1 @@
+For all users, when another app sends a share Intent with the "EXTRA_SUBJECT" to Signal, then Signal must include the "EXTRA_SUBJECT" in the shared message.

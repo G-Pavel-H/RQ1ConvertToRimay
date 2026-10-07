@@ -1,0 +1,1 @@
+For all users, the app must provide an option to add a "short signature" to each SMS message.

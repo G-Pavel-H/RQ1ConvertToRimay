@@ -1,0 +1,1 @@
+Signal shall provide a single button to open and close the attachment window in the conversation window.

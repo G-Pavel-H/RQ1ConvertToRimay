@@ -1,0 +1,1 @@
+For all users, when the user activates the "Mute" option for a group or a user, then the app must mute notifications from the group or the user for a "specified duration".

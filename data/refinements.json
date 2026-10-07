@@ -1,0 +1,1264 @@
+{
+  "about": "Edits applied to data/gold_annotations_main_atomic.csv by scripts/apply_refinements.py to produce data/gold_annotations_main_atomic_refined.csv. The original CSV and the database are never modified. Edit this file and re-run the script to redo.",
+  "rules": {
+    "scope": "Ungrounded \"For all users,\" -> <MISSING_SCOPE>; the annotator's scope slot implied -> missing.",
+    "grid": "Text brought in line with the annotator's own slot judgments; placeholders in segment order.",
+    "then": "\"then\" added after a condition (Rimay pattern: \"when X, then Actor must ...\").",
+    "typo": "Typos, punctuation, whitespace, stray newlines, missing final period, \"app\" -> \"App\".",
+    "word": "Wording that misstated the NL, fixed.",
+    "opus": "Phrasing guided by the Opus reference (main30opus), used only where the annotator's was wrong."
+  },
+  "requirementNotes": {
+    "5529-Signal": "NL names a population (\"non-passphrase users\") - could be written as a real scope instead of <MISSING_SCOPE>.",
+    "828-Signal": "NL names a set (\"TextSecure groups\") - could be a real scope.",
+    "245-Signal": "NL names a set (\"dual sim mobile\") - could be a real scope.",
+    "496-Signal": "The title states the action (\"change maximum size of MMS\"), yet all three judged action missing. Slots left as they are."
+  },
+  "generatedAt": "2026-09-24T00:07:24+01:00",
+  "edits": [
+    {
+      "reqId": "4031-Signal",
+      "annotator": "Arthur",
+      "original": "For all users, <MISSING_CONDITION> the App must allow the user to cancel \"running media downloads\".",
+      "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow the user to cancel \"running media downloads\".",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope"
+      ],
+      "note": ""
+    },
+    {
+      "reqId": "4031-Signal",
+      "annotator": "Mko",
+      "original": "<MISSING_CONDITION>\nFor all users, the App must let the user cancel a running \"media download\"",
+      "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user cancel a running \"media download\".",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope",
+        "grid",
+        "typo"
+      ],
+      "note": ""
+    },
+    {
+      "reqId": "4031-Signal",
+      "annotator": "Rafo",
+      "original": "For all users, <MISSING_CONDITION> the app must provide an option to cancel running media downloads.",
+      "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide an option to cancel running media downloads.",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope",
+        "typo"
+      ],
+      "note": ""
+    },
+    {
+      "reqId": "4333-Signal",
+      "annotator": "Arthur",
+      "original": "",
+      "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, <MISSING_ACTOR> <MISSING_MODAL_VERB> <MISSING_ACTION>.",
+      "slots": {},
+      "reasons": [
+        "grid"
+      ],
+      "note": "Was blank, but every slot was judged missing."
+    },
+    {
+      "reqId": "4333-Signal",
+      "annotator": "Mko",
+      "original": "<MISSING_CONDITION>\nFor all users, the App must allow direct sharing to contacts through the ChooserTargetService",
+      "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow direct sharing to contacts through the ChooserTargetService.",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope",
+        "grid",
+        "typo"
+      ],
+      "note": ""
+    },
+    {
+      "reqId": "4333-Signal",
+      "annotator": "Rafo",
+      "original": "<MISSING_SCOPE><MISSING_CONDITION><MISSING_ACTOR><MISSING_MODAL_VERB><MISSING_ACTION>",
+      "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, <MISSING_ACTOR> <MISSING_MODAL_VERB> <MISSING_ACTION>.",
+      "slots": {},
+      "reasons": [
+        "typo"
+      ],
+      "note": ""
+    },
+    {
+      "reqId": "455-Signal",
+      "annotator": "Arthur",
+      "original": "For all users, <MISSING_CONDITION> the App must allow the user to add a \"signature\".",
+      "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow the user to add a \"signature\" to \"SMS messages\".",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope",
+        "word"
+      ],
+      "note": "Added the object (\"SMS messages\") from the NL title."
+    },
+    {
+      "reqId": "455-Signal",
+      "annotator": "Mko",
+      "original": "<MISSING_CONDITION>\nFor all users, the App must let the user add a short signature to messages",
+      "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user add a short signature to messages.",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope",
+        "grid",
+        "typo"
+      ],
+      "note": ""
+    },
+    {
+      "reqId": "455-Signal",
+      "annotator": "Rafo",
+      "original": "For all users, <MISSING_CONDITION> TextSecure must provide an option to add a short signature to messages.",
+      "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure must provide an option to add a short signature to messages.",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope"
+      ],
+      "note": ""
+    },
+    {
+      "reqId": "5529-Signal",
+      "annotator": "Arthur",
+      "original": "For all users, <MISSING_CONDITION> the App must make the \"Screen security\" feature depend on the \"passphrase setting\" set.",
+      "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must make the \"Screen security\" feature depend on the \"passphrase setting\".",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope",
+        "typo"
+      ],
+      "note": "Removed a stray trailing \"set\"."
+    },
+    {
+      "reqId": "5529-Signal",
+      "annotator": "Mko",
+      "original": "For all users, if the passphrase setting is enabled, then the App must enable screen security",
+      "rimayText": "<MISSING_SCOPE>, if the passphrase setting is enabled, then the App must enable screen security.",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope",
+        "typo"
+      ],
+      "note": ""
+    },
+    {
+      "reqId": "5529-Signal",
+      "annotator": "Rafo",
+      "original": "For all users, if the user does not use a passphrase then Signal must remove screen security by default.",
+      "rimayText": "<MISSING_SCOPE>, if the user does not use a passphrase, then Signal must disable screen security by default.",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope",
+        "word"
+      ],
+      "note": "\"remove\" -> \"disable\", matching the NL title."
+    },
+    {
+      "reqId": "107-Mastodon",
+      "annotator": "Arthur",
+      "original": "For all users, <MISSING_CONDITION> the App must visually indicate iff there is a \"description\".",
+      "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must visually indicate whether an image has a \"description\".",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope",
+        "word"
+      ],
+      "note": "\"iff\" -> \"whether\"; says what has the description."
+    },
+    {
+      "reqId": "107-Mastodon",
+      "annotator": "Mko",
+      "original": "<MISSING_CONDITION>\nFor all users, the App must show whether a post has an image description",
+      "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must show whether a post has an image description.",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope",
+        "grid",
+        "typo"
+      ],
+      "note": ""
+    },
+    {
+      "reqId": "107-Mastodon",
+      "annotator": "Rafo",
+      "original": "For all users, <MISSING_CONDITION> the App must show if there is a description.",
+      "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must show whether an image has a description.",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope",
+        "word"
+      ],
+      "note": "\"a description\" of what was unstated."
+    },
+    {
+      "reqId": "83-Signal",
+      "annotator": "Arthur",
+      "original": "For all users, <MISSING_CONDITION> the App must provide \"better identity key synchronization\".",
+      "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide \"better identity key synchronization\".",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope"
+      ],
+      "note": ""
+    },
+    {
+      "reqId": "83-Signal",
+      "annotator": "Mko",
+      "original": "<MISSING_CONDITION><MISSING_ACTOR><MISSING_MODAL_VERB><MISSING_ACTION>",
+      "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, <MISSING_ACTOR> <MISSING_MODAL_VERB> <MISSING_ACTION>.",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope",
+        "grid"
+      ],
+      "note": ""
+    },
+    {
+      "reqId": "83-Signal",
+      "annotator": "Rafo",
+      "original": "<MISSING_SCOPE><MISSING_CONDITION><MISSING_ACTOR><MISSING_MODAL_VERB><MISSING_ACTION>",
+      "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, <MISSING_ACTOR> <MISSING_MODAL_VERB> <MISSING_ACTION>.",
+      "slots": {},
+      "reasons": [
+        "typo"
+      ],
+      "note": ""
+    },
+    {
+      "reqId": "5555-Signal",
+      "annotator": "Arthur",
+      "original": "For all users, <MISSING_CONDITION> the App must allow the user to copy \"partial text\" from a \"message\".",
+      "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow the user to copy \"partial text\" from a \"message\".",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope"
+      ],
+      "note": ""
+    },
+    {
+      "reqId": "5555-Signal",
+      "annotator": "Mko",
+      "original": "<MISSING_CONDITION>\nFor all users, the App must let the user copy partial text from a message.",
+      "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user copy partial text from a message.",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope",
+        "grid"
+      ],
+      "note": ""
+    },
+    {
+      "reqId": "5555-Signal",
+      "annotator": "Rafo",
+      "original": "For all users, <MISSING_CONDITION> the App must provide an option to copy partial text from a message. ",
+      "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide an option to copy partial text from a message.",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope",
+        "typo"
+      ],
+      "note": ""
+    },
+    {
+      "reqId": "801-Signal",
+      "annotator": "Arthur",
+      "original": "For all users, <MISSING_CONDITION> the App must allow the user to mute a \"group\" for a \"specific duration\".",
+      "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow the user to mute a \"group\" for a \"specific duration\".",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope"
+      ],
+      "note": ""
+    },
+    {
+      "reqId": "801-Signal",
+      "annotator": "Mko",
+      "original": "<MISSING_CONDITION>\nFor all users, the App must let the user mute a conversation for a chosen duration",
+      "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user mute a conversation for a chosen duration.",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope",
+        "grid",
+        "typo"
+      ],
+      "note": ""
+    },
+    {
+      "reqId": "801-Signal",
+      "annotator": "Rafo",
+      "original": "For all users, <MISSING_CONDITION> the app must provide a mute for x minutes/hours feature.",
+      "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide an option to mute a group or a user for \"X minutes/hours\".",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope",
+        "word",
+        "opus"
+      ],
+      "note": "Was \"provide a mute for x minutes/hours feature\" - no object."
+    },
+    {
+      "reqId": "6069-Signal",
+      "annotator": "Arthur",
+      "original": "For all users, when there are unread messages, the App must show the unread notifications badge on the app icon",
+      "rimayText": "<MISSING_SCOPE>, when there are unread messages, then the App must show the unread notifications badge on the app icon.",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope",
+        "then",
+        "typo"
+      ],
+      "note": ""
+    },
+    {
+      "reqId": "6069-Signal",
+      "annotator": "Mko",
+      "original": "For all users, when there are unread messages, the App must show an unread badge on the app icon",
+      "rimayText": "<MISSING_SCOPE>, when there are unread messages, then the App must show an unread badge on the app icon.",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope",
+        "then",
+        "typo"
+      ],
+      "note": ""
+    },
+    {
+      "reqId": "6069-Signal",
+      "annotator": "Rafo",
+      "original": "For all users, when Signal receives new messages, then Signal must show an unread notification badge on the app icon.",
+      "rimayText": "<MISSING_SCOPE>, when Signal receives new messages, then Signal must show an unread notification badge on the app icon.",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope"
+      ],
+      "note": ""
+    },
+    {
+      "reqId": "2943-Signal",
+      "annotator": "Arthur",
+      "original": "For all users, <MISSING_CONDITION> the App must <MISSING_ACTION>.",
+      "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must <MISSING_ACTION>.",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope"
+      ],
+      "note": ""
+    },
+    {
+      "reqId": "2943-Signal",
+      "annotator": "Mko",
+      "original": "<MISSING_CONDITION>\nFor all users, the App must bring back the old text-based smileys",
+      "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must bring back the old text-based smileys.",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope",
+        "grid",
+        "typo"
+      ],
+      "note": ""
+    },
+    {
+      "reqId": "2943-Signal",
+      "annotator": "Rafo",
+      "original": "For all users, <MISSING_CONDITION> the app must provide the old text based smileys.",
+      "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide the old text-based smileys.",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope",
+        "typo"
+      ],
+      "note": ""
+    },
+    {
+      "reqId": "6077-Signal",
+      "annotator": "Arthur",
+      "original": "For all users, when sending SMS message to the 13977, to validate the account status, the App must deliver the response successfully.",
+      "rimayText": "<MISSING_SCOPE>, when the user sends an \"SMS message\" to the number \"13977\" to check the account status, then the App must deliver the \"SMS message\".",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope",
+        "word",
+        "opus"
+      ],
+      "note": "Had the App delivering \"the response\"; the requirement is delivering the SMS."
+    },
+    {
+      "reqId": "6077-Signal",
+      "annotator": "Mko",
+      "original": "For all users, if the recipient is a short number, Signal must deliver the SMS.",
+      "rimayText": "<MISSING_SCOPE>, if the recipient is a short number, then Signal must deliver the SMS.",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope",
+        "then"
+      ],
+      "note": ""
+    },
+    {
+      "reqId": "6077-Signal",
+      "annotator": "Rafo",
+      "original": "For all users, when the user sends an SMS message to the provider number 13977 the Signal must deliver the account status.",
+      "rimayText": "<MISSING_SCOPE>, when the user sends an SMS message to the provider number 13977, then Signal must deliver the SMS message.",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope",
+        "word",
+        "then"
+      ],
+      "note": "Had Signal delivering \"the account status\"."
+    },
+    {
+      "reqId": "1363-Signal",
+      "annotator": "Arthur",
+      "original": "For all users, <MISSING_CONDITION> the App must indicate in the \"conversation overview\" whether the \"last message\" is from the user or the \"conversation partner\".",
+      "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must indicate in the \"conversation overview\" whether the \"last message\" is from the user or the \"conversation partner\".",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope"
+      ],
+      "note": ""
+    },
+    {
+      "reqId": "1363-Signal",
+      "annotator": "Mko",
+      "original": "For all users, the App must show in the conversation overview whether the last message is yours or your partner's",
+      "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must show in the conversation overview whether the last message is from the user or from the conversation partner.",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope",
+        "grid",
+        "word"
+      ],
+      "note": "\"yours / your partner's\" -> third person."
+    },
+    {
+      "reqId": "1363-Signal",
+      "annotator": "Rafo",
+      "original": "For all users, <MISSING_CONDITION> the app must indicate if the last message is from the user or the conversation partner. ",
+      "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must indicate in the conversation overview whether the last message is from the user or the conversation partner.",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope",
+        "word",
+        "typo"
+      ],
+      "note": "Added the location, from the NL title."
+    },
+    {
+      "reqId": "6459-Signal",
+      "annotator": "Arthur",
+      "original": "For all users, when receiving a \"share intent\", the App must include the \"EXTRA_SUBJECT\" along with the \"EXTRA_TEXT\" in the shared message.",
+      "rimayText": "<MISSING_SCOPE>, when the App receives a \"share intent\", then the App must include the \"EXTRA_SUBJECT\" along with the \"EXTRA_TEXT\" in the shared message.",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope",
+        "word",
+        "then"
+      ],
+      "note": "Dangling \"when receiving\" had no subject."
+    },
+    {
+      "reqId": "6459-Signal",
+      "annotator": "Mko",
+      "original": "For all users, when a share intent is received, Signal must include its subject as well as its body",
+      "rimayText": "<MISSING_SCOPE>, when a share intent is received, then Signal must include its subject as well as its body.",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope",
+        "then",
+        "typo"
+      ],
+      "note": ""
+    },
+    {
+      "reqId": "6459-Signal",
+      "annotator": "Rafo",
+      "original": "For all users, when Signal receives a share Intent with an EXTRA_SUBJECT portion, then Signal must include the EXTRA_SUBJECT portion in the shared message.",
+      "rimayText": "<MISSING_SCOPE>, when Signal receives a share Intent with an EXTRA_SUBJECT portion, then Signal must include the EXTRA_SUBJECT portion in the shared message.",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope"
+      ],
+      "note": ""
+    },
+    {
+      "reqId": "6457-Signal",
+      "annotator": "Arthur",
+      "original": "For all users, <MISSING_CONDITION> the App must provide only a single way to open and close the attachment window.",
+      "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide only a single way to open and close the attachment window.",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope"
+      ],
+      "note": ""
+    },
+    {
+      "reqId": "6457-Signal",
+      "annotator": "Mko",
+      "original": "<MISSING_CONDITION>\nFor all users, the App must provide only one way to open and close the attachment window",
+      "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide only one way to open and close the attachment window.",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope",
+        "grid",
+        "typo"
+      ],
+      "note": ""
+    },
+    {
+      "reqId": "6457-Signal",
+      "annotator": "Rafo",
+      "original": "For all users, <MISSING_CONDITION> the App must provide a single way to open and close the attachment window in the conversation window.",
+      "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide a single way to open and close the attachment window in the conversation window.",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope"
+      ],
+      "note": ""
+    },
+    {
+      "reqId": "828-Signal",
+      "annotator": "Arthur",
+      "original": "For all users, <MISSING_CONDITION> the App must allow the user to remove \"participants\" from \"groups\".",
+      "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow the user to remove \"participants\" from \"groups\".",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope"
+      ],
+      "note": ""
+    },
+    {
+      "reqId": "828-Signal",
+      "annotator": "Mko",
+      "original": "<MISSING_ACTOR><MISSING_ACTION><MISSING_MODAL_VERB><MISSING_CONDITION>",
+      "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, <MISSING_ACTOR> <MISSING_MODAL_VERB> <MISSING_ACTION>.",
+      "slots": {},
+      "reasons": [
+        "grid"
+      ],
+      "note": "Placeholders were out of segment order."
+    },
+    {
+      "reqId": "828-Signal",
+      "annotator": "Rafo",
+      "original": "For all users, <MISSING_CONDITION> TextSecure must allow the user to remove participants from groups after they were added.\n ",
+      "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure must allow the user to remove participants from groups after they were added.",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope",
+        "typo"
+      ],
+      "note": ""
+    },
+    {
+      "reqId": "245-Signal",
+      "annotator": "Arthur",
+      "original": "For all users, if the user is using a \"dual SIM mobile\", then the App must indicate to which \"SIM\" the \"message\" is sent.",
+      "rimayText": "<MISSING_SCOPE>, if the user is using a \"dual SIM mobile\", then the App must indicate to which \"SIM\" the \"message\" is sent.",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope"
+      ],
+      "note": ""
+    },
+    {
+      "reqId": "245-Signal",
+      "annotator": "Mko",
+      "original": "<MISSING_ACTION><MISSING_CONDITION>",
+      "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must <MISSING_ACTION>.",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope",
+        "grid"
+      ],
+      "note": "Text brought in line with Mko's slots (actor/modal implied, action missing)."
+    },
+    {
+      "reqId": "245-Signal",
+      "annotator": "Rafo",
+      "original": "For all users, <MISSING_CONDITION> TextSecure must show which SIM a message is sent through on the dual SIM devices. ",
+      "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure must show which SIM a message is sent through on dual SIM devices.",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope",
+        "typo"
+      ],
+      "note": ""
+    },
+    {
+      "reqId": "316-Signal",
+      "annotator": "Arthur",
+      "original": "For all users, when sharing a \"calendar event\" to the \"App\", the App must attach the \"calendar event\" to the \"message\".",
+      "rimayText": "<MISSING_SCOPE>, when the user shares a \"calendar event\" to the App, then the App must attach the \"calendar event\" to the \"message\".",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope",
+        "word",
+        "then"
+      ],
+      "note": "Dangling \"when sharing\" had no subject."
+    },
+    {
+      "reqId": "316-Signal",
+      "annotator": "Mko",
+      "original": "<MISSING_CONDITION>\nFor all users, the App must let the user share calendar events through it",
+      "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user share calendar events.",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope",
+        "grid",
+        "word"
+      ],
+      "note": "Dropped the dangling \"through it\"."
+    },
+    {
+      "reqId": "316-Signal",
+      "annotator": "Rafo",
+      "original": "For all users, when the user shares a calendar event from the Android Calendar app, then TextSecure must attach the calendar event to the message.",
+      "rimayText": "<MISSING_SCOPE>, when the user shares a calendar event from the Android Calendar app, then TextSecure must attach the calendar event to the message.",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope"
+      ],
+      "note": ""
+    },
+    {
+      "reqId": "695-Signal",
+      "annotator": "Arthur",
+      "original": "For all users, when the user starts \"typing\" and \"SMS mode\" is disabled, the App must not show the \"count of letters\" .",
+      "rimayText": "<MISSING_SCOPE>, when the user starts \"typing\" and \"SMS mode\" is disabled, then the App must not show the \"count of letters\".",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope",
+        "then",
+        "typo"
+      ],
+      "note": ""
+    },
+    {
+      "reqId": "695-Signal",
+      "annotator": "Mko",
+      "original": "<MISSING_ACTION><MISSING_CONDITION><MISSING_ACTOR><MISSING_MODAL_VERB>",
+      "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, <MISSING_ACTOR> <MISSING_MODAL_VERB> <MISSING_ACTION>.",
+      "slots": {},
+      "reasons": [
+        "grid"
+      ],
+      "note": "Placeholders were out of segment order."
+    },
+    {
+      "reqId": "695-Signal",
+      "annotator": "Rafo",
+      "original": "For all users, if SMS mode is disabled and the user starts typing a message, then the App must hide the letter count.",
+      "rimayText": "<MISSING_SCOPE>, if SMS mode is disabled and the user starts typing a message, then the App must hide the letter count.",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope"
+      ],
+      "note": ""
+    },
+    {
+      "reqId": "1761-Signal",
+      "annotator": "Arthur",
+      "original": "For all users, when receiving an \"incoming SMS\" from a \"certain contract\", then the App must automatically forward the \"SMS\" to \"another contract\".",
+      "rimayText": "<MISSING_SCOPE>, when the App receives an \"incoming SMS\" from a \"certain contact\", then the App must automatically forward the \"SMS\" to \"another contact\".",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope",
+        "typo",
+        "word"
+      ],
+      "note": "\"contract\" -> \"contact\" (twice); dangling \"when receiving\"."
+    },
+    {
+      "reqId": "1761-Signal",
+      "annotator": "Mko",
+      "original": "For all users, the App must let the user automatically forward SMS from one contact to another",
+      "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user automatically forward SMS from one contact to another.",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope",
+        "grid",
+        "typo"
+      ],
+      "note": ""
+    },
+    {
+      "reqId": "1761-Signal",
+      "annotator": "Rafo",
+      "original": "For all users, when the App receives an SMS from a certain contact, then the App must automatically forward the SMS to another contact.",
+      "rimayText": "<MISSING_SCOPE>, when the App receives an SMS from a certain contact, then the App must automatically forward the SMS to another contact.",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope"
+      ],
+      "note": ""
+    },
+    {
+      "reqId": "4245-Signal",
+      "annotator": "Arthur",
+      "original": "For all users, if the user is on the \"calling screen\", then the App must show the \"full resolution contact photo\".",
+      "rimayText": "<MISSING_SCOPE>, if the user is on the \"calling screen\", then the App must show the \"full resolution contact photo\".",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope"
+      ],
+      "note": ""
+    },
+    {
+      "reqId": "4245-Signal",
+      "annotator": "Mko",
+      "original": "<MISSING_ACTION><MISSING_MODAL_VERB>",
+      "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, <MISSING_ACTOR> <MISSING_MODAL_VERB> <MISSING_ACTION>.",
+      "slots": {},
+      "reasons": [
+        "grid"
+      ],
+      "note": "Only two placeholders were written; all five slots were judged missing."
+    },
+    {
+      "reqId": "4245-Signal",
+      "annotator": "Rafo",
+      "original": "For all users, when signal is on calling screen it must show contact photo in full resolution.",
+      "rimayText": "<MISSING_SCOPE>, when Signal is on the calling screen, then Signal must show the contact photo in full resolution.",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope",
+        "then",
+        "word",
+        "typo"
+      ],
+      "note": "\"it must\" -> named actor; \"signal\" -> \"Signal\"."
+    },
+    {
+      "reqId": "5775-Signal",
+      "annotator": "Arthur",
+      "original": "For all users, <MISSING_CONDITION> the App must add further periods - up to at least one year or 13 months for \"disappearing messages\"",
+      "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must add further \"disappearing message\" periods of up to at least one year.",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope",
+        "word",
+        "opus"
+      ],
+      "note": "Was \"further periods - up to at least one year or 13 months\"."
+    },
+    {
+      "reqId": "5775-Signal",
+      "annotator": "Mko",
+      "original": "<MISSING_CONDITION>\nFor all users, the App must offer longer disappearing-message periods, up to at least one year",
+      "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must offer longer disappearing-message periods, up to at least one year.",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope",
+        "grid",
+        "typo"
+      ],
+      "note": ""
+    },
+    {
+      "reqId": "5775-Signal",
+      "annotator": "Rafo",
+      "original": "For all users, <MISSING_CONDITION> Signal must provide disappearing message periods for up to 12 months. ",
+      "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, Signal must provide disappearing message periods of up to at least 12 months.",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope",
+        "word",
+        "typo"
+      ],
+      "note": "\"for up to 12 months\" capped what the NL asks for as a minimum."
+    },
+    {
+      "reqId": "1504-Signal",
+      "annotator": "Arthur",
+      "original": "For all users, <MISSING_CONDITION> the App must <MISSING_ACTION>.",
+      "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must <MISSING_ACTION>.",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope"
+      ],
+      "note": ""
+    },
+    {
+      "reqId": "1504-Signal",
+      "annotator": "Mko",
+      "original": "<MISSING_CONDITION>\nFor all users, the App must let the user set a notification color for a contact or a group",
+      "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user set a notification color for a contact or a group.",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope",
+        "grid",
+        "typo"
+      ],
+      "note": ""
+    },
+    {
+      "reqId": "1504-Signal",
+      "annotator": "Rafo",
+      "original": "<MISSING_SCOPE><MISSING_CONDITION><MISSING_ACTOR><MISSING_MODAL_VERB><MISSING_ACTION>",
+      "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, <MISSING_ACTOR> <MISSING_MODAL_VERB> <MISSING_ACTION>.",
+      "slots": {},
+      "reasons": [
+        "typo"
+      ],
+      "note": ""
+    },
+    {
+      "reqId": "8-Mastodon",
+      "annotator": "Arthur",
+      "original": "For all users, <MISSING_CONDITION> the App must provide a way to access the \"local timeline\" and \"federated timeline\".",
+      "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide a way to access the \"local timeline\" and \"federated timeline\".",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope"
+      ],
+      "note": ""
+    },
+    {
+      "reqId": "8-Mastodon",
+      "annotator": "Mko",
+      "original": "<MISSING_CONDITION>\nFor all users, the App must let users access the local and federated timelines",
+      "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let users access the local and federated timelines.",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope",
+        "grid",
+        "typo"
+      ],
+      "note": ""
+    },
+    {
+      "reqId": "8-Mastodon",
+      "annotator": "Rafo",
+      "original": "For all users, <MISSING_CONDITION> the App must provide an access to local and federated timelines.",
+      "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide access to the local and federated timelines.",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope",
+        "typo"
+      ],
+      "note": "\"an access\" -> \"access\"."
+    },
+    {
+      "reqId": "592-Signal",
+      "annotator": "Arthur",
+      "original": "For all users, <MISSING_CONDITION> the App must <MISSING_ACTION>.",
+      "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must <MISSING_ACTION>.",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope"
+      ],
+      "note": ""
+    },
+    {
+      "reqId": "592-Signal",
+      "annotator": "Mko",
+      "original": "<MISSING_CONDITION><MISSING_ACTION>",
+      "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must <MISSING_ACTION>.",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope",
+        "grid"
+      ],
+      "note": ""
+    },
+    {
+      "reqId": "592-Signal",
+      "annotator": "Rafo",
+      "original": "For all users, <MISSING_CONDITION> the App must provide emojis. ",
+      "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide emojis.",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope",
+        "typo"
+      ],
+      "note": ""
+    },
+    {
+      "reqId": "6031-Signal",
+      "annotator": "Arthur",
+      "original": "For all users, <MISSING_CONDITION> the App must provide \"fingerprint support\" to unlock the \"app\" as an alternative to \"passphrase\".",
+      "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide \"fingerprint support\" to unlock the App as an alternative to the \"passphrase\".",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope",
+        "typo"
+      ],
+      "note": ""
+    },
+    {
+      "reqId": "6031-Signal",
+      "annotator": "Mko",
+      "original": "<MISSING_CONDITION>\nFor all users, the App must let the user unlock the app with a fingerprint instead of a passphrase",
+      "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user unlock the app with a fingerprint instead of a passphrase.",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope",
+        "grid",
+        "typo"
+      ],
+      "note": ""
+    },
+    {
+      "reqId": "6031-Signal",
+      "annotator": "Rafo",
+      "original": "For all users, <MISSING_CONDITION> the App must support fingerprint for unlocking the app. ",
+      "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must support fingerprint for unlocking the app.",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope",
+        "typo"
+      ],
+      "note": ""
+    },
+    {
+      "reqId": "496-Signal",
+      "annotator": "Arthur",
+      "original": "For all users, <MISSING_CONDITION> the App must <MISSING_ACTION>.",
+      "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must <MISSING_ACTION>.",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope"
+      ],
+      "note": ""
+    },
+    {
+      "reqId": "496-Signal",
+      "annotator": "Mko",
+      "original": "<MISSING_CONDITION><MISSING_ACTION>",
+      "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must <MISSING_ACTION>.",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope",
+        "grid"
+      ],
+      "note": ""
+    },
+    {
+      "reqId": "496-Signal",
+      "annotator": "Rafo",
+      "original": "<MISSING_SCOPE><MISSING_CONDITION><MISSING_ACTOR><MISSING_MODAL_VERB><MISSING_ACTION>",
+      "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, <MISSING_ACTOR> <MISSING_MODAL_VERB> <MISSING_ACTION>.",
+      "slots": {},
+      "reasons": [
+        "typo"
+      ],
+      "note": ""
+    },
+    {
+      "reqId": "4230-Signal",
+      "annotator": "Arthur",
+      "original": "For all users, if a \"text\" is \"oversized\", then the App must auto-split the \"text\" over \"multiple messages\".",
+      "rimayText": "<MISSING_SCOPE>, if a \"text\" is \"oversized\", then the App must auto-split the \"text\" over \"multiple messages\".",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope"
+      ],
+      "note": ""
+    },
+    {
+      "reqId": "4230-Signal",
+      "annotator": "Mko",
+      "original": "For all users, if a text is too long, the App must split it across multiple messages",
+      "rimayText": "<MISSING_SCOPE>, if a text is too long, then the App must split it across multiple messages.",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope",
+        "then",
+        "typo"
+      ],
+      "note": ""
+    },
+    {
+      "reqId": "4230-Signal",
+      "annotator": "Rafo",
+      "original": "For all users, if text is oversized, the App must split it over multiple messages.",
+      "rimayText": "<MISSING_SCOPE>, if a text is oversized, then the App must split it over multiple messages.",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope",
+        "then",
+        "typo"
+      ],
+      "note": ""
+    },
+    {
+      "reqId": "757-Signal",
+      "annotator": "Arthur",
+      "original": "For all users, <MISSING_CONDITION> the App must allow the user to change the \"notification settings\" for \"groups\" independently from the \"personal chats\".",
+      "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow the user to change the \"notification settings\" for \"groups\" independently from the \"personal chats\".",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope"
+      ],
+      "note": ""
+    },
+    {
+      "reqId": "757-Signal",
+      "annotator": "Mko",
+      "original": "<MISSING_CONDITION>\nFor all users, the App must let the user set notification settings for group chats separately from personal chats",
+      "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user set notification settings for group chats separately from personal chats.",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope",
+        "grid",
+        "typo"
+      ],
+      "note": ""
+    },
+    {
+      "reqId": "757-Signal",
+      "annotator": "Rafo",
+      "original": "For all users, <MISSING_CONDITION> the app must provide functionality to change the notification settings for groups independently from personal chats.",
+      "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide functionality to change the notification settings for groups independently from personal chats.",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope",
+        "typo"
+      ],
+      "note": ""
+    },
+    {
+      "reqId": "1283-Signal",
+      "annotator": "Arthur",
+      "original": "For all users, <MISSING_CONDITION> the App must provide \"themes\" similar to the \"GO SMS PRO\".",
+      "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide \"themes\" similar to \"GO SMS PRO\".",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope"
+      ],
+      "note": ""
+    },
+    {
+      "reqId": "1283-Signal",
+      "annotator": "Mko",
+      "original": "For all users, the App must support themes\n",
+      "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must support themes.",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope",
+        "grid",
+        "typo"
+      ],
+      "note": ""
+    },
+    {
+      "reqId": "1283-Signal",
+      "annotator": "Rafo",
+      "original": "For all users, <MISSING_CONDITION> TextSecure must have themes.",
+      "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure must support themes.",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope",
+        "word"
+      ],
+      "note": "\"have\" is an imprecise verb (a Paska smell)."
+    },
+    {
+      "reqId": "7310-Signal",
+      "annotator": "Arthur",
+      "original": "For all users, <MISSING_CONDITION> the App must support a \"custom URL scheme\" for sharing.",
+      "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must support a \"custom URL scheme\" for sharing.",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope"
+      ],
+      "note": ""
+    },
+    {
+      "reqId": "7310-Signal",
+      "annotator": "Mko",
+      "original": "<MISSING_CONDITION>\nFor all users, the App must support a \"signal://\" URL scheme.",
+      "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must support a \"signal://\" URL scheme.",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope",
+        "grid",
+        "typo"
+      ],
+      "note": ""
+    },
+    {
+      "reqId": "7310-Signal",
+      "annotator": "Rafo",
+      "original": "For all users, <MISSING_CONDITION> Signal must support a custom url scheme for opening Signal from webpages.",
+      "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, Signal must support a custom URL scheme for opening Signal from webpages.",
+      "slots": {
+        "scope": "missing"
+      },
+      "reasons": [
+        "scope"
+      ],
+      "note": ""
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+For all users, when Signal receives a new message, then the app must display the "unread notification badge" on the app icon on the home screen.

@@ -1,0 +1,1 @@
+<MISSING_SCOPE>, <MISSING_CONDITION>, the TextSecure System shall remove a "participant" from a "group".

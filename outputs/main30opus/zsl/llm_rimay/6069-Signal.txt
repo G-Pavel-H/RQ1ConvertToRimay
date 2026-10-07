@@ -1,0 +1,1 @@
+When <MISSING_CONDITION>, then the System must display the "unread notification badge" on the "app icon" on the "home screen".

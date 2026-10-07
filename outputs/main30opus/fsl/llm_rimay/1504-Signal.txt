@@ -1,0 +1,1 @@
+For all users, <MISSING_CONDITION>, the app must set a "notification color" for individual contacts or groups. <NON_ATOMIC>

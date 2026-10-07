@@ -1,0 +1,1 @@
+For all users, the app must restore the old text-based smileys.

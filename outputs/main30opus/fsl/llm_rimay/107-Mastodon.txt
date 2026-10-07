@@ -1,0 +1,1 @@
+For all users, <MISSING_CONDITION>, the app must display the "image description" for each image. <NON_ATOMIC>

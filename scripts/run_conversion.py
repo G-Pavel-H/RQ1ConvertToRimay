@@ -31,6 +31,7 @@ THIS_DIR = Path(__file__).resolve().parent
 sys.path.insert(0, str(THIS_DIR.parent))
 
 from src import config  # noqa: E402
+from src import llm_backend  # noqa: E402
 from src.gold_loader import load_gold  # noqa: E402
 from src.pipeline import run_single  # noqa: E402
 from src.prompt_builder import STRATEGIES  # noqa: E402
@@ -71,6 +72,15 @@ def parse_args(argv=None) -> argparse.Namespace:
     )
     p.add_argument("--gold", default=str(config.GOLD_CSV), help="Gold CSV path.")
     p.add_argument(
+        "--backend",
+        choices=["api", "subscription"],
+        default=None,
+        help="Where to send LLM calls: 'api' (metered ANTHROPIC_API_KEY) or "
+             "'subscription' (the local claude CLI, billed to your Claude "
+             f"account). Default: {config.DEFAULT_LLM_BACKEND}. Note the "
+             "subscription backend cannot set temperature.",
+    )
+    p.add_argument(
         "--run-name",
         required=True,
         help="Output folder under outputs/, e.g. run2/zsl. Chosen by you — "
@@ -87,6 +97,7 @@ def main(argv=None) -> int:
         temperature=args.temperature,
         max_tokens=args.max_tokens,
         n_fsl_examples=args.n_fsl_examples,
+        backend=llm_backend.resolve_backend(args.backend),
     )
 
     config.ensure_output_dirs()
@@ -145,6 +156,7 @@ def main(argv=None) -> int:
         "max_tokens": args.max_tokens,
         "n_fsl_examples": args.n_fsl_examples if args.strategy == "fsl" else None,
         "gold_csv": str(Path(args.gold)),
+        "backend": run_cfg.backend,
         "created_at": datetime.now().astimezone().isoformat(timespec="seconds"),
         "n_processed": processed,
         "n_skipped": skipped,

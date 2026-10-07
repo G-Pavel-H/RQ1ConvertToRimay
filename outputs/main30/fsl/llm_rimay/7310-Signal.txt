@@ -1,0 +1,1 @@
+For all websites, the app must support a custom URL scheme "signal://" to enable share buttons that point to the Signal app.
