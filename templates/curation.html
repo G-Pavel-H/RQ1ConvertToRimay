@@ -333,10 +333,44 @@ function simTable(before, after) {
     ${rows.map(([label, k]) => `<tr><td>${label}</td>${before ? `<td>${k3(cell(before, k))}</td>` : ""}<td><b>${k3(cell(after, k))}</b></td>${before ? `<td>${delta(cell(before, k), cell(after, k))}</td>` : ""}</tr>`).join("")}
     <tr><td class="hint">pairs</td>${before ? `<td class="hint">${before.nPairs}</td>` : ""}<td class="hint">${after.nPairs}</td>${before ? "<td></td>" : ""}</tr></table>`;
 }
+// One exported group (atomic or split), computed two ways: over the units the
+// annotators wrote themselves, and over every unit as it is exported.
+function groupCard(title, file, human, all) {
+  if (!human || !all) return `<div class="card"><p class="label">${esc(title)}</p><p class="hint">Not computed yet — press Recompute.</p></div>`;
+  const fh = Object.fromEntries(human.fields.map(f => [f.field, f]));
+  const rows = all.fields.map(f => { const h = fh[f.field]; return `<tr><td>${esc(f.field)}</td>
+      <td><b>${k3(h.kappa)}</b></td><td>${k3(h.cohenMean)}</td><td>${pct(h.unanimous)}</td><td class="hint">${h.nSubjects}</td>
+      <td style="border-left:1px solid var(--line)">${k3(f.kappa)}</td><td>${k3(f.cohenMean)}</td><td>${pct(f.unanimous)}</td><td class="hint">${f.nSubjects}</td></tr>`; }).join("");
+  const sim = [["cosine (semantic)", "cosine"], ["seq_ratio (lexical)", "seq_ratio"], ["jaccard (lexical)", "jaccard"]]
+    .map(([label, k]) => `<tr><td>${label}</td><td><b>${k3(human.similarity[k] ? human.similarity[k].mean : null)}</b></td>
+      <td>${k3(all.similarity[k] ? all.similarity[k].mean : null)}</td></tr>`).join("");
+  const nH = Math.max(0, ...human.fields.map(f => f.nSubjects));
+  const other = all.nUnits - human.nUnits;
+  const warn = nH < 10
+    ? `<p class="flag" style="background:var(--warn-soft);border-radius:6px;padding:8px 10px;margin:0 0 10px">
+        Only <b>${nH}</b> unit${nH === 1 ? " has" : "s have"} two or more annotators who wrote ${nH === 1 ? "it" : "them"} — too few for the
+        annotator-authored κ to mean anything.</p>` : "";
+  return `<div class="card"><p class="label">${esc(title)}</p>
+    <p class="hint" style="margin:0 0 10px">${all.nRequirements} requirements · ${all.nSubjects} unit${all.nSubjects === 1 ? "" : "s"} per annotator ·
+      exported as <code>${esc(file)}</code> · ${other} of ${all.nUnits} annotator-units are not annotator-authored (CL or added by you).</p>
+    ${warn}
+    <div style="overflow-x:auto"><table>
+      <tr><th></th><th colspan="4">Annotator-authored units only</th><th colspan="4" style="border-left:1px solid var(--line)">All units as exported</th></tr>
+      <tr><th>Field</th><th>Fleiss</th><th>Cohen</th><th>Unan.</th><th>n</th>
+        <th style="border-left:1px solid var(--line)">Fleiss</th><th>Cohen</th><th>Unan.</th><th>n</th></tr>
+      ${rows}</table></div>
+    <div style="margin-top:12px"><table>
+      <tr><th>Annotator~annotator similarity</th><th>Annotator-authored</th><th>All exported</th></tr>${sim}
+      <tr><td class="hint">pairs</td><td class="hint">${human.similarity.nPairs}</td><td class="hint">${all.similarity.nPairs}</td></tr></table></div>
+    <p class="hint">"All units as exported" includes units that are identical across the three annotators, which raises agreement
+      without the annotators having agreed. Read the left side as the human agreement; the right side describes the exported file.</p></div>`;
+}
+
 function renderAgreement() {
   const main = $("#main");
   if (!agreement) { main.innerHTML = `<div class="card">Computing…</div>`; return; }
   const [o, c, t] = ["orig30", "cur30", "cur20"].map(k => agreement.views.find(v => v.key === k));
+  const vw = k => agreement.views.find(v => v.key === k);
   const byField = v => Object.fromEntries(v.fields.map(f => [f.field, f]));
   const fo = byField(o), fc = byField(c);
   const rows30 = c.fields.map(f => {
@@ -369,7 +403,10 @@ function renderAgreement() {
         <b>n/a</b> means one category was used throughout, so κ is undefined — read the unanimous % instead
         (scope after curation is <i>missing</i> for everyone, hence n/a).</p></div>
 
-    <div class="card"><p class="label">The 20 — curated units, annotator-authored only</p>
+    ${groupCard("Atomic requirements — one unit per annotator", "gold_atomic.csv", vw("atomicHuman"), vw("atomicAll"))}
+    ${groupCard("Split requirements — per unit", "gold_units.csv", vw("splitHuman"), vw("splitAll"))}
+
+    <div class="card"><p class="label">The 20 originally flagged non-atomic — curated units, annotator-authored only</p>
       ${t20n < 10 ? `<p class="flag" style="background:var(--warn-soft);border-radius:6px;padding:8px 10px;margin:0 0 10px">
         Only <b>${t20n}</b> unit${t20n === 1 ? "" : "s"} have two or more annotators who wrote them — too few for κ to mean anything.
         The annotators mostly did not convert these requirements, so there is little human agreement to measure. Units left out: ${esc(excl)}.</p>` : ""}

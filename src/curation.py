@@ -367,6 +367,7 @@ def _view(label: str, key: str, ratings: List[dict]) -> dict:
         "label": label,
         "nRequirements": len({r["subject"].split("#")[0] for r in ratings}),
         "nSubjects": len({r["subject"] for r in ratings}),
+        "nUnits": len(ratings),
         "fields": fields,
         "similarity": {
             "nPairs": len(seq),
@@ -383,11 +384,18 @@ def agreement_report(state: dict, path: Path = AGREEMENT_PATH) -> dict:
     * the 30 originally-atomic requirements, **original** annotations;
     * the same 30, **curated** — so the two are directly comparable;
     * the 20 flagged non-atomic, curated, per unit (a subject is one aligned
-      unit), counting only annotator-authored units.
+      unit), counting only annotator-authored units;
+    * the two groups the export writes — the **atomic** requirements (one unit
+      per annotator, ``gold_atomic.csv``) and the **split** ones (several units,
+      ``gold_units.csv``). Each is computed twice: over annotator-authored units
+      only, and over every unit as exported. The second includes units that are
+      identical across annotators (provenance "claude"), which raises agreement
+      without any annotators having agreed — hence both are reported.
     """
     from src.scoring import embeddings
 
     original, curated_30, curated_20 = [], [], []
+    atomic_human, atomic_all, split_human, split_all = [], [], [], []
     excluded = Counter()
     for req in state["requirements"]:
         for ann, a in req["annotations"].items():
@@ -396,19 +404,26 @@ def agreement_report(state: dict, path: Path = AGREEMENT_PATH) -> dict:
                     "subject": req["reqId"], "annotator": ann, "text": a["original"],
                     "slots": a["originalSlots"], "conditionType": a["base"].get("conditionType", "none"),
                 })
-            multi = len(a["units"]) > 1 or not is_atomic(req)
+            atomic_now = is_atomic(req)
+            multi = len(a["units"]) > 1 or not atomic_now
             for i, u in enumerate(a["units"]):
+                row = {"subject": f"{req['reqId']}#{i + 1}" if multi else req["reqId"], "annotator": ann,
+                       "text": u["rimayText"], "slots": u["slots"], "conditionType": u.get("conditionType", "none")}
+                (atomic_all if atomic_now else split_all).append(row)
                 if u.get("provenance") not in HUMAN_PROVENANCE:
                     excluded[u.get("provenance", "?")] += 1
                     continue
-                row = {"subject": f"{req['reqId']}#{i + 1}" if multi else req["reqId"], "annotator": ann,
-                       "text": u["rimayText"], "slots": u["slots"], "conditionType": u.get("conditionType", "none")}
+                (atomic_human if atomic_now else split_human).append(row)
                 (curated_30 if req["set"] == "atomic" else curated_20).append(row)
 
     views = [
         _view("The 30 — original annotations", "orig30", original),
         _view("The 30 — curated", "cur30", curated_30),
         _view("The 20 — curated units (annotator-authored only)", "cur20", curated_20),
+        _view("Atomic — annotator-authored units", "atomicHuman", atomic_human),
+        _view("Atomic — all units as exported", "atomicAll", atomic_all),
+        _view("Split — annotator-authored units", "splitHuman", split_human),
+        _view("Split — all units as exported", "splitAll", split_all),
     ]
     embeddings.save_cache()
     out = {
