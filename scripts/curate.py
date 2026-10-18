@@ -100,6 +100,8 @@ class Handler(BaseHTTPRequestHandler):
         try:
             if self.path == "/api/export":
                 return self._json(curation.export(curation.load_state()))
+            if self.path == "/api/similarity":
+                return self._json(curation.similarity_live(self._body()["groups"]))
             if self.path == "/api/agreement":
                 return self._json(curation.agreement_report(curation.load_state()))
             if self.path == "/api/paska":

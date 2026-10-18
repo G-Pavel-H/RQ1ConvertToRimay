@@ -19,13 +19,14 @@ from __future__ import annotations
 import csv
 import hashlib
 import json
+import statistics
 import os
 import tempfile
 import uuid
 from collections import Counter, OrderedDict
 from datetime import datetime
 from pathlib import Path
-from typing import Dict, List, Optional
+from typing import Dict, List, Optional, Sequence
 
 from src import config
 
@@ -331,7 +332,6 @@ def _view(label: str, key: str, ratings: List[dict]) -> dict:
     slots, conditionType.
     """
     from src.agreement import analyze
-    from src.scoring.conversion_quality import _distribution, similarity_pair
 
     def subjects(value_of) -> Dict[str, Dict[str, str]]:
         out: Dict[str, Dict[str, str]] = {}
@@ -347,21 +347,7 @@ def _view(label: str, key: str, ratings: List[dict]) -> dict:
     fields.append({"field": "conditionType", "group": "extra",
                    **analyze(subjects(lambda r: (r.get("conditionType") or "none").lower()), CONDITION_TYPES)})
 
-    # Human~human conversion similarity: every pair of annotators on a subject.
-    by_subject: Dict[str, List[str]] = {}
-    for r in ratings:
-        if (r["text"] or "").strip():
-            by_subject.setdefault(r["subject"], []).append(r["text"])
-    seq, jac, cos = [], [], []
-    for texts in by_subject.values():
-        for i in range(len(texts)):
-            for j in range(i + 1, len(texts)):
-                p = similarity_pair(texts[i], texts[j])
-                seq.append(p["seq_ratio"])
-                jac.append(p["jaccard"])
-                if p["cosine"] is not None:
-                    cos.append(p["cosine"])
-
+    sim = similarity_by_subject(ratings)
     return {
         "key": key,
         "label": label,
@@ -369,13 +355,68 @@ def _view(label: str, key: str, ratings: List[dict]) -> dict:
         "nSubjects": len({r["subject"] for r in ratings}),
         "nUnits": len(ratings),
         "fields": fields,
-        "similarity": {
-            "nPairs": len(seq),
-            "seq_ratio": _distribution(seq),
-            "jaccard": _distribution(jac),
-            "cosine": _distribution(cos) if cos else None,
-        },
+        "similarity": sim,
     }
+
+
+METRICS = ("cosine", "seq_ratio", "jaccard")
+
+
+def describe(values: Sequence[float]) -> Optional[dict]:
+    """Five-number summary + mean and sd — a mean alone hides skew and outliers."""
+    v = sorted(values)
+    if not v:
+        return None
+    q1, _, q3 = statistics.quantiles(v, n=4, method="inclusive") if len(v) > 1 else (v[0], v[0], v[0])
+    return {"n": len(v), "mean": statistics.fmean(v), "median": statistics.median(v),
+            "std": statistics.pstdev(v), "min": v[0], "q1": q1, "q3": q3, "max": v[-1]}
+
+
+def pairwise(texts: Dict[str, str]) -> dict:
+    """Every annotator pair on one subject; blank texts are left out."""
+    from src.scoring.conversion_quality import similarity_pair
+
+    names = [a for a in texts if (texts[a] or "").strip()]
+    pairs = [{"a": a, "b": b, **similarity_pair(texts[a], texts[b])}
+             for i, a in enumerate(names) for b in names[i + 1:]]
+    mean = {m: (statistics.fmean(vals) if (vals := [p[m] for p in pairs if p[m] is not None]) else None)
+            for m in METRICS}
+    return {"pairs": pairs, "mean": mean}
+
+
+def similarity_by_subject(ratings: List[dict]) -> dict:
+    """Human~human similarity per subject, plus its distribution three ways.
+
+    * ``pairs`` — over every annotator pair (the old mean was this one);
+    * ``subjects`` — over the per-subject means, one value per requirement/unit;
+    * ``byPair`` — per annotator pair, to see whether one annotator is the odd one out.
+    """
+    texts: Dict[str, Dict[str, str]] = {}
+    for r in ratings:
+        texts.setdefault(r["subject"], {})[r["annotator"]] = r["text"]
+    per = []
+    for subject, t in texts.items():
+        req_id, _, unit = subject.partition("#")
+        per.append({"subject": subject, "reqId": req_id, "unit": int(unit) if unit else None, **pairwise(t)})
+
+    all_pairs = [p for s in per for p in s["pairs"]]
+    out = {"nPairs": len(all_pairs), "perSubject": per, "subjects": {}, "byPair": {}}
+    for m in METRICS:
+        out[m] = describe([p[m] for p in all_pairs if p[m] is not None])
+        out["subjects"][m] = describe([s["mean"][m] for s in per if s["mean"][m] is not None])
+    for key in sorted({f"{p['a']} ↔ {p['b']}" for p in all_pairs}):
+        out["byPair"][key] = {m: describe([p[m] for p in all_pairs if f"{p['a']} ↔ {p['b']}" == key and p[m] is not None])
+                              for m in METRICS}
+    return out
+
+
+def similarity_live(groups: List[dict]) -> dict:
+    """For the requirement view: ``groups`` = [{key, texts: {annotator: text}}]."""
+    from src.scoring import embeddings
+
+    out = [{"key": g["key"], **pairwise(g["texts"])} for g in groups]
+    embeddings.save_cache()
+    return {"embedding": {"available": embeddings.available(), "model": embeddings.MODEL}, "groups": out}
 
 
 def agreement_report(state: dict, path: Path = AGREEMENT_PATH) -> dict:

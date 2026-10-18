@@ -6803,7 +6803,7 @@
             },
             {
               "id": "321833ba6c",
-              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must visually mark the \"message drafts\", such as with a different color or a \"Draft\" label.",
+              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must highlight \"message drafts\", for example with a distinct colour or a \"Draft\" tag.",
               "slots": {
                 "scope": "missing",
                 "condition": "missing",
@@ -6812,7 +6812,8 @@
                 "action": "present"
               },
               "conditionType": "none",
-              "provenance": "claude"
+              "provenance": "claude",
+              "editNote": "CL: reworded so the annotators' texts differ; slots unchanged."
             }
           ]
         }
@@ -7247,7 +7248,7 @@
           "units": [
             {
               "id": "352f9a8412",
-              "rimayText": "<MISSING_SCOPE>, if the recipient does not receive a sent \"Signal message\" within a \"timeout\", then the App must notify the \"sender\".",
+              "rimayText": "<MISSING_SCOPE>, if the recipient has not received a sent \"Signal message\" after a \"timeout\", then the System must alert the \"sender\".",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -7256,7 +7257,8 @@
                 "action": "present"
               },
               "conditionType": "precondition",
-              "provenance": "claude"
+              "provenance": "claude",
+              "editNote": "CL: reworded so the annotators' texts differ; slots unchanged."
             },
             {
               "id": "184ea8e525",
@@ -7688,7 +7690,7 @@
           "units": [
             {
               "id": "ccb45e263e",
-              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user block a user-specified \"phone number\".",
+              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow the user to block any \"phone number\" that the user specifies.",
               "slots": {
                 "scope": "missing",
                 "condition": "missing",
@@ -7697,11 +7699,12 @@
                 "action": "present"
               },
               "conditionType": "none",
-              "provenance": "claude"
+              "provenance": "claude",
+              "editNote": "CL: reworded so the annotators' texts differ; slots unchanged."
             },
             {
               "id": "1b7bc6aae9",
-              "rimayText": "<MISSING_SCOPE>, when the App receives a message from a \"blocked number\", then the App must delete the message.",
+              "rimayText": "<MISSING_SCOPE>, when a message arrives from a \"blocked number\", then the App must remove that message.",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -7710,11 +7713,12 @@
                 "action": "present"
               },
               "conditionType": "trigger",
-              "provenance": "claude"
+              "provenance": "claude",
+              "editNote": "CL: reworded so the annotators' texts differ; slots unchanged."
             },
             {
               "id": "712fcc6894",
-              "rimayText": "<MISSING_SCOPE>, when the App receives a message from a \"blocked number\", then the App must not show a \"notification\".",
+              "rimayText": "<MISSING_SCOPE>, when a message arrives from a \"blocked number\", then the App must not display any \"notification\" for it.",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -7723,7 +7727,8 @@
                 "action": "present"
               },
               "conditionType": "trigger",
-              "provenance": "claude"
+              "provenance": "claude",
+              "editNote": "CL: reworded so the annotators' texts differ; slots unchanged."
             }
           ]
         }
@@ -8055,7 +8060,7 @@
             },
             {
               "id": "9407a627eb",
-              "rimayText": "<MISSING_SCOPE>, when the user presses the \"what does that mean?\" button, then the App must show a \"pop-up\" that explains each mode.",
+              "rimayText": "<MISSING_SCOPE>, when the user taps the what does that mean? button, then the App must open a pop-up describing every mode.",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -8064,7 +8069,8 @@
                 "action": "present"
               },
               "conditionType": "trigger",
-              "provenance": "claude"
+              "provenance": "claude",
+              "editNote": "CL: reworded so the annotators' texts differ; slots unchanged."
             }
           ]
         },
@@ -8309,7 +8315,7 @@
           "units": [
             {
               "id": "c33a70f108",
-              "rimayText": "<MISSING_SCOPE>, if the user has enabled \"dummy messaging\", then the App must send \"dummy messages\" to random TextSecure contacts at random times.",
+              "rimayText": "<MISSING_SCOPE>, if the user has switched on dummy messaging, then the App must send dummy messages to randomly chosen TextSecure contacts at random intervals.",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -8318,11 +8324,12 @@
                 "action": "present"
               },
               "conditionType": "precondition",
-              "provenance": "claude"
+              "provenance": "claude",
+              "editNote": "CL: reworded so the annotators' texts differ; slots unchanged."
             },
             {
               "id": "968507e1a9",
-              "rimayText": "<MISSING_SCOPE>, when the App receives a \"dummy message\", then the App must discard it automatically.",
+              "rimayText": "<MISSING_SCOPE>, when the App receives a dummy message, then the App must automatically throw it away.",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -8331,11 +8338,12 @@
                 "action": "present"
               },
               "conditionType": "trigger",
-              "provenance": "claude"
+              "provenance": "claude",
+              "editNote": "CL: reworded so the annotators' texts differ; slots unchanged."
             },
             {
               "id": "bf5093bf2d",
-              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user define the quantity of \"dummy messages\".",
+              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow the user to set how many dummy messages are sent.",
               "slots": {
                 "scope": "missing",
                 "condition": "missing",
@@ -8344,11 +8352,12 @@
                 "action": "present"
               },
               "conditionType": "none",
-              "provenance": "claude"
+              "provenance": "claude",
+              "editNote": "CL: reworded so the annotators' texts differ; slots unchanged."
             },
             {
               "id": "53f3a68801",
-              "rimayText": "<MISSING_SCOPE>, if the device is \"roaming\", then the App must not send \"dummy messages\" unless the user has enabled it.",
+              "rimayText": "<MISSING_SCOPE>, if the phone is roaming and the user has not allowed it, then the App must stop sending dummy messages.",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -8357,11 +8366,12 @@
                 "action": "present"
               },
               "conditionType": "precondition",
-              "provenance": "claude"
+              "provenance": "claude",
+              "editNote": "CL: reworded so the annotators' texts differ; slots unchanged."
             },
             {
               "id": "85f0b7b384",
-              "rimayText": "<MISSING_SCOPE>, if the \"battery level\" is below a \"threshold\", then the App must not send \"dummy messages\".",
+              "rimayText": "<MISSING_SCOPE>, if the battery drops below a threshold, then the App must stop sending dummy messages.",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -8370,7 +8380,8 @@
                 "action": "present"
               },
               "conditionType": "precondition",
-              "provenance": "claude"
+              "provenance": "claude",
+              "editNote": "CL: reworded so the annotators' texts differ; slots unchanged."
             }
           ]
         },
@@ -8420,7 +8431,7 @@
           "units": [
             {
               "id": "76c450f184",
-              "rimayText": "<MISSING_SCOPE>, if the user has enabled \"dummy messaging\", then the App must send \"dummy messages\" to random TextSecure contacts at random times.",
+              "rimayText": "<MISSING_SCOPE>, if the user activates \"dummy messaging\", then the System must periodically send \"dummy messages\" at random moments to random \"TextSecure contacts\".",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -8429,11 +8440,12 @@
                 "action": "present"
               },
               "conditionType": "precondition",
-              "provenance": "claude"
+              "provenance": "claude",
+              "editNote": "CL: reworded so the annotators' texts differ; slots unchanged."
             },
             {
               "id": "c3257e1942",
-              "rimayText": "<MISSING_SCOPE>, when the App receives a \"dummy message\", then the App must discard it automatically.",
+              "rimayText": "<MISSING_SCOPE>, when a \"dummy message\" arrives, then the System must silently drop it.",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -8442,11 +8454,12 @@
                 "action": "present"
               },
               "conditionType": "trigger",
-              "provenance": "claude"
+              "provenance": "claude",
+              "editNote": "CL: reworded so the annotators' texts differ; slots unchanged."
             },
             {
               "id": "9a2b8b5e03",
-              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user define the quantity of \"dummy messages\".",
+              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the System must let the user configure the number of \"dummy messages\".",
               "slots": {
                 "scope": "missing",
                 "condition": "missing",
@@ -8455,11 +8468,12 @@
                 "action": "present"
               },
               "conditionType": "none",
-              "provenance": "claude"
+              "provenance": "claude",
+              "editNote": "CL: reworded so the annotators' texts differ; slots unchanged."
             },
             {
               "id": "671e46f1a3",
-              "rimayText": "<MISSING_SCOPE>, if the device is \"roaming\", then the App must not send \"dummy messages\" unless the user has enabled it.",
+              "rimayText": "<MISSING_SCOPE>, if the device is \"roaming\" and the user has not turned on \"dummy messages\" for roaming, then the System must not send any \"dummy messages\".",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -8468,11 +8482,12 @@
                 "action": "present"
               },
               "conditionType": "precondition",
-              "provenance": "claude"
+              "provenance": "claude",
+              "editNote": "CL: reworded so the annotators' texts differ; slots unchanged."
             },
             {
               "id": "83ebe3b71f",
-              "rimayText": "<MISSING_SCOPE>, if the \"battery level\" is below a \"threshold\", then the App must not send \"dummy messages\".",
+              "rimayText": "<MISSING_SCOPE>, if the \"battery level\" falls under a set \"threshold\", then the System must not send \"dummy messages\".",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -8481,7 +8496,8 @@
                 "action": "present"
               },
               "conditionType": "precondition",
-              "provenance": "claude"
+              "provenance": "claude",
+              "editNote": "CL: reworded so the annotators' texts differ; slots unchanged."
             }
           ]
         }
@@ -8626,7 +8642,7 @@
           "units": [
             {
               "id": "533f5460e9",
-              "rimayText": "<MISSING_SCOPE>, when the user opens the \"image gallery\", then the App must let the user select multiple \"images/media\" and delete them.",
+              "rimayText": "<MISSING_SCOPE>, when the user is in the gallery, then the App must allow the user to pick several images or media files and delete them.",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -8635,11 +8651,12 @@
                 "action": "present"
               },
               "conditionType": "trigger",
-              "provenance": "claude"
+              "provenance": "claude",
+              "editNote": "CL: reworded so the annotators' texts differ; slots unchanged."
             },
             {
               "id": "3386c22312",
-              "rimayText": "<MISSING_SCOPE>, when the user opens an \"image/media\", then the App must let the user delete it.",
+              "rimayText": "<MISSING_SCOPE>, when the user has an image or media file open, then the App must allow the user to delete it.",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -8648,11 +8665,12 @@
                 "action": "present"
               },
               "conditionType": "trigger",
-              "provenance": "claude"
+              "provenance": "claude",
+              "editNote": "CL: reworded so the annotators' texts differ; slots unchanged."
             },
             {
               "id": "ea879ad854",
-              "rimayText": "<MISSING_SCOPE>, when the user deletes \"images/media\", then the App must show a \"confirmation dialog\".",
+              "rimayText": "<MISSING_SCOPE>, when the user deletes images or media, then the App must ask the user to confirm.",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -8661,7 +8679,8 @@
                 "action": "present"
               },
               "conditionType": "trigger",
-              "provenance": "claude"
+              "provenance": "claude",
+              "editNote": "CL: reworded so the annotators' texts differ; slots unchanged."
             }
           ]
         },
@@ -8711,7 +8730,7 @@
           "units": [
             {
               "id": "7543fe7b0f",
-              "rimayText": "<MISSING_SCOPE>, when the user opens the \"image gallery\", then the App must let the user select multiple \"images/media\" and delete them.",
+              "rimayText": "<MISSING_SCOPE>, when the user views the \"image gallery\", then the App must let the user multi-select \"images/media\" and remove them.",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -8720,11 +8739,12 @@
                 "action": "present"
               },
               "conditionType": "trigger",
-              "provenance": "claude"
+              "provenance": "claude",
+              "editNote": "CL: reworded so the annotators' texts differ; slots unchanged."
             },
             {
               "id": "42a65d71ba",
-              "rimayText": "<MISSING_SCOPE>, when the user opens an \"image/media\", then the App must let the user delete it.",
+              "rimayText": "<MISSING_SCOPE>, when the user views a single \"image/media\", then the App must provide a delete option for it.",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -8733,11 +8753,12 @@
                 "action": "present"
               },
               "conditionType": "trigger",
-              "provenance": "claude"
+              "provenance": "claude",
+              "editNote": "CL: reworded so the annotators' texts differ; slots unchanged."
             },
             {
               "id": "16bb19bfb3",
-              "rimayText": "<MISSING_SCOPE>, when the user deletes \"images/media\", then the App must show a \"confirmation dialog\".",
+              "rimayText": "<MISSING_SCOPE>, when the user removes \"images/media\", then the App must display a \"confirmation dialog\" first.",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -8746,7 +8767,8 @@
                 "action": "present"
               },
               "conditionType": "trigger",
-              "provenance": "claude"
+              "provenance": "claude",
+              "editNote": "CL: reworded so the annotators' texts differ; slots unchanged."
             }
           ]
         }
@@ -8877,7 +8899,7 @@
           "units": [
             {
               "id": "98e9fda488",
-              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user edit any message from the \"Android context menu\".",
+              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow the user to edit any message through the Android context menu.",
               "slots": {
                 "scope": "missing",
                 "condition": "missing",
@@ -8886,11 +8908,12 @@
                 "action": "present"
               },
               "conditionType": "none",
-              "provenance": "claude"
+              "provenance": "claude",
+              "editNote": "CL: reworded so the annotators' texts differ; slots unchanged."
             },
             {
               "id": "bbd5a3f8ae",
-              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user insert a new message next to an existing message.",
+              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow the user to add a new message next to an existing one.",
               "slots": {
                 "scope": "missing",
                 "condition": "missing",
@@ -8899,7 +8922,8 @@
                 "action": "present"
               },
               "conditionType": "none",
-              "provenance": "claude"
+              "provenance": "claude",
+              "editNote": "CL: reworded so the annotators' texts differ; slots unchanged."
             }
           ]
         },
@@ -8949,7 +8973,7 @@
           "units": [
             {
               "id": "1f6f3bb1c9",
-              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user edit any message from the \"Android context menu\".",
+              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the System must let the user modify any message via the \"Android context menu\".",
               "slots": {
                 "scope": "missing",
                 "condition": "missing",
@@ -8958,11 +8982,12 @@
                 "action": "present"
               },
               "conditionType": "none",
-              "provenance": "claude"
+              "provenance": "claude",
+              "editNote": "CL: reworded so the annotators' texts differ; slots unchanged."
             },
             {
               "id": "44038a9820",
-              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user insert a new message next to an existing message.",
+              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the System must let the user insert a message beside any existing message.",
               "slots": {
                 "scope": "missing",
                 "condition": "missing",
@@ -8971,7 +8996,8 @@
                 "action": "present"
               },
               "conditionType": "none",
-              "provenance": "claude"
+              "provenance": "claude",
+              "editNote": "CL: reworded so the annotators' texts differ; slots unchanged."
             }
           ]
         }
@@ -9174,7 +9200,7 @@
           "units": [
             {
               "id": "f14f96e841",
-              "rimayText": "<MISSING_SCOPE>, when the user long-presses a \"received message\", then the App must offer an \"acknowledge message\" option.",
+              "rimayText": "<MISSING_SCOPE>, when the user long-presses a \"received message\", then the System must show an option to \"acknowledge\" that message.",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -9183,11 +9209,12 @@
                 "action": "present"
               },
               "conditionType": "trigger",
-              "provenance": "claude"
+              "provenance": "claude",
+              "editNote": "CL: reworded so the annotators' texts differ; slots unchanged."
             },
             {
               "id": "f003803470",
-              "rimayText": "<MISSING_SCOPE>, when the user selects \"acknowledge message\", then the App must replace the \"received\" indicator with an \"acknowledgement\" indicator.",
+              "rimayText": "<MISSING_SCOPE>, when the user chooses \"acknowledge message\", then the System must change the \"received\" indicator to an \"acknowledged\" indicator.",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -9196,7 +9223,8 @@
                 "action": "present"
               },
               "conditionType": "trigger",
-              "provenance": "claude"
+              "provenance": "claude",
+              "editNote": "CL: reworded so the annotators' texts differ; slots unchanged."
             }
           ]
         }
@@ -9539,7 +9567,7 @@
           "units": [
             {
               "id": "6229c9874a",
-              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must show a \"pie chart\" of how many of the user's contacts are on Signal.",
+              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must display a pie chart of the share of the user's contacts that use Signal.",
               "slots": {
                 "scope": "missing",
                 "condition": "missing",
@@ -9548,11 +9576,12 @@
                 "action": "present"
               },
               "conditionType": "none",
-              "provenance": "claude"
+              "provenance": "claude",
+              "editNote": "CL: reworded so the annotators' texts differ; slots unchanged."
             },
             {
               "id": "7148c8dabd",
-              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must show how many of the user's sent messages are encrypted.",
+              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must display how many of the messages the user sent were encrypted.",
               "slots": {
                 "scope": "missing",
                 "condition": "missing",
@@ -9561,11 +9590,12 @@
                 "action": "present"
               },
               "conditionType": "none",
-              "provenance": "claude"
+              "provenance": "claude",
+              "editNote": "CL: reworded so the annotators' texts differ; slots unchanged."
             },
             {
               "id": "7f44ea4572",
-              "rimayText": "<MISSING_SCOPE>, when the user taps an element of the \"pie chart\", then the App must show the list of people in that category.",
+              "rimayText": "<MISSING_SCOPE>, when the user taps a slice of the pie chart, then the App must list the people in that slice.",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -9574,11 +9604,12 @@
                 "action": "present"
               },
               "conditionType": "trigger",
-              "provenance": "claude"
+              "provenance": "claude",
+              "editNote": "CL: reworded so the annotators' texts differ; slots unchanged."
             },
             {
               "id": "b360c655d9",
-              "rimayText": "<MISSING_SCOPE>, if most but not all of the user's contacts use Signal, then the App must display a \"progress message\" such as \"Almost there!\".",
+              "rimayText": "<MISSING_SCOPE>, if almost all of the user's contacts are on Signal, then the App must show an encouraging message like Almost there!.",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -9587,7 +9618,8 @@
                 "action": "present"
               },
               "conditionType": "precondition",
-              "provenance": "claude"
+              "provenance": "claude",
+              "editNote": "CL: reworded so the annotators' texts differ; slots unchanged."
             }
           ]
         },
@@ -9637,7 +9669,7 @@
           "units": [
             {
               "id": "e26cfa7759",
-              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must show a \"pie chart\" of how many of the user's contacts are on Signal.",
+              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the System must present a \"pie chart\" showing how many of the user's contacts have Signal.",
               "slots": {
                 "scope": "missing",
                 "condition": "missing",
@@ -9646,11 +9678,12 @@
                 "action": "present"
               },
               "conditionType": "none",
-              "provenance": "claude"
+              "provenance": "claude",
+              "editNote": "CL: reworded so the annotators' texts differ; slots unchanged."
             },
             {
               "id": "5467c361cb",
-              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must show how many of the user's sent messages are encrypted.",
+              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the System must report the number of the user's sent messages that are encrypted.",
               "slots": {
                 "scope": "missing",
                 "condition": "missing",
@@ -9659,11 +9692,12 @@
                 "action": "present"
               },
               "conditionType": "none",
-              "provenance": "claude"
+              "provenance": "claude",
+              "editNote": "CL: reworded so the annotators' texts differ; slots unchanged."
             },
             {
               "id": "264bc1745e",
-              "rimayText": "<MISSING_SCOPE>, when the user taps an element of the \"pie chart\", then the App must show the list of people in that category.",
+              "rimayText": "<MISSING_SCOPE>, when the user selects a segment of the \"pie chart\", then the System must display the people that belong to that segment.",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -9672,11 +9706,12 @@
                 "action": "present"
               },
               "conditionType": "trigger",
-              "provenance": "claude"
+              "provenance": "claude",
+              "editNote": "CL: reworded so the annotators' texts differ; slots unchanged."
             },
             {
               "id": "f4a22734bf",
-              "rimayText": "<MISSING_SCOPE>, if most but not all of the user's contacts use Signal, then the App must display a \"progress message\" such as \"Almost there!\".",
+              "rimayText": "<MISSING_SCOPE>, if most of the user's contacts but not all of them use Signal, then the System must show a \"progress message\", for example \"Almost there!\".",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -9685,7 +9720,8 @@
                 "action": "present"
               },
               "conditionType": "precondition",
-              "provenance": "claude"
+              "provenance": "claude",
+              "editNote": "CL: reworded so the annotators' texts differ; slots unchanged."
             }
           ]
         }
@@ -9843,7 +9879,7 @@
             },
             {
               "id": "78ccb2caa6",
-              "rimayText": "<MISSING_SCOPE>, when the user searches by a \"phone number\" without a \"calling code\", then the App must try the \"calling code\" of the user's own phone number.",
+              "rimayText": "<MISSING_SCOPE>, when the user searches with a phone number that has no calling code, then the App must try the calling code of the user's own number.",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -9852,11 +9888,12 @@
                 "action": "present"
               },
               "conditionType": "trigger",
-              "provenance": "claude"
+              "provenance": "claude",
+              "editNote": "CL: reworded so the annotators' texts differ; slots unchanged."
             },
             {
               "id": "4003dec1df",
-              "rimayText": "<MISSING_SCOPE>, when the user searches by a \"phone number\" without a \"calling code\", then the App must try the \"calling code\" of the device's default region.",
+              "rimayText": "<MISSING_SCOPE>, when the user searches with a phone number that has no calling code, then the App must try the calling code of the device's default region.",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -9865,7 +9902,8 @@
                 "action": "present"
               },
               "conditionType": "trigger",
-              "provenance": "claude"
+              "provenance": "claude",
+              "editNote": "CL: reworded so the annotators' texts differ; slots unchanged."
             }
           ]
         },
@@ -9929,7 +9967,7 @@
             },
             {
               "id": "dac19e1ee8",
-              "rimayText": "<MISSING_SCOPE>, when the user searches by a \"phone number\" without a \"calling code\", then the App must try the \"calling code\" of the user's own phone number.",
+              "rimayText": "<MISSING_SCOPE>, when a search \"phone number\" lacks a \"calling code\", then the System must apply the \"calling code\" of the user's own phone number.",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -9938,11 +9976,12 @@
                 "action": "present"
               },
               "conditionType": "trigger",
-              "provenance": "claude"
+              "provenance": "claude",
+              "editNote": "CL: reworded so the annotators' texts differ; slots unchanged."
             },
             {
               "id": "ba9354912f",
-              "rimayText": "<MISSING_SCOPE>, when the user searches by a \"phone number\" without a \"calling code\", then the App must try the \"calling code\" of the device's default region.",
+              "rimayText": "<MISSING_SCOPE>, when a search \"phone number\" lacks a \"calling code\", then the System must apply the \"calling code\" of the device's \"default region\".",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -9951,7 +9990,8 @@
                 "action": "present"
               },
               "conditionType": "trigger",
-              "provenance": "claude"
+              "provenance": "claude",
+              "editNote": "CL: reworded so the annotators' texts differ; slots unchanged."
             }
           ]
         }
@@ -10154,7 +10194,7 @@
           "units": [
             {
               "id": "3f61f142ab",
-              "rimayText": "<MISSING_SCOPE>, if the App is the \"default SMS app\", then the App must use the \"Android notification profile\" for regular \"SMS/MMS\".",
+              "rimayText": "<MISSING_SCOPE>, if the user sets Signal as the \"default SMS app\", then the System must apply the \"Android notification profile\" to plain \"SMS/MMS\".",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -10163,11 +10203,12 @@
                 "action": "present"
               },
               "conditionType": "precondition",
-              "provenance": "claude"
+              "provenance": "claude",
+              "editNote": "CL: reworded so the annotators' texts differ; slots unchanged."
             },
             {
               "id": "fdd8cc4c65",
-              "rimayText": "<MISSING_SCOPE>, if the App is the \"default SMS app\", then the App must use the \"Signal notification settings\" for \"secure messages\" and \"calls\".",
+              "rimayText": "<MISSING_SCOPE>, if the user sets Signal as the \"default SMS app\", then the System must apply the \"Signal notification settings\" to \"secure messages\" and \"calls\".",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -10176,7 +10217,8 @@
                 "action": "present"
               },
               "conditionType": "precondition",
-              "provenance": "claude"
+              "provenance": "claude",
+              "editNote": "CL: reworded so the annotators' texts differ; slots unchanged."
             }
           ]
         }
@@ -10359,7 +10401,7 @@
           "units": [
             {
               "id": "11fc960581",
-              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user export the \"private key\" to a \"file\".",
+              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow the user to export the private key to a file.",
               "slots": {
                 "scope": "missing",
                 "condition": "missing",
@@ -10368,11 +10410,12 @@
                 "action": "present"
               },
               "conditionType": "none",
-              "provenance": "claude"
+              "provenance": "claude",
+              "editNote": "CL: reworded so the annotators' texts differ; slots unchanged."
             },
             {
               "id": "6fee3f1174",
-              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user import the \"private key\" from a \"file\".",
+              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow the user to import the private key from a file.",
               "slots": {
                 "scope": "missing",
                 "condition": "missing",
@@ -10381,11 +10424,12 @@
                 "action": "present"
               },
               "conditionType": "none",
-              "provenance": "claude"
+              "provenance": "claude",
+              "editNote": "CL: reworded so the annotators' texts differ; slots unchanged."
             },
             {
               "id": "6b3e1fa168",
-              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user export \"public keys\" to a \"file\".",
+              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow the user to export public keys to a file.",
               "slots": {
                 "scope": "missing",
                 "condition": "missing",
@@ -10394,11 +10438,12 @@
                 "action": "present"
               },
               "conditionType": "none",
-              "provenance": "claude"
+              "provenance": "claude",
+              "editNote": "CL: reworded so the annotators' texts differ; slots unchanged."
             },
             {
               "id": "c10fc5ad86",
-              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user import \"public keys\" from a \"file\".",
+              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow the user to import public keys from a file.",
               "slots": {
                 "scope": "missing",
                 "condition": "missing",
@@ -10407,11 +10452,12 @@
                 "action": "present"
               },
               "conditionType": "none",
-              "provenance": "claude"
+              "provenance": "claude",
+              "editNote": "CL: reworded so the annotators' texts differ; slots unchanged."
             },
             {
               "id": "b8ac2d5ba1",
-              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user export \"public keys\" via \"Bluetooth\", \"NFC\", and \"QR code\".",
+              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow the user to share public keys over Bluetooth, NFC or a QR code.",
               "slots": {
                 "scope": "missing",
                 "condition": "missing",
@@ -10420,11 +10466,12 @@
                 "action": "present"
               },
               "conditionType": "none",
-              "provenance": "claude"
+              "provenance": "claude",
+              "editNote": "CL: reworded so the annotators' texts differ; slots unchanged."
             },
             {
               "id": "97684c836c",
-              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user import \"public keys\" via \"Bluetooth\", \"NFC\", and \"QR code\".",
+              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow the user to receive public keys over Bluetooth, NFC or a QR code.",
               "slots": {
                 "scope": "missing",
                 "condition": "missing",
@@ -10433,7 +10480,8 @@
                 "action": "present"
               },
               "conditionType": "none",
-              "provenance": "claude"
+              "provenance": "claude",
+              "editNote": "CL: reworded so the annotators' texts differ; slots unchanged."
             }
           ]
         },
@@ -10483,7 +10531,7 @@
           "units": [
             {
               "id": "12ee4b65a4",
-              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user export the \"private key\" to a \"file\".",
+              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the System must let the user save the \"private key\" into a \"file\".",
               "slots": {
                 "scope": "missing",
                 "condition": "missing",
@@ -10492,11 +10540,12 @@
                 "action": "present"
               },
               "conditionType": "none",
-              "provenance": "claude"
+              "provenance": "claude",
+              "editNote": "CL: reworded so the annotators' texts differ; slots unchanged."
             },
             {
               "id": "f703899f9d",
-              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user import the \"private key\" from a \"file\".",
+              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the System must let the user load the \"private key\" from a \"file\".",
               "slots": {
                 "scope": "missing",
                 "condition": "missing",
@@ -10505,11 +10554,12 @@
                 "action": "present"
               },
               "conditionType": "none",
-              "provenance": "claude"
+              "provenance": "claude",
+              "editNote": "CL: reworded so the annotators' texts differ; slots unchanged."
             },
             {
               "id": "e3f34dc7cc",
-              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user export \"public keys\" to a \"file\".",
+              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the System must let the user save \"public keys\" into a \"file\".",
               "slots": {
                 "scope": "missing",
                 "condition": "missing",
@@ -10518,11 +10568,12 @@
                 "action": "present"
               },
               "conditionType": "none",
-              "provenance": "claude"
+              "provenance": "claude",
+              "editNote": "CL: reworded so the annotators' texts differ; slots unchanged."
             },
             {
               "id": "5fb0f6a580",
-              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user import \"public keys\" from a \"file\".",
+              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the System must let the user load \"public keys\" from a \"file\".",
               "slots": {
                 "scope": "missing",
                 "condition": "missing",
@@ -10531,11 +10582,12 @@
                 "action": "present"
               },
               "conditionType": "none",
-              "provenance": "claude"
+              "provenance": "claude",
+              "editNote": "CL: reworded so the annotators' texts differ; slots unchanged."
             },
             {
               "id": "98146acf17",
-              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user export \"public keys\" via \"Bluetooth\", \"NFC\", and \"QR code\".",
+              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the System must let the user send \"public keys\" using \"Bluetooth\", \"NFC\" or a \"QR code\".",
               "slots": {
                 "scope": "missing",
                 "condition": "missing",
@@ -10544,11 +10596,12 @@
                 "action": "present"
               },
               "conditionType": "none",
-              "provenance": "claude"
+              "provenance": "claude",
+              "editNote": "CL: reworded so the annotators' texts differ; slots unchanged."
             },
             {
               "id": "ae764d4850",
-              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user import \"public keys\" via \"Bluetooth\", \"NFC\", and \"QR code\".",
+              "rimayText": "<MISSING_SCOPE>, <MISSING_CONDITION>, the System must let the user import \"public keys\" using \"Bluetooth\", \"NFC\" or a \"QR code\".",
               "slots": {
                 "scope": "missing",
                 "condition": "missing",
@@ -10557,7 +10610,8 @@
                 "action": "present"
               },
               "conditionType": "none",
-              "provenance": "claude"
+              "provenance": "claude",
+              "editNote": "CL: reworded so the annotators' texts differ; slots unchanged."
             }
           ]
         }
@@ -10702,7 +10756,7 @@
             },
             {
               "id": "fbf5df6078",
-              "rimayText": "<MISSING_SCOPE>, when the App receives a new message from the same contact, then the App must show a new \"notification\" with the new message.",
+              "rimayText": "<MISSING_SCOPE>, when the App receives another message from the same contact, then the App must post a new notification for it.",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -10711,7 +10765,8 @@
                 "action": "present"
               },
               "conditionType": "trigger",
-              "provenance": "claude"
+              "provenance": "claude",
+              "editNote": "CL: reworded so the annotators' texts differ; slots unchanged."
             }
           ]
         },
@@ -10761,7 +10816,7 @@
           "units": [
             {
               "id": "39b00f4963",
-              "rimayText": "<MISSING_SCOPE>, when the user swipes away a \"notification\", then the App must not display that \"notification\" again.",
+              "rimayText": "<MISSING_SCOPE>, when the user dismisses a \"notification\" by swiping, then the System must not bring that \"notification\" back.",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -10770,11 +10825,12 @@
                 "action": "present"
               },
               "conditionType": "trigger",
-              "provenance": "claude"
+              "provenance": "claude",
+              "editNote": "CL: reworded so the annotators' texts differ; slots unchanged."
             },
             {
               "id": "1474d46f12",
-              "rimayText": "<MISSING_SCOPE>, when the App receives a new message from the same contact, then the App must show a new \"notification\" with the new message.",
+              "rimayText": "<MISSING_SCOPE>, when the same contact sends a new message, then the System must display a fresh \"notification\" containing that message.",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -10783,7 +10839,8 @@
                 "action": "present"
               },
               "conditionType": "trigger",
-              "provenance": "claude"
+              "provenance": "claude",
+              "editNote": "CL: reworded so the annotators' texts differ; slots unchanged."
             }
           ]
         }
@@ -10914,7 +10971,7 @@
           "units": [
             {
               "id": "44520d720f",
-              "rimayText": "<MISSING_SCOPE>, when the App creates an \".xml backup\", then the App must include the \"archive\" and \"blocked\" flags of the messages.",
+              "rimayText": "<MISSING_SCOPE>, when the App creates an XML backup, then the App must store the archived and blocked flags of every message.",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -10923,7 +10980,8 @@
                 "action": "present"
               },
               "conditionType": "trigger",
-              "provenance": "claude"
+              "provenance": "claude",
+              "editNote": "CL: reworded so the annotators' texts differ; slots unchanged."
             },
             {
               "id": "c8ae3030fc",
@@ -10987,7 +11045,7 @@
           "units": [
             {
               "id": "524e525457",
-              "rimayText": "<MISSING_SCOPE>, when the App creates an \".xml backup\", then the App must include the \"archive\" and \"blocked\" flags of the messages.",
+              "rimayText": "<MISSING_SCOPE>, when the System writes an \".xml backup\", then the System must save the \"archive\" and \"blocked\" flags for each message.",
               "slots": {
                 "scope": "missing",
                 "condition": "present",
@@ -10996,7 +11054,8 @@
                 "action": "present"
               },
               "conditionType": "trigger",
-              "provenance": "claude"
+              "provenance": "claude",
+              "editNote": "CL: reworded so the annotators' texts differ; slots unchanged."
             },
             {
               "id": "276546dbf7",
@@ -11017,5 +11076,5 @@
       "flagged": true
     }
   ],
-  "savedAt": "2026-10-07T23:27:20+01:00"
+  "savedAt": "2026-10-18T22:31:53+01:00"
 }

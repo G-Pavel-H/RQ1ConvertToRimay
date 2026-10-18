@@ -24,6 +24,7 @@ from __future__ import annotations
 import hashlib
 import json
 import os
+import time
 import urllib.error
 import urllib.request
 from pathlib import Path
@@ -34,6 +35,9 @@ from src import config
 MODEL = os.environ.get("RIMAY_EMBED_MODEL", "all-minilm")
 ENDPOINT = os.environ.get("RIMAY_EMBED_URL", "http://localhost:11434/api/embeddings")
 TIMEOUT_S = 60
+# After a failure, skip the service for this long, then try again (a long-running
+# server — the curation tool — recovers once Ollama is started).
+RETRY_S = 30
 
 # Texts repeat constantly — each annotator conversion is compared against the
 # LLM's and against every other annotator's — so embedding is memoised in
@@ -42,7 +46,7 @@ _CACHE_PATH = config.OUTPUTS_DIR / "_embeddings" / f"{MODEL.replace(':', '_')}.j
 _memory: Dict[str, List[float]] = {}
 _disk_loaded = False
 _disk_dirty = False
-_unavailable = False  # set once Ollama has proven unreachable; stops retry storms
+_unavailable_until = 0.0  # set when Ollama proved unreachable; stops retry storms
 
 
 def _key(text: str) -> str:
@@ -74,14 +78,14 @@ def save_cache() -> None:
 
 
 def available() -> bool:
-    """Whether the embedding service answered at least once this session."""
-    return not _unavailable
+    """False while the service is in its back-off after failing."""
+    return time.time() >= _unavailable_until
 
 
 def embed(text: str) -> Optional[List[float]]:
     """Embed one string, or ``None`` when the service is unreachable."""
-    global _disk_dirty, _unavailable
-    if _unavailable:
+    global _disk_dirty, _unavailable_until
+    if not available():
         return None
     text = (text or "").strip()
     if not text:
@@ -103,11 +107,11 @@ def embed(text: str) -> Optional[List[float]]:
     except (urllib.error.URLError, OSError, ValueError, TimeoutError):
         # One failure is taken as "the service is not there" for this run: the
         # alternative is a multi-second timeout on every one of ~200 pairs.
-        _unavailable = True
+        _unavailable_until = time.time() + RETRY_S
         return None
 
     if not vector:
-        _unavailable = True
+        _unavailable_until = time.time() + RETRY_S
         return None
 
     _memory[key] = vector
