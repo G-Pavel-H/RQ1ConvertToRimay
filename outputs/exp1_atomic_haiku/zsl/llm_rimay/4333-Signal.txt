@@ -1,0 +1,1 @@
+For the Android system, when a sharing action is initiated, the system shall send a "target" to ChooserTargetService by using the "direct sharing API".

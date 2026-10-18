@@ -1,0 +1,1 @@
+For the user, the system shall provide the ability to change the notification settings for group chats independently from personal chats.

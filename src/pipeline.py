@@ -242,3 +242,90 @@ def run_single(
         "input_tokens": llm.input_tokens,
         "output_tokens": llm.output_tokens,
     }
+
+
+def run_single_units(
+    req_id: str,
+    nl_text: str,
+    n_units: int,
+    *,
+    run_cfg: config.RunConfig,
+    run_paths: config.RunPaths,
+) -> dict:
+    """The units task: convert one non-atomic requirement into ``n_units`` Rimay.
+
+    The prompt states the number of units. Each returned line is one unit and
+    gets the same treatment as an atomic conversion — placeholder-derived slots
+    and its own Paska verdict (all units go to Paska in one batch).
+    """
+    config.ensure_output_dirs()
+    run_paths.ensure()
+    label = f"units-{run_cfg.strategy}"
+
+    with tracking.start_run(strategy=label, req_id=req_id, model_name=run_cfg.model,
+                            output_run_id=run_paths.run_id):
+        params = {"temperature": run_cfg.temperature, "max_tokens": run_cfg.max_tokens, "n_units": n_units}
+        if run_cfg.strategy == "fsl":
+            params["n_fsl_examples"] = run_cfg.n_fsl_examples
+        tracking.log_params(params)
+
+        llm: LLMResponse = convert(nl_text, run_cfg=run_cfg, n_units=n_units)
+        _persist_rimay(req_id, run_paths.llm_rimay_dir, llm.rimay)
+        texts = llm.units or []
+
+        stripped = [strip_missing_placeholders(t) for t in texts]
+        ids = [f"{req_id}_u{i + 1}" for i in range(len(texts))]
+        paska_error = None
+        results = {}
+        if texts:
+            try:
+                results = run_paska(list(zip(ids, stripped)), source="rimay")
+            except Exception as exc:  # noqa: BLE001 — infra failures shouldn't drop the row
+                paska_error = f"{type(exc).__name__}: {exc}"
+
+        units = []
+        for i, (text, st, uid) in enumerate(zip(texts, stripped, ids), start=1):
+            res = results.get(uid)
+            smells = extract_smells(res) if res is not None else []
+            units.append({
+                "unit": i,
+                "rimay": text,
+                "rimay_stripped": st,
+                "llm_slots": derive_llm_slots(text),
+                "is_non_atomic": _is_non_atomic(text),
+                "paska_passed": (len(smells) == 0) if res is not None else None,
+                "paska_smells": smells,
+            })
+
+        tracking.log_text_artifact(nl_text, "nl_text.txt")
+        tracking.log_text_artifact(llm.rimay, "rimay.txt")
+        if llm.raw != llm.rimay:
+            tracking.log_text_artifact(llm.raw, "rimay_raw.txt")
+        tracking.log_text_artifact(llm.prompt.system, "prompt_system.md")
+        tracking.log_text_artifact(llm.prompt.user, "prompt_user.md")
+        tracking.log_json_artifact({"req_id": req_id, "units": units, "error": paska_error}, "paska.json")
+        metrics = {"n_units_expected": n_units, "n_units_returned": len(units), "latency_ms": llm.latency_ms}
+        if llm.input_tokens is not None:
+            metrics["input_tokens"] = llm.input_tokens
+        if llm.output_tokens is not None:
+            metrics["output_tokens"] = llm.output_tokens
+        tracking.log_metrics(metrics)
+        if llm.stop_reason:
+            mlflow.set_tag("llm_stop_reason", llm.stop_reason)
+
+    return {
+        "reqId": req_id,
+        "strategy": run_cfg.strategy,
+        "task": "units",
+        "n_units_expected": n_units,
+        "n_units_returned": len(units),
+        "units": units,
+        "rimay": llm.rimay,
+        "raw": llm.raw,
+        "paska_error": paska_error,
+        "model": llm.model,
+        "stop_reason": llm.stop_reason,
+        "latency_ms": llm.latency_ms,
+        "input_tokens": llm.input_tokens,
+        "output_tokens": llm.output_tokens,
+    }

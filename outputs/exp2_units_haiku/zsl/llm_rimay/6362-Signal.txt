@@ -1,0 +1,11 @@
+I'll analyze this non-atomic natural language requirement and convert it into 4 atomic Rimay requirements, one for each system response.
+Let me identify the 4 distinct system responses in the NL:
+Signal should show a pie chart indicating how many contacts are on Signal
+Signal should show a pie chart indicating how many messages are encrypted
+Tapping a pie chart element should show a list of people in that category
+Signal should display gamification messages (e.g., "Almost there! __") when most contacts use Signal
+Now I'll convert each into Rimay format:
+For <MISSING_SCOPE>the Signal application shall display a pie chart indicating the number of contacts using Signal.
+For <MISSING_SCOPE>the Signal application shall display a pie chart indicating the number of messages that are encrypted.
+For <MISSING_SCOPE>when a user taps an element of the pie chart, the Signal application shall display a list of people in that category.
+For <MISSING_SCOPE>when most but not all contacts are using Signal, the Signal application shall display a gamification message indicating progress toward full Signal adoption.

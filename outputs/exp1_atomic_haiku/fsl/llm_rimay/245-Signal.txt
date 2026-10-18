@@ -1,0 +1,1 @@
+For each SIM, when the user sends a message, then the app must display which SIM the message was sent to.

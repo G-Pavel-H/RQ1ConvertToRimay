@@ -1,0 +1,1 @@
+For each conversation, when messages are transported via SMS or Google Cloud Messaging, then the system must sort messages by "sent" timestamp to ensure consistent message order across chat participants.

@@ -1,0 +1,7 @@
+I'll convert this non-atomic requirement into exactly 2 atomic Rimay requirements, one for each system response.
+Let me identify the system responses in the NL:
+Response 1**: User long-presses a received message → System displays an "acknowledge message" option
+Response 2**: User selects "acknowledge message" → System replaces the "received"/"seen" indicator with an acknowledgement indicator
+Now I'll convert each into Rimay format:
+When the User long-presses a received message, the System shall display an "acknowledge message" option.
+When the User selects the "acknowledge message" option, the System shall replace the "received" or "seen" indicator with an acknowledgement indicator for that message.

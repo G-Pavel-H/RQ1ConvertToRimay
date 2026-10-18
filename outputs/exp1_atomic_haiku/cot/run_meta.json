@@ -1,0 +1,15 @@
+{
+  "run_id": "exp1_atomic_haiku/cot",
+  "strategy": "cot",
+  "task": "atomic",
+  "model": "claude-haiku-4-5-20251001",
+  "temperature": 0.0,
+  "max_tokens": 1024,
+  "n_fsl_examples": null,
+  "gold_csv": "data/curated/gold_atomic.csv",
+  "backend": "subscription",
+  "created_at": "2026-10-18T23:22:21+01:00",
+  "n_processed": 35,
+  "n_skipped": 0,
+  "skipped_ids": []
+}

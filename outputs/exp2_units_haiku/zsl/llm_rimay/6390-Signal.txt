@@ -1,0 +1,7 @@
+I'll analyze this non-atomic requirement and convert it into exactly 2 atomic Rimay requirements, one per system response.
+The NL describes two distinct system responses:
+Response 1**: After a timeout, the system should trigger/send a "lack of delivery" notification to the sender
+Response 2**: The notification should offer the user the option to resend via insecure SMS
+Let me convert these to Rimay format:
+When a Signal message has been sent to the server but not delivered to the recipient after a timeout period, the System must send a "lack of delivery" notification to the sender's phone.
+When a "lack of delivery" notification is triggered, the System must present the sender with an option to resend the message via insecure SMS.

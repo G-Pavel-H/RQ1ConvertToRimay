@@ -108,7 +108,11 @@ def load_gold(csv_path: Optional[Path] = None) -> Dict[str, GoldRecord]:
     df = pd.read_csv(path, dtype=str, keep_default_na=False)
     if "reqId" not in df.columns:
         raise ValueError(f"{path} has no 'reqId' column; got {list(df.columns)}")
+    return records_from_frame(df)
 
+
+def records_from_frame(df: pd.DataFrame) -> Dict[str, GoldRecord]:
+    """``load_gold`` on an already-read frame (the units loader re-keys rows first)."""
     records: Dict[str, GoldRecord] = {}
     # Preserve first-seen order of requirements.
     for req_id, group in df.groupby("reqId", sort=False):

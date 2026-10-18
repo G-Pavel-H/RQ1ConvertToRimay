@@ -1,0 +1,1 @@
+For each share intent received from another app, when the intent contains an EXTRA_SUBJECT, then Signal must include the EXTRA_SUBJECT in the shared content. <NON_ATOMIC>

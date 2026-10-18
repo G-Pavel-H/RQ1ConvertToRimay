@@ -1,0 +1,9 @@
+I'll analyze this non-atomic requirement with 3 system responses and convert each into an atomic Rimay requirement.
+Let me identify the 3 distinct system responses:
+Users with US phone numbers searching for US numbers by various formats
+Users searching for non-US phone numbers by various formats
+System trying calling codes for both user's country and device default region
+Here are the 3 atomic Rimay requirements:
+When a user has a US phone number, the System shall enable search for another US phone number by entering the full number, the number without the country code, or the number without the country code and leading zero.
+When a user searches for a non-US phone number, the System shall enable search by entering the full number with country code or the country code with the remaining digits.
+When a user searches for a contact, the System shall try prepending the calling code corresponding to the current user's phone number and the calling code corresponding to the default region for the current device.

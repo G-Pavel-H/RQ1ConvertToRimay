@@ -1,0 +1,20 @@
+I need to analyze this natural language requirement and extract exactly 5 atomic system responses, then convert each into a Rimay requirement.
+Let me identify the 5 system responses in the NL:
+TextSecure could mask communication** by sending dummy random messages to random recipients at random times
+Randomness should be tweaked** to level out legitimate messages and spoof traffic analysis
+Sender would need to enable this feature** (opt-in) and define desired quantity parameters
+Feature would need to be aware of** roaming (disabled by default) and battery level (do not send if below 30%)
+Recipients could be able to let peers know** they do not want to participate (opt-out mechanism)
+Now I'll convert each into atomic Rimay requirements following the grammar:
+For each requirement, I'll identify:
+Scope (optional)
+Conditions (optional)
+Actor (mandatory)
+Modal verb (mandatory)
+Action phrase (mandatory)
+Here are the 5 Rimay requirements:
+For all TextSecure users, the System must send dummy random messages to randomly selected contacts that use TextSecure at random times to mask meaningful communication.
+For all dummy messages, the System must tweak randomness to level out legitimate messages and spoof traffic analysis data.
+For all senders, the System must allow the sender to enable this feature as opt-in and define desired quantity parameters such as maximum dummy messages per month or ratio to legitimate messages.
+For all dummy message transmission, if roaming is enabled or battery level is below 30%, then the System must not send dummy messages.
+For all recipients, the System must allow recipients to opt-out and notify peers that they do not want to participate in receiving dummy messages.

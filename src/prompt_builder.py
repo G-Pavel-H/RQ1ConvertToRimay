@@ -56,8 +56,8 @@ def _load_user_template(strategy: str) -> str:
     return _read_text(path)
 
 
-def _load_fsl_examples(n: int) -> List[dict]:
-    path = config.PROMPTS_DIR / "examples" / "fsl_examples.json"
+def _load_fsl_examples(n: int, filename: str = "fsl_examples.json") -> List[dict]:
+    path = config.PROMPTS_DIR / "examples" / filename
     if not path.is_file():
         raise FileNotFoundError(f"FSL examples file missing: {path}")
     examples = json.loads(_read_text(path))
@@ -105,6 +105,63 @@ def _build_cot(nl_text: str, *, run_cfg: config.RunConfig) -> str:
     return template.format(nl_text=nl_text)
 
 
+# --- units task: a non-atomic requirement converted into N atomic units ----------
+#
+# The system prompt's atomicity rule (pick one action, flag <NON_ATOMIC>) is the
+# opposite of what this task asks, so for it those three passages are swapped
+# for a units rule. Everything else — grammar, placeholders — is shared.
+
+_ATOMIC_PASSAGES = {
+    "Use `<NON_ATOMIC>` at the end of the Rimay output if the source NL contains multiple system responses. "
+    "Rimay enforces atomicity (one system response per requirement); when the source has more than one action, "
+    "select the most concrete primary action and append `<NON_ATOMIC>`.":
+    "The source NL may contain several system responses. When the task says how many, convert each into its own "
+    "atomic Rimay requirement — one system response per requirement — so the output has exactly that many "
+    "requirements. Do not use `<NON_ATOMIC>`.",
+
+    "Output Rimay only. No commentary, no explanation, no markdown formatting around the output. "
+    "End the requirement with a period (the `<NON_ATOMIC>` flag, if used, comes after the period).":
+    "Output Rimay only: one Rimay requirement per line, no numbering, no bullets, no commentary, no markdown "
+    "formatting around the output. End each requirement with a period.",
+
+    "If the source NL violates atomicity, follow the convention above (`<NON_ATOMIC>` flag). "
+    "Do not silently merge multiple actions into one Rimay action phrase.":
+    "Each output requirement holds exactly one system response. Do not merge several actions into one Rimay "
+    "action phrase, and do not split one action across requirements.",
+}
+
+
+@lru_cache(maxsize=1)
+def _load_units_system_prompt() -> str:
+    text = _load_system_prompt()
+    for old, new in _ATOMIC_PASSAGES.items():
+        if old not in text:
+            raise RuntimeError(f"system_prompt.md changed; cannot find the atomicity passage: {old[:60]}…")
+        text = text.replace(old, new)
+    return text
+
+
+def _format_units_examples(examples: List[dict]) -> str:
+    lines: List[str] = []
+    for i, ex in enumerate(examples, start=1):
+        lines.append(f"Example {i}:")
+        lines.append(f"NL: {(ex.get('nl') or '').strip()}")
+        lines.append(f"Number of system responses: {len(ex['units'])}")
+        lines.append("Rimay:")
+        lines.extend(u.strip() for u in ex["units"])
+        lines.append("")
+    return "\n".join(lines).rstrip()
+
+
+def _build_units(nl_text: str, *, run_cfg: config.RunConfig, n_units: int) -> str:
+    template = _load_user_template(f"{run_cfg.strategy}_units")
+    fields = {"nl_text": nl_text, "n_units": n_units}
+    if run_cfg.strategy == "fsl":
+        examples = _load_fsl_examples(run_cfg.n_fsl_examples, "fsl_units_examples.json")
+        fields["examples_block"] = _format_units_examples(examples)
+    return template.format(**fields)
+
+
 STRATEGIES: Dict[str, Callable[..., str]] = {
     "zsl": _build_zsl,
     "fsl": _build_fsl,
@@ -112,7 +169,13 @@ STRATEGIES: Dict[str, Callable[..., str]] = {
 }
 
 
-def build_prompt(nl_text: str, *, run_cfg: config.RunConfig) -> BuiltPrompt:
+def build_prompt(nl_text: str, *, run_cfg: config.RunConfig, n_units: Optional[int] = None) -> BuiltPrompt:
+    """``n_units`` set → the units task: convert into exactly that many requirements."""
+    if n_units is not None:
+        if run_cfg.strategy not in STRATEGIES:
+            raise ValueError(f"Unknown strategy {run_cfg.strategy!r}. Known: {sorted(STRATEGIES)}")
+        return BuiltPrompt(system=_load_units_system_prompt(),
+                           user=_build_units(nl_text, run_cfg=run_cfg, n_units=n_units))
     builder = STRATEGIES.get(run_cfg.strategy)
     if builder is None:
         raise ValueError(

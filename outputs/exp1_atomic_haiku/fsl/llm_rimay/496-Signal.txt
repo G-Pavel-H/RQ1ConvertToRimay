@@ -1,0 +1,1 @@
+For all users, <MISSING_CONDITION>, the app must provide an ability to change the maximum size of MMS.

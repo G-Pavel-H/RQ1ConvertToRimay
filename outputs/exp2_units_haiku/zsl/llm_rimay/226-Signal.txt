@@ -1,0 +1,16 @@
+I'll analyze this non-atomic NL requirement and convert it into exactly 2 atomic Rimay requirements, one per system response.
+The NL describes two distinct system responses:
+Response 1**: Add the option to edit a message from the Android Context Menu (like delete functionality)
+Response 2**: Add the ability to insert a new message next to an existing message
+Let me convert each into Rimay format:
+For the Android Context Menu message edit functionality (Pattern 5: system response only):
+Actor: `the Android Context Menu` / `TextSecure`
+Modal verb: `shall` (standard requirement)
+Action: `provide the ability to edit a message` / `allow users to edit messages`
+For the insert new message functionality (Pattern 5: system response only):
+Actor: `TextSecure` / `the Android Context Menu`
+Modal verb: `shall`
+Action: `provide the ability to insert a new message`
+---
+TextSecure shall provide the option to edit a message from the Android Context Menu.
+TextSecure shall provide the ability to insert a new message next to an existing message.

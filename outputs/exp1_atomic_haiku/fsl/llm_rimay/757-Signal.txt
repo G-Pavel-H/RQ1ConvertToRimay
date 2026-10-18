@@ -1,0 +1,1 @@
+For each group chat, the app must provide independent notification settings that differ from personal chats.

@@ -1,0 +1,1 @@
+For each website, when a user clicks a share button, the Signal application shall receive a custom URL scheme signal:// to send a message to Signal Private Messenger.

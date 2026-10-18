@@ -1,0 +1,1 @@
+For <MISSING_SCOPE> media items, when the user attempts to save an item that has already been saved to the device gallery, then the app must detect the duplicate and display a "view" or "share" icon instead of the "save" button.

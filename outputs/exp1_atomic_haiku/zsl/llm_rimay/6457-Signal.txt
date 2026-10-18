@@ -1,0 +1,1 @@
+For the conversation window, the system shall provide a single button to open and close the attachment window.

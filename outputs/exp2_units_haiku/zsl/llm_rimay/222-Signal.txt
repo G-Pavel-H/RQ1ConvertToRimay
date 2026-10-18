@@ -1,0 +1,3 @@
+<MISSING_SCOPE> When a message from <MISSING_ACTOR> is received with a user-specified phone number, then the System must delete the message upon receipt.
+<MISSING_SCOPE> When a message from <MISSING_ACTOR> is received with a user-specified phone number, then the System must not send a notification.
+<MISSING_SCOPE> <MISSING_CONDITION> the System must create a blocking rule similar to an email filter rule for user-specified phone numbers.

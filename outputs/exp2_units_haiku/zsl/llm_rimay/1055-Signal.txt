@@ -1,0 +1,2 @@
+For <MISSING_SCOPE>, when the message drafts exist, then the System shall move the drafts to the top of the message-list.
+For <MISSING_SCOPE>, when the message drafts exist, then the System shall mark the drafts with another color or a text "Draft".

@@ -1,0 +1,1 @@
+For outgoing messages, when a user long presses on a message and selects the info button, the system shall display the "received time" by using the "delivery receipt". <NON_ATOMIC>

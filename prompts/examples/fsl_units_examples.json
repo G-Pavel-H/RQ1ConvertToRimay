@@ -1,0 +1,33 @@
+[
+  {
+    "id": "train_1173_units2",
+    "source_reqId": "1173-Signal",
+    "nl": "Request Number - 1173 | Request Title - Add \"Don't show again\" checkbox to thumbnail dialogs | Request Description - To improve the usability, the thumbnail dialogs (open and save) should contain a \"Don't show again\" checkbox so that the user isn't bothered again. The idea is, that the user understands that there might be a little risk in opening or saving an attached image, but doesn't want to see this warning again and again. Most users expect that the image instantly shows up. So it is nice to have this warning message, but there should be the possibility to disable it.",
+    "units": [
+      "<MISSING_SCOPE>, when the App shows a \"thumbnail dialog\", then the App must show a \"Don't show again\" checkbox in that dialog.",
+      "<MISSING_SCOPE>, if the user has ticked the \"Don't show again\" checkbox, then the App must not show the \"thumbnail dialog\" again."
+    ],
+    "note": "Two system responses: show the checkbox; honour it. Each unit is one Rimay requirement with its own condition."
+  },
+  {
+    "id": "train_1133_units3",
+    "source_reqId": "1133-Signal",
+    "nl": "Request Number - 1133 | Request Title - Deletion of contact keys | Request Description - Hello moxie, could you please let us delete the contact keys? Several of my friends changed their number or uninstalled TextSecure, I'm not liking to scroll threw their contact keys whenever I check them. Let us long press them for deleting, add a warning and everything would be fine.",
+    "units": [
+      "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user delete \"contact keys\".",
+      "<MISSING_SCOPE>, when the user long-presses a \"contact key\", then the App must offer a \"delete\" option.",
+      "<MISSING_SCOPE>, when the user deletes a \"contact key\", then the App must show a \"warning\"."
+    ],
+    "note": "Three system responses: the capability, how it is reached, and the warning. A unit without a condition uses <MISSING_CONDITION>."
+  },
+  {
+    "id": "train_5476_units2",
+    "source_reqId": "5476-Signal",
+    "nl": "Request Number - 5476 | Request Title - Send using \"Enter\" Key on Hardware Keyboard | Request Description - Feature request: when using an external USB keyboard with my device on Signal, make it possible to send messages using either:  Enter Ctrl+Enter Shift+Enter If desired to send on plain Enter , Shift + Enter should enter a newline.",
+    "units": [
+      "<MISSING_SCOPE>, when the user uses an \"external keyboard\", then the App must let the user send messages with \"Enter\", \"Ctrl+Enter\" or \"Shift+Enter\".",
+      "<MISSING_SCOPE>, if the user has chosen \"Enter\" as the send key, then the App must treat \"Shift+Enter\" as a \"newline\"."
+    ],
+    "note": "Two system responses: configurable send key; newline when plain Enter sends."
+  }
+]

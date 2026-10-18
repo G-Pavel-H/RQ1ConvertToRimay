@@ -1,0 +1,1 @@
+Signal shall receive the EXTRA_SUBJECT from a share Intent.

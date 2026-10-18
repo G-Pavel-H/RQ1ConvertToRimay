@@ -171,8 +171,16 @@ def main(argv=None) -> int:
     strategy = meta.get("strategy") or Path(args.run).name
     gold_path = Path(args.gold) if args.gold else Path(meta.get("gold_csv") or config.GOLD_CSV)
 
-    gold = load_gold(gold_path)
     manifest = load_manifest(run_paths.manifest_path)
+    units_info = None
+    if meta.get("task") == "units":
+        # Non-atomic task: every gold unit is a subject "<reqId>#<unit>".
+        from src.scoring import units as U
+
+        gold = U.load_gold_units(gold_path)
+        manifest, units_info = U.align(manifest, gold)
+    else:
+        gold = load_gold(gold_path)
 
     if args.fsl_example_ids.strip():
         fsl_ids = {s.strip() for s in args.fsl_example_ids.split(",") if s.strip()}
@@ -242,6 +250,8 @@ def main(argv=None) -> int:
     results = {
         "run": args.run,
         "strategy": strategy,
+        "task": meta.get("task", "atomic"),
+        "units": units_info,
         "scored_at": datetime.now().astimezone().isoformat(timespec="seconds"),
         "gold_csv": str(gold_path),
         "meta": meta,
@@ -284,6 +294,10 @@ def main(argv=None) -> int:
         f"  gold={counts['gold']} converted={counts['converted']} "
         f"evaluated={counts['evaluated']} skipped={counts['skipped']}"
     )
+    if units_info:
+        print(f"  units: {units_info['returnedUnits']}/{units_info['expectedUnits']} returned, "
+              f"exact count on {units_info['exactCount']}/{units_info['requirements']} requirements, "
+              f"{units_info['reordered']} re-ordered to match the gold")
     print(f"  macro-F1 (missing-detection): {_fmt(fa_rep.macro['f1'])}")
     print(f"  overall-verdict agreement:   {_fmt(fa_rep.verdict['agreement_rate'])}")
     print(f"  mean LLM-vs-human seq_ratio: {_fmt(lvh['mean'])}")

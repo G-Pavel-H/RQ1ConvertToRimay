@@ -1,0 +1,7 @@
+I'll convert this non-atomic requirement into 2 atomic Rimay requirements, one per system response.
+Let me analyze the NL requirement:
+System Response 1**: When an SMS delivery report is received, the received time (done date) should be saved
+System Response 2**: It should be possible to view the received time in the message details
+Now I'll convert each into Rimay following the grammar and using placeholders for missing information:
+When <MISSING_ACTOR> receives a SMS delivery report, the <MISSING_ACTOR> shall save the time the other user received the message in the "done date" field.
+When <MISSING_ACTOR> views message details, the <MISSING_ACTOR> shall display the received time of the message.

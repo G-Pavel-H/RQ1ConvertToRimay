@@ -11,7 +11,7 @@ import os
 import re
 import time
 from dataclasses import dataclass
-from typing import Optional
+from typing import List, Optional
 
 import mlflow
 from src import llm_backend
@@ -38,6 +38,7 @@ class LLMResponse:
     output_tokens: Optional[int]
     latency_ms: int
     stop_reason: Optional[str]
+    units: Optional[List[str]] = None  # the units task only: one Rimay per unit
 
 
 def strip_missing_placeholders(rimay: str) -> str:
@@ -102,6 +103,29 @@ def extract_final_rimay(text: str) -> str:
     return lines[-1] if lines else s
 
 
+_LIST_MARK_RE = re.compile(r"^\s*(?:\d+[.):]|[-*•])\s+")
+
+
+def extract_units(text: str) -> List[str]:
+    """Every Rimay line of a units-task response.
+
+    After the last "Final Rimay:"-style marker when there is one (CoT), else
+    every non-empty line. List numbering, bullets and bold are removed; the
+    count is not forced — a wrong count is something the scorer reports.
+    """
+    s = text.strip()
+    low = s.lower()
+    marker_end = max((low.rfind(m) + len(m) for m in _FINAL_MARKERS if low.rfind(m) != -1), default=-1)
+    if marker_end != -1:
+        s = s[marker_end:]
+    out = []
+    for ln in s.splitlines():
+        ln = _LIST_MARK_RE.sub("", ln.strip().strip("*").strip()).strip().strip("*").strip()
+        if ln and not ln.startswith("#"):
+            out.append(ln)
+    return out
+
+
 def _strip_to_rimay(text: str) -> str:
     """Strip the few wrappers a model occasionally emits despite instructions.
 
@@ -124,8 +148,10 @@ def convert(
     nl_text: str,
     *,
     run_cfg: config.RunConfig,
+    n_units: Optional[int] = None,
 ) -> LLMResponse:
-    prompt = build_prompt(nl_text, run_cfg=run_cfg)
+    """``n_units`` set → the units task; the response's ``units`` holds each line."""
+    prompt = build_prompt(nl_text, run_cfg=run_cfg, n_units=n_units)
 
     start = time.monotonic()
     # cache_system: the system prompt is identical across requirements in a
@@ -142,7 +168,8 @@ def convert(
     latency_ms = int((time.monotonic() - start) * 1000)
 
     raw = _strip_to_rimay(completion.text)
-    rimay = extract_final_rimay(raw)
+    units = extract_units(raw) if n_units is not None else None
+    rimay = "\n".join(units) if units is not None else extract_final_rimay(raw)
 
     return LLMResponse(
         rimay=rimay,
@@ -153,6 +180,7 @@ def convert(
         output_tokens=completion.output_tokens,
         latency_ms=latency_ms,
         stop_reason=completion.stop_reason,
+        units=units,
     )
 
 

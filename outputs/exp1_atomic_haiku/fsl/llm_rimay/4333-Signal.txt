@@ -1,0 +1,1 @@
+For each contact, the app must allow direct sharing to contacts via ChooserTargetService.

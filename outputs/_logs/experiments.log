@@ -1,0 +1,1436 @@
+[2026-10-18 23:13:30] === experiments starting: models [haiku sonnet opus] ===
+[2026-10-18 23:13:32] exp1_atomic_haiku CONVERT zsl (attempt 1)
+Stage 1 conversion — run=exp1_atomic_haiku/zsl strategy=zsl model=claude-haiku-4-5-20251001
+  gold reqs: 35  to process: 35
+  run dir:   outputs/exp1_atomic_haiku/zsl
+============================================================
+[1/35] 4031-Signal ...
+2026/10/18 23:13:34 WARNING mlflow.utils.git_utils: Failed to import Git (the Git executable is probably not on your PATH), so Git SHA is not available. Error: Failed to initialize: Cmd('git') failed due to: exit code(69)
+  cmdline: git version
+  stderr: 'You have not agreed to the Xcode license agreements. Please run 'sudo xcodebuild -license' from within a Terminal window to review and agree to the Xcode and Apple SDKs license.'
+2026/10/18 23:13:34 WARNING mlflow.utils.git_utils: Failed to import Git (the Git executable is probably not on your PATH), so Git branch is not available. Error: Failed to initialize: Cmd('git') failed due to: exit code(69)
+  cmdline: git version
+  stderr: 'You have not agreed to the Xcode license agreements. Please run 'sudo xcodebuild -license' from within a Terminal window to review and agree to the Xcode and Apple SDKs license.'
+2026/10/18 23:13:34 WARNING mlflow.utils.git_utils: Failed to import Git (the Git executable is probably not on your PATH), so Git repository URL is not available. Error: Failed to initialize: Cmd('git') failed due to: exit code(69)
+  cmdline: git version
+  stderr: 'You have not agreed to the Xcode license agreements. Please run 'sudo xcodebuild -license' from within a Terminal window to review and agree to the Xcode and Apple SDKs license.'
+/Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/src/llm_converter.py:159: RuntimeWarning: temperature=0.0 cannot be set on the 'subscription' backend — the Claude Agent SDK exposes no sampling controls. Results will not be deterministic. Use the 'api' backend where reproducibility matters.
+  completion = llm_backend.complete(
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_22cea46fa56f_1792361616/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_22cea46fa56f_1792361616 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_22cea46fa56f_1792361616 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 0
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.5 sec].
+        paska_passed=True missing_slots=- latency_ms=2150
+[2/35] 4333-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_2e6c3b22fc87_1792361621/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_2e6c3b22fc87_1792361621 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_2e6c3b22fc87_1792361621 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 1, Not precise verb: 0
+Number Req with smells: 1
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=False missing_slots=- latency_ms=2435
+[3/35] 455-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_20148ba95c2c_1792361624/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_20148ba95c2c_1792361624 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_20148ba95c2c_1792361624 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 0
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=True missing_slots=- latency_ms=1846
+[4/35] 5529-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_c46d299e60ab_1792361628/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_c46d299e60ab_1792361628 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_c46d299e60ab_1792361628 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 0
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=True missing_slots=- latency_ms=2435
+[5/35] 107-Mastodon ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_a1edf7da0c19_1792361631/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_a1edf7da0c19_1792361631 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_a1edf7da0c19_1792361631 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,1
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 1
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=False missing_slots=- latency_ms=2432
+[6/35] 83-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_f4c218bab80e_1792361635/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_f4c218bab80e_1792361635 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_f4c218bab80e_1792361635 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 0
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=True missing_slots=['scope', 'condition', 'actor', 'modalVerb'] latency_ms=2612
+[7/35] 5555-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_f5802b10892d_1792361638/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_f5802b10892d_1792361638 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_f5802b10892d_1792361638 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,1
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 1
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.5 sec].
+        paska_passed=False missing_slots=- latency_ms=2245
+[8/35] 801-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_ddb1948e42f0_1792361642/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_ddb1948e42f0_1792361642 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_ddb1948e42f0_1792361642 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,1
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 1
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=False missing_slots=- latency_ms=3134
+[9/35] 6069-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_2b1a12da36ef_1792361646/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_2b1a12da36ef_1792361646 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_2b1a12da36ef_1792361646 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,1
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 1
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.5 sec].
+        paska_passed=False missing_slots=- latency_ms=2661
+[10/35] 2943-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_56846af575e6_1792361649/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_56846af575e6_1792361649 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_56846af575e6_1792361649 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 1, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 1
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=False missing_slots=- latency_ms=2705
+[11/35] 6077-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_489f56f37c0f_1792361653/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_489f56f37c0f_1792361653 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_489f56f37c0f_1792361653 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 0
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=True missing_slots=- latency_ms=2741
+[12/35] 1363-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_b570c16c6dc7_1792361657/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_b570c16c6dc7_1792361657 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_b570c16c6dc7_1792361657 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 0
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=True missing_slots=- latency_ms=1923
+[13/35] 6459-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_758cf0ae548a_1792361660/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_758cf0ae548a_1792361660 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_758cf0ae548a_1792361660 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 1, Not precise verb: 0
+Number Req with smells: 1
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=False missing_slots=- latency_ms=2212
+[14/35] 6457-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_0cb93ed15487_1792361664/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_0cb93ed15487_1792361664 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_0cb93ed15487_1792361664 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 1, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 1
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.5 sec].
+        paska_passed=False missing_slots=- latency_ms=2593
+[15/35] 828-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_2b1f34b007ae_1792361667/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_2b1f34b007ae_1792361667 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_2b1f34b007ae_1792361667 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 1, Not precise verb: 0
+Number Req with smells: 1
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=False missing_slots=- latency_ms=2102
+[16/35] 245-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_b178ba8b8fe2_1792361670/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_b178ba8b8fe2_1792361670 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_b178ba8b8fe2_1792361670 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 0
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=True missing_slots=- latency_ms=2146
+[17/35] 316-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_c9df0078d949_1792361674/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_c9df0078d949_1792361674 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_c9df0078d949_1792361674 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 0
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=True missing_slots=- latency_ms=2328
+[18/35] 695-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_b9523967a99e_1792361677/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_b9523967a99e_1792361677 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_b9523967a99e_1792361677 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 0
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.5 sec].
+        paska_passed=True missing_slots=- latency_ms=1952
+[19/35] 1761-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_3019de45681f_1792361681/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_3019de45681f_1792361681 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_3019de45681f_1792361681 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 0
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.5 sec].
+        paska_passed=True missing_slots=- latency_ms=2164
+[20/35] 4245-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_8d8ff15473b7_1792361684/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_8d8ff15473b7_1792361684 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_8d8ff15473b7_1792361684 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 0
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=True missing_slots=- latency_ms=2494
+[21/35] 5775-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_00c9ece71a2f_1792361688/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_00c9ece71a2f_1792361688 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_00c9ece71a2f_1792361688 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,1
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 1
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.5 sec].
+        paska_passed=False missing_slots=- latency_ms=2596
+[22/35] 1504-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_57853d395c28_1792361691/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_57853d395c28_1792361691 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_57853d395c28_1792361691 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,1
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 1
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=False missing_slots=['scope', 'condition', 'actor', 'modalVerb'] latency_ms=2524
+[23/35] 8-Mastodon ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_3cc86be16a25_1792361695/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_3cc86be16a25_1792361695 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_3cc86be16a25_1792361695 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 0
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=True missing_slots=['scope'] latency_ms=2716
+[24/35] 592-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_400551006317_1792361699/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_400551006317_1792361699 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_400551006317_1792361699 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,1
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 1
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=False missing_slots=- latency_ms=2461
+[25/35] 6031-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_f3c58c7ace46_1792361702/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_f3c58c7ace46_1792361702 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_f3c58c7ace46_1792361702 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 0
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.5 sec].
+        paska_passed=True missing_slots=- latency_ms=2100
+[26/35] 496-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_2feb95a52e79_1792361705/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_2feb95a52e79_1792361705 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_2feb95a52e79_1792361705 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 0
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=True missing_slots=['scope'] latency_ms=2100
+[27/35] 4230-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_65df88819432_1792361708/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_65df88819432_1792361708 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_65df88819432_1792361708 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 1, Not precise verb: 0
+Number Req with smells: 1
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=False missing_slots=['scope'] latency_ms=2232
+[28/35] 757-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_9c8c2820ec7d_1792361711/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_9c8c2820ec7d_1792361711 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_9c8c2820ec7d_1792361711 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 0
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=True missing_slots=- latency_ms=1956
+[29/35] 1283-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_775472e2ec97_1792361715/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_775472e2ec97_1792361715 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_775472e2ec97_1792361715 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,1
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 1
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=False missing_slots=- latency_ms=2457
+[30/35] 7310-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_bb1d707a4681_1792361718/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_bb1d707a4681_1792361718 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_bb1d707a4681_1792361718 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 0
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=True missing_slots=- latency_ms=2229
+[31/35] 937-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_14c8624cd31e_1792361721/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_14c8624cd31e_1792361721 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_14c8624cd31e_1792361721 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 1, Not precise verb: 0
+Number Req with smells: 1
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=False missing_slots=- latency_ms=2603
+[32/35] 42-Mastodon ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_63813f92c6ac_1792361725/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_63813f92c6ac_1792361725 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_63813f92c6ac_1792361725 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,1
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 1
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=False missing_slots=- latency_ms=2411
+[33/35] 7345-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_9f999c436a24_1792361728/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_9f999c436a24_1792361728 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_9f999c436a24_1792361728 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,1
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 1
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=False missing_slots=- latency_ms=2544
+[34/35] 175-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_f86a948fb4f8_1792361732/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_f86a948fb4f8_1792361732 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_f86a948fb4f8_1792361732 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 0
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=True missing_slots=- latency_ms=2640
+[35/35] 2055-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_1effda55cb73_1792361736/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_1effda55cb73_1792361736 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_1effda55cb73_1792361736 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 0
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=True missing_slots=- latency_ms=2755
+============================================================
+Done. run=exp1_atomic_haiku/zsl processed=35 skipped=0
+Run dir:  /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/exp1_atomic_haiku/zsl
+Next:     python scripts/run_scoring.py --run exp1_atomic_haiku/zsl
+2026/10/18 23:15:37 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:15:38 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:15:39 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:15:39 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:15:40 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:15:41 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:15:41 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:15:41 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:15:42 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:15:43 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:15:44 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:15:45 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:15:46 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:15:47 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:15:47 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:15:47 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:15:48 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:15:48 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:15:49 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:15:50 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:15:50 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:15:51 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:15:52 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:15:52 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:15:52 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:15:53 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:15:54 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:15:54 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:15:55 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:15:55 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:15:55 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:15:55 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:15:56 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:15:56 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:15:57 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+[2026-10-18 23:15:58] exp1_atomic_haiku CONVERT zsl OK
+[2026-10-18 23:15:58] exp1_atomic_haiku SCORE zsl (attempt 1)
+Scoring — run=exp1_atomic_haiku/zsl strategy=zsl
+  gold=35 converted=35 evaluated=35 skipped=0
+  macro-F1 (missing-detection): 0.353
+  overall-verdict agreement:   0.943
+  mean LLM-vs-human seq_ratio: 0.346
+  mean human-human seq_ratio:  0.644
+  Paska pass rate:             0.514
+  outputs: /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/exp1_atomic_haiku/zsl/scoring/
+[2026-10-18 23:15:59] exp1_atomic_haiku SCORE zsl OK
+[2026-10-18 23:15:59] exp1_atomic_haiku CONVERT fsl (attempt 1)
+Stage 1 conversion — run=exp1_atomic_haiku/fsl strategy=fsl model=claude-haiku-4-5-20251001
+  gold reqs: 35  to process: 35
+  run dir:   outputs/exp1_atomic_haiku/fsl
+============================================================
+[1/35] 4031-Signal ...
+2026/10/18 23:16:01 WARNING mlflow.utils.git_utils: Failed to import Git (the Git executable is probably not on your PATH), so Git SHA is not available. Error: Failed to initialize: Cmd('git') failed due to: exit code(69)
+  cmdline: git version
+  stderr: 'You have not agreed to the Xcode license agreements. Please run 'sudo xcodebuild -license' from within a Terminal window to review and agree to the Xcode and Apple SDKs license.'
+2026/10/18 23:16:01 WARNING mlflow.utils.git_utils: Failed to import Git (the Git executable is probably not on your PATH), so Git branch is not available. Error: Failed to initialize: Cmd('git') failed due to: exit code(69)
+  cmdline: git version
+  stderr: 'You have not agreed to the Xcode license agreements. Please run 'sudo xcodebuild -license' from within a Terminal window to review and agree to the Xcode and Apple SDKs license.'
+2026/10/18 23:16:01 WARNING mlflow.utils.git_utils: Failed to import Git (the Git executable is probably not on your PATH), so Git repository URL is not available. Error: Failed to initialize: Cmd('git') failed due to: exit code(69)
+  cmdline: git version
+  stderr: 'You have not agreed to the Xcode license agreements. Please run 'sudo xcodebuild -license' from within a Terminal window to review and agree to the Xcode and Apple SDKs license.'
+/Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/src/llm_converter.py:159: RuntimeWarning: temperature=0.0 cannot be set on the 'subscription' backend — the Claude Agent SDK exposes no sampling controls. Results will not be deterministic. Use the 'api' backend where reproducibility matters.
+  completion = llm_backend.complete(
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_e13b0050534f_1792361763/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_e13b0050534f_1792361763 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_e13b0050534f_1792361763 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 0
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.5 sec].
+        paska_passed=True missing_slots=['scope', 'condition'] latency_ms=2060
+[2/35] 4333-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_604b7a5537e6_1792361768/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_604b7a5537e6_1792361768 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_604b7a5537e6_1792361768 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 0
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=True missing_slots=- latency_ms=2140
+[3/35] 455-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_87db019f25d6_1792361771/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_87db019f25d6_1792361771 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_87db019f25d6_1792361771 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 0
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=True missing_slots=- latency_ms=2025
+[4/35] 5529-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_9c72aeeed9eb_1792361774/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_9c72aeeed9eb_1792361774 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_9c72aeeed9eb_1792361774 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 0
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=True missing_slots=- latency_ms=2674
+[5/35] 107-Mastodon ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_417af410aa52_1792361778/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_417af410aa52_1792361778 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_417af410aa52_1792361778 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 0
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=True missing_slots=- latency_ms=2248
+[6/35] 83-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_9776f1398679_1792361781/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_9776f1398679_1792361781 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_9776f1398679_1792361781 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 0
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=True missing_slots=['scope', 'condition'] latency_ms=1972
+[7/35] 5555-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_78f7926302cc_1792361784/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_78f7926302cc_1792361784 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_78f7926302cc_1792361784 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 0
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=True missing_slots=- latency_ms=2038
+[8/35] 801-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_ad1257a99de8_1792361787/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_ad1257a99de8_1792361787 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_ad1257a99de8_1792361787 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 0
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=True missing_slots=- latency_ms=2241
+[9/35] 6069-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_3cd39c147a3c_1792361790/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_3cd39c147a3c_1792361790 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_3cd39c147a3c_1792361790 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 0
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=True missing_slots=- latency_ms=2176
+[10/35] 2943-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_722858c5a1bf_1792361793/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_722858c5a1bf_1792361793 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_722858c5a1bf_1792361793 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 0
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=True missing_slots=['condition'] latency_ms=1931
+[11/35] 6077-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_2343783a060f_1792361798/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_2343783a060f_1792361798 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_2343783a060f_1792361798 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 0
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=True missing_slots=- latency_ms=3529
+[12/35] 1363-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_0afae1c5b9e8_1792361801/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_0afae1c5b9e8_1792361801 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_0afae1c5b9e8_1792361801 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 0
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=True missing_slots=['scope', 'condition'] latency_ms=2219
+[13/35] 6459-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_5bd2bd87d463_1792361805/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_5bd2bd87d463_1792361805 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_5bd2bd87d463_1792361805 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 0
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=True missing_slots=- latency_ms=2913
+[14/35] 6457-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_e5674b1a7e13_1792361809/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_e5674b1a7e13_1792361809 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_e5674b1a7e13_1792361809 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 1, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 1
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=False missing_slots=- latency_ms=2136
+[15/35] 828-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_1e8ef1522d0f_1792361812/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_1e8ef1522d0f_1792361812 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_1e8ef1522d0f_1792361812 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 1, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 1, Not precise verb: 0
+Number Req with smells: 1
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=False missing_slots=- latency_ms=2082
+[16/35] 245-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_ed3648f13d9d_1792361815/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_ed3648f13d9d_1792361815 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_ed3648f13d9d_1792361815 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 0
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=True missing_slots=- latency_ms=2122
+[17/35] 316-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_497fdcf0aebe_1792361818/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_497fdcf0aebe_1792361818 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_497fdcf0aebe_1792361818 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 0
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=True missing_slots=- latency_ms=2092
+[18/35] 695-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_d9cd07c70a8e_1792361822/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_d9cd07c70a8e_1792361822 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_d9cd07c70a8e_1792361822 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 0
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=True missing_slots=- latency_ms=2785
+[19/35] 1761-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_ca9c1074e8af_1792361826/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_ca9c1074e8af_1792361826 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_ca9c1074e8af_1792361826 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 0
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=True missing_slots=- latency_ms=2233
+[20/35] 4245-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_10515fa1e5c5_1792361830/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_10515fa1e5c5_1792361830 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_10515fa1e5c5_1792361830 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 0
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=True missing_slots=- latency_ms=2894
+[21/35] 5775-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_306969b9d28b_1792361834/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_306969b9d28b_1792361834 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_306969b9d28b_1792361834 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 1, Not precise verb: 0
+Number Req with smells: 1
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=False missing_slots=- latency_ms=2872
+[22/35] 1504-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_17809c069517_1792361837/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_17809c069517_1792361837 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_17809c069517_1792361837 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 0
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=True missing_slots=['scope', 'condition'] latency_ms=2208
+[23/35] 8-Mastodon ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_46b1b53b9cc6_1792361840/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_46b1b53b9cc6_1792361840 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_46b1b53b9cc6_1792361840 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 0
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=True missing_slots=['scope', 'condition'] latency_ms=1930
+[24/35] 592-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_1b54d837e5d4_1792361844/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_1b54d837e5d4_1792361844 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_1b54d837e5d4_1792361844 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 1
+Number Req with smells: 1
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=False missing_slots=['condition'] latency_ms=3318
+[25/35] 6031-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_f73c83cbc732_1792361847/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_f73c83cbc732_1792361847 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_f73c83cbc732_1792361847 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 0
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.5 sec].
+        paska_passed=True missing_slots=['scope', 'condition'] latency_ms=1914
+[26/35] 496-Signal ...
+[paska] cache hit: outputs/_paska/.cache/332b135e08fe8aeb8efaf3e9ae6bb7b04d49c125bb38e00c93100df0f5e35f27
+        paska_passed=True missing_slots=['condition'] latency_ms=2591
+[27/35] 4230-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_a892f1e42231_1792361853/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_a892f1e42231_1792361853 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_a892f1e42231_1792361853 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 0
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=True missing_slots=- latency_ms=2440
+[28/35] 757-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_18e39ea8937c_1792361857/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_18e39ea8937c_1792361857 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_18e39ea8937c_1792361857 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 0
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=True missing_slots=- latency_ms=2064
+[29/35] 1283-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_0d1b019c7d11_1792361860/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_0d1b019c7d11_1792361860 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_0d1b019c7d11_1792361860 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 0
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=True missing_slots=- latency_ms=1999
+[30/35] 7310-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_634e15fd8606_1792361863/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_634e15fd8606_1792361863 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_634e15fd8606_1792361863 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 1
+Number Req with smells: 1
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.5 sec].
+        paska_passed=False missing_slots=['scope'] latency_ms=2478
+[31/35] 937-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_38fa9ac32661_1792361866/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_38fa9ac32661_1792361866 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_38fa9ac32661_1792361866 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 1, Not precise verb: 0
+Number Req with smells: 1
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=False missing_slots=- latency_ms=2093
+[32/35] 42-Mastodon ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_69ea207c323c_1792361870/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_69ea207c323c_1792361870 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_69ea207c323c_1792361870 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 1, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 1
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=False missing_slots=['scope', 'condition'] latency_ms=2255
+[33/35] 7345-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_2b6acc14b1ca_1792361874/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_2b6acc14b1ca_1792361874 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_2b6acc14b1ca_1792361874 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 1, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 1
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=False missing_slots=['scope'] latency_ms=2560
+[34/35] 175-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_282ed92f8266_1792361877/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_282ed92f8266_1792361877 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_282ed92f8266_1792361877 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 0
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=True missing_slots=['condition'] latency_ms=2138
+[35/35] 2055-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_a2b07eabb82a_1792361880/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_a2b07eabb82a_1792361880 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_a2b07eabb82a_1792361880 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 0
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=True missing_slots=- latency_ms=1997
+============================================================
+Done. run=exp1_atomic_haiku/fsl processed=35 skipped=0
+Run dir:  /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/exp1_atomic_haiku/fsl
+Next:     python scripts/run_scoring.py --run exp1_atomic_haiku/fsl
+2026/10/18 23:18:01 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:18:02 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:18:03 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:18:04 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:18:04 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:18:05 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:18:05 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:18:06 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:18:06 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:18:07 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:18:08 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:18:08 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:18:09 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:18:10 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:18:10 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:18:11 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:18:12 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:18:13 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:18:14 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:18:14 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:18:14 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:18:15 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:18:16 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:18:17 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:18:18 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:18:18 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:18:19 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:18:19 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:18:19 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:18:20 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:18:21 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:18:21 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:18:22 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:18:22 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:18:23 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+[2026-10-18 23:18:25] exp1_atomic_haiku CONVERT fsl OK
+[2026-10-18 23:18:25] exp1_atomic_haiku SCORE fsl (attempt 1)
+Scoring — run=exp1_atomic_haiku/fsl strategy=fsl
+  gold=35 converted=35 evaluated=35 skipped=0
+  macro-F1 (missing-detection): 0.209
+  overall-verdict agreement:   0.886
+  mean LLM-vs-human seq_ratio: 0.565
+  mean human-human seq_ratio:  0.644
+  Paska pass rate:             0.771
+  outputs: /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/exp1_atomic_haiku/fsl/scoring/
+[2026-10-18 23:18:25] exp1_atomic_haiku SCORE fsl OK
+[2026-10-18 23:18:25] exp1_atomic_haiku CONVERT cot (attempt 1)
+Stage 1 conversion — run=exp1_atomic_haiku/cot strategy=cot model=claude-haiku-4-5-20251001
+  gold reqs: 35  to process: 35
+  run dir:   outputs/exp1_atomic_haiku/cot
+============================================================
+[1/35] 4031-Signal ...
+2026/10/18 23:18:27 WARNING mlflow.utils.git_utils: Failed to import Git (the Git executable is probably not on your PATH), so Git SHA is not available. Error: Failed to initialize: Cmd('git') failed due to: exit code(69)
+  cmdline: git version
+  stderr: 'You have not agreed to the Xcode license agreements. Please run 'sudo xcodebuild -license' from within a Terminal window to review and agree to the Xcode and Apple SDKs license.'
+2026/10/18 23:18:27 WARNING mlflow.utils.git_utils: Failed to import Git (the Git executable is probably not on your PATH), so Git branch is not available. Error: Failed to initialize: Cmd('git') failed due to: exit code(69)
+  cmdline: git version
+  stderr: 'You have not agreed to the Xcode license agreements. Please run 'sudo xcodebuild -license' from within a Terminal window to review and agree to the Xcode and Apple SDKs license.'
+2026/10/18 23:18:27 WARNING mlflow.utils.git_utils: Failed to import Git (the Git executable is probably not on your PATH), so Git repository URL is not available. Error: Failed to initialize: Cmd('git') failed due to: exit code(69)
+  cmdline: git version
+  stderr: 'You have not agreed to the Xcode license agreements. Please run 'sudo xcodebuild -license' from within a Terminal window to review and agree to the Xcode and Apple SDKs license.'
+/Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/src/llm_converter.py:159: RuntimeWarning: temperature=0.0 cannot be set on the 'subscription' backend — the Claude Agent SDK exposes no sampling controls. Results will not be deterministic. Use the 'api' backend where reproducibility matters.
+  completion = llm_backend.complete(
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_275451b0a815_1792361912/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_275451b0a815_1792361912 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_275451b0a815_1792361912 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,1
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 1
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=False missing_slots=['actor', 'modalVerb'] latency_ms=5096
+[2/35] 4333-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_8145c5721718_1792361920/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_8145c5721718_1792361920 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_8145c5721718_1792361920 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 0
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.5 sec].
+        paska_passed=True missing_slots=- latency_ms=4945
+[3/35] 455-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_50068847e5c2_1792361926/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_50068847e5c2_1792361926 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_50068847e5c2_1792361926 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 0
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=True missing_slots=- latency_ms=5288
+[4/35] 5529-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_281a3e8408b6_1792361933/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_281a3e8408b6_1792361933 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_281a3e8408b6_1792361933 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 0
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=True missing_slots=- latency_ms=5926
+[5/35] 107-Mastodon ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_2c4031dc2145_1792361940/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_2c4031dc2145_1792361940 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_2c4031dc2145_1792361940 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 0
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=True missing_slots=- latency_ms=5663
+[6/35] 83-Signal ...
+[paska] cache hit: outputs/_paska/.cache/6272d39b5adc9f02e2bfac0cbb4db0f7f19e85b1726073cf0e2e7882f8e9ea7f
+        paska_passed=False missing_slots=['scope', 'condition', 'actor', 'modalVerb', 'action'] latency_ms=5104
+[7/35] 5555-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_74e045ee62a5_1792361952/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_74e045ee62a5_1792361952 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_74e045ee62a5_1792361952 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 1
+Number Req with smells: 1
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=False missing_slots=- latency_ms=5862
+[8/35] 801-Signal ...
+[paska] cache hit: outputs/_paska/.cache/ddb1948e42f0a7356add4da17ce8ee2f2c565eed6aa81c3924b0a03eb16ffd64
+        paska_passed=False missing_slots=- latency_ms=2371
+[9/35] 6069-Signal ...
+[paska] cache hit: outputs/_paska/.cache/00cf2059815a194243e98a3eba7c6b66625b1ffb738de26d127c59dc78e15005
+        paska_passed=True missing_slots=- latency_ms=5810
+[10/35] 2943-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_b2983a162a00_1792361966/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_b2983a162a00_1792361966 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_b2983a162a00_1792361966 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,1
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 1
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=False missing_slots=['scope', 'condition', 'actor', 'modalVerb'] latency_ms=5562
+[11/35] 6077-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_4b13c3639e57_1792361973/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_4b13c3639e57_1792361973 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_4b13c3639e57_1792361973 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 0
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.5 sec].
+        paska_passed=True missing_slots=- latency_ms=5885
+[12/35] 1363-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_17236cbbf6c5_1792361981/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_17236cbbf6c5_1792361981 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_17236cbbf6c5_1792361981 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 0
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=True missing_slots=- latency_ms=6313
+[13/35] 6459-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_b369994214a3_1792361987/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_b369994214a3_1792361987 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_b369994214a3_1792361987 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 0
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=True missing_slots=- latency_ms=5711
+[14/35] 6457-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_ba86d541f705_1792361994/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_ba86d541f705_1792361994 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_ba86d541f705_1792361994 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 1, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 1
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=False missing_slots=- latency_ms=5521
+[15/35] 828-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_2148fcd4f5c6_1792362000/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_2148fcd4f5c6_1792362000 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_2148fcd4f5c6_1792362000 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 0
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=True missing_slots=- latency_ms=5414
+[16/35] 245-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_b372651fabe1_1792362008/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_b372651fabe1_1792362008 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_b372651fabe1_1792362008 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 0
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.5 sec].
+        paska_passed=True missing_slots=- latency_ms=7080
+[17/35] 316-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_21491793d430_1792362017/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_21491793d430_1792362017 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_21491793d430_1792362017 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 1, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 1
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=False missing_slots=- latency_ms=7145
+[18/35] 695-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_11b294ccb807_1792362025/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_11b294ccb807_1792362025 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_11b294ccb807_1792362025 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 0
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=True missing_slots=- latency_ms=7028
+[19/35] 1761-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_63cb6398f6cc_1792362032/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_63cb6398f6cc_1792362032 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_63cb6398f6cc_1792362032 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 0
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=True missing_slots=- latency_ms=6285
+[20/35] 4245-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_9e1d6d4ffaa6_1792362039/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_9e1d6d4ffaa6_1792362039 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_9e1d6d4ffaa6_1792362039 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 0
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=True missing_slots=- latency_ms=5694
+[21/35] 5775-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_36c7798adba0_1792362046/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_36c7798adba0_1792362046 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_36c7798adba0_1792362046 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 0
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=True missing_slots=- latency_ms=5716
+[22/35] 1504-Signal ...
+[paska] cache hit: outputs/_paska/.cache/1bb4cf10899646340dbdbf1a88609e80cb9841f798a41f6fef0fc0f55ec48cbf
+        paska_passed=False missing_slots=['scope', 'condition', 'actor', 'modalVerb', 'action'] latency_ms=5753
+[23/35] 8-Mastodon ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_0bee9ddd6446_1792362058/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_0bee9ddd6446_1792362058 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_0bee9ddd6446_1792362058 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 0
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=True missing_slots=- latency_ms=5837
+[24/35] 592-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_e54c4898649e_1792362065/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_e54c4898649e_1792362065 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_e54c4898649e_1792362065 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,1
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 1
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=False missing_slots=['modalVerb'] latency_ms=5173
+[25/35] 6031-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_0d661ba34960_1792362070/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_0d661ba34960_1792362070 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_0d661ba34960_1792362070 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 0
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=True missing_slots=- latency_ms=4772
+[26/35] 496-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_60f9663d2117_1792362077/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_60f9663d2117_1792362077 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_60f9663d2117_1792362077 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 0
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=True missing_slots=- latency_ms=5339
+[27/35] 4230-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_9b7bac3b39da_1792362082/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_9b7bac3b39da_1792362082 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_9b7bac3b39da_1792362082 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,1
+Incomplete condition: 0, Incomplete system response: 1, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 1
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=False missing_slots=['scope', 'condition', 'modalVerb'] latency_ms=4658
+[28/35] 757-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_8bc55dfd1c57_1792362090/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_8bc55dfd1c57_1792362090 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_8bc55dfd1c57_1792362090 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 0
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=True missing_slots=- latency_ms=6601
+[29/35] 1283-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_f0ec5ff9e499_1792362097/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_f0ec5ff9e499_1792362097 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_f0ec5ff9e499_1792362097 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,1
+Incomplete condition: 0, Incomplete system response: 1, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 1
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=False missing_slots=['scope', 'condition', 'actor', 'modalVerb'] latency_ms=6247
+[30/35] 7310-Signal ...
+[paska] cache hit: outputs/_paska/.cache/6f014ef30310a4a177a77bcb4de0ca3a1c2f4e51049478be3c02c505ec061124
+        paska_passed=False missing_slots=- latency_ms=5780
+[31/35] 937-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_3c49d324360e_1792362111/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_3c49d324360e_1792362111 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_3c49d324360e_1792362111 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 0
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=True missing_slots=- latency_ms=6966
+[32/35] 42-Mastodon ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_d733785b2752_1792362118/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_d733785b2752_1792362118 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_d733785b2752_1792362118 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 0
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=True missing_slots=- latency_ms=5939
+[33/35] 7345-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_af0e2c5f0472_1792362126/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_af0e2c5f0472_1792362126 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_af0e2c5f0472_1792362126 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 0
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=True missing_slots=- latency_ms=7027
+[34/35] 175-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_8b06bd0c6c6d_1792362133/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_8b06bd0c6c6d_1792362133 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_8b06bd0c6c6d_1792362133 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 0
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=True missing_slots=- latency_ms=5946
+[35/35] 2055-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_9a8adc9e0775_1792362140/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_9a8adc9e0775_1792362140 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_9a8adc9e0775_1792362140 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 0
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        paska_passed=True missing_slots=- latency_ms=5949
+============================================================
+Done. run=exp1_atomic_haiku/cot processed=35 skipped=0
+Run dir:  /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/exp1_atomic_haiku/cot
+Next:     python scripts/run_scoring.py --run exp1_atomic_haiku/cot
+2026/10/18 23:22:21 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:22:22 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:22:23 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:22:24 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:22:25 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:22:25 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:22:25 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:22:25 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:22:26 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:22:27 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:22:28 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:22:29 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:22:29 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:22:30 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:22:30 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:22:30 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:22:30 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:22:31 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:22:31 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:22:32 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:22:33 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:22:34 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:22:35 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:22:35 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:22:35 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:22:36 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:22:36 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:22:37 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:22:37 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:22:38 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:22:38 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:22:38 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:22:39 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:22:39 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:22:40 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+[2026-10-18 23:22:40] exp1_atomic_haiku CONVERT cot OK
+[2026-10-18 23:22:40] exp1_atomic_haiku SCORE cot (attempt 1)
+Scoring — run=exp1_atomic_haiku/cot strategy=cot
+  gold=35 converted=35 evaluated=35 skipped=0
+  macro-F1 (missing-detection): 0.363
+  overall-verdict agreement:   0.857
+  mean LLM-vs-human seq_ratio: 0.498
+  mean human-human seq_ratio:  0.644
+  Paska pass rate:             0.657
+  outputs: /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/exp1_atomic_haiku/cot/scoring/
+[2026-10-18 23:22:41] exp1_atomic_haiku SCORE cot OK
+[2026-10-18 23:22:41] exp2_units_haiku CONVERT zsl (attempt 1)
+Stage 1 conversion — run=exp2_units_haiku/zsl strategy=zsl model=claude-haiku-4-5-20251001
+  gold reqs: 15  to process: 15
+  run dir:   outputs/exp2_units_haiku/zsl
+============================================================
+[1/15] 1055-Signal ...
+2026/10/18 23:22:43 WARNING mlflow.utils.git_utils: Failed to import Git (the Git executable is probably not on your PATH), so Git SHA is not available. Error: Failed to initialize: Cmd('git') failed due to: exit code(69)
+  cmdline: git version
+  stderr: 'You have not agreed to the Xcode license agreements. Please run 'sudo xcodebuild -license' from within a Terminal window to review and agree to the Xcode and Apple SDKs license.'
+2026/10/18 23:22:43 WARNING mlflow.utils.git_utils: Failed to import Git (the Git executable is probably not on your PATH), so Git branch is not available. Error: Failed to initialize: Cmd('git') failed due to: exit code(69)
+  cmdline: git version
+  stderr: 'You have not agreed to the Xcode license agreements. Please run 'sudo xcodebuild -license' from within a Terminal window to review and agree to the Xcode and Apple SDKs license.'
+2026/10/18 23:22:43 WARNING mlflow.utils.git_utils: Failed to import Git (the Git executable is probably not on your PATH), so Git repository URL is not available. Error: Failed to initialize: Cmd('git') failed due to: exit code(69)
+  cmdline: git version
+  stderr: 'You have not agreed to the Xcode license agreements. Please run 'sudo xcodebuild -license' from within a Terminal window to review and agree to the Xcode and Apple SDKs license.'
+/Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/src/llm_converter.py:159: RuntimeWarning: temperature=0.0 cannot be set on the 'subscription' backend — the Claude Agent SDK exposes no sampling controls. Results will not be deterministic. Use the 'api' backend where reproducibility matters.
+  completion = llm_backend.complete(
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_ef8e784f7192_1792362166/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_ef8e784f7192_1792362166 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_ef8e784f7192_1792362166 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 0
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.5 sec].
+        units 2/2 paska_passed=[True, True] latency_ms=2415
+[2/15] 1692-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_f09d32de1513_1792362172/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_f09d32de1513_1792362172 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_f09d32de1513_1792362172 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,1
+Incomplete condition: 2, Incomplete system response: 0, Passive voice: 2, Not precise verb: 0
+Number Req with smells: 4
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        units 7/2 paska_passed=[True, False, False, True, True, False, False] latency_ms=3528
+[3/15] 6390-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_4db8f9668f77_1792362177/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_4db8f9668f77_1792362177 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_4db8f9668f77_1792362177 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,2
+Incomplete condition: 0, Incomplete system response: 1, Passive voice: 2, Not precise verb: 0
+Number Req with smells: 4
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.5 sec].
+        units 7/2 paska_passed=[True, False, True, True, False, False, False] latency_ms=3487
+[4/15] 222-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_b4a40104b7b7_1792362183/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_b4a40104b7b7_1792362183 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_b4a40104b7b7_1792362183 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 2, Not precise verb: 0
+Number Req with smells: 2
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.5 sec].
+        units 3/3 paska_passed=[False, False, True] latency_ms=3123
+[5/15] 1065-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_03c0aa39e4f3_1792362187/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_03c0aa39e4f3_1792362187 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_03c0aa39e4f3_1792362187 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,0
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 0
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.5 sec].
+        units 2/2 paska_passed=[True, True] latency_ms=2712
+[6/15] 328-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_796d6a629630_1792362197/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_796d6a629630_1792362197 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_796d6a629630_1792362197 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 2, Incomplete requirement: 0, Incorrect order requirement: 1, Coordination ambiguity: 0, Not requirement: ,8
+Incomplete condition: 2, Incomplete system response: 1, Passive voice: 2, Not precise verb: 0
+Number Req with smells: 13
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        units 20/5 paska_passed=[False, False, True, False, True, False, True, True, True, False, False, False, False, False, False, True, True, False, False, False] latency_ms=8429
+[7/15] 6111-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_2fdcd9cfcecf_1792362204/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_2fdcd9cfcecf_1792362204 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_2fdcd9cfcecf_1792362204 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 2, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,3
+Incomplete condition: 3, Incomplete system response: 1, Passive voice: 1, Not precise verb: 0
+Number Req with smells: 7
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        units 9/3 paska_passed=[True, False, False, False, False, False, True, False, False] latency_ms=3432
+[8/15] 226-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_745da0529134_1792362210/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_745da0529134_1792362210 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_745da0529134_1792362210 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 2, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,9
+Incomplete condition: 0, Incomplete system response: 5, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 11
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        units 16/2 paska_passed=[True, False, True, True, False, False, False, False, False, False, False, False, False, False, True, True] latency_ms=3925
+[9/15] 4821-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_5b88d2b4bfcf_1792362216/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_5b88d2b4bfcf_1792362216 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_5b88d2b4bfcf_1792362216 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,1
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 1
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        units 7/2 paska_passed=[True, False, True, True, True, True, True] latency_ms=3074
+[10/15] 6362-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_60eecd5d260a_1792362222/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_60eecd5d260a_1792362222 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_60eecd5d260a_1792362222 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 1, Coordination ambiguity: 0, Not requirement: ,1
+Incomplete condition: 0, Incomplete system response: 0, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 2
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.4 sec].
+        units 11/4 paska_passed=[True, False, True, True, True, False, True, True, True, True, True] latency_ms=4537
+[11/15] 6424-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_cc761b4c8407_1792362229/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_cc761b4c8407_1792362229 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_cc761b4c8407_1792362229 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,5
+Incomplete condition: 0, Incomplete system response: 3, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 5
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.5 sec].
+        units 9/3 paska_passed=[True, False, False, False, False, False, True, True, True] latency_ms=3795
+[12/15] 7567-Signal ...
+[paska] step 1: parsing trees (stanza) → /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_b7351b064eb6_1792362235/parsing-trees.csv
+[paska] step 2 (smell detector): java -jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/paska/smell_detector.jar /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/parsing_trees/run_b7351b064eb6_1792362235 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/outputs/_paska/smells/run_b7351b064eb6_1792362235 /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger
+File parsing-trees.csv
+Smells found in this document: 
+Non-atomic requirement: 0, Incomplete requirement: 0, Incorrect order requirement: 0, Coordination ambiguity: 0, Not requirement: ,2
+Incomplete condition: 0, Incomplete system response: 1, Passive voice: 0, Not precise verb: 0
+Number Req with smells: 2
+[main] INFO edu.stanford.nlp.tagger.maxent.MaxentTagger - Loading POS tagger from /Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/models/english-left3words-distsim.tagger ... done [0.5 sec].
+        units 7/2 paska_passed=[True, False, True, True, False, True, True] latency_ms=3293
+[13/15] 802-Signal ...
+Traceback (most recent call last):
+  File "/Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/.venv/lib/python3.13/site-packages/claude_agent_sdk/_internal/query.py", line 311, in _read_messages
+    async for message in self.transport.read_messages():
+    ...<87 lines>...
+        await self._message_send.send(message)
+  File "/Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/.venv/lib/python3.13/site-packages/claude_agent_sdk/_internal/transport/subprocess_cli.py", line 1142, in _read_messages_impl
+    raise self._exit_error
+claude_agent_sdk._errors.ProcessError: Command failed with exit code 1 (exit code: 1)
+Error output: Check stderr output for details
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/scripts/run_conversion.py", line 205, in <module>
+    raise SystemExit(main())
+                     ~~~~^^
+  File "/Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/scripts/run_conversion.py", line 159, in main
+    record = run_single_units(req_id, nl_text, n_units[req_id], run_cfg=run_cfg, run_paths=run_paths)
+  File "/Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/src/pipeline.py", line 272, in run_single_units
+    llm: LLMResponse = convert(nl_text, run_cfg=run_cfg, n_units=n_units)
+                       ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/.venv/lib/python3.13/site-packages/mlflow/tracing/fluent.py", line 354, in wrapper
+    _WrappingContext(fn, args, kwargs) as wrapping_coro,
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/.venv/lib/python3.13/site-packages/mlflow/tracing/fluent.py", line 337, in __exit__
+    self.coro.throw(exc_value)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/.venv/lib/python3.13/site-packages/mlflow/tracing/fluent.py", line 314, in _wrapping_logic
+    result = yield  # sync/async function output to be sent here
+             ^^^^^
+  File "/Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/.venv/lib/python3.13/site-packages/mlflow/tracing/fluent.py", line 356, in wrapper
+    return wrapping_coro.send(fn(*args, **kwargs))
+                              ~~^^^^^^^^^^^^^^^^^
+  File "/Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/src/llm_converter.py", line 159, in convert
+    completion = llm_backend.complete(
+        system=prompt.system,
+    ...<5 lines>...
+        cache_system=True,
+    )
+  File "/Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/src/llm_backend.py", line 215, in complete
+    return _complete_subscription(
+        system=system, prompt=prompt, model=model, max_tokens=max_tokens,
+        temperature=temperature,
+    )
+  File "/Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/src/llm_backend.py", line 187, in _complete_subscription
+    return asyncio.run(
+           ~~~~~~~~~~~^
+        _run_subscription(system=system, prompt=prompt, model=model, max_tokens=max_tokens)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.13/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.13/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/opt/homebrew/Caskroom/miniforge/base/lib/python3.13/asyncio/base_events.py", line 725, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "/Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/src/llm_backend.py", line 146, in _run_subscription
+    async for message in query(prompt=prompt, options=options):
+    ...<3 lines>...
+            result = message
+  File "/Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/.venv/lib/python3.13/site-packages/claude_agent_sdk/query.py", line 123, in query
+    async for message in client.process_query(
+    ...<2 lines>...
+        yield message
+  File "/Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/.venv/lib/python3.13/site-packages/claude_agent_sdk/_internal/client.py", line 56, in process_query
+    async for msg in inner:
+        yield msg
+  File "/Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/.venv/lib/python3.13/site-packages/claude_agent_sdk/_internal/client.py", line 189, in _process_query_inner
+    async for data in query.receive_messages():
+    ...<2 lines>...
+            yield message
+  File "/Users/pavelghazaryan/Desktop/PhD Journey/RQ1ConvertToRimay/.venv/lib/python3.13/site-packages/claude_agent_sdk/_internal/query.py", line 903, in receive_messages
+    raise exc
+claude_agent_sdk._errors.ResultError: Claude Code returned an error result: Reached maximum number of turns (1) (exit code: 1)
+2026/10/18 23:24:00 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:24:00 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:24:00 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:24:00 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:24:01 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:24:02 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:24:02 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:24:03 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:24:03 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:24:03 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:24:04 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:24:04 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+2026/10/18 23:24:04 INFO mlflow.tracing.export.async_export_queue: Flushing the async trace logging queue before program exit. This may take a while...
+[2026-10-18 23:24:06] exp2_units_haiku CONVERT zsl failed for another reason; sleeping 5m

@@ -14,8 +14,14 @@ appears in ``prompts/examples/fsl_examples.json`` is skipped defensively
 (in normal operation the exemplar pool and the gold eval set do not
 overlap).
 
+With ``--units`` (the non-atomic task) the gold is a units CSV
+(``data/curated/gold_units.csv``): each requirement is converted into the
+number of units its gold has, and the prompt states that number.
+
 Usage:
     python scripts/run_conversion.py --strategy zsl --run-name run2/zsl
+    python scripts/run_conversion.py --units --strategy zsl --run-name exp2_units_opus/zsl \\
+        --gold data/curated/gold_units.csv
         [--n-samples N] [--model ...] [--temperature 0.0]
         [--max-tokens 1024] [--n-fsl-examples 2]
 """
@@ -33,17 +39,26 @@ sys.path.insert(0, str(THIS_DIR.parent))
 from src import config  # noqa: E402
 from src import llm_backend  # noqa: E402
 from src.gold_loader import load_gold  # noqa: E402
-from src.pipeline import run_single  # noqa: E402
+from src.pipeline import run_single, run_single_units  # noqa: E402
 from src.prompt_builder import STRATEGIES  # noqa: E402
 
 
-def _fsl_exemplar_ids() -> set[str]:
+def _units_per_requirement(path: Path) -> dict[str, int]:
+    import pandas as pd
+
+    df = pd.read_csv(path, dtype=str, keep_default_na=False)
+    if "nUnits" not in df.columns:
+        raise SystemExit(f"--units needs a units CSV with a nUnits column; {path} has none.")
+    return {rid: int(n) for rid, n in df.groupby("reqId", sort=False)["nUnits"].first().items()}
+
+
+def _fsl_exemplar_ids(filename: str = "fsl_examples.json") -> set[str]:
     """reqIds/ids to skip: both the exemplar ``id`` and its ``source_reqId``.
 
     ``source_reqId`` is the real join key, so this defends against an
     exemplar's source requirement accidentally appearing in the gold set.
     """
-    path = config.PROMPTS_DIR / "examples" / "fsl_examples.json"
+    path = config.PROMPTS_DIR / "examples" / filename
     if not path.is_file():
         return set()
     examples = json.loads(path.read_text(encoding="utf-8"))
@@ -71,6 +86,9 @@ def parse_args(argv=None) -> argparse.Namespace:
         "--n-fsl-examples", type=int, default=config.DEFAULT_N_FSL_EXAMPLES
     )
     p.add_argument("--gold", default=str(config.GOLD_CSV), help="Gold CSV path.")
+    p.add_argument("--units", action="store_true",
+                   help="Non-atomic task: convert each requirement into the number of units in the gold "
+                        "(needs a units CSV with a nUnits column); the prompt states that number.")
     p.add_argument(
         "--backend",
         choices=["api", "subscription"],
@@ -107,7 +125,8 @@ def main(argv=None) -> int:
     run_paths.ensure()
 
     gold = load_gold(Path(args.gold))
-    exemplar_ids = _fsl_exemplar_ids()
+    exemplar_ids = _fsl_exemplar_ids() | (_fsl_exemplar_ids("fsl_units_examples.json") if args.units else set())
+    n_units = _units_per_requirement(Path(args.gold)) if args.units else {}
 
     items = [(r.req_id, r.nl_text) for r in gold.values()]
     if args.n_samples is not None:
@@ -136,6 +155,14 @@ def main(argv=None) -> int:
                 print(f"[{i}/{len(items)}] SKIP {req_id} (empty nlText)")
                 continue
             print(f"[{i}/{len(items)}] {req_id} ...", flush=True)
+            if args.units:
+                record = run_single_units(req_id, nl_text, n_units[req_id], run_cfg=run_cfg, run_paths=run_paths)
+                mf.write(json.dumps(record, ensure_ascii=False) + "\n")
+                mf.flush()
+                processed += 1
+                print(f"        units {record['n_units_returned']}/{record['n_units_expected']} "
+                      f"paska_passed={[u['paska_passed'] for u in record['units']]} latency_ms={record['latency_ms']}")
+                continue
             record = run_single(req_id, nl_text, run_cfg=run_cfg, run_paths=run_paths)
             mf.write(json.dumps(record, ensure_ascii=False) + "\n")
             mf.flush()
@@ -151,6 +178,7 @@ def main(argv=None) -> int:
     meta = {
         "run_id": run_id,
         "strategy": args.strategy,
+        "task": "units" if args.units else "atomic",
         "model": args.model,
         "temperature": args.temperature,
         "max_tokens": args.max_tokens,

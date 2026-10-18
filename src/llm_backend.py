@@ -30,6 +30,7 @@ from __future__ import annotations
 
 import asyncio
 import os
+import shutil
 import warnings
 from dataclasses import dataclass
 from typing import Optional
@@ -130,11 +131,17 @@ async def _run_subscription(*, system: str, prompt: str, model: str, max_tokens:
         system_prompt=system,
         model=model,
         allowed_tools=[],
+        # No tools at all: the installed CLI exposes its built-ins otherwise, and a
+        # tool call on a long answer ends the single allowed turn with an error.
+        tools=[],
         setting_sources=[],
         max_turns=1,
         # Blank rather than absent: the CLI must not fall back to a key it can
         # see in the parent environment (that would bill API credits).
         env={"ANTHROPIC_API_KEY": "", "MAX_THINKING_TOKENS": "0"},
+        # The SDK's bundled CLI lags behind and rejects newer models; prefer the
+        # installed `claude` (override with RIMAY_CLAUDE_CLI).
+        cli_path=os.environ.get("RIMAY_CLAUDE_CLI") or shutil.which("claude"),
     )
 
     chunks: list[str] = []

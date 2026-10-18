@@ -1,0 +1,1 @@
+For each group, when the group sends messages, then the user must be able to mute the group for a specified duration.

@@ -1,0 +1,1 @@
+For each message, when the message length exceeds the maximum character limit, then the app must split the oversized text into multiple messages.

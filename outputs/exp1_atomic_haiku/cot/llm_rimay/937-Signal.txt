@@ -1,0 +1,1 @@
+The conversation view must sort messages by sent timestamp. <NON_ATOMIC>
