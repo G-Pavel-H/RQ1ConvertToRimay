@@ -1,0 +1,1 @@
+<MISSING_SCOPE>, <MISSING_CONDITION>, the app must provide an option to set a "notification color" for individual contacts or groups.

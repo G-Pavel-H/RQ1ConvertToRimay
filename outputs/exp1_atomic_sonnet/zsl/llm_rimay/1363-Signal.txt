@@ -1,0 +1,1 @@
+For the conversation overview, <MISSING_ACTOR> <MISSING_MODAL_VERB> indicate whether the "last message" is from "the user" or from "the conversation partner".

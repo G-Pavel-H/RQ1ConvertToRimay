@@ -1,0 +1,1 @@
+For each "message in the conversation view", the <MISSING_ACTOR> <MISSING_MODAL_VERB> sort the "conversation view" by the "sent timestamp". <NON_ATOMIC>

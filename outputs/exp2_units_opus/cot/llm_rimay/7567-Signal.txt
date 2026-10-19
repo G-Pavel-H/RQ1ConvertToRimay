@@ -1,0 +1,2 @@
+For <MISSING_SCOPE>, while Signal is the "default SMS manager", then Signal <MISSING_MODAL_VERB> use the "Android notification profile" for "regular SMS/MMS messages".
+For <MISSING_SCOPE>, while Signal is the "default SMS manager", then Signal <MISSING_MODAL_VERB> use the "Signal notification settings" for "secure messages and calls".

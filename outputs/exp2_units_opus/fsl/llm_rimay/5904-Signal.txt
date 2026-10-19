@@ -1,0 +1,2 @@
+<MISSING_SCOPE>, when the App creates an "XML backup", then the App must include the "archived" flag of each message in the "XML backup".
+<MISSING_SCOPE>, when the App creates an "XML backup", then the App must include the "blocked" flag of each conversation in the "XML backup".

@@ -1,0 +1,1 @@
+<MISSING_SCOPE>, if the user is being coerced to disclose the password, then the app must provide a "quick way" to wipe the text message database by using a "button combination" and a "confirmation dialogue".

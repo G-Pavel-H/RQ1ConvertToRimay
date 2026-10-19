@@ -41,7 +41,7 @@ mlflow.db
 # run_meta) as the experiment record, but ignore the shared, regenerable
 # Paska cache/working files and the generated HTML report.
 outputs/_paska/
-outputs/report.html
+outputs/dashboard.html
 
 # Jupyter
 .ipynb_checkpoints/

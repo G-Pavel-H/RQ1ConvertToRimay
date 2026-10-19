@@ -1,0 +1,2 @@
+After some timeout measured in minutes, then Signal must detect that the secure message has been sent but not delivered to the recipient.
+When a secure message has been sent but not delivered after some timeout, then Signal must send a "lack of delivery" notification to the sender offering to resend via insecure SMS.

@@ -128,13 +128,11 @@
                                     |
                                     v
 +=============================================================================+
-|  REPORT              src/report.py  (+ scripts/build_report.py to rebuild)   |
-|  Collects the results.json files and injects them into templates/report.html |
-|  -> outputs/report.html: one self-contained page, no server and no           |
-|  dependencies. Run picker, all-runs overview, both tracks per run, a legend  |
-|  under every table, per-requirement drill-down, verdict when one exists.     |
-|  Stage 2 rebuilds it automatically on every run (--no-report opts out), so   |
-|  the page never goes stale; build_report.py is for viewing / re-rendering.   |
+|  DASHBOARD    src/dashboard.py  (+ scripts/build_dashboard.py to rebuild)    |
+|  Collects results.json files + batch verdicts into templates/dashboard.html  |
+|  -> outputs/dashboard.html: one self-contained page, no server.              |
+|  Overview -> experiment (models compared) -> model -> run -> requirement.    |
+|  Stage 2 rebuilds it on every run (--no-dashboard opts out).                 |
 +=============================================================================+
 
 -------------------------------------------------------------------------------

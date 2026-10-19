@@ -1,0 +1,1 @@
+<MISSING_SCOPE>, when the user enters a "button combo" and confirms the "confirm dialogue", then <MISSING_ACTOR> <MISSING_MODAL_VERB> delete the "text message database".

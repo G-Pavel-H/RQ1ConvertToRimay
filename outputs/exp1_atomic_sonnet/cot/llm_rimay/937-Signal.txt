@@ -1,0 +1,1 @@
+For each conversation, the TextSecure client must sort the messages in the conversation view by the "sent" timestamp.

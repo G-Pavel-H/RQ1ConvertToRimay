@@ -1,0 +1,5 @@
+TextSecure <MISSING_MODAL_VERB> send "dummy random messages" to "randomly chosen contacts that use TextSecure" at "random times".
+When the recipient's TextSecure decrypts a "dummy message", then TextSecure <MISSING_MODAL_VERB> discard the "dummy message" automatically.
+If the sender enables the "dummy messaging feature", then TextSecure must send "dummy messages" within the "desired quantity defined by the sender".
+While the device is roaming, TextSecure must disable the "dummy messaging feature" by default.
+If Device.Battery_Level is less than "30%", then TextSecure must not send "dummy messages".

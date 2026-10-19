@@ -1,0 +1,1 @@
+<MISSING_SCOPE>, if User.Passphrase_Setting is not equal to "enabled", then Signal <MISSING_MODAL_VERB> disable the "Screen security" setting by default. <NON_ATOMIC>

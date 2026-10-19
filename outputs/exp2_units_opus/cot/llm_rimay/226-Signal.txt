@@ -1,0 +1,2 @@
+For any message, <MISSING_CONDITION>, then TextSecure <MISSING_MODAL_VERB> provide the "option to edit the message" through the "Android Context Menu".
+For any message, <MISSING_CONDITION>, then TextSecure <MISSING_MODAL_VERB> provide the "option to insert a new message next to the message".

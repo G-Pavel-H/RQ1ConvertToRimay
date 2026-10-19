@@ -1,0 +1,5 @@
+For the user with a US phone number, the <MISSING_ACTOR> <MISSING_MODAL_VERB> <MISSING_ACTION>.
+Wait, let me give clean output instead.
+For a user with a US phone number, the System must allow the user to search for a US phone number by entering any of "+17043264096", "17043264096" or "7043264096".
+For a user with a US phone number, the System must allow the user to search for a non-US phone number by entering any of "+441733530267" or "441733530267".
+<MISSING_SCOPE> <MISSING_CONDITION> the System must try prepending the "calling code of the current user's phone number" and the "calling code corresponding to the default region of the current device" to the entered phone number.

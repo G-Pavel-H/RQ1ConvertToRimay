@@ -1,0 +1,1 @@
+The Signal Android app shall support the custom URL scheme "signal://" to allow webpages to open the Signal app.

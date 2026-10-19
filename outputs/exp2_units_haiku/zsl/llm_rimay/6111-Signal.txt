@@ -1,9 +1,3 @@
-I'll analyze this non-atomic NL requirement and convert it into 3 atomic Rimay requirements, one per system response.
-The NL describes three distinct user actions/system responses:
-Multiselect images/media in gallery mode and delete them
-Delete a single image/media when opened in detail view
-Display a confirmation dialog when deleting
-Let me convert each into Rimay format:
-For all images in gallery mode, the user shall multiselect a set of images and delete them.
-When an image is opened, the user shall delete the image from this opened view.
-When deleting images, the System shall display a confirmation dialog to verify the deletion action.
+For the Image gallery, when the user multiselects images or media, the System shall delete the selected images or media.
+When the user opens an image or media in the opened view, the System shall delete it based on a user-initiated action.
+For the Image gallery or opened media view, if a delete confirmation dialog is displayed, the System shall remove the corresponding text message along with a hint indicating the deleted image or media.

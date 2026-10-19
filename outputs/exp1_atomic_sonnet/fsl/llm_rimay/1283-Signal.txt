@@ -1,0 +1,1 @@
+<MISSING_SCOPE>, <MISSING_CONDITION>, the app must provide a "theme support" option to allow users to customize the appearance of the app.

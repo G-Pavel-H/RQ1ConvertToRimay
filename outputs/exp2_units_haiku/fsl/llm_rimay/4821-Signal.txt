@@ -1,0 +1,2 @@
+<MISSING_SCOPE>, when the user long-presses a "received message", then the App must show an "acknowledge message" option.
+<MISSING_SCOPE>, when the user selects "acknowledge message", then the App must replace the "received" indicator with an "acknowledgement" indicator.

@@ -1,0 +1,3 @@
+If User.Phone_Number is a "US phone number", when the User enters a "US phone number" in the "non-contact search" in any of the formats "+17043264096", "17043264096" or "7043264096", then Signal-Android must find the "non-contact" based on the "entered phone number".
+When the User enters a "non-US phone number" in the "non-contact search" in any of the formats "+441733530267" or "441733530267", then Signal-Android must find the "non-contact" based on the "entered phone number".
+When the User searches for a "non-contact" by "phone number", then Signal-Android must try prepending the "calling code of the current user's phone number" and the "calling code of the default region of the current device" to the "entered phone number".

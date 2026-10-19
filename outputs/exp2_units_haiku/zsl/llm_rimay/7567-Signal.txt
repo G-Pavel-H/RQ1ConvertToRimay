@@ -1,7 +1,2 @@
-I'll analyze this non-atomic requirement and convert it into 2 atomic Rimay requirements, one for each system response.
-The NL requirement describes two distinct system behaviors:
-System Response 1**: Use Android notification profile for regular SMS/MMS
-System Response 2**: Use Signal settings for secure messages/calls
-Let me convert each into atomic Rimay requirements:
-When the user enables SMS support in Signal, the System shall use Android notification profile for regular SMS and MMS.
-When the user enables SMS support in Signal, the System shall use Signal notification settings for secure messages and calls.
+For the Signal application, when the user enables SMS support, the Signal application shall use the Android notification profile for regular SMS/MMS.
+For the Signal application, when the user enables SMS support, the Signal application shall use Signal notification settings for secure messages and calls.

@@ -1,0 +1,3 @@
+When the user opens the "Image gallery", then Signal-Android <MISSING_MODAL_VERB> allow the user to "multiselect and delete images/media" in the "Image gallery".
+When the user opens an "image/media", then Signal-Android <MISSING_MODAL_VERB> allow the user to "delete the image/media" in the "opened view".
+When the user deletes the "selected images/media", then Signal-Android <MISSING_MODAL_VERB> display a "confirmation dialog" to the user.

@@ -17,8 +17,8 @@ The system is split into cleanly decoupled stages:
   manifest against the gold CSV. It reads *only* the manifest and the gold —
   never MLflow — and never re-runs the LLM or Paska. It writes
   `scoring/results.json`.
-- **Report** (`scripts/build_report.py`): collects every run's `results.json`
-  into one self-contained HTML page, `outputs/report.html`.
+- **Dashboard** (`scripts/build_dashboard.py`): collects every run's `results.json`
+  into one self-contained HTML page, `outputs/dashboard.html`.
 
 See [`architecture.txt`](architecture.txt) for the full flow diagram; the prose
 below is kept in sync with it.
@@ -141,13 +141,13 @@ bin/convert_fsl.sh run2          # -> outputs/run2/fsl/   (3 FSL exemplars)
 bin/convert_cot.sh run2          # -> outputs/run2/cot/
 
 # Score the same batch (offline; manifest + gold); each run also refreshes
-# outputs/report.html, so the report is never stale
+# outputs/dashboard.html, so the dashboard is never stale
 bin/score_zsl.sh run2            # <- outputs/run2/zsl/
 bin/score_fsl.sh run2
 bin/score_cot.sh run2
 
-# Open the report (rebuilds it first; only needed to *view* it)
-bin/report.sh                    # -> outputs/report.html
+# Open the dashboard (rebuilds it first; only needed to *view* it)
+bin/dashboard.sh                 # -> outputs/dashboard.html
 ```
 
 The name is any folder name you like (`run2`, `haiku-baseline`, …); re-using one
@@ -163,11 +163,10 @@ python scripts/run_conversion.py --strategy zsl --run-name run2/zsl
 #   optional: --n-samples N --model ... --temperature 0.0 --max-tokens 1024
 python scripts/run_scoring.py --run run2/zsl
 #   strategy + gold path are read from run_meta.json
-#   rebuilds outputs/report.html unless --no-report
-#   optional: --gold ... --fsl-example-ids id1,id2 --no-report
-python scripts/build_report.py
+#   rebuilds outputs/dashboard.html unless --no-dashboard
+#   optional: --gold ... --fsl-example-ids id1,id2 --no-dashboard
+python scripts/build_dashboard.py [--open]
 #   standalone rebuild (e.g. after editing the template)
-#   optional: --outputs outputs --out outputs/report.html
 
 # MLflow UI (Stage 1 exploration only; runs tagged with output_run_id)
 mlflow ui --backend-store-uri sqlite:///mlruns/mlflow.db
@@ -185,31 +184,30 @@ outputs/run2/
     scoring/comparison.csv         tidy, per-requirement (this run)
   fsl/  … same layout
   cot/  … same layout
-outputs/report.html                the report over ALL runs (generated, gitignored)
+outputs/dashboard.html             the dashboard over ALL runs (generated, gitignored)
 outputs/_paska/                    Paska cache + working files, SHARED across runs
 ```
 
 The Paska cache lives in `outputs/_paska/` (not inside run folders) so identical
 Rimay text is never re-parsed across runs.
 
-## The results report
+## The dashboard
 
 Scoring writes **data, not prose**: `scoring/results.json` holds the counts, both
-tracks' metrics, and the per-requirement detail. Those files are collected and
-injected into [`templates/report.html`](templates/report.html), producing one
-self-contained page — no server, no build step, no dependencies. It gives you a
-run picker, a side-by-side overview of all runs, the full metric tables per run,
-and a per-requirement drill-down (NL, LLM Rimay, each annotator's conversion,
-slots). Every table carries a legend spelling out what each column means — TP is
-the *missing* class, not the present one, and the legends say so.
+tracks' metrics, and the per-requirement detail. `src/dashboard.py` collects those
+files (and each batch's `verdict.md`) into
+[`templates/dashboard.html`](templates/dashboard.html), producing one
+self-contained page — no server, no dependencies. Overview → experiment (all
+models compared) → model (its three strategies) → run (per-slot tables, every
+requirement) → requirement (every run on it). See `EXPERIMENTS.md`.
 
-**The report rebuilds itself on every scoring run**, so it always matches what is
-on disk. `scripts/build_report.py` (or `bin/report.sh`) only needs running to
-open it, or to re-render after you edit the template.
+**The dashboard rebuilds itself on every scoring run**, so it always matches what is
+on disk. `scripts/build_dashboard.py` (or `bin/dashboard.sh`) only needs running to
+open it, or after a verdict.
 
 Each run's `results.json` carries a `verdict` field, currently `null`. It is the
 slot for a future analysis stage in which an LLM reads the results and writes its
-conclusion; the report already renders it when it is non-null. Nothing else
+conclusion; the dashboard renders it when it is non-null. Nothing else
 depends on it.
 
 Default development model is `claude-haiku-4-5-20251001` (override with
@@ -249,7 +247,7 @@ data/gold_annotations.csv     the human gold (Stage 1 input + Stage 2 reference)
 paska/                        Paska jar + files (reused verbatim)
 models/                       Stanford POS tagger (gitignored)
 prompts/                      system + zsl/fsl/cot templates + fsl_examples.json
-templates/report.html         the report page (data injected at build time)
+templates/dashboard.html      the dashboard page (data injected at build time)
 src/
   config.py                   paths, model defaults, placeholder tokens, env
   gold_loader.py              gold CSV -> GoldRecord per reqId + human baseline
@@ -259,17 +257,17 @@ src/
   paska_runner.py             Paska wrapper w/ caching (reused; Rimay only)
   pipeline.py                 single-requirement orchestration + MLflow + manifest
   tracking.py                 MLflow setup
-  report.py                   collect results.json -> rendered HTML
+  dashboard.py                collect results.json + verdicts -> dashboard HTML
   scoring/field_accuracy.py   Track 1 (pure functions)
   scoring/conversion_quality.py  Track 2 (pure functions)
 scripts/
   verify_setup.py             pre-flight checks
   run_conversion.py           Stage 1 entry point (--run-name <run>/<strategy>)
   run_scoring.py              Stage 2 entry point (--run <run>/<strategy>)
-  build_report.py             report entry point (all runs -> outputs/report.html)
+  build_dashboard.py          dashboard entry point (all runs -> outputs/dashboard.html)
 tests/                        pytest suite for the scoring modules
 outputs/<run>/<strategy>/     per-run artifacts: llm_rimay, conversions, scoring, meta
-outputs/report.html           generated report over all runs (gitignored)
+outputs/dashboard.html        generated dashboard over all runs (gitignored)
 outputs/_paska/               shared Paska cache (gitignored)
 mlruns/                       MLflow SQLite backend (gitignored)
 architecture.txt              ASCII flow diagram (kept in sync with this README)

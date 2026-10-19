@@ -1,0 +1,1 @@
+<MISSING_SCOPE>, when the user shares a "calendar event" from the "Android Calendar app" through TextSecure, then TextSecure <MISSING_MODAL_VERB> attach the "calendar event" to the "message".

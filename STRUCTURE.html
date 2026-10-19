@@ -57,7 +57,7 @@
   <span class="box">gold CSV</span><span class="arrow">→ Stage 1 convert →</span>
   <span class="box">llm_rimay/</span><span class="arrow">→ Stage 2 score →</span>
   <span class="box">results.json</span><span class="arrow">→ Stage 3 verdict →</span>
-  <span class="box">report.html</span>
+  <span class="box">dashboard.html</span>
 </div>
 
 <div class="legend">
@@ -121,7 +121,7 @@ src/
     embeddings.py             <span class="tag t-calc">CALC</span> <span class="c">semantic cosine via local Ollama (all-minilm).
                                    Degrades gracefully if Ollama is off.</span>
   verdict.py                  <span class="tag t-calc">CALC</span> <span class="c">STAGE 3 — asks an LLM to interpret results.json</span>
-  report.py                   <span class="c">collects every run → report.html</span>
+  dashboard.py                <span class="c">collects every run → dashboard.html</span>
 
 scripts/
   make_atomic_gold.py         <span class="tag t-calc">CALC</span> <span class="c">builds the 30 from a full export</span>
@@ -133,13 +133,13 @@ scripts/
   run_conversion.py           <span class="c">Stage 1</span>
   run_scoring.py              <span class="c">Stage 2 — offline, no LLM calls</span>
   run_verdict.py              <span class="c">Stage 3 — --run or --batch, --model</span>
-  build_report.py · verify_setup.py
+  build_dashboard.py · verify_setup.py
 
-bin/                          <span class="c">thin wrappers: convert_*.sh · score_*.sh · verdict.sh · report.sh
+bin/                          <span class="c">thin wrappers: convert_*.sh · score_*.sh · verdict.sh · dashboard.sh
                                    all take the run folder as arg 1, extra args pass through</span>
 paska/smell_detector.jar      <span class="c">the structural smell detector (Java)</span>
 models/english-left3words…    <span class="c">Stanford POS tagger Paska needs</span>
-templates/report.html         <span class="c">the report template</span>
+templates/dashboard.html      <span class="c">the experiment dashboard</span>
 
 outputs/                      <span class="tag t-out">OUT</span>
   main30opus/                 <span class="c">← current run: Opus 5 on the 30</span>
@@ -151,7 +151,7 @@ outputs/                      <span class="tag t-out">OUT</span>
     verdict.md                <span class="c">cross-strategy comparison</span>
   main30gold/                 <span class="c">same 30, Haiku — the earlier baseline</span>
   main30/ · run1/             <span class="c">older runs (main30 has no gold)</span>
-  report.html                 <span class="tag t-out">OUT</span> <span class="c">★ open this</span>
+  dashboard.html              <span class="tag t-out">OUT</span> <span class="c">★ open this</span>
   _paska/ · _embeddings/      <span class="c">caches — safe to delete, will rebuild</span>
   _logs/                      <span class="c">detached run logs</span>
 

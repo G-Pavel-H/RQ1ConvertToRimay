@@ -1,0 +1,3 @@
+When the System receives a "message" from the "blocked phone number", then the System shall delete the "message".
+When the System deletes a "message" from the "blocked phone number", then the System shall not send a "notification" to the user.
+The System shall accept the "blocking rule" based on the "user-specified phone number".

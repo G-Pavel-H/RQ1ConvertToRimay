@@ -1,0 +1,2 @@
+After the user imports messages from the ".xml backup", then the System must include the "archived flag" of each message in the ".xml backup".
+After the user imports messages from the ".xml backup", then the System must include the "blocked flag" of each message in the ".xml backup".

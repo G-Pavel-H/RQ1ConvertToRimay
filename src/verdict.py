@@ -2,7 +2,7 @@
 
 Reads a scored run's ``scoring/results.json``, asks an LLM to interpret the
 metrics, and writes the answer back into that file's ``verdict`` field, where
-``templates/report.html`` already renders it.
+``templates/dashboard.html`` renders it.
 
 Deliberately independent of Stage 1 and Stage 2: the only input is
 ``results.json``. Nothing here re-converts, calls Paska, or touches the gold

@@ -1,0 +1,2 @@
+When the user starts the app for the first time, the app shall ask the user to specify the desired behaviour, where the options are "only use push", "use SMS fallback" and "use as default SMS/MMS-App".
+When the user starts the app for the first time, the app shall provide a "what does that mean?" button that opens a pop-up explaining the behaviour of each mode in simple words.

@@ -1,0 +1,2 @@
+When the user imports messages from an ".xml backup", the system must restore the "archived state" of each previously archived message that was part of the backup.
+When the user imports messages from an ".xml backup", the system must restore the "blocked flag" of each message that was part of the backup.

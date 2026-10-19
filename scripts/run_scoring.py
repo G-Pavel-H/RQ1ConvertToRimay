@@ -11,14 +11,14 @@ excluding any FSL exemplar IDs. Writes, inside the run folder:
   * ``scoring/results.json``    — every metric + per-requirement detail
   * ``scoring/comparison.csv``  — tidy per-requirement rows for stats tools
 
-It then rebuilds ``outputs/report.html`` over every scored run, so the
-report is never stale (``--no-report`` skips that; ``scripts/build_report.py``
+It then rebuilds ``outputs/dashboard.html`` over every scored run, so the
+dashboard is never stale (``--no-dashboard`` skips that; ``scripts/build_dashboard.py``
 rebuilds it on its own).
 
 Usage:
     python scripts/run_scoring.py --run run2/zsl
         [--gold data/gold_annotations.csv] [--fsl-example-ids id1,id2]
-        [--no-report]
+        [--no-dashboard]
 """
 from __future__ import annotations
 
@@ -36,7 +36,7 @@ sys.path.insert(0, str(THIS_DIR.parent))
 from src import config  # noqa: E402
 from src.gold_loader import load_gold  # noqa: E402
 from src.scoring import embeddings  # noqa: E402
-from src.report import collect_results, render_report  # noqa: E402
+from src import dashboard  # noqa: E402
 from src.scoring import conversion_quality as cq  # noqa: E402
 from src.scoring import field_accuracy as fa  # noqa: E402
 
@@ -155,9 +155,9 @@ def main(argv=None) -> int:
         help="Comma-separated reqIds to exclude (defaults to fsl_examples.json ids).",
     )
     p.add_argument(
-        "--no-report",
+        "--no-dashboard",
         action="store_true",
-        help="Skip rebuilding outputs/report.html at the end.",
+        help="Skip rebuilding outputs/dashboard.html at the end.",
     )
     args = p.parse_args(argv)
 
@@ -278,12 +278,10 @@ def main(argv=None) -> int:
         run_paths.scoring_dir / "comparison.csv", strategy, per_req_rows
     )
 
-    # Rebuild the report so outputs/report.html always reflects the runs on
+    # Rebuild the dashboard so outputs/dashboard.html always reflects the runs on
     # disk; scoring a run is the only thing that changes what it shows.
-    if not args.no_report:
-        config.REPORT_HTML.write_text(
-            render_report(collect_results()), encoding="utf-8"
-        )
+    if not args.no_dashboard:
+        dashboard.build()
 
     # --- compact stdout summary ---
     counts = results["counts"]
@@ -305,8 +303,8 @@ def main(argv=None) -> int:
     embeddings.save_cache()
     print(f"  Paska pass rate:             {_fmt(cqr['paska']['pass_rate'])}")
     print(f"  outputs: {run_paths.scoring_dir}/")
-    if not args.no_report:
-        print(f"  report:  {config.REPORT_HTML}")
+    if not args.no_dashboard:
+        print(f"  dashboard: {config.DASHBOARD_HTML}")
     return 0
 
 

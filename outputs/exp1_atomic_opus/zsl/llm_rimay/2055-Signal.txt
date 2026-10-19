@@ -1,0 +1,1 @@
+For each "outgoing message", when the user selects the "info button" after long pressing on the "message", then <MISSING_ACTOR> <MISSING_MODAL_VERB> display the "received time" in the "message details" based on the "delivery receipt". <NON_ATOMIC>

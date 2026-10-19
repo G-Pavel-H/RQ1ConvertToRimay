@@ -1,0 +1,1 @@
+When the User requests "a quick wipe of the text message database" by using "a button combination", then the System shall wipe the "text message database" after the User confirms the "confirmation dialogue". <NON_ATOMIC>

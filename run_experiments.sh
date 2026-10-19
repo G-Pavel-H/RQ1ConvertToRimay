@@ -3,7 +3,8 @@
 #   Exp 1 — atomic:  data/curated/gold_atomic.csv, normal conversion.
 #   Exp 2 — units:   data/curated/gold_units.csv, the prompt states how many units.
 # Each model × experiment is one batch: outputs/exp<k>_<task>_<model>/<strategy>.
-# Waits for the subscription limit and retries throttled stages.
+# Waits for the subscription limit and retries throttled stages. Runs that are
+# already scored are skipped, so it can be stopped and restarted at any time.
 #   ./run_experiments.sh                 # all models
 #   MODELS="haiku" ./run_experiments.sh  # a subset
 cd "$(dirname "$0")"
@@ -49,19 +50,22 @@ stage() {
 
 say "=== experiments starting: models [$MODELS] ==="
 wait_available || { say "subscription never became available"; exit 1; }
+done_run() { [ -f "outputs/$1/scoring/results.json" ]; }
 for m in $MODELS; do
   M=$(model_id "$m")
   B1="exp1_atomic_$m"; B2="exp2_units_$m"
   for s in zsl fsl cot; do
+    done_run "$B1/$s" && { say "$B1/$s already scored — skip"; continue; }
     stage "$B1 CONVERT $s" $PY scripts/run_conversion.py --strategy "$s" --run-name "$B1/$s" --gold data/curated/gold_atomic.csv --model "$M"
-    stage "$B1 SCORE $s"   $PY scripts/run_scoring.py --run "$B1/$s" --no-report
+    stage "$B1 SCORE $s"   $PY scripts/run_scoring.py --run "$B1/$s" --no-dashboard
   done
   for s in zsl fsl cot; do
+    done_run "$B2/$s" && { say "$B2/$s already scored — skip"; continue; }
     stage "$B2 CONVERT $s" $PY scripts/run_conversion.py --units --strategy "$s" --run-name "$B2/$s" --gold data/curated/gold_units.csv --model "$M"
-    stage "$B2 SCORE $s"   $PY scripts/run_scoring.py --run "$B2/$s" --no-report
+    stage "$B2 SCORE $s"   $PY scripts/run_scoring.py --run "$B2/$s" --no-dashboard
   done
-  stage "$B1 VERDICT" $PY scripts/run_verdict.py --batch "$B1" --model "$VERDICT_MODEL"
-  stage "$B2 VERDICT" $PY scripts/run_verdict.py --batch "$B2" --model "$VERDICT_MODEL"
-  stage "REPORT" $PY scripts/build_report.py
+  [ -f "outputs/$B1/verdict.md" ] || stage "$B1 VERDICT" $PY scripts/run_verdict.py --batch "$B1" --model "$VERDICT_MODEL"
+  [ -f "outputs/$B2/verdict.md" ] || stage "$B2 VERDICT" $PY scripts/run_verdict.py --batch "$B2" --model "$VERDICT_MODEL"
+  stage "DASHBOARD" $PY scripts/build_dashboard.py
 done
 say "=== ALL DONE ==="

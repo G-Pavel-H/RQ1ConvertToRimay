@@ -1,0 +1,1 @@
+The <MISSING_ACTOR> <MISSING_MODAL_VERB> allow direct sharing to "contacts" through the "6.0 ChooserTargetService".

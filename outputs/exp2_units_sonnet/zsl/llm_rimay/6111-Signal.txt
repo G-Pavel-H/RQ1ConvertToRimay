@@ -1,0 +1,7 @@
+For the "Image gallery", the system shall allow the user to multiselect images and media and delete them.
+When the user opens an image or media item, the system shall allow the user to delete it in the opened view.
+If the user deletes the selected images, then the system shall display a dialog to confirm the deletion.
+Wait — I need to conform to the grammar. Corrected output:
+For the "Image gallery", the System shall allow the user to "multiselect images and media and delete them".
+When the user opens an "image or media item", then the System shall allow the user to "delete it in the opened view".
+When the user deletes the "selected images", then the System shall display a "confirmation dialog".

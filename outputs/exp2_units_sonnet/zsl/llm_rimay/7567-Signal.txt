@@ -1,0 +1,2 @@
+For all the SMS/MMS messages, when Signal is the default SMS manager, then Signal must use the "Android notification profile" for regular SMS/MMS.
+For all the secure messages and calls, when Signal is the default SMS manager, then Signal must use the "Signal notification settings" for secure messages and calls.

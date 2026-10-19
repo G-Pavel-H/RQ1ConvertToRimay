@@ -1,0 +1,1 @@
+<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure must provide an option to share "calendar events" as attachments via TextSecure.

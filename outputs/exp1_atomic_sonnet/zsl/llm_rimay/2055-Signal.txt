@@ -1,0 +1,1 @@
+When the user long presses a message and selects the "info button", then the System shall display the "received time" for outgoing messages based on the "sent time" from the "delivery receipt". <NON_ATOMIC>

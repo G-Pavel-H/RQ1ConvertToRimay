@@ -1,0 +1,1 @@
+For all the messages sent from a dual SIM mobile, the TextSecure application shall display the "SIM used to send the message" to the user.

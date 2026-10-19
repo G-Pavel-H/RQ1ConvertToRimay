@@ -1,0 +1,1 @@
+For "Signal 3.0.3", while a "call" is in progress, then the "calling screen" <MISSING_MODAL_VERB> display the "full resolution contact photo".

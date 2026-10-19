@@ -1,0 +1,6 @@
+The application shall import the "private key" from a file.
+The application shall export the "private key" to a file.
+The application shall import the "public keys" from a file.
+The application shall export the "public keys" to a file.
+The application shall import the "public keys" via "Bluetooth", "NFC", and "QR code".
+The application shall export the "public keys" via "Bluetooth", "NFC", and "QR code".

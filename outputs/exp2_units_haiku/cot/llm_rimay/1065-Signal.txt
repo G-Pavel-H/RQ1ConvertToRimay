@@ -1,0 +1,2 @@
+When the user starts the app for the first time, the System shall ask the user to specify the desired messaging behavior among push only, SMS fallback, or default SMS/MMS-App.
+When the user activates the "what does that mean?" button, the System shall display a pop-up that explains in simple language what each messaging mode does.

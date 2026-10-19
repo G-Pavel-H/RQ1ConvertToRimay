@@ -28,8 +28,8 @@ OUTPUTS_DIR = PROJECT_ROOT / "outputs"
 MLRUNS_DIR = PROJECT_ROOT / "mlruns"
 
 # --- the results report (Stage 3 view over every scored run) -----------------
-REPORT_TEMPLATE = TEMPLATES_DIR / "report.html"
-REPORT_HTML = OUTPUTS_DIR / "report.html"
+DASHBOARD_TEMPLATE = TEMPLATES_DIR / "dashboard.html"
+DASHBOARD_HTML = OUTPUTS_DIR / "dashboard.html"
 
 # --- the human gold standard (Stage 2 reference; also the Stage 1 input) -----
 GOLD_CSV = DATA_DIR / "gold_annotations.csv"

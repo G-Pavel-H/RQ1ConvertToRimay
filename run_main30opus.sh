@@ -71,5 +71,5 @@ for s in zsl fsl cot; do
   stage "SCORE $s" $PY scripts/run_scoring.py --run "$R/$s" || exit 1
 done
 stage "VERDICT" $PY scripts/run_verdict.py --batch "$R" --model "$M"
-stage "REPORT" $PY scripts/build_report.py
+stage "DASHBOARD" $PY scripts/build_dashboard.py
 say "=== ALL DONE ==="

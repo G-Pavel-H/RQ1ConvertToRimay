@@ -1,0 +1,3 @@
+The System must allow the user to block messages by a user-specified "phone number".
+When the System receives a message from a blocked "phone number", the System must delete the message upon receipt.
+When the System receives a message from a blocked "phone number", the System must not send a notification to the user.

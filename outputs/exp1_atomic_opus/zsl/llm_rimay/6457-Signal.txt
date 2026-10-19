@@ -1,0 +1,1 @@
+For the conversation window, Signal-Android must provide only one "way to open and close the attachment window".

@@ -1,0 +1,1 @@
+When Signal sends an SMS message to a mobile provider number, Signal must deliver the SMS message to the mobile provider's number without failure.
