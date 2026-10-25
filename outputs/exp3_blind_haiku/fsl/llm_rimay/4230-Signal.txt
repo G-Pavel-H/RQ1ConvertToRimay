@@ -1,0 +1,1 @@
+<MISSING_SCOPE>, if a text message exceeds the maximum size limit, then the App must split the text into multiple messages.

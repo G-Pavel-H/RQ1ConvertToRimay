@@ -1,1 +1,1 @@
-For <MISSING_SCOPE>, if <MISSING_CONDITION>, then <MISSING_ACTOR> <MISSING_MODAL_VERB> restore the "old text-based smileys".
+<MISSING_SCOPE>, <MISSING_CONDITION>, <MISSING_ACTOR> <MISSING_MODAL_VERB> restore the "old text-only smileys".

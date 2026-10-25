@@ -1,0 +1,18 @@
+I need to analyze this natural language requirement to identify the system response(s) and convert them to Rimay format.
+Source NL Structure:
+Context**: Android Calendar app allows sharing calendar events; TextSecure (a messaging app) appears in the "share with" list but doesn't attach the calendar event properly.
+Problem**: When a user shares a calendar event via TextSecure, the message arrives empty (no attachment), whereas the default Android text app properly attaches the event.
+Request**: Enable TextSecure to receive and properly attach calendar events when shared from the Android Calendar app.
+System Response(s) Identified:
+The NL contains **one primary system response**:
+TextSecure must receive calendar event attachments when a user shares a calendar event from the Android Calendar app.
+Structural Analysis for Rimay Conversion:
+| Component | Value |
+|-----------|-------|
+| **Scope** | `For the Android Calendar app` (implied context) |
+| **Condition** | `When a user shares a calendar event via TextSecure` (trigger) |
+| **Actor** | `TextSecure` |
+| **Modal Verb** | `shall` (standard requirement) |
+| **Action Phrase** | `receive a "calendar event" from the "Android Calendar app"` (OBTAIN pattern) |
+---
+When a user shares a calendar event via TextSecure, TextSecure shall receive a "calendar event" from the "Android Calendar app".

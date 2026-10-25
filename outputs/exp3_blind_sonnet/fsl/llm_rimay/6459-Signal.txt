@@ -1,0 +1,1 @@
+<MISSING_SCOPE>, when another app sends a share Intent with an "EXTRA_SUBJECT" and an "EXTRA_TEXT" to Signal, then Signal must include the "EXTRA_SUBJECT" in the shared message.

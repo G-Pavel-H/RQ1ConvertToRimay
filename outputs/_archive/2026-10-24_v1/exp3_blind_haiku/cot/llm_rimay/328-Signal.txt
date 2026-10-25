@@ -1,0 +1,6 @@
+TextSecure shall send dummy random messages to randomly selected contacts that use TextSecure.
+When a recipient receives a dummy message, the recipient shall recognize the message as such after decryption and automatically discard it.
+When a sender enables the dummy messaging feature, TextSecure shall allow the sender to define desired quantity parameters.
+If the device battery level is below 30%, then TextSecure shall not send dummy messages.
+If roaming is enabled and the recipient does not use TextSecure, then TextSecure shall send a cleartext promotion message only during daytime hours.
+A recipient shall be able to opt-out and notify peers that they do not want to receive dummy messages.

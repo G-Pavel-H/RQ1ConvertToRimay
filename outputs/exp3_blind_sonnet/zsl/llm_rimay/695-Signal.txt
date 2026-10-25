@@ -1,0 +1,1 @@
+While the SMS mode is disabled, the <MISSING_ACTOR> shall not show the "count of letters" at the "bottom left corner" when the user starts typing.

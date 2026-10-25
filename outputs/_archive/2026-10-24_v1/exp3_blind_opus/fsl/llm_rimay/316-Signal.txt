@@ -1,0 +1,2 @@
+<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure must appear as an option in the "share with" list of "calendar events".
+<MISSING_SCOPE>, when the user shares a "calendar event" via TextSecure, then TextSecure must attach the "calendar event" to the message.

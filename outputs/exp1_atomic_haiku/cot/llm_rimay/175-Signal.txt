@@ -1,1 +1,1 @@
-If the user is being coerced with force to disclose the password, then the System shall wipe the text message database by using a button combination and confirmation dialogue.
+If the user is coerced to disclose the password, then the system shall delete the "text message database" by using a "button combination and confirmation dialogue".

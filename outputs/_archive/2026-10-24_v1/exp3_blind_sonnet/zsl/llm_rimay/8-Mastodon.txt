@@ -1,0 +1,3 @@
+The user wants access to local and federated timelines, which the request says are missing. I read this as one system response. The source gives no scope, condition, or modal verb. The actor is implied to be the system.
+The system must provide access to the timelines. The request names two timelines, but they are one feature: access to both.
+<MISSING_SCOPE> <MISSING_CONDITION> The <MISSING_ACTOR> <MISSING_MODAL_VERB> provide access to the "local timeline" and the "federated timeline".

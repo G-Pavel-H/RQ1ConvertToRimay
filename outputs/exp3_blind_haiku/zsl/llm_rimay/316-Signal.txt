@@ -1,0 +1,1 @@
+TextSecure shall attach the calendar event data to the message when a user shares a calendar event from the Android Calendar app via TextSecure.

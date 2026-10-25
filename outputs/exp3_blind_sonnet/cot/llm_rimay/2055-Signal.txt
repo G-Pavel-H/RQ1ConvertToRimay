@@ -1,0 +1,2 @@
+For each outgoing message, when the user selects the "info" button, then <MISSING_ACTOR> <MISSING_MODAL_VERB> display the "received time" in the "message details" based on the "delivery receipt".
+For each outgoing message, <MISSING_ACTOR> <MISSING_MODAL_VERB> rename the "Sent/Received" label to "Sent" in the "message details".

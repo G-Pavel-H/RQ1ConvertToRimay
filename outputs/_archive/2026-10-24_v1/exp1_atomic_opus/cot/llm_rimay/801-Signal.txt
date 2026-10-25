@@ -1,0 +1,1 @@
+<MISSING_SCOPE>, <MISSING_CONDITION>, then <MISSING_ACTOR> <MISSING_MODAL_VERB> mute the "notifications of a group or user" for "X minutes/hours".

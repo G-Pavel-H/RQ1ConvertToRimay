@@ -1,0 +1,2 @@
+When a user selects a message from the Android Context Menu, the TextSecure application shall provide the ability to edit the message.
+When a user selects a message from the Android Context Menu, the TextSecure application shall provide the ability to insert a new message next to it.

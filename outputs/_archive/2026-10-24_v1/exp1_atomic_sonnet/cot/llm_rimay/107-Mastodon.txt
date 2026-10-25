@@ -1,0 +1,1 @@
+<MISSING_SCOPE> <MISSING_CONDITION> the System shall display the "indicator of whether an image has a description" to the user.

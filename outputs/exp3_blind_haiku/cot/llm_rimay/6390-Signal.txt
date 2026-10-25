@@ -1,0 +1,1 @@
+When a Signal message has been sent to the server but not delivered to the recipient after some timeout, then the system shall send a "lack of delivery notification" to the sender.

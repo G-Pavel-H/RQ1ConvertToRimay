@@ -3,7 +3,26 @@
   "strategy": "fsl",
   "task": "atomic",
   "units": null,
-  "scored_at": "2026-10-19T00:10:21+01:00",
+  "anomalies": {
+    "counts": {},
+    "affected": 0,
+    "items": [],
+    "kinds": {
+      "empty": "no Rimay line in the response",
+      "truncated": "the response hit the token limit",
+      "paska_error": "Paska failed on the conversion",
+      "no_block": "no <rimay> answer block (older readers used)",
+      "unclosed_block": "the <rimay> block was not closed",
+      "text_outside": "text outside the answer block",
+      "dropped_lines": "non-Rimay lines inside the answer, removed",
+      "extra_lines": "more than one Rimay line for an atomic conversion",
+      "non_atomic_flag": "the model flagged an atomic requirement <NON_ATOMIC>",
+      "split_atomic": "an atomic requirement returned as several units",
+      "merged_non_atomic": "a non-atomic requirement returned as one unit",
+      "count_mismatch": "returned a different number of units than the gold"
+    }
+  },
+  "scored_at": "2026-10-25T20:00:42+00:00",
   "gold_csv": "data/curated/gold_atomic.csv",
   "meta": {
     "run_id": "exp1_atomic_opus/fsl",
@@ -15,7 +34,7 @@
     "n_fsl_examples": 3,
     "gold_csv": "data/curated/gold_atomic.csv",
     "backend": "subscription",
-    "created_at": "2026-10-19T00:10:06+01:00",
+    "created_at": "2026-10-25T02:36:30+00:00",
     "n_processed": 35,
     "n_skipped": 0,
     "skipped_ids": []
@@ -31,30 +50,30 @@
     "n": 35,
     "per_slot": {
       "scope": {
-        "tp": 33,
+        "tp": 32,
         "fp": 1,
-        "fn": 1,
+        "fn": 2,
         "tn": 0,
-        "precision": 0.9705882352941176,
-        "recall": 0.9705882352941176,
-        "f1": 0.9705882352941176,
+        "precision": 0.9696969696969697,
+        "recall": 0.9411764705882353,
+        "f1": 0.955223880597015,
         "support_gold_missing": 34
       },
       "condition": {
-        "tp": 21,
+        "tp": 20,
         "fp": 3,
-        "fn": 0,
+        "fn": 1,
         "tn": 11,
-        "precision": 0.875,
-        "recall": 1.0,
-        "f1": 0.9333333333333333,
+        "precision": 0.8695652173913043,
+        "recall": 0.9523809523809523,
+        "f1": 0.909090909090909,
         "support_gold_missing": 21
       },
       "actor": {
         "tp": 0,
-        "fp": 1,
+        "fp": 0,
         "fn": 1,
-        "tn": 33,
+        "tn": 34,
         "precision": 0.0,
         "recall": 0.0,
         "f1": 0.0,
@@ -82,21 +101,21 @@
       }
     },
     "micro": {
-      "precision": 0.9152542372881356,
-      "recall": 0.8852459016393442,
-      "f1": 0.9
+      "precision": 0.9285714285714286,
+      "recall": 0.8524590163934426,
+      "f1": 0.888888888888889
     },
     "macro": {
-      "precision": 0.36911764705882355,
-      "recall": 0.3941176470588236,
-      "f1": 0.38078431372549015
+      "precision": 0.3678524374176548,
+      "recall": 0.3787114845938375,
+      "f1": 0.3728629579375848
     },
     "implied_analysis": {
       "overall": {
         "n_implied": 66,
-        "llm_filled": 65,
-        "llm_flagged_missing": 1,
-        "fill_rate": 0.9848484848484849
+        "llm_filled": 66,
+        "llm_flagged_missing": 0,
+        "fill_rate": 1.0
       },
       "per_slot": {
         "scope": {
@@ -113,9 +132,9 @@
         },
         "actor": {
           "n_implied": 29,
-          "llm_filled": 28,
-          "llm_flagged_missing": 1,
-          "fill_rate": 0.9655172413793104
+          "llm_filled": 29,
+          "llm_flagged_missing": 0,
+          "fill_rate": 1.0
         },
         "modalVerb": {
           "n_implied": 34,
@@ -134,22 +153,22 @@
     "missing_analysis": {
       "overall": {
         "n_missing": 61,
-        "llm_flagged_missing": 54,
-        "llm_silently_filled": 7,
-        "flag_rate": 0.8852459016393442
+        "llm_flagged_missing": 52,
+        "llm_silently_filled": 9,
+        "flag_rate": 0.8524590163934426
       },
       "per_slot": {
         "scope": {
           "n_missing": 34,
-          "llm_flagged_missing": 33,
-          "llm_silently_filled": 1,
-          "flag_rate": 0.9705882352941176
+          "llm_flagged_missing": 32,
+          "llm_silently_filled": 2,
+          "flag_rate": 0.9411764705882353
         },
         "condition": {
           "n_missing": 21,
-          "llm_flagged_missing": 21,
-          "llm_silently_filled": 0,
-          "flag_rate": 1.0
+          "llm_flagged_missing": 20,
+          "llm_silently_filled": 1,
+          "flag_rate": 0.9523809523809523
         },
         "actor": {
           "n_missing": 1,
@@ -174,11 +193,11 @@
     "overall_verdict": {
       "confusion": {
         "both_incomplete": 0,
-        "llm_incomplete_gold_complete": 1,
+        "llm_incomplete_gold_complete": 0,
         "gold_incomplete_llm_complete": 4,
-        "both_complete": 30
+        "both_complete": 31
       },
-      "agreement_rate": 0.8571428571428571,
+      "agreement_rate": 0.8857142857142857,
       "n": 35,
       "precision": 0.0,
       "recall": 0.0,
@@ -190,27 +209,27 @@
       "llm_vs_human": {
         "seq_ratio": {
           "n": 105,
-          "mean": 0.6280474550488966,
-          "median": 0.6589147286821705,
-          "min": 0.07633587786259542,
+          "mean": 0.6401194828081458,
+          "median": 0.6621160409556314,
+          "min": 0.08695652173913043,
           "max": 0.9857142857142858,
-          "std": 0.21831906510594729
+          "std": 0.21739985249222987
         },
         "jaccard": {
           "n": 105,
-          "mean": 0.4689909504373671,
-          "median": 0.47368421052631576,
+          "mean": 0.4905916811048939,
+          "median": 0.48,
           "min": 0.0,
           "max": 1.0,
-          "std": 0.2276170487306256
+          "std": 0.244229179866306
         },
         "cosine": {
           "n": 105,
-          "mean": 0.7678274583608431,
-          "median": 0.862106111166595,
-          "min": -0.0417448099246922,
-          "max": 0.9984726885717596,
-          "std": 0.25371461227471
+          "mean": 0.7706393823908763,
+          "median": 0.8768326162169251,
+          "min": -0.048585338871586344,
+          "max": 0.999050424211607,
+          "std": 0.2570934170112156
         },
         "n_pairs": 105,
         "n_evaluated": 35,
@@ -247,32 +266,32 @@
     },
     "paska": {
       "n": 35,
-      "n_passed": 32,
-      "n_failed": 3,
+      "n_passed": 31,
+      "n_failed": 4,
       "n_error": 0,
       "n_scored": 35,
-      "pass_rate": 0.9142857142857143,
-      "pass_rate_llm_complete": 0.9117647058823529,
+      "pass_rate": 0.8857142857142857,
+      "pass_rate_llm_complete": 0.8857142857142857,
       "by_llm_verdict": {
         "llm_complete": {
-          "n": 34,
+          "n": 35,
           "n_passed": 31,
-          "n_failed": 3,
-          "n_scored": 34,
-          "pass_rate": 0.9117647058823529
+          "n_failed": 4,
+          "n_scored": 35,
+          "pass_rate": 0.8857142857142857
         },
         "llm_incomplete": {
-          "n": 1,
-          "n_passed": 1,
+          "n": 0,
+          "n_passed": 0,
           "n_failed": 0,
-          "n_scored": 1,
-          "pass_rate": 1.0
+          "n_scored": 0,
+          "pass_rate": null
         }
       },
-      "n_with_smells": 3,
+      "n_with_smells": 4,
       "smell_frequency": {
+        "Incorrect order requirement": 2,
         "Non-atomic requirement": 1,
-        "Incorrect order requirement": 1,
         "Passive voice": 1,
         "Not precise verb": 1
       }
@@ -291,7 +310,7 @@
         "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user cancel a running \"media download\".",
         "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide an option to cancel running media downloads."
       ],
-      "llm_rimay": "<MISSING_SCOPE>, <MISSING_CONDITION>, the app must provide an option to cancel running \"media downloads\".",
+      "llm_rimay": "<MISSING_SCOPE>, <MISSING_CONDITION>, the app must provide an option to cancel \"running media downloads\".",
       "gold_slots": {
         "scope": "missing",
         "condition": "missing",
@@ -318,12 +337,12 @@
       "verdict_match": true,
       "similarity": {
         "n_humans": 3,
-        "seq_ratio_mean": 0.8539466839227031,
+        "seq_ratio_mean": 0.8538045753873093,
         "seq_ratio_max": 0.9857142857142858,
         "jaccard_mean": 0.6717948717948717,
         "jaccard_max": 1.0,
-        "cosine_mean": 0.9696318246818424,
-        "cosine_max": 0.9876867322700006
+        "cosine_mean": 0.9702601407702076,
+        "cosine_max": 0.9884811446405259
       },
       "paska_passed": true,
       "paska_smells": []
@@ -336,7 +355,7 @@
         "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow direct sharing to contacts through the ChooserTargetService.",
         "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow \"direct sharing\" to contacts through \"6.0 ChooserTargetService\""
       ],
-      "llm_rimay": "<MISSING_SCOPE>, <MISSING_CONDITION>, the app must provide \"direct sharing to contacts\" by using the \"Android 6.0 ChooserTargetService\".",
+      "llm_rimay": "<MISSING_SCOPE>, <MISSING_CONDITION>, the app must provide direct sharing to contacts by using the \"Android 6.0 ChooserTargetService\".",
       "gold_slots": {
         "scope": "missing",
         "condition": "missing",
@@ -363,12 +382,12 @@
       "verdict_match": true,
       "similarity": {
         "n_humans": 3,
-        "seq_ratio_mean": 0.7920260686218134,
-        "seq_ratio_max": 0.8085106382978723,
+        "seq_ratio_mean": 0.797050355485046,
+        "seq_ratio_max": 0.8087431693989071,
         "jaccard_mean": 0.551470588235294,
         "jaccard_max": 0.625,
-        "cosine_mean": 0.9119469473998786,
-        "cosine_max": 0.9442748592057006
+        "cosine_mean": 0.9134570051142209,
+        "cosine_max": 0.9419151834219798
       },
       "paska_passed": true,
       "paska_smells": []
@@ -381,7 +400,7 @@
         "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user add a short signature to messages.",
         "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide an option to add a short signature to messages."
       ],
-      "llm_rimay": "<MISSING_SCOPE>, <MISSING_CONDITION>, the app must provide an option to add a \"signature\" below each SMS message.",
+      "llm_rimay": "<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure must provide an option to add a \"short signature\" below each SMS message.",
       "gold_slots": {
         "scope": "missing",
         "condition": "missing",
@@ -408,12 +427,12 @@
       "verdict_match": true,
       "similarity": {
         "n_humans": 3,
-        "seq_ratio_mean": 0.6827508976367334,
-        "seq_ratio_max": 0.847682119205298,
-        "jaccard_mean": 0.4591750841750842,
-        "jaccard_max": 0.625,
-        "cosine_mean": 0.8203640842198432,
-        "cosine_max": 0.8230936423839059
+        "seq_ratio_mean": 0.6388784461152882,
+        "seq_ratio_max": 0.8125,
+        "jaccard_mean": 0.3650670794633643,
+        "jaccard_max": 0.5294117647058824,
+        "cosine_mean": 0.6849620519117257,
+        "cosine_max": 0.7240270460156307
       },
       "paska_passed": true,
       "paska_smells": []
@@ -426,7 +445,7 @@
         "<MISSING_SCOPE>, if the user has enabled the passphrase, then the App must enable screen security.",
         "For all non-passphrase users, if the user does not use a passphrase, then the System must disable screen security by default."
       ],
-      "llm_rimay": "<MISSING_SCOPE>, if the user has not enabled the \"passphrase\", then Signal must disable \"Screen security\" by default.",
+      "llm_rimay": "<MISSING_SCOPE>, if the user does not have a \"passphrase\" enabled, then Signal must disable the \"Screen security\" setting by default.",
       "gold_slots": {
         "scope": "present",
         "condition": "present",
@@ -453,12 +472,12 @@
       "verdict_match": true,
       "similarity": {
         "n_humans": 3,
-        "seq_ratio_mean": 0.660803707903218,
-        "seq_ratio_max": 0.8108108108108109,
-        "jaccard_mean": 0.43665814151747656,
-        "jaccard_max": 0.5882352941176471,
-        "cosine_mean": 0.7580977271606996,
-        "cosine_max": 0.792090106633093
+        "seq_ratio_mean": 0.5835782618487452,
+        "seq_ratio_max": 0.7078189300411523,
+        "jaccard_mean": 0.4113756613756614,
+        "jaccard_max": 0.5833333333333334,
+        "cosine_mean": 0.7101552520832096,
+        "cosine_max": 0.7444905148582077
       },
       "paska_passed": true,
       "paska_smells": []
@@ -471,7 +490,7 @@
         "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must show whether a post has an image description.",
         "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must show whether an image has a description."
       ],
-      "llm_rimay": "<MISSING_SCOPE>, <MISSING_CONDITION>, the app must display an indicator showing whether each image in a post has an \"image description\".",
+      "llm_rimay": "<MISSING_SCOPE>, <MISSING_CONDITION>, the app must display the \"image description\" of each image in a post to the user.",
       "gold_slots": {
         "scope": "missing",
         "condition": "missing",
@@ -498,12 +517,12 @@
       "verdict_match": true,
       "similarity": {
         "n_humans": 3,
-        "seq_ratio_mean": 0.7397069221180175,
-        "seq_ratio_max": 0.7586206896551724,
-        "jaccard_mean": 0.5723039215686274,
-        "jaccard_max": 0.625,
-        "cosine_mean": 0.912567534779356,
-        "cosine_max": 0.9464102657910464
+        "seq_ratio_mean": 0.5652658240414075,
+        "seq_ratio_max": 0.5774647887323944,
+        "jaccard_mean": 0.36601307189542487,
+        "jaccard_max": 0.4117647058823529,
+        "cosine_mean": 0.8507360572645984,
+        "cosine_max": 0.8931016212658333
       },
       "paska_passed": true,
       "paska_smells": []
@@ -516,7 +535,7 @@
         "<MISSING_SCOPE>, <MISSING_CONDITION>, <MISSING_ACTOR> <MISSING_MODAL_VERB> <MISSING_ACTION>.",
         "<MISSING_SCOPE>, <MISSING_CONDITION>, <MISSING_ACTOR> <MISSING_MODAL_VERB> <MISSING_ACTION>."
       ],
-      "llm_rimay": "<MISSING_SCOPE>, <MISSING_CONDITION>, the app must synchronize the \"identity keys\".",
+      "llm_rimay": "<MISSING_SCOPE>, <MISSING_CONDITION>, the app must improve the \"identity key synchronization\".",
       "gold_slots": {
         "scope": "missing",
         "condition": "missing",
@@ -543,12 +562,12 @@
       "verdict_match": false,
       "similarity": {
         "n_humans": 3,
-        "seq_ratio_mean": 0.349647266313933,
-        "seq_ratio_max": 0.6785714285714286,
-        "jaccard_mean": 0.13333333333333333,
-        "jaccard_max": 0.4,
-        "cosine_mean": 0.29852865843618653,
-        "cosine_max": 0.8955796989436988
+        "seq_ratio_mean": 0.3952470293933709,
+        "seq_ratio_max": 0.8780487804878049,
+        "jaccard_mean": 0.2222222222222222,
+        "jaccard_max": 0.6666666666666666,
+        "cosine_mean": 0.34175058852979734,
+        "cosine_max": 0.9717150717839497
       },
       "paska_passed": true,
       "paska_smells": []
@@ -606,7 +625,7 @@
         "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user mute a conversation for a chosen duration.",
         "<MISSING_SCOPE>, when the \"user\" mutes a group or user for a \"specified duration\", the App must mute a group or a user for \"X minutes/hours\"."
       ],
-      "llm_rimay": "<MISSING_SCOPE>, <MISSING_CONDITION>, the app must provide an option to mute notifications from a group or any user for a \"user-specified duration in minutes or hours\".",
+      "llm_rimay": "<MISSING_SCOPE>, <MISSING_CONDITION>, the app must provide an option to mute notifications from a \"group or any user\" for a \"user-selected number of minutes or hours\".",
       "gold_slots": {
         "scope": "missing",
         "condition": "present",
@@ -633,12 +652,12 @@
       "verdict_match": true,
       "similarity": {
         "n_humans": 3,
-        "seq_ratio_mean": 0.5316045492787042,
-        "seq_ratio_max": 0.5692307692307692,
-        "jaccard_mean": 0.47222222222222215,
-        "jaccard_max": 0.5416666666666666,
-        "cosine_mean": 0.8549377191354633,
-        "cosine_max": 0.9359715373068831
+        "seq_ratio_mean": 0.45870174650662454,
+        "seq_ratio_max": 0.4835164835164835,
+        "jaccard_mean": 0.3943589743589744,
+        "jaccard_max": 0.48,
+        "cosine_mean": 0.8434943435003589,
+        "cosine_max": 0.9122435129669829
       },
       "paska_passed": true,
       "paska_smells": []
@@ -651,7 +670,7 @@
         "<MISSING_SCOPE>, when there are unread messages, then the App must show an unread badge on the app icon.",
         "<MISSING_SCOPE>, when Signal receives new messages, then Signal must show an unread notification badge on the app icon."
       ],
-      "llm_rimay": "<MISSING_SCOPE>, while the device runs \"EMUI 4.1\", when Signal receives a notification for a new message, then Signal must show the \"unread notifications badge\" on the app icon on the home screen.",
+      "llm_rimay": "For the \"Huawei EMUI\" launcher, when Signal receives a new message, then Signal must show the \"unread notifications badge\" on the app icon on the home screen.",
       "gold_slots": {
         "scope": "missing",
         "condition": "present",
@@ -660,14 +679,14 @@
         "action": "present"
       },
       "llm_slots": {
-        "scope": "missing",
+        "scope": "filled",
         "condition": "filled",
         "actor": "filled",
         "modalVerb": "filled",
         "action": "filled"
       },
       "slot_match": {
-        "scope": true,
+        "scope": false,
         "condition": true,
         "actor": true,
         "modalVerb": true,
@@ -678,12 +697,12 @@
       "verdict_match": true,
       "similarity": {
         "n_humans": 3,
-        "seq_ratio_mean": 0.6174139051332034,
-        "seq_ratio_max": 0.7087719298245614,
-        "jaccard_mean": 0.4042145593869732,
-        "jaccard_max": 0.5,
-        "cosine_mean": 0.7992455040633857,
-        "cosine_max": 0.8436675698562714
+        "seq_ratio_mean": 0.6725489590093848,
+        "seq_ratio_max": 0.7709923664122137,
+        "jaccard_mean": 0.4482051282051282,
+        "jaccard_max": 0.52,
+        "cosine_mean": 0.7196083510518131,
+        "cosine_max": 0.7801450648967224
       },
       "paska_passed": true,
       "paska_smells": []
@@ -741,7 +760,7 @@
         "<MISSING_SCOPE>, if the recipient is a short number, then Signal must deliver the SMS.",
         "<MISSING_SCOPE>, when the user sends an SMS message to the provider number 13977, then Signal must deliver the SMS message."
       ],
-      "llm_rimay": "<MISSING_SCOPE>, when the user sends an SMS to the provider number \"13977\" through Signal, then Signal must deliver the SMS to \"13977\". <NON_ATOMIC>",
+      "llm_rimay": "<MISSING_SCOPE>, when the user sends an SMS message to the mobile provider number \"13977\", then Signal must deliver the SMS message to the mobile provider number \"13977\".",
       "gold_slots": {
         "scope": "missing",
         "condition": "present",
@@ -768,12 +787,12 @@
       "verdict_match": true,
       "similarity": {
         "n_humans": 3,
-        "seq_ratio_mean": 0.7105935779796608,
-        "seq_ratio_max": 0.8157894736842105,
-        "jaccard_mean": 0.6083333333333333,
-        "jaccard_max": 0.875,
-        "cosine_mean": 0.8285193546060853,
-        "cosine_max": 0.9782110567556507
+        "seq_ratio_mean": 0.6686157962550646,
+        "seq_ratio_max": 0.8212927756653993,
+        "jaccard_mean": 0.6402777777777778,
+        "jaccard_max": 0.9375,
+        "cosine_mean": 0.8351078394973296,
+        "cosine_max": 0.9738411352114863
       },
       "paska_passed": true,
       "paska_smells": []
@@ -786,7 +805,7 @@
         "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must show in the conversation overview whether the last message is from the user or from the conversation partner.",
         "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must indicate in the conversation overview whether the last message is from the user or the conversation partner."
       ],
-      "llm_rimay": "<MISSING_SCOPE>, <MISSING_CONDITION>, the app must display in the \"conversation overview\" whether the \"last message\" is from the user or from the \"conversation partner\".",
+      "llm_rimay": "<MISSING_SCOPE>, <MISSING_CONDITION>, the app must indicate in the \"conversation overview\" whether the \"last message\" is from the user or from the \"conversation partner\".",
       "gold_slots": {
         "scope": "missing",
         "condition": "missing",
@@ -813,12 +832,12 @@
       "verdict_match": true,
       "similarity": {
         "n_humans": 3,
-        "seq_ratio_mean": 0.9376580265872462,
-        "seq_ratio_max": 0.9473684210526315,
-        "jaccard_mean": 0.875,
-        "jaccard_max": 0.875,
-        "cosine_mean": 0.9717379112048423,
-        "cosine_max": 0.9802325278120771
+        "seq_ratio_mean": 0.9568085080978775,
+        "seq_ratio_max": 0.9812734082397003,
+        "jaccard_mean": 0.9583333333333334,
+        "jaccard_max": 1.0,
+        "cosine_mean": 0.9853191856723806,
+        "cosine_max": 0.999050424211607
       },
       "paska_passed": true,
       "paska_smells": []
@@ -831,7 +850,7 @@
         "<MISSING_SCOPE>, when the App receives share Intent, then Signal must include its subject as well as its body.",
         "<MISSING_SCOPE>, when Signal receives a share Intent with an EXTRA_SUBJECT portion, then Signal must include the EXTRA_SUBJECT portion in the shared message."
       ],
-      "llm_rimay": "<MISSING_SCOPE>, when another app sends a \"share Intent\" to Signal, then Signal must use the \"EXTRA_SUBJECT\" of the \"share Intent\".",
+      "llm_rimay": "<MISSING_SCOPE>, when Signal receives a share \"Intent\" that contains \"EXTRA_SUBJECT\" from another app, then Signal must include the \"EXTRA_SUBJECT\" in the shared message.",
       "gold_slots": {
         "scope": "missing",
         "condition": "present",
@@ -858,12 +877,12 @@
       "verdict_match": true,
       "similarity": {
         "n_humans": 3,
-        "seq_ratio_mean": 0.6665290640058729,
-        "seq_ratio_max": 0.6771653543307087,
-        "jaccard_mean": 0.41414141414141414,
-        "jaccard_max": 0.4166666666666667,
-        "cosine_mean": 0.8665532243576785,
-        "cosine_max": 0.8996705398289783
+        "seq_ratio_mean": 0.6928669631468266,
+        "seq_ratio_max": 0.8484848484848485,
+        "jaccard_mean": 0.5875603864734299,
+        "jaccard_max": 0.6521739130434783,
+        "cosine_mean": 0.8854290024970471,
+        "cosine_max": 0.9436897923082214
       },
       "paska_passed": true,
       "paska_smells": []
@@ -876,7 +895,7 @@
         "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide only one way to \"open/close\" the attachment window.",
         "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide a single way to \"open/close\" the attachment window in the conversation window."
       ],
-      "llm_rimay": "<thinking>Scope: conversation window? Examples use <MISSING_SCOPE> pattern. Could use \"For the conversation window,\" — that's in the source. Examples always missing scope though. I'll follow examples style but scope is present... \"In the conversation window\" is a location; could be scope. Keep consistent with examples: <MISSING_SCOPE>, <MISSING_CONDITION>, the app must provide only a single \"control\" to open and close the attachment window in the conversation window. Atomic? open and close — one control; fine. Avoid fabricating \"button\"? Title says single button. Use \"button\".</thinking>For the conversation window, <MISSING_CONDITION>, the app must provide only a single button to open and close the \"attachment window\".",
+      "llm_rimay": "<MISSING_SCOPE>, <MISSING_CONDITION>, the app must provide only a \"single way\" to open and close the \"attachment window\" in the \"conversation window\".",
       "gold_slots": {
         "scope": "missing",
         "condition": "missing",
@@ -903,12 +922,12 @@
       "verdict_match": true,
       "similarity": {
         "n_humans": 3,
-        "seq_ratio_mean": 0.21520010347138663,
-        "seq_ratio_max": 0.2545931758530184,
-        "jaccard_mean": 0.24,
-        "jaccard_max": 0.26,
-        "cosine_mean": 0.6373526628078352,
-        "cosine_max": 0.7361339667164283
+        "seq_ratio_mean": 0.8210806697108067,
+        "seq_ratio_max": 0.91324200913242,
+        "jaccard_mean": 0.7781862745098039,
+        "jaccard_max": 0.875,
+        "cosine_mean": 0.9241234509668517,
+        "cosine_max": 0.9805952346347644
       },
       "paska_passed": false,
       "paska_smells": [
@@ -927,7 +946,7 @@
         "<MISSING_SCOPE>, <MISSING_CONDITION>, the System must provide an option to remove partiipants from a group.",
         "<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure must allow the user to remove participants."
       ],
-      "llm_rimay": "<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure must provide an option to remove participants from a group after the participants were added.",
+      "llm_rimay": "<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure must provide an option to remove participants from a \"group\" after they were added.",
       "gold_slots": {
         "scope": "missing",
         "condition": "missing",
@@ -954,12 +973,12 @@
       "verdict_match": true,
       "similarity": {
         "n_humans": 3,
-        "seq_ratio_mean": 0.6254763180627693,
-        "seq_ratio_max": 0.7403314917127072,
-        "jaccard_mean": 0.4189886480908153,
-        "jaccard_max": 0.5882352941176471,
-        "cosine_mean": 0.6936311918957153,
-        "cosine_max": 0.8872975155409298
+        "seq_ratio_mean": 0.6671914829809568,
+        "seq_ratio_max": 0.783625730994152,
+        "jaccard_mean": 0.34259259259259256,
+        "jaccard_max": 0.5,
+        "cosine_mean": 0.6772084891253872,
+        "cosine_max": 0.850828573747867
       },
       "paska_passed": false,
       "paska_smells": [
@@ -983,7 +1002,7 @@
         "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must <MISSING_ACTION>.",
         "<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure must show which SIM a message is sent through on dual SIM devices."
       ],
-      "llm_rimay": "<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure must display the \"SIM\" to which each message is sent.",
+      "llm_rimay": "<MISSING_SCOPE>, while the device is a \"dual SIM\" device, then TextSecure must display the \"SIM\" to which each message is sent.",
       "gold_slots": {
         "scope": "missing",
         "condition": "missing",
@@ -993,14 +1012,14 @@
       },
       "llm_slots": {
         "scope": "missing",
-        "condition": "missing",
+        "condition": "filled",
         "actor": "filled",
         "modalVerb": "filled",
         "action": "filled"
       },
       "slot_match": {
         "scope": true,
-        "condition": true,
+        "condition": false,
         "actor": true,
         "modalVerb": true,
         "action": true
@@ -1010,12 +1029,12 @@
       "verdict_match": true,
       "similarity": {
         "n_humans": 3,
-        "seq_ratio_mean": 0.49357059749989357,
-        "seq_ratio_max": 0.6442953020134228,
-        "jaccard_mean": 0.3261437908496732,
-        "jaccard_max": 0.4117647058823529,
-        "cosine_mean": 0.5964964853603629,
-        "cosine_max": 0.881032992177651
+        "seq_ratio_mean": 0.4639383069434883,
+        "seq_ratio_max": 0.6636363636363637,
+        "jaccard_mean": 0.3558823529411765,
+        "jaccard_max": 0.5,
+        "cosine_mean": 0.6359306480314184,
+        "cosine_max": 0.9518391910653726
       },
       "paska_passed": true,
       "paska_smells": []
@@ -1028,7 +1047,7 @@
         "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user share calendar events.",
         "<MISSING_SCOPE>, when the user shares a calendar event from the Android Calendar app, then TextSecure must attach the calendar event to the message."
       ],
-      "llm_rimay": "<MISSING_SCOPE>, when a user shares a \"calendar event\" from the Android Calendar app via TextSecure, then TextSecure must attach the \"calendar event\" to the message.",
+      "llm_rimay": "<MISSING_SCOPE>, when the user shares a calendar event from the Android Calendar app via TextSecure, then TextSecure must attach the \"calendar event\" to the message.",
       "gold_slots": {
         "scope": "missing",
         "condition": "present",
@@ -1055,12 +1074,12 @@
       "verdict_match": true,
       "similarity": {
         "n_humans": 3,
-        "seq_ratio_mean": 0.6831230230657956,
-        "seq_ratio_max": 0.9187279151943463,
+        "seq_ratio_mean": 0.6992876998423628,
+        "seq_ratio_max": 0.9399293286219081,
         "jaccard_mean": 0.6519607843137255,
         "jaccard_max": 0.9411764705882353,
-        "cosine_mean": 0.7574035752214489,
-        "cosine_max": 0.9872558975776755
+        "cosine_mean": 0.7671677631500432,
+        "cosine_max": 0.9899868304519176
       },
       "paska_passed": true,
       "paska_smells": []
@@ -1073,7 +1092,7 @@
         "<MISSING_SCOPE>, <MISSING_CONDITION>, <MISSING_ACTOR> <MISSING_MODAL_VERB> <MISSING_ACTION>.",
         "<MISSING_SCOPE>, if SMS mode is disabled and the user starts typing a message, then the App must hide the letter count."
       ],
-      "llm_rimay": "<MISSING_SCOPE>, while the \"SMS mode\" is disabled and when the user types a message, then the app must not show the \"letter count\".",
+      "llm_rimay": "<MISSING_SCOPE>, if the \"SMS mode\" is disabled, then the app must not show the \"letter count\" while the user types a message.",
       "gold_slots": {
         "scope": "missing",
         "condition": "present",
@@ -1100,15 +1119,21 @@
       "verdict_match": true,
       "similarity": {
         "n_humans": 3,
-        "seq_ratio_mean": 0.5185645676393866,
-        "seq_ratio_max": 0.8181818181818182,
-        "jaccard_mean": 0.4057971014492754,
-        "jaccard_max": 0.6086956521739131,
-        "cosine_mean": 0.6210116567762269,
-        "cosine_max": 0.9595854336843721
+        "seq_ratio_mean": 0.44351396943839044,
+        "seq_ratio_max": 0.6454545454545455,
+        "jaccard_mean": 0.37878787878787873,
+        "jaccard_max": 0.6363636363636364,
+        "cosine_mean": 0.6161421491872218,
+        "cosine_max": 0.950083471685751
       },
-      "paska_passed": true,
-      "paska_smells": []
+      "paska_passed": false,
+      "paska_smells": [
+        {
+          "segment_id": "695-Signal_rimay_1",
+          "smell": "Incorrect order requirement",
+          "value": "The condition clause of the requirement is after the system response."
+        }
+      ]
     },
     {
       "reqId": "1761-Signal",
@@ -1118,7 +1143,7 @@
         "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user automatically forward SMS from one contact to another.",
         "<MISSING_SCOPE>, when the App receives an SMS from a certain contact, then the App must automatically forward the SMS to another contact."
       ],
-      "llm_rimay": "<MISSING_SCOPE>, when the app receives an incoming SMS from a \"certain contact\", then the app must forward the incoming SMS to <MISSING_ACTOR>.",
+      "llm_rimay": "<MISSING_SCOPE>, when the device receives an incoming SMS from a \"certain contact\", then the app must forward the incoming SMS to \"another contact\".",
       "gold_slots": {
         "scope": "missing",
         "condition": "present",
@@ -1129,28 +1154,28 @@
       "llm_slots": {
         "scope": "missing",
         "condition": "filled",
-        "actor": "missing",
+        "actor": "filled",
         "modalVerb": "filled",
         "action": "filled"
       },
       "slot_match": {
         "scope": true,
         "condition": true,
-        "actor": false,
+        "actor": true,
         "modalVerb": true,
         "action": true
       },
       "gold_overall": false,
-      "llm_overall": true,
-      "verdict_match": false,
+      "llm_overall": false,
+      "verdict_match": true,
       "similarity": {
         "n_humans": 3,
-        "seq_ratio_mean": 0.650637189269871,
-        "seq_ratio_max": 0.8253968253968254,
-        "jaccard_mean": 0.7019607843137255,
-        "jaccard_max": 0.8823529411764706,
-        "cosine_mean": 0.9466733492667351,
-        "cosine_max": 0.9631916040038702
+        "seq_ratio_mean": 0.6927577482605946,
+        "seq_ratio_max": 0.8676470588235294,
+        "jaccard_mean": 0.7169312169312169,
+        "jaccard_max": 0.8888888888888888,
+        "cosine_mean": 0.9398005855952695,
+        "cosine_max": 0.9624432720112308
       },
       "paska_passed": true,
       "paska_smells": []
@@ -1163,7 +1188,7 @@
         "<MISSING_SCOPE>, <MISSING_CONDITION>, <MISSING_ACTOR> <MISSING_MODAL_VERB> <MISSING_ACTION>.",
         "<MISSING_SCOPE>, when Signal is on the calling screen, then Signal must show the contact photo in full resolution."
       ],
-      "llm_rimay": "<MISSING_SCOPE>, while the app is on the \"Calling screen\", then the app must display the \"full resolution contact photo\".",
+      "llm_rimay": "<MISSING_SCOPE>, when the app displays the \"calling screen\", then the app must show the \"full resolution contact photo\".",
       "gold_slots": {
         "scope": "missing",
         "condition": "implied",
@@ -1190,12 +1215,12 @@
       "verdict_match": true,
       "similarity": {
         "n_humans": 3,
-        "seq_ratio_mean": 0.547433117104379,
-        "seq_ratio_max": 0.8985507246376812,
-        "jaccard_mean": 0.4389978213507626,
-        "jaccard_max": 0.7058823529411765,
-        "cosine_mean": 0.6191316369714237,
-        "cosine_max": 0.9779141943615125
+        "seq_ratio_mean": 0.5502598803569677,
+        "seq_ratio_max": 0.8932038834951457,
+        "jaccard_mean": 0.43137254901960786,
+        "jaccard_max": 0.6470588235294118,
+        "cosine_mean": 0.6208530186161313,
+        "cosine_max": 0.9780864408281709
       },
       "paska_passed": true,
       "paska_smells": []
@@ -1208,7 +1233,7 @@
         "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must offer longer disappearing-message periods, up to at least one year.",
         "<MISSING_SCOPE>, <MISSING_CONDITION>, Signal must provide disappearing message periods of up to at least 12 months."
       ],
-      "llm_rimay": "<MISSING_SCOPE>, <MISSING_CONDITION>, the app must provide additional \"disappearing messages\" timeout periods up to at least \"one year\".",
+      "llm_rimay": "<MISSING_SCOPE>, <MISSING_CONDITION>, the app must provide additional \"disappearing message periods\" up to at least \"one year\".",
       "gold_slots": {
         "scope": "missing",
         "condition": "missing",
@@ -1235,12 +1260,12 @@
       "verdict_match": true,
       "similarity": {
         "n_humans": 3,
-        "seq_ratio_mean": 0.7772750716519446,
-        "seq_ratio_max": 0.8148148148148148,
-        "jaccard_mean": 0.530019493177388,
-        "jaccard_max": 0.6111111111111112,
-        "cosine_mean": 0.8488776342984857,
-        "cosine_max": 0.9366453186985015
+        "seq_ratio_mean": 0.8130744420633373,
+        "seq_ratio_max": 0.8444444444444444,
+        "jaccard_mean": 0.6519607843137255,
+        "jaccard_max": 0.75,
+        "cosine_mean": 0.8887164219042193,
+        "cosine_max": 0.9818665493109228
       },
       "paska_passed": true,
       "paska_smells": []
@@ -1478,7 +1503,7 @@
         "<MISSING_SCOPE>, if a text is too long, then the App must split it across multiple messages.",
         "<MISSING_SCOPE>, if a text is oversized, then the App must split it over multiple messages."
       ],
-      "llm_rimay": "<MISSING_SCOPE>, if the \"text\" exceeds the \"maximum message length\", then the app must split the \"text\" into multiple messages.",
+      "llm_rimay": "<MISSING_SCOPE>, if the text length is greater than the \"maximum message size\", then the app must split the text into multiple messages.",
       "gold_slots": {
         "scope": "missing",
         "condition": "present",
@@ -1505,12 +1530,12 @@
       "verdict_match": true,
       "similarity": {
         "n_humans": 3,
-        "seq_ratio_mean": 0.6874415713453641,
-        "seq_ratio_max": 0.714975845410628,
-        "jaccard_mean": 0.46578947368421053,
-        "jaccard_max": 0.47368421052631576,
-        "cosine_mean": 0.8808441146098427,
-        "cosine_max": 0.9344341642007479
+        "seq_ratio_mean": 0.676807556672193,
+        "seq_ratio_max": 0.7037037037037037,
+        "jaccard_mean": 0.468975468975469,
+        "jaccard_max": 0.47619047619047616,
+        "cosine_mean": 0.9014340393563072,
+        "cosine_max": 0.9367356356765489
       },
       "paska_passed": true,
       "paska_smells": []
@@ -1523,7 +1548,7 @@
         "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user set notification settings for group chats separately from personal chats.",
         "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide functionality to change the notification settings for groups independently from personal chats."
       ],
-      "llm_rimay": "<MISSING_SCOPE>, <MISSING_CONDITION>, the app must provide an option to configure the \"notification settings\" for group chats independently from the \"notification settings\" for personal chats.",
+      "llm_rimay": "<MISSING_SCOPE>, <MISSING_CONDITION>, the app must provide an option to change the \"notification settings\" for group chats independently from personal chats.",
       "gold_slots": {
         "scope": "missing",
         "condition": "missing",
@@ -1550,12 +1575,12 @@
       "verdict_match": true,
       "similarity": {
         "n_humans": 3,
-        "seq_ratio_mean": 0.7424207482298204,
-        "seq_ratio_max": 0.7913669064748201,
-        "jaccard_mean": 0.5605263157894737,
-        "jaccard_max": 0.631578947368421,
-        "cosine_mean": 0.9599256228709474,
-        "cosine_max": 0.979859989692384
+        "seq_ratio_mean": 0.8487000722733109,
+        "seq_ratio_max": 0.9218106995884774,
+        "jaccard_mean": 0.617933723196881,
+        "jaccard_max": 0.7222222222222222,
+        "cosine_mean": 0.9722307728408272,
+        "cosine_max": 0.9766020383819457
       },
       "paska_passed": true,
       "paska_smells": []
@@ -1613,7 +1638,7 @@
         "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide a \"signal://\" URL scheme.",
         "<MISSING_SCOPE>, <MISSING_CONDITION>, Signal must provide a custom URL scheme for opening Signal from webpages."
       ],
-      "llm_rimay": "<MISSING_SCOPE>, <MISSING_CONDITION>, the app must support a custom URL scheme \"signal://\" to allow webpages to point to the app.",
+      "llm_rimay": "<MISSING_SCOPE>, <MISSING_CONDITION>, Signal must support the custom URL scheme \"signal://\" to allow webpages to point to the Signal app.",
       "gold_slots": {
         "scope": "missing",
         "condition": "missing",
@@ -1640,12 +1665,12 @@
       "verdict_match": true,
       "similarity": {
         "n_humans": 3,
-        "seq_ratio_mean": 0.5843239358876889,
-        "seq_ratio_max": 0.6103896103896104,
-        "jaccard_mean": 0.44975490196078427,
-        "jaccard_max": 0.5,
-        "cosine_mean": 0.748906649591841,
-        "cosine_max": 0.8800173184409109
+        "seq_ratio_mean": 0.519922536916001,
+        "seq_ratio_max": 0.6222222222222222,
+        "jaccard_mean": 0.38550420168067223,
+        "jaccard_max": 0.42857142857142855,
+        "cosine_mean": 0.7105223984484711,
+        "cosine_max": 0.8889019855786732
       },
       "paska_passed": false,
       "paska_smells": [
@@ -1664,7 +1689,7 @@
         "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must sort the \"conversation view\" by \"sent\" time.",
         "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must display the \"messages\" in the \"conversation view\" in the same order for all \"chat participants\"."
       ],
-      "llm_rimay": "<MISSING_SCOPE>, <MISSING_CONDITION>, the app must display the messages in each \"Conversation View\" in a consistent order for all chat participants.",
+      "llm_rimay": "<MISSING_SCOPE>, <MISSING_CONDITION>, the conversation view must display messages in a \"consistent order\" for all chat participants.",
       "gold_slots": {
         "scope": "missing",
         "condition": "missing",
@@ -1691,12 +1716,12 @@
       "verdict_match": true,
       "similarity": {
         "n_humans": 3,
-        "seq_ratio_mean": 0.7028753765116895,
-        "seq_ratio_max": 0.8898678414096917,
-        "jaccard_mean": 0.4315686274509804,
-        "jaccard_max": 0.7647058823529411,
-        "cosine_mean": 0.861309812031362,
-        "cosine_max": 0.9725169721301833
+        "seq_ratio_mean": 0.49309456504200627,
+        "seq_ratio_max": 0.6066350710900474,
+        "jaccard_mean": 0.40350877192982454,
+        "jaccard_max": 0.75,
+        "cosine_mean": 0.7831060579639647,
+        "cosine_max": 0.8741654429978961
       },
       "paska_passed": true,
       "paska_smells": []
@@ -1709,7 +1734,7 @@
         "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide a view of posts from other people.",
         "<MISSING_SCOPE>, <MISSING_CONDITION>, <MISSING_ACTOR> <MISSING_MODAL_VERB> <MISSING_ACTION>."
       ],
-      "llm_rimay": "<MISSING_SCOPE>, <MISSING_CONDITION>, the mastodon-android app must provide the \"view from timeline\" feature to allow users to view new posts from the timeline.",
+      "llm_rimay": "<MISSING_SCOPE>, <MISSING_CONDITION>, the app must provide the \"timeline view\" to allow users to view new posts from the timeline.",
       "gold_slots": {
         "scope": "missing",
         "condition": "missing",
@@ -1736,12 +1761,12 @@
       "verdict_match": true,
       "similarity": {
         "n_humans": 3,
-        "seq_ratio_mean": 0.35568982286539536,
-        "seq_ratio_max": 0.5621621621621622,
-        "jaccard_mean": 0.24561403508771928,
-        "jaccard_max": 0.3684210526315789,
-        "cosine_mean": 0.48190114489802216,
-        "cosine_max": 0.78432459722015
+        "seq_ratio_mean": 0.4735266841880457,
+        "seq_ratio_max": 0.6709677419354839,
+        "jaccard_mean": 0.2916666666666667,
+        "jaccard_max": 0.4375,
+        "cosine_mean": 0.5439356531276885,
+        "cosine_max": 0.8912688982934264
       },
       "paska_passed": true,
       "paska_smells": []
@@ -1754,97 +1779,7 @@
         "<MISSING_SCOPE>, if a picture has already been saved, then the App must show a view or share icon instead of the save button.",
         "<MISSING_SCOPE>, if the user has already saved a \"media item\", then the App must show a \"view\" or \"share\" icon instead of the \"save\" button."
       ],
-      "llm_rimay": "<MISSING_SCOPE>, if the \"media item\" has already been saved on the device, then the app must display a \"view icon\" in place of the \"save button\" in the media view. <NON_ATOMIC>",
-      "gold_slots": {
-        "scope": "missing",
-        "condition": "present",
-        "actor": "implied",
-        "modalVerb": "implied",
-        "action": "present"
-      },
-      "llm_slots": {
-        "scope": "missing",
-        "condition": "filled",
-        "actor": "filled",
-        "modalVerb": "filled",
-        "action": "filled"
-      },
-      "slot_match": {
-        "scope": true,
-        "condition": true,
-        "actor": true,
-        "modalVerb": true,
-        "action": true
-      },
-      "gold_overall": false,
-      "llm_overall": false,
-      "verdict_match": true,
-      "similarity": {
-        "n_humans": 3,
-        "seq_ratio_mean": 0.6578924951017974,
-        "seq_ratio_max": 0.6976744186046512,
-        "jaccard_mean": 0.582716049382716,
-        "jaccard_max": 0.6,
-        "cosine_mean": 0.8555400941747412,
-        "cosine_max": 0.9289122679689821
-      },
-      "paska_passed": true,
-      "paska_smells": []
-    },
-    {
-      "reqId": "175-Signal",
-      "nl_text": "Request Number - 175 | Request Title - Featue Request: Quick way to wipe message database | Request Description - Say for some reason you're being coerced with force to disclose your password, could you make a quick way (say a button combo + confirm dialogue) to wipe the text message database?",
-      "human_rimays": [
-        "<MISSING_SCOPE>, when the user triggers a \"specific button combo\" and confirms the \"confirm dialogue\", then the App must wipe the \"text message database\".",
-        "<MISSING_SCOPE>, if the user is being coerced to disclose their password, then the App must let them quickly wipe the message database.",
-        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide a quick way, such as a \"button combo\" with a \"confirm dialogue\", to wipe the \"text message database\"."
-      ],
-      "llm_rimay": "<MISSING_SCOPE>, <MISSING_CONDITION>, the app must provide a \"quick wipe option\" to delete the \"text message database\".",
-      "gold_slots": {
-        "scope": "missing",
-        "condition": "present",
-        "actor": "implied",
-        "modalVerb": "implied",
-        "action": "present"
-      },
-      "llm_slots": {
-        "scope": "missing",
-        "condition": "missing",
-        "actor": "filled",
-        "modalVerb": "filled",
-        "action": "filled"
-      },
-      "slot_match": {
-        "scope": true,
-        "condition": false,
-        "actor": true,
-        "modalVerb": true,
-        "action": true
-      },
-      "gold_overall": false,
-      "llm_overall": false,
-      "verdict_match": true,
-      "similarity": {
-        "n_humans": 3,
-        "seq_ratio_mean": 0.5485629241871295,
-        "seq_ratio_max": 0.6919431279620853,
-        "jaccard_mean": 0.3790476190476191,
-        "jaccard_max": 0.5238095238095238,
-        "cosine_mean": 0.7905445596677216,
-        "cosine_max": 0.9069542929350547
-      },
-      "paska_passed": true,
-      "paska_smells": []
-    },
-    {
-      "reqId": "2055-Signal",
-      "nl_text": "Request Number - 2055 | Request Title - use delivery receipts to show message received time for outgoing messages | Request Description - After long pressing on a message and selecting the info button, the message details are shown. This includes the sent and received times for incoming messages. For outgoing messages, in contrast, only one Sent/Received time is displayed, probably containing sent time. Now that delivery receipts are implemented, it would be possible to display the received time for outgoing messages (by taking the sent time from the receipt). Or to make it more precise, let the receipt message piggybag the real received time. This would make the user interface more consistent. When this is rejected for some reasons, I suggest renaming the \"Sent/Received\" label for outgoing messages to \"Sent\" because this is what it really is about.",
-      "human_rimays": [
-        "<MISSING_SCOPE>, if a message is outgoing, then the App must show its \"received time\", taken from the \"delivery receipt\", in the \"message details\".",
-        "<MISSING_SCOPE>, if a message is outgoing, then the App must show its received time in the message details.",
-        "<MISSING_SCOPE>, if a message is outgoing, then the App must show its \"received time\", taken from the \"delivery receipt\", in the \"message details\"."
-      ],
-      "llm_rimay": "For each outgoing message, when the user selects the \"info button\" of the message, then the app must display the \"received time\" in the \"message details\" based on the \"delivery receipt\". <NON_ATOMIC>",
+      "llm_rimay": "For each media item, if the media item has already been saved on the device, then the app must display a \"view icon\" or \"share icon\" instead of the \"save button\".",
       "gold_slots": {
         "scope": "missing",
         "condition": "present",
@@ -1871,22 +1806,112 @@
       "verdict_match": true,
       "similarity": {
         "n_humans": 3,
-        "seq_ratio_mean": 0.49791110507820163,
-        "seq_ratio_max": 0.5251798561151079,
-        "jaccard_mean": 0.38571428571428573,
-        "jaccard_max": 0.4,
-        "cosine_mean": 0.8696961904502477,
-        "cosine_max": 0.8897926274459917
+        "seq_ratio_mean": 0.6898527703764432,
+        "seq_ratio_max": 0.7573529411764706,
+        "jaccard_mean": 0.6543209876543209,
+        "jaccard_max": 0.7037037037037037,
+        "cosine_mean": 0.8626493043471184,
+        "cosine_max": 0.9315020499144925
+      },
+      "paska_passed": true,
+      "paska_smells": []
+    },
+    {
+      "reqId": "175-Signal",
+      "nl_text": "Request Number - 175 | Request Title - Featue Request: Quick way to wipe message database | Request Description - Say for some reason you're being coerced with force to disclose your password, could you make a quick way (say a button combo + confirm dialogue) to wipe the text message database?",
+      "human_rimays": [
+        "<MISSING_SCOPE>, when the user triggers a \"specific button combo\" and confirms the \"confirm dialogue\", then the App must wipe the \"text message database\".",
+        "<MISSING_SCOPE>, if the user is being coerced to disclose their password, then the App must let them quickly wipe the message database.",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide a quick way, such as a \"button combo\" with a \"confirm dialogue\", to wipe the \"text message database\"."
+      ],
+      "llm_rimay": "<MISSING_SCOPE>, <MISSING_CONDITION>, the app must provide a quick way to wipe the \"text message database\".",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "present",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "missing",
+        "condition": "missing",
+        "actor": "filled",
+        "modalVerb": "filled",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": true,
+        "condition": false,
+        "actor": true,
+        "modalVerb": true,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": false,
+      "verdict_match": true,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.5848630842811836,
+        "seq_ratio_max": 0.7336683417085427,
+        "jaccard_mean": 0.42369056699720314,
+        "jaccard_max": 0.631578947368421,
+        "cosine_mean": 0.8042479591571471,
+        "cosine_max": 0.9166356232072127
+      },
+      "paska_passed": true,
+      "paska_smells": []
+    },
+    {
+      "reqId": "2055-Signal",
+      "nl_text": "Request Number - 2055 | Request Title - use delivery receipts to show message received time for outgoing messages | Request Description - After long pressing on a message and selecting the info button, the message details are shown. This includes the sent and received times for incoming messages. For outgoing messages, in contrast, only one Sent/Received time is displayed, probably containing sent time. Now that delivery receipts are implemented, it would be possible to display the received time for outgoing messages (by taking the sent time from the receipt). Or to make it more precise, let the receipt message piggybag the real received time. This would make the user interface more consistent. When this is rejected for some reasons, I suggest renaming the \"Sent/Received\" label for outgoing messages to \"Sent\" because this is what it really is about.",
+      "human_rimays": [
+        "<MISSING_SCOPE>, if a message is outgoing, then the App must show its \"received time\", taken from the \"delivery receipt\", in the \"message details\".",
+        "<MISSING_SCOPE>, if a message is outgoing, then the App must show its received time in the message details.",
+        "<MISSING_SCOPE>, if a message is outgoing, then the App must show its \"received time\", taken from the \"delivery receipt\", in the \"message details\"."
+      ],
+      "llm_rimay": "<MISSING_SCOPE>, when the user selects the \"info button\" of an outgoing message, then the app must display the \"received time\" of the outgoing message in the \"message details\" based on the \"delivery receipt\".",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "present",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "missing",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "filled",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": true,
+        "condition": true,
+        "actor": true,
+        "modalVerb": true,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": false,
+      "verdict_match": true,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.532361673414305,
+        "seq_ratio_max": 0.5353846153846153,
+        "jaccard_mean": 0.399318859088974,
+        "jaccard_max": 0.41379310344827586,
+        "cosine_mean": 0.8714456822786284,
+        "cosine_max": 0.8893787531859958
       },
       "paska_passed": true,
       "paska_smells": []
     }
   ],
   "verdict": {
-    "text": "Missing-slot detection looks strong on the surface: 54 of 61 genuinely missing slots were flagged, for a micro F1 of 0.90. That number is mostly carried by easy cases, though. Scope is missing in 34 of 35 requirements, and condition in 21. A model that always emits `<MISSING_SCOPE>` would score nearly as well. The slots that test fabrication are actor, modalVerb and action. There the model flagged nothing: 0 of 6 missing slots. The macro F1 of 0.38 reflects this better, but the support behind it is 1, 1 and 4, far too small to support any per-slot claim.\n\nThe action slot is where the failure has a visible shape. In all four gold-missing cases (83-Signal, 496-Signal, 1504-Signal, 592-Signal), the model turned the request title into a confident action. \"Better identity key synchronization\" became \"must synchronize the identity keys\". \"Ability to change maximum size of MMS\" became \"provide an option to change…\". The pattern is consistent: if a title names a feature, few-shot treats it as a stated requirement. As a result, the requirement-level verdict has precision and recall of 0. The model never correctly identified an incomplete requirement, though only five requirements were incomplete. This should be read with care, because the gold labels here are 2–1 majority calls. In 1504-Signal one annotator wrote essentially the LLM's action, and in 83-Signal one annotator filled it too. The model is siding with the minority reading, not inventing something no human would write.\n\nThe errors in the other direction are mild and conservative. In three cases (5555, 801 and 175-Signal) the model marked a condition missing that gold considers present, and the humans themselves split on 175. 2055-Signal is the opposite: the model promoted \"for each outgoing message\" into a scope that gold leaves empty. The output also carries a `<NON_ATOMIC>` tag on a set that was pre-filtered for atomicity. Paska likewise flagged 6457-Signal as non-atomic, and 6457 has the lowest similarity in the run (0.22). These two cases are disagreements with the annotators' atomicity filter, not evidence about non-atomic handling. They are worth a manual look.\n\nConversion similarity sits at the human-human ceiling. Sequence ratio and Jaccard are about 0.02 below the human-human values, and cosine is about 0.03 above. All three gaps are well inside the roughly 0.22 standard deviation, and the 105 pairs are not independent: there are only 35 requirements, each counted three times. \"Indistinguishable from inter-human agreement\" is the honest reading. The ceiling is itself inflated, however, by the shared `<MISSING_SCOPE>, <MISSING_CONDITION>` prefix that appears in almost every output. The ceiling is also depressed wherever annotators split between filling a slot and tagging it missing. So similarity says little about whether the content is right.\n\nPaska passed 32 of 35. The three failures are one-off smells: non-atomic on 6457, condition order and passive voice on 828, and an imprecise verb on 7310. They show no recurring pattern and are too few to characterise the strategy.\n\nOverall, this run cannot establish whether few-shot fabricates actions, because only four cases test it. The one visible signal points that way and deserves follow-up. The most useful next step is to adjudicate the split gold labels on the action-missing items. Then add few-shot exemplars where a title-only or vague request maps to `<MISSING_ACTION>`, and rerun alongside zsl and cot. Finally, enlarge the pool of underspecified requests so actor and action have meaningful support. None of this should be generalised beyond the atomic subset.",
+    "text": "## Summary\nFSL conversions match human annotators about as closely as the annotators match each other. The main weakness is that the model never declares a requirement incomplete. On all four gold-incomplete requirements it invents a full actor/modal/action rather than emitting placeholders.\n\n## Missing-slot detection\nTrack 1 is measurable here, but the headline micro-F1 of 0.89 is misleading. It comes almost entirely from scope (34 gold-missing) and condition (21). Flagging these slots as missing is the default output, so they test little.\n\nOn the slots that matter, the flag rate is 0 of 6. These are actor, modalVerb and action across 83-Signal, 496-Signal, 592-Signal and 1504-Signal. The requirement-level verdict is therefore 0/4 recall, and none of the 35 outputs were marked incomplete.\n\nThe evidence for fabrication varies by requirement:\n- **496-Signal:** the clearest case. All three annotators withheld the action, yet the model wrote a concrete \"option to change maximum size of MMS\".\n- **83-Signal and 1504-Signal:** one annotator also filled the slots, so the gold there is a 2–1 majority and the model sided with the minority.\n\nWith n=4, each requirement moves incomplete-F1 by 25 points.\n\nErrors on the optional slots run in both directions:\n- **Dropped conditions:** 5555-Signal, 801-Signal and 175-Signal. Gold marks the condition present, but the model folded it into the action or omitted it. 801 shows this: the trigger became part of the action text.\n- **Invented content:** scope was added in 6069-Signal and 7345-Signal, and a condition in 245-Signal (\"dual SIM\"). One annotator did the same on 245.\n- **Dropped scope:** 5529-Signal (\"non-passphrase users\").\n\n## Conversion quality\nSimilarity sits at the ceiling. Sequence ratio and Jaccard are within 0.01 of the human-human values, and cosine is slightly above them (0.77 vs 0.74). That gap is within noise given standard deviations of about 0.25.\n\nThe lowest per-requirement scores are exactly the gold-incomplete items: 496 (0.31), 1504 (0.39) and 83 (0.40). The similarity metric therefore registers the same fabrication that Track 1 does.\n\nPaska passes 31 of 35 outputs. The four smells occur on requirements that are slot-correct, so they are independent of the fabrication problem:\n- **Incorrect order:** 828-Signal and 695-Signal, where the condition appears after the response.\n- **Non-atomic:** 6457-Signal, which packs two actions into one response.\n- **Imprecise verb:** 7310-Signal.\n\n## Anomalies\n- None listed by the pipeline.\n- 828-Signal has Paska segments `rimay_1` and `rimay_2`. This suggests two Rimay sentences on an atomic requirement, which the anomaly detector did not catch. Its slot and similarity scores may be computed on a merged string.\n\n## Next step\n- Inspect the raw 828-Signal output and fix the anomaly check so it counts Rimay sentences per atomic answer.\n- Add a few-shot example whose source lacks a stated action, for instance a title-only request like 83-Signal, rendered with `<MISSING_ACTION>`. Then re-run and track the core-slot flag rate on 83, 496, 592 and 1504.\n- Report the core-slot flag rate (actor/modal/action) separately from scope and condition in cross-strategy comparisons. The micro average hides the failure that this experiment is meant to probe.",
     "model": "claude-opus-5-5",
     "scope": "run",
-    "generated_at": "2026-10-19T00:23:45+01:00",
-    "results_digest": "1b011a4d8511"
+    "generated_at": "2026-10-25T20:05:47+00:00",
+    "results_digest": "d465f4f09937"
   }
 }

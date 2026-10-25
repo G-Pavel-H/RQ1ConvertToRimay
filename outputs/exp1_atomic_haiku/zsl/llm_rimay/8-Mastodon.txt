@@ -1,1 +1,1 @@
-For <MISSING_SCOPE>, the System shall add the "local and federated timeline" feature.
+The System shall provide access to the local and federated timeline.

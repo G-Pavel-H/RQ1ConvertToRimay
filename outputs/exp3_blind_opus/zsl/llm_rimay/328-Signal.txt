@@ -1,0 +1,18 @@
+TextSecure shall send "dummy random messages" to "random recipients" at "random times".
+TextSecure shall select the recipients of the "dummy random messages" randomly from the "contacts that knowingly use TextSecure".
+When the recipient TextSecure decrypts a "dummy random message", then the recipient TextSecure shall discard the "dummy random message" automatically.
+TextSecure shall adjust the "randomness" of the "dummy random messages" based on the "legitimate messages" to "spoil the traffic analysis of traffic retention data".
+TextSecure must allow the sender to enable the "dummy messaging feature" through an "opt-in".
+TextSecure must allow the sender to define the "desired quantity of dummy messages".
+If the "device" is "roaming", then TextSecure must disable the "dummy messaging feature" by default.
+TextSecure must allow the sender to enable the "dummy messaging feature" optionally during "roaming".
+If the "battery level" is less than "<MISSING_CONDITION>", then TextSecure must not send "dummy random messages".
+TextSecure <MISSING_MODAL_VERB> allow the recipients to notify their peers that they "do not want to receive dummy messages" through an "opt-out".
+TextSecure <MISSING_MODAL_VERB> send "clear text messages" with the "default message" or a "custom explanation by sender" to "random contacts not using TextSecure yet".
+TextSecure shall limit the "clear text messages to contacts not using TextSecure".
+TextSecure <MISSING_MODAL_VERB> include the "phone numbers of other peers participating in dummy messaging" in the "dummy random messages".
+TextSecure <MISSING_MODAL_VERB> not show the "phone numbers of other peers" to the user.
+TextSecure <MISSING_MODAL_VERB> send "dummy random messages" to the "phone numbers of other peers" received in "dummy random messages".
+TextSecure must spread the "opt-outs" through the "dummy random messages".
+TextSecure must spread the "opt-outs" by using a "direct reply dummy message".
+TextSecure must define a "TTL" for each "phone number of other peers" in the "dummy random messages".

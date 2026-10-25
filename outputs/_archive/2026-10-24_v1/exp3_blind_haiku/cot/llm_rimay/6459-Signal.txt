@@ -1,0 +1,1 @@
+When the Intent contains "EXTRA_SUBJECT" and "EXTRA_TEXT", then Signal shall include the "EXTRA_SUBJECT" from the Intent in the share action.

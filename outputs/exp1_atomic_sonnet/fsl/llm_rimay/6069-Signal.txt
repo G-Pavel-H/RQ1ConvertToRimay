@@ -1,1 +1,1 @@
-<MISSING_SCOPE>, when the device receives a new message notification on a Huawei EMUI device, then Signal must display the "unread notification badge" on the app icon on the home screen.
+<MISSING_SCOPE>, when the app receives a notification for a new message on a Huawei device running EMUI, then the app must display the "unread notification badge" on the app icon on the home screen.

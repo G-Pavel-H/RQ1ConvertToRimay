@@ -1,22 +1,47 @@
 # Cross-strategy verdict — exp1_atomic_haiku
 
-Model: `claude-opus-5-5` · generated 2026-10-18T23:42:17+01:00 · runs: cot, fsl, zsl
+Model: `claude-opus-5-5` · generated 2026-10-25T20:03:09+00:00 · runs: cot, fsl, zsl
 
-Few-shot (fsl) is the strongest strategy on almost every metric. The advantage is clear over zero-shot (zsl) but only modest over chain-of-thought (cot). And no strategy solves the problem this experiment is designed to probe: all three still silently fill most genuinely missing slots.
+## Summary
 
-Track 1 is only partly measurable here. Gold-missing support is reasonable for scope (34) and condition (21) but negligible for actor (1), modalVerb (1) and action (4). The perfect and zero per-slot scores on those three slots are single-item coin flips, and the macro averages, which weight them equally, should be ignored. On the two measurable slots, fsl flags 9/34 missing scopes and 10/21 missing conditions. The other strategies flag far fewer: cot 5 and 4, zsl 5 and 2. The condition gap between fsl and zsl (10 vs 2 of 21) is the only Track 1 difference likely to survive a paired test. The scope differences are within noise.
+Few-shot is the strongest strategy on conversion quality and on flagging the optional slots, scope and condition. It reaches the human-human ceiling, while zero-shot and chain-of-thought are indistinguishable from each other and well below it. Few-shot has one serious blind spot: it never judges a requirement incomplete. Chain-of-thought is the best at that requirement-level judgement, but only 4 requirements are gold-incomplete, so that ranking is fragile.
 
-The headline is the same for every strategy: 42 to 52 of 61 missing slots get invented content. Nearly every requirement (34/35) lacks a scope, so it is worth confirming whether the gold treats scope and condition as optional Rimay elements before calling these fills fabrication. Looking at the content the model inserted would settle this quickly.
+## Missing-slot detection
 
-Each strategy has a distinct failure mode. Fsl never declares a requirement incomplete: it fills every implied slot, never flags actor, modalVerb or action, and misses all 4 gold-incomplete requirements at the verdict level. The likely cause is that the few-shot examples only show complete outputs, which teaches the model that completeness is always expected. Cot errs the other way. It flags 10 implied actor or modalVerb slots as missing, and all 7 requirements it judges incomplete fail Paska, mostly as "Not requirement". When cot abstains, it seems to emit something that is no longer a requirement at all. Zsl's problem is format. It is furthest from the human ceiling on every similarity measure (cosine 0.49 against a human-human 0.74), it has the widest spread (std 0.35), it passes only 18/35 on Paska, and it carries 10 "Not requirement" smells. Many zsl outputs look off-template rather than slightly wrong.
+Track 1 is measurable here for scope (34 gold-missing) and condition (21). Actor, modalVerb and action have 1, 1 and 4 gold-missing slots, which is too few to rank strategies.
 
-On Track 2, fsl's cosine similarity (0.744) matches the human-human ceiling (0.737). Its lexical scores remain below the ceiling (sequence ratio 0.57 vs 0.64, Jaccard 0.40 vs 0.49). So fsl gets the meaning right but not the exact Rimay wording. Cot sits about 0.10 lower in cosine, which is probably real but needs a paired test, because the 105 pairs are three humans times 35 items, not 105 independent observations. The Paska gap between fsl and cot (27 vs 23 of 35) is noise. The gap between fsl and zsl (27 vs 18) is suggestive but not conclusive at this sample size. The 0.94 verdict agreement for zsl rests on only 4 gold-incomplete items and means little.
+On scope and condition the gap is large and not noise:
+- Few-shot flags 25 of 34 missing scopes and 17 of 21 missing conditions.
+- Zero-shot and chain-of-thought flag 5 of 34 scopes, and 3 and 5 of 21 conditions. They fill the empty optional slots with invented content, which is the fabrication risk this experiment probes.
 
-Several caveats apply. This is the atomic-only subset with one model and a single run per strategy. The results file also contains no per-requirement IDs, so I cannot point to specific failing reqIds.
+Micro-F1 mostly measures this scope behaviour, so it overstates few-shot's advantage.
 
-The next steps, in order:
-1. Export per-item outputs and run McNemar tests on the flag and Paska outcomes and Wilcoxon tests on similarity.
-2. Read the invented scope and condition text to decide whether it is fabrication or a convention mismatch.
-3. Add an incomplete-input example to the fsl prompt.
-4. Require cot to emit a valid Rimay statement with an explicit missing-slot marker instead of free text.
-5. Repeat each strategy three to five times to estimate run-to-run variance before comparing models or adding non-atomic requirements.
+The picture reverses on the core slots:
+- Few-shot silently fills all 4 missing actions and the single missing actor and modal. Its requirement-level verdict is "complete" for all 35 requirements, giving incomplete-F1 = 0.
+- Chain-of-thought catches 3 of the 4 gold-incomplete requirements. It over-flags, though: it marks 10 implied slots as missing (4 actors, 5 modals) and has 3 false incompletes.
+- Zero-shot sits between the two, catching 2 of 4 with 1 false alarm.
+
+The likely cause is the few-shot examples. They seem to model empty scope and condition but never an absent core slot.
+
+## Conversion quality
+
+Few-shot matches the human ceiling:
+- Sequence ratio 0.60 against a human-human 0.64.
+- Jaccard 0.45 against 0.49.
+- Cosine 0.77, which exceeds the human-human 0.74.
+
+Zero-shot and chain-of-thought trail the ceiling by about 0.15 on sequence ratio and 0.17 on Jaccard. With roughly 0.035 standard error per requirement mean, this gap is real.
+
+Paska pass rates (zero-shot 0.80, others 0.71) differ by 3 requirements and are within noise. All 6 of chain-of-thought's incomplete outputs fail as "Not requirement", so Paska penalises honest flagging. Among the outputs chain-of-thought judged complete, it has the highest pass rate (0.86). Few-shot's failures are mostly smells in the converted text itself (imprecise verb ×5, incorrect order ×3).
+
+## Anomalies and inconsistencies
+
+- **Text outside the answer block:** zero-shot ×6 (316, 42-Mastodon, 5775, 6457, 6459, 7345) and few-shot ×3 (316, 5775, 7345). The overlap of 316, 5775 and 7345 suggests these sources provoke commentary. All 35 were still evaluated, so the headline metrics are not distorted.
+- **Atomic requirements flagged `<NON_ATOMIC>`:** chain-of-thought on 316-Signal and 937-Signal; zero-shot on 6077-Signal. These likely feed the "Non-atomic"/"Not requirement" Paska smells.
+- **316-Signal is anomalous under every strategy.** Check whether it is genuinely atomic.
+
+## Next step
+
+- Add one few-shot example with a missing actor or action and an explicit incomplete verdict, then rerun few-shot.
+- Re-adjudicate 316-Signal, and review 5775 and 7345 for ambiguity.
+- Report Track 1 with scope separated from the core slots, so micro-F1 is not read as fabrication-avoidance on actions.

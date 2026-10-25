@@ -1,0 +1,1 @@
+<MISSING_SCOPE>, <MISSING_CONDITION>, the Signal app must support the custom URL scheme "signal://" to let webpages open the Signal app.

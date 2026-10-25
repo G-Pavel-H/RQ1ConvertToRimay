@@ -1,0 +1,15 @@
+{
+  "run_id": "exp2_units_sonnet/cot",
+  "strategy": "cot",
+  "task": "units",
+  "model": "claude-sonnet-5-5",
+  "temperature": 0.0,
+  "max_tokens": 1024,
+  "n_fsl_examples": null,
+  "gold_csv": "data/curated/gold_units.csv",
+  "backend": "subscription",
+  "created_at": "2026-10-18T23:57:18+01:00",
+  "n_processed": 15,
+  "n_skipped": 0,
+  "skipped_ids": []
+}

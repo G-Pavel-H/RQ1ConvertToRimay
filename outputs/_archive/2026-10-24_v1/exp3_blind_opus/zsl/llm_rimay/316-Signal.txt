@@ -1,0 +1,2 @@
+When the user shares a "calendar event" from the "Android Calendar app", then TextSecure <MISSING_MODAL_VERB> provide an option to send the "calendar event" in the "share with list".
+When the user selects TextSecure to send a "calendar event" from the "Android Calendar app", then TextSecure <MISSING_MODAL_VERB> attach the "calendar event" to the "message".

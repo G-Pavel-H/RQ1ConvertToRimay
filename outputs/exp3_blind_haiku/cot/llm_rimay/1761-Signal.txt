@@ -1,0 +1,1 @@
+When the system receives an incoming SMS from a certain contact, then the system shall forward all incoming SMS to another contact.

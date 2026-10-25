@@ -1,5 +1,5 @@
-TextSecure shall send "dummy random messages" to "random recipients" at "random times".
-TextSecure shall choose the "recipients of dummy messages" randomly from the "contacts that knowingly use TextSecure".
-When TextSecure receives a "dummy message" and decrypts it, then TextSecure shall discard the "dummy message" automatically.
-TextSecure shall require the sender to enable the "dummy messaging feature" by "opt-in".
-If the "battery level" is less than "30%", then TextSecure shall not send "dummy messages".
+TextSecure shall send "dummy random messages" to "randomly chosen contacts that knowingly use TextSecure" at "random times".
+When TextSecure decrypts a "dummy message", then TextSecure shall automatically discard the "dummy message".
+TextSecure shall allow the sender to enable the "dummy messaging feature" by "opt-in" and to define the "desired quantity of dummy messages".
+If the Battery.Level is less than "30%", then TextSecure shall not send "dummy messages".
+While the device is roaming, TextSecure shall not send "dummy messages" by default.

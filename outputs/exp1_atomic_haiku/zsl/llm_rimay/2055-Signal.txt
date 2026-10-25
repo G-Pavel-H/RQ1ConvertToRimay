@@ -1,1 +1,1 @@
-For the message application, if the user selects the info button after long pressing on an outgoing message, then the system shall display the received time for the outgoing message by extracting the received time from the delivery receipt. <NON_ATOMIC>.
+For outgoing messages, when delivery receipts are received, the System shall display the received time for outgoing messages by taking the sent time from the receipt.

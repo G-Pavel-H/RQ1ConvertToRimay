@@ -1,1 +1,1 @@
-For the app, <MISSING_CONDITION>, the app must support emoji.
+<MISSING_SCOPE>, <MISSING_CONDITION>, the app must support emoji.

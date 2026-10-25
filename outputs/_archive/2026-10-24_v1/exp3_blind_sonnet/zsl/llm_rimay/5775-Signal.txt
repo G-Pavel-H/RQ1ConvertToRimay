@@ -1,0 +1,1 @@
+Signal shall provide "disappearing message timeout periods longer than 1 week, up to at least one year".

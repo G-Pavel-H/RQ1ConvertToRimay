@@ -1,0 +1,3 @@
+<MISSING_SCOPE>, <MISSING_CONDITION>, the App must detect whether a "media item" has already been saved to the device gallery.
+<MISSING_SCOPE>, if a "media item" has already been saved, then the App must show a "view" or "share" icon instead of the "save" button.
+<MISSING_SCOPE>, if a "media item" has not been saved, then the App must show the "save" button.

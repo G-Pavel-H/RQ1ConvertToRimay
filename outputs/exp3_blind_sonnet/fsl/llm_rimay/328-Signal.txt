@@ -1,0 +1,14 @@
+<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure must occasionally send "dummy random messages" to randomly chosen recipients at random times.
+<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure must choose the recipients of "dummy messages" randomly among contacts that use TextSecure.
+<MISSING_SCOPE>, when TextSecure receives a "dummy message", then TextSecure must automatically discard the "dummy message" after decryption.
+<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure must let the sender enable the "dummy messaging" feature as opt-in.
+<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure must let the sender define the desired quantity of "dummy messages".
+<MISSING_SCOPE>, if "roaming" is active, then TextSecure must not send "dummy messages" unless the sender has enabled "dummy messaging" during roaming.
+<MISSING_SCOPE>, if the "battery level" is below a defined threshold, then TextSecure must not send "dummy messages".
+<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure must let recipients inform their peers that they do not want to receive "dummy messages" as opt-out.
+<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure must send "dummy messages" in clear text containing a default or custom message promoting TextSecure to randomly chosen contacts that do not use TextSecure.
+<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure must limit the "promotional messages" sent to a single recipient to a defined maximum per month.
+<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure must send "promotional messages" only during daytime.
+<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure must include in "dummy messages" the phone numbers of randomly selected peers participating in "dummy messaging".
+<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure must not show the phone numbers contained in "dummy messages" to the user.
+<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure must spread opt-outs through "dummy messages" by a direct reply "dummy message" or by a TTL defined for each phone number.

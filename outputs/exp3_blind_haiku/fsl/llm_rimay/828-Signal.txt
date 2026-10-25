@@ -1,0 +1,1 @@
+<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide the ability to remove participants from TextSecure groups.

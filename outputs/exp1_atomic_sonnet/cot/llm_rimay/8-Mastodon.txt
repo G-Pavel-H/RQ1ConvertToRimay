@@ -1,1 +1,1 @@
-<MISSING_CONDITION> The <MISSING_ACTOR> shall provide access to the "local timeline" and the "federated timeline".
+<MISSING_SCOPE> <MISSING_CONDITION> <MISSING_ACTOR> <MISSING_MODAL_VERB> provide access to the "local timeline" and the "federated timeline".

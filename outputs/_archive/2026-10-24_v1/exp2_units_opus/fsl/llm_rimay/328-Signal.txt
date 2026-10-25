@@ -1,0 +1,5 @@
+<MISSING_SCOPE>, if the user has enabled "dummy messaging", then the App must send "dummy random messages" to randomly chosen contacts that use TextSecure at random times.
+<MISSING_SCOPE>, when the App receives a "dummy message" from a contact, then the App must discard the "dummy message" automatically after decryption.
+<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user enable "dummy messaging" and define the "desired quantity of dummy messages".
+<MISSING_SCOPE>, while the device is in "roaming", then the App must not send "dummy messages" unless the user has enabled "dummy messaging during roaming".
+<MISSING_SCOPE>, if the "battery level" is less than "<MISSING_THRESHOLD>", then the App must not send "dummy messages".

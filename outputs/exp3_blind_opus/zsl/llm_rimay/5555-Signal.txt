@@ -1,0 +1,1 @@
+The <MISSING_ACTOR> <MISSING_MODAL_VERB> allow the "user" to copy "partial text" from a "message".

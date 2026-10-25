@@ -1,0 +1,1 @@
+When a Signal message has been sent to the server but not delivered to the recipient, after N minutes, the System shall send a "lack of delivery" notification to the sender indicating the message could not be delivered and offering to resend via SMS.

@@ -1,0 +1,2 @@
+<MISSING_SCOPE> When <MISSING_ACTOR> receives a "message" from a "user-specified blocked phone number", then <MISSING_ACTOR> <MISSING_MODAL_VERB> delete the "message".
+<MISSING_SCOPE> When <MISSING_ACTOR> receives a "message" from a "user-specified blocked phone number", then <MISSING_ACTOR> <MISSING_MODAL_VERB> not give a "notification".

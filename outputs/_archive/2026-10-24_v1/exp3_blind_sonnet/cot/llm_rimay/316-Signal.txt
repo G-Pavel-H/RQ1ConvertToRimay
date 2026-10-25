@@ -1,0 +1,1 @@
+<MISSING_SCOPE> <MISSING_CONDITION> TextSecure <MISSING_MODAL_VERB> receive the "shared Android calendar events" from the "Android Calendar app" as an attachment to the message.

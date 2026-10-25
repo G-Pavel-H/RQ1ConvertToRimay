@@ -1,2 +1,2 @@
-If a Signal message has been sent but not delivered to the recipient after a timeout, then the Signal-Android app shall display a "lack of delivery" notification on the sender's phone.
-If the "lack of delivery" notification is displayed, then the Signal-Android app shall offer the sender the option to "resend the message via insecure SMS".
+When a Signal message has been sent but not delivered to the recipient after a "timeout", then Signal shall send a "lack of delivery notification" to the "sender's phone".
+When a Signal message has been sent but not delivered to the recipient after a "timeout", then Signal shall send a "prompt asking whether to resend the message via insecure SMS" to the "sender's phone".

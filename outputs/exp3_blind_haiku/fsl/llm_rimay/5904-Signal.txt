@@ -1,0 +1,2 @@
+When the App imports messages from an ".xml backup", the App must preserve the "archived" flag for each imported message.
+When the App imports messages from an ".xml backup", the App must preserve the "blocked" flag for each imported message.

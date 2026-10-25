@@ -1,0 +1,5 @@
+The Signal-Android app must search for "non-contacts" by "phone number".
+For all the non-US users, the Signal-Android app must look up "non-contacts" by "phone number".
+When the user enters a "phone number" without the "+" prefix in the search, then the Signal-Android app must search for the "non-contact" with the "phone number" in international format.
+When the user enters a "phone number" without a calling code in the search, then the Signal-Android app must prepend the "calling code of the current user's phone number" to the entered "phone number".
+When the user enters a "phone number" without a calling code in the search, then the Signal-Android app must prepend the "calling code of the default region of the current device" to the entered "phone number".

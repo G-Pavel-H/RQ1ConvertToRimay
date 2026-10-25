@@ -1,0 +1,2 @@
+TextSecure shall allow the user to share a "calendar event" from the Android Calendar app.
+When the user selects TextSecure to share a "calendar event" from the Android Calendar app, then TextSecure shall attach the "calendar event" to the message.

@@ -1,1 +1,1 @@
-For all users, the app must provide theme support to improve adoption.
+<MISSING_SCOPE>, <MISSING_CONDITION>, the app must support themes to increase user adoption.

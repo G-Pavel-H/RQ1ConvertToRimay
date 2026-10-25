@@ -1,0 +1,3 @@
+For each "media", <MISSING_CONDITION> <MISSING_ACTOR> <MISSING_MODAL_VERB> detect that the "item has already been saved".
+For each "media", if the "item has already been saved", then <MISSING_ACTOR> <MISSING_MODAL_VERB> show a "view icon or share icon" to visually indicate that the "item has been saved already".
+For each "media", if the "item has not been saved", then <MISSING_ACTOR> <MISSING_MODAL_VERB> show the "save button".

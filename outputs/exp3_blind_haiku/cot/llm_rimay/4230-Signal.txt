@@ -1,0 +1,1 @@
+The System shall split the "oversized texts" into multiple messages.

@@ -1,0 +1,1 @@
+When the user sends a message, then TextSecure must display the "SIM through which the message was sent" to the user.

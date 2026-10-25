@@ -1,0 +1,1 @@
+For the conversation window, the Signal app shall provide only one "button to open and close the attachment window".

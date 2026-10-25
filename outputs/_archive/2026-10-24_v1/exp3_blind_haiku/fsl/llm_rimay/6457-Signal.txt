@@ -1,0 +1,2 @@
+<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide a single button to open the "attachment window".
+<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide a single button to close the "attachment window".

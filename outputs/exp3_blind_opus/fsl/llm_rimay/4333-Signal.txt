@@ -1,0 +1,1 @@
+<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide "direct sharing to contacts" through the "Android 6.0 ChooserTargetService".

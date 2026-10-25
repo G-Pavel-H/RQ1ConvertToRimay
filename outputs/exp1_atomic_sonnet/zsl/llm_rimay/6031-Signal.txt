@@ -1,1 +1,1 @@
-<MISSING_ACTOR> shall support "fingerprint unlocking" of the app as an alternative to the "passphrase".
+The app <MISSING_MODAL_VERB> support the "unlocking of the app by fingerprint" as an alternative to the "passphrase".

@@ -1,0 +1,1 @@
+<MISSING_SCOPE>, when the user selects the "info" button of an outgoing message, then the App must show the "received time" of the message in the "message details" based on the "delivery receipt".

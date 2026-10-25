@@ -1,0 +1,1 @@
+For Signal 3.0.3, when a user is on the calling screen, the calling screen <MISSING_MODAL_VERB> <MISSING_ACTION>.

@@ -1,0 +1,3 @@
+When the user multiselects images or media in the gallery, then the System shall enable deletion of the selected images or media.
+For an opened image or media, the System shall provide a delete option.
+When the user initiates deletion of images or media, then the System shall display a confirmation dialog to confirm the deletion.

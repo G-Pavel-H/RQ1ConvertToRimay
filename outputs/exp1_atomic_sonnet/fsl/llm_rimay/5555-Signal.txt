@@ -1,1 +1,1 @@
-<MISSING_SCOPE>, <MISSING_CONDITION>, the app must allow the user to select and copy partial text from a message.
+<MISSING_SCOPE>, <MISSING_CONDITION>, the app must allow users to select and copy partial text from a message.

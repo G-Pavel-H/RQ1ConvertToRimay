@@ -1,2 +1,2 @@
-<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow the user to edit a message from the Android Context Menu.
-<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow the user to insert a new message next to an existing message.
+<MISSING_SCOPE>, <MISSING_CONDITION>, the App must add the option to edit a message from the "Android Context Menu".
+<MISSING_SCOPE>, <MISSING_CONDITION>, the App must add the ability to insert a new message next to an existing message.

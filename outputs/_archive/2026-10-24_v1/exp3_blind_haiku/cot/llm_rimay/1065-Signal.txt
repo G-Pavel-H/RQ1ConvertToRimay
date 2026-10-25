@@ -1,0 +1,2 @@
+When the application starts for the first time after setting the passphrase, the System shall prompt the user to specify the desired behaviour among push notification only, SMS fallback, or SMS/MMS as default.
+The System shall provide a "what does that mean?" button that displays a pop-up explaining the available notification modes in simple terms.

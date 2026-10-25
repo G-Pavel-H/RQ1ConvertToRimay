@@ -1,1 +1,1 @@
-<MISSING_SCOPE>, <MISSING_CONDITION>, the app must provide fingerprint support for unlocking the app as an alternative to passphrase.
+<MISSING_SCOPE>, <MISSING_CONDITION>, the app must support fingerprint unlock as an alternative to passphrase.

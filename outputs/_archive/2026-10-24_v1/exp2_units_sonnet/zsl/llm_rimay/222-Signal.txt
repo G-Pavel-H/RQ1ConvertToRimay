@@ -1,0 +1,3 @@
+For each phone number specified by the user, the <MISSING_ACTOR> shall block messages from the number.
+For each phone number specified by the user, when <MISSING_ACTOR> receives a message from the number, then the <MISSING_ACTOR> shall delete the message.
+For each phone number specified by the user, when <MISSING_ACTOR> receives a message from the number, then the <MISSING_ACTOR> shall not send a notification.

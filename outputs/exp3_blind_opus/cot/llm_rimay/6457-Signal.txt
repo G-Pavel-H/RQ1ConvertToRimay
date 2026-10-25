@@ -1,0 +1,1 @@
+For the conversation window, if <MISSING_CONDITION>, then <MISSING_ACTOR> shall provide only one "control to open and close the attachment window" in the conversation window.

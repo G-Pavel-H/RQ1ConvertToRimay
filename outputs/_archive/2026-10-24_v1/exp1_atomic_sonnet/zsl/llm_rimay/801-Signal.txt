@@ -1,0 +1,1 @@
+If the user selects "Mute for X minutes/hours" for a group or a user, then the System shall suppress the "notification vibration and ringing" for the group or the user during the selected duration.

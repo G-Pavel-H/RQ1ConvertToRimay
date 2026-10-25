@@ -1,0 +1,1 @@
+<MISSING_SCOPE>, when the App receives an incoming SMS from a certain contact, then the App must automatically forward that SMS to another contact.

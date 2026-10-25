@@ -1,2 +1,2 @@
-After importing messages from .xml backup, the System shall preserve the "archived" flag for previously archived messages.
-After importing messages from .xml backup, the System shall preserve the "blocked" flag for previously blocked messages.
+When the system imports messages from a ".xml backup", then the system shall preserve the "archived" flag for the messages.
+When the system imports messages from a ".xml backup", then the system shall preserve the "blocked" flag for the messages.

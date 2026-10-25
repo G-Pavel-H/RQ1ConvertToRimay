@@ -1,1 +1,1 @@
-For each outgoing message, when the user selects the "info button" of the message, then the app must display the "received time" in the "message details" based on the "delivery receipt". <NON_ATOMIC>
+<MISSING_SCOPE>, when the user selects the "info button" of an outgoing message, then the app must display the "received time" of the outgoing message in the "message details" based on the "delivery receipt".

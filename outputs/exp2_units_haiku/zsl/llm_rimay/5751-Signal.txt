@@ -1,2 +1,2 @@
-When a user swipes away a notification, the System shall not display the same notification again.
-When new messages arrive from the same contact, the System shall display a new notification for the new message.
+When the user swipes away a notification from the Android notification drawer, the System shall not redisplay the same notification.
+When a new message is received from the same contact or number after a notification has been swiped away, the System shall display a new notification for the new message.

@@ -1,0 +1,10 @@
+<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user enable "dummy message sending" as an opt-in feature.
+<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user define parameters for "dummy messages" such as "max quantity per month", "ratio to legitimate messages", and "max total messages".
+<MISSING_SCOPE>, <MISSING_CONDITION>, the App must send "dummy messages" to randomly selected contacts that use TextSecure.
+<MISSING_SCOPE>, if the device is roaming, then the App must not send "dummy messages" unless the user has enabled roaming for this feature.
+<MISSING_SCOPE>, if the device battery level is below the user-defined threshold, then the App must not send "dummy messages".
+<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let recipients opt-out of receiving "dummy messages".
+<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user send "default promotional messages" in clear text to randomly selected non-TextSecure contacts.
+<MISSING_SCOPE>, <MISSING_CONDITION>, the App must limit "promotional messages" to non-TextSecure contacts based on user-defined frequency constraints.
+<MISSING_SCOPE>, <MISSING_CONDITION>, the App must include randomly selected contact numbers from participating users in "dummy messages".
+<MISSING_SCOPE>, when a recipient sends a "dummy message opt-out", then the App must propagate the "opt-out" to other users.

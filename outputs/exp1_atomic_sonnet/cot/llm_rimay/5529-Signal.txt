@@ -1,1 +1,1 @@
-If the user has not enabled a passphrase, then the Signal-Android application shall not enable "Screen security" by default.
+The Signal-Android application shall not enable "Screen security" by default for users who have not set a passphrase.

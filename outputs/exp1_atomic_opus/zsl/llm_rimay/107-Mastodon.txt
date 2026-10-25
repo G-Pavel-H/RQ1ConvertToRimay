@@ -1,1 +1,1 @@
-<MISSING_ACTOR> <MISSING_MODAL_VERB> display the "image description" of the "post images" to the "user".
+The <MISSING_ACTOR> must display the "image description" of each "post" to the user.

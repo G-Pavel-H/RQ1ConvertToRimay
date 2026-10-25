@@ -1,5 +1,5 @@
-When the sender enables the dummy messaging feature and selects a TextSecure contact, then TextSecure shall send a "dummy random message" to the "randomly selected TextSecure contact".
-When a "dummy message" is received and decrypted, then TextSecure shall automatically discard the "dummy message".
-When the sender enables the cleartext dummy messaging extension and selects a non-TextSecure contact, then TextSecure shall send a "dummy message in clear text" to the "randomly selected non-TextSecure contact".
-If roaming is enabled and battery level is above the "configured threshold" (such as 30%), then TextSecure shall send the "dummy message".
-When the sender opts in to the dummy messaging feature, then TextSecure shall enable the sender to "configure dummy message parameters" including "maximum quantity per month", "ratio to legitimate messages", and "total message limit".
+When the sender enables the "dummy message" feature, the System shall send dummy messages to random recipients selected from TextSecure contacts.
+If the "dummy message" feature is enabled, the System shall inject dummy messages at randomized intervals to level-out legitimate message frequency and spoil traffic analysis.
+If the sender defines a quota, the System shall enforce the sender-configured limits on dummy messages including maximum count per month, ratio to legitimate messages, and total message ceiling.
+If roaming is disabled or battery level is below thirty percent, the System shall not send dummy messages.
+When the sender enables the promotion mode, the System shall send plaintext dummy messages to non-TextSecure contacts with a maximum frequency of one message per recipient per month during daytime hours only.

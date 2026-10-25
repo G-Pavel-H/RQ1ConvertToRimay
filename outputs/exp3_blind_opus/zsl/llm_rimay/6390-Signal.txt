@@ -1,0 +1,1 @@
+If the "Signal message" is sent to the server and is not delivered to the recipient after "a timeout", then Signal <MISSING_MODAL_VERB> send a "lack of delivery notification asking whether to resend via insecure SMS" to the sender's phone.

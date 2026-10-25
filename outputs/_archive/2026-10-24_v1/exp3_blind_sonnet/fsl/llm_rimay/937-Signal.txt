@@ -1,0 +1,1 @@
+<MISSING_SCOPE>, <MISSING_CONDITION>, the App must display the messages of a conversation in a consistent order for all chat participants.

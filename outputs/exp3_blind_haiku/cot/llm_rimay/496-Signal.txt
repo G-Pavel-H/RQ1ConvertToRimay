@@ -1,0 +1,1 @@
+The System shall provide the ability to change the maximum size of MMS.

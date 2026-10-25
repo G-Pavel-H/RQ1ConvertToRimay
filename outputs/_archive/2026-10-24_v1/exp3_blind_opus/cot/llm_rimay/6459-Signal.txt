@@ -1,0 +1,1 @@
+When another app sends a share "Intent" with "EXTRA_SUBJECT" and "EXTRA_TEXT" to Signal, then Signal <MISSING_MODAL_VERB> use the "EXTRA_SUBJECT" of the share "Intent" in addition to the "EXTRA_TEXT".

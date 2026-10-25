@@ -1,0 +1,3 @@
+While the SMS mode is disabled, when the user starts typing, the system must not show the count of letters at the bottom left corner.
+Correction to comply with Rimay grammar:
+While the SMS mode is disabled, and when the User starts typing, then the System must not show the "count of letters" at the "bottom left corner".

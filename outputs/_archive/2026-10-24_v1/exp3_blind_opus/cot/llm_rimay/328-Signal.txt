@@ -1,0 +1,19 @@
+TextSecure <MISSING_MODAL_VERB> send "dummy random messages" to "random recipients" at "random times".
+TextSecure <MISSING_MODAL_VERB> select the "recipients of dummy messages" randomly from the "contacts that knowingly use TextSecure".
+When the recipient's TextSecure decrypts a "dummy message", then the recipient's TextSecure <MISSING_MODAL_VERB> discard the "dummy message" automatically.
+TextSecure must adjust the "randomness of dummy messages" based on "the legitimate messages".
+The sender must enable the "dummy messaging feature".
+The sender must define the "desired quantity of dummy messages".
+TextSecure must disable the "dummy messaging feature during roaming" by default.
+TextSecure must allow the sender to enable the "dummy messaging feature during roaming".
+If the battery level is less than "30%", then TextSecure must not send "dummy messages".
+The recipient <MISSING_MODAL_VERB> notify the "peers" that "the recipient does not want to receive dummy messages".
+TextSecure <MISSING_MODAL_VERB> send a "promotional message in clear text" to "random contacts that do not use TextSecure".
+The sender <MISSING_MODAL_VERB> define a "custom explanation" for the "promotional message".
+TextSecure must limit the "promotional messages" to "a maximum of 1 message to a single recipient per month, only during daytime".
+TextSecure <MISSING_MODAL_VERB> include the "phone numbers of other peers participating in dummy messaging" in the "dummy messages".
+TextSecure must not display the "phone numbers contained in dummy messages" to the user.
+TextSecure <MISSING_MODAL_VERB> send "dummy messages" to the "phone numbers contained in dummy messages".
+TextSecure must propagate the "opt-outs" through "dummy messages".
+TextSecure must propagate the "opt-outs" by using "direct reply dummy messages".
+TextSecure must define a "TTL" for each "phone number contained in dummy messages".

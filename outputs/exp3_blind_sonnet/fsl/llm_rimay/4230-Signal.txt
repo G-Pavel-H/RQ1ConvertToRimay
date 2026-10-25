@@ -1,0 +1,1 @@
+<MISSING_SCOPE>, when the user sends a text that exceeds the maximum message size, then the App must split the "oversized text" into multiple messages.

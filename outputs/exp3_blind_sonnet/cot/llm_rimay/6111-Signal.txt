@@ -1,0 +1,4 @@
+For the "Image gallery", <MISSING_ACTOR> <MISSING_MODAL_VERB> allow the user to multiselect the "images and media".
+For the "Image gallery", <MISSING_ACTOR> <MISSING_MODAL_VERB> allow the user to delete the "selected images and media".
+For the "opened image or media view", <MISSING_ACTOR> <MISSING_MODAL_VERB> allow the user to delete the "opened image or media".
+When the user requests the deletion of the "selected images", <MISSING_ACTOR> <MISSING_MODAL_VERB> display a "confirmation dialog" to the user.

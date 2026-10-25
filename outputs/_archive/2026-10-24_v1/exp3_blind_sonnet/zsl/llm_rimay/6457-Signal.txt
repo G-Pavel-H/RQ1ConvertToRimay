@@ -1,0 +1,1 @@
+For the conversation window, <MISSING_ACTOR> shall provide only one "way to open and close the attachment window".

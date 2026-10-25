@@ -1,0 +1,1 @@
+For Signal 3.0.3, when the <MISSING_ACTOR> displays the calling screen, then the Signal <MISSING_MODAL_VERB> <MISSING_ACTION> the "full resolution contact photo".

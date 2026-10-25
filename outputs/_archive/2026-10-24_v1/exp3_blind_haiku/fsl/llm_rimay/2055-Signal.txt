@@ -1,0 +1,2 @@
+<MISSING_SCOPE>, when the user long-presses an outgoing message and selects the info button, then the App must display the "received time" for that outgoing message using the "delivery receipt".
+<MISSING_SCOPE>, if the "received time" cannot be displayed for outgoing messages, then the App must rename the "Sent/Received" label to "Sent" for outgoing messages.

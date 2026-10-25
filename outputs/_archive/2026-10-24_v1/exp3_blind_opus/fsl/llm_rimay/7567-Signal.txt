@@ -1,0 +1,2 @@
+<MISSING_SCOPE>, when Signal is the "default SMS app" and the device receives a regular "SMS/MMS" message, then the App must use the "Android notification profile" for that message.
+<MISSING_SCOPE>, when Signal is the "default SMS app" and the device receives a "secure message" or a "Signal call", then the App must use the "Signal notification settings" for that message or call.

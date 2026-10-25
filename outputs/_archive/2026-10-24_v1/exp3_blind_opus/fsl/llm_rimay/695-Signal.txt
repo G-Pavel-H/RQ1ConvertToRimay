@@ -1,0 +1,1 @@
+<MISSING_SCOPE>, if the "SMS mode" is disabled, then the App must not show the "letter count" while the user is typing.

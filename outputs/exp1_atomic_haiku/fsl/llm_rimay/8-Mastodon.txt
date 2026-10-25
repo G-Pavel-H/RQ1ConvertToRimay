@@ -1,1 +1,1 @@
-For <MISSING_SCOPE>, <MISSING_CONDITION>, the app must provide access to local and federated timelines.
+<MISSING_SCOPE>, <MISSING_CONDITION>, the app must provide access to local and federated timeline.

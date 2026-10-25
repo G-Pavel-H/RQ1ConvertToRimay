@@ -1,0 +1,3 @@
+For each website article, the System shall send a custom URL scheme "signal://" to enable share buttons that point to the Signal app.
+When a website contains a share button, the System shall accept a "signal://" custom URL scheme to initiate messaging in the Signal app.
+When a user clicks a share button on a website article, the System shall route the request through the "signal://" custom URL scheme to open the Signal app.

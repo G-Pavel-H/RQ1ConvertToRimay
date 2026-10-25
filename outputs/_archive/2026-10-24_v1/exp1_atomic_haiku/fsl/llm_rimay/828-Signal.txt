@@ -1,0 +1,1 @@
+For all TextSecure groups, the administrator must be able to remove participants after they were added.

@@ -1,2 +1,2 @@
-<MISSING_ACTOR> must include the "archived" flag of the messages in the ".xml backup".
-<MISSING_ACTOR> must include the "blocked" flag of the messages in the ".xml backup".
+The System must include the "archived" flag of each message in the ".xml backup".
+The System must include the "blocked" flag of each conversation in the ".xml backup".

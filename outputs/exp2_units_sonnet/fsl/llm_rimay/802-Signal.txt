@@ -1,6 +1,6 @@
 <MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user import the "private key" from a "file".
 <MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user export the "private key" to a "file".
-<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user import "public keys" from a "file", via "Bluetooth", via "NFC" or via a "QR code".
-<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user export "public keys" to a "file", via "Bluetooth", via "NFC" or via a "QR code".
-<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user re-import an exported "private key" from a "backup file" on a new device.
-<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user share imported "public keys" with other people.
+<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user import "public keys" from a "file", "Bluetooth", "NFC" or "QR code".
+<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user export "public keys" to a "file", "Bluetooth", "NFC" or "QR code".
+<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user securely wipe the old "key".
+<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user re-import an exported "key" from a "backup file".

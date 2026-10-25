@@ -1,0 +1,1 @@
+The system <MISSING_MODAL_VERB> allow the user to change the "notification settings for group chats" independently from the "notification settings for personal chats".

@@ -1,0 +1,3 @@
+<MISSING_SCOPE>, when the user long-presses a "received message", then the App must offer an "acknowledge message" option.
+<MISSING_SCOPE>, when the user selects the "acknowledge message" option for a "received message", then the App must replace the "received" indicator of that message with an "acknowledgement" indicator.
+<MISSING_SCOPE>, <MISSING_CONDITION>, the App must not send an acknowledgement automatically to the conversation partner.

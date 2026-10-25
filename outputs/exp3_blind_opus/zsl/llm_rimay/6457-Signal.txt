@@ -1,0 +1,1 @@
+While the "conversation window" is displayed, then Signal shall provide only one "control to open and close the attachment window" in the "conversation window".

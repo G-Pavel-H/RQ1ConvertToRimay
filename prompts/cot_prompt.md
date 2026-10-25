@@ -12,7 +12,7 @@ Follow the Rimay grammar and conversion rules from the system prompt. Reason ste
 6. Decide the Rimay pattern (1–10 from the system prompt) that best matches the structural content.
 7. Check **atomicity**: if the source NL contains multiple system responses, select the most concrete primary action and flag the requirement with `<NON_ATOMIC>` at the end.
 
-After your private reasoning, output ONLY the final Rimay sentence on a single line. Do not include the scratchpad, the component list, or any commentary in the final output.
+After your private reasoning, write the final Rimay sentence on a single line inside the `<rimay>` … `</rimay>` block. Do not put the scratchpad, the component list, or any commentary inside the block.
 
 ## NL Requirement
 

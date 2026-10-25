@@ -1,1 +1,1 @@
-For "Signal 3.0.3", while the "call" is active, then the Calling_Screen <MISSING_MODAL_VERB> display the "full resolution contact photo".
+While <MISSING_CONDITION>, the "Calling screen" must display the "full resolution contact photo".

@@ -1,0 +1,2 @@
+<MISSING_SCOPE>, when the App shows a post with an image, then the App must let the user view the "image description".
+<MISSING_SCOPE>, when the App shows a post with an image, then the App must show whether the image has an "image description".

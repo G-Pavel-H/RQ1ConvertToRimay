@@ -75,47 +75,88 @@ TRACK 2 — conversion quality
   * paska: an independent rule-based smell detector run over the LLM output.
     pass_rate is the share with no smells; smell_frequency counts each type.
 
-Your job is interpretation, not restatement. Do not simply list the numbers
-back — the reader can already see them. Say what they mean, where the strategy
-fails, what the failure mode looks like in the examples given, and what is
-worth doing next. Be concrete and cite specific reqIds when a pattern is
-visible in them.
+TASKS (the "task" field)
+  * atomic: one Rimay per requirement.
+  * units: a non-atomic requirement; the prompt says so and gives the number of
+    units. Each gold unit "<reqId>#<n>" is scored as its own requirement.
+  * blind: atomic and non-atomic requirements mixed; the prompt says neither
+    which nor how many units. "units" reports count compliance and
+    nonAtomicDetection (positive = gold has more than one unit, predicted =
+    the model returned more than one).
 
-Be calibrated. Say plainly when the sample is too small to support a claim,
-when two numbers are within noise of each other, and when something is
-inconclusive rather than manufacturing a finding. If the results look
-uninformative, say so — that is a legitimate outcome and more useful than a
-confident story.
+ANOMALIES (the "anomalies" field) list what the model returned that breaks
+the expected shape: format breaches (no answer block, text outside it,
+commentary lines removed), wrong unit counts, atomic requirements split,
+non-atomic ones merged, empty or truncated answers, Paska errors. In a batch,
+"count_disagreements" lists requirements on which the strategies returned
+different numbers of units. Treat these as findings: name the reqIds, say
+whether they distort the headline metrics, and say whether a pattern is visible.
 
-Write plain prose in short paragraphs. No markdown headings, no bullet lists,
-no preamble like "Here is the analysis". Aim for 300-500 words."""
+Your job is interpretation, not restatement. Do not list numbers the reader
+can see; cite a number only when it supports a claim. Say what the results
+mean, where and how the model fails, and what to do next. Cite reqIds when a
+pattern is visible in them. Be calibrated: say when the sample is too small,
+when differences are within noise, or when a result is inconclusive.
+
+STYLE. Professional, terse, specific. Every sentence must make a claim, give
+evidence for one, or recommend an action — no preamble, no restating the
+task, no hedging filler, no closing summary of what you just said. Use the
+markdown structure the task prescribes: "## " section headings, short
+paragraphs, and "- " bullets only for lists of items (anomalies, next steps).
+No tables. At most 400 words; shorter when there is less to say."""
 
 RUN_TASK = """\
-Analyse this single run and write the verdict that will be shown alongside it
-in the results report.
+Analyse this single run. Write exactly these sections, in this order:
 
-Cover: how well this strategy handled the missing-slot detection task; whether
-the conversion similarity is meaningful relative to the human-human ceiling;
-what the Paska smells indicate; and the most useful next step. Note explicitly
-if the sample is too small for a conclusion."""
+## Summary
+Two or three sentences: the main result and the main weakness.
+## Missing-slot detection
+Track 1: which slots the model flags correctly, which it fills or over-flags.
+## Conversion quality
+Track 2: similarity relative to the human-human ceiling; what Paska's smells say.
+## Units and atomicity
+Only for the units and blind tasks: count compliance, splitting and merging
+errors, non-atomic detection. Omit the section for the atomic task.
+## Anomalies
+One bullet per pattern, with the reqIds. "None." if the list is empty.
+## Next step
+One to three bullets."""
 
 BATCH_TASK = """\
-Compare these runs, which are the same requirements converted under different
-prompting strategies.
+Compare these runs: the same requirements and model under the three prompting
+strategies. Write exactly these sections, in this order:
 
-Cover: which strategy performed best and on which metric; whether the
-differences are large enough to matter at this sample size or are within noise;
-whether any strategy shows a distinct failure mode the others do not; and what
-to run next. If the strategies are indistinguishable, say so directly rather
-than declaring a winner."""
+## Summary
+Two or three sentences: which strategy is best on what, and whether the gap
+matters at this sample size.
+## Missing-slot detection
+Where the strategies differ on Track 1 and why.
+## Conversion quality
+Track 2 across strategies, relative to the human-human ceiling.
+## Units and atomicity
+Only for the units and blind tasks: count compliance and atomicity decisions
+per strategy, and the count disagreements between strategies. Omit the
+section for the atomic task.
+## Anomalies and inconsistencies
+One bullet per pattern, with the strategy and reqIds: format breaches, wrong
+counts, requirements the strategies treat differently. "None." if nothing.
+## Next step
+One to three bullets.
+If the strategies are indistinguishable, say so rather than declaring a winner."""
 
 CONTEXT_NOTE = """\
-Study context you must take into account: requirements the human annotators
-judged NON-ATOMIC (carrying more than one system response) were excluded from
-this dataset, because the pipeline has no decomposition step yet. This set is
-therefore the easier, already-atomic subset, and results should not be
-generalised to unfiltered requirements. Do not treat the absence of non-atomic
-problems as a finding."""
+Study context. The gold is a curated set of 50 requirements, each converted
+by three annotators; the gold slots are the per-unit majority.
+* task "atomic" (experiment 1): the 35 atomic requirements, one Rimay each.
+  Only 4 are gold-incomplete, so incomplete-F1 moves in large steps.
+* task "units" (experiment 2): the 15 non-atomic requirements (42 units); the
+  prompt says the requirement is non-atomic and how many units to return.
+  All 42 gold units are complete, so incomplete-F1 is undefined there.
+* task "blind" (experiment 3): all 50 requirements (77 units); the prompt
+  defines atomicity but says neither whether this requirement is non-atomic
+  nor how many units to return.
+Scope is optional in Rimay and gold-missing almost everywhere, so it dominates
+the missing-slot counts."""
 
 
 @dataclass(frozen=True)
@@ -166,6 +207,9 @@ def digest_run(results: dict) -> dict:
         "strategy": results.get("strategy"),
         "model_under_test": (results.get("meta") or {}).get("model"),
         "counts": results.get("counts"),
+        "task": results.get("task"),
+        "units": _units_digest(results.get("units")),
+        "anomalies": _anomalies_digest(results.get("anomalies")),
         "field_accuracy": results.get("field_accuracy"),
         "conversion_quality": results.get("conversion_quality"),
         "per_requirement": [_requirement_row(r) for r in reqs],
@@ -184,15 +228,48 @@ def digest_run(results: dict) -> dict:
     }
 
 
+def _units_digest(units: Optional[dict]) -> Optional[dict]:
+    """Unit-count compliance and non-atomicity detection, with the misses only."""
+    if not units:
+        return None
+    misses = [{k: r[k] for k in ("reqId", "expected", "returned")}
+              for r in units.get("perRequirement", []) if r["expected"] != r["returned"]]
+    keep = ("requirements", "exactCount", "expectedUnits", "returnedUnits", "reordered", "nonAtomicDetection")
+    return {**{k: units.get(k) for k in keep}, "countMismatches": misses}
+
+
+def _anomalies_digest(anomalies: Optional[dict]) -> Optional[dict]:
+    if not anomalies:
+        return None
+    return {"counts": anomalies.get("counts"), "affected": anomalies.get("affected"),
+            "kinds": {k: v for k, v in (anomalies.get("kinds") or {}).items() if k in (anomalies.get("counts") or {})},
+            "items": anomalies.get("items", [])[:60]}
+
+
+def count_disagreements(results_list: List[dict]) -> List[dict]:
+    """Requirements on which the runs returned different numbers of units."""
+    counts: dict = {}
+    for r in results_list:
+        for q in (r.get("units") or {}).get("perRequirement", []):
+            row = counts.setdefault(q["reqId"], {"reqId": q["reqId"], "gold": q["expected"], "returned": {}})
+            row["returned"][r.get("strategy")] = q["returned"]
+    return [row for row in counts.values()
+            if len(set(row["returned"].values())) > 1 or set(row["returned"].values()) != {row["gold"]}]
+
+
 def digest_batch(results_list: List[dict]) -> dict:
     """Compact several runs for cross-strategy comparison (no per-req detail)."""
     return {
+        "count_disagreements": count_disagreements(results_list),
         "batch_runs": [
             {
                 "run": r.get("run"),
                 "strategy": r.get("strategy"),
                 "model_under_test": (r.get("meta") or {}).get("model"),
                 "counts": r.get("counts"),
+                "task": r.get("task"),
+                "units": _units_digest(r.get("units")),
+                "anomalies": _anomalies_digest(r.get("anomalies")),
                 "field_accuracy": r.get("field_accuracy"),
                 "conversion_quality": r.get("conversion_quality"),
             }

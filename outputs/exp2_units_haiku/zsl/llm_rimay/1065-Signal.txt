@@ -1,2 +1,2 @@
-When the System detects the first start of the app, the System shall request the user to specify the desired behaviour among "only use push", "use SMS fallback", or "use as default SMS/MMS-App".
-When the user selects a behaviour mode during the first start of the app, the System shall display a pop-up that explains in simple words what each mode does.
+When the user sets the passphrase during the first start, then the System <MISSING_MODAL_VERB> request the user to specify the desired behaviour by choosing one of the following: "only use push", "use SMS fallback", or "use as default SMS/MMS-App".
+When the System displays the behaviour selection options during first start, then the System <MISSING_MODAL_VERB> provide a "what does that mean?" button which opens a pop-up that explains in simple words what every mode does.

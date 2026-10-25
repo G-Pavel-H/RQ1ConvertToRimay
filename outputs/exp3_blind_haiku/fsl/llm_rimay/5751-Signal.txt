@@ -1,0 +1,2 @@
+When the user swipes away a notification of a received SMS, then the App must not display that notification again.
+When a new message arrives from the same contact after the user has swiped away a previous notification, then the App must display a new notification for the new message.

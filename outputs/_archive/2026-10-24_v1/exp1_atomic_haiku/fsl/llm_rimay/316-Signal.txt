@@ -1,0 +1,1 @@
+For each calendar event shared from the Android Calendar app, the user must be able to send the calendar event via TextSecure with the event properly attached as an attachment.

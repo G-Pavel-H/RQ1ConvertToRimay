@@ -1,2 +1,2 @@
-When the "Signal message" is sent to the server and is not delivered to the recipient after "some timeout", then the Signal shall send a "lack of delivery notification" to the sender.
-When the "Signal message" is sent to the server and is not delivered to the recipient after "some timeout", then the Signal shall offer the sender the option to "resend the message via insecure SMS".
+When a Signal message has been sent but not delivered to the recipient after a timeout, the Signal application shall send a "lack of delivery notification" to the sender's phone.
+When a Signal message has been sent but not delivered to the recipient after a timeout, the Signal application shall ask the sender whether to "resend the message via insecure SMS".

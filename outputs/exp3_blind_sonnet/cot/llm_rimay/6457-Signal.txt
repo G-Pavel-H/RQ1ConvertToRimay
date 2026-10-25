@@ -1,0 +1,1 @@
+For the conversation window, the Signal application shall provide "only a single way to open and close the attachment window".

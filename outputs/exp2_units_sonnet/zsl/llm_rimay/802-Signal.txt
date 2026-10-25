@@ -1,6 +1,6 @@
-The application shall import the "private key" from a file.
-The application shall export the "private key" to a file.
-The application shall import the "public keys" from a file.
-The application shall export the "public keys" to a file.
-The application shall import the "public keys" via "Bluetooth", "NFC", and "QR code".
-The application shall export the "public keys" via "Bluetooth", "NFC", and "QR code".
+The <MISSING_ACTOR> <MISSING_MODAL_VERB> export the "private key" to a "file".
+The <MISSING_ACTOR> <MISSING_MODAL_VERB> import the "private key" from a "file".
+The <MISSING_ACTOR> <MISSING_MODAL_VERB> export the "public keys" to a "file".
+The <MISSING_ACTOR> <MISSING_MODAL_VERB> import the "public keys" from a "file".
+The <MISSING_ACTOR> <MISSING_MODAL_VERB> export the "public keys" through "Bluetooth, NFC, and QR code".
+The <MISSING_ACTOR> <MISSING_MODAL_VERB> import the "public keys" through "Bluetooth, NFC, and QR code".

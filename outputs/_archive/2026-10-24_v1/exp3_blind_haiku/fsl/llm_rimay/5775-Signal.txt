@@ -1,0 +1,3 @@
+<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide longer-term disappearing message timeouts of at least one month or longer.
+<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide a disappearing message timeout option of one year or longer.
+<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide a disappearing message timeout option of thirteen months.

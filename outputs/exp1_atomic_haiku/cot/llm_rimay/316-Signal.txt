@@ -1,1 +1,1 @@
-TextSecure shall receive a calendar event from the Android Calendar app and attach it to the message.
+For Android calendar events, TextSecure shall receive the "calendar event" from the Android Calendar app. <NON_ATOMIC>

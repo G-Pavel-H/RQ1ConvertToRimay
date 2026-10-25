@@ -1,0 +1,1 @@
+The System shall display the "SIM destination" for the message to the user.

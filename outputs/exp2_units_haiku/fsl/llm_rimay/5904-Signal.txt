@@ -1,2 +1,2 @@
-When the App imports messages from an ".xml backup", then the App must preserve the "archived" flag for messages that were archived in the backup.
-When the App imports messages from an ".xml backup", then the App must preserve the "blocked" flag for messages from conversations that were blocked in the backup.
+When the App imports messages from an ".xml backup", then the App must restore the "archived flag" to messages that were archived in the backup.
+When the App imports messages from an ".xml backup", then the App must restore the "blocked flag" to conversations that were blocked in the backup.

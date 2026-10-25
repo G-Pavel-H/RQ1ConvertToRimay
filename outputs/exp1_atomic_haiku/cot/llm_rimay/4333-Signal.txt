@@ -1,1 +1,1 @@
-The system must allow direct sharing to contacts via the "6.0 ChooserTargetService".
+<MISSING_ACTOR> <MISSING_MODAL_VERB> enable direct sharing to contacts via "ChooserTargetService".

@@ -1,0 +1,2 @@
+<MISSING_SCOPE>, when the app starts for the first time, then the app must ask the user to specify the desired behaviour among "only use push", "use SMS fallback", or "use as default SMS/MMS-App".
+<MISSING_SCOPE>, when the app shows the desired behaviour options, then the app must provide a "what does that mean?" button that opens a pop-up explaining each mode.

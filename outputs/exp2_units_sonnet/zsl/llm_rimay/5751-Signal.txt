@@ -1,4 +1,2 @@
-For the Signal-Android app, once the user has swiped away a notification, the app must not display that notification again. When the app receives another message from the same contact or number, it should show a new notification with the new message.
-Rimay requirements:
-If the user swipes away a notification of a received SMS, then the Signal-Android app must not display the swiped away notification.
-When the Signal-Android app receives another message from the same contact or number, then the Signal-Android app must display a new notification with the new message.
+If a user swipes away a notification, then the Signal app shall not display the swiped away notification again.
+If the Signal app receives another message from the same contact, then the Signal app shall display a new notification with the new message.

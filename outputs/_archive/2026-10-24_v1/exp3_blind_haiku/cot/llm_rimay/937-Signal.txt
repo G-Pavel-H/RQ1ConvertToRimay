@@ -1,0 +1,2 @@
+The TextSecure server shall generate a sequence number for each message.
+The system shall sort the conversation view according to message sequence numbers.

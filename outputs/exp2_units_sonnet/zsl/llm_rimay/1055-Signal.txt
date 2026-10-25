@@ -1,5 +1,2 @@
-The message-list shall automatically move the message drafts to the top of the message-list.
-The <MISSING_ACTOR> shall mark the message drafts by using "another color or a text 'Draft'".
-Wait, correcting to follow the format with consistent actors and the required placeholders:
-<MISSING_ACTOR> <MISSING_MODAL_VERB> automatically move the "message drafts" to the "top of the message-list".
-<MISSING_ACTOR> <MISSING_MODAL_VERB> mark the "message drafts" by using "another color or a text 'Draft'".
+The <MISSING_ACTOR> shall automatically move the "message drafts" to the top of the "message-list".
+The <MISSING_ACTOR> shall mark the "message drafts" by using "another color or a text 'Draft'".

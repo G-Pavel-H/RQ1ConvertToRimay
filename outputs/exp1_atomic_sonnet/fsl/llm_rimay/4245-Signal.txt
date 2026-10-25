@@ -1,1 +1,1 @@
-<MISSING_SCOPE>, <MISSING_CONDITION>, the Signal calling screen must display the "full resolution contact photo" during a call.
+<MISSING_SCOPE>, <MISSING_CONDITION>, the Signal app must display the "full resolution contact photo" on the calling screen.

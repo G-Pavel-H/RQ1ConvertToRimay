@@ -1,0 +1,1 @@
+For each media item, if the item has already been saved, then the system shall display a view icon or share icon, otherwise the system shall display the save button.

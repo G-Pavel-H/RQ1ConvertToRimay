@@ -1,0 +1,1 @@
+When a user receives a long validation token or one-time password, the System shall enable the copying of partial text from the message.

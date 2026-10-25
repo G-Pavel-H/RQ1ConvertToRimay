@@ -1,0 +1,2 @@
+When the System is set as the default SMS manager, the System shall use the Android notification profile for regular SMS and MMS.
+When the System is set as the default SMS manager, the System shall use the Signal notification settings for secure messages and calls.

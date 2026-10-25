@@ -1,1 +1,1 @@
-For each group, when the group sends messages, then the user must be able to mute the group for a specified duration.
+<MISSING_SCOPE>, when a group or user sends messages, then the app must provide a "Mute for X minutes/hours" feature.

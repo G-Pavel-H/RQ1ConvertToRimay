@@ -1,0 +1,4 @@
+For the "Image gallery", when the user selects multiple "images/media", then <MISSING_ACTOR> <MISSING_MODAL_VERB> delete the "selected images/media".
+<MISSING_SCOPE>, when the user opens an "image/media", then <MISSING_ACTOR> <MISSING_MODAL_VERB> provide an "option to delete the opened image/media" in the "opened view".
+<MISSING_SCOPE>, before <MISSING_ACTOR> deletes the "selected images/media", then <MISSING_ACTOR> <MISSING_MODAL_VERB> display a "confirmation dialog for deleting the selected images/media" to the user.
+<MISSING_SCOPE>, when the user deletes an "image/media" in the "gallery mode" or the "opened view", then <MISSING_ACTOR> <MISSING_MODAL_VERB> keep the "corresponding message text" with a "hint to the deleted image/media".

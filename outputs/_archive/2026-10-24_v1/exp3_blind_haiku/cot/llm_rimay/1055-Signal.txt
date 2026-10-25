@@ -1,0 +1,1 @@
+If message drafts exist, then the system shall move message drafts to the top of the message-list and mark them with a color or the text "Draft".

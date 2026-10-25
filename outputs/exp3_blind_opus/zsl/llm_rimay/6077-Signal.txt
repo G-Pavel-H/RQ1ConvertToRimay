@@ -1,0 +1,2 @@
+When the user sends an "SMS message" to "13977" through Signal, then Signal must deliver the "SMS message" to "13977".
+Signal must use "libphonenumber" with "version greater than or equal to 8.2.0".

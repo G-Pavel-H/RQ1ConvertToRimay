@@ -1,1 +1,1 @@
-For the non-passphrase users, the Signal <MISSING_MODAL_VERB> disable the "Screen security" feature by default.
+If the user does not have a "passphrase", then the Signal-Android application shall disable the "Screen security" feature by default.

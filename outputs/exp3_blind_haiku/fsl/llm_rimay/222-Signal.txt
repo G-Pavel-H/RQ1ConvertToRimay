@@ -1,0 +1,2 @@
+<MISSING_SCOPE>, if the user has specified a phone number to block, then the App must delete messages from that phone number upon receipt.
+<MISSING_SCOPE>, if the user has specified a phone number to block, then the App must not send a notification for messages from that phone number.

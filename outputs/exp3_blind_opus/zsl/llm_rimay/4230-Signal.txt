@@ -1,0 +1,1 @@
+If a "text message" is greater than the "maximum message length", then <MISSING_ACTOR> <MISSING_MODAL_VERB> split the "text message" into "multiple messages".

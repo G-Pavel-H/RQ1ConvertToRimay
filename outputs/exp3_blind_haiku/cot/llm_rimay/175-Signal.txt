@@ -1,0 +1,1 @@
+The System shall provide a quick way to wipe the text message database through a button combination and confirmation dialogue.

@@ -1,0 +1,1 @@
+The User shall view the image description for each post.

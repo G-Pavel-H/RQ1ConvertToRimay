@@ -1,0 +1,1 @@
+The System shall wipe the "text message database" by using a "button combination" and a "confirmation dialogue".

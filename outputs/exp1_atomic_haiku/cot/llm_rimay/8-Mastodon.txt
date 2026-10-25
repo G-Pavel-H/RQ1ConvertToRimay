@@ -1,1 +1,1 @@
-The System shall add access to the local and federated timeline.
+The System shall add the "local and federated timeline".

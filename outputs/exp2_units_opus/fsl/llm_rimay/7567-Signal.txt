@@ -1,2 +1,2 @@
-<MISSING_SCOPE>, while the App is the "default SMS app", when the App receives a "regular SMS/MMS", then the App must use the "Android notification profile" for that notification.
-<MISSING_SCOPE>, while the App is the "default SMS app", when the App receives a "secure message" or a "call", then the App must use the "Signal notification settings" for that notification.
+<MISSING_SCOPE>, while the App is the "default SMS app", when the App receives a "regular SMS/MMS message", then the App must use the "Android notification profile" for the notification.
+<MISSING_SCOPE>, while the App is the "default SMS app", when the App receives a "secure message" or a "Signal call", then the App must use the "Signal notification settings" for the notification.

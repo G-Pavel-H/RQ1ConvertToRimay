@@ -1,1 +1,1 @@
-<MISSING_SCOPE>, <MISSING_CONDITION>, then <MISSING_ACTOR> <MISSING_MODAL_VERB> add "fingerprint support" for "unlocking the app" as "an alternative to passphrase".
+<MISSING_ACTOR> <MISSING_MODAL_VERB> allow the "unlocking of the app" by using a "fingerprint" as an alternative to the "passphrase".

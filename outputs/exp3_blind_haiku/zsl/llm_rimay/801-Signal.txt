@@ -1,0 +1,1 @@
+For all the groups, when a user is discussing something, the System shall mute the group for X minutes or hours.

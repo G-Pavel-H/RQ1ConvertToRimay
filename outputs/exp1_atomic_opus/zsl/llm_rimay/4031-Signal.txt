@@ -1,1 +1,1 @@
-<MISSING_ACTOR> <MISSING_MODAL_VERB> provide an "option to cancel running media downloads".
+The <MISSING_ACTOR> <MISSING_MODAL_VERB> provide an "option to cancel running media downloads" to the user.

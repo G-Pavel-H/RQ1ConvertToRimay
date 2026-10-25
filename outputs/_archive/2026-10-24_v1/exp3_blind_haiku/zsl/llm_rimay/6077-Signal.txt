@@ -1,0 +1,2 @@
+When the user sends an SMS to the number 13977 through Signal, then Signal shall deliver the SMS message to the mobile provider.
+When the user sends an SMS to the number 13977 through Signal, then Signal shall not display "Failed to send" or "Some issues need your attention" error messages.

@@ -1,0 +1,1 @@
+<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide the "text-based smileys" as an alternative to "emoji".

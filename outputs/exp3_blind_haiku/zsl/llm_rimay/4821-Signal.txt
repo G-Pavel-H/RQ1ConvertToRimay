@@ -1,0 +1,2 @@
+When the user long-presses a received message and selects "acknowledge message", the system shall replace the "received" or "seen" indicator with an acknowledgement indicator.
+When the user acknowledges a message, the system shall send the acknowledgement information to the conversation partner.

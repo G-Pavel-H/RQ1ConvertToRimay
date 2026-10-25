@@ -1,0 +1,1 @@
+The System shall auto-split oversized texts over multiple messages.

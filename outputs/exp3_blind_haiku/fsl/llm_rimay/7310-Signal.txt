@@ -1,0 +1,1 @@
+<MISSING_SCOPE>, when a webpage uses the "signal://" URL scheme, then the App must support and handle the "signal://" custom URL scheme.

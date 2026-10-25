@@ -1,1 +1,1 @@
-TextSecure <MISSING_MODAL_VERB> add a "short signature" below the "SMS message".
+When the user sends an "SMS message", then TextSecure must append a "short signature" to the "SMS message".

@@ -1,0 +1,1 @@
+When the user sends an SMS message to a provider number through Signal, the Signal application must deliver the message to the provider.

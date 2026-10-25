@@ -1,0 +1,10 @@
+The App <MISSING_MODAL_VERB> import the "private key" from a "file".
+The App <MISSING_MODAL_VERB> export the "private key" to a "file".
+The App <MISSING_MODAL_VERB> import the "public keys" from a "file".
+The App <MISSING_MODAL_VERB> export the "public keys" to a "file".
+The App <MISSING_MODAL_VERB> import the "public keys" through "Bluetooth".
+The App <MISSING_MODAL_VERB> export the "public keys" through "Bluetooth".
+The App <MISSING_MODAL_VERB> import the "public keys" through "NFC".
+The App <MISSING_MODAL_VERB> export the "public keys" through "NFC".
+The App <MISSING_MODAL_VERB> import the "public keys" by using a "QR code".
+The App <MISSING_MODAL_VERB> export the "public keys" by using a "QR code".

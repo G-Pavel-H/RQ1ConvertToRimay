@@ -1,1 +1,1 @@
-For the system, when the user is being coerced to disclose their password, the system shall provide a quick way to wipe the text message database by using a button combo and confirmation dialogue. <NON_ATOMIC>
+When the user presses a button combination and confirms a dialogue, the System shall wipe the text message database.

@@ -1,0 +1,3 @@
+For outgoing messages, when the user long presses on a message and selects the info button, then the System shall display the "received time" by taking the sent time from the receipt.
+The receipt message shall piggybag the real "received time".
+For outgoing messages, when the previous approaches are rejected, then the System shall rename the "Sent/Received" label to "Sent".

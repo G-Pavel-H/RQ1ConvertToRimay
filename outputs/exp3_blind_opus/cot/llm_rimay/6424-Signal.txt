@@ -1,0 +1,3 @@
+When the User searches for a non-contact by "phone number", then Signal-Android must find the "non-contact" whose "phone number" matches the entered "phone number" "with or without the leading '+' sign", for both US and non-US phone numbers.
+When the User searches for a non-contact by a "phone number without a calling code", then Signal-Android must prepend the "calling code of the current user's phone number" to the entered "phone number".
+When the User searches for a non-contact by a "phone number without a calling code", then Signal-Android must prepend the "calling code that corresponds to the default region of the current device" to the entered "phone number".

@@ -1,0 +1,2 @@
+TextSecure must provide an option to edit "any message" through the "Android Context Menu".
+TextSecure must provide an option to insert a "new message" next to "an existing message" in the conversation.

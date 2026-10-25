@@ -1,0 +1,1 @@
+<MISSING_SCOPE>, <MISSING_CONDITION>, the app must let the group administrator remove "participants" from a "group" after they were added.

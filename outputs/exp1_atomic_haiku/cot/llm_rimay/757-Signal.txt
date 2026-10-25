@@ -1,1 +1,1 @@
-For group chats, the user shall change the notification settings independently from personal chats.
+The System shall allow the user to change the notification settings for group chats independently from the notification settings for personal chats.

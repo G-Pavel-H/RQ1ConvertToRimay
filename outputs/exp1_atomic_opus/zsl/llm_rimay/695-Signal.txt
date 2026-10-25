@@ -1,1 +1,1 @@
-When the user starts typing, and if the "SMS mode" is equal to "disabled", then <MISSING_ACTOR> <MISSING_MODAL_VERB> not display the "letter count" in the "bottom left corner".
+While the "SMS mode" is disabled, <MISSING_ACTOR> must not display the "letter count" in the "bottom left corner".

@@ -1,0 +1,1 @@
+<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide a quick way to wipe the text message database using a button combo and confirmation dialogue.

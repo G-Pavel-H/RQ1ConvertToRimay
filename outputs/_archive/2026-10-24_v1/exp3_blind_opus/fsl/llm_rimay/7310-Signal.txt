@@ -1,0 +1,2 @@
+<MISSING_SCOPE>, <MISSING_CONDITION>, the App must support the "custom URL scheme signal://".
+<MISSING_SCOPE>, when a webpage opens a "signal://" link, then the App must open "the Signal app" to send a "message".

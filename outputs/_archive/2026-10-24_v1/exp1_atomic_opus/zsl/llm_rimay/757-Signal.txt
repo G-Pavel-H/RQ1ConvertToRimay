@@ -1,0 +1,1 @@
+<MISSING_ACTOR> <MISSING_MODAL_VERB> allow the user to change the "notification settings" of "group chats" independently from the "notification settings" of "personal chats".

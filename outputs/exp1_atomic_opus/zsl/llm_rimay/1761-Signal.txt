@@ -1,1 +1,1 @@
-When <MISSING_ACTOR> receives an "incoming SMS" from a "certain contact", then <MISSING_ACTOR> <MISSING_MODAL_VERB> forward the "incoming SMS" to "another contact".
+When <MISSING_ACTOR> receives an "SMS" from "a certain contact", then <MISSING_ACTOR> <MISSING_MODAL_VERB> automatically forward the "incoming SMS" to "another contact".

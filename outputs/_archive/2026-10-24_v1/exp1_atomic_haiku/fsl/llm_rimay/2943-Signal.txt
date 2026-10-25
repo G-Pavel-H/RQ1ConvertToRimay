@@ -1,0 +1,1 @@
+For the app, <MISSING_CONDITION>, the app must restore the text-based smileys.

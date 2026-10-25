@@ -1,0 +1,2 @@
+<MISSING_SCOPE>, when the user swipes away a "notification" of a "received SMS", then the App must not display that "notification" again.
+<MISSING_SCOPE>, when a new message is received from the same contact, then the App must display a new "notification" for that message.

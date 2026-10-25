@@ -1,2 +1,2 @@
 The System shall move the message drafts to the top of the message-list.
-The System shall mark the message drafts with another color or a text "Draft".
+The System shall mark the message drafts with either another color or the text "Draft".

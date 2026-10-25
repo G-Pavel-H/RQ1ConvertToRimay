@@ -1,0 +1,1 @@
+For each conversation, if <MISSING_CONDITION>, then the Conversation View <MISSING_MODAL_VERB> display the "messages" in a "consistent order that is identical for all chat participants".

@@ -1,0 +1,14 @@
+The user is asking me to convert a natural language requirement into Rimay format. Let me analyze this request:
+Analysis of the NL requirement:
+The requirement describes a feature request for manual read receipts in Signal (similar to Threema's "acknowledge" feature). The user wants:
+Long-press a received message
+Select "acknowledge message"
+Replace "received/seen" indicator with acknowledgement indicator
+Identifying system responses:
+This requirement contains **two distinct system responses**:
+First response**: The system should enable/allow the user to long-press a message and select "acknowledge message"
+Second response**: The system should replace the "received/seen" indicator with an acknowledgement indicator
+Conversion to Rimay:
+Following the conversion rules and placeholders for missing information:
+When the user long-presses a received message, the system shall present an "acknowledge message" option.
+When the user selects "acknowledge message", the system shall replace the "received" indicator with an "acknowledgement" indicator for that message.

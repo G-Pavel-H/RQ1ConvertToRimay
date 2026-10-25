@@ -1,0 +1,2 @@
+When a message is received, the System shall provide an option to long-press the received message and select "acknowledge message".
+When the user selects "acknowledge message" on a received message, the System shall replace the "received" or "seen" indicator with an acknowledgement indicator.

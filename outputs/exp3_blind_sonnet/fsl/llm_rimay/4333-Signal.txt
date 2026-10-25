@@ -1,0 +1,1 @@
+<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow the user to share content directly to "contacts" by using the "ChooserTargetService".

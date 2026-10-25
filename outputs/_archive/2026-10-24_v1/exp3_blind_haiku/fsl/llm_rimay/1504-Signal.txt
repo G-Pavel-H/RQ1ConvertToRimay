@@ -1,0 +1,1 @@
+<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow editing or deleting notification settings for individual contacts or groups.

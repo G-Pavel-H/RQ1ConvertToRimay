@@ -1,1 +1,1 @@
-Signal shall receive the EXTRA_SUBJECT from a share Intent.
+Signal shall include the "EXTRA_SUBJECT" portion of the share Intent in the shared message.

@@ -1,1 +1,1 @@
-<MISSING_SCOPE>, while the app is downloading media, the app must provide an option to cancel the running "media download".
+<MISSING_SCOPE>, while a media download is running, the app must provide an option to cancel the "running media download".

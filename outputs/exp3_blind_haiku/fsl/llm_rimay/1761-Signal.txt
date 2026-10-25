@@ -1,0 +1,1 @@
+<MISSING_SCOPE>, if the user has set up automatic SMS forwarding for a certain contact, then the App must automatically forward all incoming SMS from that contact to another contact.

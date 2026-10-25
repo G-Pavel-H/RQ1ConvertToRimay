@@ -1,0 +1,4 @@
+The System shall detect that a media item has already been saved based on a file system check.
+When a media item has already been saved, the System shall display a view icon or share icon to visually indicate it has been saved already.
+When a media item has not been saved, the System shall display the save button.
+The System shall prevent the creation of duplicate media files with incremented suffixes when saving an already-saved media item.

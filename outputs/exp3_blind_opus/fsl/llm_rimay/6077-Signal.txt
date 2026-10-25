@@ -1,0 +1,1 @@
+<MISSING_SCOPE>, when the user sends an "SMS message" to a "short code number" such as "13977" through Signal, then Signal must deliver the "SMS message" to that number.

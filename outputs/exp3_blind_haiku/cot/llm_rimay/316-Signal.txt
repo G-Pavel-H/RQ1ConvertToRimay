@@ -1,0 +1,1 @@
+When the user shares a calendar event from the Android Calendar app via TextSecure, TextSecure shall receive the calendar event as an attachment and display it in the message.

@@ -1,1 +1,1 @@
-For each group chat, the app must provide independent notification settings that differ from personal chats.
+For each group chat, the app must provide the ability to configure notification settings independently from personal chats.

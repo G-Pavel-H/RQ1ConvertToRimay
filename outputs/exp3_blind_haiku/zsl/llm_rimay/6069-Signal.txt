@@ -1,0 +1,1 @@
+When the system receives an unread message, Signal must display an unread notification badge on the app icon on the home screen.

@@ -1,0 +1,2 @@
+For any message, the System shall provide the option to edit the message from the Android Context Menu.
+For any message, the System shall provide the ability to insert a new message next to it.

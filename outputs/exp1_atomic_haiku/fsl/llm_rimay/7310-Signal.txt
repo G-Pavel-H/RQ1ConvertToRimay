@@ -1,1 +1,1 @@
-For <MISSING_SCOPE>, when a webpage contains a share button, then the Signal app must support the "signal://" custom URL scheme to enable message sharing from webpages.
+For each website, when a user clicks a "share button" on a webpage, then the Signal app must support the "signal://" custom URL scheme to receive the share intent.

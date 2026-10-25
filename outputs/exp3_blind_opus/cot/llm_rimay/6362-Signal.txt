@@ -1,0 +1,4 @@
+The Signal app <MISSING_MODAL_VERB> display a "pie chart" that indicates "how many of the user's contacts are on Signal" in a "dedicated screen".
+The Signal app <MISSING_MODAL_VERB> display a "pie chart" that indicates "how many of the messages the user sends are encrypted" in a "dedicated screen".
+When the user taps an "element of the pie chart", then the Signal app <MISSING_MODAL_VERB> display a "list of the contacts in that category".
+If "most, but not all, of the user's contacts" are using Signal, then the Signal app <MISSING_MODAL_VERB> display a "gamification message" such as "Almost there!".

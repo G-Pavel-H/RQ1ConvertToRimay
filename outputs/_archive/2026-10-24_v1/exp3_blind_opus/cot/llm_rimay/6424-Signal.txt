@@ -1,0 +1,6 @@
+<MISSING_SCOPE>, <MISSING_CONDITION>, Signal-Android shall provide the "search for non-contacts by phone number" with parity to Signal-iOS.
+<MISSING_SCOPE>, If the User.Phone_Number is not equal to "US phone number", then Signal-Android shall fix the "non-contact lookup".
+For each "US phone number", if the User.Phone_Number is equal to "US phone number", then Signal-Android shall allow the User to search for the "US phone number" by entering any of "+17043264096", "17043264096", "7043264096".
+For each "non-US phone number", if the User.Phone_Number is equal to "US phone number", then Signal-Android shall allow the User to search for the "non-US phone number" by entering any of "+441733530267", "441733530267".
+<MISSING_SCOPE>, When the User searches for a "non-contact phone number", then Signal-Android shall try prepending the "calling code that corresponds to the current user's phone number" to the "entered phone number".
+<MISSING_SCOPE>, When the User searches for a "non-contact phone number", then Signal-Android shall try prepending the "calling code that corresponds to the default region of the current device" to the "entered phone number".

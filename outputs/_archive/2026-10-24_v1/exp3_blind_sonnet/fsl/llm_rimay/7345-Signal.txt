@@ -1,0 +1,4 @@
+<MISSING_SCOPE>, when the user views a "media" item that has not been saved, then the App must show a "save" icon.
+<MISSING_SCOPE>, if the "media" item has already been saved, then the App must show a "view" icon or a "share" icon instead of the "save" icon.
+<MISSING_SCOPE>, when the user views a "media" item, then the App must check the file system for the item.
+<MISSING_SCOPE>, if the "media" item has already been saved, then the App must not create a duplicate of the item.

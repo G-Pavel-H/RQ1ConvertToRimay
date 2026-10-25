@@ -1,0 +1,2 @@
+When <MISSING_ACTOR> receives a "message" from a "user-specified phone number", then <MISSING_ACTOR> <MISSING_MODAL_VERB> delete the "message".
+When <MISSING_ACTOR> receives a "message" from a "user-specified phone number", then <MISSING_ACTOR> <MISSING_MODAL_VERB> not give a "notification".

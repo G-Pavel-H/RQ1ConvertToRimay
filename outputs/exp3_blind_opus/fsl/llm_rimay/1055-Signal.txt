@@ -1,0 +1,2 @@
+<MISSING_SCOPE>, <MISSING_CONDITION>, the App must move "message drafts" to the top of the "message list".
+<MISSING_SCOPE>, <MISSING_CONDITION>, the App must mark "message drafts" in the "message list" with a "different color" or a "Draft" text.

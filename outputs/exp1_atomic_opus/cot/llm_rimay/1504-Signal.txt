@@ -1,1 +1,1 @@
-For individual contacts or groups, <MISSING_CONDITION>, <MISSING_ACTOR> <MISSING_MODAL_VERB> <MISSING_ACTION>.
+<MISSING_SCOPE>, <MISSING_CONDITION>, then <MISSING_ACTOR> <MISSING_MODAL_VERB> <MISSING_ACTION> the "notification color" for "individual contacts or groups".

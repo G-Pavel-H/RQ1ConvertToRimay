@@ -1,0 +1,3 @@
+<MISSING_SCOPE>, <MISSING_CONDITION>, the App must sort messages in the conversation view by "sent" timestamp.
+<MISSING_SCOPE>, <MISSING_CONDITION>, the TextSecure server must assign a sequence number to each message.
+<MISSING_SCOPE>, <MISSING_CONDITION>, the App must sort the conversation view according to message sequence numbers.

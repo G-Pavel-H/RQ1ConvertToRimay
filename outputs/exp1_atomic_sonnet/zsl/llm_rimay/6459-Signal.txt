@@ -1,1 +1,1 @@
-When Signal receives a share Intent from another app, then Signal shall include the "EXTRA_SUBJECT" of the share Intent as the subject in the shared message.
+When another app sends a share Intent containing an "EXTRA_SUBJECT" to Signal, then Signal shall use the "EXTRA_SUBJECT" of the share Intent in addition to the "EXTRA_TEXT" when sharing the content.

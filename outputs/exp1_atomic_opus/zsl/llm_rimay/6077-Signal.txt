@@ -1,1 +1,1 @@
-When the User sends an "SMS message" to "13977" through Signal, then Signal must send the "SMS message" to "13977". <NON_ATOMIC>
+When the user sends an "SMS message" to "13977" through Signal, then Signal must send the "SMS message" to the "mobile provider".

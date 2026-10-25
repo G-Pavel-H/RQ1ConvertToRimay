@@ -1,0 +1,1 @@
+<MISSING_SCOPE>, when the user sends a message on a "dual SIM" device, then the App must show the "SIM" to which the message is sent.

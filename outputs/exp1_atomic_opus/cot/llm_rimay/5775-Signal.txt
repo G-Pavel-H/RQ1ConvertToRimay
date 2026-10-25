@@ -1,1 +1,1 @@
-<MISSING_SCOPE>, <MISSING_CONDITION>, then <MISSING_ACTOR> <MISSING_MODAL_VERB> add further "periods for disappearing messages" up to "at least one year".
+<MISSING_SCOPE> <MISSING_CONDITION> Signal <MISSING_MODAL_VERB> add "further disappearing message periods up to at least one year" to the "disappearing messages periods".

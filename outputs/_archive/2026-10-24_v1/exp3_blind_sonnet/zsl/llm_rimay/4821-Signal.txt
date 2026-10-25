@@ -1,0 +1,4 @@
+When the user long-presses a received message, the Signal application shall display the "acknowledge message" option.
+When the user selects the "acknowledge message" option for a received message, the Signal application shall replace the "received" indicator with an "acknowledgement" indicator for the message.
+When the user selects the "acknowledge message" option for a received message, the Signal application shall replace the "seen" indicator with an "acknowledgement" indicator for the message.
+When the user acknowledges a received message, the Signal application shall send the "acknowledgement" to the conversation partner when the conversation partner next opens the Signal application.

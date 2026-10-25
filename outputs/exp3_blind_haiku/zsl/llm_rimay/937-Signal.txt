@@ -1,0 +1,1 @@
+For the conversation view, when messages arrive via SMS or Google Cloud Messaging, the System must <MISSING_MODAL_VERB> sort messages by <MISSING_ACTION> to ensure consistent message order across all chat participants.

@@ -1,2 +1,2 @@
-When the <MISSING_ACTOR> receives a "sms delivery report", then the <MISSING_ACTOR> should save the "time the other user received the message (done date)" in the "message details".
-The <MISSING_ACTOR> <MISSING_MODAL_VERB> display the "time the other user received the message (done date)" in the "message details".
+When the <MISSING_ACTOR> receives an "SMS delivery report", then the <MISSING_ACTOR> should save the "time the other user received the message (done date)".
+For each "message details" view, the <MISSING_ACTOR> must display the "time the other user received the message" in the "message details".

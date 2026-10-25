@@ -1,1 +1,1 @@
-<MISSING_ACTOR> <MISSING_MODAL_VERB> allow the "direct sharing to contacts" by using the "Android 6.0 ChooserTargetService".
+The <MISSING_ACTOR> <MISSING_MODAL_VERB> allow the "direct sharing to contacts" by using the "Android 6.0 ChooserTargetService".

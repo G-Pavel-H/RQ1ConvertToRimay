@@ -1,1 +1,1 @@
-<MISSING_SCOPE>, <MISSING_CONDITION>, then TextSecure <MISSING_MODAL_VERB> support "themes".
+<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure <MISSING_MODAL_VERB> support "themes".

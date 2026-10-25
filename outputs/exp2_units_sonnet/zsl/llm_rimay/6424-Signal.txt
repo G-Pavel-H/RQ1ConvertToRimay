@@ -1,5 +1,3 @@
-For the user with a US phone number, the <MISSING_ACTOR> <MISSING_MODAL_VERB> <MISSING_ACTION>.
-Wait, let me give clean output instead.
-For a user with a US phone number, the System must allow the user to search for a US phone number by entering any of "+17043264096", "17043264096" or "7043264096".
-For a user with a US phone number, the System must allow the user to search for a non-US phone number by entering any of "+441733530267" or "441733530267".
-<MISSING_SCOPE> <MISSING_CONDITION> the System must try prepending the "calling code of the current user's phone number" and the "calling code corresponding to the default region of the current device" to the entered phone number.
+For the Signal-Android search for non-contacts by phone number, the System shall have parity with the Signal-iOS search improvements for non-contacts.
+For a user with a US phone number, when the user enters "+17043264096", "17043264096" or "7043264096" to search for another US phone number, then the System shall find the user with the phone number "+17043264096".
+For the current user, when the user searches for a phone number, then the System shall try prepending the calling code of the current user's phone number and the calling code that corresponds to the default region of the current device.

@@ -8,4 +8,4 @@ Convert it into exactly **{n_units}** atomic Rimay requirements, one per system 
 
 {nl_text}
 
-## Rimay Output ({n_units} lines, one Rimay requirement per line)
+## Rimay Output (the `<rimay>` block: {n_units} lines, one Rimay requirement per line)

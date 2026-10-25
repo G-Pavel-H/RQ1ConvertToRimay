@@ -1,0 +1,2 @@
+The Signal application must update the "libphonenumber" library to "version 8.2.0 or later".
+When the user sends an "SMS message" to the mobile provider through the Signal application, then the Signal application must deliver the "SMS message" to "13977".

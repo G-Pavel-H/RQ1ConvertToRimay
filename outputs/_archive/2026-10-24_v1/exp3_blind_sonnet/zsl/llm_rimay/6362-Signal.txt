@@ -1,0 +1,4 @@
+Signal <MISSING_MODAL_VERB> display a "screen with a pie chart" that indicates "how many contacts of the user are on Signal".
+Signal <MISSING_MODAL_VERB> display a "screen with a pie chart" that indicates "how many of the messages sent by the user are encrypted".
+When the user taps an "element of the pie chart", then Signal <MISSING_MODAL_VERB> show a "list of people in the category of the tapped element".
+If "most, but not all, of the contacts of the user are using Signal", then Signal <MISSING_MODAL_VERB> display the message "Almost there!".

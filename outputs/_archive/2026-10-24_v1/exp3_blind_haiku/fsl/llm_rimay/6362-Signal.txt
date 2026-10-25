@@ -1,0 +1,4 @@
+<MISSING_SCOPE>, <MISSING_CONDITION>, the App must show a pie chart that indicates how many of the user's contacts are on Signal.
+<MISSING_SCOPE>, when the user taps an element of the pie chart, then the App must display a list of people in that category.
+<MISSING_SCOPE>, <MISSING_CONDITION>, the App must show a pie chart that indicates how many of the user's messages are encrypted.
+<MISSING_SCOPE>, if most but not all of the user's contacts are using Signal, then the App must display a gamification message.

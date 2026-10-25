@@ -1,0 +1,19 @@
+<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure <MISSING_MODAL_VERB> send "dummy random messages" to "random recipients" at "random times".
+<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure shall choose the "recipients" randomly between the "contacts that knowingly use TextSecure".
+<MISSING_SCOPE>, After TextSecure decrypts a "dummy message", then TextSecure <MISSING_MODAL_VERB> recognize the "message" as a "dummy message".
+<MISSING_SCOPE>, After TextSecure decrypts a "dummy message", then TextSecure <MISSING_MODAL_VERB> discard the "dummy message" automatically.
+<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure shall tweak the "randomness" to level out the "legitimate messages".
+<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure shall allow the sender to enable the "dummy messaging feature".
+<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure shall allow the sender to define the "desired quantity of dummy messages".
+<MISSING_SCOPE>, While the "device" is roaming, TextSecure shall not send "dummy messages".
+<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure shall allow the sender to enable the sending of "dummy messages" while roaming.
+<MISSING_SCOPE>, If Device.Battery_Level is less than "30%", then TextSecure shall not send "dummy messages".
+<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure <MISSING_MODAL_VERB> allow the recipient to notify the "peers" that the recipient does not want to participate in "dummy messaging".
+<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure <MISSING_MODAL_VERB> choose the "recipients" randomly between the "contacts that do not use TextSecure yet".
+<MISSING_SCOPE>, When TextSecure sends a "message" to a "contact that does not use TextSecure", then TextSecure shall send the "message" in "clear text".
+<MISSING_SCOPE>, When TextSecure sends a "message" to a "contact that does not use TextSecure", then TextSecure shall not send more than "1 message per month" to a single recipient.
+<MISSING_SCOPE>, When TextSecure sends a "message" to a "contact that does not use TextSecure", then TextSecure shall send the "message" only "during daytime".
+<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure <MISSING_MODAL_VERB> include the "phone numbers of other peers participating in dummy messaging" in the "dummy messages".
+<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure shall not show the "phone numbers contained in dummy messages" to the user.
+<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure shall spread the "opt-outs" through the "dummy messages".
+<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure <MISSING_MODAL_VERB> define a "TTL" for each "phone number circulating in dummy messages".

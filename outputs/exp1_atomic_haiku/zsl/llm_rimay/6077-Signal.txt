@@ -1,1 +1,1 @@
-For the System, when a user attempts to send an SMS to a mobile provider number through Signal, the System shall deliver the SMS message to the provider's number without adding an incorrect country code prefix.
+For the Signal application, when the User sends an SMS message to the mobile provider number through Signal, then the System shall deliver the SMS message to the recipient. <NON_ATOMIC>

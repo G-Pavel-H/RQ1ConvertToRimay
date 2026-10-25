@@ -1,0 +1,2 @@
+For <MISSING_SCOPE>, when the user presses the "button combination", then <MISSING_ACTOR> <MISSING_MODAL_VERB> display a "confirmation dialogue" to the user.
+For <MISSING_SCOPE>, when the user confirms the "confirmation dialogue", then <MISSING_ACTOR> <MISSING_MODAL_VERB> delete the "text message database".

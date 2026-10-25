@@ -1,1 +1,1 @@
-For each message, the app must provide a feature to copy partial text from the message.
+<MISSING_SCOPE>, <MISSING_CONDITION>, the app must enable copying partial text from a message.

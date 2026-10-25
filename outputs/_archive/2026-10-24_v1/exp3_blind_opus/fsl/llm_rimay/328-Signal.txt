@@ -1,0 +1,14 @@
+<MISSING_SCOPE>, if the user has enabled the "dummy messaging" feature, then TextSecure must send "dummy random messages" to random recipients at random times.
+<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure must choose the recipients of "dummy messages" randomly from the contacts that use TextSecure.
+<MISSING_SCOPE>, when TextSecure receives a "dummy message", then TextSecure must discard the "dummy message" automatically after decryption.
+<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure must let the user enable the "dummy messaging" feature.
+<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure must let the user define the "desired quantity of dummy messages".
+<MISSING_SCOPE>, while the device is roaming, then TextSecure must disable the "dummy messaging" feature by default.
+<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure must let the user enable the "dummy messaging" feature during roaming.
+<MISSING_SCOPE>, if Device.Battery_Level is less than the "battery level threshold", then TextSecure must not send "dummy messages".
+<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure must let recipients notify their peers that they do not want to receive "dummy messages".
+<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure must send "clear text messages" with a "default message" or a "custom explanation by the sender" to randomly chosen contacts that do not use TextSecure.
+<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure must limit the number of "clear text messages" sent to contacts that do not use TextSecure.
+<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure must include the "phone numbers of other peers participating in dummy messaging" in "dummy messages".
+<MISSING_SCOPE>, when TextSecure receives "phone numbers of other peers" in a "dummy message", then TextSecure must not show these "phone numbers" to the user.
+<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure must spread "opt-outs" through "dummy messages".

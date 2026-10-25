@@ -1,1 +1,1 @@
-<MISSING_ACTOR> shall provide an option to cancel running media downloads.
+The System shall provide the user an option to cancel the "running media downloads".

@@ -1,0 +1,2 @@
+When the System imports messages from ".xml backup", then the System shall restore the "archived messages" to the "archive folder".
+When the System imports messages from ".xml backup", then the System shall preserve the "blocked flag" in the imported messages.

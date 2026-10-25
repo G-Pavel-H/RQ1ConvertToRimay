@@ -1,0 +1,3 @@
+For all the groups in TextSecure, the TextSecure system shall allow the <MISSING_ACTOR> to remove a "participant" from a "group" after the "participant" was added.
+Wait, I should adhere to the format and placeholders strictly. Corrected output:
+For the TextSecure groups, <MISSING_CONDITION> the TextSecure system <MISSING_MODAL_VERB> remove a "participant" from a "group" after the "participant" was added.

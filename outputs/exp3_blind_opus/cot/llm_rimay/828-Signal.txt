@@ -1,0 +1,1 @@
+For each "TextSecure group", TextSecure <MISSING_MODAL_VERB> provide the possibility to remove the "participants that were added" from the "TextSecure group".

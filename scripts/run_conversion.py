@@ -89,6 +89,9 @@ def parse_args(argv=None) -> argparse.Namespace:
     p.add_argument("--units", action="store_true",
                    help="Non-atomic task: convert each requirement into the number of units in the gold "
                         "(needs a units CSV with a nUnits column); the prompt states that number.")
+    p.add_argument("--blind", action="store_true",
+                   help="Experiment 3: the model is told neither whether the requirement is non-atomic nor how "
+                        "many units to return (use the all-units gold, data/curated/gold_all_units.csv).")
     p.add_argument(
         "--backend",
         choices=["api", "subscription"],
@@ -125,7 +128,9 @@ def main(argv=None) -> int:
     run_paths.ensure()
 
     gold = load_gold(Path(args.gold))
-    exemplar_ids = _fsl_exemplar_ids() | (_fsl_exemplar_ids("fsl_units_examples.json") if args.units else set())
+    if args.units and args.blind:
+        raise SystemExit("--units and --blind are separate tasks; pick one.")
+    exemplar_ids = _fsl_exemplar_ids() | (_fsl_exemplar_ids("fsl_units_examples.json") if args.units or args.blind else set())
     n_units = _units_per_requirement(Path(args.gold)) if args.units else {}
 
     items = [(r.req_id, r.nl_text) for r in gold.values()]
@@ -155,12 +160,13 @@ def main(argv=None) -> int:
                 print(f"[{i}/{len(items)}] SKIP {req_id} (empty nlText)")
                 continue
             print(f"[{i}/{len(items)}] {req_id} ...", flush=True)
-            if args.units:
-                record = run_single_units(req_id, nl_text, n_units[req_id], run_cfg=run_cfg, run_paths=run_paths)
+            if args.units or args.blind:
+                record = run_single_units(req_id, nl_text, None if args.blind else n_units[req_id],
+                                          run_cfg=run_cfg, run_paths=run_paths)
                 mf.write(json.dumps(record, ensure_ascii=False) + "\n")
                 mf.flush()
                 processed += 1
-                print(f"        units {record['n_units_returned']}/{record['n_units_expected']} "
+                print(f"        units {record['n_units_returned']}/{record['n_units_expected'] or '?'} "
                       f"paska_passed={[u['paska_passed'] for u in record['units']]} latency_ms={record['latency_ms']}")
                 continue
             record = run_single(req_id, nl_text, run_cfg=run_cfg, run_paths=run_paths)
@@ -178,7 +184,7 @@ def main(argv=None) -> int:
     meta = {
         "run_id": run_id,
         "strategy": args.strategy,
-        "task": "units" if args.units else "atomic",
+        "task": "blind" if args.blind else "units" if args.units else "atomic",
         "model": args.model,
         "temperature": args.temperature,
         "max_tokens": args.max_tokens,

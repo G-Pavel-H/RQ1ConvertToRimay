@@ -1,0 +1,2 @@
+The mastodon-android app <MISSING_MODAL_VERB> display posts from the timeline to the user.
+The mastodon-android app <MISSING_MODAL_VERB> show trending posts to the user.

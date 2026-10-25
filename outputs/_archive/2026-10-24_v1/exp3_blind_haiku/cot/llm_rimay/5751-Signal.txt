@@ -1,0 +1,2 @@
+When the user swipes away the notification, then the System shall not display the notification.
+When another message is received from the same contact, then the System shall display a new notification for the new message.

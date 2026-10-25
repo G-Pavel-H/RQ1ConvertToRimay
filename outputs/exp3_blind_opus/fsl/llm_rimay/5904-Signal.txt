@@ -1,0 +1,2 @@
+<MISSING_SCOPE>, when the App imports messages from an ".xml backup", then the App must restore the "archived" flag of the imported messages.
+<MISSING_SCOPE>, when the App imports messages from an ".xml backup", then the App must restore the "blocked" flag of the imported conversations.

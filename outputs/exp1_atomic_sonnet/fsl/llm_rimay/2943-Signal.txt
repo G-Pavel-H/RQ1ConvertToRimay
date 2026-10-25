@@ -1,1 +1,1 @@
-<MISSING_SCOPE>, <MISSING_CONDITION>, the app must provide the option to use the "old text-only smileys".
+<MISSING_SCOPE>, <MISSING_CONDITION>, the app must provide the "old text-based smileys".

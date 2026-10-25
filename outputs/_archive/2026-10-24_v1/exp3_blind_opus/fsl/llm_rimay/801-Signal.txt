@@ -1,0 +1,1 @@
+<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user mute the "notifications" of a "group" or any "contact" for "X minutes/hours".

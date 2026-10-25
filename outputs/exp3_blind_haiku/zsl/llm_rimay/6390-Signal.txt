@@ -1,0 +1,1 @@
+When a Signal message is sent to the server but not delivered to the recipient after a timeout, the system shall notify the sender with a "lack of delivery" notification offering the option to resend via insecure SMS.

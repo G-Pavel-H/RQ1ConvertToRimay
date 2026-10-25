@@ -1,1 +1,1 @@
-For each "incoming SMS" from a "certain contact", the <MISSING_ACTOR> <MISSING_MODAL_VERB> forward the "incoming SMS" to "another contact".
+For each incoming SMS from a certain contact, when the System receives an "incoming SMS" from a "certain contact", then the System <MISSING_MODAL_VERB> forward the "incoming SMS" to "another contact".

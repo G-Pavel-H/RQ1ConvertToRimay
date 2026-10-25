@@ -1,1 +1,1 @@
-For all the messages sent from a dual SIM mobile, the TextSecure application shall display the "SIM used to send the message" to the user.
+<MISSING_SCOPE> <MISSING_CONDITION> TextSecure <MISSING_MODAL_VERB> display the "SIM used to send the message" to the user.

@@ -1,0 +1,1 @@
+If a Signal message has been sent to the server and the Signal message has not been delivered to the recipient after "a timeout", then the Signal-Android application shall display a "lack of delivery notification" on the sender's phone.

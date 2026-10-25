@@ -1,0 +1,3 @@
+<MISSING_SCOPE> <MISSING_CONDITION> The <MISSING_ACTOR> <MISSING_MODAL_VERB> provide the "option to cancel running media downloads".
+Wait — output format forbids commentary, so the line to use is:
+<MISSING_CONDITION> <MISSING_ACTOR> <MISSING_MODAL_VERB> provide an "option to cancel running media downloads".

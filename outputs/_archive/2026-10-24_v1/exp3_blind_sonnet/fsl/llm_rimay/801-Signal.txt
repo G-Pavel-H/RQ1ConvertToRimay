@@ -1,0 +1,3 @@
+<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide a "Mute" feature for a group or a user.
+<MISSING_SCOPE>, when the user selects the "Mute" feature for a group or a user, then the App must let the user choose a "mute duration" in minutes or hours.
+<MISSING_SCOPE>, while a group or a user is muted, then the App must not vibrate or ring for new messages from that group or user.

@@ -1,0 +1,2 @@
+For all users with Signal as default SMS manager, the Signal application shall use Android notification profile for regular SMS and MMS messages.
+For all users with Signal as default SMS manager, the Signal application shall use Signal notification settings for secure messages and calls only.

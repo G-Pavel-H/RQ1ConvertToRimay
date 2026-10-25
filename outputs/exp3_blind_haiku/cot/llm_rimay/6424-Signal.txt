@@ -1,0 +1,1 @@
+For non-contact search, the System shall enable search for non-contact phone numbers by accepting the formats "+CC+Number", "CC+Number", and "Number" and by prepending the calling code from the user's current phone number and the calling code from the device default region.

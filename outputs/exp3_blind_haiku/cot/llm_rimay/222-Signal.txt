@@ -1,0 +1,1 @@
+When a message from a user-specified blocked phone number is received, the System must delete the message without sending a notification.

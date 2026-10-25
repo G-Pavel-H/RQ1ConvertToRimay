@@ -1,0 +1,3 @@
+For <MISSING_SCOPE>, when a user does not set a passphrase, then the system shall disable the "Screen security" feature by default.
+For <MISSING_SCOPE>, when a user sets a passphrase, then the system shall enable the "Screen security" feature by default.
+For <MISSING_SCOPE>, the system shall notify the task manager that it should not cache screenshots of conversations when "Screen security" is enabled.

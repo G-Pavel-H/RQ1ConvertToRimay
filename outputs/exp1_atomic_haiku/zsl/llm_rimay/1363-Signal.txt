@@ -1,1 +1,1 @@
-For each conservation overview, when the system displays the last message, the system shall indicate whether the last message is from the current user or from the conversation partner.
+For the conservation overview, when the system displays the last message, the system shall indicate whether the last message is from <MISSING_ACTOR> or from the conversation partner.

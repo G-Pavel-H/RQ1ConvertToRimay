@@ -1,0 +1,4 @@
+For the Signal app, the system shall display a pie chart indicating how many of the user's contacts are on Signal.
+For the Signal app, when a user taps an element of the pie chart, the system shall show a list of people in that category.
+For the Signal app, the system shall display a count of how many of the user's messages are encrypted.
+For the Signal app, when most but not all of the user's contacts are using Signal, the system shall display a gamification message such as "Almost there! __".

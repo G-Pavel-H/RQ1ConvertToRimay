@@ -1,0 +1,4 @@
+Signal shall display a pie chart indicating how many contacts are on Signal.
+Signal shall display a pie chart indicating how many of the messages sent are encrypted.
+When the user taps an element of the pie chart, then Signal shall show a list of people in that category.
+When most, but not all, contacts are using Signal, then Signal shall display a gamification message such as "Almost there!".

@@ -1,0 +1,1 @@
+<MISSING_ACTOR> <MISSING_MODAL_VERB> display the "indication of whether an image has a description" to the user.

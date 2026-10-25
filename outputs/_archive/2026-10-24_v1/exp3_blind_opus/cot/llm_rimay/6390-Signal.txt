@@ -1,0 +1,1 @@
+If the "Signal message" has been sent to the server and has not been delivered to the recipient after "N minutes", then Signal <MISSING_MODAL_VERB> send a "lack of delivery notification" stating "Your secure message to YYY could not be delivered after N minutes. Would you like to resend via insecure SMS?" to the sender.

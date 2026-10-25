@@ -1,0 +1,1 @@
+<MISSING_CONDITION>, then TextSecure <MISSING_MODAL_VERB> append a "short signature" such as "I use TextSecure for private and secure communication!" to the "SMS message".

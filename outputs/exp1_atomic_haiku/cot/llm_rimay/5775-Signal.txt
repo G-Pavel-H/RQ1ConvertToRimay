@@ -1,1 +1,1 @@
-The system shall add the "disappearing message timeout periods" up to at least one year.
+The System shall add longer-term disappearing message timeout periods up to at least one year.

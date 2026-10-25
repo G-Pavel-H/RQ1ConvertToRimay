@@ -1,0 +1,1 @@
+<MISSING_SCOPE> <MISSING_CONDITION> The <MISSING_ACTOR> <MISSING_MODAL_VERB> allow the "direct sharing to contacts" via the "6.0 ChooserTargetService".

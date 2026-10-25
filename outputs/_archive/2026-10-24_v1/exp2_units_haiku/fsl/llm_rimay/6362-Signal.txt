@@ -1,0 +1,4 @@
+For all the contacts, the App must show a "pie chart" that indicates how many of the user's contacts are on Signal.
+When the user taps an element of the "pie chart", then the App must display a "list of people" in that category.
+For all the messages, the App must show how many of the messages the user sends are encrypted.
+<MISSING_SCOPE>, if most but not all of the user's contacts are using Signal, then the App must display a "gamification message" such as "Almost there! __".

@@ -1,0 +1,3 @@
+<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide a quick way to wipe the "text message database".
+<MISSING_SCOPE>, when the user activates the "button combination", then the App must show a "confirmation dialog".
+<MISSING_SCOPE>, when the user confirms the "confirmation dialog", then the App must wipe the "text message database".

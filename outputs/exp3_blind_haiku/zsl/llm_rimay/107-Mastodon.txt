@@ -1,0 +1,1 @@
+For <MISSING_SCOPE>, <MISSING_CONDITION> the User must receive the indication of whether an image has a description.

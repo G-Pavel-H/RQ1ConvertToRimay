@@ -1,0 +1,2 @@
+<MISSING_ACTOR> shall move the "message drafts" to the "top of the message-list" automatically.
+<MISSING_ACTOR> shall mark the "message drafts" in the "message-list" by using "another color" or the text "Draft".

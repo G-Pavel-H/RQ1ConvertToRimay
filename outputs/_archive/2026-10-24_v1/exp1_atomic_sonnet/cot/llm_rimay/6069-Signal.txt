@@ -1,0 +1,1 @@
+When Signal receives a new message notification on a Huawei EMUI device, the Signal app must display the "unread notification badge" on the app icon on the home screen.

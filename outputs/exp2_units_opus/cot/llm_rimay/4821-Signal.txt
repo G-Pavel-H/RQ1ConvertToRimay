@@ -1,2 +1,2 @@
-For <MISSING_SCOPE>, when the User long-presses a "received message", then Signal <MISSING_MODAL_VERB> display an "acknowledge message" option to the User.
-For <MISSING_SCOPE>, when the User selects the "acknowledge message" option for a "received message", then Signal <MISSING_MODAL_VERB> replace the "received indicator" with an "acknowledgement indicator" for the "received message".
+<MISSING_SCOPE>, when the User long-presses a "received message", then Signal <MISSING_MODAL_VERB> display the "acknowledge message" option.
+<MISSING_SCOPE>, when the User selects "acknowledge message" for a "received message", then Signal <MISSING_MODAL_VERB> replace the "received" indicator with an "acknowledgement" indicator.

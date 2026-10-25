@@ -1,0 +1,2 @@
+For each message draft, <MISSING_ACTOR> <MISSING_MODAL_VERB> automatically move the "message draft" to the "top of the message-list".
+For each message draft, <MISSING_ACTOR> <MISSING_MODAL_VERB> mark the "message draft" by using "another color or a text 'Draft'".

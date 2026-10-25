@@ -1,0 +1,19 @@
+TextSecure shall send a "dummy random message" to a "random recipient" at a "random time".
+TextSecure shall choose the "recipient of a dummy message" randomly among the "contacts that knowingly use TextSecure".
+When TextSecure decrypts a "dummy message", then TextSecure shall recognize the "dummy message".
+When TextSecure recognizes a "dummy message", then TextSecure shall automatically discard the "dummy message".
+TextSecure shall tweak the "randomness" to "level out the legitimate messages".
+TextSecure shall require the sender to enable the "dummy messaging feature" (opt-in).
+TextSecure shall allow the sender to define the "desired quantity of dummy messages".
+While the device is roaming, TextSecure shall disable the "dummy messaging feature" by default.
+TextSecure shall allow the sender to enable the "dummy messaging feature while roaming".
+If Battery.Level is less than "30%", then TextSecure shall not send a "dummy message".
+TextSecure shall allow the recipient to let the "peers" know that the recipient does not want to receive "dummy messages" (opt-out).
+TextSecure shall choose the "recipient of a promotional message" randomly among the "contacts that do not use TextSecure yet".
+TextSecure shall send a "default message or custom explanation by the sender" in "clear text" to a "contact that does not use TextSecure".
+TextSecure shall not send more than "1 message per month" to a "single recipient that does not use TextSecure".
+TextSecure shall send a "message to a contact that does not use TextSecure" only "during daytime".
+TextSecure shall include the "phone number of another peer participating in dummy messaging" in a "dummy message".
+TextSecure shall not show the "phone number contained in a dummy message" to the user.
+TextSecure shall spread the "opt-outs" by using a "direct reply dummy message".
+TextSecure shall define a "TTL" for each "circulated phone number".

@@ -1,0 +1,2 @@
+When the user enters a "button combo", then <MISSING_ACTOR> <MISSING_MODAL_VERB> display a "confirmation dialogue".
+When the user confirms the "confirmation dialogue", then <MISSING_ACTOR> <MISSING_MODAL_VERB> delete the "text message database".

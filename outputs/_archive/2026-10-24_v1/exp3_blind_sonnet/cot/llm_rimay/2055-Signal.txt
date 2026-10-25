@@ -1,0 +1,3 @@
+<MISSING_SCOPE> When the user long presses an outgoing message and selects the "info button", then the system shall display the "received time" for the outgoing message.
+<MISSING_SCOPE> <MISSING_CONDITION> The system shall include the "real received time" in the "delivery receipt message".
+<MISSING_SCOPE> If the "display of the received time for outgoing messages" is rejected, then the system shall rename the "Sent/Received" label to "Sent" for outgoing messages.

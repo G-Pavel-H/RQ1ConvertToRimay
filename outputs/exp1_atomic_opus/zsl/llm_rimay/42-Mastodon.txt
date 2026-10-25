@@ -1,1 +1,1 @@
-Mastodon-Android <MISSING_MODAL_VERB> allow the user to view "posts from the timeline".
+The Mastodon-Android app must provide the "feature of viewing posts from the timeline".

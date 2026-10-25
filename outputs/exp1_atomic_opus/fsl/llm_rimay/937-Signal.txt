@@ -1,1 +1,1 @@
-<MISSING_SCOPE>, <MISSING_CONDITION>, the app must display the messages in each "Conversation View" in a consistent order for all chat participants.
+<MISSING_SCOPE>, <MISSING_CONDITION>, the conversation view must display messages in a "consistent order" for all chat participants.

@@ -1,0 +1,1 @@
+For the "conversation window", if <MISSING_CONDITION>, then Signal shall provide only one "way to open and close the attachment window".

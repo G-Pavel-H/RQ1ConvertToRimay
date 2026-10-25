@@ -1,0 +1,4 @@
+<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow users to search for non-contact US phone numbers by entering the full number with country code, the number without country code, or the number without country code and area code.
+<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow users to search for non-contact non-US phone numbers by entering the full number with country code or the number without country code.
+<MISSING_SCOPE>, <MISSING_CONDITION>, the App must try prepending the calling code of the current user's phone number when searching for non-contact phone numbers.
+<MISSING_SCOPE>, <MISSING_CONDITION>, the App must try prepending the calling code that corresponds to the default region of the current device when searching for non-contact phone numbers.

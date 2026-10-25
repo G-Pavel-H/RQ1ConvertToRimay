@@ -1,0 +1,3 @@
+When the User long-presses a "received message", then the Signal shall display the "acknowledge message" option.
+When the User selects "acknowledge message" for a "received message", then the Signal shall replace the "received" indicator with an "acknowledgement indicator" for the message.
+When the "conversation partner" opens the Signal, then the Signal shall display the "acknowledgement indicator" to the "conversation partner".

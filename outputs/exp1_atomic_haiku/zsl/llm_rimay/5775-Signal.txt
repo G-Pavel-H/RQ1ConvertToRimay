@@ -1,1 +1,1 @@
-<NON_ATOMIC>
+<MISSING_SCOPE> the System shall add <MISSING_CONDITION> the disappearing message timeout periods up to at least one year or thirteen months.

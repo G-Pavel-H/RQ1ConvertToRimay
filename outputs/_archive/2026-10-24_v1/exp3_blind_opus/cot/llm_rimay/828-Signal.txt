@@ -1,0 +1,1 @@
+For the "TextSecure groups", after "the participants are added to the group", then TextSecure <MISSING_MODAL_VERB> remove the "participants" from the "group".

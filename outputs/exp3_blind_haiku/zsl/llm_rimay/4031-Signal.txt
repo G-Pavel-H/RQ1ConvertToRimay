@@ -1,0 +1,1 @@
+If the following condition is satisfied: media downloads are running, then the <MISSING_ACTOR> must cancel the media downloads.

@@ -1,0 +1,2 @@
+<MISSING_SCOPE>, when the user opens the "Android Context Menu" on a message, then the App must offer an "edit" option for that message.
+<MISSING_SCOPE>, when the user opens the "Android Context Menu" on a message, then the App must offer an option to "insert a new message" next to that message.

@@ -1,4 +1,4 @@
-Signal <MISSING_MODAL_VERB> display a "screen with a pie chart indicating how many of the contacts are on Signal".
-Signal <MISSING_MODAL_VERB> display a "pie chart indicating how many of the sent messages are encrypted".
-When the User taps an "element of the pie chart", then Signal <MISSING_MODAL_VERB> display a "list of the contacts in that category".
-If "most, but not all, of the contacts are using Signal", then Signal <MISSING_MODAL_VERB> display the message "Almost there! __".
+For <MISSING_SCOPE>, if <MISSING_CONDITION>, then Signal <MISSING_MODAL_VERB> display a "pie chart that indicates how many of the user's contacts are on Signal" in a "dedicated screen".
+For <MISSING_SCOPE>, if <MISSING_CONDITION>, then Signal <MISSING_MODAL_VERB> display "how many of the messages the user sends are encrypted" in the "pie chart".
+For <MISSING_SCOPE>, when the user taps an "element of the pie chart", then Signal <MISSING_MODAL_VERB> show a "list of people in that category".
+For <MISSING_SCOPE>, if most but not all of the user's contacts are using Signal, then Signal <MISSING_MODAL_VERB> display a "message such as Almost there!".

@@ -1,0 +1,1 @@
+The system shall enable fingerprint unlock as an alternative to passphrase.

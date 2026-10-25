@@ -1,2 +1,2 @@
-When the System receives a "SMS delivery report", then the System shall store the received time.
-The System shall display the received time in the "message details".
+When the system receives a sms delivery report, then the system shall save the "received time" from the delivery report.
+The system shall display the "received time" in the message details.

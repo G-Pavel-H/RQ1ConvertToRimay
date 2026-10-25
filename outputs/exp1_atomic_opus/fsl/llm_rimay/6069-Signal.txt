@@ -1,1 +1,1 @@
-<MISSING_SCOPE>, while the device runs "EMUI 4.1", when Signal receives a notification for a new message, then Signal must show the "unread notifications badge" on the app icon on the home screen.
+For the "Huawei EMUI" launcher, when Signal receives a new message, then Signal must show the "unread notifications badge" on the app icon on the home screen.

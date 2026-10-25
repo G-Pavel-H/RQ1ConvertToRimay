@@ -1,0 +1,2 @@
+When the user sets the passphrase during the first start of the app, then the system shall ask the user to specify the desired behaviour from the following options: only use push, use SMS fallback, or use as default SMS/MMS-App.
+When the user selects the "what does that mean?" button, then the system shall display a pop-up that explains in simple words what every mode does.

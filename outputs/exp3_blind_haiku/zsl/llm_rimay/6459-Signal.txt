@@ -1,0 +1,1 @@
+When an application sends a share Intent to Signal with EXTRA_SUBJECT, the Signal application shall include the EXTRA_SUBJECT field in the shared content.

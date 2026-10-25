@@ -172,8 +172,9 @@ def main(argv=None) -> int:
     gold_path = Path(args.gold) if args.gold else Path(meta.get("gold_csv") or config.GOLD_CSV)
 
     manifest = load_manifest(run_paths.manifest_path)
+    raw_manifest = manifest  # as the model returned it, before units are aligned
     units_info = None
-    if meta.get("task") == "units":
+    if meta.get("task") in ("units", "blind"):
         # Non-atomic task: every gold unit is a subject "<reqId>#<unit>".
         from src.scoring import units as U
 
@@ -244,6 +245,10 @@ def main(argv=None) -> int:
             }
         )
 
+    from src.scoring import anomalies as A
+
+    anomalies = A.find({rid: raw_manifest[rid] for rid in raw_manifest if rid not in fsl_ids},
+                       task=meta.get("task", "atomic"), strategy=strategy, units_info=units_info)
     fa_rep = fa.field_accuracy_report(slot_evals)
     cqr = cq.conversion_quality_report(quality_items)
 
@@ -252,6 +257,7 @@ def main(argv=None) -> int:
         "strategy": strategy,
         "task": meta.get("task", "atomic"),
         "units": units_info,
+        "anomalies": anomalies,
         "scored_at": datetime.now().astimezone().isoformat(timespec="seconds"),
         "gold_csv": str(gold_path),
         "meta": meta,
@@ -296,6 +302,8 @@ def main(argv=None) -> int:
         print(f"  units: {units_info['returnedUnits']}/{units_info['expectedUnits']} returned, "
               f"exact count on {units_info['exactCount']}/{units_info['requirements']} requirements, "
               f"{units_info['reordered']} re-ordered to match the gold")
+    if anomalies["counts"]:
+        print(f"  anomalies: {anomalies['counts']} on {anomalies['affected']} requirement(s)")
     print(f"  macro-F1 (missing-detection): {_fmt(fa_rep.macro['f1'])}")
     print(f"  overall-verdict agreement:   {_fmt(fa_rep.verdict['agreement_rate'])}")
     print(f"  mean LLM-vs-human seq_ratio: {_fmt(lvh['mean'])}")

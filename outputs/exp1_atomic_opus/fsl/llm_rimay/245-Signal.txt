@@ -1,1 +1,1 @@
-<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure must display the "SIM" to which each message is sent.
+<MISSING_SCOPE>, while the device is a "dual SIM" device, then TextSecure must display the "SIM" to which each message is sent.

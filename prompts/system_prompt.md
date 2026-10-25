@@ -27,7 +27,7 @@ Use `<NON_ATOMIC>` at the end of the Rimay output if the source NL contains mult
 
 ## Output format
 
-Output Rimay only. No commentary, no explanation, no markdown formatting around the output. End the requirement with a period (the `<NON_ATOMIC>` flag, if used, comes after the period).
+Write the Rimay requirement on one line inside a single answer block: a line `<rimay>`, the requirement, then a line `</rimay>`. Only the block is read. Do not write commentary, explanations, headings or corrections inside it, and no markdown. If you are asked to reason first, the reasoning goes before the block; otherwise write nothing but the block. End the requirement with a period (the `<NON_ATOMIC>` flag, if used, comes after the period).
 
 ## Rimay grammar
 
@@ -134,5 +134,16 @@ Rimay enforces:
 - **Completeness**: mandatory actor, modal verb, action phrase
 - **Clarity**: quoted strings for specific values, no ambiguous phrasing
 - **Correctness**: segment order is scope → condition → system response
+
+### What counts as one system response
+
+A system response is one thing the system must do: one actor, one modal verb, one action phrase. A requirement is **atomic** when it asks for exactly one system response, and **non-atomic** when it asks for two or more that could each be implemented and tested on their own. These are part of a single system response, not extra ones:
+
+- the rationale or motivation behind the request;
+- examples and illustrations;
+- a condition together with the response it triggers;
+- alternatives or a list inside one action (e.g. send with "Enter" or "Ctrl+Enter");
+- details, qualifiers or constraints of the same action;
+- what the user does, when it is not something the system must do.
 
 If the source NL violates atomicity, follow the convention above (`<NON_ATOMIC>` flag). Do not silently merge multiple actions into one Rimay action phrase.

@@ -1,0 +1,4 @@
+<MISSING_SCOPE>, when the user opens the "image gallery", then the App must let the user select multiple images or media.
+<MISSING_SCOPE>, when the user has selected multiple images or media in the "image gallery", then the App must let the user delete the selected images or media.
+<MISSING_SCOPE>, when the user opens an image or media, then the App must let the user delete the opened image or media in the opened view.
+<MISSING_SCOPE>, when the user requests to delete images or media, then the App must show a confirmation dialog.

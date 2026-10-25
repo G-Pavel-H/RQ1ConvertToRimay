@@ -1,0 +1,1 @@
+For each "post", <MISSING_CONDITION>, then <MISSING_ACTOR> <MISSING_MODAL_VERB> display "whether an image description is available" to the "user".

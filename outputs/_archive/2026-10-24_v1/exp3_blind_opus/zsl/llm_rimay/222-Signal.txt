@@ -1,0 +1,3 @@
+<MISSING_ACTOR> <MISSING_MODAL_VERB> allow the "user" to specify a "phone number to block".
+When <MISSING_ACTOR> receives a "message" from a "user-specified blocked phone number", then <MISSING_ACTOR> <MISSING_MODAL_VERB> delete the "message".
+When <MISSING_ACTOR> receives a "message" from a "user-specified blocked phone number", then <MISSING_ACTOR> <MISSING_MODAL_VERB> not give a "notification".

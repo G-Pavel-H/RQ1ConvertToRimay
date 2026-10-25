@@ -1,1 +1,1 @@
-<MISSING_SCOPE>, <MISSING_CONDITION>, the app must display the "received time" taken from the delivery receipt for outgoing messages in the message details.
+<MISSING_SCOPE>, when a user selects the info button of an outgoing message, then the app must display the "received time" of the message by using the delivery receipt.

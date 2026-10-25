@@ -1,0 +1,2041 @@
+{
+  "run": "exp1_atomic_sonnet/zsl",
+  "strategy": "zsl",
+  "task": "atomic",
+  "units": null,
+  "scored_at": "2026-10-18T23:46:58+01:00",
+  "gold_csv": "data/curated/gold_atomic.csv",
+  "meta": {
+    "run_id": "exp1_atomic_sonnet/zsl",
+    "strategy": "zsl",
+    "task": "atomic",
+    "model": "claude-sonnet-5-5",
+    "temperature": 0.0,
+    "max_tokens": 1024,
+    "n_fsl_examples": null,
+    "gold_csv": "data/curated/gold_atomic.csv",
+    "backend": "subscription",
+    "created_at": "2026-10-18T23:46:38+01:00",
+    "n_processed": 35,
+    "n_skipped": 0,
+    "skipped_ids": []
+  },
+  "counts": {
+    "gold": 35,
+    "converted": 35,
+    "evaluated": 35,
+    "skipped": 0,
+    "skipped_ids": []
+  },
+  "field_accuracy": {
+    "n": 35,
+    "per_slot": {
+      "scope": {
+        "tp": 6,
+        "fp": 0,
+        "fn": 28,
+        "tn": 1,
+        "precision": 1.0,
+        "recall": 0.17647058823529413,
+        "f1": 0.3,
+        "support_gold_missing": 34
+      },
+      "condition": {
+        "tp": 6,
+        "fp": 1,
+        "fn": 15,
+        "tn": 13,
+        "precision": 0.8571428571428571,
+        "recall": 0.2857142857142857,
+        "f1": 0.42857142857142855,
+        "support_gold_missing": 21
+      },
+      "actor": {
+        "tp": 1,
+        "fp": 14,
+        "fn": 0,
+        "tn": 20,
+        "precision": 0.06666666666666667,
+        "recall": 1.0,
+        "f1": 0.125,
+        "support_gold_missing": 1
+      },
+      "modalVerb": {
+        "tp": 1,
+        "fp": 15,
+        "fn": 0,
+        "tn": 19,
+        "precision": 0.0625,
+        "recall": 1.0,
+        "f1": 0.11764705882352941,
+        "support_gold_missing": 1
+      },
+      "action": {
+        "tp": 3,
+        "fp": 0,
+        "fn": 1,
+        "tn": 31,
+        "precision": 1.0,
+        "recall": 0.75,
+        "f1": 0.8571428571428571,
+        "support_gold_missing": 4
+      }
+    },
+    "micro": {
+      "precision": 0.3617021276595745,
+      "recall": 0.2786885245901639,
+      "f1": 0.3148148148148148
+    },
+    "macro": {
+      "precision": 0.5972619047619048,
+      "recall": 0.642436974789916,
+      "f1": 0.365672268907563
+    },
+    "implied_analysis": {
+      "overall": {
+        "n_implied": 66,
+        "llm_filled": 39,
+        "llm_flagged_missing": 27,
+        "fill_rate": 0.5909090909090909
+      },
+      "per_slot": {
+        "scope": {
+          "n_implied": 0,
+          "llm_filled": 0,
+          "llm_flagged_missing": 0,
+          "fill_rate": 0.0
+        },
+        "condition": {
+          "n_implied": 1,
+          "llm_filled": 1,
+          "llm_flagged_missing": 0,
+          "fill_rate": 1.0
+        },
+        "actor": {
+          "n_implied": 29,
+          "llm_filled": 17,
+          "llm_flagged_missing": 12,
+          "fill_rate": 0.5862068965517241
+        },
+        "modalVerb": {
+          "n_implied": 34,
+          "llm_filled": 19,
+          "llm_flagged_missing": 15,
+          "fill_rate": 0.5588235294117647
+        },
+        "action": {
+          "n_implied": 2,
+          "llm_filled": 2,
+          "llm_flagged_missing": 0,
+          "fill_rate": 1.0
+        }
+      }
+    },
+    "missing_analysis": {
+      "overall": {
+        "n_missing": 61,
+        "llm_flagged_missing": 17,
+        "llm_silently_filled": 44,
+        "flag_rate": 0.2786885245901639
+      },
+      "per_slot": {
+        "scope": {
+          "n_missing": 34,
+          "llm_flagged_missing": 6,
+          "llm_silently_filled": 28,
+          "flag_rate": 0.17647058823529413
+        },
+        "condition": {
+          "n_missing": 21,
+          "llm_flagged_missing": 6,
+          "llm_silently_filled": 15,
+          "flag_rate": 0.2857142857142857
+        },
+        "actor": {
+          "n_missing": 1,
+          "llm_flagged_missing": 1,
+          "llm_silently_filled": 0,
+          "flag_rate": 1.0
+        },
+        "modalVerb": {
+          "n_missing": 1,
+          "llm_flagged_missing": 1,
+          "llm_silently_filled": 0,
+          "flag_rate": 1.0
+        },
+        "action": {
+          "n_missing": 4,
+          "llm_flagged_missing": 3,
+          "llm_silently_filled": 1,
+          "flag_rate": 0.75
+        }
+      }
+    },
+    "overall_verdict": {
+      "confusion": {
+        "both_incomplete": 3,
+        "llm_incomplete_gold_complete": 16,
+        "gold_incomplete_llm_complete": 1,
+        "both_complete": 15
+      },
+      "agreement_rate": 0.5142857142857142,
+      "n": 35,
+      "precision": 0.15789473684210525,
+      "recall": 0.75,
+      "f1": 0.2608695652173913
+    }
+  },
+  "conversion_quality": {
+    "similarity": {
+      "llm_vs_human": {
+        "seq_ratio": {
+          "n": 105,
+          "mean": 0.5135678027307587,
+          "median": 0.5348837209302325,
+          "min": 0.024691358024691357,
+          "max": 0.8503937007874016,
+          "std": 0.19623695305102098
+        },
+        "jaccard": {
+          "n": 105,
+          "mean": 0.3588914181993398,
+          "median": 0.3333333333333333,
+          "min": 0.0,
+          "max": 1.0,
+          "std": 0.2170940453486975
+        },
+        "cosine": {
+          "n": 105,
+          "mean": 0.6607092671288743,
+          "median": 0.7678972873286948,
+          "min": -0.03896913967981889,
+          "max": 0.9259635585596391,
+          "std": 0.2564023546213656
+        },
+        "n_pairs": 105,
+        "n_evaluated": 35,
+        "n_skipped_no_humans": 0,
+        "skipped_req_ids": []
+      },
+      "human_human": {
+        "seq_ratio": {
+          "n": 105,
+          "mean": 0.6436580582755868,
+          "median": 0.6911764705882353,
+          "min": 0.08695652173913043,
+          "max": 1.0,
+          "std": 0.23359876566382407
+        },
+        "jaccard": {
+          "n": 105,
+          "mean": 0.4930423500119366,
+          "median": 0.5,
+          "min": 0.0,
+          "max": 1.0,
+          "std": 0.2744740320920812
+        },
+        "cosine": {
+          "n": 105,
+          "mean": 0.7366869479869506,
+          "median": 0.8244096730277013,
+          "min": -0.04379037868589146,
+          "max": 1.0,
+          "std": 0.28099636967969993
+        },
+        "n_pairs": 105
+      }
+    },
+    "paska": {
+      "n": 35,
+      "n_passed": 15,
+      "n_failed": 20,
+      "n_error": 0,
+      "n_scored": 35,
+      "pass_rate": 0.42857142857142855,
+      "pass_rate_llm_complete": 0.75,
+      "by_llm_verdict": {
+        "llm_complete": {
+          "n": 16,
+          "n_passed": 12,
+          "n_failed": 4,
+          "n_scored": 16,
+          "pass_rate": 0.75
+        },
+        "llm_incomplete": {
+          "n": 19,
+          "n_passed": 3,
+          "n_failed": 16,
+          "n_scored": 19,
+          "pass_rate": 0.15789473684210525
+        }
+      },
+      "n_with_smells": 20,
+      "smell_frequency": {
+        "Not requirement": 16,
+        "Incomplete requirement": 8,
+        "Incomplete system response": 3,
+        "Non-atomic requirement": 1,
+        "Not precise verb": 1,
+        "Incorrect order requirement": 1
+      }
+    },
+    "embedding": {
+      "available": true,
+      "model": "all-minilm"
+    }
+  },
+  "requirements": [
+    {
+      "reqId": "4031-Signal",
+      "nl_text": "Request Number - 4031 | Request Title - Cancel media download  | Request Description - Add option to cancel running media downloads Once we go large media this is really needed",
+      "human_rimays": [
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow the user to cancel \"running media downloads\".",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user cancel a running \"media download\".",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide an option to cancel running media downloads."
+      ],
+      "llm_rimay": "<MISSING_ACTOR> shall provide an option to cancel running media downloads.",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "missing",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "missing",
+        "modalVerb": "filled",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": false,
+        "condition": false,
+        "actor": false,
+        "modalVerb": true,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": true,
+      "verdict_match": false,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.7188015432497168,
+        "seq_ratio_max": 0.8503937007874016,
+        "jaccard_mean": 0.4037698412698412,
+        "jaccard_max": 0.6666666666666666,
+        "cosine_mean": 0.8456220621973555,
+        "cosine_max": 0.8755411165413445
+      },
+      "paska_passed": true,
+      "paska_smells": []
+    },
+    {
+      "reqId": "4333-Signal",
+      "nl_text": "Request Number - 4333 | Request Title - allow direct sharing to contacts via 6.0 ChooserTargetService | Request Description - https://developer.android.com/reference/android/service/chooser/ChooserTargetService.html",
+      "human_rimays": [
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the System must allow direct sharing to contacts via \"6.0 ChooserTargetService\"",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow direct sharing to contacts through the ChooserTargetService.",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow \"direct sharing\" to contacts through \"6.0 ChooserTargetService\""
+      ],
+      "llm_rimay": "<MISSING_ACTOR> <MISSING_MODAL_VERB> allow the \"direct sharing to contacts\" through the \"Android 6.0 ChooserTargetService\".",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "missing",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "missing",
+        "modalVerb": "missing",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": false,
+        "condition": false,
+        "actor": false,
+        "modalVerb": false,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": true,
+      "verdict_match": false,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.7606073115912114,
+        "seq_ratio_max": 0.7906976744186046,
+        "jaccard_mean": 0.6758241758241758,
+        "jaccard_max": 0.7692307692307693,
+        "cosine_mean": 0.8885578872155401,
+        "cosine_max": 0.9114812937348208
+      },
+      "paska_passed": false,
+      "paska_smells": [
+        {
+          "segment_id": "4333-Signal_rimay_1",
+          "smell": "Not requirement",
+          "value": "The sentence does not contain a system response nor condition nor a scope phrase."
+        }
+      ]
+    },
+    {
+      "reqId": "455-Signal",
+      "nl_text": "Request Number - 455 | Request Title - Signature below SMS message | Request Description - Hi, in oder to advertise TextSecure to my friends I'd like to add a (short) signature. E.g.  I use TextSecure for private and secure communication!  do you find this worth implementing?",
+      "human_rimays": [
+        "<MISSING_SCOPE>, when user wants to advertise the App to his friends, the App must allow the user to add a \"signature\" to \"SMS messages\".",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user add a short signature to messages.",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide an option to add a short signature to messages."
+      ],
+      "llm_rimay": "<MISSING_SCOPE> <MISSING_CONDITION> The TextSecure <MISSING_MODAL_VERB> append a \"short signature\" to the \"SMS message\".",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "missing",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "missing",
+        "condition": "missing",
+        "actor": "filled",
+        "modalVerb": "missing",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": true,
+        "condition": true,
+        "actor": true,
+        "modalVerb": false,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": true,
+      "verdict_match": false,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.5608138322049083,
+        "seq_ratio_max": 0.6141732283464567,
+        "jaccard_mean": 0.2986111111111111,
+        "jaccard_max": 0.3333333333333333,
+        "cosine_mean": 0.6702274325068345,
+        "cosine_max": 0.696761523801554
+      },
+      "paska_passed": false,
+      "paska_smells": [
+        {
+          "segment_id": "455-Signal_rimay_1",
+          "smell": "Not requirement",
+          "value": "The sentence does not contain a system response nor condition nor a scope phrase."
+        },
+        {
+          "segment_id": "455-Signal_rimay_1",
+          "smell": "Incomplete system response",
+          "value": "Modal verb is missing in the SR."
+        }
+      ]
+    },
+    {
+      "reqId": "5529-Signal",
+      "nl_text": "Request Number - 5529 | Request Title - Disable \"Screen security\" by default | Request Description - I have:   searched open and closed issues for duplicates  read https://github.com/WhisperSystems/Signal-Android/wiki/Submitting-useful-bug-reports  Feature description. It's quite common to see non-passphrase users wonder why screenshots in Signal don't work. It probably doesn't make sense to have Screen security enabled by default for them. For passphrase users it makes sense. One option would be to remove the feature completely from settings and make it an implicit feature which depends on the passphrase setting. In #1431 (comment) moxie0 wrote: [The Screen security feature i]s not designed to prevent screenshots, it's designed to notify the task manager that it shouldn't cache screenshots of conversations. The side effect is that it prevents screenshots.",
+      "human_rimays": [
+        "For non-passphase users, <MISSING_CONDITION>, the App must enable the \"Screen security\" feature depend on the \"passphrase setting\".",
+        "<MISSING_SCOPE>, if the user has enabled the passphrase, then the App must enable screen security.",
+        "For all non-passphrase users, if the user does not use a passphrase, then the System must disable screen security by default."
+      ],
+      "llm_rimay": "For the non-passphrase users, the Signal <MISSING_MODAL_VERB> disable the \"Screen security\" feature by default.",
+      "gold_slots": {
+        "scope": "present",
+        "condition": "present",
+        "actor": "present",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "missing",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": true,
+        "condition": true,
+        "actor": true,
+        "modalVerb": false,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": true,
+      "verdict_match": false,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.6224401146930125,
+        "seq_ratio_max": 0.7029702970297029,
+        "jaccard_mean": 0.35853269537480065,
+        "jaccard_max": 0.45454545454545453,
+        "cosine_mean": 0.7636117172337675,
+        "cosine_max": 0.8294169432489266
+      },
+      "paska_passed": false,
+      "paska_smells": [
+        {
+          "segment_id": "5529-Signal_rimay_1",
+          "smell": "Incomplete requirement",
+          "value": "The requirement does not have a system response."
+        },
+        {
+          "segment_id": "5529-Signal_rimay_1",
+          "smell": "Not requirement",
+          "value": "The sentence does not contain a system response nor condition nor a scope phrase."
+        },
+        {
+          "segment_id": "5529-Signal_rimay_2",
+          "smell": "Incomplete system response",
+          "value": "Modal verb is missing in the SR."
+        }
+      ]
+    },
+    {
+      "reqId": "107-Mastodon",
+      "nl_text": "Request Number - 107 | Request Title - Can't view image descriptions | Request Description - I know a screen reader can still read them, but it's important to me to see if there IS a description so I know if I can boost these posts to my disabled followers",
+      "human_rimays": [
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must visually indicate whether an image has a \"description\".",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must show whether a post has an image description.",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must show whether an image has a description."
+      ],
+      "llm_rimay": "<MISSING_ACTOR> <MISSING_MODAL_VERB> display the \"indication of whether an image has a description\" to the user.",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "missing",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "missing",
+        "modalVerb": "missing",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": false,
+        "condition": false,
+        "actor": false,
+        "modalVerb": false,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": true,
+      "verdict_match": false,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.6293592862935928,
+        "seq_ratio_max": 0.6666666666666666,
+        "jaccard_mean": 0.44722222222222224,
+        "jaccard_max": 0.4666666666666667,
+        "cosine_mean": 0.7619409342725897,
+        "cosine_max": 0.7991820547965914
+      },
+      "paska_passed": false,
+      "paska_smells": [
+        {
+          "segment_id": "107-Mastodon_rimay_1",
+          "smell": "Not requirement",
+          "value": "The sentence does not contain a system response nor condition nor a scope phrase."
+        }
+      ]
+    },
+    {
+      "reqId": "83-Signal",
+      "nl_text": "Request Number - 83 | Request Title - Better identity key synchronization | Request Description - No description provided.",
+      "human_rimays": [
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide \"better identity key synchronization\".",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, <MISSING_ACTOR> <MISSING_MODAL_VERB> <MISSING_ACTION>.",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, <MISSING_ACTOR> <MISSING_MODAL_VERB> <MISSING_ACTION>."
+      ],
+      "llm_rimay": "<MISSING_SCOPE> <MISSING_CONDITION> <MISSING_ACTOR> <MISSING_MODAL_VERB> <MISSING_ACTION>.",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "missing",
+        "actor": "missing",
+        "modalVerb": "missing",
+        "action": "missing"
+      },
+      "llm_slots": {
+        "scope": "missing",
+        "condition": "missing",
+        "actor": "missing",
+        "modalVerb": "missing",
+        "action": "missing"
+      },
+      "slot_match": {
+        "scope": true,
+        "condition": true,
+        "actor": true,
+        "modalVerb": true,
+        "action": true
+      },
+      "gold_overall": true,
+      "llm_overall": true,
+      "verdict_match": true,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.23263888888888887,
+        "seq_ratio_max": 0.3333333333333333,
+        "jaccard_mean": 0.6666666666666666,
+        "jaccard_max": 1.0,
+        "cosine_mean": 0.4535101012534592,
+        "cosine_max": 0.6587487830632296
+      },
+      "paska_passed": false,
+      "paska_smells": [
+        {
+          "segment_id": "83-Signal_rimay_1",
+          "smell": "Not requirement",
+          "value": "The sentence does not contain a system response nor condition nor a scope phrase."
+        }
+      ]
+    },
+    {
+      "reqId": "5555-Signal",
+      "nl_text": "Request Number - 5555 | Request Title - Partial message copying feature request | Request Description - Copying partial text from a message would be nice. I.e. when receiving long validation tokens/one-time passwords to be entered in some web form. See #2845",
+      "human_rimays": [
+        "<MISSING_SCOPE>, when the user receives \"long validation tokens/one-time passwords\", the App must allow the user to copy \"partial text\" from a \"message\".",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user copy partial text from a message.",
+        "<MISSING_SCOPE>, when the \"user\" receives a \"message\" containing \"long validation tokens/one-time passwords\", the App must provide an option to copy partial text from a message."
+      ],
+      "llm_rimay": "<MISSING_SCOPE> <MISSING_CONDITION> the <MISSING_ACTOR> <MISSING_MODAL_VERB> copy the \"partial text from a message\".",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "present",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "missing",
+        "condition": "missing",
+        "actor": "missing",
+        "modalVerb": "missing",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": true,
+        "condition": false,
+        "actor": false,
+        "modalVerb": false,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": true,
+      "verdict_match": false,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.4966760146075348,
+        "seq_ratio_max": 0.6981132075471698,
+        "jaccard_mean": 0.43023715415019764,
+        "jaccard_max": 0.6363636363636364,
+        "cosine_mean": 0.6897729703084602,
+        "cosine_max": 0.7936156724829305
+      },
+      "paska_passed": false,
+      "paska_smells": [
+        {
+          "segment_id": "5555-Signal_rimay_1",
+          "smell": "Not requirement",
+          "value": "The sentence does not contain a system response nor condition nor a scope phrase."
+        }
+      ]
+    },
+    {
+      "reqId": "801-Signal",
+      "nl_text": "Request Number - 801 | Request Title - Feature request: Mute Group (or any user) | Request Description - Sometimes friends in a group are discussing something I'm not interested in and my phone would go nuts vibrating and ringing all the time. A \"Mute for X minutes/hours\" feature would be awesome.",
+      "human_rimays": [
+        "<MISSING_SCOPE>, when the user activates the \"Mute\" option for a group or a user, the App must mute notifications from a \"group\" for a \"specific duration\".",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user mute a conversation for a chosen duration.",
+        "<MISSING_SCOPE>, when the \"user\" mutes a group or user for a \"specified duration\", the App must mute a group or a user for \"X minutes/hours\"."
+      ],
+      "llm_rimay": "If the user selects \"Mute for X minutes/hours\" for a group or a user, then the System shall suppress the \"notification vibration and ringing\" for the group or the user during the selected duration.",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "present",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "filled",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": false,
+        "condition": true,
+        "actor": true,
+        "modalVerb": true,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": false,
+      "verdict_match": true,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.3887863401190835,
+        "seq_ratio_max": 0.5519287833827893,
+        "jaccard_mean": 0.28840245775729645,
+        "jaccard_max": 0.39285714285714285,
+        "cosine_mean": 0.7001416676525939,
+        "cosine_max": 0.7678972873286948
+      },
+      "paska_passed": true,
+      "paska_smells": []
+    },
+    {
+      "reqId": "6069-Signal",
+      "nl_text": "Request Number - 6069 | Request Title - Unread notification badges do not work on Huawei EMUI | Request Description - I have:   searched open and closed issues for duplicates  read https://github.com/WhisperSystems/Signal-Android/wiki/Submitting-useful-bug-reports  Bug description. I've installed Signal on a Honor 8 (made by Huawei) with EMUI 4.1 (Android 6.0). I've noticed that Signal receives notifications on new messages and they are also listed in the notification area, but the unread notifications badge on the app icon on the home screen is not shown. In Signal support articles there is mentioned, that badge icons are supported for some launchers, see https://support.whispersystems.org/hc/en-us/articles/215766077-How-can-I-see-my-unread-badge-count-What-launcher-should-I-use- So far I could not find out if this is a Signal or EMUI problem, but Threema and Conversations show the notification badges. Device info. Device: Honor 8 Android version: 6.0 Signal version: 3.26.2",
+      "human_rimays": [
+        "<MISSING_SCOPE>, when there are unread messages, then the App must show the unread notifications badge on the app icon.",
+        "<MISSING_SCOPE>, when there are unread messages, then the App must show an unread badge on the app icon.",
+        "<MISSING_SCOPE>, when Signal receives new messages, then Signal must show an unread notification badge on the app icon."
+      ],
+      "llm_rimay": "When Signal receives a \"new message\" on a Huawei device running EMUI, then the Signal application must display the \"unread notifications badge\" on the \"app icon\" on the \"home screen\".",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "present",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "filled",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": false,
+        "condition": true,
+        "actor": true,
+        "modalVerb": true,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": false,
+      "verdict_match": true,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.6062034569925531,
+        "seq_ratio_max": 0.6689895470383276,
+        "jaccard_mean": 0.3787477954144621,
+        "jaccard_max": 0.4444444444444444,
+        "cosine_mean": 0.7141957219596787,
+        "cosine_max": 0.7787289403048959
+      },
+      "paska_passed": true,
+      "paska_smells": []
+    },
+    {
+      "reqId": "2943-Signal",
+      "nl_text": "Request Number - 2943 | Request Title - Where are the old text-only smileys? | Request Description - Why did you remove the old text based smileys? I don't like all this emoji crap and preferred the other ones.",
+      "human_rimays": [
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must <MISSING_ACTION>.",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must bring back the old text-based smileys.",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide the old text-based smileys."
+      ],
+      "llm_rimay": "<MISSING_SCOPE> <MISSING_CONDITION> <MISSING_ACTOR> <MISSING_MODAL_VERB> restore the \"old text-based smileys\".",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "missing",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "implied"
+      },
+      "llm_slots": {
+        "scope": "missing",
+        "condition": "missing",
+        "actor": "missing",
+        "modalVerb": "missing",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": true,
+        "condition": true,
+        "actor": false,
+        "modalVerb": false,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": true,
+      "verdict_match": false,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.5591804710515018,
+        "seq_ratio_max": 0.7415730337078652,
+        "jaccard_mean": 0.39351851851851855,
+        "jaccard_max": 0.5555555555555556,
+        "cosine_mean": 0.5926575530223083,
+        "cosine_max": 0.8563029713415932
+      },
+      "paska_passed": false,
+      "paska_smells": [
+        {
+          "segment_id": "2943-Signal_rimay_1",
+          "smell": "Not requirement",
+          "value": "The sentence does not contain a system response nor condition nor a scope phrase."
+        }
+      ]
+    },
+    {
+      "reqId": "6077-Signal",
+      "nl_text": "Request Number - 6077 | Request Title - Update libphonenumber to >=8.2.0 (Cannot send SMS to my mobile provider) | Request Description - I have:   searched open and closed issues for duplicates  read https://github.com/WhisperSystems/Signal-Android/wiki/Submitting-useful-bug-reports  Bug description. My friend made me aware of this as I'm never checking my account status via SMS, but it doesn't work for me neither. To check our account status, we have to send an SMS message to 13977, but Signal fails to deliver it. I tried sending it through the native Oneplus SMS app and it goes through just fine, with an immediate response. I can send an SMS to other people, though, so it has something to do with that number. (Signal adds +385 to it for Croatia, maybe that's it?) Steps to reproduce.  send an SMS to my provider through Signal Actual result: it doesn't go through, \"Failed to send\", \"Some issues need your attention.\" Expected result: Message should go through and I should get a response. Device info. Device: OnePlus3T Android version: 7.0 Signal version: 3.27.1 Link to debug log. https://gist.github.com/anonymous/f656572561ea3a91d0f4bbdeb98e587b",
+      "human_rimays": [
+        "<MISSING_SCOPE>, when the user sends an \"SMS message\" to the number \"13977\" to check the account status, then the App must deliver the \"SMS message\".",
+        "<MISSING_SCOPE>, if the recipient is a short number, then Signal must deliver the SMS.",
+        "<MISSING_SCOPE>, when the user sends an SMS message to the provider number 13977, then Signal must deliver the SMS message."
+      ],
+      "llm_rimay": "When Signal sends an SMS message to a mobile provider number, Signal must deliver the SMS message to the mobile provider's number without failure.",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "present",
+        "actor": "present",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "filled",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": false,
+        "condition": true,
+        "actor": true,
+        "modalVerb": true,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": false,
+      "verdict_match": true,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.5500689429950288,
+        "seq_ratio_max": 0.6771653543307087,
+        "jaccard_mean": 0.444949494949495,
+        "jaccard_max": 0.6,
+        "cosine_mean": 0.7214141463649976,
+        "cosine_max": 0.8180908319457232
+      },
+      "paska_passed": true,
+      "paska_smells": []
+    },
+    {
+      "reqId": "1363-Signal",
+      "nl_text": "Request Number - 1363 | Request Title - Indicating in the conservation overview whether the last message is yours or from your conversation partner | Request Description - Description given.",
+      "human_rimays": [
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must indicate in the \"conversation overview\" whether the \"last message\" is from the user or the \"conversation partner\".",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must show in the conversation overview whether the last message is from the user or from the conversation partner.",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must indicate in the conversation overview whether the last message is from the user or the conversation partner."
+      ],
+      "llm_rimay": "For the conversation overview, <MISSING_ACTOR> <MISSING_MODAL_VERB> indicate whether the \"last message\" is from \"the user\" or from \"the conversation partner\".",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "missing",
+        "actor": "present",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "missing",
+        "modalVerb": "missing",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": false,
+        "condition": false,
+        "actor": false,
+        "modalVerb": false,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": true,
+      "verdict_match": false,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.8054255923318824,
+        "seq_ratio_max": 0.8340080971659919,
+        "jaccard_mean": 0.7156862745098039,
+        "jaccard_max": 0.75,
+        "cosine_mean": 0.7931066022649768,
+        "cosine_max": 0.8065378870216463
+      },
+      "paska_passed": false,
+      "paska_smells": [
+        {
+          "segment_id": "1363-Signal_rimay_1",
+          "smell": "Incomplete requirement",
+          "value": "The requirement does not have a system response."
+        },
+        {
+          "segment_id": "1363-Signal_rimay_1",
+          "smell": "Not requirement",
+          "value": "The sentence does not contain a system response nor condition nor a scope phrase."
+        }
+      ]
+    },
+    {
+      "reqId": "6459-Signal",
+      "nl_text": "Request Number - 6459 | Request Title - Feature Request: Use Share Intent Subject When Sharing to Signal | Request Description - At the moment, sending a share Intent to Signal will include the EXTRA_TEXT portion of the Intent but not the EXTRA_SUBJECT For example, using this code from another app Intent sendIntent = new Intent (); sendIntent . setAction ( Intent . ACTION_SEND ); sendIntent . putExtra ( Intent . EXTRA_SUBJECT , \"This is the intent title\" ); sendIntent . putExtra ( Intent . EXTRA_TEXT , \"This is the intent body\" ); sendIntent . setType ( \"text/plain\" ); startActivity ( Intent . createChooser ( sendIntent , getResources (). getText ( R . string . send_to ))); Signal will only use the body: \"This is the intent body\" but not use the subject: \"This is the intent title\" This would make it easier to get page titles and other subjects shared from browsers and other apps that set the share Intent's EXTRA_SUBJECT",
+      "human_rimays": [
+        "<MISSING_SCOPE>, when the App receives a \"share intent\", then the App must include the \"EXTRA_SUBJECT\" along with the \"EXTRA_TEXT\" in the shared message.",
+        "<MISSING_SCOPE>, when the App receives share Intent, then Signal must include its subject as well as its body.",
+        "<MISSING_SCOPE>, when Signal receives a share Intent with an EXTRA_SUBJECT portion, then Signal must include the EXTRA_SUBJECT portion in the shared message."
+      ],
+      "llm_rimay": "When Signal receives a share Intent from another app, then Signal shall include the \"EXTRA_SUBJECT\" of the share Intent as the subject in the shared message.",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "present",
+        "actor": "present",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "filled",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": false,
+        "condition": true,
+        "actor": true,
+        "modalVerb": true,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": false,
+      "verdict_match": true,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.6484993622060681,
+        "seq_ratio_max": 0.7357859531772575,
+        "jaccard_mean": 0.5416666666666666,
+        "jaccard_max": 0.5833333333333334,
+        "cosine_mean": 0.8795117207177044,
+        "cosine_max": 0.9259635585596391
+      },
+      "paska_passed": true,
+      "paska_smells": []
+    },
+    {
+      "reqId": "6457-Signal",
+      "nl_text": "Request Number - 6457 | Request Title - Use single button to open attachment window. | Request Description - I have:   searched open and closed issues for duplicates  read https://github.com/WhisperSystems/Signal-Android/wiki/Submitting-useful-bug-reports  Bug description. In the conversation window, there are 3 ways to open/close the attachment window. Steps to reproduce. The paperclip will open and close the attachment window. The green down arrow (that is visible in the attachment window) will close the attachment window. The ellipses in the upper right of the conversation window have an option to open the attachment window. Actual result: As described above. Expected result: From a usability and attractiveness perspective, there should be only a single way to open and close the attachment window. Screenshots. See the thread on Discourse Hosting for screenshots and discussion of alternatives. Device info. Device: Moto X Pure Edition Android version: 6.0.0 Signal version: 4.1.0",
+      "human_rimays": [
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide only a single way to open/close the attachment window.",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide only one way to \"open/close\" the attachment window.",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide a single way to \"open/close\" the attachment window in the conversation window."
+      ],
+      "llm_rimay": "For the conversation window, the Signal-Android application shall provide only one control to open and close the attachment window.",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "missing",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "filled",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": false,
+        "condition": false,
+        "actor": true,
+        "modalVerb": true,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": false,
+      "verdict_match": true,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.48658845180584315,
+        "seq_ratio_max": 0.6280193236714976,
+        "jaccard_mean": 0.3871541501976285,
+        "jaccard_max": 0.45,
+        "cosine_mean": 0.7459237522497486,
+        "cosine_max": 0.8010273390135916
+      },
+      "paska_passed": false,
+      "paska_smells": [
+        {
+          "segment_id": "6457-Signal_rimay_1",
+          "smell": "Non-atomic requirement",
+          "value": "The requirement has more than one action in the system response."
+        }
+      ]
+    },
+    {
+      "reqId": "828-Signal",
+      "nl_text": "Request Number - 828 | Request Title - Feature Request: Group Administration | Request Description - TextSecure groups lack the possibility to remove participants after they were added.",
+      "human_rimays": [
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow the user to remove \"participants\" from \"groups\".",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the System must provide an option to remove partiipants from a group.",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure must allow the user to remove participants."
+      ],
+      "llm_rimay": "For all the TextSecure groups, <MISSING_ACTOR> <MISSING_MODAL_VERB> remove the \"participants\" from the \"group\" after the \"participants\" were added.",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "missing",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "missing",
+        "modalVerb": "missing",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": false,
+        "condition": false,
+        "actor": false,
+        "modalVerb": false,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": true,
+      "verdict_match": false,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.494596618951297,
+        "seq_ratio_max": 0.5524861878453039,
+        "jaccard_mean": 0.24803921568627452,
+        "jaccard_max": 0.29411764705882354,
+        "cosine_mean": 0.6024438838890581,
+        "cosine_max": 0.7467622731312648
+      },
+      "paska_passed": false,
+      "paska_smells": [
+        {
+          "segment_id": "828-Signal_rimay_1",
+          "smell": "Incomplete requirement",
+          "value": "The requirement does not have a system response."
+        },
+        {
+          "segment_id": "828-Signal_rimay_1",
+          "smell": "Not requirement",
+          "value": "The sentence does not contain a system response nor condition nor a scope phrase."
+        }
+      ]
+    },
+    {
+      "reqId": "245-Signal",
+      "nl_text": "Request Number - 245 | Request Title - Unable to find to which SIM message was sent | Request Description - Hi, I am using dual sim mobile. I installed TextSecure, but I am unable to know to which SIM the message is sent ? Please help me.",
+      "human_rimays": [
+        "<MISSING_SCOPE>, if the user is using a \"dual SIM mobile\", then the App must indicate to which \"SIM\" the \"message\" is sent.",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must <MISSING_ACTION>.",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure must show which SIM a message is sent through on dual SIM devices."
+      ],
+      "llm_rimay": "When TextSecure sends a message on a dual SIM mobile, then the TextSecure <MISSING_MODAL_VERB> display the \"SIM used to send the message\".",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "missing",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "missing",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": false,
+        "condition": false,
+        "actor": true,
+        "modalVerb": false,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": true,
+      "verdict_match": false,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.37450056116722785,
+        "seq_ratio_max": 0.5066666666666667,
+        "jaccard_mean": 0.2216280451574569,
+        "jaccard_max": 0.3333333333333333,
+        "cosine_mean": 0.5883712536285257,
+        "cosine_max": 0.903473713918593
+      },
+      "paska_passed": false,
+      "paska_smells": [
+        {
+          "segment_id": "245-Signal_rimay_1",
+          "smell": "Incomplete requirement",
+          "value": "The requirement does not have a system response."
+        },
+        {
+          "segment_id": "245-Signal_rimay_2",
+          "smell": "Incomplete system response",
+          "value": "Modal verb is missing in the SR."
+        }
+      ]
+    },
+    {
+      "reqId": "316-Signal",
+      "nl_text": "Request Number - 316 | Request Title - Feature request: Allow sharing Android calendar events via TextSecure | Request Description - Originally a bug, which should have been titled \"Shared calendar events are not actually attached.\" The fix in #1025 removed TS from the \"share with\" list of calendar events, so no longer a bug, but would like to be able to share calendar events via TS, same as can be done with default Android text app. Original (bug) text: Android default Calendar app lets you send a calendar entry. TextSecure is one of the apps that comes up as an option to use for sending. Choosing it, you get to TextSecure, but there is no attachment, just an empty message. (If you choose the regular default Android Text Messaging app, the calendar entry does get properly attached, which is why I suspect the issue is with TextSecure.) Only tried doing this from Calendar, don't know if it's an issue sending via TextSecure from other apps.",
+      "human_rimays": [
+        "<MISSING_SCOPE>, when the user shares a \"calendar event\" to the App, then the App must attach the \"calendar event\" to the \"message\".",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user share calendar events.",
+        "<MISSING_SCOPE>, when the user shares a calendar event from the Android Calendar app, then TextSecure must attach the calendar event to the message."
+      ],
+      "llm_rimay": "For all the calendar events, the TextSecure shall allow the user to share the calendar event as an attachment via TextSecure.",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "present",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "filled",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": false,
+        "condition": true,
+        "actor": true,
+        "modalVerb": true,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": false,
+      "verdict_match": true,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.4319559952555258,
+        "seq_ratio_max": 0.5348837209302325,
+        "jaccard_mean": 0.2340868196131354,
+        "jaccard_max": 0.2631578947368421,
+        "cosine_mean": 0.6782551430026875,
+        "cosine_max": 0.8477657006566328
+      },
+      "paska_passed": true,
+      "paska_smells": []
+    },
+    {
+      "reqId": "695-Signal",
+      "nl_text": "Request Number - 695 | Request Title - Don't show letter count, when SMS mode disabled | Request Description - When I start typing, the count of letters is shown at the bottom left corner, though I have the SMS mode completely disabled.",
+      "human_rimays": [
+        "<MISSING_SCOPE>, when the user starts \"typing\" and \"SMS mode\" is disabled, then the App must not show the \"count of letters\".",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, <MISSING_ACTOR> <MISSING_MODAL_VERB> <MISSING_ACTION>.",
+        "<MISSING_SCOPE>, if SMS mode is disabled and the user starts typing a message, then the App must hide the letter count."
+      ],
+      "llm_rimay": "While the SMS mode is disabled, when the user starts typing, then the System shall not show the \"count of letters\" at the \"bottom left corner\".",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "present",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "filled",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": false,
+        "condition": true,
+        "actor": true,
+        "modalVerb": true,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": false,
+      "verdict_match": true,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.4279782414793856,
+        "seq_ratio_max": 0.6234817813765182,
+        "jaccard_mean": 0.3111111111111111,
+        "jaccard_max": 0.6,
+        "cosine_mean": 0.5852478987042278,
+        "cosine_max": 0.9027763189044558
+      },
+      "paska_passed": true,
+      "paska_smells": []
+    },
+    {
+      "reqId": "1761-Signal",
+      "nl_text": "Request Number - 1761 | Request Title - Automatic SMS forwarding | Request Description - It would be awesome to be able to automatically forward all incoming SMS from a certain contact to another contact.",
+      "human_rimays": [
+        "<MISSING_SCOPE>, when the App receives an \"incoming SMS\" from a \"certain contact\", then the App must automatically forward the \"SMS\" to \"another contact\".",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user automatically forward SMS from one contact to another.",
+        "<MISSING_SCOPE>, when the App receives an SMS from a certain contact, then the App must automatically forward the SMS to another contact."
+      ],
+      "llm_rimay": "For each \"incoming SMS\" from a \"certain contact\", the <MISSING_ACTOR> <MISSING_MODAL_VERB> forward the \"incoming SMS\" to \"another contact\".",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "present",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "missing",
+        "modalVerb": "missing",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": false,
+        "condition": true,
+        "actor": false,
+        "modalVerb": false,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": true,
+      "verdict_match": false,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.5724112069313515,
+        "seq_ratio_max": 0.7302904564315352,
+        "jaccard_mean": 0.46296296296296297,
+        "jaccard_max": 0.5263157894736842,
+        "cosine_mean": 0.7996721027185619,
+        "cosine_max": 0.8262793797636341
+      },
+      "paska_passed": false,
+      "paska_smells": [
+        {
+          "segment_id": "1761-Signal_rimay_1",
+          "smell": "Incomplete requirement",
+          "value": "The requirement does not have a system response."
+        },
+        {
+          "segment_id": "1761-Signal_rimay_1",
+          "smell": "Not requirement",
+          "value": "The sentence does not contain a system response nor condition nor a scope phrase."
+        }
+      ]
+    },
+    {
+      "reqId": "4245-Signal",
+      "nl_text": "Request Number - 4245 | Request Title - Low quality contact photo during call | Request Description - Calling screen doesn't show the full resolution contact photo on Signal 3.0.3",
+      "human_rimays": [
+        "<MISSING_SCOPE>, if the user is on the \"calling screen\", then the App must show the \"full resolution contact photo\".",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, <MISSING_ACTOR> <MISSING_MODAL_VERB> <MISSING_ACTION>.",
+        "<MISSING_SCOPE>, when Signal is on the calling screen, then Signal must show the contact photo in full resolution."
+      ],
+      "llm_rimay": "For Signal 3.0.3, the calling screen shall display the \"full resolution contact photo\".",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "implied",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "filled",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": false,
+        "condition": true,
+        "actor": true,
+        "modalVerb": true,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": false,
+      "verdict_match": true,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.4245471636179165,
+        "seq_ratio_max": 0.6382978723404256,
+        "jaccard_mean": 0.24444444444444446,
+        "jaccard_max": 0.4,
+        "cosine_mean": 0.583925911826261,
+        "cosine_max": 0.8869009148296421
+      },
+      "paska_passed": true,
+      "paska_smells": []
+    },
+    {
+      "reqId": "5775-Signal",
+      "nl_text": "Request Number - 5775 | Request Title - Add longer-term disappearing timeouts | Request Description - I have looked at all open and closed issues containing \"disappearing\" here and in the libsignal-java repo. I hope the bug belongs to this repo, sorry if not! For my use case, the 30s/.../1 week periods for disappearing messages are not useful. I quite often want to have a look at messages written within the last month. I'd thus not use the feature at all, even though in principle I think it is a good idea. I'd suggest to add further periods up to at least one year or something. (As I'm thinking of it, maybe it should even be 13 months rather than 12, so you can re-read what you were discussing on your last year's birthday or last christmas or whatever, and it only disappears little after) (Signal 3.19.1 on Android 6.0.1 / CM 13)",
+      "human_rimays": [
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must add further \"disappearing message\" periods of up to at least one year.",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must offer longer disappearing-message periods, up to at least one year.",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, Signal must provide disappearing message periods of up to at least 12 months."
+      ],
+      "llm_rimay": "The Signal app shall allow the user to select a \"disappearing message timeout period of up to at least one year\".",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "missing",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "filled",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": false,
+        "condition": false,
+        "actor": true,
+        "modalVerb": true,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": false,
+      "verdict_match": true,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.6763055802675876,
+        "seq_ratio_max": 0.73,
+        "jaccard_mean": 0.41545893719806765,
+        "jaccard_max": 0.4782608695652174,
+        "cosine_mean": 0.8222647527311172,
+        "cosine_max": 0.8404269257801993
+      },
+      "paska_passed": true,
+      "paska_smells": []
+    },
+    {
+      "reqId": "1504-Signal",
+      "nl_text": "Request Number - 1504 | Request Title - Notification Color for Individual Contacts or Groups | Request Description - how about we edit this one too?  or just delete it..... üôà",
+      "human_rimays": [
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must <MISSING_ACTION>.",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user set a notification color for a contact or a group.",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, <MISSING_ACTOR> <MISSING_MODAL_VERB> <MISSING_ACTION>."
+      ],
+      "llm_rimay": "<MISSING_SCOPE> <MISSING_CONDITION> <MISSING_ACTOR> <MISSING_MODAL_VERB> <MISSING_ACTION>.",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "missing",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "missing"
+      },
+      "llm_slots": {
+        "scope": "missing",
+        "condition": "missing",
+        "actor": "missing",
+        "modalVerb": "missing",
+        "action": "missing"
+      },
+      "slot_match": {
+        "scope": true,
+        "condition": true,
+        "actor": false,
+        "modalVerb": false,
+        "action": true
+      },
+      "gold_overall": true,
+      "llm_overall": true,
+      "verdict_match": true,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.15442928308425383,
+        "seq_ratio_max": 0.3333333333333333,
+        "jaccard_mean": 0.3333333333333333,
+        "jaccard_max": 1.0,
+        "cosine_mean": 0.29245098416501564,
+        "cosine_max": 0.6587487830632296
+      },
+      "paska_passed": false,
+      "paska_smells": [
+        {
+          "segment_id": "1504-Signal_rimay_1",
+          "smell": "Not requirement",
+          "value": "The sentence does not contain a system response nor condition nor a scope phrase."
+        }
+      ]
+    },
+    {
+      "reqId": "8-Mastodon",
+      "nl_text": "Request Number - 8 | Request Title - Add local and federated timeline | Request Description - At the moment there seems to be no way to access local and federated timeline. Please consider adding that feature.",
+      "human_rimays": [
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide a way to access the \"local timeline\" and \"federated timeline\".",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let users access the local and federated timelines.",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide access to the local and federated timelines."
+      ],
+      "llm_rimay": "<MISSING_CONDITION> is not required here, since the source gives no condition and the condition segment is optional.",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "missing",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "missing",
+        "actor": "filled",
+        "modalVerb": "filled",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": false,
+        "condition": true,
+        "actor": true,
+        "modalVerb": true,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": false,
+      "verdict_match": true,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.3678443774005549,
+        "seq_ratio_max": 0.3780487804878049,
+        "jaccard_mean": 0.0924775707384403,
+        "jaccard_max": 0.09523809523809523,
+        "cosine_mean": 0.05592962903955755,
+        "cosine_max": 0.08528406442846888
+      },
+      "paska_passed": false,
+      "paska_smells": [
+        {
+          "segment_id": "8-Mastodon_rimay_1",
+          "smell": "Not requirement",
+          "value": "The sentence does not contain a system response nor condition nor a scope phrase."
+        }
+      ]
+    },
+    {
+      "reqId": "592-Signal",
+      "nl_text": "Request Number - 592 | Request Title - Feature - Emoji | Request Description - I hate emoji, but this guy on this issue requested it and I figure I'll help him/you out by making a new issue/feature request.",
+      "human_rimays": [
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must <MISSING_ACTION>.",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must <MISSING_ACTION>.",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide emojis."
+      ],
+      "llm_rimay": "For all the requests, <MISSING_ACTOR> <MISSING_MODAL_VERB> <MISSING_ACTION>.",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "missing",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "missing"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "missing",
+        "modalVerb": "missing",
+        "action": "missing"
+      },
+      "slot_match": {
+        "scope": false,
+        "condition": false,
+        "actor": false,
+        "modalVerb": false,
+        "action": true
+      },
+      "gold_overall": true,
+      "llm_overall": true,
+      "verdict_match": true,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.49105691056910566,
+        "seq_ratio_max": 0.5365853658536586,
+        "jaccard_mean": 0.15277777777777776,
+        "jaccard_max": 0.16666666666666666,
+        "cosine_mean": 0.24418088551054362,
+        "cosine_max": 0.28488468454387567
+      },
+      "paska_passed": false,
+      "paska_smells": [
+        {
+          "segment_id": "592-Signal_rimay_1",
+          "smell": "Incomplete requirement",
+          "value": "The requirement does not have a system response."
+        },
+        {
+          "segment_id": "592-Signal_rimay_1",
+          "smell": "Not requirement",
+          "value": "The sentence does not contain a system response nor condition nor a scope phrase."
+        }
+      ]
+    },
+    {
+      "reqId": "6031-Signal",
+      "nl_text": "Request Number - 6031 | Request Title - Fingerprint unlock | Request Description - Please add fingerprint support for unlocking the app as an alternative to passphrase",
+      "human_rimays": [
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide \"fingerprint support\" to unlock the App as an alternative to the \"passphrase\".",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user unlock the app with a fingerprint instead of a passphrase.",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide fingerprint for unlocking the app."
+      ],
+      "llm_rimay": "<MISSING_ACTOR> shall support \"fingerprint unlocking\" of the app as an alternative to the \"passphrase\".",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "missing",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "missing",
+        "modalVerb": "filled",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": false,
+        "condition": false,
+        "actor": false,
+        "modalVerb": true,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": true,
+      "verdict_match": false,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.5541579977340612,
+        "seq_ratio_max": 0.7578947368421053,
+        "jaccard_mean": 0.3766081871345029,
+        "jaccard_max": 0.6,
+        "cosine_mean": 0.8485652176937265,
+        "cosine_max": 0.915038451505012
+      },
+      "paska_passed": true,
+      "paska_smells": []
+    },
+    {
+      "reqId": "496-Signal",
+      "nl_text": "Request Number - 496 | Request Title - Feature Request: Ability to change maximum size of MMS | Request Description - I have seen this feature on other third party messaging apps it'd be great.  Thanks!",
+      "human_rimays": [
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must <MISSING_ACTION>.",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must <MISSING_ACTION>.",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, <MISSING_ACTOR> <MISSING_MODAL_VERB> <MISSING_ACTION>."
+      ],
+      "llm_rimay": "The messaging application shall allow the user to change the \"maximum size of an MMS\".",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "missing",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "missing"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "filled",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": false,
+        "condition": false,
+        "actor": true,
+        "modalVerb": true,
+        "action": false
+      },
+      "gold_overall": true,
+      "llm_overall": false,
+      "verdict_match": false,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.15018315018315018,
+        "seq_ratio_max": 0.19230769230769232,
+        "jaccard_mean": 0.044444444444444446,
+        "jaccard_max": 0.06666666666666667,
+        "cosine_mean": 0.2053607772186731,
+        "cosine_max": 0.24790482194634714
+      },
+      "paska_passed": true,
+      "paska_smells": []
+    },
+    {
+      "reqId": "4230-Signal",
+      "nl_text": "Request Number - 4230 | Request Title - Auto-split oversized texts | Request Description - Feature Request: Auto-split oversized texts over multiple messages. At the moment they will be truncated. (Telegram messenger auto-splits oversized texts into multiple messages.)",
+      "human_rimays": [
+        "<MISSING_SCOPE>, if a \"text\" is \"oversized\", then the App must auto-split the \"text\" over \"multiple messages\".",
+        "<MISSING_SCOPE>, if a text is too long, then the App must split it across multiple messages.",
+        "<MISSING_SCOPE>, if a text is oversized, then the App must split it over multiple messages."
+      ],
+      "llm_rimay": "For each oversized text, <MISSING_ACTOR> shall split the text over multiple messages.",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "present",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "missing",
+        "modalVerb": "filled",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": false,
+        "condition": true,
+        "actor": false,
+        "modalVerb": true,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": true,
+      "verdict_match": false,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.6529035181707509,
+        "seq_ratio_max": 0.7073170731707317,
+        "jaccard_mean": 0.35784313725490197,
+        "jaccard_max": 0.4117647058823529,
+        "cosine_mean": 0.8199003792757648,
+        "cosine_max": 0.8535289549523348
+      },
+      "paska_passed": true,
+      "paska_smells": []
+    },
+    {
+      "reqId": "757-Signal",
+      "nl_text": "Request Number - 757 | Request Title - different notification settings for group chats | Request Description - It would be very nice to be able to change the notification settings for goups independently from other (personal) chats, as group chats might have a lower priority for the user.",
+      "human_rimays": [
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow the user to change the \"notification settings\" for \"groups\" independently from the \"personal chats\".",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user set notification settings for group chats separately from personal chats.",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide functionality to change the notification settings for groups independently from personal chats."
+      ],
+      "llm_rimay": "For group chats, the <MISSING_ACTOR> <MISSING_MODAL_VERB> allow the user to \"change the notification settings for group chats independently from personal chats\".",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "missing",
+        "actor": "present",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "missing",
+        "modalVerb": "missing",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": false,
+        "condition": false,
+        "actor": false,
+        "modalVerb": false,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": true,
+      "verdict_match": false,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.7871652482835602,
+        "seq_ratio_max": 0.8421052631578947,
+        "jaccard_mean": 0.6018518518518519,
+        "jaccard_max": 0.75,
+        "cosine_mean": 0.8885340107287071,
+        "cosine_max": 0.896179073612068
+      },
+      "paska_passed": false,
+      "paska_smells": [
+        {
+          "segment_id": "757-Signal_rimay_1",
+          "smell": "Incomplete requirement",
+          "value": "The requirement does not have a system response."
+        },
+        {
+          "segment_id": "757-Signal_rimay_1",
+          "smell": "Not requirement",
+          "value": "The sentence does not contain a system response nor condition nor a scope phrase."
+        }
+      ]
+    },
+    {
+      "reqId": "1283-Signal",
+      "nl_text": "Request Number - 1283 | Request Title -Theme Support | Request Description - I\\'m trying to convince a friend to use TextSecure but the themes from stuff like Go SMS PRO is keeping them on that platform unfortunately :( Maybe not a top priority feature, but it might help with adoption.",
+      "human_rimays": [
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide \"themes\" similar to \"GO SMS PRO\".",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide \"themes\".",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure should provide themes."
+      ],
+      "llm_rimay": "TextSecure <MISSING_MODAL_VERB> support \"themes\".",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "missing",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "implied"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "missing",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": false,
+        "condition": false,
+        "actor": true,
+        "modalVerb": false,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": true,
+      "verdict_match": false,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.5319714544020621,
+        "seq_ratio_max": 0.7076923076923077,
+        "jaccard_mean": 0.20873015873015874,
+        "jaccard_max": 0.4,
+        "cosine_mean": 0.6994589472864327,
+        "cosine_max": 0.9132891631902662
+      },
+      "paska_passed": false,
+      "paska_smells": [
+        {
+          "segment_id": "1283-Signal_rimay_1",
+          "smell": "Not requirement",
+          "value": "The sentence does not contain a system response nor condition nor a scope phrase."
+        }
+      ]
+    },
+    {
+      "reqId": "7310-Signal",
+      "nl_text": "Request Number - 7310 | Request Title - Feature: add support for custom url sceme signal:// so we can have share buttons | Request Description - [x ] searched open and closed issues for duplicates [x ] read https://github.com/WhisperSystems/Signal-Android/wiki/Submitting-useful-bug-reports  Bug description. I maintain a website, and I would love to put signal share buttons on my articles. To do so, there needs to be a way to point to the signal app from webpages. The manner to do this without many compatibility issues is a custom url sceme: signal:// I know, custom url scemes could be considered bad practice since they pollude the namespace. I agree, but for now signal can't compete with other social media from a buisness standpoint because of missing features like these. This may keep a lot of people from using signal as their favorite messenger app. (world domination is not the goal, but we don't want to shoot ourselfs in the foot either, private messaging will only happen if your contacts are also willing to accept signal on their phone.) Lets consider having share buttons on websites. A custom url sceme would be a good start to make that possible. Send message to Signal Private Messenger Read more about this here",
+      "human_rimays": [
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide a \"custom URL scheme\" for sharing.",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide a \"signal://\" URL scheme.",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, Signal must provide a custom URL scheme for opening Signal from webpages."
+      ],
+      "llm_rimay": "The Signal-Android application shall support the custom URL scheme \"signal://\" to allow webpages to open the Signal app.",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "missing",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "filled",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": false,
+        "condition": false,
+        "actor": true,
+        "modalVerb": true,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": false,
+      "verdict_match": true,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.39838646629000124,
+        "seq_ratio_max": 0.5076142131979695,
+        "jaccard_mean": 0.2690918472652219,
+        "jaccard_max": 0.29411764705882354,
+        "cosine_mean": 0.7044279042713687,
+        "cosine_max": 0.8523139446133471
+      },
+      "paska_passed": false,
+      "paska_smells": [
+        {
+          "segment_id": "7310-Signal_rimay_1",
+          "smell": "Not precise verb",
+          "value": "Not precise verb in the system response."
+        }
+      ]
+    },
+    {
+      "reqId": "937-Signal",
+      "nl_text": "Request Number - 937 | Request Title - Conversation View: Consistent message order | Request Description - Please correct me, but as far as I can tell, messages are sorted by time of arrival. However, since the messages are transported either via SMS or via Google Cloud Messaging, both of which don't guarantee ordering, messages may appear in the wrong order. This means that chat participants may see deviating orders of messages, replies to messages they don't even see. In theory, it's even possible that several messages from the same sender arrive and are displayed in wrong order.  Idea 1: Sort the conversation view by \"sent\" timestamp. See also Display send date for incoming messages #806. Problem: What is the \"sent\" date? Is it reliable? Is it set by the client or the TS server (farm)? Idea 2: Give each message a sequence number generated by the TextSecure server. Sort conversation view according to those numbers. Problem: Many, but not all messages go through the TS server. Idea 3: Employ vector clocks.",
+      "human_rimays": [
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must sort the \"messages\" in the \"conversation view\" by \"sent timestamp\", \"sequence numbers\" or \"vector clocks\".",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must sort the \"conversation view\" by \"sent\" time.",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must display the \"messages\" in the \"conversation view\" in the same order for all \"chat participants\"."
+      ],
+      "llm_rimay": "For each \"message in the conversation view\", the <MISSING_ACTOR> <MISSING_MODAL_VERB> sort the \"conversation view\" by the \"sent timestamp\". <NON_ATOMIC>",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "missing",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "missing",
+        "modalVerb": "missing",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": false,
+        "condition": false,
+        "actor": false,
+        "modalVerb": false,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": true,
+      "verdict_match": false,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.5546599874235771,
+        "seq_ratio_max": 0.6380368098159509,
+        "jaccard_mean": 0.36654135338345867,
+        "jaccard_max": 0.42857142857142855,
+        "cosine_mean": 0.7768383347278096,
+        "cosine_max": 0.8208043684675893
+      },
+      "paska_passed": false,
+      "paska_smells": [
+        {
+          "segment_id": "937-Signal_rimay_1",
+          "smell": "Incomplete requirement",
+          "value": "The requirement does not have a system response."
+        },
+        {
+          "segment_id": "937-Signal_rimay_1",
+          "smell": "Not requirement",
+          "value": "The sentence does not contain a system response nor condition nor a scope phrase."
+        }
+      ]
+    },
+    {
+      "reqId": "42-Mastodon",
+      "nl_text": "Request Number - 42 | Request Title - Make view from timeline back | Request Description - I like this , because it makes me feel I am not alone on then earth. Every time I view the post from different from the timeline, I can feel they are all alive, not only me. Every time, every second, I can meet new friend, maybe he is in Japan, having dinner, or In French. Now the feature of viewing from timeline is not in mastondon-android. I like the hot trending, then I can know what people are talking now. But I feel lonely when use your app. I find out that it is because I cannot always read a new post, cannot always know who may be will be my friend, what he is doing ,worring. So I need this feature.",
+      "human_rimays": [
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide a view of the posts in the \"public timeline\".",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide a view of posts from other people.",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, <MISSING_ACTOR> <MISSING_MODAL_VERB> <MISSING_ACTION>."
+      ],
+      "llm_rimay": "<MISSING_SCOPE> <MISSING_CONDITION> The mastodon-android app shall display the \"posts from the timeline\" to the user.",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "missing",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "missing",
+        "condition": "missing",
+        "actor": "filled",
+        "modalVerb": "filled",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": true,
+        "condition": true,
+        "actor": true,
+        "modalVerb": true,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": false,
+      "verdict_match": true,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.3080870974602686,
+        "seq_ratio_max": 0.45714285714285713,
+        "jaccard_mean": 0.14814814814814814,
+        "jaccard_max": 0.2222222222222222,
+        "cosine_mean": 0.5074114129646793,
+        "cosine_max": 0.8055363670011556
+      },
+      "paska_passed": true,
+      "paska_smells": []
+    },
+    {
+      "reqId": "7345-Signal",
+      "nl_text": "Request Number - 7345 | Request Title - Better Media Saving Behavior | Request Description - I have:   searched open and closed issues for duplicates  read https://github.com/WhisperSystems/Signal-Android/wiki/Submitting-useful-bug-reports  Bug description. One of the features that was missing for a long time but thankfully has been recently implemented was the ability to swipe through the images without having to keep going back to the index and always having it start at the top. Kudos and thanks for that. However, another element exists that can be greatly improved and probably just got missed; and hopefully can be added. Currently each picture (\"media\") provides you the save button on the top. However, it never detects that the item has already been saved and you have to just remember it or go check your on device gallery to see if it is already there. Instead, it simply keeps making duplicates of the item and just incrementing it. It would't be too difficult to do a simple if/exists > show view/share icon else/doesn't > show save icon (as it is now). This will spare the need to save multiple duplicates and incrementing it when you can simply provide a visual check that it has already been saved. It is simply better UX and cleaner that way. Steps to reproduce.  save an item save it again you have a duplicate with a -1 at the end save it again you now have 3 with a -1 and -2 of the same item repeat and goes on as long as you keep saving Expected result: Detect that the item has already been saved and either provide a view icon or share icon to visually indicate it has been saved already, otherwise show the save button. A simple file system check for the item will facilitate this. Thanks in advance.",
+      "human_rimays": [
+        "<MISSING_SCOPE>, if the \"media item\" has already been saved, then the App must change the \"save icon\" to a \"view/share icon\".",
+        "<MISSING_SCOPE>, if a picture has already been saved, then the App must show a view or share icon instead of the save button.",
+        "<MISSING_SCOPE>, if the user has already saved a \"media item\", then the App must show a \"view\" or \"share\" icon instead of the \"save\" button."
+      ],
+      "llm_rimay": "For each picture, if the picture has already been saved to the device, then the Signal-Android application shall show the \"view icon or share icon\" instead of the \"save button\".",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "present",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "filled",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": false,
+        "condition": true,
+        "actor": true,
+        "modalVerb": true,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": false,
+      "verdict_match": true,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.6327080016306312,
+        "seq_ratio_max": 0.7247386759581882,
+        "jaccard_mean": 0.49270353302611364,
+        "jaccard_max": 0.6071428571428571,
+        "cosine_mean": 0.6957275586729573,
+        "cosine_max": 0.7876034583097894
+      },
+      "paska_passed": true,
+      "paska_smells": []
+    },
+    {
+      "reqId": "175-Signal",
+      "nl_text": "Request Number - 175 | Request Title - Featue Request: Quick way to wipe message database | Request Description - Say for some reason you're being coerced with force to disclose your password, could you make a quick way (say a button combo + confirm dialogue) to wipe the text message database?",
+      "human_rimays": [
+        "<MISSING_SCOPE>, when the user triggers a \"specific button combo\" and confirms the \"confirm dialogue\", then the App must wipe the \"text message database\".",
+        "<MISSING_SCOPE>, if the user is being coerced to disclose their password, then the App must let them quickly wipe the message database.",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide a quick way, such as a \"button combo\" with a \"confirm dialogue\", to wipe the \"text message database\"."
+      ],
+      "llm_rimay": "When the User requests \"a quick wipe of the text message database\" by using \"a button combination\", then the System shall wipe the \"text message database\" after the User confirms the \"confirmation dialogue\". <NON_ATOMIC>",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "present",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "filled",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": false,
+        "condition": true,
+        "actor": true,
+        "modalVerb": true,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": false,
+      "verdict_match": true,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.4198307126132337,
+        "seq_ratio_max": 0.4913294797687861,
+        "jaccard_mean": 0.2888238916256158,
+        "jaccard_max": 0.41379310344827586,
+        "cosine_mean": 0.7723796517662066,
+        "cosine_max": 0.8726126452511069
+      },
+      "paska_passed": false,
+      "paska_smells": [
+        {
+          "segment_id": "175-Signal_rimay_1",
+          "smell": "Incorrect order requirement",
+          "value": "The condition clause of the requirement is after the system response."
+        }
+      ]
+    },
+    {
+      "reqId": "2055-Signal",
+      "nl_text": "Request Number - 2055 | Request Title - use delivery receipts to show message received time for outgoing messages | Request Description - After long pressing on a message and selecting the info button, the message details are shown. This includes the sent and received times for incoming messages. For outgoing messages, in contrast, only one Sent/Received time is displayed, probably containing sent time. Now that delivery receipts are implemented, it would be possible to display the received time for outgoing messages (by taking the sent time from the receipt). Or to make it more precise, let the receipt message piggybag the real received time. This would make the user interface more consistent. When this is rejected for some reasons, I suggest renaming the \"Sent/Received\" label for outgoing messages to \"Sent\" because this is what it really is about.",
+      "human_rimays": [
+        "<MISSING_SCOPE>, if a message is outgoing, then the App must show its \"received time\", taken from the \"delivery receipt\", in the \"message details\".",
+        "<MISSING_SCOPE>, if a message is outgoing, then the App must show its received time in the message details.",
+        "<MISSING_SCOPE>, if a message is outgoing, then the App must show its \"received time\", taken from the \"delivery receipt\", in the \"message details\"."
+      ],
+      "llm_rimay": "When the user long presses a message and selects the \"info button\", then the System shall display the \"received time\" for outgoing messages based on the \"sent time\" from the \"delivery receipt\". <NON_ATOMIC>",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "present",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "filled",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": false,
+        "condition": true,
+        "actor": true,
+        "modalVerb": true,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": false,
+      "verdict_match": true,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.5031039136302294,
+        "seq_ratio_max": 0.5230769230769231,
+        "jaccard_mean": 0.2591036414565826,
+        "jaccard_max": 0.2857142857142857,
+        "cosine_mean": 0.7332834404687079,
+        "cosine_max": 0.7428619318443219
+      },
+      "paska_passed": true,
+      "paska_smells": []
+    }
+  ],
+  "verdict": {
+    "text": "On missing-slot detection, Track 1 is measurable here, but only for two slots. Scope (34 gold-missing) and condition (21) have real support. Actor and modalVerb have one gold-missing case each, and action has four. Their recall of 1.0 or 0.75 is anecdote, not evidence. On the slots that count, zsl does badly: it flagged 6 of 34 missing scopes and 6 of 21 missing conditions. Taken at face value, that means it fills scope and condition most of the time when the source never stated them.\n\nSome of these fills are real fabrication. 592-Signal gets \"For all the requests\", 828-Signal gets \"For all the TextSecure groups\", and 757-Signal gets \"For group chats\". None of these scopes is in the source.\n\nOthers look like a scoring artefact. 107-Mastodon and 4333-Signal contain no scope or condition text at all, yet llm_slots records both as \"filled\". The parser seems to treat the absence of an explicit `<MISSING_SCOPE>` tag as a fill. The 28 \"silent\" scope fills are therefore an upper bound, and the true fabrication rate cannot be read off this run until that is checked.\n\nThe second pattern is an inversion of the human convention. Annotators treat \"the App must\" as the implied default actor and modal. zsl instead emits `<MISSING_ACTOR> <MISSING_MODAL_VERB>`, which accounts for the 14 actor and 15 modalVerb false positives, for example 828-Signal, 937-Signal and 1363-Signal. The model is cautious exactly where the gold standard allows inference, and permissive where the gold expects a flag. This mismatch drives most of the 16 cases where the LLM called a requirement incomplete and the gold called it complete. It reads more like a prompt-specification gap than a judgement failure.\n\nConversion similarity sits clearly below the human-human ceiling on every metric. The gap is roughly 0.13 on seq_ratio, 0.13 on Jaccard and 0.08 on cosine. With 35 requirements, the gap is probably real, but the ceiling is inflated. All three annotators share the boilerplate prefix \"<MISSING_SCOPE>, <MISSING_CONDITION>, the App must\", and zsl's outputs systematically lack it. Much of the shortfall is therefore surface template divergence rather than worse requirement content. In 757-Signal and 828-Signal, the action wording is close to the humans' phrasing.\n\nThe Paska results mostly reflect the placeholder problem rather than independent quality problems. \"Not requirement\" (16 cases) and \"Incomplete requirement\" (8) fire on sentences where the actor and modal are placeholders, so Paska finds no system response. The split confirms this: pass rate is 0.75 when the LLM produced a complete sentence and 0.16 when it did not. The genuinely content-level smells are single instances: a vague verb in 7310-Signal and condition-after-response ordering in 175-Signal.\n\nTwo outputs touch atomicity even though this set was filtered to atomic requirements. Paska flags 6457-Signal as non-atomic, and the LLM itself tagged 937-Signal `<NON_ATOMIC>`. That is worth a manual look, but two cases support no conclusion.\n\nThe sample is small and mostly Signal requests. This is one zsl run with no comparison strategy, and it covers only the easier atomic subset, so none of this generalises to unfiltered requirements.\n\nThe most useful next step is to fix the measurement before comparing strategies:\n\n1. Audit how llm_slots marks scope and condition as \"filled\" when no text is present.\n2. Revise the prompt so the model always writes explicit `<MISSING_SCOPE>`/`<MISSING_CONDITION>` tags and uses \"the App\" as the default actor, matching the annotation guideline.\n3. Rerun zsl, then fsl and cot, against the corrected scorer.\n\nUntil then, Track 1 numbers for scope and Paska pass rates mix model behaviour with format and parser effects.",
+    "model": "claude-opus-5-5",
+    "scope": "run",
+    "generated_at": "2026-10-18T23:58:55+01:00",
+    "results_digest": "25a4699e9690"
+  }
+}

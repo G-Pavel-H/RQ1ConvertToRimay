@@ -1,0 +1,1 @@
+For <MISSING_SCOPE>, if <MISSING_CONDITION>, then <MISSING_ACTOR> <MISSING_MODAL_VERB> indicate "whether the last message is yours or from your conversation partner" in the "conservation overview".

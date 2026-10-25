@@ -1,1 +1,1 @@
-For the app, the actor must add fingerprint support for unlocking as an alternative to passphrase.
+The system shall provide the user with the ability to unlock the app by using fingerprint as an alternative to passphrase.

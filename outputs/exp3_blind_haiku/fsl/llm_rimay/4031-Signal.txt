@@ -1,0 +1,1 @@
+<MISSING_SCOPE>, when the App is downloading media, then the App must provide an option to cancel the running media download.

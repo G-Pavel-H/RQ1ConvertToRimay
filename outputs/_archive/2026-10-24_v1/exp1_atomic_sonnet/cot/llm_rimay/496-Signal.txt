@@ -1,0 +1,1 @@
+<MISSING_SCOPE> <MISSING_CONDITION> The <MISSING_ACTOR> shall allow the user to change the "maximum size of MMS".

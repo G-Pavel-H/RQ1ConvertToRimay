@@ -1,1 +1,1 @@
-For <MISSING_SCOPE>, <MISSING_CONDITION>, the app must provide an option to cancel running media downloads.
+<MISSING_SCOPE>, <MISSING_CONDITION>, the system must provide an option to cancel running media downloads.

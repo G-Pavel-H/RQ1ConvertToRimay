@@ -1,0 +1,2 @@
+While the user is a "non-passphrase user", the Signal must not enable the "Screen security" feature by default.
+While the user is a "passphrase user", the Signal must enable the "Screen security" feature.

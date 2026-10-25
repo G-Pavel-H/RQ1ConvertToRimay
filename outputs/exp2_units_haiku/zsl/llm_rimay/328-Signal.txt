@@ -1,5 +1,5 @@
-For all the contacts that knowingly use TextSecure, the System shall send a dummy random message to a randomly chosen recipient at a random time.
-When a dummy message is received and decrypted, the recipient shall automatically discard the dummy random message.
-If the sender enables the dummy messaging feature and defines a desired quantity, then the System shall level-out the legitimate messages by spoiling the traffic analysis of traffic retention data.
-If roaming is disabled by default and battery level is below a defined threshold, then the System shall not send dummy messages.
-If a recipient opts out of dummy messaging or requests not to receive messages, then the System shall exclude that recipient from receiving dummy messages.
+The TextSecure system shall send a "dummy random message" to a "random recipient" where <MISSING_CONDITION> the recipient is a contact that knowingly uses TextSecure.
+The TextSecure system shall mask meaningful communication by leveling legitimate messages against dummy messages to prevent traffic analysis of traffic retention data.
+For a sender, when the sender enables the dummy messaging feature and defines desired quantity parameters, then the TextSecure system shall store the "opt-in configuration" including "max dummy messages per month", "dummy to legitimate message ratio", and "max total messages".
+When the TextSecure system detects roaming is enabled or battery level is below a threshold, then the TextSecure system shall not send a "dummy message".
+When a recipient opts out from receiving dummy messages, the TextSecure system shall exclude the recipient from "dummy message recipients list".

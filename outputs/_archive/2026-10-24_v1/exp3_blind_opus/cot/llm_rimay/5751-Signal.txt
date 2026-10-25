@@ -1,0 +1,2 @@
+For each notification of a received SMS, if the User swipes away the notification from the "Android notification drawer", then Signal shall not display the notification again.
+For each notification of a received SMS, after the User swipes away the notification from the "Android notification drawer", and if Signal receives another message from the same "contact/number", then Signal shall display a new notification with the "new message".

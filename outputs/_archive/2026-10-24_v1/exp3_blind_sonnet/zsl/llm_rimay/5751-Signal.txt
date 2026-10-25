@@ -1,0 +1,2 @@
+When the user swipes away a "notification" from the "Android notification drawer", then Signal shall not display the "swiped-away notification" again.
+When Signal receives another "message" from the same "contact or number" after the "notification" was swiped away, then Signal shall display a new "notification" containing the new "message".

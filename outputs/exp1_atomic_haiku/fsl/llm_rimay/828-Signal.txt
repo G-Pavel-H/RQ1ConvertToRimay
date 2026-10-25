@@ -1,1 +1,1 @@
-For all TextSecure groups, the administrator must be able to remove participants after they were added.
+<MISSING_SCOPE>, <MISSING_CONDITION>, the app must provide the ability to remove participants from TextSecure groups after they were added.

@@ -1,1 +1,1 @@
-For <MISSING_SCOPE>, if <MISSING_CONDITION>, then <MISSING_ACTOR> <MISSING_MODAL_VERB> edit or delete the notification color for individual contacts or groups.
+<MISSING_SCOPE> <MISSING_CONDITION> the System shall send a notification with color to individual contacts or groups.

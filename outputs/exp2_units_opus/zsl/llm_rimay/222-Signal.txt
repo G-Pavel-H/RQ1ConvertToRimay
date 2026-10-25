@@ -1,3 +1,3 @@
-<MISSING_ACTOR> <MISSING_MODAL_VERB> block the "messages" from the "user-specified phone number" by using a "rule similar to an email filter rule".
-When <MISSING_ACTOR> receives a "message" from the "user-specified phone number", then <MISSING_ACTOR> <MISSING_MODAL_VERB> delete the "message".
-When <MISSING_ACTOR> receives a "message" from the "user-specified phone number", then <MISSING_ACTOR> <MISSING_MODAL_VERB> not send a "notification".
+The <MISSING_ACTOR> <MISSING_MODAL_VERB> block the "messages" from a "user-specified phone number".
+When the <MISSING_ACTOR> receives a "message" from a "blocked phone number", then the <MISSING_ACTOR> <MISSING_MODAL_VERB> delete the "message".
+When the <MISSING_ACTOR> receives a "message" from a "blocked phone number", then the <MISSING_ACTOR> <MISSING_MODAL_VERB> not send a "notification" to the "user".

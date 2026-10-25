@@ -1,1 +1,1 @@
-<MISSING_ACTOR> <MISSING_MODAL_VERB> display the "indication of whether an image has a description" to the user.
+<MISSING_SCOPE> <MISSING_CONDITION> The <MISSING_ACTOR> <MISSING_MODAL_VERB> display the "image description" of each image in a post to the user.

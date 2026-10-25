@@ -1,0 +1,2 @@
+After importing messages from the ".xml backup", then <MISSING_ACTOR> <MISSING_MODAL_VERB> restore the "archived flag" of each previously archived message so that the message is placed in the "archive" folder.
+After importing messages from the ".xml backup", then <MISSING_ACTOR> <MISSING_MODAL_VERB> restore the "blocked flag" of each previously blocked conversation.

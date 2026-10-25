@@ -1,0 +1,2 @@
+<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user mute a "group" or a "user" for a "specified number of minutes or hours".
+<MISSING_SCOPE>, while a "group" or a "user" is muted, then the App must not vibrate or ring for "messages" from that "group" or "user".

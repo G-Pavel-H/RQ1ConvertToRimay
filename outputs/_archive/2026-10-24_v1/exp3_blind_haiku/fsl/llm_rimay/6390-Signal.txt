@@ -1,0 +1,2 @@
+<MISSING_SCOPE>, when a Signal message has been sent to the server but not delivered to the recipient after a timeout period, then the App must send a "lack of delivery" notification to the sender.
+<MISSING_SCOPE>, when the sender receives a "lack of delivery" notification, then the App must offer the user the option to "resend via insecure SMS".

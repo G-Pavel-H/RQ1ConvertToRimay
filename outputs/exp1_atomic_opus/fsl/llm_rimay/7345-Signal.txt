@@ -1,1 +1,1 @@
-<MISSING_SCOPE>, if the "media item" has already been saved on the device, then the app must display a "view icon" in place of the "save button" in the media view. <NON_ATOMIC>
+For each media item, if the media item has already been saved on the device, then the app must display a "view icon" or "share icon" instead of the "save button".

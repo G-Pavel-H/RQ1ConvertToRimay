@@ -1,0 +1,1 @@
+The Mastodon-Android app must display the "posts from the timeline" to the user.

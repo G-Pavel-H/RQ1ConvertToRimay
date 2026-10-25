@@ -1,0 +1,10 @@
+The System shall import a private key from a file.
+The System shall export a private key to a file.
+The System shall import public keys from a file.
+The System shall export public keys to a file.
+The System shall import public keys via Bluetooth.
+The System shall export public keys via Bluetooth.
+The System shall import public keys via NFC.
+The System shall export public keys via NFC.
+The System shall import public keys via QR code.
+The System shall export public keys via QR code.

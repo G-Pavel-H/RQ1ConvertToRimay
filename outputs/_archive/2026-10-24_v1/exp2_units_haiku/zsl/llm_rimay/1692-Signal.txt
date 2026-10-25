@@ -1,0 +1,2 @@
+When a SMS delivery report is received, the System shall save the time the other user received the message.
+When a SMS delivery report is received, the System shall make it possible to view the received time in message details.

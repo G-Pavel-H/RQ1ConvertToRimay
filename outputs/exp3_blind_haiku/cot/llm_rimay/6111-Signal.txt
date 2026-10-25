@@ -1,0 +1,6 @@
+For the gallery mode, the System shall enable multiselect of images and media.
+When the user selects images or media in the gallery mode, then the System shall delete the selected images and media.
+For the opened image view, the System shall delete the image or media.
+The System shall place the delete option behind a settings menu.
+Before the System deletes an image or media, then the System shall display a confirmation dialog to the user.
+When the System deletes an image or media from the gallery mode or opened view, then the System shall retain and display the corresponding message text with a hint indicating the deleted image or media.

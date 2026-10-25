@@ -1,0 +1,4 @@
+<MISSING_SCOPE>, <MISSING_CONDITION>, the App must export the "private key" and the "public keys" to a "file".
+<MISSING_SCOPE>, <MISSING_CONDITION>, the App must import the "private key" and the "public keys" from a "file".
+<MISSING_SCOPE>, <MISSING_CONDITION>, the App must export the "public keys" through "Bluetooth", "NFC" or "QR code".
+<MISSING_SCOPE>, <MISSING_CONDITION>, the App must import the "public keys" through "Bluetooth", "NFC" or "QR code".

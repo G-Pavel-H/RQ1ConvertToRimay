@@ -1,5 +1,5 @@
-<MISSING_SCOPE>, if the user has enabled the dummy messaging feature, then the TextSecure must send "dummy random messages" to "randomly chosen contacts that use TextSecure" at "random times".
-<MISSING_SCOPE>, when TextSecure receives a "dummy message", then the TextSecure must automatically discard the "dummy message" after decryption.
-<MISSING_SCOPE>, <MISSING_CONDITION>, the TextSecure must let the sender enable the "dummy messaging feature" as an "opt-in" and define the "desired quantity" of dummy messages.
-<MISSING_SCOPE>, if the device is "roaming" or the battery level is below "30%", then the TextSecure must not send a "dummy message".
-<MISSING_SCOPE>, <MISSING_CONDITION>, the TextSecure must let the recipient notify peers that the recipient does not want to receive "dummy messages" as an "opt-out".
+<MISSING_SCOPE>, if the sender has enabled the dummy messaging feature, then TextSecure must send dummy random messages to random recipients at random times.
+<MISSING_SCOPE>, when TextSecure receives a dummy message, then TextSecure must automatically discard the dummy message after decryption.
+<MISSING_SCOPE>, if the sender has enabled the dummy messaging feature, then TextSecure must let the sender define the desired "quantity of dummy messages".
+<MISSING_SCOPE>, if the device is roaming, then TextSecure must not send dummy messages unless the sender has enabled dummy messaging while roaming.
+<MISSING_SCOPE>, if the battery level is below a "threshold", then TextSecure must not send dummy messages.

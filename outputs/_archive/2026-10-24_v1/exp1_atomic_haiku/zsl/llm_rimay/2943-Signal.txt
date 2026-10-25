@@ -1,0 +1,1 @@
+For the System, when a User requests the restoration of text-based smileys, then the System shall provide an explanation of why text-based smileys were removed and shall restore the previous text-based smiley set. <NON_ATOMIC>

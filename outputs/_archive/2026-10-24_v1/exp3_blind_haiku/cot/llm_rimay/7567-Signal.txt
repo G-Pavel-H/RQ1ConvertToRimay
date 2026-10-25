@@ -1,0 +1,2 @@
+Signal shall use the Android default SMS notification profile for regular SMS/MMS messages.
+Signal shall use Signal notification settings for secure messages and calls.

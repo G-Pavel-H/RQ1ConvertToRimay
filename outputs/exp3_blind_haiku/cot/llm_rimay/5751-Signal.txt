@@ -1,0 +1,2 @@
+When a notification is swiped away, then Signal must not display the notification again.
+When a new message is received from the same contact, then Signal must display a new notification for the received message.

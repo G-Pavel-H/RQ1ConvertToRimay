@@ -1,0 +1,1 @@
+The System shall display in the conservation overview whether the last message is yours or from your conversation partner.

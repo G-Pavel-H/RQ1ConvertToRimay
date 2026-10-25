@@ -1,0 +1,2 @@
+When the user swipes away a "notification", then the Signal app shall not display the "swiped away notification" again.
+When the Signal app receives another "message" from the same "contact or number", then the Signal app shall display a "new notification" containing the "new message".

@@ -1,21 +1,37 @@
 # Cross-strategy verdict — exp2_units_opus
 
-Model: `claude-opus-5-5` · generated 2026-10-19T00:26:44+01:00 · runs: cot, fsl, zsl
+Model: `claude-opus-5-5` · generated 2026-10-25T20:12:14+00:00 · runs: cot, fsl, zsl
 
-Few-shot is the clear winner on every metric that can be measured here. The gaps are large enough to survive the small sample, but they come from a single run on 42 already-atomic requirements, so they should not be read as general.
+## Summary
+Few-shot (fsl) is clearly best on every measurable dimension. It flags 54 of 56 gold-missing slots, reaches the human-human ceiling on similarity, and passes Paska on 88% of units. Zero-shot (zsl) and chain-of-thought (cot) trail by margins far larger than noise, even at 42 units from 15 requirements.
 
-On Track 1, only scope and condition can be measured. The gold marks scope missing in all 42 items and condition missing in 14. Actor and modalVerb have zero gold-missing support, so their 0.0 scores are artifacts and say nothing about fabrication. On the measurable slots the strategies separate sharply. Zero-shot never flagged a missing slot: it invented scope 42/42 times and condition 14/14 times, which is exactly the fabrication risk this experiment probes. Chain-of-thought was only partly better, flagging 18/42 scopes and 3/14 conditions. Few-shot flagged every missing scope and 10 of 14 conditions. Few-shot against chain-of-thought on scope (42/42 vs 18/42) is not noise. On condition (10/14 vs 3/14) the evidence is weaker but still unlikely to be chance (roughly p≈0.02 by Fisher's exact test). The 4 conditions few-shot still fabricated are the residual risk worth inspecting.
+## Missing-slot detection
+Track 1 is measurable only for scope (42 gold-missing) and condition (14 gold-missing). Actor, modalVerb and action have no gold-missing support, so their 0.0 F1 is an artifact. Any "missing" call on those slots is a false alarm on an implied slot. The overall-verdict F1 of 0.0 is also undefined, because all 42 gold units are complete.
 
-Zero-shot and chain-of-thought share a distinct failure mode that is more interesting than their low flag rate: they flag the wrong slots. They fill missing scope but mark actor (15–18 times) and modalVerb (29–30 times) as missing, where the gold calls both implied. That is why 34 of 42 outputs are declared incomplete against a gold standard that calls every item complete. This looks less like reasoning and more like a convention the models have not learned: they won't supply "shall" or "the system" unless told to, yet they happily invent a scope. Few-shot examples fix both behaviours at once, which suggests the examples teach the labelling convention rather than better judgement. The overall-verdict F1 of 0.0 in all runs is also an artifact: the gold has no incomplete requirements.
+- **fsl** keeps the two behaviours correct: it flags absent scope/condition and fills every implied actor and modal verb.
+- **zsl** flags no missing slot at all. It writes a scope into all 42 units and a condition into all 14 that lack one, which is the fabrication risk this experiment probes.
+- **cot** fails in both directions:
+  - It invents scope in 25 units.
+  - It marks implied slots as missing: modal verb in 30 units, actor in 18.
+  - As a result, 34 of 42 units are judged incomplete, against gold that is entirely complete.
 
-On Track 2, few-shot is effectively at the human ceiling. Its cosine is 0.888 against 0.889 for human–human, and its Jaccard is 0.609 against 0.607. Zero-shot and chain-of-thought sit about 0.13 cosine below, and with 42 items that gap is far outside noise. Zero-shot and chain-of-thought are indistinguishable from each other on similarity. The Paska gap (88% vs 31%) is not independent evidence. Every output the LLM called complete passed, and the dominant smells ("Incomplete requirement", "Not requirement") are what you would expect from outputs missing actor or modal. So Paska is largely re-measuring the slot-flagging behaviour above.
+The reasoning step appears to make the model literal about what the source states, but it applies this to the wrong slots.
 
-Several things are suspicious. Zero-shot and chain-of-thought have identical Paska counts (13/29) and identical verdict confusion (34/8) despite different Track 1 numbers. Check whether these are the same 8 requirements and whether the CoT prompt actually differed in practice. Few-shot reaches a similarity of 1.0 on some pairs, so check that no few-shot exemplar overlaps a test requirement. Few-shot also drew 3 "Non-atomic" smells on a set filtered to atomic items. Either the model merged clauses or Paska disagrees with the annotators, and either is worth a look. The results contain no per-requirement output, so I can't attach reqIds to any of these patterns; that per-item export is the first thing to pull.
+## Conversion quality
+fsl matches the human-human ceiling on cosine (0.894 vs 0.889) and Jaccard. It falls slightly short on sequence ratio, so its outputs are as close to annotators as annotators are to each other. zsl and cot are indistinguishable from each other, at about 0.77 cosine, roughly 0.12 below the ceiling.
 
-Next steps, in order:
-1. Inspect the zero-shot and CoT outputs where actor or modalVerb was flagged, to confirm whether this is a format issue.
-2. Rerun each strategy with several seeds to get variance.
-3. Audit the few-shot exemplars for leakage.
-4. Add gold-incomplete requirements so that the verdict and the actor/modal metrics become measurable.
+Paska tracks the incompleteness calls closely. Units that cot judged incomplete pass only 9% of the time, and the dominant smells for zsl and cot are "Not requirement" and "Incomplete requirement". Dropping the modal verb or actor therefore produces malformed Rimay, not just a different label.
 
-Only after that is it worth moving to the non-atomic set with a decomposition step.
+## Units and atomicity
+All three strategies return exactly the requested unit count for all 15 requirements, and no count disagreements occur. Non-atomic detection is trivially perfect because the prompt states the count. Reordering is minor (cot 2, fsl 1, zsl 3) and should not affect the headline metrics if units are matched by content.
+
+## Anomalies and inconsistencies
+- No format breaches or count errors in any strategy.
+- **cot and zsl:** implied actor and modal verb are marked missing (cot 18/30, zsl 10/13). The report gives no reqIds, so it is unknown whether these cluster in particular requirements.
+- **zsl:** no scope is flagged missing in any unit, which is either systematic scope invention or a parsing gap in how zsl output encodes empty scope.
+- **fsl:** Paska flags 2 units as "Non-atomic requirement" despite the split, meaning residual coordination in specific units.
+
+## Next step
+- Manually inspect zsl output for how scope is represented, to rule out a scorer or parser artifact before reporting fabrication.
+- Emit per-unit reqIds for slot-level false positives and Paska smells, to locate the cot modal-verb drops and the 2 fsl non-atomic units.
+- Run the blind task to see whether fsl's advantage survives once unit counts are not given.

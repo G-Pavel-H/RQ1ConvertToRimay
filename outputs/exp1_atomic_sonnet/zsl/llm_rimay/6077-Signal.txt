@@ -1,1 +1,1 @@
-When Signal sends an SMS message to a mobile provider number, Signal must deliver the SMS message to the mobile provider's number without failure.
+When the user sends an "SMS message" to the provider number "13977" through Signal, then the Signal application must deliver the "SMS message" to the provider number "13977".

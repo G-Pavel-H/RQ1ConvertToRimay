@@ -1,0 +1,1 @@
+For any "group" and any "user", <MISSING_CONDITION>, then <MISSING_ACTOR> <MISSING_MODAL_VERB> mute the "vibration and ringing notifications" for "X minutes or X hours".

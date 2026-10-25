@@ -1,0 +1,2 @@
+When a "sms delivery report" is received, then <MISSING_ACTOR> <MISSING_MODAL_VERB> save the "time the other user received the message (done date)".
+<MISSING_ACTOR> <MISSING_MODAL_VERB> display the "time the other user received the message" in the "message details".

@@ -1,2 +1,2 @@
-TextSecure shall provide the option to edit a message from the Android Context Menu.
-TextSecure shall provide the ability to insert a new message next to an existing message.
+The TextSecure application shall allow users to edit a message from the Android Context Menu.
+The TextSecure application shall allow users to insert a new message next to an existing message.

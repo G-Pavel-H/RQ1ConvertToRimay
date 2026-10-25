@@ -1,0 +1,3 @@
+<MISSING_SCOPE>, when the user selects the "info button" for an "outgoing message", then the App must display the "received time" of the "outgoing message" based on the "delivery receipt".
+<MISSING_SCOPE>, before the recipient device sends a "delivery receipt", then the recipient device must include the "real received time" in the "delivery receipt".
+<MISSING_SCOPE>, if the App does not display the "received time" for "outgoing messages", then the App must label the "Sent/Received" time of "outgoing messages" as "Sent".

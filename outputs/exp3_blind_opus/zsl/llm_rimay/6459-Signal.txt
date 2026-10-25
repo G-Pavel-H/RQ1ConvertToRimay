@@ -1,0 +1,1 @@
+When an "other app" sends a "share Intent" that contains Intent.EXTRA_SUBJECT to Signal, then Signal <MISSING_MODAL_VERB> include the "EXTRA_SUBJECT of the share Intent" in the "shared content".

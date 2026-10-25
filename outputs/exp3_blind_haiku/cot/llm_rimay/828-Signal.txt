@@ -1,0 +1,1 @@
+For TextSecure groups, after participants were added, the system shall permit the removal of participants.

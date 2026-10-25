@@ -1,0 +1,1 @@
+For <MISSING_SCOPE>, if <MISSING_CONDITION>, then the mastodon-android app <MISSING_MODAL_VERB> provide the "view posts from the timeline" feature to the User.

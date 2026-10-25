@@ -1,0 +1,2 @@
+For each "message draft", <MISSING_ACTOR> must move the "message draft" to the "top of the message-list".
+For each "message draft", <MISSING_ACTOR> must mark the "message draft" with "another color" or the text "Draft".

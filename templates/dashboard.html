@@ -10,11 +10,14 @@
   /* models: categorical slots 1–3, validated all-pairs on #fff */
   --m-haiku:#2a78d6;--m-sonnet:#eb6834;--m-opus:#1baf7a;--m-other:#8a8f98;
   /* magnitude: one hue */
-  --heat:#2a78d6;--track:#cde2fb;--bar:#2a78d6}
+  --heat:#2a78d6;--track:#cde2fb;--bar:#2a78d6;
+  /* score bands (good / moderate / poor); checked for ink contrast and CVD separation, arrows as second cue */
+  --q-good:#a8dcc6;--q-mid:#fbe08a;--q-low:#f4a68c}
 @media (prefers-color-scheme:dark){:root{--bg:#0f1113;--panel:#171a1d;--ink:#e7e9ec;--muted:#9aa1aa;--line:#2a2e33;--soft:#1f2327;--accent:#6aa6ef;--accent-soft:#1b2a3d;
   --ok:#5cc47e;--ok-soft:#15301e;--bad:#ef8a83;--bad-soft:#3a1a17;--warn:#e0a54a;--warn-soft:#33270f;
   --m-haiku:#3987e5;--m-sonnet:#d95926;--m-opus:#199e70;--m-other:#7d838c;
-  --heat:#3987e5;--track:#184f95;--bar:#3987e5}}
+  --heat:#3987e5;--track:#184f95;--bar:#3987e5;
+  --q-good:#14614a;--q-mid:#7a6212;--q-low:#7a2c18}}
 *{box-sizing:border-box}
 html,body{height:100%}
 body{margin:0;background:var(--bg);color:var(--ink);font:13.5px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;display:flex}
@@ -52,7 +55,14 @@ td.n,th.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
 tr.sep td{border-top:2px solid var(--line)}
 td.hm{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
 td.best{font-weight:700}
+td.q-good,.mx td.c.q-good{background:var(--q-good)}td.q-mid,.mx td.c.q-mid{background:var(--q-mid)}td.q-low,.mx td.c.q-low{background:var(--q-low)}
+td.hm.q-good::after,.tile.q-good b::after{content:"↑";font-size:.75em;margin-left:3px;opacity:.7}
+td.hm.q-low::after,.tile.q-low b::after{content:"↓";font-size:.75em;margin-left:3px;opacity:.7}
+.tile.q-good{border-left:4px solid var(--q-good)}.tile.q-mid{border-left:4px solid var(--q-mid)}.tile.q-low{border-left:4px solid var(--q-low)}
+.qkey{display:inline-block;width:10px;height:10px;border-radius:2px;vertical-align:-1px;margin:0 3px 0 8px}
 td.na{color:var(--muted);text-align:right}
+.over{color:var(--warn);font-weight:600}.under{color:var(--bad);font-weight:600}td.over{background:var(--warn-soft)}td.under{background:var(--bad-soft)}
+ul.anl{margin:6px 0;padding-left:18px;font-size:13px}ul.anl li{margin:2px 0}details.anr{margin-top:6px}details.anr summary{cursor:pointer;font-size:13px}
 .scroll{overflow-x:auto}
 .sw{display:inline-block;width:10px;height:10px;border-radius:50%;flex:none;vertical-align:-1px}
 .mname{display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
@@ -140,7 +150,13 @@ const EXPS = {
   2: {title: "Experiment 2 · Non-atomic (units)", short: "Non-atomic", unit: "unit",
       about: "15 non-atomic requirements → 42 units (gold_units.csv). The prompt says the requirement is non-atomic and how many units to return. " +
              "Each returned unit is matched to a gold unit by similarity to the annotators' texts, then scored like an atomic requirement."},
+  3: {title: "Experiment 3 · Blind (atomicity not given)", short: "Blind", unit: "unit",
+      about: "All 50 requirements (35 atomic + 15 non-atomic → 77 units, gold_all_units.csv). The prompt says neither whether the requirement is non-atomic nor how many units to return; " +
+             "the model decides. Units are matched to the gold as in experiment 2; an atomic requirement is one unit."},
 };
+const EXP_KEY = {1: "atomic", 2: "units", 3: "blind"};
+const EXP_IDS = Object.keys(EXPS).map(Number);
+const batchOf = (e, m) => `exp${e}_${EXP_KEY[e]}_${m}`;
 
 // ---------- helpers ----------
 const $ = s => document.querySelector(s);
@@ -182,6 +198,8 @@ function metrics(r) {
     hhCos: hh.cosine ? hh.cosine.median : null, hhSeq: hh.seq_ratio ? hh.seq_ratio.median : null,
     paska: cq.paska.pass_rate, paskaN: cq.paska.n_scored, smells: cq.paska.smell_frequency || {},
     exact: u ? u.exactCount / u.requirements : null, units: u,
+    detF1: u && u.nonAtomicDetection ? u.nonAtomicDetection.f1 : null,
+    anom: r.anomalies || null,
     goldIncomplete: tp + fn,
   };
 }
@@ -207,7 +225,28 @@ const METRICS = [
   {k: "paska", label: "Paska pass", f: pct, tip: "Share of conversions on which Paska fires no smell."},
 ];
 const UNIT_METRIC = {k: "exact", label: "Exact unit count", f: pct, tip: "Share of requirements where the model returned exactly the number of units asked for."};
-const metricsFor = e => e === 2 ? [...METRICS, UNIT_METRIC] : METRICS;
+const DET_METRIC = {k: "detF1", label: "Non-atomic detected (F1)", f: f2, tip: "Experiment 3: F1 for spotting non-atomic requirements — gold has more than one unit vs the model returned more than one."};
+// Score bands, all metrics higher-is-better: [good from, moderate from]. Rationale in BAND_NOTE.
+const BANDS = {agree: [.8, .6], f1: [.8, .6], slotAccAll: [.8, .6], slot: [.8, .6], missRecall: [.8, .6], impliedFill: [.8, .6],
+               detF1: [.8, .6], paska: [.8, .5], exact: [.9, .7], cells: [1, .8]};
+function band(k, v, r) {
+  if (!num(v)) return "";
+  if (k === "cosMed") {  // relative to the human ↔ human ceiling of the same run
+    const hh = r && r.M.hhCos; if (!num(hh)) return "";
+    return v >= hh - .03 ? "q-good" : v >= hh - .10 ? "q-mid" : "q-low";
+  }
+  const b = BANDS[k]; if (!b) return "";
+  return v >= b[0] ? "q-good" : v >= b[1] ? "q-mid" : "q-low";
+}
+const BAND_KEY = `<span class="qkey" style="background:var(--q-good)"></span>good ↑<span class="qkey" style="background:var(--q-mid)"></span>moderate<span class="qkey" style="background:var(--q-low)"></span>poor ↓`;
+const BAND_NOTE = [
+  ["Agreement, slot accuracy, missing flagged, implied filled, F1s", "good ≥ .80 · moderate ≥ .60 · poor < .60 — the usual reporting bands for classification scores, in line with Landis & Koch's agreement cut-offs (.61 substantial, .81 almost perfect)."],
+  ["Cosine to humans", "judged against the human ↔ human ceiling of the same experiment: good within .03 (human parity) · moderate within .10 · poor below. Raw cosine from small sentence encoders is high even for loosely related sentences, so a fixed scale would mislead."],
+  ["Paska pass", "good ≥ .80 · moderate ≥ .50 · poor < .50."],
+  ["Exact unit count", "good ≥ .90 · moderate ≥ .70 · poor < .70 — returning the right number of units is instruction following, so the bar is higher."],
+  ["Requirement × run matrix", "good = 5/5 slots right · moderate = 4/5 · poor ≤ 3/5."],
+];
+const metricsFor = e => e === 3 ? [...METRICS, UNIT_METRIC, DET_METRIC] : e === 2 ? [...METRICS, UNIT_METRIC] : METRICS;
 
 // ---------- tooltip ----------
 document.addEventListener("pointermove", e => {
@@ -263,17 +302,17 @@ function scoreboard(e, onlyModel) {
   const rows = []; MODELS.forEach(m => { if (!onlyModel || onlyModel === m) STRATS.forEach(s => rows.push({m, s, r: find(e, m, s)})); });
   const best = {}; ms.forEach(mt => { const v = rows.map(x => x.r && x.r.M[mt.k]).filter(num); best[mt.k] = v.length ? Math.max(...v) : null; });
   return `<div class="scroll"><table>
-    <tr><th>Model</th><th>Strategy</th>${ms.map(mt => `<th class="n" data-tip="${esc(mt.tip)}">${esc(mt.label)}</th>`).join("")}<th class="n">n</th></tr>
+    <tr><th>Model</th><th>Strategy</th>${ms.map(mt => `<th class="n" data-tip="${esc(mt.tip)}">${esc(mt.label)}</th>`).join("")}<th class="n" data-tip="Requirements with at least one anomaly (format breach, wrong unit count, empty or truncated answer…). See the Anomalies card.">anomalies</th><th class="n">n</th></tr>
     ${rows.map(({m, s, r}, i) => `<tr class="${i && s === "zsl" ? "sep" : ""}">
       <td>${s === "zsl" ? mname(m) : ""}</td>
       <td>${r ? `<a href="${href("run", r.batch, r.strat)}">${esc(STRAT_LABEL[s])}</a>` : `<span class="hint">${esc(STRAT_LABEL[s])}</span>`}</td>
       ${ms.map(mt => { const v = r && r.M[mt.k];
         if (!r) return `<td class="na">·</td>`;
         if (!num(v)) return `<td class="na" data-tip="${mt.k === "f1" ? "No incomplete " + EXPS[e].unit + "s in the gold, so F1 is undefined." : "Not available"}">n/a</td>`;
-        return `<td class="hm ${v === best[mt.k] && rows.filter(x => x.r).length > 1 ? "best" : ""}" style="${heat(v)}">${mt.f(v)}</td>`; }).join("")}
-      <td class="n hint">${r ? r.M.n : ""}</td></tr>`).join("")}
+        return `<td class="hm ${band(mt.k, v, r)} ${v === best[mt.k] && rows.filter(x => x.r).length > 1 ? "best" : ""}">${mt.f(v)}</td>`; }).join("")}
+      <td class="n">${anomChip(r)}</td><td class="n hint">${r ? r.M.n : ""}</td></tr>`).join("")}
   </table></div>
-  <p class="hint" style="margin:8px 0 0">Shading = magnitude (darker is higher); <b>bold</b> = best in the column. · = not run yet. Hover a header for its definition.</p>`;
+  <p class="hint" style="margin:8px 0 0">${BAND_KEY} (bands under "How to read the metrics" on the overview) · <b>bold</b> = best in the column · · = not run yet. Hover a header for its definition.</p>`;
 }
 
 function slotTable(runs, kind) {
@@ -287,7 +326,7 @@ function slotTable(runs, kind) {
     <tr><th>Run</th>${SLOTS.map(s => `<th class="n">${SLOT_LABEL[s]} ${slotTag(s)}</th>`).join("")}</tr>
     ${kind === "missing" && support ? `<tr><td class="hint">gold missing</td>${SLOTS.map(s => `<td class="n hint">${support[s].n_missing}</td>`).join("")}</tr>` : ""}
     ${runs.map(r => `<tr><td>${runLabel(r)}</td>${SLOTS.map(s => { const {v, t} = val(r, s);
-      return num(v) ? `<td class="hm" style="${heat(v)}" data-tip="${esc(`${SLOT_LABEL[s]} · ${runName(r)}: ${t}${kind === "missing" ? " flagged (" + pct(v) + ")" : ""}`)}">${esc(t)}</td>`
+      return num(v) ? `<td class="hm ${band("slot", v)}" data-tip="${esc(`${SLOT_LABEL[s]} · ${runName(r)}: ${t}${kind === "missing" ? " flagged (" + pct(v) + ")" : ""}`)}">${esc(t)}</td>`
                     : `<td class="na" data-tip="The gold has no missing ${SLOT_LABEL[s].toLowerCase()} here">—</td>`; }).join("")}</tr>`).join("")}
   </table></div>`;
 }
@@ -303,12 +342,64 @@ function smellTable(runs) {
 }
 
 function unitsTable(runs) {
-  return `<div class="scroll"><table><tr><th>Run</th><th class="n">units returned / asked</th><th class="n">exact count</th><th class="n">re-ordered</th><th class="n">gold units left empty</th><th class="n">extra units</th></tr>
+  return `<div class="scroll"><table><tr><th>Run</th><th class="n">units returned / gold</th><th class="n">exact count</th><th class="n">re-ordered</th><th class="n">gold units left empty</th><th class="n">extra units</th></tr>
     ${runs.map(r => { const u = r.units; if (!u) return "";
       const miss = u.perRequirement.reduce((s, x) => s + x.missingGoldUnits.length, 0), extra = u.perRequirement.reduce((s, x) => s + x.extraLlmUnits.length, 0);
       return `<tr><td>${runLabel(r)}</td><td class="n">${u.returnedUnits} / ${u.expectedUnits}</td><td class="n">${u.exactCount} / ${u.requirements}</td>
         <td class="n">${u.reordered}</td><td class="n">${miss}</td><td class="n">${extra}</td></tr>`; }).join("")}</table></div>
   <p class="hint" style="margin:6px 0 0">Re-ordered = the model's units were matched to the gold in a different order than returned.</p>`;
+}
+
+// ---------- anomalies ----------
+const anomChip = r => { const a = r && r.M.anom; if (!a) return r ? `<span class="hint">—</span>` : "";
+  if (!a.affected) return `<span class="hint">0</span>`;
+  return `<a class="chip bad" href="${href("run", r.batch, r.strat)}" data-tip="${esc(Object.entries(a.counts).map(([k, v]) => `${v} × ${a.kinds[k]}`).join("; "))}">${a.affected}</a>`; };
+const reqLink = (e, id) => `<a href="${href("req", e, e >= 2 ? id + "#1" : id)}">${esc(id)}</a>`;
+function anomalyItems(r) {
+  const a = r.M.anom; if (!a || !a.items.length) return `<p class="hint">None.</p>`;
+  return `<ul class="anl">${a.items.map(i => `<li><span class="tag inc">${esc(i.kind.replace(/_/g, " "))}</span> ${reqLink(r.exp, i.reqId)}${i.detail ? ` <span class="hint">${esc(i.detail)}</span>` : ""}</li>`).join("")}</ul>`;
+}
+function anomalyTable(runs) {
+  const rows = runs.filter(r => r.M.anom);
+  if (!rows.length) return `<p class="hint">These runs were scored before anomaly tracking.</p>`;
+  const kinds = Object.keys(rows[0].M.anom.kinds).filter(k => rows.some(r => r.M.anom.counts[k]));
+  if (!kinds.length) return `<p class="hint">No anomalies in any run.</p>`;
+  const max = Math.max(1, ...rows.flatMap(r => kinds.map(k => r.M.anom.counts[k] || 0)));
+  return `<div class="scroll"><table><tr><th>Run</th>${kinds.map(k => `<th class="n" data-tip="${esc(rows[0].M.anom.kinds[k])}">${esc(k.replace(/_/g, " "))}</th>`).join("")}<th class="n">requirements affected</th></tr>
+    ${rows.map(r => `<tr><td>${runLabel(r)}</td>${kinds.map(k => { const v = r.M.anom.counts[k] || 0;
+      return v ? `<td class="hm" style="${heat(v, max)}">${v}</td>` : `<td class="na">·</td>`; }).join("")}<td class="n">${r.M.anom.affected}</td></tr>`).join("")}</table></div>
+  <p class="hint" style="margin:6px 0 0">Hover a header for its meaning. Open a run below for the requirements involved.</p>
+  ${rows.filter(r => r.M.anom.items.length).map(r => `<details class="anr"><summary>${esc(runName(r))} — ${r.M.anom.items.length}</summary>${anomalyItems(r)}</details>`).join("")}`;
+}
+// Units returned per requirement and run, for requirements where any run is off the gold or the runs disagree.
+function countMatrix(e) {
+  const runs = []; MODELS.forEach(m => STRATS.forEach(s => { const r = find(e, m, s); if (r && r.units) runs.push(r); }));
+  if (!runs.length) return `<p class="hint">No runs yet.</p>`;
+  const rows = {};
+  runs.forEach((r, j) => r.units.perRequirement.forEach(q => { (rows[q.reqId] ||= {gold: q.expected, v: []}).v[j] = q.returned; }));
+  const ids = Object.keys(rows).filter(id => rows[id].v.some(v => v !== rows[id].gold)).sort((a, b) =>
+    rows[b].v.filter(v => v !== rows[b].gold).length - rows[a].v.filter(v => v !== rows[a].gold).length);
+  if (!ids.length) return `<p class="hint">Every run returned the gold number of units on every requirement.</p>`;
+  return `<div class="scroll"><table class="cm"><tr><th>Requirement</th><th class="n">gold</th>${runs.map(r => `<th class="n" data-tip="${esc(runName(r))}">${swatch(r.model)}${esc(r.strat)}</th>`).join("")}</tr>
+    ${ids.map(id => `<tr><td>${reqLink(e, id)}</td><td class="n"><b>${rows[id].gold}</b></td>${runs.map((r, j) => { const v = rows[id].v[j], g = rows[id].gold;
+      return v === undefined ? `<td class="na">·</td>` : `<td class="n ${v === g ? "hint" : v > g ? "over" : "under"}" data-tip="${esc(runName(r))}: ${v} returned, gold ${g}">${v}</td>`; }).join("")}</tr>`).join("")}</table></div>
+  <p class="hint" style="margin:6px 0 0">${ids.length} of ${Object.keys(rows).length} requirements. <span class="over">Amber</span> = more units than the gold, <span class="under">red</span> = fewer. Most-disputed first.</p>`;
+}
+
+// Experiment 3: did the model spot which requirements are non-atomic, and how far off was the count?
+function detectionTable(runs) {
+  const rows = runs.filter(r => r.units && r.units.nonAtomicDetection);
+  const offBy = r => { const c = {}; r.units.perRequirement.forEach(x => { const d = x.returned - x.expected; c[d] = (c[d] || 0) + 1; }); return c; };
+  const diffs = [...new Set(rows.flatMap(r => Object.keys(offBy(r)).map(Number)))].sort((a, b) => a - b);
+  const max = Math.max(1, ...rows.flatMap(r => Object.values(offBy(r))));
+  return `<div class="scroll"><table><tr><th>Run</th><th class="n" data-tip="non-atomic, split">TP</th><th class="n" data-tip="atomic, but split">FP</th><th class="n" data-tip="non-atomic, kept as one">FN</th><th class="n" data-tip="atomic, kept as one">TN</th>
+      <th class="n">precision</th><th class="n">recall</th><th class="n">F1</th>${diffs.map(d => `<th class="n" data-tip="requirements where returned − gold units = ${d}">${d > 0 ? "+" + d : d}</th>`).join("")}</tr>
+    ${rows.map(r => { const d = r.units.nonAtomicDetection, o = offBy(r);
+      return `<tr><td>${runLabel(r)}</td><td class="n">${d.tp}</td><td class="n">${d.fp}</td><td class="n">${d.fn}</td><td class="n">${d.tn}</td>
+        <td class="n">${f2(d.precision)}</td><td class="n">${f2(d.recall)}</td><td class="n">${f2(d.f1)}</td>
+        ${diffs.map(k => o[k] ? `<td class="hm" style="${k ? heat(o[k], max) : ""}">${o[k]}</td>` : `<td class="na">·</td>`).join("")}</tr>`; }).join("")}</table></div>
+  <p class="hint" style="margin:6px 0 0">Positive = non-atomic (gold has more than one unit); predicted non-atomic = the model returned more than one.
+    The right-hand columns count requirements by returned − gold units (0 = exact).</p>`;
 }
 
 const runName = r => r.exp ? `${MODEL_LABEL[r.model] || r.model} · ${STRAT_LABEL[r.strat] || r.strat}` : `${r.batch} · ${r.strat}`;
@@ -355,10 +446,10 @@ function matrix(e) {
       return `<tr><td class="lab"><a href="${href("req", e, id)}">${esc(id)}</a> ${g && g.gold_overall ? `<span class="tag inc">incomplete</span>` : ""}</td>
       ${runs.map(r => { const q = cell(r, id); if (!q) return `<td class="c none">·</td>`;
         const ok = SLOTS.filter(s => q.slot_match[s]).length, wrong = SLOTS.filter(s => !q.slot_match[s]).map(s => SLOT_LABEL[s]);
-        return `<td class="c ${q.verdict_match ? "" : "x"}" style="${heat(ok, 5)}" onclick="location.hash='${href("req", e, id)}'"
+        return `<td class="c ${band("cells", ok / 5)} ${q.verdict_match ? "" : "x"}" onclick="location.hash='${href("req", e, id)}'"
           data-tip="${esc(`${id} · ${runName(r)}\n${ok}/5 slots right${wrong.length ? " — wrong: " + wrong.join(", ") : ""}\nverdict ${q.verdict_match ? "matches" : "WRONG"} · cosine ${f3(q.similarity.cosine_mean)} · Paska ${q.paska_passed === null ? "—" : q.paska_passed ? "pass" : "fail"}`)}">${ok}</td>`; }).join("")}</tr>`; }).join("")}
   </table></div>
-  <p class="hint" style="margin:6px 0 0">Each cell: slots where the model's missing/not-missing call matches the gold (of 5); darker = more right. <span style="color:var(--bad)">●</span> = verdict wrong.
+  <p class="hint" style="margin:6px 0 0">Each cell: slots where the model's missing/not-missing call matches the gold (of 5): ${BAND_KEY.replace(/ [↑↓]/g, "")} = 5 / 4 / ≤ 3. <span style="color:var(--bad)">●</span> = verdict wrong.
     Hardest ${EXPS[e].unit}s first. Click a row to compare every run on it.</p>`;
 }
 
@@ -382,13 +473,15 @@ function viewOverview() {
   const total = RUNS.filter(r => r.exp).length;
   return `<div class="crumbs">Overview</div><h2>Rimay conversion experiments</h2>
     <p class="lede">Three models × three prompting strategies, scored against the curated gold of three annotators.
-      ${total} of 18 runs scored · built ${esc(new Date(DATA.generatedAt).toLocaleString())}.</p>
-    ${[1, 2].map(e => `<div class="card"><h3><a href="${href("exp", e)}">${esc(EXPS[e].title)}</a></h3><p class="hint">${esc(EXPS[e].about)}</p>
+      ${total} of 27 runs scored · built ${esc(new Date(DATA.generatedAt).toLocaleString())}.</p>
+    ${EXP_IDS.map(e => `<div class="card"><h3><a href="${href("exp", e)}">${esc(EXPS[e].title)}</a></h3><p class="hint">${esc(EXPS[e].about)}</p>
       ${scoreboard(e)}</div>`).join("")}
     <div class="card"><h3>How to read the metrics</h3>
-      <table style="width:auto">${[...METRICS, UNIT_METRIC].map(m => `<tr><td><b>${esc(m.label)}</b></td><td class="hint">${esc(m.tip)}</td></tr>`).join("")}</table>
+      <table style="width:auto">${[...METRICS, UNIT_METRIC, DET_METRIC].map(m => `<tr><td><b>${esc(m.label)}</b></td><td class="hint">${esc(m.tip)}</td></tr>`).join("")}</table>
       <p class="hint" style="margin:8px 0 0">The model's slots are binary (a <code>&lt;MISSING_*&gt;</code> placeholder or not); the gold is present / implied / missing.
-        A slot is right when "missing" agrees. Slot tags: <span class="tag reqd">req</span> required by the Rimay grammar, <span class="tag">opt</span> optional.</p></div>`;
+        A slot is right when "missing" agrees. Slot tags: <span class="tag reqd">req</span> required by the Rimay grammar, <span class="tag">opt</span> optional.</p>
+      <h4 style="margin:14px 0 4px">Colour bands</h4><p class="hint" style="margin:0 0 6px">${BAND_KEY}. Counts (smells, anomalies, confusion cells) stay in blue shading: there, colour shows size, not quality.</p>
+      <table style="width:auto">${BAND_NOTE.map(([a, b]) => `<tr><td><b>${esc(a)}</b></td><td class="hint">${esc(b)}</td></tr>`).join("")}</table></div>`;
 }
 
 function viewExp(e) {
@@ -418,9 +511,13 @@ function viewExp(e) {
     <div class="cols">
       <div class="card"><h3>Paska smells</h3>${smellTable(runs)}</div>
       ${e === 2 ? `<div class="card"><h3>Did the model return the units it was asked for?</h3>${unitsTable(runs)}</div>` : ""}
+      ${e === 3 ? `<div class="card"><h3>Unit counts</h3>${unitsTable(runs)}</div>` : ""}
     </div>
+    ${e === 3 ? `<div class="card" style="margin-top:14px"><h3>Did the model spot the non-atomic requirements?</h3>${detectionTable(runs)}</div>` : ""}
+    <div class="card" style="margin-top:14px"><h3>Anomalies</h3><p class="hint">What the models returned that breaks the expected shape. Each is listed with its requirement.</p>${anomalyTable(runs)}</div>
+    ${e >= 2 ? `<div class="card" style="margin-top:14px"><h3>Unit counts that miss the gold or disagree between runs</h3>${countMatrix(e)}</div>` : ""}
     <div class="card" style="margin-top:14px"><h3>Every ${esc(X.unit)} × every run</h3>${matrix(e)}</div>
-    ${MODELS.map(m => { const b = `exp${e}_${e === 1 ? "atomic" : "units"}_${m}`; return DATA.batchVerdicts[b]
+    ${MODELS.map(m => { const b = batchOf(e, m); return DATA.batchVerdicts[b]
       ? `<details class="card"><summary><b>Verdict — ${esc(MODEL_LABEL[m])}</b> <span class="hint">(written by the verdict stage)</span></summary>${md(DATA.batchVerdicts[b])}</details>` : ""; }).join("")}`;
 }
 
@@ -451,12 +548,12 @@ function viewRun(batch, strat) {
   const slotRows = SLOTS.map(s => { const p = fa.per_slot[s], mi = fa.missing_analysis.per_slot[s], im = fa.implied_analysis.per_slot[s];
     return `<tr><td>${SLOT_LABEL[s]} ${slotTag(s)}</td><td class="n">${p.support_gold_missing}</td><td class="n">${mi.llm_flagged_missing}</td><td class="n">${mi.llm_silently_filled}</td>
       <td class="n">${p.fp}</td><td class="n">${p.tp + p.fp ? f2(p.precision) : "—"}</td><td class="n">${p.support_gold_missing ? f2(p.recall) : "—"}</td>
-      <td class="n">${p.support_gold_missing ? f2(p.f1) : "—"}</td><td class="hm" style="${heat(M.slotAcc[s])}">${pct(M.slotAcc[s])}</td>
+      <td class="n">${p.support_gold_missing ? f2(p.f1) : "—"}</td><td class="hm ${band("slot", M.slotAcc[s])}">${pct(M.slotAcc[s])}</td>
       <td class="n">${im.n_implied ? `${im.llm_filled}/${im.n_implied}` : "—"}</td></tr>`; }).join("");
   return `<div class="crumbs"><a href="#/">Overview</a> › ${e ? `<a href="${href("exp", e)}">${esc(EXPS[e].short)}</a> › ` : ""}<a href="${href("batch", r.batch)}">${esc(e ? MODEL_LABEL[r.model] : r.batch)}</a> › ${esc(STRAT_LABEL[r.strat] || r.strat)}</div>
     <h2>${mname(r.model)} · ${esc(STRAT_LABEL[r.strat] || r.strat)}</h2>
     <p class="lede"><code>${esc(r.run)}</code> · model <code>${esc(r.meta && r.meta.model)}</code> · gold <code>${esc(r.gold_csv)}</code> · scored ${esc(new Date(r.scored_at).toLocaleString())}</p>
-    <div class="tiles">${metricsFor(e).map(mt => `<div class="tile" data-tip="${esc(mt.tip)}"><b>${num(M[mt.k]) ? mt.f(M[mt.k]) : "n/a"}</b><span>${esc(mt.label)}</span></div>`).join("")}</div>
+    <div class="tiles">${metricsFor(e).map(mt => `<div class="tile ${band(mt.k, M[mt.k], r)}" data-tip="${esc(mt.tip)}"><b>${num(M[mt.k]) ? mt.f(M[mt.k]) : "n/a"}</b><span>${esc(mt.label)}</span></div>`).join("")}</div>
     <div class="cols">
       <div class="card"><h3>Verdict</h3>${confusion(M, unit)}</div>
       <div class="card"><h3>Cosine to the annotators</h3>${boxRows([{label: esc(STRAT_LABEL[r.strat] || r.strat), color: `var(--m-${MODELS.includes(r.model) ? r.model : "other"})`,
@@ -470,6 +567,8 @@ function viewRun(batch, strat) {
     <div class="cols">
       <div class="card"><h3>Paska smells</h3>${smellTable([r])}</div>
       ${r.units ? `<div class="card"><h3>Units</h3>${unitsTable([r])}</div>` : ""}
+      ${e === 3 && r.units ? `<div class="card"><h3>Non-atomic detection</h3>${detectionTable([r])}</div>` : ""}
+      ${M.anom ? `<div class="card"><h3>Anomalies <span class="hint">(${M.anom.affected} requirements)</span></h3>${anomalyItems(r)}</div>` : ""}
     </div>
     <div class="card" style="margin-top:14px"><h3>${esc(unit[0].toUpperCase() + unit.slice(1))}s</h3>
       <div class="filters" id="rqf">${[["all", "All"], ["verdict", "Verdict wrong"], ["slots", "Any slot wrong"], ["paska", "Paska failed"]].map(([k, l]) =>
@@ -514,12 +613,12 @@ function viewReq(expKey, id) {
 // ---------- navigation ----------
 function sidebar(route) {
   const on = h => (route === h ? "on" : "");
-  let html = `<h1>Rimay experiments</h1><p class="sub">${RUNS.filter(r => r.exp).length}/18 runs · ${esc(new Date(DATA.generatedAt).toLocaleDateString())}</p>
+  let html = `<h1>Rimay experiments</h1><p class="sub">${RUNS.filter(r => r.exp).length}/27 runs · ${esc(new Date(DATA.generatedAt).toLocaleDateString())}</p>
     <a href="#/" class="${on("#/")}">Overview</a>`;
-  [1, 2].forEach(e => {
+  EXP_IDS.forEach(e => {
     html += `<div class="grp">${esc(EXPS[e].title)}</div><a href="${href("exp", e)}" class="${on(href("exp", e))}">All models</a>`;
     MODELS.forEach(m => {
-      const b = `exp${e}_${e === 1 ? "atomic" : "units"}_${m}`, has = RUNS.some(r => r.batch === b);
+      const b = batchOf(e, m), has = RUNS.some(r => r.batch === b);
       html += `<a href="${href("batch", b)}" class="l2 ${on(href("batch", b))} ${has ? "" : "off"}">${swatch(m)}${esc(MODEL_LABEL[m])}</a>`;
       STRATS.forEach(s => { const r = find(e, m, s); if (r) html += `<a href="${href("run", b, s)}" class="l3 ${on(href("run", b, s))}">${esc(STRAT_LABEL[s])}</a>`; });
     });

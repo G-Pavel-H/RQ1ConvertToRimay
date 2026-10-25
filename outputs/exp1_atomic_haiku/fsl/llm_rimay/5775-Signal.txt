@@ -1,1 +1,1 @@
-For each message, if the disappearing message timeout is set to longer than one week, the system must extend the disappearing message timeout period to at least one year. <NON_ATOMIC>
+<MISSING_SCOPE>, <MISSING_CONDITION>, the app must provide longer-term disappearing message timeouts of up to at least one year.

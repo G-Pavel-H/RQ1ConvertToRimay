@@ -1,24 +1,29 @@
 # Cross-strategy verdict — exp1_atomic_sonnet
 
-Model: `claude-opus-5-5` · generated 2026-10-18T23:59:23+01:00 · runs: cot, fsl, zsl
+Model: `claude-opus-5-5` · generated 2026-10-25T20:04:55+00:00 · runs: cot, fsl, zsl
 
-Few-shot is the clear winner on almost every metric, and the margin is large enough to survive the small sample. Zero-shot and chain-of-thought are statistically indistinguishable from each other. Few-shot's headline numbers flatter it somewhat, though, and its one weakness sits on the slot that matters most.
+## Summary
+Few-shot (fsl) beats cot and zsl on every measure: it flags 93% of genuinely missing slots against 30% (cot) and 15% (zsl), and it reaches the human-human ceiling on conversion similarity. The fsl margin is well outside noise even at n=35. cot and zsl differ only slightly from each other, and that difference is mostly within noise. One weakness offsets fsl's lead: it detects only 1 of the 4 gold-incomplete requirements.
 
-Track 1 is measurable here, since every slot has non-zero missing support. The gap on missing-slot flagging is wide. Few-shot flags 57 of 61 genuinely missing slots, against 24 for CoT and 17 for ZSL, and it passes Paska on 30 of 35 outputs against 18 and 15. Differences of that size on 35 items are not noise. Its similarity to humans is also closer to the human-human ceiling. Cosine actually slightly exceeds the human ceiling (0.77 vs 0.74), and token metrics sit about 0.05 below it. The advantage over the other two strategies on similarity, about 0.07–0.09, is plausible but modest, given that the 105 pairs come from only 35 requirements and are not independent.
+## Missing-slot detection
+Scope drives the headline gap. fsl flags scope missing on all 35 requirements, including the one where gold has a scope. That pattern cannot be told apart from a constant "missing" default, possibly copied from the few-shot examples. Excluding scope, fsl still leads clearly: micro P≈0.82 and R≈0.85, against roughly 10 true positives and 29 false positives for cot. On condition, fsl's advantage is real discrimination, with 20 of 21 missing slots flagged and 5 false flags.
 
-Much of the scope result is a base-rate effect. Gold marks scope missing in 34 of 35 requirements, and few-shot flags it missing in all 35. That is indistinguishable from a constant "scope: missing" policy, probably copied from the examples. Condition looks similar, with 27 flagged against 21 gold. What few-shot has really learned is the annotators' convention, not necessarily a judgement about each item. A trivial constant baseline would show how much of the 0.90 micro-F1 is genuine.
+cot and zsl make an inverted error. They silently fill missing scope and condition, yet flag implied actor and modal verb as missing (12–15 false positives each, implied fill rate around 0.6). Those spurious flags inflate their requirement-level recall to 0.75 at a precision of 0.17–0.21.
 
-ZSL and CoT share a distinct failure mode that is two-sided miscalibration. They silently fill scope and condition when the source lacks them, which is the fabrication risk this experiment probes. At the same time, they flag actor and modal verb as missing when humans judged them implied (11–15 false positives each). ZSL calls 19 requirements incomplete where gold says 4. These incomplete outputs also degrade the Rimay sentence itself: Paska pass rates for LLM-incomplete outputs are 0.16–0.25, and "Not requirement" dominates the smells. That suggests placeholder text breaks the rule checker. CoT's small edge over ZSL (24 vs 17 flags, 18 vs 15 Paska passes) comes from the same items and should not be read as an effect of reasoning.
+fsl's real failure is the action slot. It silently filled 3 of 4 missing actions, which is why its requirement-level recall is 0.25. With only 4 gold-incomplete requirements, each one moves that recall by 0.25, so the comparison is fragile. Even so, this is fabrication on the slot that matters most.
 
-Few-shot's own failure is the action slot. It silently filled 3 of the 4 requirements missing an action, so its overall-verdict recall is 0.25: it called 3 of 4 truly incomplete requirements complete. A missing system response is the most consequential gap, and ZSL caught 3 of these 4. With n=4 this is suggestive rather than established, but it is exactly the fabrication the study is about.
+## Conversion quality
+fsl sits at about 96% of the human ceiling on sequence ratio and 93% on Jaccard, and slightly exceeds the ceiling on cosine. That is plausible for an output that resembles a consensus of the annotators. cot and zsl reach about 78–83% of the ceiling. The fsl–cot gap of 0.09 in sequence ratio is about 2.5 standard errors; the cot–zsl gap of 0.03 is noise.
 
-No per-item examples were included, so I can't cite specific reqIds. Pulling the outputs for the three few-shot action fabrications, and the ZSL/CoT "Not requirement" cases, is the first thing to do.
+The Paska gap (0.83 against 0.43–0.46) is mostly a side effect of how cot and zsl handle missing slots. Their outputs carrying missing-slot placeholders fail almost completely (16 of 18 and 14 of 14), dominated by the "Not requirement" smell. On outputs the model judged complete, all three strategies pass at 0.76–0.85.
 
-These results apply only to the atomic subset. The two "Non-atomic" Paska smells in few-shot outputs are worth a quick look as possible LLM-introduced compounding, but nothing more.
+## Anomalies and inconsistencies
+- **zsl format breach:** text outside the answer block on 175, 4031, 4230, 496, 5555, 6077 and 757-Signal. This is cosmetic if extraction succeeded.
+- **757-Signal in cot:** text outside the block plus a stray `<rimay>` line removed. 757 breaks format under both cot and zsl, which suggests something in its source text triggers commentary.
+- **Spurious `<NON_ATOMIC>` flags:** 2055-Signal under cot and zsl, and 1504-Signal under cot. fsl never flags these, but Paska reports two non-atomic smells in fsl output. 2055 may be borderline in gold.
+- **fsl:** no anomalies.
 
-For next steps, I'd run three things:
-- **Constant baseline:** "scope missing, condition missing" for every item, to put the few-shot scores in context.
-- **Example ablation:** a few-shot variant whose examples include present scope and a missing action, to test whether flagging is conditional or copied.
-- **Repeated runs:** several seeds per strategy to measure run-to-run variance before claiming the CoT/ZSL ordering.
-
-Expanding the set of requirements with missing actions beyond four is the only way to resolve the most important open question.
+## Next step
+- Rerun Track 1 with scope excluded, or with a scope-present control, to confirm that fsl's scope flagging is not a template default.
+- Pull the 3 gold-incomplete requirements where fsl filled the action and inspect what it invented. Consider a few-shot example with a missing action.
+- Re-adjudicate 2055-Signal's atomicity and inspect 757-Signal's source for the format trigger.

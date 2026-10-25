@@ -1,1 +1,1 @@
-For the conversation window, the Signal-Android app shall provide only one "control to open and close the attachment window".
+The Signal-Android conversation window shall provide only a single way to open and close the attachment window.

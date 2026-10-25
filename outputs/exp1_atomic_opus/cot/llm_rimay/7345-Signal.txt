@@ -1,1 +1,1 @@
-For each "media item", if the "media item" is available in the "device file system", then <MISSING_ACTOR> <MISSING_MODAL_VERB> display a "view icon or share icon" instead of the "save button". <NON_ATOMIC>
+For each "media item", if the "media item" has already been saved on the device, then Signal-Android <MISSING_MODAL_VERB> display a "view icon" or a "share icon" instead of the "save button".

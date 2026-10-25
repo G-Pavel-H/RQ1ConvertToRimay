@@ -1,1 +1,1 @@
-For each contact, when the user sends an SMS message to a mobile provider number through Signal, then Signal must deliver the message to the mobile provider. <NON_ATOMIC>
+When the user sends an SMS message to "13977" through Signal, then Signal must deliver the message to the mobile provider.

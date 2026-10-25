@@ -1,1 +1,1 @@
-<NON_ATOMIC>
+For <MISSING_SCOPE>, <MISSING_CONDITION> the System shall display the "posts from the timeline" to the User.

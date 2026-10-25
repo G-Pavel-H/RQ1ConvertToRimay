@@ -1,0 +1,1 @@
+When the user chooses TextSecure to share a calendar event, the TextSecure application must attach the "calendar event" to the "message".

@@ -1,0 +1,2 @@
+<MISSING_SCOPE>, <MISSING_CONDITION>, the App must show a visual indicator that an image has a description.
+<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow the user to view the image description.

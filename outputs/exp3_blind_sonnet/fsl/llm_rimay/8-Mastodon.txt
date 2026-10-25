@@ -1,0 +1,2 @@
+<MISSING_SCOPE>, <MISSING_CONDITION>, the app must provide access to the "local timeline".
+<MISSING_SCOPE>, <MISSING_CONDITION>, the app must provide access to the "federated timeline".

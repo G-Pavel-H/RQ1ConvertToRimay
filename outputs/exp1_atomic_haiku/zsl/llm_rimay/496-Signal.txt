@@ -1,1 +1,1 @@
-For <MISSING_SCOPE>, the System shall enable changing the maximum size of MMS.
+For <MISSING_SCOPE>, if the user requests a change to the maximum size of MMS, then the system shall provide the ability to change the maximum size of MMS.

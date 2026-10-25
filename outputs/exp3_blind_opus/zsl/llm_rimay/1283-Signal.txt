@@ -1,0 +1,1 @@
+TextSecure must <MISSING_ACTION> "theme support".

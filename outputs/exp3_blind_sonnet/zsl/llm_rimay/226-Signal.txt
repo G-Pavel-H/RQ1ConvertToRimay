@@ -1,0 +1,2 @@
+The TextSecure app shall allow the user to edit any message from the Android Context Menu.
+The TextSecure app shall allow the user to insert a new message next to a message.

@@ -1,1 +1,1 @@
-For all users without a passphrase, the system shall disable the "Screen security" feature by default.
+For users without a passphrase, the System must disable the "Screen security" feature by default.

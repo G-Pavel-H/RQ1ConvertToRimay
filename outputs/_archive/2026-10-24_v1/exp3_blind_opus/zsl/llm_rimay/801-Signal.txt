@@ -1,0 +1,2 @@
+<MISSING_ACTOR> <MISSING_MODAL_VERB> mute the "Group" for "X minutes/hours".
+<MISSING_ACTOR> <MISSING_MODAL_VERB> mute the "User" for "X minutes/hours".

@@ -1,0 +1,1 @@
+<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide "direct share targets" for contacts to the Android share dialog by using the "ChooserTargetService" of Android 6.0.

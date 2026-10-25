@@ -1,0 +1,5 @@
+When a user with a US phone number enters a search query for another US phone number, the System shall enable searching by entering the full number with country code, the number without country code, or the number without country code and area code.
+When a user enters a search query for a non-US phone number, the System shall enable searching by entering the full number with country code or the number without country code.
+When a user searches for a phone number, the System shall attempt to match the search query by prepending the calling code for the current user's phone number.
+When a user searches for a phone number, the System shall attempt to match the search query by prepending the calling code that corresponds to the default region for the current device.
+When a user living in the US with a US phone number but with UK region preferences searches for a phone number, the System shall try both US and UK calling codes.

@@ -1,2 +1,2 @@
-If the "Signal message" is sent to the server and is not delivered to the recipient after "N minutes", then Signal <MISSING_MODAL_VERB> display a "lack of delivery notification" on the "sender's phone".
-If the "Signal message" is sent to the server and is not delivered to the recipient after "N minutes", then Signal <MISSING_MODAL_VERB> request the sender to "resend the message via insecure SMS".
+If the "Signal message" has been sent to the server and has not been delivered to the recipient after "a timeout of N minutes", then Signal must display a "lack of delivery notification" on the "sender's phone".
+When the sender selects "resend via insecure SMS" in the "lack of delivery notification", then Signal must resend the "undelivered message" to the recipient through "insecure SMS".

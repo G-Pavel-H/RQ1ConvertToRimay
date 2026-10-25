@@ -1,0 +1,1 @@
+<MISSING_SCOPE> When the user sends a "message" through TextSecure on a "dual SIM mobile", then TextSecure <MISSING_MODAL_VERB> display the "SIM used to send the message".

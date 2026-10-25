@@ -1,0 +1,1 @@
+For all the calendar events, the TextSecure shall allow the user to share the calendar event as an attachment via TextSecure.

@@ -1,0 +1,1 @@
+<MISSING_CONDITION> The System shall add a "short signature" to an SMS message.

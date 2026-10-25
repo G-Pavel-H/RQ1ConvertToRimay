@@ -1,0 +1,1 @@
+For the dual SIM mobile, when the user sends a message using TextSecure, the system shall provide information indicating to which SIM the message was sent.

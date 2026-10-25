@@ -1,1 +1,1 @@
-<MISSING_SCOPE> <MISSING_CONDITION> <MISSING_ACTOR> <MISSING_MODAL_VERB> delete the "text message database" by using a "button combo and confirm dialogue".
+<MISSING_SCOPE> <MISSING_CONDITION> <MISSING_ACTOR> <MISSING_MODAL_VERB> delete the "text message database" by using a "button combination" and a "confirmation dialogue".

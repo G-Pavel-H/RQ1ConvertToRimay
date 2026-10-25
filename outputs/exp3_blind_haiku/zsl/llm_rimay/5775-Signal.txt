@@ -1,0 +1,1 @@
+For <MISSING_SCOPE>, <MISSING_CONDITION> the System shall provide longer-term disappearing message timeout periods of at least one year duration.

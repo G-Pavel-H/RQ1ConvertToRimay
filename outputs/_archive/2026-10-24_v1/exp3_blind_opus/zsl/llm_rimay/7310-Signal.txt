@@ -1,0 +1,2 @@
+The Signal-Android app must support the custom URL scheme "signal://".
+When a user selects a "Signal share button" on a webpage, then the Signal-Android app must open a "message to share the webpage content" through the custom URL scheme "signal://".

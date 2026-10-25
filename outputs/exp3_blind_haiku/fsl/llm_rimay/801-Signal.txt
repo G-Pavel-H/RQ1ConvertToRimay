@@ -1,0 +1,2 @@
+<MISSING_SCOPE>, when a group sends messages, then the user must be able to mute the group for a specified duration.
+<MISSING_SCOPE>, if the group is muted, then the App must not vibrate or ring for messages from that group.

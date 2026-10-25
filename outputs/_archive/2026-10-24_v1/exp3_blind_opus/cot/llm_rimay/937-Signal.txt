@@ -1,0 +1,1 @@
+The Conversation View <MISSING_MODAL_VERB> display the "messages of each conversation" in the "same consistent order" to all the "chat participants".

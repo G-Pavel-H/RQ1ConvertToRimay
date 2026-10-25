@@ -1,1 +1,1 @@
-<MISSING_SCOPE>, when the user sends an SMS to the provider number "13977" through Signal, then Signal must deliver the SMS to "13977". <NON_ATOMIC>
+<MISSING_SCOPE>, when the user sends an SMS message to the mobile provider number "13977", then Signal must deliver the SMS message to the mobile provider number "13977".

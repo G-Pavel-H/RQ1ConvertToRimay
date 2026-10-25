@@ -1,0 +1,3 @@
+<MISSING_SCOPE> <MISSING_CONDITION> the mastodon-android system shall display a timeline view that shows posts from other users.
+<MISSING_SCOPE> <MISSING_CONDITION> the mastodon-android system shall enable users to view what other users are currently doing.
+<MISSING_SCOPE> <MISSING_CONDITION> the mastodon-android system shall display trending topics so that users can know what people are discussing.

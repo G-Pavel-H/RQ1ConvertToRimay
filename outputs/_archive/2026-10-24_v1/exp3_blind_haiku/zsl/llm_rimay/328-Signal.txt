@@ -1,0 +1,18 @@
+For all users where the feature is enabled, the System shall send dummy random messages to randomly selected TextSecure contacts at random times.
+For all users where the feature is enabled, the System shall discard dummy messages automatically after decryption at the recipient side.
+For all users where the feature is enabled, the System shall level-out legitimate messages by spoiling traffic analysis of traffic retention data.
+When a user enables the feature, the System shall allow the user to define desired quantity of dummy messages per month.
+When a user enables the feature, the System shall allow the user to define a ratio of dummy messages to legitimate messages.
+When a user enables the feature, the System shall allow the user to define a maximum total message count combining legitimate and dummy messages.
+If roaming is detected, the System shall not send dummy messages unless roaming is explicitly enabled by the user.
+If battery level is below a specified threshold, the System shall not send dummy messages.
+For all users where the feature is enabled and the opt-out extension is implemented, the System shall allow recipients to opt-out from receiving dummy messages.
+For all users where the feature is enabled and the opt-out extension is implemented, the System shall send clear text dummy messages to non-TextSecure contacts as a promotional message.
+For all users where the feature is enabled and the opt-out extension is implemented, the System shall allow the user to define a custom explanation message for non-TextSecure contacts.
+For all users where the feature is enabled and the opt-out extension is implemented, the System shall limit promotional messages to a maximum of one message per recipient per month.
+For all users where the feature is enabled and the opt-out extension is implemented, the System shall restrict promotional messages to daytime hours.
+For all users where the feature is enabled and the opt-out extension is implemented, the System shall include randomly selected phone numbers from participating users in dummy messages.
+For all users where the feature is enabled and the opt-out extension is implemented, the System shall never display phone numbers from dummy messages to the user.
+For all users where the feature is enabled and the opt-out extension is implemented, the System shall propagate opt-out information through dummy messages.
+For all users where the feature is enabled and the opt-out extension is implemented, the System shall allow recipients to opt-out by direct reply to dummy messages.
+For all users where the feature is enabled and the opt-out extension is implemented, the System shall define a time-to-live for each shared phone number.

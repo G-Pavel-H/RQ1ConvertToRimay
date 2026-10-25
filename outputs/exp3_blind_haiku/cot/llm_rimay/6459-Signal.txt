@@ -1,0 +1,1 @@
+When a share Intent EXTRA_SUBJECT field is received, Signal shall use the EXTRA_SUBJECT in the sharing operation.

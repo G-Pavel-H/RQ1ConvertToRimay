@@ -1,1 +1,1 @@
-For each group chat, the <MISSING_ACTOR> shall allow the user to change the "notification settings" independently from the "personal chats".
+The <MISSING_ACTOR> shall allow the user to change the "notification settings" for "group chats" independently from "personal chats".

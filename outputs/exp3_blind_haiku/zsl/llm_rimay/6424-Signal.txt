@@ -1,0 +1,4 @@
+For all users with a US phone number, the System shall enable searching for another US phone number by entering the full number with "+", the number without "+", or the area code with local number.
+For all users, the System shall enable searching for a non-US phone number by entering the full number with "+" or the country code with local number.
+When a user initiates a phone number search, the System shall attempt to match the search query by prepending the calling code for the current user's phone number.
+When a user initiates a phone number search, the System shall attempt to match the search query by prepending the calling code that corresponds to the default region for the current device.

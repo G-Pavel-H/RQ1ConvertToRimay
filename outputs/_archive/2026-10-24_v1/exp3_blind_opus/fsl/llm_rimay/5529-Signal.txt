@@ -1,0 +1,2 @@
+<MISSING_SCOPE>, if the user has not enabled a "passphrase", then the App must disable "Screen security" by default.
+<MISSING_SCOPE>, if the user has enabled a "passphrase", then the App must enable "Screen security" by default.

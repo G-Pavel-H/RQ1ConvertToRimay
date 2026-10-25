@@ -1,0 +1,1 @@
+For the System, When a message from a user-specified phone number is received, then the System shall delete the message and shall not send a notification.

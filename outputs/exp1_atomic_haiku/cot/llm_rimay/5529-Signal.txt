@@ -1,1 +1,1 @@
-The System shall disable the "Screen security" feature by default for non-passphrase users. <NON_ATOMIC>
+Signal shall disable the "Screen security" feature by default.

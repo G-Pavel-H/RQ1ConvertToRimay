@@ -1,1 +1,1 @@
-If the User does not have "passphrase" enabled, then Signal <MISSING_MODAL_VERB> disable the "Screen security" feature by default. <NON_ATOMIC>
+If the user does not have a "passphrase", then Signal must disable the "Screen security" setting by default.

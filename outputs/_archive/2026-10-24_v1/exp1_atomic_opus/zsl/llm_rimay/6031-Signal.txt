@@ -1,0 +1,1 @@
+The app <MISSING_MODAL_VERB> accept a "fingerprint" to unlock the "app" as an alternative to the "passphrase".

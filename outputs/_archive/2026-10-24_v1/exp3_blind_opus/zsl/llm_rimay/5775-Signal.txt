@@ -1,0 +1,1 @@
+For the "disappearing messages", Signal <MISSING_MODAL_VERB> provide "further timeout periods up to at least one year" in addition to the "existing 30s to 1 week periods".

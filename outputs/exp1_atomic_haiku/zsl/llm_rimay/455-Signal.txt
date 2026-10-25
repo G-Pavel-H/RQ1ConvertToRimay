@@ -1,1 +1,1 @@
-For each SMS message, the User must append a signature text to the message body.
+For the application, when the user requests to advertise TextSecure, the application shall enable the user to add a short signature below SMS messages.

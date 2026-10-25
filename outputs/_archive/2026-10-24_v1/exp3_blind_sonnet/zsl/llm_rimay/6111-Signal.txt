@@ -1,0 +1,4 @@
+When the user opens the "Image gallery", then <MISSING_ACTOR> <MISSING_MODAL_VERB> allow the user to "multiselect images/media".
+When the user opens the "Image gallery", then <MISSING_ACTOR> <MISSING_MODAL_VERB> allow the user to "delete the selected images/media".
+When the user opens an "image/media", then <MISSING_ACTOR> <MISSING_MODAL_VERB> allow the user to "delete the opened image/media" in the opened view.
+When the user requests to delete the "selected images/media", then <MISSING_ACTOR> <MISSING_MODAL_VERB> display a "confirmation dialog".

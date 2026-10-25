@@ -1,0 +1,1 @@
+For the Huawei EMUI device with Honor 8, when the app receives new messages, the app must display an unread notification badge on the app icon on the home screen.

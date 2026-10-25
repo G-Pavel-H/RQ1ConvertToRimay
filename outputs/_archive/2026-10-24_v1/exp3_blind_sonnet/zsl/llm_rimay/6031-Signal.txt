@@ -1,0 +1,2 @@
+The source asks for one system response: supporting fingerprint unlock for the app as an alternative to a passphrase. The actor is not named, and no condition or scope is given.
+<MISSING_SCOPE> <MISSING_CONDITION> <MISSING_ACTOR> shall allow the user to unlock the "app" by using a "fingerprint" as an alternative to the "passphrase".

@@ -1,1 +1,1 @@
-For each sent "message", where the mobile device has "dual SIM", then TextSecure <MISSING_MODAL_VERB> display the "SIM through which the message was sent".
+While the "mobile device" is a "dual SIM device", <MISSING_ACTOR> <MISSING_MODAL_VERB> display the "SIM through which the message was sent" in TextSecure.

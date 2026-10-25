@@ -1,0 +1,2 @@
+<MISSING_SCOPE>, if the user has swiped away a "notification" of a received message, then Signal must not display that "notification" again.
+<MISSING_SCOPE>, when Signal receives a new message from the same contact after the user has swiped away the "notification", then Signal must display a new "notification" with the new message.

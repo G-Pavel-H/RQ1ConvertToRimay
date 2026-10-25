@@ -1,0 +1,1 @@
+For <MISSING_SCOPE>, <MISSING_CONDITION> the System shall support themes to enable user adoption and platform migration from competing applications.

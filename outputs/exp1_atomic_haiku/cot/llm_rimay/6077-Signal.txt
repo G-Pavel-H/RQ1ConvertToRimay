@@ -1,1 +1,1 @@
-Signal shall send an SMS message to the provider.
+When the user sends an SMS to "13977" through Signal, then Signal must send the SMS message to the provider.

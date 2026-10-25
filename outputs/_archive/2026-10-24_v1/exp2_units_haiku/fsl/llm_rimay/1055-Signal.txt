@@ -1,0 +1,2 @@
+<MISSING_SCOPE>, when the App creates a "message draft", then the App must mark the "message draft" with a "color" or a "text label".
+<MISSING_SCOPE>, when the App creates a "message draft", then the App must move the "message draft" to the top of the "message-list".

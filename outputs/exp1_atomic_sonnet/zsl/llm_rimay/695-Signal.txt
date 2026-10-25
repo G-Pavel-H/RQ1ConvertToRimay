@@ -1,1 +1,1 @@
-While the SMS mode is disabled, when the user starts typing, then the System shall not show the "count of letters" at the "bottom left corner".
+While the SMS mode is disabled, when the user starts typing, then the System shall not show the "letter count" at the bottom left corner.

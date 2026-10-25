@@ -1,0 +1,6 @@
+<MISSING_ACTOR> <MISSING_MODAL_VERB> import the "private key" from a "file".
+<MISSING_ACTOR> <MISSING_MODAL_VERB> export the "private key" to a "file".
+<MISSING_ACTOR> <MISSING_MODAL_VERB> import the "public keys" from a "file".
+<MISSING_ACTOR> <MISSING_MODAL_VERB> export the "public keys" to a "file".
+<MISSING_ACTOR> <MISSING_MODAL_VERB> import the "public keys" via "Bluetooth, NFC, and QR code".
+<MISSING_ACTOR> <MISSING_MODAL_VERB> export the "public keys" via "Bluetooth, NFC, and QR code".

@@ -1,0 +1,2 @@
+When the System receives "messages" from a "user-specified phone number", then the System shall delete the "messages" from the "user-specified phone number" upon receipt.
+When the System receives "messages" from a "user-specified phone number", then the System shall not send a "notification" to the user.

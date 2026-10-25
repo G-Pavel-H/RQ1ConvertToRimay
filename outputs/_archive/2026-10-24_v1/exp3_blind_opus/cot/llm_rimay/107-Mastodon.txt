@@ -1,0 +1,1 @@
+For each "post with an image", if <MISSING_CONDITION>, then <MISSING_ACTOR> <MISSING_MODAL_VERB> display an "indicator of whether the image has an image description" to the "user".

@@ -1,0 +1,2 @@
+<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure must let the user share a "calendar event" via TextSecure.
+<MISSING_SCOPE>, when the user chooses TextSecure to share a "calendar event" from the Android Calendar app, then TextSecure must attach the "calendar event" to the message.

@@ -1,5 +1,5 @@
-For all users, if the user has enabled the "dummy message" feature and defined a desired quantity, then the App must send "dummy random messages" to randomly selected TextSecure contacts at random times.
-For all users, if the user has enabled the "dummy message" feature, then the App must discard "dummy messages" after decryption and prevent them from being analyzed in traffic retention data.
-For all users, if the user has enabled the "dummy message" feature and the device battery level is below the user-defined threshold, then the App must not send "dummy random messages".
-For all users, if the user has enabled the "dummy message" feature and the device is roaming, then the App must not send "dummy random messages" unless the user has explicitly enabled roaming for this feature.
-For all users, if a recipient has opted out of receiving "dummy messages", then the App must not send "dummy random messages" to that recipient.
+<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow the user to enable a "dummy message" feature in an opt-in manner.
+<MISSING_SCOPE>, when the user enables the "dummy message" feature, then the App must let the user configure "dummy message" parameters such as "maximum quantity per month", "ratio to legitimate messages", and "maximum total messages".
+<MISSING_SCOPE>, when the "dummy message" feature is enabled, then the App must send "dummy random messages" to "randomly selected TextSecure contacts" at "random times".
+<MISSING_SCOPE>, if the device is "roaming" or the "battery level is below 30%", then the App must not send "dummy messages".
+<MISSING_SCOPE>, when the user receives a "dummy message", then the App must automatically discard that message after "decryption".

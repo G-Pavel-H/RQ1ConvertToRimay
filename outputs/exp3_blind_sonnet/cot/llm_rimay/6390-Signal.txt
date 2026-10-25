@@ -1,0 +1,1 @@
+If a "Signal message" has been sent to the server and has not been delivered to the recipient after "a timeout", then the Signal-Android application shall send a "lack of delivery notification asking whether to resend via insecure SMS" to the sender's phone.

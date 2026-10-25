@@ -1,0 +1,2 @@
+When the user long presses on a message and selects the info button, then the System shall display the received time for outgoing messages based on the delivery receipt.
+If the display of received time for outgoing messages is rejected, then the System shall rename the "Sent/Received" label to "Sent" for outgoing messages.

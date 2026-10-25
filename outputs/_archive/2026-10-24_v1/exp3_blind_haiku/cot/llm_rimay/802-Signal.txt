@@ -1,0 +1,10 @@
+The System <MISSING_MODAL_VERB> import the private key from a file.
+The System <MISSING_MODAL_VERB> export the private key to a file.
+The System <MISSING_MODAL_VERB> import the public keys from a file.
+The System <MISSING_MODAL_VERB> export the public keys to a file.
+The System <MISSING_MODAL_VERB> import the public keys via Bluetooth.
+The System <MISSING_MODAL_VERB> export the public keys via Bluetooth.
+The System <MISSING_MODAL_VERB> import the public keys via NFC.
+The System <MISSING_MODAL_VERB> export the public keys via NFC.
+The System <MISSING_MODAL_VERB> import the public keys via QR code.
+The System <MISSING_MODAL_VERB> export the public keys via QR code.

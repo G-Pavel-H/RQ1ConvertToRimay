@@ -1,1 +1,1 @@
-For each calling screen in Signal 3.0.3, the System shall display a contact photo at full resolution. <NON_ATOMIC>
+When the calling screen displays a contact photo on Signal 3.0.3, the System shall show the contact photo in full resolution.

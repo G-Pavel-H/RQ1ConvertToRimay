@@ -1,0 +1,7 @@
+<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow the user to export the "private key" to a file.
+<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow the user to import the "private key" from a file.
+<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow the user to export "public keys" to a file.
+<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow the user to import "public keys" from a file.
+<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow the user to export and import "public keys" via Bluetooth.
+<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow the user to export and import "public keys" via NFC.
+<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow the user to export and import "public keys" via QR code.

@@ -1,0 +1,3 @@
+For each "media item", <MISSING_CONDITION>, then Signal-Android <MISSING_MODAL_VERB> detect whether the "media item" has already been saved by using a "file system check".
+For each "media item", if the "media item" is equal to "already saved", then Signal-Android <MISSING_MODAL_VERB> display a "view icon or share icon" to "visually indicate that the media item has already been saved".
+For each "media item", if the "media item" is not equal to "already saved", then Signal-Android <MISSING_MODAL_VERB> display the "save button".

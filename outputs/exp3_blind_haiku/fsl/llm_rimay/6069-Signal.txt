@@ -1,0 +1,1 @@
+For the Honor 8 device with EMUI 4.1, when Signal receives a new message, the App must display an unread notification badge on the app icon on the home screen.

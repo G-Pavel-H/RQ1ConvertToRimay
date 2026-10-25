@@ -1,0 +1,4 @@
+When the user has a US phone number and the user enters any of "+17043264096", "17043264096" or "7043264096", then the System shall allow the user to "search for the US phone number +17043264096".
+When the user has a US phone number and the user enters any of "+441733530267" or "441733530267", then the System shall allow the user to "search for the non-US phone number +441733530267".
+When the user searches for a non-contact by phone number, then the System shall prepend the "calling code of the current user's phone number" to the entered phone number.
+When the user searches for a non-contact by phone number, then the System shall prepend the "calling code that corresponds to the default region of the current device" to the entered phone number.

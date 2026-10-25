@@ -1,1 +1,1 @@
-<NON_ATOMIC>
+For a group or user, when the group or user sends messages, the System shall mute notifications for a duration specified by "X minutes/hours".

@@ -1,1 +1,1 @@
-The messaging application shall allow the user to change the "maximum size of an MMS".
+The system shall allow the user to change the "maximum size of MMS".

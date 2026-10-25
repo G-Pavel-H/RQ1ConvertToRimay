@@ -1,1 +1,1 @@
-For the "disappearing messages", Signal <MISSING_MODAL_VERB> provide additional "disappearing message periods" up to "at least one year".
+The Signal app must provide "additional disappearing message timeout periods of up to at least one year".

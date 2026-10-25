@@ -1,1 +1,1 @@
-The conversation view must sort messages by sent timestamp. <NON_ATOMIC>
+The TextSecure system shall sort the conversation view by a reliable message ordering mechanism to ensure consistent message order across participants. <NON_ATOMIC>

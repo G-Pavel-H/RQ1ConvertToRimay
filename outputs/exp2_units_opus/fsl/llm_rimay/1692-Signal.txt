@@ -1,2 +1,2 @@
-<MISSING_SCOPE>, when the App receives an "SMS delivery report", then the App must save the "time the other user received the message".
-<MISSING_SCOPE>, when the user views the "message details", then the App must show the "time the other user received the message".
+<MISSING_SCOPE>, when the App receives an "SMS delivery report", then the App must save the "time the other user received the message" from the "SMS delivery report".
+<MISSING_SCOPE>, when the user views the "message details" of an SMS, then the App must show the "time the other user received the message" in the "message details".

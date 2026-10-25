@@ -237,6 +237,8 @@ def run_single(
         "paska_passed": paska_passed,
         "paska_smells": paska_smells,
         "paska_error": paska_error,
+        "format": llm.format,
+        "stop_reason": llm.stop_reason,
         "model": llm.model,
         "latency_ms": llm.latency_ms,
         "input_tokens": llm.input_tokens,
@@ -247,29 +249,31 @@ def run_single(
 def run_single_units(
     req_id: str,
     nl_text: str,
-    n_units: int,
+    n_units: Optional[int],
     *,
     run_cfg: config.RunConfig,
     run_paths: config.RunPaths,
 ) -> dict:
     """The units task: convert one non-atomic requirement into ``n_units`` Rimay.
 
-    The prompt states the number of units. Each returned line is one unit and
+    The prompt states the number of units; ``n_units=None`` is experiment 3
+    (blind): the model is told neither atomicity nor the count. Each returned line is one unit and
     gets the same treatment as an atomic conversion — placeholder-derived slots
     and its own Paska verdict (all units go to Paska in one batch).
     """
     config.ensure_output_dirs()
     run_paths.ensure()
-    label = f"units-{run_cfg.strategy}"
+    blind = n_units is None
+    label = f"{'blind' if blind else 'units'}-{run_cfg.strategy}"
 
     with tracking.start_run(strategy=label, req_id=req_id, model_name=run_cfg.model,
                             output_run_id=run_paths.run_id):
-        params = {"temperature": run_cfg.temperature, "max_tokens": run_cfg.max_tokens, "n_units": n_units}
+        params = {"temperature": run_cfg.temperature, "max_tokens": run_cfg.max_tokens, "n_units": n_units or "not given"}
         if run_cfg.strategy == "fsl":
             params["n_fsl_examples"] = run_cfg.n_fsl_examples
         tracking.log_params(params)
 
-        llm: LLMResponse = convert(nl_text, run_cfg=run_cfg, n_units=n_units)
+        llm: LLMResponse = convert(nl_text, run_cfg=run_cfg, n_units=n_units, blind=blind)
         _persist_rimay(req_id, run_paths.llm_rimay_dir, llm.rimay)
         texts = llm.units or []
 
@@ -304,7 +308,9 @@ def run_single_units(
         tracking.log_text_artifact(llm.prompt.system, "prompt_system.md")
         tracking.log_text_artifact(llm.prompt.user, "prompt_user.md")
         tracking.log_json_artifact({"req_id": req_id, "units": units, "error": paska_error}, "paska.json")
-        metrics = {"n_units_expected": n_units, "n_units_returned": len(units), "latency_ms": llm.latency_ms}
+        metrics = {"n_units_returned": len(units), "latency_ms": llm.latency_ms}
+        if not blind:
+            metrics["n_units_expected"] = n_units
         if llm.input_tokens is not None:
             metrics["input_tokens"] = llm.input_tokens
         if llm.output_tokens is not None:
@@ -316,12 +322,13 @@ def run_single_units(
     return {
         "reqId": req_id,
         "strategy": run_cfg.strategy,
-        "task": "units",
+        "task": "blind" if blind else "units",
         "n_units_expected": n_units,
         "n_units_returned": len(units),
         "units": units,
         "rimay": llm.rimay,
         "raw": llm.raw,
+        "format": llm.format,
         "paska_error": paska_error,
         "model": llm.model,
         "stop_reason": llm.stop_reason,

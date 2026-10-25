@@ -1,1 +1,1 @@
-Signal must show the full resolution contact photo on the Calling screen during a call.
+Signal must display the "contact photo" at full resolution on the calling screen.

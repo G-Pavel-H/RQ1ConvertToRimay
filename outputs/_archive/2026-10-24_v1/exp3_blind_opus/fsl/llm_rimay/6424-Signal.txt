@@ -1,0 +1,3 @@
+<MISSING_SCOPE>, when the user enters a "phone number of a non-contact" in the search, then the App must look up the non-contact by that "phone number".
+<MISSING_SCOPE>, when the user enters a "phone number without a leading plus sign or calling code" in the search, then the App must try prepending the "calling code of the current user's phone number" to the entered number.
+<MISSING_SCOPE>, when the user enters a "phone number without a leading plus sign or calling code" in the search, then the App must try prepending the "calling code of the default region of the current device" to the entered number.

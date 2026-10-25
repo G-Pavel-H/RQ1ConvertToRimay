@@ -1,1 +1,1 @@
-For each "TextSecure group", after "a participant is added to the TextSecure group", then <MISSING_ACTOR> <MISSING_MODAL_VERB> remove the "participant" from the "TextSecure group".
+For each "TextSecure group", after a "participant" is added to the "TextSecure group", then TextSecure <MISSING_MODAL_VERB> remove the "participant" from the "TextSecure group".

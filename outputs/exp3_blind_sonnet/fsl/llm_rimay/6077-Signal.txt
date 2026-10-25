@@ -1,0 +1,2 @@
+<MISSING_SCOPE>, when the user sends an "SMS message" to the "provider number 13977" through Signal, then Signal must deliver the "SMS message" to the "provider number 13977".
+<MISSING_SCOPE>, <MISSING_CONDITION>, Signal must update "libphonenumber" to version "8.2.0" or later.

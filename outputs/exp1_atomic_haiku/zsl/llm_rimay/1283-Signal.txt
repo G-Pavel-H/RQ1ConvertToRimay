@@ -1,1 +1,1 @@
-<NON_ATOMIC>
+For <MISSING_SCOPE>, if the user prefers themes similar to those in Go SMS PRO, then the system shall provide theme support to TextSecure.

@@ -1,4 +1,4 @@
-For the visual display feature, the System shall display a pie chart that indicates how many of the user's contacts are on Signal.
-When the user taps an element of the pie chart, the System shall show a list of people in that category.
-For contacts not yet on Signal, the System shall display a gamification message such as "Almost there! __" when most but not all contacts are using Signal.
-The System shall display information about how many of the messages the user sends are encrypted.
+The System shall display a pie chart that indicates how many contacts are on Signal.
+When a user taps an element of the pie chart, the System shall show a list of people in that category.
+The System shall display a pie chart that indicates how many of the messages the user sends are encrypted.
+The System shall display a gamification message such as "Almost there! __" when most, but not all, of the user's contacts are using Signal.

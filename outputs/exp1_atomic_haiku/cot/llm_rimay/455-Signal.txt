@@ -1,1 +1,1 @@
-The system shall add a short signature to SMS messages.
+The System shall add a "signature capability" to SMS messages.

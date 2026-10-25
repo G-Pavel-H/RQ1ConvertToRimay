@@ -1,0 +1,3 @@
+The system shall allow the user to change the maximum size of an MMS.
+Wait, that must conform to the placeholders and grammar. Corrected output:
+<MISSING_CONDITION> the System shall allow the user to change the "maximum size of the MMS".

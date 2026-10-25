@@ -1,0 +1,2 @@
+For <MISSING_SCOPE>, when <MISSING_ACTOR> receives an "SMS delivery report", then <MISSING_ACTOR> shall save the "time the other user received the message (done date)".
+For <MISSING_SCOPE>, when <MISSING_ACTOR> receives an "SMS delivery report", then <MISSING_ACTOR> shall view the "time the other user received the message (done date)" in the "message details".

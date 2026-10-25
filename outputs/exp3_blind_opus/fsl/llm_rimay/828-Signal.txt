@@ -1,0 +1,1 @@
+<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure must let the user remove "participants" from a "group" after they were added.

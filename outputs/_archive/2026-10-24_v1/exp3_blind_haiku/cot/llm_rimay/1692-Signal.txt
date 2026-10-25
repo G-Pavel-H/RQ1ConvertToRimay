@@ -1,0 +1,2 @@
+When a SMS delivery report is received, <MISSING_ACTOR> shall save the "received time" from the SMS delivery report.
+<MISSING_ACTOR> shall display the "received time" in the message details.

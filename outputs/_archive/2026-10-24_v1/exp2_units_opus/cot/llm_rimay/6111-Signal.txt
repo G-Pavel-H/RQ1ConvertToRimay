@@ -1,0 +1,3 @@
+<MISSING_SCOPE>, when the user opens the "Image gallery", then <MISSING_ACTOR> <MISSING_MODAL_VERB> allow the user to "multiselect and delete images/media" in the "Image gallery".
+<MISSING_SCOPE>, when the user opens an "image/media", then <MISSING_ACTOR> <MISSING_MODAL_VERB> allow the user to "delete the opened image/media" in the "opened view".
+<MISSING_SCOPE>, before the user deletes the "selected images/media", then <MISSING_ACTOR> <MISSING_MODAL_VERB> display a "deletion confirmation dialog" to the user.

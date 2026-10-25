@@ -1,1 +1,1 @@
-For each group, when a "User" activates the "Mute for X minutes/hours" option, then the <MISSING_ACTOR> must suppress the "vibration and ringing notifications" for the "selected duration".
+<MISSING_ACTOR> <MISSING_MODAL_VERB> mute the "group or user notifications" for "X minutes/hours".

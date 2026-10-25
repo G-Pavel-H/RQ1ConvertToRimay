@@ -1,0 +1,1 @@
+The calling screen must display the full resolution contact photo.

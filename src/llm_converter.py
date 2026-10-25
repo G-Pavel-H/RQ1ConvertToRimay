@@ -39,6 +39,7 @@ class LLMResponse:
     latency_ms: int
     stop_reason: Optional[str]
     units: Optional[List[str]] = None  # the units task only: one Rimay per unit
+    format: Optional[dict] = None  # how well the response kept to the answer block (see parse_answer)
 
 
 def strip_missing_placeholders(rimay: str) -> str:
@@ -126,6 +127,48 @@ def extract_units(text: str) -> List[str]:
     return out
 
 
+_BLOCK_RE = re.compile(r"<rimay>(.*?)(?:</rimay>|\Z)", re.S | re.I)
+# A Rimay requirement always has a modal verb (or its placeholder); commentary,
+# headings and "Wait, correcting…" lines almost never do.
+_RIMAY_LINE_RE = re.compile(r"<MISSING_MODAL_VERB>|\b(must|shall|should|will|may|can|could|would)\b", re.I)
+
+
+def parse_answer(text: str) -> tuple[List[str], dict]:
+    """The Rimay lines of a response, and a record of what was not clean.
+
+    Reads the last ``<rimay>`` block (an unclosed one runs to the end). Without a
+    block, falls back to the older readers: the text after a "Final Rimay:"
+    marker, else the whole response. Each non-empty line, stripped of list marks
+    and bold, is kept when it looks like Rimay (has a modal verb or its
+    placeholder); the others are returned in ``format["dropped"]``.
+
+    ``format``: ``block`` (an answer block was found), ``closed`` (it was
+    closed), ``outside`` (characters of text after the block — before it is the
+    CoT reasoning and allowed), ``dropped`` (non-Rimay lines removed),
+    ``before`` (characters before the block, for zsl/fsl a format breach).
+    """
+    s = text.strip()
+    blocks = list(_BLOCK_RE.finditer(s))
+    fmt = {"block": bool(blocks), "closed": False, "before": 0, "outside": 0, "dropped": []}
+    if blocks:
+        m = blocks[-1]
+        body = m.group(1)
+        fmt["closed"] = s[m.start():m.end()].lower().endswith("</rimay>")
+        fmt["before"] = len(_BLOCK_RE.sub("", s[:m.start()]).strip())
+        fmt["outside"] = len(s[m.end():].strip())
+    else:
+        low = s.lower()
+        marker_end = max((low.rfind(mk) + len(mk) for mk in _FINAL_MARKERS if low.rfind(mk) != -1), default=-1)
+        body = s[marker_end:] if marker_end != -1 else s
+    lines = []
+    for ln in body.splitlines():
+        ln = _LIST_MARK_RE.sub("", ln.strip().strip("*").strip()).strip().strip("*").strip().strip("`").strip()
+        if not ln:
+            continue
+        (lines if _RIMAY_LINE_RE.search(ln) and not ln.startswith("#") else fmt["dropped"]).append(ln)
+    return lines, fmt
+
+
 def _strip_to_rimay(text: str) -> str:
     """Strip the few wrappers a model occasionally emits despite instructions.
 
@@ -149,9 +192,10 @@ def convert(
     *,
     run_cfg: config.RunConfig,
     n_units: Optional[int] = None,
+    blind: bool = False,
 ) -> LLMResponse:
-    """``n_units`` set → the units task; the response's ``units`` holds each line."""
-    prompt = build_prompt(nl_text, run_cfg=run_cfg, n_units=n_units)
+    """``n_units`` set (or ``blind``) → the units task; the response's ``units`` holds each line."""
+    prompt = build_prompt(nl_text, run_cfg=run_cfg, n_units=n_units, blind=blind)
 
     start = time.monotonic()
     # cache_system: the system prompt is identical across requirements in a
@@ -168,8 +212,16 @@ def convert(
     latency_ms = int((time.monotonic() - start) * 1000)
 
     raw = _strip_to_rimay(completion.text)
-    units = extract_units(raw) if n_units is not None else None
-    rimay = "\n".join(units) if units is not None else extract_final_rimay(raw)
+    lines, fmt = parse_answer(raw)
+    fmt["lines"] = len(lines)
+    if n_units is not None or blind:
+        units = lines
+        rimay = "\n".join(units)
+    else:
+        units = None
+        # One requirement expected: the first Rimay line of the block; a second
+        # line is recorded as a format issue (fmt["lines"] > 1).
+        rimay = lines[0] if lines else extract_final_rimay(raw)
 
     return LLMResponse(
         rimay=rimay,
@@ -181,6 +233,7 @@ def convert(
         latency_ms=latency_ms,
         stop_reason=completion.stop_reason,
         units=units,
+        format=fmt,
     )
 
 

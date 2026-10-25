@@ -1,0 +1,2 @@
+For each "media item", if the "media item" has already been saved on the device, then <MISSING_ACTOR> <MISSING_MODAL_VERB> display a "view icon" or a "share icon" instead of the "save button" to indicate that the "media item" has already been saved.
+For each "media item", if the "media item" has not been saved on the device, then <MISSING_ACTOR> <MISSING_MODAL_VERB> display the "save button".

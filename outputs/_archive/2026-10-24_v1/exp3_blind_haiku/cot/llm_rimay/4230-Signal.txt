@@ -1,0 +1,1 @@
+When a text is oversized, the system shall split the "oversized texts" into multiple messages.

@@ -1,0 +1,2 @@
+<MISSING_SCOPE>, if the "Signal message" is not delivered to the recipient after "the timeout", then Signal <MISSING_MODAL_VERB> display a "lack of delivery notification" to the sender.
+<MISSING_SCOPE>, if the "Signal message" is not delivered to the recipient after "the timeout", then Signal <MISSING_MODAL_VERB> request the sender to "resend the message via insecure SMS".

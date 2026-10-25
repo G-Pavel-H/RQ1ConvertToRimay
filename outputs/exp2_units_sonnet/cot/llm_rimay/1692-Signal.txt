@@ -1,2 +1,2 @@
-When the System receives an "SMS delivery report", then the System shall save the "time the other user received the message" in the "message details".
-When the System receives an "SMS delivery report", then the System shall allow the user to view the "time the other user received the message" in the "message details".
+When a sms delivery report is received, then the System shall save the "time the other user received the message" ("done date").
+When a sms delivery report is received, then the System shall allow the user to view the "time the other user received the message" in the "message details".

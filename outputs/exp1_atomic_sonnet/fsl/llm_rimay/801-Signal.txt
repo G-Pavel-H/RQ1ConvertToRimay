@@ -1,1 +1,1 @@
-<MISSING_SCOPE>, <MISSING_CONDITION>, the app must provide a "Mute for X minutes/hours" option to mute notifications from a group or a user.
+<MISSING_SCOPE>, <MISSING_CONDITION>, the app must provide a "Mute" option to silence notifications from a group or a user for a specified duration.

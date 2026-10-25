@@ -1,1 +1,1 @@
-<MISSING_SCOPE>, <MISSING_CONDITION>, <MISSING_ACTOR> <MISSING_MODAL_VERB> sort the "messages" in the "Conversation View" based on the "sent timestamp". <NON_ATOMIC>
+<MISSING_SCOPE>, <MISSING_CONDITION>, the Conversation_View <MISSING_MODAL_VERB> display the messages in a "consistent order" to all "chat participants".

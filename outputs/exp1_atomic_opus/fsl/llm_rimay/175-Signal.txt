@@ -1,1 +1,1 @@
-<MISSING_SCOPE>, <MISSING_CONDITION>, the app must provide a "quick wipe option" to delete the "text message database".
+<MISSING_SCOPE>, <MISSING_CONDITION>, the app must provide a quick way to wipe the "text message database".

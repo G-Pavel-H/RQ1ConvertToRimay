@@ -1,21 +1,37 @@
 # Cross-strategy verdict — exp2_units_haiku
 
-Model: `claude-opus-5-5` · generated 2026-10-18T23:44:05+01:00 · runs: cot, fsl, zsl
+Model: `claude-opus-5-5` · generated 2026-10-25T20:08:40+00:00 · runs: cot, fsl, zsl
 
-Track 1 is only partly measurable here. Actor, modalVerb and action have zero gold-missing support, so their 0.0 scores mean nothing, and the macro averages are diluted by those empty slots. Use the micro figures and the per-slot results for scope (42 missing) and condition (14 missing). One oddity is worth checking: scope is gold-missing in every one of the 42 requirements, yet the overall verdict calls all 42 complete. That is consistent with scope and condition being optional in Rimay, but confirm it reflects an annotation decision rather than an empty column.
+## Summary
+Few-shot is best on every measurable axis: it flags 43 of 56 genuinely missing slots against 8 for zero-shot and 0 for chain-of-thought, and it comes closest to the human ceiling on similarity. On Track 1 the gap is far too large to be noise, even with 42 units clustered in 15 requirements. On Paska pass rate (33 vs 25 of 42 against CoT), the gap is suggestive but not conclusive.
 
-On the measurable slots, the strategies separate sharply. Few-shot flagged 31 of 56 missing slots (55%), zero-shot flagged 5 (9%), and chain-of-thought flagged none, inventing a scope for all 42 requirements and a condition for all 14. The slots are clustered within requirements, so they are not fully independent. Even so, 31 versus 5 versus 0 is far outside noise, and 8/14 versus 0/14 on condition is notable despite the small count. Few-shot is clearly the least prone to fabrication. It is still far from safe, though, since it silently filled 19 scopes and 6 conditions.
+## Missing-slot detection
+Only scope (42 gold-missing) and condition (14) have support. Actor, modalVerb and action scores of 0.0 are artifacts of zero support. The overall-verdict F1 of 0.0 is also an artifact, because all 42 gold units are complete.
 
-CoT shows a failure mode the others do not. Reasoning appears to push the model to rationalise a complete structure rather than leave a slot empty. It does worse than plain zero-shot on the experiment's central risk. Its Paska pass rate is the highest (37/42), and that is not a contradiction. Fluently invented scope and condition text is exactly what a smell detector cannot see. Paska measures well-formedness, not faithfulness, so CoT's Paska score should not be read as quality.
+- **CoT** fills every missing slot, including all 14 missing conditions. These are invented triggers the source never stated, which is the fabrication risk this experiment probes. A flag count of exactly zero with no false positives may also mean the CoT prompt lacks the missing-slot marker convention, so check that before attributing it to the model.
+- **ZSL** misses most missing slots, fabricating 12 of the 14 conditions. It also mislabels the wrong slots: it flags 8 implied actors and 4 implied modal verbs as missing. That makes 12 complete units look incomplete, which lowers its agreement rate on the overall verdict.
+- **FSL** is the only strategy that follows the convention. It produces 2 false-positive conditions and fabricates 4 conditions.
 
-On similarity, few-shot sits closest to the human ceiling. Its cosine is 0.845 against a human-human ceiling of 0.889, and its sequence ratio is 0.673 against 0.786. CoT (0.735) and zero-shot (0.756) trail by a clear margin, but are indistinguishable from each other given per-pair standard deviations around 0.10. The 126 pairs come from only 42 requirements, so the effective sample is smaller than it looks. Few-shot also reaches a maximum of 1.0, an exact match with a human conversion. Check whether any few-shot exemplar overlaps a test requirement before trusting that gap.
+## Conversion quality
+FSL reaches about 97% of the human-human cosine ceiling and about 90% of the Jaccard ceiling. CoT and ZSL are indistinguishable from each other at about 82% of the cosine ceiling and about 60% of the Jaccard ceiling.
 
-On Paska, zero-shot is weakest (29/42), driven mostly by passive voice (7). The few-shot versus CoT difference is two requirements and is noise. Zero-shot versus CoT is suggestive but not conclusive at n=42. Both zero-shot (3) and few-shot (2) produced outputs flagged as non-atomic, even though the inputs were pre-filtered as atomic. That suggests the model sometimes introduces coordination itself, which is worth inspecting.
+FSL's lexical gain may partly reflect example phrasing that matches the annotators' house style. Its similarity maximum is 1.0, meaning at least one output exactly matches a human conversion.
 
-The results contain no reqIds, so I cannot point to specific requirements. The next step is to pull them for few-shot's 25 silent fills, CoT's 14 invented conditions, the zero-shot actor flagged as missing, and the non-atomic outputs.
+Paska smells differ by strategy:
+- **CoT**'s smells are dominated by "Non-atomic requirement" (8), so it produces units that are still compound despite being told the unit count.
+- **ZSL**'s "Incomplete requirement" and "Incomplete system response" smells (4 each) track its spurious actor and modal-verb flags.
 
-Beyond that, I would run in this order:
-1. Repeat each strategy over several seeds and bootstrap confidence intervals by requirement, to get real variance.
-2. Test few-shot combined with an explicit "leave unstated slots empty" instruction, and few-shot plus CoT, to see whether reasoning still erodes flagging when exemplars are present.
-3. Audit the exemplars for leakage.
-4. Re-run once the non-atomic requirements can be decomposed, since none of these conclusions transfer to the unfiltered set.
+## Units and atomicity
+All three strategies return exactly the right number of units for all 15 requirements, and there are no count disagreements. Non-atomic detection is trivially perfect because the prompt states the unit count. Units are returned out of gold order for 4 requirements (CoT, FSL) and 5 (ZSL). If unit scoring is positional, this depresses similarity for those requirements.
+
+## Anomalies and inconsistencies
+- **FSL, text outside the answer block** (10 of 15 requirements): 1692, 226, 328, 4821, 5751, 6111, 6362, 6390, 6424, 802. The longest are 802 (1721 characters) and 6390 (1135 characters).
+- **ZSL, text outside the answer block** (8 requirements): 1065, 222, 328, 4821, 6111, 6390, 6424, 7567.
+- **Shared by both:** 328, 4821, 6111, 6390 and 6424 breach under FSL and ZSL. This points to requirement-driven verbosity, likely from the more complex requirements, rather than a strategy effect.
+- **CoT** has no format breaches.
+- **Effect on metrics:** the breaches affect headline metrics only if the parser drops content or the outside text carries the model's missing-slot reasoning.
+
+## Next step
+- Manually inspect CoT outputs for the 14 condition-missing units to confirm the conditions are fabricated rather than an output-convention mismatch.
+- Verify that unit matching is order-invariant, and rescore the 4–5 reordered requirements if it is not.
+- Read the text outside the answer block for 328, 4821, 6111, 6390 and 6424 to see whether it holds caveats that should have been flags.

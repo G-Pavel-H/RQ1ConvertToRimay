@@ -1,1 +1,1 @@
-<NON_ATOMIC>
+If the user has a screen reader, then the system shall display whether an image description exists for each image post.

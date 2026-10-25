@@ -1,0 +1,1 @@
+<MISSING_SCOPE> <MISSING_CONDITION> The Signal app <MISSING_MODAL_VERB> support the custom URL scheme "signal://" so that webpages can point to the Signal app.

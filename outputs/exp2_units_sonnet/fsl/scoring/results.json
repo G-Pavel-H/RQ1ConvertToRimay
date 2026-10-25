@@ -8,7 +8,16 @@
     "exactCount": 15,
     "expectedUnits": 42,
     "returnedUnits": 42,
-    "reordered": 2,
+    "reordered": 3,
+    "nonAtomicDetection": {
+      "tp": 15,
+      "fp": 0,
+      "fn": 0,
+      "tn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
     "perRequirement": [
       {
         "reqId": "1055-Signal",
@@ -79,10 +88,10 @@
           "1": 1,
           "2": 2,
           "3": 3,
-          "4": 5,
-          "5": 4
+          "4": 4,
+          "5": 5
         },
-        "reordered": true,
+        "reordered": false,
         "missingGoldUnits": [],
         "extraLlmUnits": []
       },
@@ -128,12 +137,12 @@
         "expected": 4,
         "returned": 4,
         "mapping": {
-          "1": 1,
-          "2": 2,
-          "3": 3,
-          "4": 4
+          "1": 4,
+          "2": 1,
+          "3": 2,
+          "4": 3
         },
-        "reordered": false,
+        "reordered": true,
         "missingGoldUnits": [],
         "extraLlmUnits": []
       },
@@ -142,11 +151,11 @@
         "expected": 3,
         "returned": 3,
         "mapping": {
-          "1": 1,
-          "2": 2,
-          "3": 3
+          "1": 3,
+          "2": 1,
+          "3": 2
         },
-        "reordered": false,
+        "reordered": true,
         "missingGoldUnits": [],
         "extraLlmUnits": []
       },
@@ -204,7 +213,26 @@
       }
     ]
   },
-  "scored_at": "2026-10-18T23:55:23+01:00",
+  "anomalies": {
+    "counts": {},
+    "affected": 0,
+    "items": [],
+    "kinds": {
+      "empty": "no Rimay line in the response",
+      "truncated": "the response hit the token limit",
+      "paska_error": "Paska failed on the conversion",
+      "no_block": "no <rimay> answer block (older readers used)",
+      "unclosed_block": "the <rimay> block was not closed",
+      "text_outside": "text outside the answer block",
+      "dropped_lines": "non-Rimay lines inside the answer, removed",
+      "extra_lines": "more than one Rimay line for an atomic conversion",
+      "non_atomic_flag": "the model flagged an atomic requirement <NON_ATOMIC>",
+      "split_atomic": "an atomic requirement returned as several units",
+      "merged_non_atomic": "a non-atomic requirement returned as one unit",
+      "count_mismatch": "returned a different number of units than the gold"
+    }
+  },
+  "scored_at": "2026-10-25T20:00:52+00:00",
   "gold_csv": "data/curated/gold_units.csv",
   "meta": {
     "run_id": "exp2_units_sonnet/fsl",
@@ -216,7 +244,7 @@
     "n_fsl_examples": 3,
     "gold_csv": "data/curated/gold_units.csv",
     "backend": "subscription",
-    "created_at": "2026-10-18T23:55:15+01:00",
+    "created_at": "2026-10-25T02:05:50+00:00",
     "n_processed": 15,
     "n_skipped": 0,
     "skipped_ids": []
@@ -232,23 +260,23 @@
     "n": 42,
     "per_slot": {
       "scope": {
-        "tp": 42,
+        "tp": 40,
         "fp": 0,
-        "fn": 0,
+        "fn": 2,
         "tn": 0,
         "precision": 1.0,
-        "recall": 1.0,
-        "f1": 1.0,
+        "recall": 0.9523809523809523,
+        "f1": 0.975609756097561,
         "support_gold_missing": 42
       },
       "condition": {
-        "tp": 12,
-        "fp": 2,
-        "fn": 2,
-        "tn": 26,
-        "precision": 0.8571428571428571,
-        "recall": 0.8571428571428571,
-        "f1": 0.8571428571428571,
+        "tp": 10,
+        "fp": 4,
+        "fn": 4,
+        "tn": 24,
+        "precision": 0.7142857142857143,
+        "recall": 0.7142857142857143,
+        "f1": 0.7142857142857143,
         "support_gold_missing": 14
       },
       "actor": {
@@ -283,14 +311,14 @@
       }
     },
     "micro": {
-      "precision": 0.9642857142857143,
-      "recall": 0.9642857142857143,
-      "f1": 0.9642857142857143
+      "precision": 0.9259259259259259,
+      "recall": 0.8928571428571429,
+      "f1": 0.9090909090909091
     },
     "macro": {
-      "precision": 0.37142857142857144,
-      "recall": 0.37142857142857144,
-      "f1": 0.37142857142857144
+      "precision": 0.34285714285714286,
+      "recall": 0.3333333333333333,
+      "f1": 0.33797909407665505
     },
     "implied_analysis": {
       "overall": {
@@ -335,22 +363,22 @@
     "missing_analysis": {
       "overall": {
         "n_missing": 56,
-        "llm_flagged_missing": 54,
-        "llm_silently_filled": 2,
-        "flag_rate": 0.9642857142857143
+        "llm_flagged_missing": 50,
+        "llm_silently_filled": 6,
+        "flag_rate": 0.8928571428571429
       },
       "per_slot": {
         "scope": {
           "n_missing": 42,
-          "llm_flagged_missing": 42,
-          "llm_silently_filled": 0,
-          "flag_rate": 1.0
+          "llm_flagged_missing": 40,
+          "llm_silently_filled": 2,
+          "flag_rate": 0.9523809523809523
         },
         "condition": {
           "n_missing": 14,
-          "llm_flagged_missing": 12,
-          "llm_silently_filled": 2,
-          "flag_rate": 0.8571428571428571
+          "llm_flagged_missing": 10,
+          "llm_silently_filled": 4,
+          "flag_rate": 0.7142857142857143
         },
         "actor": {
           "n_missing": 0,
@@ -391,27 +419,27 @@
       "llm_vs_human": {
         "seq_ratio": {
           "n": 126,
-          "mean": 0.7121988093312182,
-          "median": 0.7322758487281169,
-          "min": 0.3037974683544304,
+          "mean": 0.7106620528400027,
+          "median": 0.725111111111111,
+          "min": 0.33876221498371334,
           "max": 1.0,
-          "std": 0.15580788067652718
+          "std": 0.1690515101495322
         },
         "jaccard": {
           "n": 126,
-          "mean": 0.5663513748086173,
-          "median": 0.5577777777777778,
-          "min": 0.14285714285714285,
+          "mean": 0.5577197436963884,
+          "median": 0.5339366515837104,
+          "min": 0.15384615384615385,
           "max": 1.0,
-          "std": 0.19935895665346207
+          "std": 0.19663513582349745
         },
         "cosine": {
           "n": 126,
-          "mean": 0.8493512244333664,
-          "median": 0.8841265502300506,
-          "min": 0.4449581698244797,
+          "mean": 0.831981480256127,
+          "median": 0.8600812812730472,
+          "min": 0.3816622684016825,
           "max": 1.0,
-          "std": 0.12312030709046318
+          "std": 0.13771935460387377
         },
         "n_pairs": 126,
         "n_evaluated": 42,
@@ -448,19 +476,19 @@
     },
     "paska": {
       "n": 42,
-      "n_passed": 38,
-      "n_failed": 4,
+      "n_passed": 40,
+      "n_failed": 2,
       "n_error": 0,
       "n_scored": 42,
-      "pass_rate": 0.9047619047619048,
-      "pass_rate_llm_complete": 0.9047619047619048,
+      "pass_rate": 0.9523809523809523,
+      "pass_rate_llm_complete": 0.9523809523809523,
       "by_llm_verdict": {
         "llm_complete": {
           "n": 42,
-          "n_passed": 38,
-          "n_failed": 4,
+          "n_passed": 40,
+          "n_failed": 2,
           "n_scored": 42,
-          "pass_rate": 0.9047619047619048
+          "pass_rate": 0.9523809523809523
         },
         "llm_incomplete": {
           "n": 0,
@@ -470,10 +498,11 @@
           "pass_rate": null
         }
       },
-      "n_with_smells": 4,
+      "n_with_smells": 2,
       "smell_frequency": {
-        "Non-atomic requirement": 2,
-        "Coordination ambiguity": 2
+        "Non-atomic requirement": 1,
+        "Incorrect order requirement": 1,
+        "Incomplete condition": 1
       }
     },
     "embedding": {
@@ -490,7 +519,7 @@
         "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must automatically move the message drafts to the top of the list.",
         "<MISSING_SCOPE>, <MISSING_CONDITION>, the System must automatically move the \"message drafts\" to the top of the list."
       ],
-      "llm_rimay": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must move the \"message drafts\" to the top of the \"message-list\".",
+      "llm_rimay": "<MISSING_SCOPE>, if a message is a \"draft\", then the App must automatically move the \"draft\" to the top of the \"message-list\".",
       "gold_slots": {
         "scope": "missing",
         "condition": "missing",
@@ -500,14 +529,14 @@
       },
       "llm_slots": {
         "scope": "missing",
-        "condition": "missing",
+        "condition": "filled",
         "actor": "filled",
         "modalVerb": "filled",
         "action": "filled"
       },
       "slot_match": {
         "scope": true,
-        "condition": true,
+        "condition": false,
         "actor": true,
         "modalVerb": true,
         "action": true
@@ -517,12 +546,12 @@
       "verdict_match": true,
       "similarity": {
         "n_humans": 3,
-        "seq_ratio_mean": 0.842412039729612,
-        "seq_ratio_max": 0.9036144578313253,
-        "jaccard_mean": 0.8560606060606061,
-        "jaccard_max": 0.9090909090909091,
-        "cosine_mean": 0.9183277043809364,
-        "cosine_max": 0.9841250179093338
+        "seq_ratio_mean": 0.7492760383974417,
+        "seq_ratio_max": 0.7960199004975125,
+        "jaccard_mean": 0.5931372549019608,
+        "jaccard_max": 0.625,
+        "cosine_mean": 0.8981824684200449,
+        "cosine_max": 0.952439496225475
       },
       "paska_passed": true,
       "paska_smells": []
@@ -535,7 +564,7 @@
         "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must mark the \"message drafts\", with a different color or a \"Draft\" label.",
         "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must highlight \"message drafts\", for example with a distinct colour or a \"Draft\" tag."
       ],
-      "llm_rimay": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must mark the \"message drafts\" by using \"another color\" or a \"Draft\" text.",
+      "llm_rimay": "<MISSING_SCOPE>, if a message is a \"draft\", then the App must mark the \"draft\" with \"another color\" or a \"Draft\" text.",
       "gold_slots": {
         "scope": "missing",
         "condition": "missing",
@@ -545,14 +574,14 @@
       },
       "llm_slots": {
         "scope": "missing",
-        "condition": "missing",
+        "condition": "filled",
         "actor": "filled",
         "modalVerb": "filled",
         "action": "filled"
       },
       "slot_match": {
         "scope": true,
-        "condition": true,
+        "condition": false,
         "actor": true,
         "modalVerb": true,
         "action": true
@@ -562,12 +591,12 @@
       "verdict_match": true,
       "similarity": {
         "n_humans": 3,
-        "seq_ratio_mean": 0.7547942801469297,
-        "seq_ratio_max": 0.813953488372093,
-        "jaccard_mean": 0.4897292250233427,
-        "jaccard_max": 0.5882352941176471,
-        "cosine_mean": 0.9566805484569444,
-        "cosine_max": 0.9713191858744459
+        "seq_ratio_mean": 0.6262026335165493,
+        "seq_ratio_max": 0.6772486772486772,
+        "jaccard_mean": 0.4651274651274651,
+        "jaccard_max": 0.5555555555555556,
+        "cosine_mean": 0.9392204687815102,
+        "cosine_max": 0.9531883014158388
       },
       "paska_passed": true,
       "paska_smells": []
@@ -670,7 +699,7 @@
         "<MISSING_SCOPE>, if the recipient does not receive a sent \"Signal message\" within a \"timeout\", then the App must notify the \"sender\".",
         "<MISSING_SCOPE>, if the recipient has not received a sent \"Signal message\" after a \"timeout\", then the System must alert the \"sender\"."
       ],
-      "llm_rimay": "<MISSING_SCOPE>, if the App has sent a \"Signal message\" to the server and the App has not delivered the \"Signal message\" to the recipient after a \"timeout\", then the App must show a \"lack of delivery\" notification on the sender's phone.",
+      "llm_rimay": "<MISSING_SCOPE>, if the App has sent a \"message\" to the server and has not delivered it to the recipient after a \"timeout\", then the App must show a \"lack of delivery\" notification to the sender.",
       "gold_slots": {
         "scope": "missing",
         "condition": "present",
@@ -697,12 +726,12 @@
       "verdict_match": true,
       "similarity": {
         "n_humans": 3,
-        "seq_ratio_mean": 0.5039011958170346,
-        "seq_ratio_max": 0.5176470588235295,
-        "jaccard_mean": 0.43512544802867387,
-        "jaccard_max": 0.4666666666666667,
-        "cosine_mean": 0.8340958007271851,
-        "cosine_max": 0.8778365637291713
+        "seq_ratio_mean": 0.47031790269315804,
+        "seq_ratio_max": 0.47651006711409394,
+        "jaccard_mean": 0.430623973727422,
+        "jaccard_max": 0.4642857142857143,
+        "cosine_mean": 0.7774238575168133,
+        "cosine_max": 0.8145005505147155
       },
       "paska_passed": true,
       "paska_smells": []
@@ -715,7 +744,7 @@
         "<MISSING_SCOPE>, if the recipient does not receive a sent \"Signal message\" within a \"timeout\", then the App must allow the \"sender\" an option to resend the message via \"insecure SMS\".",
         "<MISSING_SCOPE>, if the recipient does not receive a sent \"Signal message\" within a timeout, then the App must offer the \"sender\" an option to resend the message via \"insecure SMS\"."
       ],
-      "llm_rimay": "<MISSING_SCOPE>, when the App shows the \"lack of delivery\" notification, then the App must let the user resend the \"Signal message\" via \"insecure SMS\".",
+      "llm_rimay": "<MISSING_SCOPE>, when the App shows the \"lack of delivery\" notification, then the App must offer the sender the option to resend the \"message\" via \"insecure SMS\".",
       "gold_slots": {
         "scope": "missing",
         "condition": "present",
@@ -742,12 +771,12 @@
       "verdict_match": true,
       "similarity": {
         "n_humans": 3,
-        "seq_ratio_mean": 0.5890263738817242,
-        "seq_ratio_max": 0.5960264900662252,
-        "jaccard_mean": 0.3125,
-        "jaccard_max": 0.3125,
-        "cosine_mean": 0.8286197826963703,
-        "cosine_max": 0.8340368686076026
+        "seq_ratio_mean": 0.6681271869770272,
+        "seq_ratio_max": 0.6900958466453674,
+        "jaccard_mean": 0.4025089605734767,
+        "jaccard_max": 0.43333333333333335,
+        "cosine_mean": 0.814646060347192,
+        "cosine_max": 0.8182989987075936
       },
       "paska_passed": true,
       "paska_smells": []
@@ -760,7 +789,7 @@
         "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user block a user-specified \"phone number\".",
         "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow the user to block any \"phone number\" that the user specifies."
       ],
-      "llm_rimay": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user block messages from a \"user-specified phone number\".",
+      "llm_rimay": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user block messages by a \"user-specified phone number\".",
       "gold_slots": {
         "scope": "missing",
         "condition": "missing",
@@ -787,12 +816,12 @@
       "verdict_match": true,
       "similarity": {
         "n_humans": 3,
-        "seq_ratio_mean": 0.7998943521835088,
-        "seq_ratio_max": 0.8933333333333333,
+        "seq_ratio_mean": 0.8145537786366387,
+        "seq_ratio_max": 0.9054054054054054,
         "jaccard_mean": 0.69281045751634,
         "jaccard_max": 0.8333333333333334,
-        "cosine_mean": 0.9193338907637078,
-        "cosine_max": 0.9256907543905475
+        "cosine_mean": 0.9099990196123638,
+        "cosine_max": 0.9183502410559296
       },
       "paska_passed": true,
       "paska_smells": []
@@ -850,7 +879,7 @@
         "<MISSING_SCOPE>, when the user receives a message from a blocked number, then the App must not show a notification.",
         "<MISSING_SCOPE>, when a message arrives from a \"blocked number\", then the App must not display any \"notification\" for it."
       ],
-      "llm_rimay": "<MISSING_SCOPE>, when the App receives a message from a \"blocked phone number\", then the App must not show a \"notification\".",
+      "llm_rimay": "<MISSING_SCOPE>, when the App receives a message from a \"blocked phone number\", then the App must not give a \"notification\".",
       "gold_slots": {
         "scope": "missing",
         "condition": "present",
@@ -877,12 +906,12 @@
       "verdict_match": true,
       "similarity": {
         "n_humans": 3,
-        "seq_ratio_mean": 0.8874838078482337,
-        "seq_ratio_max": 0.9716981132075472,
-        "jaccard_mean": 0.8027777777777777,
-        "jaccard_max": 0.9333333333333333,
-        "cosine_mean": 0.9550660172897697,
-        "cosine_max": 0.9726887360195854
+        "seq_ratio_mean": 0.8621460208421249,
+        "seq_ratio_max": 0.9339622641509434,
+        "jaccard_mean": 0.725735294117647,
+        "jaccard_max": 0.8125,
+        "cosine_mean": 0.9379205447349146,
+        "cosine_max": 0.9538668548760605
       },
       "paska_passed": true,
       "paska_smells": []
@@ -895,7 +924,7 @@
         "<MISSING_SCOPE>, when the user starts the App for the first time, then the App must provide the user a choice between \"only use push\" / \"use SMS fallback\" / \"use as default SMS/MMS app\".",
         "<MISSING_SCOPE>, when the user starts the App for the first time, then the App must allow the user to choose between \"only use push\" / \"use SMS fallback\" / \"use as default SMS/MMS app\"."
       ],
-      "llm_rimay": "<MISSING_SCOPE>, when the App starts for the first time, then the App must ask the user to specify the desired behaviour with the options \"only use push\", \"use SMS fallback\" or \"use as default SMS/MMS-App\".",
+      "llm_rimay": "<MISSING_SCOPE>, when the user starts the App for the first time, then the App must ask the user to specify the desired \"behaviour\" from \"only use push\", \"use SMS fallback\" or \"use as default SMS/MMS-App\".",
       "gold_slots": {
         "scope": "missing",
         "condition": "present",
@@ -922,12 +951,12 @@
       "verdict_match": true,
       "similarity": {
         "n_humans": 3,
-        "seq_ratio_mean": 0.7948783566796784,
-        "seq_ratio_max": 0.8133704735376045,
-        "jaccard_mean": 0.6564860426929392,
-        "jaccard_max": 0.7142857142857143,
-        "cosine_mean": 0.9749147556216619,
-        "cosine_max": 0.9772348044274657
+        "seq_ratio_mean": 0.8489822394858065,
+        "seq_ratio_max": 0.8659217877094972,
+        "jaccard_mean": 0.6800006081615276,
+        "jaccard_max": 0.7407407407407407,
+        "cosine_mean": 0.9804669916090211,
+        "cosine_max": 0.9822825093501251
       },
       "paska_passed": false,
       "paska_smells": [
@@ -946,7 +975,7 @@
         "<MISSING_SCOPE>, when the user taps the what does that mean? button, then the App must open a pop-up describing every mode.",
         "<MISSING_SCOPE>, when the user presses the \"what does that mean?\" button, then the App must explain each mode in a \"pop-up\"."
       ],
-      "llm_rimay": "<MISSING_SCOPE>, when the App asks the user to specify the desired behaviour, then the App must show a \"what does that mean?\" button that opens a pop-up explaining what every mode does.",
+      "llm_rimay": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must show a \"what does that mean?\" button that opens a \"pop-up\" explaining each \"mode\".",
       "gold_slots": {
         "scope": "missing",
         "condition": "present",
@@ -956,14 +985,14 @@
       },
       "llm_slots": {
         "scope": "missing",
-        "condition": "filled",
+        "condition": "missing",
         "actor": "filled",
         "modalVerb": "filled",
         "action": "filled"
       },
       "slot_match": {
         "scope": true,
-        "condition": true,
+        "condition": false,
         "actor": true,
         "modalVerb": true,
         "action": true
@@ -973,12 +1002,12 @@
       "verdict_match": true,
       "similarity": {
         "n_humans": 3,
-        "seq_ratio_mean": 0.5520922589791492,
-        "seq_ratio_max": 0.5611510791366906,
-        "jaccard_mean": 0.5736331569664902,
-        "jaccard_max": 0.5925925925925926,
-        "cosine_mean": 0.8837286676279593,
-        "cosine_max": 0.9199912796412547
+        "seq_ratio_mean": 0.671342747429704,
+        "seq_ratio_max": 0.7222222222222222,
+        "jaccard_mean": 0.59310496267018,
+        "jaccard_max": 0.6666666666666666,
+        "cosine_mean": 0.9137384622291002,
+        "cosine_max": 0.9638142740330291
       },
       "paska_passed": true,
       "paska_smells": []
@@ -991,7 +1020,7 @@
         "<MISSING_SCOPE>, if the user has switched on dummy messaging, then the App must send dummy messages to randomly chosen TextSecure contacts at random intervals.",
         "<MISSING_SCOPE>, if the user activates \"dummy messaging\", then the System must periodically send \"dummy messages\" at random moments to random \"TextSecure contacts\"."
       ],
-      "llm_rimay": "<MISSING_SCOPE>, if the user has enabled the dummy messaging feature, then the TextSecure must send \"dummy random messages\" to \"randomly chosen contacts that use TextSecure\" at \"random times\".",
+      "llm_rimay": "<MISSING_SCOPE>, if the sender has enabled the dummy messaging feature, then TextSecure must send dummy random messages to random recipients at random times.",
       "gold_slots": {
         "scope": "missing",
         "condition": "present",
@@ -1018,12 +1047,12 @@
       "verdict_match": true,
       "similarity": {
         "n_humans": 3,
-        "seq_ratio_mean": 0.7171281565811696,
-        "seq_ratio_max": 0.7597402597402597,
-        "jaccard_mean": 0.6438127090301003,
-        "jaccard_max": 0.7391304347826086,
-        "cosine_mean": 0.8802683484162247,
-        "cosine_max": 0.8898526744282031
+        "seq_ratio_mean": 0.6324351478990654,
+        "seq_ratio_max": 0.7132867132867133,
+        "jaccard_mean": 0.5714285714285715,
+        "jaccard_max": 0.7142857142857143,
+        "cosine_mean": 0.7806582602266725,
+        "cosine_max": 0.7918847154715741
       },
       "paska_passed": true,
       "paska_smells": []
@@ -1036,7 +1065,7 @@
         "<MISSING_SCOPE>, when the App receives a dummy message, then the App must automatically throw it away.",
         "<MISSING_SCOPE>, when a \"dummy message\" arrives, then the System must silently drop it."
       ],
-      "llm_rimay": "<MISSING_SCOPE>, when TextSecure receives a \"dummy message\", then the TextSecure must automatically discard the \"dummy message\" after decryption.",
+      "llm_rimay": "<MISSING_SCOPE>, when TextSecure receives a dummy message, then TextSecure must automatically discard the dummy message after decryption.",
       "gold_slots": {
         "scope": "missing",
         "condition": "present",
@@ -1063,12 +1092,12 @@
       "verdict_match": true,
       "similarity": {
         "n_humans": 3,
-        "seq_ratio_mean": 0.5963051118219861,
-        "seq_ratio_max": 0.663594470046083,
+        "seq_ratio_mean": 0.5867205908578671,
+        "seq_ratio_max": 0.6698564593301436,
         "jaccard_mean": 0.5283224400871459,
         "jaccard_max": 0.6666666666666666,
-        "cosine_mean": 0.4760611910907316,
-        "cosine_max": 0.5047967384013902
+        "cosine_mean": 0.5097562686084958,
+        "cosine_max": 0.5342510960131687
       },
       "paska_passed": true,
       "paska_smells": []
@@ -1081,7 +1110,7 @@
         "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow the user to set how many dummy messages are sent.",
         "<MISSING_SCOPE>, <MISSING_CONDITION>, the System must let the user configure the number of \"dummy messages\"."
       ],
-      "llm_rimay": "<MISSING_SCOPE>, <MISSING_CONDITION>, the TextSecure must let the sender enable the \"dummy messaging feature\" as an \"opt-in\" and define the \"desired quantity\" of dummy messages.",
+      "llm_rimay": "<MISSING_SCOPE>, if the sender has enabled the dummy messaging feature, then TextSecure must let the sender define the desired \"quantity of dummy messages\".",
       "gold_slots": {
         "scope": "missing",
         "condition": "missing",
@@ -1091,58 +1120,7 @@
       },
       "llm_slots": {
         "scope": "missing",
-        "condition": "missing",
-        "actor": "filled",
-        "modalVerb": "filled",
-        "action": "filled"
-      },
-      "slot_match": {
-        "scope": true,
-        "condition": true,
-        "actor": true,
-        "modalVerb": true,
-        "action": true
-      },
-      "gold_overall": false,
-      "llm_overall": false,
-      "verdict_match": true,
-      "similarity": {
-        "n_humans": 3,
-        "seq_ratio_mean": 0.46821584671821875,
-        "seq_ratio_max": 0.4792626728110599,
-        "jaccard_mean": 0.261559696342305,
-        "jaccard_max": 0.38095238095238093,
-        "cosine_mean": 0.6237601911983887,
-        "cosine_max": 0.635066840638882
-      },
-      "paska_passed": false,
-      "paska_smells": [
-        {
-          "segment_id": "328-Signal_u3_9",
-          "smell": "Non-atomic requirement",
-          "value": "The requirement has more than one action in the system response."
-        }
-      ]
-    },
-    {
-      "reqId": "328-Signal#4",
-      "nl_text": "Request Number - 328 | Request Title - Feature request: Sending dummy short messages | Request Description - TextSecure could mask meaningful communication between people by occasionally sending dummy random messages to random recipients at random times:  Recipients would be chosen randomly between contacts that knowingly use TextSecure, so it could be recognized as such after decryption and automatically discarded by recipient. \"Randomness\" should be tweaked to level-out the legitimate messages, spoiling the traffic analysis of traffic retention data, preventing to weigh connections in the deducted social network graph or guessing sleeping/activity patterns. People often have many unused messages in their monthly quota, so those could easily be used with no extra cost, or they value their privacy more than some money. Sender would need to enable this feature (opt-in) and define desired quantity (eg max 100 dummy messages per month, 2 dummy messages for every legitimate one, max 500 messages total counting legitimate and dummy ones...). The feature would need to be aware of roaming (disabled by default, optionally enable) and battery level (do not send if bellow eg. 30%). http://en.wikipedia.org/wiki/Traffic_analysis#Countermeasures Possible extensions:  Recipients could be able to let their peers know, that they do not want to participate in this and do not want to receive messages for whatever reason (opt-out). Recipients could also be chosen randomly between other contacts (those not using TextSecure yet) to promote its use (default message) or a custom explanation by sender. Those messages would be in clear text. As this might be annoying it should be very limited (eg max 1 message to a single recipient per month, only during daytime...) to not be too intrusive spam. Dummy messages could contain other peer's phone numbers (random selection from those participating in dummy messaging, not just their contacts), never to be shown to user, just to send dummy messages to, to further mask the real social network. It would be tricky to opt-out later on once your number starts circulating, so opt-outs would need to be spread this way as well and by direct reply dummy message or by defining a TTL of each such number.",
-      "human_rimays": [
-        "<MISSING_SCOPE>, if the device is \"roaming\", then the App must not send \"dummy messages\" unless the user has enabled it.",
-        "<MISSING_SCOPE>, if the phone is roaming and the user has not allowed it, then the App must stop sending dummy messages.",
-        "<MISSING_SCOPE>, if the device is \"roaming\" and the user has not turned on \"dummy messages\" for roaming, then the System must not send any \"dummy messages\"."
-      ],
-      "llm_rimay": "<MISSING_SCOPE>, <MISSING_CONDITION>, the TextSecure must let the recipient notify peers that the recipient does not want to receive \"dummy messages\" as an \"opt-out\".",
-      "gold_slots": {
-        "scope": "missing",
-        "condition": "present",
-        "actor": "implied",
-        "modalVerb": "implied",
-        "action": "present"
-      },
-      "llm_slots": {
-        "scope": "missing",
-        "condition": "missing",
+        "condition": "filled",
         "actor": "filled",
         "modalVerb": "filled",
         "action": "filled"
@@ -1159,15 +1137,71 @@
       "verdict_match": true,
       "similarity": {
         "n_humans": 3,
-        "seq_ratio_mean": 0.37718118730776956,
-        "seq_ratio_max": 0.43956043956043955,
-        "jaccard_mean": 0.1563518246985989,
-        "jaccard_max": 0.16129032258064516,
-        "cosine_mean": 0.529159646683177,
-        "cosine_max": 0.555200988085067
+        "seq_ratio_mean": 0.5354218357895885,
+        "seq_ratio_max": 0.6161137440758294,
+        "jaccard_mean": 0.28687102371312895,
+        "jaccard_max": 0.42105263157894735,
+        "cosine_mean": 0.5895723947106823,
+        "cosine_max": 0.6021597478738051
       },
       "paska_passed": true,
       "paska_smells": []
+    },
+    {
+      "reqId": "328-Signal#4",
+      "nl_text": "Request Number - 328 | Request Title - Feature request: Sending dummy short messages | Request Description - TextSecure could mask meaningful communication between people by occasionally sending dummy random messages to random recipients at random times:  Recipients would be chosen randomly between contacts that knowingly use TextSecure, so it could be recognized as such after decryption and automatically discarded by recipient. \"Randomness\" should be tweaked to level-out the legitimate messages, spoiling the traffic analysis of traffic retention data, preventing to weigh connections in the deducted social network graph or guessing sleeping/activity patterns. People often have many unused messages in their monthly quota, so those could easily be used with no extra cost, or they value their privacy more than some money. Sender would need to enable this feature (opt-in) and define desired quantity (eg max 100 dummy messages per month, 2 dummy messages for every legitimate one, max 500 messages total counting legitimate and dummy ones...). The feature would need to be aware of roaming (disabled by default, optionally enable) and battery level (do not send if bellow eg. 30%). http://en.wikipedia.org/wiki/Traffic_analysis#Countermeasures Possible extensions:  Recipients could be able to let their peers know, that they do not want to participate in this and do not want to receive messages for whatever reason (opt-out). Recipients could also be chosen randomly between other contacts (those not using TextSecure yet) to promote its use (default message) or a custom explanation by sender. Those messages would be in clear text. As this might be annoying it should be very limited (eg max 1 message to a single recipient per month, only during daytime...) to not be too intrusive spam. Dummy messages could contain other peer's phone numbers (random selection from those participating in dummy messaging, not just their contacts), never to be shown to user, just to send dummy messages to, to further mask the real social network. It would be tricky to opt-out later on once your number starts circulating, so opt-outs would need to be spread this way as well and by direct reply dummy message or by defining a TTL of each such number.",
+      "human_rimays": [
+        "<MISSING_SCOPE>, if the device is \"roaming\", then the App must not send \"dummy messages\" unless the user has enabled it.",
+        "<MISSING_SCOPE>, if the phone is roaming and the user has not allowed it, then the App must stop sending dummy messages.",
+        "<MISSING_SCOPE>, if the device is \"roaming\" and the user has not turned on \"dummy messages\" for roaming, then the System must not send any \"dummy messages\"."
+      ],
+      "llm_rimay": "<MISSING_SCOPE>, if the device is roaming, then TextSecure must not send dummy messages unless the sender has enabled dummy messaging while roaming.",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "present",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "missing",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "filled",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": true,
+        "condition": true,
+        "actor": true,
+        "modalVerb": true,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": false,
+      "verdict_match": true,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.5887873397534196,
+        "seq_ratio_max": 0.7899159663865546,
+        "jaccard_mean": 0.5104273504273504,
+        "jaccard_max": 0.6666666666666666,
+        "cosine_mean": 0.7028869091624693,
+        "cosine_max": 0.718375474534027
+      },
+      "paska_passed": false,
+      "paska_smells": [
+        {
+          "segment_id": "328-Signal_u4_13",
+          "smell": "Incorrect order requirement",
+          "value": "The condition clause of the requirement is after the system response."
+        },
+        {
+          "segment_id": "328-Signal_u4_16",
+          "smell": "Incomplete condition",
+          "value": "Actor is missing in the condition. Verb is missing in the condition."
+        }
+      ]
     },
     {
       "reqId": "328-Signal#5",
@@ -1177,7 +1211,7 @@
         "<MISSING_SCOPE>, if the battery drops below a threshold, then the App must stop sending dummy messages.",
         "<MISSING_SCOPE>, if the \"battery level\" falls under a set \"threshold\", then the System must not send \"dummy messages\"."
       ],
-      "llm_rimay": "<MISSING_SCOPE>, if the device is \"roaming\" or the battery level is below \"30%\", then the TextSecure must not send a \"dummy message\".",
+      "llm_rimay": "<MISSING_SCOPE>, if the battery level is below a \"threshold\", then TextSecure must not send dummy messages.",
       "gold_slots": {
         "scope": "missing",
         "condition": "present",
@@ -1204,21 +1238,15 @@
       "verdict_match": true,
       "similarity": {
         "n_humans": 3,
-        "seq_ratio_mean": 0.6703971877535527,
-        "seq_ratio_max": 0.7298578199052133,
-        "jaccard_mean": 0.44047619047619047,
-        "jaccard_max": 0.5714285714285714,
-        "cosine_mean": 0.6692568533907969,
-        "cosine_max": 0.7050654521983355
+        "seq_ratio_mean": 0.84999614999615,
+        "seq_ratio_max": 0.9081081081081082,
+        "jaccard_mean": 0.6776315789473685,
+        "jaccard_max": 0.875,
+        "cosine_mean": 0.7577794252409764,
+        "cosine_max": 0.7677408914480797
       },
-      "paska_passed": false,
-      "paska_smells": [
-        {
-          "segment_id": "328-Signal_u4_11",
-          "smell": "Coordination ambiguity",
-          "value": "Requirement contains multiple conditions separated by conjunction OR."
-        }
-      ]
+      "paska_passed": true,
+      "paska_smells": []
     },
     {
       "reqId": "6111-Signal#1",
@@ -1228,7 +1256,7 @@
         "<MISSING_SCOPE>, when the user is in the gallery, then the App must allow the user to pick several images or media files and delete them.",
         "<MISSING_SCOPE>, when the user views the \"image gallery\", then the App must let the user multi-select \"images/media\" and remove them."
       ],
-      "llm_rimay": "<MISSING_SCOPE>, when the user opens the \"Image gallery\", then the App must let the user select multiple images or media and delete them.",
+      "llm_rimay": "<MISSING_SCOPE>, when the user opens the \"Image gallery\", then the App must let the user multiselect \"images\" and delete them.",
       "gold_slots": {
         "scope": "missing",
         "condition": "present",
@@ -1255,12 +1283,12 @@
       "verdict_match": true,
       "similarity": {
         "n_humans": 3,
-        "seq_ratio_mean": 0.8693595538464999,
-        "seq_ratio_max": 0.9711934156378601,
-        "jaccard_mean": 0.7103703703703704,
-        "jaccard_max": 0.9444444444444444,
-        "cosine_mean": 0.9410655183677799,
-        "cosine_max": 0.9908959696083435
+        "seq_ratio_mean": 0.8620128481779314,
+        "seq_ratio_max": 0.9137931034482759,
+        "jaccard_mean": 0.612037037037037,
+        "jaccard_max": 0.7777777777777778,
+        "cosine_mean": 0.9089911751689431,
+        "cosine_max": 0.9437811952316515
       },
       "paska_passed": true,
       "paska_smells": []
@@ -1273,7 +1301,7 @@
         "<MISSING_SCOPE>, when the user has an image or media file open, then the App must allow the user to delete it.",
         "<MISSING_SCOPE>, when the user views a single \"image/media\", then the App must provide a delete option for it."
       ],
-      "llm_rimay": "<MISSING_SCOPE>, when the user opens an image or media item, then the App must let the user delete it in the opened view.",
+      "llm_rimay": "<MISSING_SCOPE>, when the user opens an \"image\" or \"media\" item, then the App must let the user delete it in the opened view.",
       "gold_slots": {
         "scope": "missing",
         "condition": "present",
@@ -1300,12 +1328,12 @@
       "verdict_match": true,
       "similarity": {
         "n_humans": 3,
-        "seq_ratio_mean": 0.7556868066086678,
-        "seq_ratio_max": 0.8342245989304813,
+        "seq_ratio_mean": 0.7540288596603243,
+        "seq_ratio_max": 0.837696335078534,
         "jaccard_mean": 0.5535426731078905,
         "jaccard_max": 0.7222222222222222,
-        "cosine_mean": 0.8730653606133224,
-        "cosine_max": 0.8905466703087662
+        "cosine_mean": 0.8710145380574291,
+        "cosine_max": 0.8877307965761516
       },
       "paska_passed": true,
       "paska_smells": []
@@ -1318,7 +1346,7 @@
         "<MISSING_SCOPE>, when the user deletes images or media, then the App must ask the user to confirm.",
         "<MISSING_SCOPE>, when the user removes \"images/media\", then the App must display a \"confirmation dialog\" first."
       ],
-      "llm_rimay": "<MISSING_SCOPE>, when the user deletes the selected images or media, then the App must show a confirmation dialog.",
+      "llm_rimay": "<MISSING_SCOPE>, when the user deletes the selected \"images\", then the App must show a \"confirmation dialog\".",
       "gold_slots": {
         "scope": "missing",
         "condition": "present",
@@ -1345,12 +1373,12 @@
       "verdict_match": true,
       "similarity": {
         "n_humans": 3,
-        "seq_ratio_mean": 0.8103903265193587,
-        "seq_ratio_max": 0.8817204301075269,
-        "jaccard_mean": 0.6777777777777777,
-        "jaccard_max": 0.8666666666666667,
-        "cosine_mean": 0.9243777439398956,
-        "cosine_max": 0.9695821562417137
+        "seq_ratio_mean": 0.7915133214939525,
+        "seq_ratio_max": 0.8950276243093923,
+        "jaccard_mean": 0.6299408652349828,
+        "jaccard_max": 0.8571428571428571,
+        "cosine_mean": 0.8988375514651509,
+        "cosine_max": 0.9477311311985661
       },
       "paska_passed": true,
       "paska_smells": []
@@ -1363,7 +1391,7 @@
         "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow the user to edit any message through the Android context menu.",
         "<MISSING_SCOPE>, <MISSING_CONDITION>, the System must let the user modify any message via the \"Android context menu\"."
       ],
-      "llm_rimay": "<MISSING_SCOPE>, when the user opens the Android \"Context Menu\" for a message, then the App must offer an option to edit that message.",
+      "llm_rimay": "<MISSING_SCOPE>, when the user opens the \"Android Context Menu\" for a message, then the App must offer an option to edit the message.",
       "gold_slots": {
         "scope": "missing",
         "condition": "missing",
@@ -1390,12 +1418,12 @@
       "verdict_match": true,
       "similarity": {
         "n_humans": 3,
-        "seq_ratio_mean": 0.3905106196894199,
-        "seq_ratio_max": 0.43564356435643564,
-        "jaccard_mean": 0.3851010101010101,
-        "jaccard_max": 0.45454545454545453,
-        "cosine_mean": 0.9329586325946114,
-        "cosine_max": 0.9630857278041015
+        "seq_ratio_mean": 0.4392689847753058,
+        "seq_ratio_max": 0.44776119402985076,
+        "jaccard_mean": 0.4030365769496204,
+        "jaccard_max": 0.47619047619047616,
+        "cosine_mean": 0.9330604028981262,
+        "cosine_max": 0.9632789824407234
       },
       "paska_passed": true,
       "paska_smells": []
@@ -1408,7 +1436,7 @@
         "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow the user to add a new message next to an existing one.",
         "<MISSING_SCOPE>, <MISSING_CONDITION>, the System must let the user insert a message beside any existing message."
       ],
-      "llm_rimay": "<MISSING_SCOPE>, when the user opens the Android \"Context Menu\" for a message, then the App must offer an option to insert a new message next to that message.",
+      "llm_rimay": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user insert a new message next to an existing message.",
       "gold_slots": {
         "scope": "missing",
         "condition": "missing",
@@ -1418,14 +1446,14 @@
       },
       "llm_slots": {
         "scope": "missing",
-        "condition": "filled",
+        "condition": "missing",
         "actor": "filled",
         "modalVerb": "filled",
         "action": "filled"
       },
       "slot_match": {
         "scope": true,
-        "condition": false,
+        "condition": true,
         "actor": true,
         "modalVerb": true,
         "action": true
@@ -1435,12 +1463,12 @@
       "verdict_match": true,
       "similarity": {
         "n_humans": 3,
-        "seq_ratio_mean": 0.4735024205612441,
-        "seq_ratio_max": 0.5315315315315315,
-        "jaccard_mean": 0.36967670011148274,
-        "jaccard_max": 0.4782608695652174,
-        "cosine_mean": 0.7648867947713569,
-        "cosine_max": 0.826604798618608
+        "seq_ratio_mean": 0.895639392454679,
+        "seq_ratio_max": 1.0,
+        "jaccard_mean": 0.7291666666666666,
+        "jaccard_max": 1.0,
+        "cosine_mean": 0.9294234230434658,
+        "cosine_max": 1.0
       },
       "paska_passed": true,
       "paska_smells": []
@@ -1453,7 +1481,7 @@
         "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user acknowledge a received message.",
         "<MISSING_SCOPE>, when the user long-presses a \"received message\", then the System must show an option to \"acknowledge\" that message."
       ],
-      "llm_rimay": "<MISSING_SCOPE>, when the user long-presses a received \"message\", then the App must offer an \"acknowledge message\" option.",
+      "llm_rimay": "<MISSING_SCOPE>, when the user long-presses a \"received message\", then the App must offer an \"acknowledge message\" option.",
       "gold_slots": {
         "scope": "missing",
         "condition": "present",
@@ -1480,12 +1508,12 @@
       "verdict_match": true,
       "similarity": {
         "n_humans": 3,
-        "seq_ratio_mean": 0.7597815605993176,
-        "seq_ratio_max": 0.9906542056074766,
+        "seq_ratio_mean": 0.753968253968254,
+        "seq_ratio_max": 1.0,
         "jaccard_mean": 0.7280701754385964,
         "jaccard_max": 1.0,
-        "cosine_mean": 0.9220039416027391,
-        "cosine_max": 0.9983643309170148
+        "cosine_mean": 0.9257943218963147,
+        "cosine_max": 1.0
       },
       "paska_passed": true,
       "paska_smells": []
@@ -1498,7 +1526,7 @@
         "<MISSING_SCOPE>, when the user selects \"acknowledge message\", then the App must replace the \"received\" indicator with an \"acknowledgement\" indicator.",
         "<MISSING_SCOPE>, when the user chooses \"acknowledge message\", then the System must change the \"received\" indicator to an \"acknowledged\" indicator."
       ],
-      "llm_rimay": "<MISSING_SCOPE>, when the user selects the \"acknowledge message\" option, then the App must replace the \"received\" indicator with an \"acknowledgement\" indicator for that message.",
+      "llm_rimay": "<MISSING_SCOPE>, when the user selects \"acknowledge message\" for a \"received message\", then the App must replace the \"received\" indicator with an \"acknowledgement\" indicator.",
       "gold_slots": {
         "scope": "missing",
         "condition": "present",
@@ -1525,12 +1553,12 @@
       "verdict_match": true,
       "similarity": {
         "n_humans": 3,
-        "seq_ratio_mean": 0.8060606789446868,
-        "seq_ratio_max": 0.9054054054054054,
-        "jaccard_mean": 0.644927536231884,
-        "jaccard_max": 0.8333333333333334,
-        "cosine_mean": 0.9222118972704655,
-        "cosine_max": 0.991811698382953
+        "seq_ratio_mean": 0.8544235152245733,
+        "seq_ratio_max": 0.9146757679180887,
+        "jaccard_mean": 0.7032085561497325,
+        "jaccard_max": 0.8823529411764706,
+        "cosine_mean": 0.9343712139834789,
+        "cosine_max": 0.9921696963397761
       },
       "paska_passed": true,
       "paska_smells": []
@@ -1543,7 +1571,7 @@
         "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must display a pie chart of the share of the user's contacts that use Signal.",
         "<MISSING_SCOPE>, <MISSING_CONDITION>, the System must present a \"pie chart\" showing how many of the user's contacts have Signal."
       ],
-      "llm_rimay": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must show a \"screen\" with a \"pie chart\" that indicates how many of the user's contacts are on Signal.",
+      "llm_rimay": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user see an overview of the contacts that the user still needs to convince to convert.",
       "gold_slots": {
         "scope": "missing",
         "condition": "missing",
@@ -1570,12 +1598,12 @@
       "verdict_match": true,
       "similarity": {
         "n_humans": 3,
-        "seq_ratio_mean": 0.7648330050396344,
-        "seq_ratio_max": 0.8383838383838383,
-        "jaccard_mean": 0.6072463768115942,
-        "jaccard_max": 0.8,
-        "cosine_mean": 0.8972709036675744,
-        "cosine_max": 0.9689054371673482
+        "seq_ratio_mean": 0.47962004313920686,
+        "seq_ratio_max": 0.53,
+        "jaccard_mean": 0.23587369420702756,
+        "jaccard_max": 0.2916666666666667,
+        "cosine_mean": 0.4616414110761861,
+        "cosine_max": 0.5096458080619697
       },
       "paska_passed": true,
       "paska_smells": []
@@ -1588,7 +1616,7 @@
         "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must display how many of the messages the user sent were encrypted.",
         "<MISSING_SCOPE>, <MISSING_CONDITION>, the System must report the number of the user's sent messages that are encrypted."
       ],
-      "llm_rimay": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must show a \"pie chart\" that indicates how many of the messages the user sends are encrypted.",
+      "llm_rimay": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must show a \"screen\" with a \"pie chart\" that indicates how many of the user's contacts are on Signal or how many of the messages the user sends are encrypted.",
       "gold_slots": {
         "scope": "missing",
         "condition": "missing",
@@ -1615,12 +1643,12 @@
       "verdict_match": true,
       "similarity": {
         "n_humans": 3,
-        "seq_ratio_mean": 0.6893339846930467,
-        "seq_ratio_max": 0.782608695652174,
-        "jaccard_mean": 0.4641945773524721,
-        "jaccard_max": 0.5789473684210527,
-        "cosine_mean": 0.8281678850347131,
-        "cosine_max": 0.8835463010197149
+        "seq_ratio_mean": 0.5706279973440117,
+        "seq_ratio_max": 0.5863453815261044,
+        "jaccard_mean": 0.37825396825396823,
+        "jaccard_max": 0.48,
+        "cosine_mean": 0.7665403258901091,
+        "cosine_max": 0.8314794906135442
       },
       "paska_passed": true,
       "paska_smells": []
@@ -1678,7 +1706,7 @@
         "<MISSING_SCOPE>, if almost all of the user's contacts are on Signal, then the App must show an encouraging message like Almost there!.",
         "<MISSING_SCOPE>, if most of the user's contacts but not all of them use Signal, then the System must show a \"progress message\", for example \"Almost there!\"."
       ],
-      "llm_rimay": "<MISSING_SCOPE>, if most but not all of the user's contacts are using Signal, then the App must display an \"Almost there!\" message.",
+      "llm_rimay": "<MISSING_SCOPE>, if most but not all of the user's contacts are using Signal, then the App must display a \"gamification message\" such as \"Almost there!\".",
       "gold_slots": {
         "scope": "missing",
         "condition": "present",
@@ -1705,12 +1733,12 @@
       "verdict_match": true,
       "similarity": {
         "n_humans": 3,
-        "seq_ratio_mean": 0.7355801990267171,
-        "seq_ratio_max": 0.819672131147541,
-        "jaccard_mean": 0.6280106100795756,
-        "jaccard_max": 0.6923076923076923,
-        "cosine_mean": 0.8450964245853622,
-        "cosine_max": 0.8990355670892756
+        "seq_ratio_mean": 0.7919354192071255,
+        "seq_ratio_max": 0.9022556390977443,
+        "jaccard_mean": 0.6244402612589487,
+        "jaccard_max": 0.8076923076923077,
+        "cosine_mean": 0.8226067101166435,
+        "cosine_max": 0.9040575025790962
       },
       "paska_passed": true,
       "paska_smells": []
@@ -1723,7 +1751,7 @@
         "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must find a user by phone number whether or not the calling code is included.",
         "<MISSING_SCOPE>, when the user searches for a non-contact by \"phone number\" whether it has the \"+\" prefix, the \"calling code\" or none of those, then the App must find the number."
       ],
-      "llm_rimay": "<MISSING_SCOPE>, when the user searches for a \"phone number\", then the App must let the user find a non-contact by entering the number with the \"+\" country code, with the country code only, or without the country code.",
+      "llm_rimay": "<MISSING_SCOPE>, when the user searches for a \"non-contact\" by \"phone number\", then the App must try prepending the \"calling code of the current user's phone number\" and the \"calling code of the default region of the current device\".",
       "gold_slots": {
         "scope": "missing",
         "condition": "present",
@@ -1750,12 +1778,12 @@
       "verdict_match": true,
       "similarity": {
         "n_humans": 3,
-        "seq_ratio_mean": 0.4413766000449135,
-        "seq_ratio_max": 0.45,
-        "jaccard_mean": 0.5091503787276869,
-        "jaccard_max": 0.5862068965517241,
-        "cosine_mean": 0.7992721628965671,
-        "cosine_max": 0.8550691924040292
+        "seq_ratio_mean": 0.4445112895090068,
+        "seq_ratio_max": 0.5013333333333333,
+        "jaccard_mean": 0.44591072010426847,
+        "jaccard_max": 0.5151515151515151,
+        "cosine_mean": 0.8243282617167268,
+        "cosine_max": 0.866228819481483
       },
       "paska_passed": true,
       "paska_smells": []
@@ -1768,7 +1796,7 @@
         "<MISSING_SCOPE>, when the user searches with a phone number that has no calling code, then the App must try the calling code of the user's own number.",
         "<MISSING_SCOPE>, when a search \"phone number\" lacks a \"calling code\", then the System must apply the \"calling code\" of the user's own phone number."
       ],
-      "llm_rimay": "<MISSING_SCOPE>, when the user searches for a non-contact \"phone number\" without a calling code, then the App must try prepending the calling code of the current user's \"phone number\".",
+      "llm_rimay": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user search for a US \"phone number\" by entering \"+17043264096\", \"17043264096\" or \"7043264096\".",
       "gold_slots": {
         "scope": "missing",
         "condition": "present",
@@ -1778,14 +1806,14 @@
       },
       "llm_slots": {
         "scope": "missing",
-        "condition": "filled",
+        "condition": "missing",
         "actor": "filled",
         "modalVerb": "filled",
         "action": "filled"
       },
       "slot_match": {
         "scope": true,
-        "condition": true,
+        "condition": false,
         "actor": true,
         "modalVerb": true,
         "action": true
@@ -1795,12 +1823,12 @@
       "verdict_match": true,
       "similarity": {
         "n_humans": 3,
-        "seq_ratio_mean": 0.7953205165567466,
-        "seq_ratio_max": 0.8525641025641025,
-        "jaccard_mean": 0.5780379041248606,
-        "jaccard_max": 0.6956521739130435,
-        "cosine_mean": 0.8568714247060295,
-        "cosine_max": 0.8854988371498813
+        "seq_ratio_mean": 0.3855040458071144,
+        "seq_ratio_max": 0.4122137404580153,
+        "jaccard_mean": 0.27276746242263483,
+        "jaccard_max": 0.3076923076923077,
+        "cosine_mean": 0.7343379072379719,
+        "cosine_max": 0.7761364884084148
       },
       "paska_passed": true,
       "paska_smells": []
@@ -1813,7 +1841,7 @@
         "<MISSING_SCOPE>, when the user searches with a phone number that has no calling code, then the App must try the calling code of the device's default region.",
         "<MISSING_SCOPE>, when a search \"phone number\" lacks a \"calling code\", then the System must apply the \"calling code\" of the device's \"default region\"."
       ],
-      "llm_rimay": "<MISSING_SCOPE>, when the user searches for a non-contact \"phone number\" without a calling code, then the App must try prepending the calling code that corresponds to the default region of the current device.",
+      "llm_rimay": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user search for a non-US \"phone number\" by entering \"+441733530267\" or \"441733530267\".",
       "gold_slots": {
         "scope": "missing",
         "condition": "present",
@@ -1823,14 +1851,14 @@
       },
       "llm_slots": {
         "scope": "missing",
-        "condition": "filled",
+        "condition": "missing",
         "actor": "filled",
         "modalVerb": "filled",
         "action": "filled"
       },
       "slot_match": {
         "scope": true,
-        "condition": true,
+        "condition": false,
         "actor": true,
         "modalVerb": true,
         "action": true
@@ -1840,12 +1868,12 @@
       "verdict_match": true,
       "similarity": {
         "n_humans": 3,
-        "seq_ratio_mean": 0.7014521633883827,
-        "seq_ratio_max": 0.7559523809523809,
-        "jaccard_mean": 0.5540706605222735,
-        "jaccard_max": 0.6428571428571429,
-        "cosine_mean": 0.87899107090495,
-        "cosine_max": 0.9017604873217162
+        "seq_ratio_mean": 0.3698579344248636,
+        "seq_ratio_max": 0.3937007874015748,
+        "jaccard_mean": 0.24193548387096775,
+        "jaccard_max": 0.2857142857142857,
+        "cosine_mean": 0.7572243555391052,
+        "cosine_max": 0.7959384528382518
       },
       "paska_passed": true,
       "paska_smells": []
@@ -1858,7 +1886,7 @@
         "<MISSING_SCOPE>, if the App is the \"default SMS app\", then the App must use the \"Android notification profile\" for regular \"SMS/MMS\".",
         "<MISSING_SCOPE>, if the user sets Signal as the \"default SMS app\", then the System must apply the \"Android notification profile\" to plain \"SMS/MMS\"."
       ],
-      "llm_rimay": "<MISSING_SCOPE>, if Signal is the default SMS manager, then the App must use the Android notification settings for regular \"SMS/MMS\" notifications.",
+      "llm_rimay": "<MISSING_SCOPE>, if the user has enabled \"SMS support\" and Signal is the default SMS app, then the App must use the \"Android notification profile\" for regular \"SMS/MMS\" messages.",
       "gold_slots": {
         "scope": "missing",
         "condition": "present",
@@ -1885,12 +1913,12 @@
       "verdict_match": true,
       "similarity": {
         "n_humans": 3,
-        "seq_ratio_mean": 0.7432736189632859,
-        "seq_ratio_max": 0.8,
-        "jaccard_mean": 0.6040309804611864,
-        "jaccard_max": 0.7368421052631579,
-        "cosine_mean": 0.8735369046040753,
-        "cosine_max": 0.899191391446435
+        "seq_ratio_mean": 0.7787175954435742,
+        "seq_ratio_max": 0.8256227758007118,
+        "jaccard_mean": 0.5672198172198172,
+        "jaccard_max": 0.6818181818181818,
+        "cosine_mean": 0.89753053492971,
+        "cosine_max": 0.9539699160018
       },
       "paska_passed": true,
       "paska_smells": []
@@ -1903,7 +1931,7 @@
         "<MISSING_SCOPE>, if the App is the \"default SMS app\", then the App must use the \"Signal notification settings\" for \"secure messages\" and \"calls\".",
         "<MISSING_SCOPE>, if the user sets Signal as the \"default SMS app\", then the System must apply the \"Signal notification settings\" to \"secure messages\" and \"calls\"."
       ],
-      "llm_rimay": "<MISSING_SCOPE>, if Signal is the default SMS manager, then the App must use the Signal notification settings for \"secure messages\" and \"calls\" only.",
+      "llm_rimay": "<MISSING_SCOPE>, if the user has enabled \"SMS support\" and Signal is the default SMS app, then the App must use the \"Signal notification settings\" for secure messages and calls.",
       "gold_slots": {
         "scope": "missing",
         "condition": "present",
@@ -1930,12 +1958,12 @@
       "verdict_match": true,
       "similarity": {
         "n_humans": 3,
-        "seq_ratio_mean": 0.816562732183635,
-        "seq_ratio_max": 0.8939393939393939,
-        "jaccard_mean": 0.7023035850495805,
-        "jaccard_max": 0.8947368421052632,
-        "cosine_mean": 0.9283391784215694,
-        "cosine_max": 0.9358376971210367
+        "seq_ratio_mean": 0.7838645499428658,
+        "seq_ratio_max": 0.8493150684931506,
+        "jaccard_mean": 0.6416361416361416,
+        "jaccard_max": 0.8095238095238095,
+        "cosine_mean": 0.9309841321414533,
+        "cosine_max": 0.9614627183096036
       },
       "paska_passed": true,
       "paska_smells": []
@@ -2038,7 +2066,7 @@
         "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow the user to export public keys to a file.",
         "<MISSING_SCOPE>, <MISSING_CONDITION>, the System must let the user save \"public keys\" into a \"file\"."
       ],
-      "llm_rimay": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user re-import an exported \"private key\" from a \"backup file\" on a new device.",
+      "llm_rimay": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user securely wipe the old \"key\".",
       "gold_slots": {
         "scope": "missing",
         "condition": "missing",
@@ -2065,12 +2093,12 @@
       "verdict_match": true,
       "similarity": {
         "n_humans": 3,
-        "seq_ratio_mean": 0.6337863945595655,
-        "seq_ratio_max": 0.6867469879518072,
-        "jaccard_mean": 0.27997364953886694,
-        "jaccard_max": 0.3181818181818182,
-        "cosine_mean": 0.6439975464975698,
-        "cosine_max": 0.7069382838432112
+        "seq_ratio_mean": 0.6051908926289965,
+        "seq_ratio_max": 0.6611570247933884,
+        "jaccard_mean": 0.27777777777777773,
+        "jaccard_max": 0.3333333333333333,
+        "cosine_mean": 0.5308199975824767,
+        "cosine_max": 0.5737787087171908
       },
       "paska_passed": true,
       "paska_smells": []
@@ -2083,7 +2111,7 @@
         "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow the user to import public keys from a file.",
         "<MISSING_SCOPE>, <MISSING_CONDITION>, the System must let the user load \"public keys\" from a \"file\"."
       ],
-      "llm_rimay": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user share imported \"public keys\" with other people.",
+      "llm_rimay": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user re-import an exported \"key\" from a \"backup file\".",
       "gold_slots": {
         "scope": "missing",
         "condition": "missing",
@@ -2110,12 +2138,12 @@
       "verdict_match": true,
       "similarity": {
         "n_humans": 3,
-        "seq_ratio_mean": 0.7244164286417808,
-        "seq_ratio_max": 0.7746478873239436,
-        "jaccard_mean": 0.37459150326797386,
-        "jaccard_max": 0.4375,
-        "cosine_mean": 0.8094320567422312,
-        "cosine_max": 0.8938555637089116
+        "seq_ratio_mean": 0.7374521072796935,
+        "seq_ratio_max": 0.7916666666666666,
+        "jaccard_mean": 0.46527777777777773,
+        "jaccard_max": 0.5625,
+        "cosine_mean": 0.6474421376787685,
+        "cosine_max": 0.7391934363386916
       },
       "paska_passed": true,
       "paska_smells": []
@@ -2128,7 +2156,7 @@
         "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow the user to share public keys over Bluetooth, NFC or a QR code.",
         "<MISSING_SCOPE>, <MISSING_CONDITION>, the System must let the user send \"public keys\" using \"Bluetooth\", \"NFC\" or a \"QR code\"."
       ],
-      "llm_rimay": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user export \"public keys\" to a \"file\", via \"Bluetooth\", via \"NFC\" or via a \"QR code\".",
+      "llm_rimay": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user export \"public keys\" to a \"file\", \"Bluetooth\", \"NFC\" or \"QR code\".",
       "gold_slots": {
         "scope": "missing",
         "condition": "missing",
@@ -2155,12 +2183,12 @@
       "verdict_match": true,
       "similarity": {
         "n_humans": 3,
-        "seq_ratio_mean": 0.7937312344710011,
-        "seq_ratio_max": 0.864321608040201,
-        "jaccard_mean": 0.6574074074074074,
-        "jaccard_max": 0.7222222222222222,
-        "cosine_mean": 0.8693404793905278,
-        "cosine_max": 0.9627325649154925
+        "seq_ratio_mean": 0.8285590008994265,
+        "seq_ratio_max": 0.8972972972972973,
+        "jaccard_mean": 0.6608187134502924,
+        "jaccard_max": 0.6842105263157895,
+        "cosine_mean": 0.8457902651736036,
+        "cosine_max": 0.9838529308461837
       },
       "paska_passed": true,
       "paska_smells": []
@@ -2173,7 +2201,7 @@
         "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow the user to receive public keys over Bluetooth, NFC or a QR code.",
         "<MISSING_SCOPE>, <MISSING_CONDITION>, the System must let the user import \"public keys\" using \"Bluetooth\", \"NFC\" or a \"QR code\"."
       ],
-      "llm_rimay": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user import \"public keys\" from a \"file\", via \"Bluetooth\", via \"NFC\" or via a \"QR code\".",
+      "llm_rimay": "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user import \"public keys\" from a \"file\", \"Bluetooth\", \"NFC\" or \"QR code\".",
       "gold_slots": {
         "scope": "missing",
         "condition": "missing",
@@ -2200,12 +2228,12 @@
       "verdict_match": true,
       "similarity": {
         "n_humans": 3,
-        "seq_ratio_mean": 0.7970851245391167,
-        "seq_ratio_max": 0.8557213930348259,
-        "jaccard_mean": 0.6592871066555277,
+        "seq_ratio_mean": 0.8315184578230119,
+        "seq_ratio_max": 0.8877005347593583,
+        "jaccard_mean": 0.662962962962963,
         "jaccard_max": 0.7222222222222222,
-        "cosine_mean": 0.910398037440459,
-        "cosine_max": 0.9654625769683995
+        "cosine_mean": 0.9108242589627529,
+        "cosine_max": 0.9833374971819989
       },
       "paska_passed": true,
       "paska_smells": []
@@ -2263,7 +2291,7 @@
         "<MISSING_SCOPE>, when the App receives another message from the same contact, then the App must post a new notification for it.",
         "<MISSING_SCOPE>, when the same contact sends a new message, then the System must display a fresh \"notification\" containing that message."
       ],
-      "llm_rimay": "<MISSING_SCOPE>, when the App receives a new message from the same contact or number after the user has swiped away a \"notification\", then the App must display a new \"notification\" showing the new message.",
+      "llm_rimay": "<MISSING_SCOPE>, when the App receives a new message from the same contact, then the App must display a new \"notification\" showing the new message.",
       "gold_slots": {
         "scope": "missing",
         "condition": "present",
@@ -2290,21 +2318,15 @@
       "verdict_match": true,
       "similarity": {
         "n_humans": 3,
-        "seq_ratio_mean": 0.6776531149781616,
-        "seq_ratio_max": 0.7658227848101266,
-        "jaccard_mean": 0.48302469135802467,
-        "jaccard_max": 0.5416666666666666,
-        "cosine_mean": 0.827276686984351,
-        "cosine_max": 0.8982102434613186
+        "seq_ratio_mean": 0.8100588507026538,
+        "seq_ratio_max": 0.937984496124031,
+        "jaccard_mean": 0.6663054695562436,
+        "jaccard_max": 0.7647058823529411,
+        "cosine_mean": 0.9156083510707592,
+        "cosine_max": 0.9939989270600701
       },
-      "paska_passed": false,
-      "paska_smells": [
-        {
-          "segment_id": "5751-Signal_u2_5",
-          "smell": "Coordination ambiguity",
-          "value": "Requirement contains multiple conditions separated by conjunction OR."
-        }
-      ]
+      "paska_passed": true,
+      "paska_smells": []
     },
     {
       "reqId": "5904-Signal#1",
@@ -2314,7 +2336,7 @@
         "<MISSING_SCOPE>, when the App creates an XML backup, then the App must store the archived and blocked flags of every message.",
         "<MISSING_SCOPE>, when the System writes an \".xml backup\", then the System must save the \"archive\" and \"blocked\" flags for each message."
       ],
-      "llm_rimay": "<MISSING_SCOPE>, when the user imports messages from an \".xml backup\", then the App must restore the \"archived\" flag of each message that was part of the backup.",
+      "llm_rimay": "When the user imports messages from an \".xml backup\", then the App must restore the \"archived\" flag of each message that was part of the backup.",
       "gold_slots": {
         "scope": "missing",
         "condition": "present",
@@ -2323,14 +2345,14 @@
         "action": "present"
       },
       "llm_slots": {
-        "scope": "missing",
+        "scope": "filled",
         "condition": "filled",
         "actor": "filled",
         "modalVerb": "filled",
         "action": "filled"
       },
       "slot_match": {
-        "scope": true,
+        "scope": false,
         "condition": true,
         "actor": true,
         "modalVerb": true,
@@ -2341,12 +2363,12 @@
       "verdict_match": true,
       "similarity": {
         "n_humans": 3,
-        "seq_ratio_mean": 0.6725894167452853,
-        "seq_ratio_max": 0.6766917293233082,
+        "seq_ratio_mean": 0.662362606972979,
+        "seq_ratio_max": 0.6666666666666666,
         "jaccard_mean": 0.3627075351213282,
         "jaccard_max": 0.4074074074074074,
-        "cosine_mean": 0.8046614841683345,
-        "cosine_max": 0.8370628783301542
+        "cosine_mean": 0.8030547376261558,
+        "cosine_max": 0.8358047610382239
       },
       "paska_passed": true,
       "paska_smells": []
@@ -2359,7 +2381,7 @@
         "<MISSING_SCOPE>, when the user imports messages from an .xml backup, then the App must keep the archive and blocked flags.",
         "<MISSING_SCOPE>, when the App imports messages from an \".xml backup\", then the App must restore the \"archive\" and \"blocked\" flags."
       ],
-      "llm_rimay": "<MISSING_SCOPE>, when the user imports messages from an \".xml backup\", then the App must restore the \"blocked\" flag of each conversation that was part of the backup.",
+      "llm_rimay": "When the user imports messages from an \".xml backup\", then the App must restore the \"blocked\" flag of each message that was part of the backup.",
       "gold_slots": {
         "scope": "missing",
         "condition": "present",
@@ -2368,14 +2390,14 @@
         "action": "present"
       },
       "llm_slots": {
-        "scope": "missing",
+        "scope": "filled",
         "condition": "filled",
         "actor": "filled",
         "modalVerb": "filled",
         "action": "filled"
       },
       "slot_match": {
-        "scope": true,
+        "scope": false,
         "condition": true,
         "actor": true,
         "modalVerb": true,
@@ -2386,22 +2408,22 @@
       "verdict_match": true,
       "similarity": {
         "n_humans": 3,
-        "seq_ratio_mean": 0.7133880445733117,
-        "seq_ratio_max": 0.7396226415094339,
+        "seq_ratio_mean": 0.7198953488372094,
+        "seq_ratio_max": 0.7441860465116279,
         "jaccard_mean": 0.47734567901234565,
         "jaccard_max": 0.5416666666666666,
-        "cosine_mean": 0.8999877312311494,
-        "cosine_max": 0.9138967551746099
+        "cosine_mean": 0.9104768648798444,
+        "cosine_max": 0.9290874263713971
       },
       "paska_passed": true,
       "paska_smells": []
     }
   ],
   "verdict": {
-    "text": "This run tells us much less about fabrication than the headline micro-F1 of 0.96 suggests. Only two of the five slots have any gold-missing support. Actor, modalVerb and action have zero genuinely-missing cases, so their 0.0 scores are artifacts and Track 1 is not measurable for them. The macro-F1 of 0.37 is the same artifact averaged in and should not be reported as a model result.\n\nScope is also uninformative. Every one of the 42 gold labels is missing, and the LLM emitted `<MISSING_SCOPE>` every time. That looks like a template the few-shot examples teach, not a judgement, and it inflates the micro score.\n\nThe only real test of fabrication is the condition slot, with 14 missing cases. The model flagged 12 and silently filled 2, both from request 226. In 226-Signal#1 and #2 it invented the trigger \"when the user opens the Android Context Menu\". That phrase is the means of the action (\"from the Android Context Menu\"), promoted into a condition the source never states. All three annotators wrote `<MISSING_CONDITION>`. This is mild but genuine fabrication, and a recognisable pattern: turning an interaction channel into an event trigger.\n\nThe two errors in the opposite direction, where the model marked a present condition as missing, are less clear-cut. In 1692-Signal#2 one of the three annotators also wrote `<MISSING_CONDITION>`, so the gold label is contestable. In 328-Signal#4 the model converted a different requirement entirely: the recipient opt-out instead of the roaming rule. That is a unit-alignment failure, not a slot judgement.\n\nWith n=14, a 12/14 flag rate is compatible with anything from roughly 60% to 97%, so no strong claim about fsl's resistance to fabrication is warranted. The overall-verdict block (all 42 \"both complete\", F1 0.0) is likewise unmeasurable, since there are no incomplete gold cases.\n\nOn conversion quality, the LLM sits slightly below the human-human ceiling on all three measures:\n\n- seq_ratio: 0.71 against 0.79\n- Jaccard: 0.57 against 0.61\n- cosine: 0.85 against 0.89\n\nThat is roughly 90–95% of the ceiling, which is good for a task where humans themselves diverge. The larger LLM standard deviation suggests the gap comes from a tail of bad conversions rather than uniform drift. The worst cases are identifiable:\n\n- 328-Signal#4: wrong target requirement (0.38)\n- 226-Signal#1 and #2: the invented condition (0.39 and 0.47)\n- 6424-Signal#1 (0.44)\n- 328-Signal#3 (0.47)\n\nThe 126 pairs are not independent, because they come from 42 requirements and only around 15 source requests, so the gap is suggestive rather than established.\n\nThe Paska results give a 90% pass rate. The two non-atomic flags matter because the inputs were pre-filtered to be atomic, so the model itself reintroduced non-atomicity by bundling. In 328-Signal#3 it merged \"enable opt-in\" with \"define quantity\", where the humans kept only the quantity. 1065-Signal#1 shows the same smell. The two coordination-ambiguity flags (328-Signal#5, 5751-Signal#2) may simply reproduce disjunctions in the source and need manual checking before being counted against the model.\n\nThe most useful next steps, in order:\n\n1. Build or adjudicate a set where actor, modalVerb and action are genuinely missing; ablating them from existing requirements would do. Without it, the central fabrication question is untested for three of the five slots.\n2. Investigate how the target unit is communicated to the model, given the 328-Signal#4 misalignment.\n3. Compare fsl against zsl and cot specifically on the condition slot and the bundling rate.\n\nSince every result here comes from the already-atomic subset, none of it should be generalised to unfiltered requirements.",
+    "text": "## Summary\nSonnet under few-shot reaches about 90% of the human-human similarity ceiling, matches every unit count, and passes Paska on 40 of 42 units. The main weakness is the condition slot. The model invents trigger clauses where the source states none (4 units) and drops conditions the gold contains (4 units). Two of those drops come from choosing different units than the annotators did.\n\n## Missing-slot detection\nOnly scope (42 gold-missing) and condition (14) have support. Actor, modalVerb and action have zero gold-missing units, so their 0.0 scores are artifacts. The macro F1 of 0.34 is meaningless for the same reason. Use per-slot or micro scores instead.\n\nScope is handled almost perfectly. The only fills are both units of 5904-Signal, which suggests one source-level misreading rather than a general tendency.\n\nCondition errors split evenly in both directions:\n- **Invented conditions:** 1055-Signal#1 and #2, 226-Signal#1, 328-Signal#3. These recast the action's object or means as a trigger, as in \"if a message is a draft\" and \"when the user opens the Android Context Menu\". 328#3's \"if the sender has enabled\" is arguably grounded in the source's opt-in sentence. This is restructuring more than fabrication of new requirements content, but it still adds preconditions the source did not state.\n- **Dropped conditions:** 1692-Signal#2, 1065-Signal#2, 6424-Signal#2 and #3. For 1692#2, one of the three annotators also omitted the condition, so the gold label is borderline.\n\nWith 14 condition cases, these 8 errors are too few to separate a systematic bias from noise.\n\n## Conversion quality\nThe model sits about 0.05–0.08 below the human-human ceiling on all three similarity measures. The model's spread is wider than the humans' (seq_ratio std 0.17 vs 0.13), so the gap comes from a low tail rather than uniform drift.\n\nThe tail is concentrated in two places:\n- **6424-Signal#1–#3** (seq ≈ 0.37–0.44). The model converted the worked search examples into units, while all three annotators converted the calling-code prepending rule. This is a disagreement over how to partition the requirement, not a wording difference. It also explains the condition drops on #2 and #3.\n- **226#1, 6390#1, 6362#1** (≈ 0.44–0.48) make up the rest of the tail.\n\nPaska found few smells, and both affected units are informative:\n- **1065-Signal#1:** two actions packed into one unit. Under a fixed unit budget, the model merged content instead of splitting it.\n- **328-Signal#4:** condition placed after the system response, and the condition itself is incomplete.\n\n## Units and atomicity\nCount compliance is perfect: 15 of 15 requirements returned the expected number of units. Non-atomic detection is trivially 1.0 because the prompt states the requirement is non-atomic, so it carries no signal here. Three requirements returned their units reordered; confirm that scoring aligns units by content rather than position. The 6424 case shows that a correct count does not guarantee the same partition as the annotators, and Paska's 1065#1 finding shows hidden merging within that count.\n\n## Anomalies\n- None.\n\n## Next step\n- Inspect the alignment for 6424-Signal and the 3 reordered requirements; if units are matched by position, re-score with content-based alignment.\n- Tighten the condition definition in the prompt with a contrastive example showing that restating the object as a condition does not make it one.\n- Compare this run against the zsl and cot runs on the condition slot before attributing the errors to few-shot prompting.",
     "model": "claude-opus-5-5",
     "scope": "run",
-    "generated_at": "2026-10-19T00:00:21+01:00",
-    "results_digest": "40356b00f0c9"
+    "generated_at": "2026-10-25T20:09:34+00:00",
+    "results_digest": "382350a239b4"
   }
 }

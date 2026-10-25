@@ -1,2 +1,2 @@
-For each message in the ".xml backup", after <MISSING_ACTOR> imports the messages from the ".xml backup", then <MISSING_ACTOR> <MISSING_MODAL_VERB> restore the "archived flag" of the message.
-For each message in the ".xml backup", after <MISSING_ACTOR> imports the messages from the ".xml backup", then <MISSING_ACTOR> <MISSING_MODAL_VERB> restore the "blocked flag" of the message.
+<MISSING_ACTOR> <MISSING_MODAL_VERB> include the "archived" flag of each message in the ".xml backup".
+<MISSING_ACTOR> <MISSING_MODAL_VERB> include the "blocked" flag of each message in the ".xml backup".

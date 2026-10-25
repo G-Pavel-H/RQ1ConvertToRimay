@@ -1,0 +1,1 @@
+<MISSING_SCOPE>, <MISSING_CONDITION>, the App must display messages in the conversation view sorted by "sent timestamp".

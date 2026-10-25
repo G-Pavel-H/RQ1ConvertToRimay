@@ -1,0 +1,2 @@
+For outgoing messages where delivery receipts are available, the System shall display the received time from the receipt message.
+For outgoing messages where delivery receipts are not available, the System shall rename the "Sent/Received" label to "Sent".

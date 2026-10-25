@@ -1,0 +1,1 @@
+For <MISSING_SCOPE>, if the "mobile device" is equal to "dual SIM", then TextSecure <MISSING_MODAL_VERB> display the "SIM through which the message is sent" to the "user".

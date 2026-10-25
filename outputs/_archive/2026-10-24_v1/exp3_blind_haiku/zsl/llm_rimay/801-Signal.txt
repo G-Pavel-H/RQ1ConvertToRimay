@@ -1,0 +1,1 @@
+The <MISSING_SCOPE> when a user receives messages from a group or another user, then the system shall provide a mute feature that silences notifications for a specified duration.

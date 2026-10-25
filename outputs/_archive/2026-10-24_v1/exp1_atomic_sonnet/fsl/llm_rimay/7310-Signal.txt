@@ -1,0 +1,1 @@
+<MISSING_SCOPE>, <MISSING_CONDITION>, the app must support the custom URL scheme "signal://" to allow webpages to open the Signal app for sharing content.

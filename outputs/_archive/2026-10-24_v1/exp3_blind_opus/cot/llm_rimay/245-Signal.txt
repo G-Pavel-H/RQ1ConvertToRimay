@@ -1,0 +1,1 @@
+For <MISSING_SCOPE>, where the mobile has "dual SIM", then TextSecure <MISSING_MODAL_VERB> display the "SIM to which the message is sent".

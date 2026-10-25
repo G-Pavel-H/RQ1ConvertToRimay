@@ -1,0 +1,2 @@
+<MISSING_SCOPE>, when the User swipes away the "notification of a received SMS" from the "Android notification drawer" without opening Signal, then Signal must not display the "swiped-away notification" again.
+<MISSING_SCOPE>, if Signal receives "another message" from the same "contact/number" as the "swiped-away notification", then Signal must display a "new notification" with the "new message" or with the "swiped-away message and the new message".

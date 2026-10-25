@@ -1,0 +1,1 @@
+<MISSING_SCOPE>, <MISSING_CONDITION>, the app must provide additional "disappearing message timeout" periods of up to at least one year.

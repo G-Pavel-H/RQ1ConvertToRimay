@@ -1,0 +1,1 @@
+The System shall mute a group or user for a "specified duration".

@@ -1,0 +1,1 @@
+For the Signal application, when an Intent with ACTION_SEND is received, the Signal application shall include the EXTRA_SUBJECT in the shared content along with the EXTRA_TEXT.

@@ -1,2 +1,2 @@
-For the message-list, the System shall move the message drafts to the top of the message-list automatically.
-For the message-list, the System shall mark the message drafts by using another color or a text "Draft".
+<MISSING_SCOPE> <MISSING_CONDITION> the System shall move the message drafts to the top of the message-list.
+<MISSING_SCOPE> <MISSING_CONDITION> the System shall mark the message drafts with another color or a text "Draft".

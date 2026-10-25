@@ -1,0 +1,3 @@
+<MISSING_CONDITION> The <MISSING_ACTOR> <MISSING_MODAL_VERB> allow the user to "add a short signature to SMS messages".
+Wait — output must be Rimay only. Corrected:
+The TextSecure application must allow the user to "add a short signature below an SMS message".

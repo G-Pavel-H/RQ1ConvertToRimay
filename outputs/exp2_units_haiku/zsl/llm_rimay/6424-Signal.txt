@@ -1,3 +1,3 @@
-When a user with a US phone number searches for another US phone number, the System shall enable search by entering the full number with country code, the number without country code, or the number without country code and area code.
-When a user searches for a non-US phone number, the System shall enable search by entering the full number with country code or the number without country code.
-When a user searches for a phone number, the System shall try prepending both the calling code for the current user's phone number and the calling code that corresponds to the default region for the current device.
+For <MISSING_SCOPE>, <MISSING_CONDITION> the System shall enable search for a US phone number by accepting any of "+17043264096", "17043264096", or "7043264096" as input.
+For <MISSING_SCOPE>, <MISSING_CONDITION> the System shall enable search for a non-US phone number by accepting any of "+441733530267" or "441733530267" as input.
+For <MISSING_SCOPE>, <MISSING_CONDITION> the System shall try prepending the calling code for the current user's phone number and the calling code that corresponds to the default region for the current device when performing phone number searches.

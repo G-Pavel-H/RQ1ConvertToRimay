@@ -1,1 +1,1 @@
-<MISSING_SCOPE>, <MISSING_CONDITION>, the Signal-App <MISSING_MODAL_VERB> support the "custom URL scheme signal://" for "pointing to the Signal app from webpages".
+<MISSING_SCOPE>, <MISSING_CONDITION>, the Signal app <MISSING_MODAL_VERB> support the "custom URL scheme signal://" for "share buttons on websites".

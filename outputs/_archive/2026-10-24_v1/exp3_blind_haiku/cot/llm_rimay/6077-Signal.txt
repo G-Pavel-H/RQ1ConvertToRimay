@@ -1,0 +1,1 @@
+When the user sends an SMS message to "13977", then Signal shall send the SMS message to "13977".

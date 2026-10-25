@@ -1,1 +1,1 @@
-<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure must provide an option to remove participants from a group after they were added.
+<MISSING_SCOPE>, <MISSING_CONDITION>, the TextSecure app must provide an option to remove participants from a group after they were added.

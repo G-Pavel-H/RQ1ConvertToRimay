@@ -1,0 +1,1 @@
+Where the device runs "Huawei EMUI 4.1 (Android 6.0)", when Signal receives a "notification on new messages", then Signal <MISSING_MODAL_VERB> display the "unread notifications badge" on the "app icon on the home screen".

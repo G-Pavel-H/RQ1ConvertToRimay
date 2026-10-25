@@ -1,0 +1,16 @@
+<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure <MISSING_MODAL_VERB> send "dummy random messages" to "random recipients chosen between contacts that knowingly use TextSecure" at "random times".
+<MISSING_SCOPE>, when the recipient's TextSecure receives a "dummy message", then the recipient's TextSecure <MISSING_MODAL_VERB> discard the "dummy message" automatically after decryption.
+<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure must adjust the "randomness of dummy messages" based on "the legitimate messages".
+<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure must allow the sender to enable the "dummy messages feature" as "opt-in".
+<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure must allow the sender to define the "desired quantity of dummy messages".
+<MISSING_SCOPE>, while the device is roaming, TextSecure must disable the "dummy messages feature" by default.
+<MISSING_SCOPE>, while the device is roaming, TextSecure must allow the sender to enable the "dummy messages feature".
+<MISSING_SCOPE>, if Device.Battery_Level is less than "30%", then TextSecure must not send "dummy messages".
+<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure <MISSING_MODAL_VERB> allow the recipient to notify the "recipient's peers" that the recipient does not want to receive "dummy messages".
+<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure <MISSING_MODAL_VERB> send a "clear text default message or custom explanation by sender" to "random contacts not using TextSecure".
+<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure must limit the "clear text messages to contacts not using TextSecure".
+<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure <MISSING_MODAL_VERB> include the "phone numbers of other peers participating in dummy messaging" in "dummy messages".
+<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure <MISSING_MODAL_VERB> not display the "phone numbers of other peers contained in dummy messages" to the user.
+<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure <MISSING_MODAL_VERB> send "dummy messages" to the "phone numbers of other peers contained in dummy messages".
+<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure must send the "opt-outs" through "dummy messages" or "direct reply dummy messages".
+<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure must define a "TTL" for each "phone number circulating in dummy messages".

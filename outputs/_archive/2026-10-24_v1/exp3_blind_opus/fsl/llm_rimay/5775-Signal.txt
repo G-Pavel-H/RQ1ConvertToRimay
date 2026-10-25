@@ -1,0 +1,1 @@
+<MISSING_SCOPE>, <MISSING_CONDITION>, the App must provide "disappearing message periods" longer than "1 week", up to at least "one year".

@@ -1,1 +1,1 @@
-For the Android system, when a sharing action is initiated, the system shall send a "target" to ChooserTargetService by using the "direct sharing API".
+When the System receives a "direct sharing request to contacts" via the "ChooserTargetService", the System shall provide a "sharing target" to the user.

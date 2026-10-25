@@ -1,1 +1,1 @@
-For Signal 3.0.3, the calling screen shall display the "full resolution contact photo".
+For Signal 3.0.3, while a call is in progress, the calling screen <MISSING_MODAL_VERB> show the "full resolution contact photo".

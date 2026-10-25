@@ -1,1 +1,1 @@
-For each message, when the message length exceeds the maximum character limit, then the app must split the oversized text into multiple messages.
+<MISSING_SCOPE>, <MISSING_CONDITION>, the app must auto-split oversized text messages into multiple messages instead of truncating them.

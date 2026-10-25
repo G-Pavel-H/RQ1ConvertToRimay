@@ -1,0 +1,2 @@
+When the System receives a "SMS delivery report", then the System shall save the "time the other user received the message" from the "SMS delivery report".
+When the System receives a "SMS delivery report", then the System shall allow the <MISSING_ACTOR> to view the "time the other user received the message" in the "message details".

@@ -1,0 +1,2 @@
+<MISSING_ACTOR> <MISSING_MODAL_VERB> update the "libphonenumber" to ">=8.2.0".
+When the user sends an "SMS message" to "13977" through Signal, then Signal shall deliver the "SMS message" to "13977".

@@ -1,0 +1,2 @@
+When the System detects the first start of the app, the System shall request the user to specify the desired behaviour among "only use push", "use SMS fallback", or "use as default SMS/MMS-App".
+When the user selects a behaviour mode during the first start of the app, the System shall display a pop-up that explains in simple words what each mode does.

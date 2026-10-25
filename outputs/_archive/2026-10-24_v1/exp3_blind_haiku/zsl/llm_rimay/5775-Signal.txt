@@ -1,0 +1,3 @@
+When a user requests longer-term disappearing message timeouts, the System shall add disappearing message timeout periods up to at least one year.
+When a user requests disappearing message timeout periods for messages written within the last month, the System shall provide a disappearing message timeout period of approximately one month.
+When a user requests disappearing message timeout periods that allow re-reading messages from significant dates in the previous year, the System shall provide a disappearing message timeout period of thirteen months.

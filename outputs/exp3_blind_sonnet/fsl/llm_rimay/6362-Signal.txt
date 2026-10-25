@@ -1,0 +1,4 @@
+<MISSING_SCOPE>, <MISSING_CONDITION>, the App must show a screen with a pie chart of the "number of contacts on Signal".
+<MISSING_SCOPE>, <MISSING_CONDITION>, the App must show a pie chart of the "number of encrypted messages sent".
+<MISSING_SCOPE>, when the user taps an element of the pie chart, then the App must show a list of the "people in that category".
+<MISSING_SCOPE>, if most but not all of the contacts of the user are using Signal, then the App must show the "Almost there!" message.

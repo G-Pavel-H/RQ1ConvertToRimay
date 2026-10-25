@@ -1,1 +1,1 @@
-<MISSING_SCOPE> <MISSING_CONDITION> The <MISSING_ACTOR> shall allow the user to change the "maximum size of MMS".
+The messaging app must allow the user to change the "maximum size of MMS".

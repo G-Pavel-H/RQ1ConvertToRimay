@@ -1,0 +1,2 @@
+<MISSING_SCOPE>, if the "media item" has already been saved on the device, then the App must show a "view" icon or a "share" icon instead of the "save" button.
+<MISSING_SCOPE>, if the "media item" has not been saved on the device, then the App must show the "save" button.

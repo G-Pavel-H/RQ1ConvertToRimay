@@ -1,0 +1,2665 @@
+{
+  "run": "exp2_units_opus/zsl",
+  "strategy": "zsl",
+  "task": "units",
+  "units": {
+    "alignment": "max summed similarity to the annotators' units (cosine, seq_ratio fallback)",
+    "requirements": 15,
+    "exactCount": 15,
+    "expectedUnits": 42,
+    "returnedUnits": 42,
+    "reordered": 2,
+    "perRequirement": [
+      {
+        "reqId": "1055-Signal",
+        "expected": 2,
+        "returned": 2,
+        "mapping": {
+          "1": 1,
+          "2": 2
+        },
+        "reordered": false,
+        "missingGoldUnits": [],
+        "extraLlmUnits": []
+      },
+      {
+        "reqId": "1692-Signal",
+        "expected": 2,
+        "returned": 2,
+        "mapping": {
+          "1": 1,
+          "2": 2
+        },
+        "reordered": false,
+        "missingGoldUnits": [],
+        "extraLlmUnits": []
+      },
+      {
+        "reqId": "6390-Signal",
+        "expected": 2,
+        "returned": 2,
+        "mapping": {
+          "1": 1,
+          "2": 2
+        },
+        "reordered": false,
+        "missingGoldUnits": [],
+        "extraLlmUnits": []
+      },
+      {
+        "reqId": "222-Signal",
+        "expected": 3,
+        "returned": 3,
+        "mapping": {
+          "1": 1,
+          "2": 2,
+          "3": 3
+        },
+        "reordered": false,
+        "missingGoldUnits": [],
+        "extraLlmUnits": []
+      },
+      {
+        "reqId": "1065-Signal",
+        "expected": 2,
+        "returned": 2,
+        "mapping": {
+          "1": 1,
+          "2": 2
+        },
+        "reordered": false,
+        "missingGoldUnits": [],
+        "extraLlmUnits": []
+      },
+      {
+        "reqId": "328-Signal",
+        "expected": 5,
+        "returned": 5,
+        "mapping": {
+          "1": 1,
+          "2": 2,
+          "3": 3,
+          "4": 4,
+          "5": 5
+        },
+        "reordered": false,
+        "missingGoldUnits": [],
+        "extraLlmUnits": []
+      },
+      {
+        "reqId": "6111-Signal",
+        "expected": 3,
+        "returned": 3,
+        "mapping": {
+          "1": 1,
+          "2": 2,
+          "3": 3
+        },
+        "reordered": false,
+        "missingGoldUnits": [],
+        "extraLlmUnits": []
+      },
+      {
+        "reqId": "226-Signal",
+        "expected": 2,
+        "returned": 2,
+        "mapping": {
+          "1": 1,
+          "2": 2
+        },
+        "reordered": false,
+        "missingGoldUnits": [],
+        "extraLlmUnits": []
+      },
+      {
+        "reqId": "4821-Signal",
+        "expected": 2,
+        "returned": 2,
+        "mapping": {
+          "1": 1,
+          "2": 2
+        },
+        "reordered": false,
+        "missingGoldUnits": [],
+        "extraLlmUnits": []
+      },
+      {
+        "reqId": "6362-Signal",
+        "expected": 4,
+        "returned": 4,
+        "mapping": {
+          "1": 1,
+          "2": 2,
+          "3": 3,
+          "4": 4
+        },
+        "reordered": false,
+        "missingGoldUnits": [],
+        "extraLlmUnits": []
+      },
+      {
+        "reqId": "6424-Signal",
+        "expected": 3,
+        "returned": 3,
+        "mapping": {
+          "1": 2,
+          "2": 1,
+          "3": 3
+        },
+        "reordered": true,
+        "missingGoldUnits": [],
+        "extraLlmUnits": []
+      },
+      {
+        "reqId": "7567-Signal",
+        "expected": 2,
+        "returned": 2,
+        "mapping": {
+          "1": 1,
+          "2": 2
+        },
+        "reordered": false,
+        "missingGoldUnits": [],
+        "extraLlmUnits": []
+      },
+      {
+        "reqId": "802-Signal",
+        "expected": 6,
+        "returned": 6,
+        "mapping": {
+          "1": 2,
+          "2": 1,
+          "3": 4,
+          "4": 3,
+          "5": 6,
+          "6": 5
+        },
+        "reordered": true,
+        "missingGoldUnits": [],
+        "extraLlmUnits": []
+      },
+      {
+        "reqId": "5751-Signal",
+        "expected": 2,
+        "returned": 2,
+        "mapping": {
+          "1": 1,
+          "2": 2
+        },
+        "reordered": false,
+        "missingGoldUnits": [],
+        "extraLlmUnits": []
+      },
+      {
+        "reqId": "5904-Signal",
+        "expected": 2,
+        "returned": 2,
+        "mapping": {
+          "1": 1,
+          "2": 2
+        },
+        "reordered": false,
+        "missingGoldUnits": [],
+        "extraLlmUnits": []
+      }
+    ]
+  },
+  "scored_at": "2026-10-19T00:18:03+01:00",
+  "gold_csv": "data/curated/gold_units.csv",
+  "meta": {
+    "run_id": "exp2_units_opus/zsl",
+    "strategy": "zsl",
+    "task": "units",
+    "model": "claude-opus-5-5",
+    "temperature": 0.0,
+    "max_tokens": 1024,
+    "n_fsl_examples": null,
+    "gold_csv": "data/curated/gold_units.csv",
+    "backend": "subscription",
+    "created_at": "2026-10-19T00:17:55+01:00",
+    "n_processed": 15,
+    "n_skipped": 0,
+    "skipped_ids": []
+  },
+  "counts": {
+    "gold": 42,
+    "converted": 42,
+    "evaluated": 42,
+    "skipped": 0,
+    "skipped_ids": []
+  },
+  "field_accuracy": {
+    "n": 42,
+    "per_slot": {
+      "scope": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 42,
+        "tn": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support_gold_missing": 42
+      },
+      "condition": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 14,
+        "tn": 28,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support_gold_missing": 14
+      },
+      "actor": {
+        "tp": 0,
+        "fp": 15,
+        "fn": 0,
+        "tn": 27,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support_gold_missing": 0
+      },
+      "modalVerb": {
+        "tp": 0,
+        "fp": 29,
+        "fn": 0,
+        "tn": 13,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support_gold_missing": 0
+      },
+      "action": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "tn": 42,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support_gold_missing": 0
+      }
+    },
+    "micro": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "macro": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "implied_analysis": {
+      "overall": {
+        "n_implied": 84,
+        "llm_filled": 40,
+        "llm_flagged_missing": 44,
+        "fill_rate": 0.47619047619047616
+      },
+      "per_slot": {
+        "scope": {
+          "n_implied": 0,
+          "llm_filled": 0,
+          "llm_flagged_missing": 0,
+          "fill_rate": 0.0
+        },
+        "condition": {
+          "n_implied": 0,
+          "llm_filled": 0,
+          "llm_flagged_missing": 0,
+          "fill_rate": 0.0
+        },
+        "actor": {
+          "n_implied": 42,
+          "llm_filled": 27,
+          "llm_flagged_missing": 15,
+          "fill_rate": 0.6428571428571429
+        },
+        "modalVerb": {
+          "n_implied": 42,
+          "llm_filled": 13,
+          "llm_flagged_missing": 29,
+          "fill_rate": 0.30952380952380953
+        },
+        "action": {
+          "n_implied": 0,
+          "llm_filled": 0,
+          "llm_flagged_missing": 0,
+          "fill_rate": 0.0
+        }
+      }
+    },
+    "missing_analysis": {
+      "overall": {
+        "n_missing": 56,
+        "llm_flagged_missing": 0,
+        "llm_silently_filled": 56,
+        "flag_rate": 0.0
+      },
+      "per_slot": {
+        "scope": {
+          "n_missing": 42,
+          "llm_flagged_missing": 0,
+          "llm_silently_filled": 42,
+          "flag_rate": 0.0
+        },
+        "condition": {
+          "n_missing": 14,
+          "llm_flagged_missing": 0,
+          "llm_silently_filled": 14,
+          "flag_rate": 0.0
+        },
+        "actor": {
+          "n_missing": 0,
+          "llm_flagged_missing": 0,
+          "llm_silently_filled": 0,
+          "flag_rate": 0.0
+        },
+        "modalVerb": {
+          "n_missing": 0,
+          "llm_flagged_missing": 0,
+          "llm_silently_filled": 0,
+          "flag_rate": 0.0
+        },
+        "action": {
+          "n_missing": 0,
+          "llm_flagged_missing": 0,
+          "llm_silently_filled": 0,
+          "flag_rate": 0.0
+        }
+      }
+    },
+    "overall_verdict": {
+      "confusion": {
+        "both_incomplete": 0,
+        "llm_incomplete_gold_complete": 34,
+        "gold_incomplete_llm_complete": 0,
+        "both_complete": 8
+      },
+      "agreement_rate": 0.19047619047619047,
+      "n": 42,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    }
+  },
+  "conversion_quality": {
+    "similarity": {
+      "llm_vs_human": {
+        "seq_ratio": {
+          "n": 126,
+          "mean": 0.5969865188327719,
+          "median": 0.6278951817413356,
+          "min": 0.2222222222222222,
+          "max": 0.8695652173913043,
+          "std": 0.1439360212452399
+        },
+        "jaccard": {
+          "n": 126,
+          "mean": 0.4522055801394376,
+          "median": 0.44,
+          "min": 0.15384615384615385,
+          "max": 0.8,
+          "std": 0.14886478297142047
+        },
+        "cosine": {
+          "n": 126,
+          "mean": 0.7557312938441647,
+          "median": 0.7571173271939546,
+          "min": 0.4973831040254277,
+          "max": 0.9695124960868796,
+          "std": 0.09722967900981921
+        },
+        "n_pairs": 126,
+        "n_evaluated": 42,
+        "n_skipped_no_humans": 0,
+        "skipped_req_ids": []
+      },
+      "human_human": {
+        "seq_ratio": {
+          "n": 126,
+          "mean": 0.7862386783012172,
+          "median": 0.7988095238095239,
+          "min": 0.25396825396825395,
+          "max": 0.9914529914529915,
+          "std": 0.12843232241194286
+        },
+        "jaccard": {
+          "n": 126,
+          "mean": 0.6065561631533409,
+          "median": 0.5857843137254902,
+          "min": 0.2777777777777778,
+          "max": 1.0,
+          "std": 0.15744038315224002
+        },
+        "cosine": {
+          "n": 126,
+          "mean": 0.8886825011658506,
+          "median": 0.8925989456979146,
+          "min": 0.6548950340781206,
+          "max": 0.9967079810150642,
+          "std": 0.07737314360678352
+        },
+        "n_pairs": 126
+      }
+    },
+    "paska": {
+      "n": 42,
+      "n_passed": 13,
+      "n_failed": 29,
+      "n_error": 0,
+      "n_scored": 42,
+      "pass_rate": 0.30952380952380953,
+      "pass_rate_llm_complete": 1.0,
+      "by_llm_verdict": {
+        "llm_complete": {
+          "n": 8,
+          "n_passed": 8,
+          "n_failed": 0,
+          "n_scored": 8,
+          "pass_rate": 1.0
+        },
+        "llm_incomplete": {
+          "n": 34,
+          "n_passed": 5,
+          "n_failed": 29,
+          "n_scored": 34,
+          "pass_rate": 0.14705882352941177
+        }
+      },
+      "n_with_smells": 29,
+      "smell_frequency": {
+        "Incomplete system response": 19,
+        "Incomplete requirement": 14,
+        "Not requirement": 13,
+        "Passive voice": 2,
+        "Incomplete condition": 2
+      }
+    },
+    "embedding": {
+      "available": true,
+      "model": "all-minilm"
+    }
+  },
+  "requirements": [
+    {
+      "reqId": "1055-Signal#1",
+      "nl_text": "Request Number - 1055 | Request Title - drafts should be marked and moved to top of list  | Request Description - the message drafts should be automatically moved to the top of the message-list and be marked somehow, i.e. get another color or a text \"Draft\"",
+      "human_rimays": [
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must automatically move the \"message drafts\" to the top of the \"message list\".",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must automatically move the message drafts to the top of the list.",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the System must automatically move the \"message drafts\" to the top of the list."
+      ],
+      "llm_rimay": "<MISSING_ACTOR> shall automatically move the \"message drafts\" to the \"top of the message-list\".",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "missing",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "missing",
+        "modalVerb": "filled",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": false,
+        "condition": false,
+        "actor": false,
+        "modalVerb": true,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": true,
+      "verdict_match": false,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.822974077315631,
+        "seq_ratio_max": 0.863905325443787,
+        "jaccard_mean": 0.75,
+        "jaccard_max": 0.75,
+        "cosine_mean": 0.8871316749861933,
+        "cosine_max": 0.9399912889718559
+      },
+      "paska_passed": true,
+      "paska_smells": []
+    },
+    {
+      "reqId": "1055-Signal#2",
+      "nl_text": "Request Number - 1055 | Request Title - drafts should be marked and moved to top of list  | Request Description - the message drafts should be automatically moved to the top of the message-list and be marked somehow, i.e. get another color or a text \"Draft\"",
+      "human_rimays": [
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must visually mark the \"message drafts\", such as with a different color or a \"Draft\" label.",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must mark the \"message drafts\", with a different color or a \"Draft\" label.",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must highlight \"message drafts\", for example with a distinct colour or a \"Draft\" tag."
+      ],
+      "llm_rimay": "<MISSING_ACTOR> shall mark the \"message drafts\" by using \"another color\" or the text \"Draft\".",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "missing",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "missing",
+        "modalVerb": "filled",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": false,
+        "condition": false,
+        "actor": false,
+        "modalVerb": true,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": true,
+      "verdict_match": false,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.6038666760689185,
+        "seq_ratio_max": 0.6380368098159509,
+        "jaccard_mean": 0.3164983164983165,
+        "jaccard_max": 0.3888888888888889,
+        "cosine_mean": 0.7939071071940317,
+        "cosine_max": 0.7988572254047535
+      },
+      "paska_passed": true,
+      "paska_smells": []
+    },
+    {
+      "reqId": "1692-Signal#1",
+      "nl_text": "Request Number - 1692 | Request Title - sms delivery report: show received time in message details | Request Description - when a sms delivery report is received, the time the other user received the message (afaik the done date ) should be saved and it should be possible to view it in message details. This way one could see when the other user received the message (not only that is was received). edit: if someone can give me a hint where to look/start in the code to implement this, I'd try to make a pull request (but I just glanced through the code and cannot find a starting point ... maybe it's simply too late already ;-))",
+      "human_rimays": [
+        "<MISSING_SCOPE>, when user receives SMS delivery report, then the App must save the time the message was actually received.",
+        "<MISSING_SCOPE>, when the App receives an \"SMS delivery report\", then the App must save the time at which the recipient received the message.",
+        "<MISSING_SCOPE>, when the App receives an \"SMS delivery report\", then the App must save the time at which the user received the message."
+      ],
+      "llm_rimay": "When the <MISSING_ACTOR> receives a \"sms delivery report\", then the <MISSING_ACTOR> should save the \"time the other user received the message (done date)\" in the \"message details\".",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "present",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "missing",
+        "modalVerb": "filled",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": false,
+        "condition": true,
+        "actor": false,
+        "modalVerb": true,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": true,
+      "verdict_match": false,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.6719350640834305,
+        "seq_ratio_max": 0.7286245353159851,
+        "jaccard_mean": 0.4872463768115942,
+        "jaccard_max": 0.5217391304347826,
+        "cosine_mean": 0.8544276806351334,
+        "cosine_max": 0.8588161061163261
+      },
+      "paska_passed": true,
+      "paska_smells": []
+    },
+    {
+      "reqId": "1692-Signal#2",
+      "nl_text": "Request Number - 1692 | Request Title - sms delivery report: show received time in message details | Request Description - when a sms delivery report is received, the time the other user received the message (afaik the done date ) should be saved and it should be possible to view it in message details. This way one could see when the other user received the message (not only that is was received). edit: if someone can give me a hint where to look/start in the code to implement this, I'd try to make a pull request (but I just glanced through the code and cannot find a starting point ... maybe it's simply too late already ;-))",
+      "human_rimays": [
+        "<MISSING_SCOPE>, when user receives SMS delivery report, then the App must show that time in the message details.",
+        "<MISSING_SCOPE>, when the App receives an \"SMS delivery report\", the App must show the saved \"received time\" in the \"message details\".",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must show the saved \"received time\" in the \"message details\"."
+      ],
+      "llm_rimay": "The <MISSING_ACTOR> <MISSING_MODAL_VERB> display the \"time the other user received the message (done date)\" in the \"message details\".",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "present",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "missing",
+        "modalVerb": "missing",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": false,
+        "condition": true,
+        "actor": false,
+        "modalVerb": false,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": true,
+      "verdict_match": false,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.5597322926168619,
+        "seq_ratio_max": 0.6272189349112426,
+        "jaccard_mean": 0.3238095238095238,
+        "jaccard_max": 0.4,
+        "cosine_mean": 0.7085408888375625,
+        "cosine_max": 0.7296539822144249
+      },
+      "paska_passed": false,
+      "paska_smells": [
+        {
+          "segment_id": "1692-Signal_u2_5",
+          "smell": "Not requirement",
+          "value": "The sentence does not contain a system response nor condition nor a scope phrase."
+        },
+        {
+          "segment_id": "1692-Signal_u2_5",
+          "smell": "Incomplete system response",
+          "value": "Modal verb is missing in the SR."
+        }
+      ]
+    },
+    {
+      "reqId": "6390-Signal#1",
+      "nl_text": "Request Number - 6390 | Request Title - Notify sender if Signal message has been sent but not delivered to recipient after some time | Request Description - I have:   searched open and closed issues for duplicates  read https://github.com/WhisperSystems/Signal-Android/wiki/Submitting-useful-bug-reports  Bug description. Recipients who are registered for Signal may not be able to receive secure signal messages due to reasons such as:  temporary unavailability of internet access (e.g. prepay plans with hard data caps; otherwise intermittent data connectivity) permanent unavailability having uninstalled Signal without first unregistering Neither of these are apparent to the sender, and sending a Signal message results in the message sitting on the server for some undefined length of time. The sender does not get notified that while their message has been sent to the server, it has not been delivered to the recipient, leading to frustration once the fact is discovered ( #6377 , #2285 (comment) etc). The status is available in conversation UI in the form of one tick vs two ticks, but this requires the sender to explicitly check back in the conversation UI. It would improve the user experience if a signal message that was sent but not delivered after some timeout (minutes?) triggered a \"lack of delivery\" notification on the senders phone along the lines of \"Your secure message to YYY could not be delivered after N minutes. Would you like to resend via insecure SMS?\" This way it is up to the user to explicitly fall back to the less secure protocol. (This notification proposal is orthogonal to but complementary to the ability of Signal to better remember the per-contact preference of transport channel suggested in #2285 , #845 (comment) etc. It would also serve as an easier to implement and more secure alternative to automatically falling back to SMS as suggested in #678 , #2847 , #3074 , #4009 , #5001 )",
+      "human_rimays": [
+        "<MISSING_SCOPE>, if the recipient does not receive a sent \"Signal message\" within a timeout, then the App must notify the \"sender\".",
+        "<MISSING_SCOPE>, if the recipient does not receive a sent \"Signal message\" within a \"timeout\", then the App must notify the \"sender\".",
+        "<MISSING_SCOPE>, if the recipient has not received a sent \"Signal message\" after a \"timeout\", then the System must alert the \"sender\"."
+      ],
+      "llm_rimay": "If the \"Signal message\" is sent to the server and is not delivered to the recipient after \"N minutes\", then Signal <MISSING_MODAL_VERB> display a \"lack of delivery notification\" on the \"sender's phone\".",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "present",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "missing",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": false,
+        "condition": true,
+        "actor": true,
+        "modalVerb": false,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": true,
+      "verdict_match": false,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.4196301176011321,
+        "seq_ratio_max": 0.43478260869565216,
+        "jaccard_mean": 0.31660353535353536,
+        "jaccard_max": 0.34375,
+        "cosine_mean": 0.7698261743359041,
+        "cosine_max": 0.7902133877381797
+      },
+      "paska_passed": false,
+      "paska_smells": [
+        {
+          "segment_id": "6390-Signal_u1_1",
+          "smell": "Passive voice",
+          "value": "Passive voice in the condition."
+        },
+        {
+          "segment_id": "6390-Signal_u1_2",
+          "smell": "Incomplete system response",
+          "value": "Modal verb is missing in the SR."
+        }
+      ]
+    },
+    {
+      "reqId": "6390-Signal#2",
+      "nl_text": "Request Number - 6390 | Request Title - Notify sender if Signal message has been sent but not delivered to recipient after some time | Request Description - I have:   searched open and closed issues for duplicates  read https://github.com/WhisperSystems/Signal-Android/wiki/Submitting-useful-bug-reports  Bug description. Recipients who are registered for Signal may not be able to receive secure signal messages due to reasons such as:  temporary unavailability of internet access (e.g. prepay plans with hard data caps; otherwise intermittent data connectivity) permanent unavailability having uninstalled Signal without first unregistering Neither of these are apparent to the sender, and sending a Signal message results in the message sitting on the server for some undefined length of time. The sender does not get notified that while their message has been sent to the server, it has not been delivered to the recipient, leading to frustration once the fact is discovered ( #6377 , #2285 (comment) etc). The status is available in conversation UI in the form of one tick vs two ticks, but this requires the sender to explicitly check back in the conversation UI. It would improve the user experience if a signal message that was sent but not delivered after some timeout (minutes?) triggered a \"lack of delivery\" notification on the senders phone along the lines of \"Your secure message to YYY could not be delivered after N minutes. Would you like to resend via insecure SMS?\" This way it is up to the user to explicitly fall back to the less secure protocol. (This notification proposal is orthogonal to but complementary to the ability of Signal to better remember the per-contact preference of transport channel suggested in #2285 , #845 (comment) etc. It would also serve as an easier to implement and more secure alternative to automatically falling back to SMS as suggested in #678 , #2847 , #3074 , #4009 , #5001 )",
+      "human_rimays": [
+        "<MISSING_SCOPE>, if the recipient does not receive a sent \"Signal message\" within a \"timeout\", then the App must provide the \"sender\" an option to resend the message via insecure SMS.",
+        "<MISSING_SCOPE>, if the recipient does not receive a sent \"Signal message\" within a \"timeout\", then the App must allow the \"sender\" an option to resend the message via \"insecure SMS\".",
+        "<MISSING_SCOPE>, if the recipient does not receive a sent \"Signal message\" within a timeout, then the App must offer the \"sender\" an option to resend the message via \"insecure SMS\"."
+      ],
+      "llm_rimay": "If the \"Signal message\" is sent to the server and is not delivered to the recipient after \"N minutes\", then Signal <MISSING_MODAL_VERB> request the sender to \"resend the message via insecure SMS\".",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "present",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "missing",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": false,
+        "condition": true,
+        "actor": true,
+        "modalVerb": false,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": true,
+      "verdict_match": false,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.5647369966000644,
+        "seq_ratio_max": 0.5714285714285714,
+        "jaccard_mean": 0.4375,
+        "jaccard_max": 0.4375,
+        "cosine_mean": 0.8448026211082912,
+        "cosine_max": 0.8567118809041998
+      },
+      "paska_passed": false,
+      "paska_smells": [
+        {
+          "segment_id": "6390-Signal_u2_3",
+          "smell": "Passive voice",
+          "value": "Passive voice in the condition."
+        }
+      ]
+    },
+    {
+      "reqId": "222-Signal#1",
+      "nl_text": "Request Number - 222 | Request Title - Feature: Blocking | Request Description - Blocking by user-specified phone number, via something like an email filter rule where the messages from the number are deleted upon receipt and no notification is given.",
+      "human_rimays": [
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user block a user-specified phone number.",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user block a user-specified \"phone number\".",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow the user to block any \"phone number\" that the user specifies."
+      ],
+      "llm_rimay": "<MISSING_ACTOR> <MISSING_MODAL_VERB> block the \"messages\" from the \"user-specified phone number\" by using a \"rule similar to an email filter rule\".",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "missing",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "missing",
+        "modalVerb": "missing",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": false,
+        "condition": false,
+        "actor": false,
+        "modalVerb": false,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": true,
+      "verdict_match": false,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.37050000175506953,
+        "seq_ratio_max": 0.4044943820224719,
+        "jaccard_mean": 0.32028985507246377,
+        "jaccard_max": 0.35,
+        "cosine_mean": 0.6821959570825454,
+        "cosine_max": 0.6920644416997352
+      },
+      "paska_passed": false,
+      "paska_smells": [
+        {
+          "segment_id": "222-Signal_u1_1",
+          "smell": "Not requirement",
+          "value": "The sentence does not contain a system response nor condition nor a scope phrase."
+        }
+      ]
+    },
+    {
+      "reqId": "222-Signal#2",
+      "nl_text": "Request Number - 222 | Request Title - Feature: Blocking | Request Description - Blocking by user-specified phone number, via something like an email filter rule where the messages from the number are deleted upon receipt and no notification is given.",
+      "human_rimays": [
+        "<MISSING_SCOPE>, when the App receives a message from a \"blocked number\", then the App must delete the message.",
+        "<MISSING_SCOPE>, when the user receives a message from a blocked number, then the App must delete it.",
+        "<MISSING_SCOPE>, when a message arrives from a \"blocked number\", then the App must remove that message."
+      ],
+      "llm_rimay": "When <MISSING_ACTOR> receives a \"message\" from the \"user-specified phone number\", then <MISSING_ACTOR> <MISSING_MODAL_VERB> delete the \"message\".",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "present",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "missing",
+        "modalVerb": "missing",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": false,
+        "condition": true,
+        "actor": false,
+        "modalVerb": false,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": true,
+      "verdict_match": false,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.6545762831921093,
+        "seq_ratio_max": 0.723404255319149,
+        "jaccard_mean": 0.537962962962963,
+        "jaccard_max": 0.625,
+        "cosine_mean": 0.6651411764066474,
+        "cosine_max": 0.6839637203432449
+      },
+      "paska_passed": false,
+      "paska_smells": [
+        {
+          "segment_id": "222-Signal_u2_2",
+          "smell": "Incomplete requirement",
+          "value": "The requirement does not have a system response."
+        },
+        {
+          "segment_id": "222-Signal_u2_2",
+          "smell": "Incomplete condition",
+          "value": "Actor is missing in the condition."
+        }
+      ]
+    },
+    {
+      "reqId": "222-Signal#3",
+      "nl_text": "Request Number - 222 | Request Title - Feature: Blocking | Request Description - Blocking by user-specified phone number, via something like an email filter rule where the messages from the number are deleted upon receipt and no notification is given.",
+      "human_rimays": [
+        "<MISSING_SCOPE>, when the App receives a message from a \"blocked number\", then the App must not show a \"notification\".",
+        "<MISSING_SCOPE>, when the user receives a message from a blocked number, then the App must not show a notification.",
+        "<MISSING_SCOPE>, when a message arrives from a \"blocked number\", then the App must not display any \"notification\" for it."
+      ],
+      "llm_rimay": "When <MISSING_ACTOR> receives a \"message\" from the \"user-specified phone number\", then <MISSING_ACTOR> <MISSING_MODAL_VERB> not send a \"notification\".",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "present",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "missing",
+        "modalVerb": "missing",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": false,
+        "condition": true,
+        "actor": false,
+        "modalVerb": false,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": true,
+      "verdict_match": false,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.6770149950405507,
+        "seq_ratio_max": 0.72,
+        "jaccard_mean": 0.5252525252525253,
+        "jaccard_max": 0.6111111111111112,
+        "cosine_mean": 0.6499555967817883,
+        "cosine_max": 0.6641006958546238
+      },
+      "paska_passed": false,
+      "paska_smells": [
+        {
+          "segment_id": "222-Signal_u3_4",
+          "smell": "Incomplete requirement",
+          "value": "The requirement does not have a system response."
+        },
+        {
+          "segment_id": "222-Signal_u3_4",
+          "smell": "Incomplete condition",
+          "value": "Actor is missing in the condition."
+        }
+      ]
+    },
+    {
+      "reqId": "1065-Signal#1",
+      "nl_text": "Request Number - 1065 | Request Title - Ask for desired behaviour on first start | Request Description - Would it be possible to ask the user during the first start of the app (right before/after setting the passphrase), to specify the desired behaviour:  only use push use SMS fallback use as default SMS/MMS-App Probably even add a \"what does that mean?\" button which opens a pop-up that explains (in simple words) what every mode does. This would go a long way in making the app more friendly for the less tech-enthusiastic users and those, who don't want to crawl through the settings-menu. edit: corrected formatting.",
+      "human_rimays": [
+        "<MISSING_SCOPE>, when the user starts the App for the first time, then the App must ask the user to choose between \"only use push\" / \"use SMS fallback\" / \"use as default SMS/MMS app\".",
+        "<MISSING_SCOPE>, when the user starts the App for the first time, then the App must provide the user a choice between \"only use push\" / \"use SMS fallback\" / \"use as default SMS/MMS app\".",
+        "<MISSING_SCOPE>, when the user starts the App for the first time, then the App must allow the user to choose between \"only use push\" / \"use SMS fallback\" / \"use as default SMS/MMS app\"."
+      ],
+      "llm_rimay": "When the user starts the app for the first time, then the app <MISSING_MODAL_VERB> request the user to \"specify the desired behaviour\" from \"only use push\", \"use SMS fallback\" and \"use as default SMS/MMS-App\".",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "present",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "missing",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": false,
+        "condition": true,
+        "actor": true,
+        "modalVerb": false,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": true,
+      "verdict_match": false,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.82202525317078,
+        "seq_ratio_max": 0.8314606741573034,
+        "jaccard_mean": 0.6239737274220033,
+        "jaccard_max": 0.6428571428571429,
+        "cosine_mean": 0.9642689126186372,
+        "cosine_max": 0.9695124960868796
+      },
+      "paska_passed": false,
+      "paska_smells": [
+        {
+          "segment_id": "1065-Signal_u1_1",
+          "smell": "Incomplete requirement",
+          "value": "The requirement does not have a system response."
+        },
+        {
+          "segment_id": "1065-Signal_u1_2",
+          "smell": "Incomplete system response",
+          "value": "Modal verb is missing in the SR."
+        }
+      ]
+    },
+    {
+      "reqId": "1065-Signal#2",
+      "nl_text": "Request Number - 1065 | Request Title - Ask for desired behaviour on first start | Request Description - Would it be possible to ask the user during the first start of the app (right before/after setting the passphrase), to specify the desired behaviour:  only use push use SMS fallback use as default SMS/MMS-App Probably even add a \"what does that mean?\" button which opens a pop-up that explains (in simple words) what every mode does. This would go a long way in making the app more friendly for the less tech-enthusiastic users and those, who don't want to crawl through the settings-menu. edit: corrected formatting.",
+      "human_rimays": [
+        "<MISSING_SCOPE>, when the user presses the \"what does that mean?\" button, then the App must show a \"pop-up\" that explains each mode.",
+        "<MISSING_SCOPE>, when the user taps the what does that mean? button, then the App must open a pop-up describing every mode.",
+        "<MISSING_SCOPE>, when the user presses the \"what does that mean?\" button, then the App must explain each mode in a \"pop-up\"."
+      ],
+      "llm_rimay": "When the user starts the app for the first time, then the app <MISSING_MODAL_VERB> display a \"what does that mean?\" button that opens a \"pop-up that explains in simple words what every mode does\".",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "present",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "missing",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": false,
+        "condition": true,
+        "actor": true,
+        "modalVerb": false,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": true,
+      "verdict_match": false,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.570025977378705,
+        "seq_ratio_max": 0.6164383561643836,
+        "jaccard_mean": 0.5172413793103449,
+        "jaccard_max": 0.5172413793103449,
+        "cosine_mean": 0.8404399839692461,
+        "cosine_max": 0.8803875377109944
+      },
+      "paska_passed": false,
+      "paska_smells": [
+        {
+          "segment_id": "1065-Signal_u2_3",
+          "smell": "Incomplete requirement",
+          "value": "The requirement does not have a system response."
+        },
+        {
+          "segment_id": "1065-Signal_u2_4",
+          "smell": "Incomplete system response",
+          "value": "Modal verb is missing in the SR."
+        }
+      ]
+    },
+    {
+      "reqId": "328-Signal#1",
+      "nl_text": "Request Number - 328 | Request Title - Feature request: Sending dummy short messages | Request Description - TextSecure could mask meaningful communication between people by occasionally sending dummy random messages to random recipients at random times:  Recipients would be chosen randomly between contacts that knowingly use TextSecure, so it could be recognized as such after decryption and automatically discarded by recipient. \"Randomness\" should be tweaked to level-out the legitimate messages, spoiling the traffic analysis of traffic retention data, preventing to weigh connections in the deducted social network graph or guessing sleeping/activity patterns. People often have many unused messages in their monthly quota, so those could easily be used with no extra cost, or they value their privacy more than some money. Sender would need to enable this feature (opt-in) and define desired quantity (eg max 100 dummy messages per month, 2 dummy messages for every legitimate one, max 500 messages total counting legitimate and dummy ones...). The feature would need to be aware of roaming (disabled by default, optionally enable) and battery level (do not send if bellow eg. 30%). http://en.wikipedia.org/wiki/Traffic_analysis#Countermeasures Possible extensions:  Recipients could be able to let their peers know, that they do not want to participate in this and do not want to receive messages for whatever reason (opt-out). Recipients could also be chosen randomly between other contacts (those not using TextSecure yet) to promote its use (default message) or a custom explanation by sender. Those messages would be in clear text. As this might be annoying it should be very limited (eg max 1 message to a single recipient per month, only during daytime...) to not be too intrusive spam. Dummy messages could contain other peer's phone numbers (random selection from those participating in dummy messaging, not just their contacts), never to be shown to user, just to send dummy messages to, to further mask the real social network. It would be tricky to opt-out later on once your number starts circulating, so opt-outs would need to be spread this way as well and by direct reply dummy message or by defining a TTL of each such number.",
+      "human_rimays": [
+        "<MISSING_SCOPE>, if the user has enabled \"dummy messaging\", then the App must send \"dummy messages\" to random TextSecure contacts at random times.",
+        "<MISSING_SCOPE>, if the user has switched on dummy messaging, then the App must send dummy messages to randomly chosen TextSecure contacts at random intervals.",
+        "<MISSING_SCOPE>, if the user activates \"dummy messaging\", then the System must periodically send \"dummy messages\" at random moments to random \"TextSecure contacts\"."
+      ],
+      "llm_rimay": "TextSecure <MISSING_MODAL_VERB> send \"dummy random messages\" to \"randomly chosen contacts that use TextSecure\" at \"random times\".",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "present",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "missing",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": false,
+        "condition": true,
+        "actor": true,
+        "modalVerb": false,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": true,
+      "verdict_match": false,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.538000733399851,
+        "seq_ratio_max": 0.5714285714285714,
+        "jaccard_mean": 0.39119455423803257,
+        "jaccard_max": 0.4166666666666667,
+        "cosine_mean": 0.7946017668431722,
+        "cosine_max": 0.8123097846388727
+      },
+      "paska_passed": false,
+      "paska_smells": [
+        {
+          "segment_id": "328-Signal_u1_1",
+          "smell": "Not requirement",
+          "value": "The sentence does not contain a system response nor condition nor a scope phrase."
+        },
+        {
+          "segment_id": "328-Signal_u1_1",
+          "smell": "Incomplete system response",
+          "value": "Modal verb is missing in the SR."
+        }
+      ]
+    },
+    {
+      "reqId": "328-Signal#2",
+      "nl_text": "Request Number - 328 | Request Title - Feature request: Sending dummy short messages | Request Description - TextSecure could mask meaningful communication between people by occasionally sending dummy random messages to random recipients at random times:  Recipients would be chosen randomly between contacts that knowingly use TextSecure, so it could be recognized as such after decryption and automatically discarded by recipient. \"Randomness\" should be tweaked to level-out the legitimate messages, spoiling the traffic analysis of traffic retention data, preventing to weigh connections in the deducted social network graph or guessing sleeping/activity patterns. People often have many unused messages in their monthly quota, so those could easily be used with no extra cost, or they value their privacy more than some money. Sender would need to enable this feature (opt-in) and define desired quantity (eg max 100 dummy messages per month, 2 dummy messages for every legitimate one, max 500 messages total counting legitimate and dummy ones...). The feature would need to be aware of roaming (disabled by default, optionally enable) and battery level (do not send if bellow eg. 30%). http://en.wikipedia.org/wiki/Traffic_analysis#Countermeasures Possible extensions:  Recipients could be able to let their peers know, that they do not want to participate in this and do not want to receive messages for whatever reason (opt-out). Recipients could also be chosen randomly between other contacts (those not using TextSecure yet) to promote its use (default message) or a custom explanation by sender. Those messages would be in clear text. As this might be annoying it should be very limited (eg max 1 message to a single recipient per month, only during daytime...) to not be too intrusive spam. Dummy messages could contain other peer's phone numbers (random selection from those participating in dummy messaging, not just their contacts), never to be shown to user, just to send dummy messages to, to further mask the real social network. It would be tricky to opt-out later on once your number starts circulating, so opt-outs would need to be spread this way as well and by direct reply dummy message or by defining a TTL of each such number.",
+      "human_rimays": [
+        "<MISSING_SCOPE>, when the App receives a \"dummy message\", then the App must discard it automatically.",
+        "<MISSING_SCOPE>, when the App receives a dummy message, then the App must automatically throw it away.",
+        "<MISSING_SCOPE>, when a \"dummy message\" arrives, then the System must silently drop it."
+      ],
+      "llm_rimay": "When the recipient's TextSecure decrypts a \"dummy message\", then TextSecure <MISSING_MODAL_VERB> discard the \"dummy message\" automatically.",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "present",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "missing",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": false,
+        "condition": true,
+        "actor": true,
+        "modalVerb": false,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": true,
+      "verdict_match": false,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.5541862787048922,
+        "seq_ratio_max": 0.6666666666666666,
+        "jaccard_mean": 0.40740740740740744,
+        "jaccard_max": 0.5,
+        "cosine_mean": 0.5250210630149631,
+        "cosine_max": 0.5419676656148074
+      },
+      "paska_passed": false,
+      "paska_smells": [
+        {
+          "segment_id": "328-Signal_u2_2",
+          "smell": "Incomplete requirement",
+          "value": "The requirement does not have a system response."
+        },
+        {
+          "segment_id": "328-Signal_u2_3",
+          "smell": "Incomplete system response",
+          "value": "Modal verb is missing in the SR."
+        }
+      ]
+    },
+    {
+      "reqId": "328-Signal#3",
+      "nl_text": "Request Number - 328 | Request Title - Feature request: Sending dummy short messages | Request Description - TextSecure could mask meaningful communication between people by occasionally sending dummy random messages to random recipients at random times:  Recipients would be chosen randomly between contacts that knowingly use TextSecure, so it could be recognized as such after decryption and automatically discarded by recipient. \"Randomness\" should be tweaked to level-out the legitimate messages, spoiling the traffic analysis of traffic retention data, preventing to weigh connections in the deducted social network graph or guessing sleeping/activity patterns. People often have many unused messages in their monthly quota, so those could easily be used with no extra cost, or they value their privacy more than some money. Sender would need to enable this feature (opt-in) and define desired quantity (eg max 100 dummy messages per month, 2 dummy messages for every legitimate one, max 500 messages total counting legitimate and dummy ones...). The feature would need to be aware of roaming (disabled by default, optionally enable) and battery level (do not send if bellow eg. 30%). http://en.wikipedia.org/wiki/Traffic_analysis#Countermeasures Possible extensions:  Recipients could be able to let their peers know, that they do not want to participate in this and do not want to receive messages for whatever reason (opt-out). Recipients could also be chosen randomly between other contacts (those not using TextSecure yet) to promote its use (default message) or a custom explanation by sender. Those messages would be in clear text. As this might be annoying it should be very limited (eg max 1 message to a single recipient per month, only during daytime...) to not be too intrusive spam. Dummy messages could contain other peer's phone numbers (random selection from those participating in dummy messaging, not just their contacts), never to be shown to user, just to send dummy messages to, to further mask the real social network. It would be tricky to opt-out later on once your number starts circulating, so opt-outs would need to be spread this way as well and by direct reply dummy message or by defining a TTL of each such number.",
+      "human_rimays": [
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user define the quantity of \"dummy messages\".",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow the user to set how many dummy messages are sent.",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the System must let the user configure the number of \"dummy messages\"."
+      ],
+      "llm_rimay": "If the sender enables the \"dummy messaging feature\", then TextSecure must send \"dummy messages\" within the \"desired quantity defined by the sender\".",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "missing",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "filled",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": false,
+        "condition": false,
+        "actor": true,
+        "modalVerb": true,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": false,
+      "verdict_match": true,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.3241770544522838,
+        "seq_ratio_max": 0.34545454545454546,
+        "jaccard_mean": 0.18501064153238067,
+        "jaccard_max": 0.22727272727272727,
+        "cosine_mean": 0.5410489062753784,
+        "cosine_max": 0.5721035677713213
+      },
+      "paska_passed": true,
+      "paska_smells": []
+    },
+    {
+      "reqId": "328-Signal#4",
+      "nl_text": "Request Number - 328 | Request Title - Feature request: Sending dummy short messages | Request Description - TextSecure could mask meaningful communication between people by occasionally sending dummy random messages to random recipients at random times:  Recipients would be chosen randomly between contacts that knowingly use TextSecure, so it could be recognized as such after decryption and automatically discarded by recipient. \"Randomness\" should be tweaked to level-out the legitimate messages, spoiling the traffic analysis of traffic retention data, preventing to weigh connections in the deducted social network graph or guessing sleeping/activity patterns. People often have many unused messages in their monthly quota, so those could easily be used with no extra cost, or they value their privacy more than some money. Sender would need to enable this feature (opt-in) and define desired quantity (eg max 100 dummy messages per month, 2 dummy messages for every legitimate one, max 500 messages total counting legitimate and dummy ones...). The feature would need to be aware of roaming (disabled by default, optionally enable) and battery level (do not send if bellow eg. 30%). http://en.wikipedia.org/wiki/Traffic_analysis#Countermeasures Possible extensions:  Recipients could be able to let their peers know, that they do not want to participate in this and do not want to receive messages for whatever reason (opt-out). Recipients could also be chosen randomly between other contacts (those not using TextSecure yet) to promote its use (default message) or a custom explanation by sender. Those messages would be in clear text. As this might be annoying it should be very limited (eg max 1 message to a single recipient per month, only during daytime...) to not be too intrusive spam. Dummy messages could contain other peer's phone numbers (random selection from those participating in dummy messaging, not just their contacts), never to be shown to user, just to send dummy messages to, to further mask the real social network. It would be tricky to opt-out later on once your number starts circulating, so opt-outs would need to be spread this way as well and by direct reply dummy message or by defining a TTL of each such number.",
+      "human_rimays": [
+        "<MISSING_SCOPE>, if the device is \"roaming\", then the App must not send \"dummy messages\" unless the user has enabled it.",
+        "<MISSING_SCOPE>, if the phone is roaming and the user has not allowed it, then the App must stop sending dummy messages.",
+        "<MISSING_SCOPE>, if the device is \"roaming\" and the user has not turned on \"dummy messages\" for roaming, then the System must not send any \"dummy messages\"."
+      ],
+      "llm_rimay": "While the device is roaming, TextSecure must disable the \"dummy messaging feature\" by default.",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "present",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "filled",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": false,
+        "condition": true,
+        "actor": true,
+        "modalVerb": true,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": false,
+      "verdict_match": true,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.5044370790120817,
+        "seq_ratio_max": 0.5728643216080402,
+        "jaccard_mean": 0.22435897435897437,
+        "jaccard_max": 0.25,
+        "cosine_mean": 0.6792459967131214,
+        "cosine_max": 0.6841722094025672
+      },
+      "paska_passed": true,
+      "paska_smells": []
+    },
+    {
+      "reqId": "328-Signal#5",
+      "nl_text": "Request Number - 328 | Request Title - Feature request: Sending dummy short messages | Request Description - TextSecure could mask meaningful communication between people by occasionally sending dummy random messages to random recipients at random times:  Recipients would be chosen randomly between contacts that knowingly use TextSecure, so it could be recognized as such after decryption and automatically discarded by recipient. \"Randomness\" should be tweaked to level-out the legitimate messages, spoiling the traffic analysis of traffic retention data, preventing to weigh connections in the deducted social network graph or guessing sleeping/activity patterns. People often have many unused messages in their monthly quota, so those could easily be used with no extra cost, or they value their privacy more than some money. Sender would need to enable this feature (opt-in) and define desired quantity (eg max 100 dummy messages per month, 2 dummy messages for every legitimate one, max 500 messages total counting legitimate and dummy ones...). The feature would need to be aware of roaming (disabled by default, optionally enable) and battery level (do not send if bellow eg. 30%). http://en.wikipedia.org/wiki/Traffic_analysis#Countermeasures Possible extensions:  Recipients could be able to let their peers know, that they do not want to participate in this and do not want to receive messages for whatever reason (opt-out). Recipients could also be chosen randomly between other contacts (those not using TextSecure yet) to promote its use (default message) or a custom explanation by sender. Those messages would be in clear text. As this might be annoying it should be very limited (eg max 1 message to a single recipient per month, only during daytime...) to not be too intrusive spam. Dummy messages could contain other peer's phone numbers (random selection from those participating in dummy messaging, not just their contacts), never to be shown to user, just to send dummy messages to, to further mask the real social network. It would be tricky to opt-out later on once your number starts circulating, so opt-outs would need to be spread this way as well and by direct reply dummy message or by defining a TTL of each such number.",
+      "human_rimays": [
+        "<MISSING_SCOPE>, if the \"battery level\" is below a \"threshold\", then the App must not send \"dummy messages\".",
+        "<MISSING_SCOPE>, if the battery drops below a threshold, then the App must stop sending dummy messages.",
+        "<MISSING_SCOPE>, if the \"battery level\" falls under a set \"threshold\", then the System must not send \"dummy messages\"."
+      ],
+      "llm_rimay": "If Device.Battery_Level is less than \"30%\", then TextSecure must not send \"dummy messages\".",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "present",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "filled",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": false,
+        "condition": true,
+        "actor": true,
+        "modalVerb": true,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": false,
+      "verdict_match": true,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.667051876929703,
+        "seq_ratio_max": 0.717391304347826,
+        "jaccard_mean": 0.3899868247694334,
+        "jaccard_max": 0.5,
+        "cosine_mean": 0.7069485607829379,
+        "cosine_max": 0.7410278759610073
+      },
+      "paska_passed": true,
+      "paska_smells": []
+    },
+    {
+      "reqId": "6111-Signal#1",
+      "nl_text": "Request Number - 6111 | Request Title - Wishlist: Possibility to delete images in gallery mode (and when opened) | Request Description - I have:   searched open and closed issues for duplicates  read https://github.com/WhisperSystems/Signal-Android/wiki/Submitting-useful-bug-reports  Feature description. When opening \"Image gallery\" (or lateron media gallery due to #5941 ) I would like to be able to multiselect images/media and delete them. And when opening an image/media, I would like to have the possibility to delete it in this opened view. Maybe putting this option behind a settings menu as the action bar already contains forward, save, All Images. (In Gallery mode only save). IMO there should be a dialog, if you really want to delete this (all the selected images).  One point to think about is the corresponding messaged (text). At the moment, it's only possible to delete the whole messagte (text + image/media) by selecting it right in the conversation. When deleting in the gallery mode or when opened, the corresponding text is not visible to the user, so maybe it should be contained (with a hint to the deleted image/media)? [Edit: Duplicate of #4242 ]",
+      "human_rimays": [
+        "<MISSING_SCOPE>, when the user opens the \"image gallery\", then the App must let the user select multiple \"images/media\" and delete them.",
+        "<MISSING_SCOPE>, when the user is in the gallery, then the App must allow the user to pick several images or media files and delete them.",
+        "<MISSING_SCOPE>, when the user views the \"image gallery\", then the App must let the user multi-select \"images/media\" and remove them."
+      ],
+      "llm_rimay": "When the user opens the \"Image gallery\", then Signal-Android <MISSING_MODAL_VERB> allow the user to \"multiselect and delete images/media\" in the \"Image gallery\".",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "present",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "missing",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": false,
+        "condition": true,
+        "actor": true,
+        "modalVerb": false,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": true,
+      "verdict_match": false,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.6532434415965578,
+        "seq_ratio_max": 0.689922480620155,
+        "jaccard_mean": 0.4394202898550725,
+        "jaccard_max": 0.48,
+        "cosine_mean": 0.7458648472131234,
+        "cosine_max": 0.7838179429533427
+      },
+      "paska_passed": false,
+      "paska_smells": [
+        {
+          "segment_id": "6111-Signal_u1_1",
+          "smell": "Incomplete requirement",
+          "value": "The requirement does not have a system response."
+        },
+        {
+          "segment_id": "6111-Signal_u1_2",
+          "smell": "Incomplete system response",
+          "value": "Modal verb is missing in the SR."
+        }
+      ]
+    },
+    {
+      "reqId": "6111-Signal#2",
+      "nl_text": "Request Number - 6111 | Request Title - Wishlist: Possibility to delete images in gallery mode (and when opened) | Request Description - I have:   searched open and closed issues for duplicates  read https://github.com/WhisperSystems/Signal-Android/wiki/Submitting-useful-bug-reports  Feature description. When opening \"Image gallery\" (or lateron media gallery due to #5941 ) I would like to be able to multiselect images/media and delete them. And when opening an image/media, I would like to have the possibility to delete it in this opened view. Maybe putting this option behind a settings menu as the action bar already contains forward, save, All Images. (In Gallery mode only save). IMO there should be a dialog, if you really want to delete this (all the selected images).  One point to think about is the corresponding messaged (text). At the moment, it's only possible to delete the whole messagte (text + image/media) by selecting it right in the conversation. When deleting in the gallery mode or when opened, the corresponding text is not visible to the user, so maybe it should be contained (with a hint to the deleted image/media)? [Edit: Duplicate of #4242 ]",
+      "human_rimays": [
+        "<MISSING_SCOPE>, when the user opens an \"image/media\", then the App must let the user delete it.",
+        "<MISSING_SCOPE>, when the user has an image or media file open, then the App must allow the user to delete it.",
+        "<MISSING_SCOPE>, when the user views a single \"image/media\", then the App must provide a delete option for it."
+      ],
+      "llm_rimay": "When the user opens an \"image/media\", then Signal-Android <MISSING_MODAL_VERB> allow the user to \"delete the image/media\" in the \"opened view\".",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "present",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "missing",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": false,
+        "condition": true,
+        "actor": true,
+        "modalVerb": false,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": true,
+      "verdict_match": false,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.6005614704168653,
+        "seq_ratio_max": 0.6403940886699507,
+        "jaccard_mean": 0.38826086956521744,
+        "jaccard_max": 0.45,
+        "cosine_mean": 0.7329411213982748,
+        "cosine_max": 0.7531326381518328
+      },
+      "paska_passed": false,
+      "paska_smells": [
+        {
+          "segment_id": "6111-Signal_u2_3",
+          "smell": "Incomplete requirement",
+          "value": "The requirement does not have a system response."
+        },
+        {
+          "segment_id": "6111-Signal_u2_4",
+          "smell": "Incomplete system response",
+          "value": "Modal verb is missing in the SR."
+        }
+      ]
+    },
+    {
+      "reqId": "6111-Signal#3",
+      "nl_text": "Request Number - 6111 | Request Title - Wishlist: Possibility to delete images in gallery mode (and when opened) | Request Description - I have:   searched open and closed issues for duplicates  read https://github.com/WhisperSystems/Signal-Android/wiki/Submitting-useful-bug-reports  Feature description. When opening \"Image gallery\" (or lateron media gallery due to #5941 ) I would like to be able to multiselect images/media and delete them. And when opening an image/media, I would like to have the possibility to delete it in this opened view. Maybe putting this option behind a settings menu as the action bar already contains forward, save, All Images. (In Gallery mode only save). IMO there should be a dialog, if you really want to delete this (all the selected images).  One point to think about is the corresponding messaged (text). At the moment, it's only possible to delete the whole messagte (text + image/media) by selecting it right in the conversation. When deleting in the gallery mode or when opened, the corresponding text is not visible to the user, so maybe it should be contained (with a hint to the deleted image/media)? [Edit: Duplicate of #4242 ]",
+      "human_rimays": [
+        "<MISSING_SCOPE>, when the user deletes \"images/media\", then the App must show a \"confirmation dialog\".",
+        "<MISSING_SCOPE>, when the user deletes images or media, then the App must ask the user to confirm.",
+        "<MISSING_SCOPE>, when the user removes \"images/media\", then the App must display a \"confirmation dialog\" first."
+      ],
+      "llm_rimay": "When the user deletes the \"selected images/media\", then Signal-Android <MISSING_MODAL_VERB> display a \"confirmation dialog\" to the user.",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "present",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "missing",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": false,
+        "condition": true,
+        "actor": true,
+        "modalVerb": false,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": true,
+      "verdict_match": false,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.6531751121399659,
+        "seq_ratio_max": 0.7109004739336493,
+        "jaccard_mean": 0.4939571150097466,
+        "jaccard_max": 0.5555555555555556,
+        "cosine_mean": 0.768275424042598,
+        "cosine_max": 0.807542773004496
+      },
+      "paska_passed": false,
+      "paska_smells": [
+        {
+          "segment_id": "6111-Signal_u3_5",
+          "smell": "Incomplete requirement",
+          "value": "The requirement does not have a system response."
+        },
+        {
+          "segment_id": "6111-Signal_u3_6",
+          "smell": "Incomplete system response",
+          "value": "Modal verb is missing in the SR."
+        }
+      ]
+    },
+    {
+      "reqId": "226-Signal#1",
+      "nl_text": "Request Number - 226 | Request Title - Ability to edit messages for security | Request Description - My understanding of OTR protocol is that you are guarantied to be the sender of a message when it is received but the protocol also guaranties that nobody can prove a message was sent by you at a later point. Like a real life conversation. \"If know you said something to me, but I can not prove it at a later point\". This is great but unless TextSecure somehow allows people to alter the past of a conversation the app itself does provide a reasonable proof/indication that I said something in the past. Example: My friends phone is ceased and he is compromised to unlock TextSecure. OTR does not in any way guarantee I had our long conversation but since my friend is not a skilled hacker/developer able to alter the TextSecure database the conversation itself it a pretty good indicator/proof of the conversation being authentic. Solution: Add the option to edit a message (any message) from the Android Context Menu just like you can delete a message. Maybe also add the ability to insert a new message next to it.",
+      "human_rimays": [
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user edit any message from the \"Android context menu\".",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow the user to edit any message through the Android context menu.",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the System must let the user modify any message via the \"Android context menu\"."
+      ],
+      "llm_rimay": "TextSecure <MISSING_MODAL_VERB> provide the option to edit \"any message\" from the \"Android Context Menu\".",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "missing",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "missing",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": false,
+        "condition": false,
+        "actor": true,
+        "modalVerb": false,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": true,
+      "verdict_match": false,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.6818276903194374,
+        "seq_ratio_max": 0.7361963190184049,
+        "jaccard_mean": 0.434640522875817,
+        "jaccard_max": 0.5,
+        "cosine_mean": 0.7482004198561758,
+        "cosine_max": 0.7514515506400269
+      },
+      "paska_passed": false,
+      "paska_smells": [
+        {
+          "segment_id": "226-Signal_u1_1",
+          "smell": "Not requirement",
+          "value": "The sentence does not contain a system response nor condition nor a scope phrase."
+        },
+        {
+          "segment_id": "226-Signal_u1_1",
+          "smell": "Incomplete system response",
+          "value": "Modal verb is missing in the SR."
+        }
+      ]
+    },
+    {
+      "reqId": "226-Signal#2",
+      "nl_text": "Request Number - 226 | Request Title - Ability to edit messages for security | Request Description - My understanding of OTR protocol is that you are guarantied to be the sender of a message when it is received but the protocol also guaranties that nobody can prove a message was sent by you at a later point. Like a real life conversation. \"If know you said something to me, but I can not prove it at a later point\". This is great but unless TextSecure somehow allows people to alter the past of a conversation the app itself does provide a reasonable proof/indication that I said something in the past. Example: My friends phone is ceased and he is compromised to unlock TextSecure. OTR does not in any way guarantee I had our long conversation but since my friend is not a skilled hacker/developer able to alter the TextSecure database the conversation itself it a pretty good indicator/proof of the conversation being authentic. Solution: Add the option to edit a message (any message) from the Android Context Menu just like you can delete a message. Maybe also add the ability to insert a new message next to it.",
+      "human_rimays": [
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user insert a new message next to an existing message.",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow the user to add a new message next to an existing one.",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the System must let the user insert a message beside any existing message."
+      ],
+      "llm_rimay": "TextSecure <MISSING_MODAL_VERB> provide the ability to insert a \"new message\" next to the \"edited message\".",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "missing",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "missing",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": false,
+        "condition": false,
+        "actor": true,
+        "modalVerb": false,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": true,
+      "verdict_match": false,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.4956264727175994,
+        "seq_ratio_max": 0.6303030303030303,
+        "jaccard_mean": 0.31659213392959523,
+        "jaccard_max": 0.4117647058823529,
+        "cosine_mean": 0.5591609173091946,
+        "cosine_max": 0.5684529591658231
+      },
+      "paska_passed": false,
+      "paska_smells": [
+        {
+          "segment_id": "226-Signal_u2_2",
+          "smell": "Not requirement",
+          "value": "The sentence does not contain a system response nor condition nor a scope phrase."
+        },
+        {
+          "segment_id": "226-Signal_u2_2",
+          "smell": "Incomplete system response",
+          "value": "Modal verb is missing in the SR."
+        }
+      ]
+    },
+    {
+      "reqId": "4821-Signal#1",
+      "nl_text": "Request Number - 4821 | Request Title - Manual read receipts | Request Description - I am aware of your view on (automatic) read receipts from #2667 . That's what e.g. WhatsApp does with its blue checkmarks. However I would like to use \"manual read receipts\" in the manner Threema has implemented them (they call it \"acknowledge\"): Long-press a received message Select \"acknowledge message\" (I guess so, I use the german translation) Then the \"received\" (or \"seen\") indicator is replaced by an indicator for acknowledgement of the message I choose this to say that I read something over writing \"Ok.\" because it doesn't annoy my conversation partner. Most of the time it's sufficient that the partner gets this information the next time he opens Signal and not immediately.",
+      "human_rimays": [
+        "<MISSING_SCOPE>, when the user long-presses a \"received message\", then the App must offer an \"acknowledge message\" option.",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user acknowledge a received message.",
+        "<MISSING_SCOPE>, when the user long-presses a \"received message\", then the System must show an option to \"acknowledge\" that message."
+      ],
+      "llm_rimay": "When the user long-presses a \"received message\", then Signal <MISSING_MODAL_VERB> display the \"acknowledge message\" option for the \"received message\".",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "present",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "missing",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": false,
+        "condition": true,
+        "actor": true,
+        "modalVerb": false,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": true,
+      "verdict_match": false,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.5826618703296756,
+        "seq_ratio_max": 0.7372881355932204,
+        "jaccard_mean": 0.5046840958605665,
+        "jaccard_max": 0.6111111111111112,
+        "cosine_mean": 0.8330348828398747,
+        "cosine_max": 0.9312946760334591
+      },
+      "paska_passed": false,
+      "paska_smells": [
+        {
+          "segment_id": "4821-Signal_u1_1",
+          "smell": "Incomplete requirement",
+          "value": "The requirement does not have a system response."
+        },
+        {
+          "segment_id": "4821-Signal_u1_2",
+          "smell": "Incomplete system response",
+          "value": "Modal verb is missing in the SR."
+        }
+      ]
+    },
+    {
+      "reqId": "4821-Signal#2",
+      "nl_text": "Request Number - 4821 | Request Title - Manual read receipts | Request Description - I am aware of your view on (automatic) read receipts from #2667 . That's what e.g. WhatsApp does with its blue checkmarks. However I would like to use \"manual read receipts\" in the manner Threema has implemented them (they call it \"acknowledge\"): Long-press a received message Select \"acknowledge message\" (I guess so, I use the german translation) Then the \"received\" (or \"seen\") indicator is replaced by an indicator for acknowledgement of the message I choose this to say that I read something over writing \"Ok.\" because it doesn't annoy my conversation partner. Most of the time it's sufficient that the partner gets this information the next time he opens Signal and not immediately.",
+      "human_rimays": [
+        "<MISSING_SCOPE>, when the user selects \"acknowledge message\" after long-pressing a \"received message\", then the App must replace the \"received or seen indicator\" with an \"indicator for acknowledgement\".",
+        "<MISSING_SCOPE>, when the user selects \"acknowledge message\", then the App must replace the \"received\" indicator with an \"acknowledgement\" indicator.",
+        "<MISSING_SCOPE>, when the user chooses \"acknowledge message\", then the System must change the \"received\" indicator to an \"acknowledged\" indicator."
+      ],
+      "llm_rimay": "When the user selects the \"acknowledge message\" option for a \"received message\", then Signal <MISSING_MODAL_VERB> replace the \"received\" indicator of the \"received message\" with an \"acknowledgement indicator\".",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "present",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "missing",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": false,
+        "condition": true,
+        "actor": true,
+        "modalVerb": false,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": true,
+      "verdict_match": false,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.7072587688839563,
+        "seq_ratio_max": 0.7453416149068323,
+        "jaccard_mean": 0.5416666666666666,
+        "jaccard_max": 0.65,
+        "cosine_mean": 0.8571156225989527,
+        "cosine_max": 0.8897784110585948
+      },
+      "paska_passed": false,
+      "paska_smells": [
+        {
+          "segment_id": "4821-Signal_u2_3",
+          "smell": "Incomplete requirement",
+          "value": "The requirement does not have a system response."
+        },
+        {
+          "segment_id": "4821-Signal_u2_4",
+          "smell": "Incomplete system response",
+          "value": "Modal verb is missing in the SR."
+        }
+      ]
+    },
+    {
+      "reqId": "6362-Signal#1",
+      "nl_text": "Request Number - 6362 | Request Title - Visual display for how many contacts are on Signal | Request Description - I have:   searched open and closed issues for duplicates  read https://github.com/WhisperSystems/Signal-Android/wiki/Submitting-useful-bug-reports  It'd be nice if Signal had a screen that would show e.g. a pie chart that indicated how many of my contacts were on Signal. Or how many of the messages I send are encrypted. Tapping an element of the pie chart would then show a list of people in that category - this would be a nice way to get an overview of contacts I still need to convince to convert. There's probably also room for some gamification in here - the app could display something like e.g. \"Almost there! __\" when most, but not all, of my contacts were using Signal.",
+      "human_rimays": [
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must show a \"pie chart\" of how many of the user's contacts are on Signal.",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must display a pie chart of the share of the user's contacts that use Signal.",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the System must present a \"pie chart\" showing how many of the user's contacts have Signal."
+      ],
+      "llm_rimay": "The Signal app <MISSING_MODAL_VERB> display a \"pie chart that indicates how many of the user's contacts are on Signal\" on a \"screen\".",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "missing",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "missing",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": false,
+        "condition": false,
+        "actor": true,
+        "modalVerb": false,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": true,
+      "verdict_match": false,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.6693843384722439,
+        "seq_ratio_max": 0.7106598984771574,
+        "jaccard_mean": 0.5832298136645963,
+        "jaccard_max": 0.7,
+        "cosine_mean": 0.8627641097844302,
+        "cosine_max": 0.9137834835444852
+      },
+      "paska_passed": false,
+      "paska_smells": [
+        {
+          "segment_id": "6362-Signal_u1_1",
+          "smell": "Not requirement",
+          "value": "The sentence does not contain a system response nor condition nor a scope phrase."
+        },
+        {
+          "segment_id": "6362-Signal_u1_1",
+          "smell": "Incomplete system response",
+          "value": "Modal verb is missing in the SR."
+        }
+      ]
+    },
+    {
+      "reqId": "6362-Signal#2",
+      "nl_text": "Request Number - 6362 | Request Title - Visual display for how many contacts are on Signal | Request Description - I have:   searched open and closed issues for duplicates  read https://github.com/WhisperSystems/Signal-Android/wiki/Submitting-useful-bug-reports  It'd be nice if Signal had a screen that would show e.g. a pie chart that indicated how many of my contacts were on Signal. Or how many of the messages I send are encrypted. Tapping an element of the pie chart would then show a list of people in that category - this would be a nice way to get an overview of contacts I still need to convince to convert. There's probably also room for some gamification in here - the app could display something like e.g. \"Almost there! __\" when most, but not all, of my contacts were using Signal.",
+      "human_rimays": [
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must show how many of the user's sent messages are encrypted.",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must display how many of the messages the user sent were encrypted.",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the System must report the number of the user's sent messages that are encrypted."
+      ],
+      "llm_rimay": "The Signal app <MISSING_MODAL_VERB> display \"how many of the messages the user sends are encrypted\" on a \"screen\".",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "missing",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "missing",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": false,
+        "condition": false,
+        "actor": true,
+        "modalVerb": false,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": true,
+      "verdict_match": false,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.6175257602135745,
+        "seq_ratio_max": 0.7790697674418605,
+        "jaccard_mean": 0.4154704944178628,
+        "jaccard_max": 0.5,
+        "cosine_mean": 0.776501645175412,
+        "cosine_max": 0.8271300172106055
+      },
+      "paska_passed": false,
+      "paska_smells": [
+        {
+          "segment_id": "6362-Signal_u2_2",
+          "smell": "Not requirement",
+          "value": "The sentence does not contain a system response nor condition nor a scope phrase."
+        },
+        {
+          "segment_id": "6362-Signal_u2_2",
+          "smell": "Incomplete system response",
+          "value": "Modal verb is missing in the SR."
+        }
+      ]
+    },
+    {
+      "reqId": "6362-Signal#3",
+      "nl_text": "Request Number - 6362 | Request Title - Visual display for how many contacts are on Signal | Request Description - I have:   searched open and closed issues for duplicates  read https://github.com/WhisperSystems/Signal-Android/wiki/Submitting-useful-bug-reports  It'd be nice if Signal had a screen that would show e.g. a pie chart that indicated how many of my contacts were on Signal. Or how many of the messages I send are encrypted. Tapping an element of the pie chart would then show a list of people in that category - this would be a nice way to get an overview of contacts I still need to convince to convert. There's probably also room for some gamification in here - the app could display something like e.g. \"Almost there! __\" when most, but not all, of my contacts were using Signal.",
+      "human_rimays": [
+        "<MISSING_SCOPE>, when the user taps an element of the \"pie chart\", then the App must show the list of people in that category.",
+        "<MISSING_SCOPE>, when the user taps a slice of the pie chart, then the App must list the people in that slice.",
+        "<MISSING_SCOPE>, when the user selects a segment of the \"pie chart\", then the System must display the people that belong to that segment."
+      ],
+      "llm_rimay": "When the user taps an \"element of the pie chart\", then the Signal app <MISSING_MODAL_VERB> display a \"list of people in that category\".",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "present",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "missing",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": false,
+        "condition": true,
+        "actor": true,
+        "modalVerb": false,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": true,
+      "verdict_match": false,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.7770540973217156,
+        "seq_ratio_max": 0.8622222222222222,
+        "jaccard_mean": 0.6228571428571429,
+        "jaccard_max": 0.7619047619047619,
+        "cosine_mean": 0.8050599379470373,
+        "cosine_max": 0.8834254359187755
+      },
+      "paska_passed": false,
+      "paska_smells": [
+        {
+          "segment_id": "6362-Signal_u3_3",
+          "smell": "Incomplete requirement",
+          "value": "The requirement does not have a system response."
+        },
+        {
+          "segment_id": "6362-Signal_u3_4",
+          "smell": "Incomplete system response",
+          "value": "Modal verb is missing in the SR."
+        }
+      ]
+    },
+    {
+      "reqId": "6362-Signal#4",
+      "nl_text": "Request Number - 6362 | Request Title - Visual display for how many contacts are on Signal | Request Description - I have:   searched open and closed issues for duplicates  read https://github.com/WhisperSystems/Signal-Android/wiki/Submitting-useful-bug-reports  It'd be nice if Signal had a screen that would show e.g. a pie chart that indicated how many of my contacts were on Signal. Or how many of the messages I send are encrypted. Tapping an element of the pie chart would then show a list of people in that category - this would be a nice way to get an overview of contacts I still need to convince to convert. There's probably also room for some gamification in here - the app could display something like e.g. \"Almost there! __\" when most, but not all, of my contacts were using Signal.",
+      "human_rimays": [
+        "<MISSING_SCOPE>, if most but not all of the user's contacts use Signal, then the App must display a \"progress message\" such as \"Almost there!\".",
+        "<MISSING_SCOPE>, if almost all of the user's contacts are on Signal, then the App must show an encouraging message like Almost there!.",
+        "<MISSING_SCOPE>, if most of the user's contacts but not all of them use Signal, then the System must show a \"progress message\", for example \"Almost there!\"."
+      ],
+      "llm_rimay": "If most but not all of the user's contacts are using Signal, then the Signal app <MISSING_MODAL_VERB> display a \"message such as \"Almost there!\"\".",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "present",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "missing",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": false,
+        "condition": true,
+        "actor": true,
+        "modalVerb": false,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": true,
+      "verdict_match": false,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.7560821154811476,
+        "seq_ratio_max": 0.8695652173913043,
+        "jaccard_mean": 0.6111111111111112,
+        "jaccard_max": 0.8,
+        "cosine_mean": 0.8395624669819736,
+        "cosine_max": 0.881188279835552
+      },
+      "paska_passed": false,
+      "paska_smells": [
+        {
+          "segment_id": "6362-Signal_u4_5",
+          "smell": "Incomplete requirement",
+          "value": "The requirement does not have a system response."
+        },
+        {
+          "segment_id": "6362-Signal_u4_6",
+          "smell": "Incomplete system response",
+          "value": "Modal verb is missing in the SR."
+        }
+      ]
+    },
+    {
+      "reqId": "6424-Signal#1",
+      "nl_text": "Request Number - 6424 | Request Title - Improve search for non-contacts | Request Description - We recently made some improvements in Signal-iOS around searching for non-contacts by phone number.  I suggest we have parity on Android.  Fix non-contact lookup for non-US users.¬†SignalServiceKit#130 Further refinements to phone number parsing.¬†SignalServiceKit#139 Let's say user has a US phone number like +12045002827.  They should be able to search for another US phone number like +17043264096 by entering any of:  +17043264096 17043264096 7043264096 They should also be able to search for a non-US phone number like +441733530267 by entering any of:  +441733530267 441733530267 IMO we should try prepending the calling code for the current user's phone number and the calling code that corresponds to the default region for the current device.  I'm not sure how this works on Android, but on iOS users specify their language and region preferences as a system setting.  So for a user living in the US (With a US phone number) but who is Scottish and like seeing dates and times, etc. formatted in UK way and thus uses the UK region, we should try both US and UK calling codes since they are likely to look up users in both places.",
+      "human_rimays": [
+        "<MISSING_SCOPE>, when the user searches for a non-contact by \"phone number\" whether it has the \"+\" prefix, the \"calling code\" or neither, then the App must find the number.",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must find a user by phone number whether or not the calling code is included.",
+        "<MISSING_SCOPE>, when the user searches for a non-contact by \"phone number\" whether it has the \"+\" prefix, the \"calling code\" or none of those, then the App must find the number."
+      ],
+      "llm_rimay": "When the User enters a \"non-US phone number\" in the \"non-contact search\" in any of the formats \"+441733530267\" or \"441733530267\", then Signal-Android must find the \"non-contact\" based on the \"entered phone number\".",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "present",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "filled",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": false,
+        "condition": true,
+        "actor": true,
+        "modalVerb": true,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": false,
+      "verdict_match": true,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.4101806821776932,
+        "seq_ratio_max": 0.48517520215633425,
+        "jaccard_mean": 0.309036309036309,
+        "jaccard_max": 0.35135135135135137,
+        "cosine_mean": 0.6565243215821267,
+        "cosine_max": 0.7185826402931994
+      },
+      "paska_passed": true,
+      "paska_smells": []
+    },
+    {
+      "reqId": "6424-Signal#2",
+      "nl_text": "Request Number - 6424 | Request Title - Improve search for non-contacts | Request Description - We recently made some improvements in Signal-iOS around searching for non-contacts by phone number.  I suggest we have parity on Android.  Fix non-contact lookup for non-US users.¬†SignalServiceKit#130 Further refinements to phone number parsing.¬†SignalServiceKit#139 Let's say user has a US phone number like +12045002827.  They should be able to search for another US phone number like +17043264096 by entering any of:  +17043264096 17043264096 7043264096 They should also be able to search for a non-US phone number like +441733530267 by entering any of:  +441733530267 441733530267 IMO we should try prepending the calling code for the current user's phone number and the calling code that corresponds to the default region for the current device.  I'm not sure how this works on Android, but on iOS users specify their language and region preferences as a system setting.  So for a user living in the US (With a US phone number) but who is Scottish and like seeing dates and times, etc. formatted in UK way and thus uses the UK region, we should try both US and UK calling codes since they are likely to look up users in both places.",
+      "human_rimays": [
+        "<MISSING_SCOPE>, when the user searches by a \"phone number\" without a \"calling code\", then the App must try the \"calling code\" of the user's own phone number.",
+        "<MISSING_SCOPE>, when the user searches with a phone number that has no calling code, then the App must try the calling code of the user's own number.",
+        "<MISSING_SCOPE>, when a search \"phone number\" lacks a \"calling code\", then the System must apply the \"calling code\" of the user's own phone number."
+      ],
+      "llm_rimay": "If User.Phone_Number is a \"US phone number\", when the User enters a \"US phone number\" in the \"non-contact search\" in any of the formats \"+17043264096\", \"17043264096\" or \"7043264096\", then Signal-Android must find the \"non-contact\" based on the \"entered phone number\".",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "present",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "filled",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": false,
+        "condition": true,
+        "actor": true,
+        "modalVerb": true,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": false,
+      "verdict_match": true,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.348260896142796,
+        "seq_ratio_max": 0.375609756097561,
+        "jaccard_mean": 0.25324225324225325,
+        "jaccard_max": 0.2857142857142857,
+        "cosine_mean": 0.6670208497606493,
+        "cosine_max": 0.6741114043809175
+      },
+      "paska_passed": true,
+      "paska_smells": []
+    },
+    {
+      "reqId": "6424-Signal#3",
+      "nl_text": "Request Number - 6424 | Request Title - Improve search for non-contacts | Request Description - We recently made some improvements in Signal-iOS around searching for non-contacts by phone number.  I suggest we have parity on Android.  Fix non-contact lookup for non-US users.¬†SignalServiceKit#130 Further refinements to phone number parsing.¬†SignalServiceKit#139 Let's say user has a US phone number like +12045002827.  They should be able to search for another US phone number like +17043264096 by entering any of:  +17043264096 17043264096 7043264096 They should also be able to search for a non-US phone number like +441733530267 by entering any of:  +441733530267 441733530267 IMO we should try prepending the calling code for the current user's phone number and the calling code that corresponds to the default region for the current device.  I'm not sure how this works on Android, but on iOS users specify their language and region preferences as a system setting.  So for a user living in the US (With a US phone number) but who is Scottish and like seeing dates and times, etc. formatted in UK way and thus uses the UK region, we should try both US and UK calling codes since they are likely to look up users in both places.",
+      "human_rimays": [
+        "<MISSING_SCOPE>, when the user searches by a \"phone number\" without a \"calling code\", then the App must try the \"calling code\" of the device's default region.",
+        "<MISSING_SCOPE>, when the user searches with a phone number that has no calling code, then the App must try the calling code of the device's default region.",
+        "<MISSING_SCOPE>, when a search \"phone number\" lacks a \"calling code\", then the System must apply the \"calling code\" of the device's \"default region\"."
+      ],
+      "llm_rimay": "When the User searches for a \"non-contact\" by \"phone number\", then Signal-Android must try prepending the \"calling code of the current user's phone number\" and the \"calling code of the default region of the current device\" to the \"entered phone number\".",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "present",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "filled",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": false,
+        "condition": true,
+        "actor": true,
+        "modalVerb": true,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": false,
+      "verdict_match": true,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.4671873180313742,
+        "seq_ratio_max": 0.5202020202020202,
+        "jaccard_mean": 0.517550505050505,
+        "jaccard_max": 0.6,
+        "cosine_mean": 0.7102388884564289,
+        "cosine_max": 0.7273370770506206
+      },
+      "paska_passed": true,
+      "paska_smells": []
+    },
+    {
+      "reqId": "7567-Signal#1",
+      "nl_text": "Request Number - 7567 | Request Title - [Feature Request] SMS/Signal Notifications profile | Request Description - I have:   searched open and closed issues for duplicates  read https://github.com/signalapp/Signal-Android/wiki/Submitting-useful-bug-reports  Bug description. When making Signal as default SMS manager, there is no way to have default SMS notification (Android settings) to be enforced and having the Signal notification settings just for Signal message/call only. Steps to reproduce.  Install Signal and enable SMS support. Actual result: The same Expected result: Use Android notification profile for regular SMS/MMS and use Signal settings for secure messages / call. I use Signal with a limited number of people and I wish to know the difference between regular SMS or secured one by the ringtone (secure messages are mostly more urgent than other SMS). Screenshots. Device info. Device: BlackBerry Motion Android version: 7.1.2 Signal version: 4.16.9 Link to debug log.",
+      "human_rimays": [
+        "<MISSING_SCOPE>, if the \"App\" is the \"default SMS manager\", then the App must provide an option to use the \"Android notification profile\" for \"regular SMS/MMS\".",
+        "<MISSING_SCOPE>, if the App is the \"default SMS app\", then the App must use the \"Android notification profile\" for regular \"SMS/MMS\".",
+        "<MISSING_SCOPE>, if the user sets Signal as the \"default SMS app\", then the System must apply the \"Android notification profile\" to plain \"SMS/MMS\"."
+      ],
+      "llm_rimay": "If Signal is equal to \"default SMS manager\", then Signal <MISSING_MODAL_VERB> use the \"Android notification profile\" for \"regular SMS/MMS\".",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "present",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "missing",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": false,
+        "condition": true,
+        "actor": true,
+        "modalVerb": false,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": true,
+      "verdict_match": false,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.760358450197406,
+        "seq_ratio_max": 0.7966101694915254,
+        "jaccard_mean": 0.6020095693779904,
+        "jaccard_max": 0.6842105263157895,
+        "cosine_mean": 0.794385991471738,
+        "cosine_max": 0.8712845675877013
+      },
+      "paska_passed": false,
+      "paska_smells": [
+        {
+          "segment_id": "7567-Signal_u1_1",
+          "smell": "Incomplete requirement",
+          "value": "The requirement does not have a system response."
+        },
+        {
+          "segment_id": "7567-Signal_u1_2",
+          "smell": "Incomplete system response",
+          "value": "Modal verb is missing in the SR."
+        }
+      ]
+    },
+    {
+      "reqId": "7567-Signal#2",
+      "nl_text": "Request Number - 7567 | Request Title - [Feature Request] SMS/Signal Notifications profile | Request Description - I have:   searched open and closed issues for duplicates  read https://github.com/signalapp/Signal-Android/wiki/Submitting-useful-bug-reports  Bug description. When making Signal as default SMS manager, there is no way to have default SMS notification (Android settings) to be enforced and having the Signal notification settings just for Signal message/call only. Steps to reproduce.  Install Signal and enable SMS support. Actual result: The same Expected result: Use Android notification profile for regular SMS/MMS and use Signal settings for secure messages / call. I use Signal with a limited number of people and I wish to know the difference between regular SMS or secured one by the ringtone (secure messages are mostly more urgent than other SMS). Screenshots. Device info. Device: BlackBerry Motion Android version: 7.1.2 Signal version: 4.16.9 Link to debug log.",
+      "human_rimays": [
+        "<MISSING_SCOPE>, if the \"App\" is the \"default SMS manager\", then the App must provide an option to use the \"Signal settings\" for \"secure messages\".",
+        "<MISSING_SCOPE>, if the App is the \"default SMS app\", then the App must use the \"Signal notification settings\" for \"secure messages\" and \"calls\".",
+        "<MISSING_SCOPE>, if the user sets Signal as the \"default SMS app\", then the System must apply the \"Signal notification settings\" to \"secure messages\" and \"calls\"."
+      ],
+      "llm_rimay": "If Signal is equal to \"default SMS manager\", then Signal <MISSING_MODAL_VERB> use the \"Signal notification settings\" for \"secure messages and calls\".",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "present",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "missing",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": false,
+        "condition": true,
+        "actor": true,
+        "modalVerb": false,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": true,
+      "verdict_match": false,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.7590567571962921,
+        "seq_ratio_max": 0.813953488372093,
+        "jaccard_mean": 0.626231884057971,
+        "jaccard_max": 0.75,
+        "cosine_mean": 0.8188994033605149,
+        "cosine_max": 0.8820613751512177
+      },
+      "paska_passed": false,
+      "paska_smells": [
+        {
+          "segment_id": "7567-Signal_u2_3",
+          "smell": "Incomplete requirement",
+          "value": "The requirement does not have a system response."
+        },
+        {
+          "segment_id": "7567-Signal_u2_4",
+          "smell": "Incomplete system response",
+          "value": "Modal verb is missing in the SR."
+        }
+      ]
+    },
+    {
+      "reqId": "802-Signal#1",
+      "nl_text": "Request Number - 802 | Request Title - Feature Request: import and export keys to file, Bluetooth, QR, and NFC | Request Description - more specificly I'd like to be able to import and export the private key, and public keys to files. I'd also like to be able to import and export public keys via bluetooth, NFC, and QR code. Something like this: https://play.google.com/store/apps/details?id=org.sufficientlysecure.keychain The do key management pretty well, for GPG. (sadly no one writes apps that use their wonderful app, but seriously, best key management app there is.) its also open source, I wonder if you could steal some code from them, and use their key management interface. Reasons I need this new phone, I need to securely wipe the old key, export the old key to a file, and then re-import it. Lost phone, in case I loose my phone, I can reuse the same gpg key. Device immaterial - once I have a back up file of the private key, I can store that on an encrypted parition, or container, and bounce that around as I see fit between devices, PCs, internet storage, etc.. I can then bring it back when I need it. I can also switch between phones at will. For public keys. in addition to reasons 1-3, having a good back up of my friend's public keys, I can easily re-import them, and share them with other people as needed, to make the fewest amounts of key exchanges needed. I can set up phones for people with all the public keys they need. just load them up, and go. This would just make an already good app fucking awesome.",
+      "human_rimays": [
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user export the \"private key\" to a \"file\".",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow the user to export the private key to a file.",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the System must let the user save the \"private key\" into a \"file\"."
+      ],
+      "llm_rimay": "<MISSING_ACTOR> <MISSING_MODAL_VERB> export the \"private key\" to a \"file\".",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "missing",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "missing",
+        "modalVerb": "missing",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": false,
+        "condition": false,
+        "actor": false,
+        "modalVerb": false,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": true,
+      "verdict_match": false,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.6523107733388107,
+        "seq_ratio_max": 0.7115384615384616,
+        "jaccard_mean": 0.5524475524475524,
+        "jaccard_max": 0.6363636363636364,
+        "cosine_mean": 0.7888221618915275,
+        "cosine_max": 0.8028298086839959
+      },
+      "paska_passed": false,
+      "paska_smells": [
+        {
+          "segment_id": "802-Signal_u2_2",
+          "smell": "Not requirement",
+          "value": "The sentence does not contain a system response nor condition nor a scope phrase."
+        }
+      ]
+    },
+    {
+      "reqId": "802-Signal#2",
+      "nl_text": "Request Number - 802 | Request Title - Feature Request: import and export keys to file, Bluetooth, QR, and NFC | Request Description - more specificly I'd like to be able to import and export the private key, and public keys to files. I'd also like to be able to import and export public keys via bluetooth, NFC, and QR code. Something like this: https://play.google.com/store/apps/details?id=org.sufficientlysecure.keychain The do key management pretty well, for GPG. (sadly no one writes apps that use their wonderful app, but seriously, best key management app there is.) its also open source, I wonder if you could steal some code from them, and use their key management interface. Reasons I need this new phone, I need to securely wipe the old key, export the old key to a file, and then re-import it. Lost phone, in case I loose my phone, I can reuse the same gpg key. Device immaterial - once I have a back up file of the private key, I can store that on an encrypted parition, or container, and bounce that around as I see fit between devices, PCs, internet storage, etc.. I can then bring it back when I need it. I can also switch between phones at will. For public keys. in addition to reasons 1-3, having a good back up of my friend's public keys, I can easily re-import them, and share them with other people as needed, to make the fewest amounts of key exchanges needed. I can set up phones for people with all the public keys they need. just load them up, and go. This would just make an already good app fucking awesome.",
+      "human_rimays": [
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user import the \"private key\" from a \"file\".",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow the user to import the private key from a file.",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the System must let the user load the \"private key\" from a \"file\"."
+      ],
+      "llm_rimay": "<MISSING_ACTOR> <MISSING_MODAL_VERB> import the \"private key\" from a \"file\".",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "missing",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "missing",
+        "modalVerb": "missing",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": false,
+        "condition": false,
+        "actor": false,
+        "modalVerb": false,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": true,
+      "verdict_match": false,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.6688752973156643,
+        "seq_ratio_max": 0.7222222222222222,
+        "jaccard_mean": 0.5732323232323232,
+        "jaccard_max": 0.6363636363636364,
+        "cosine_mean": 0.7606135940964488,
+        "cosine_max": 0.7729801624881901
+      },
+      "paska_passed": false,
+      "paska_smells": [
+        {
+          "segment_id": "802-Signal_u1_1",
+          "smell": "Not requirement",
+          "value": "The sentence does not contain a system response nor condition nor a scope phrase."
+        }
+      ]
+    },
+    {
+      "reqId": "802-Signal#3",
+      "nl_text": "Request Number - 802 | Request Title - Feature Request: import and export keys to file, Bluetooth, QR, and NFC | Request Description - more specificly I'd like to be able to import and export the private key, and public keys to files. I'd also like to be able to import and export public keys via bluetooth, NFC, and QR code. Something like this: https://play.google.com/store/apps/details?id=org.sufficientlysecure.keychain The do key management pretty well, for GPG. (sadly no one writes apps that use their wonderful app, but seriously, best key management app there is.) its also open source, I wonder if you could steal some code from them, and use their key management interface. Reasons I need this new phone, I need to securely wipe the old key, export the old key to a file, and then re-import it. Lost phone, in case I loose my phone, I can reuse the same gpg key. Device immaterial - once I have a back up file of the private key, I can store that on an encrypted parition, or container, and bounce that around as I see fit between devices, PCs, internet storage, etc.. I can then bring it back when I need it. I can also switch between phones at will. For public keys. in addition to reasons 1-3, having a good back up of my friend's public keys, I can easily re-import them, and share them with other people as needed, to make the fewest amounts of key exchanges needed. I can set up phones for people with all the public keys they need. just load them up, and go. This would just make an already good app fucking awesome.",
+      "human_rimays": [
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user export \"public keys\" to a \"file\".",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow the user to export public keys to a file.",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the System must let the user save \"public keys\" into a \"file\"."
+      ],
+      "llm_rimay": "<MISSING_ACTOR> <MISSING_MODAL_VERB> export the \"public keys\" to a \"file\".",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "missing",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "missing",
+        "modalVerb": "missing",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": false,
+        "condition": false,
+        "actor": false,
+        "modalVerb": false,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": true,
+      "verdict_match": false,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.6250113749239001,
+        "seq_ratio_max": 0.66,
+        "jaccard_mean": 0.5524475524475524,
+        "jaccard_max": 0.6363636363636364,
+        "cosine_mean": 0.7689892836205621,
+        "cosine_max": 0.7809842846968609
+      },
+      "paska_passed": false,
+      "paska_smells": [
+        {
+          "segment_id": "802-Signal_u4_4",
+          "smell": "Not requirement",
+          "value": "The sentence does not contain a system response nor condition nor a scope phrase."
+        }
+      ]
+    },
+    {
+      "reqId": "802-Signal#4",
+      "nl_text": "Request Number - 802 | Request Title - Feature Request: import and export keys to file, Bluetooth, QR, and NFC | Request Description - more specificly I'd like to be able to import and export the private key, and public keys to files. I'd also like to be able to import and export public keys via bluetooth, NFC, and QR code. Something like this: https://play.google.com/store/apps/details?id=org.sufficientlysecure.keychain The do key management pretty well, for GPG. (sadly no one writes apps that use their wonderful app, but seriously, best key management app there is.) its also open source, I wonder if you could steal some code from them, and use their key management interface. Reasons I need this new phone, I need to securely wipe the old key, export the old key to a file, and then re-import it. Lost phone, in case I loose my phone, I can reuse the same gpg key. Device immaterial - once I have a back up file of the private key, I can store that on an encrypted parition, or container, and bounce that around as I see fit between devices, PCs, internet storage, etc.. I can then bring it back when I need it. I can also switch between phones at will. For public keys. in addition to reasons 1-3, having a good back up of my friend's public keys, I can easily re-import them, and share them with other people as needed, to make the fewest amounts of key exchanges needed. I can set up phones for people with all the public keys they need. just load them up, and go. This would just make an already good app fucking awesome.",
+      "human_rimays": [
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user import \"public keys\" from a \"file\".",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow the user to import public keys from a file.",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the System must let the user load \"public keys\" from a \"file\"."
+      ],
+      "llm_rimay": "<MISSING_ACTOR> <MISSING_MODAL_VERB> import the \"public keys\" from a \"file\".",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "missing",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "missing",
+        "modalVerb": "missing",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": false,
+        "condition": false,
+        "actor": false,
+        "modalVerb": false,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": true,
+      "verdict_match": false,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.6434065934065935,
+        "seq_ratio_max": 0.6730769230769231,
+        "jaccard_mean": 0.5732323232323232,
+        "jaccard_max": 0.6363636363636364,
+        "cosine_mean": 0.7623205384354274,
+        "cosine_max": 0.7772139921403219
+      },
+      "paska_passed": false,
+      "paska_smells": [
+        {
+          "segment_id": "802-Signal_u3_3",
+          "smell": "Not requirement",
+          "value": "The sentence does not contain a system response nor condition nor a scope phrase."
+        }
+      ]
+    },
+    {
+      "reqId": "802-Signal#5",
+      "nl_text": "Request Number - 802 | Request Title - Feature Request: import and export keys to file, Bluetooth, QR, and NFC | Request Description - more specificly I'd like to be able to import and export the private key, and public keys to files. I'd also like to be able to import and export public keys via bluetooth, NFC, and QR code. Something like this: https://play.google.com/store/apps/details?id=org.sufficientlysecure.keychain The do key management pretty well, for GPG. (sadly no one writes apps that use their wonderful app, but seriously, best key management app there is.) its also open source, I wonder if you could steal some code from them, and use their key management interface. Reasons I need this new phone, I need to securely wipe the old key, export the old key to a file, and then re-import it. Lost phone, in case I loose my phone, I can reuse the same gpg key. Device immaterial - once I have a back up file of the private key, I can store that on an encrypted parition, or container, and bounce that around as I see fit between devices, PCs, internet storage, etc.. I can then bring it back when I need it. I can also switch between phones at will. For public keys. in addition to reasons 1-3, having a good back up of my friend's public keys, I can easily re-import them, and share them with other people as needed, to make the fewest amounts of key exchanges needed. I can set up phones for people with all the public keys they need. just load them up, and go. This would just make an already good app fucking awesome.",
+      "human_rimays": [
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user export \"public keys\" via \"Bluetooth\", \"NFC\", and \"QR code\".",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow the user to share public keys over Bluetooth, NFC or a QR code.",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the System must let the user send \"public keys\" using \"Bluetooth\", \"NFC\" or a \"QR code\"."
+      ],
+      "llm_rimay": "<MISSING_ACTOR> <MISSING_MODAL_VERB> export the \"public keys\" through \"Bluetooth\", \"NFC\", and \"QR code\".",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "missing",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "missing",
+        "modalVerb": "missing",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": false,
+        "condition": false,
+        "actor": false,
+        "modalVerb": false,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": true,
+      "verdict_match": false,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.6616453386708658,
+        "seq_ratio_max": 0.717948717948718,
+        "jaccard_mean": 0.45243664717348925,
+        "jaccard_max": 0.6,
+        "cosine_mean": 0.705371298938212,
+        "cosine_max": 0.8392285711051943
+      },
+      "paska_passed": false,
+      "paska_smells": [
+        {
+          "segment_id": "802-Signal_u6_6",
+          "smell": "Not requirement",
+          "value": "The sentence does not contain a system response nor condition nor a scope phrase."
+        }
+      ]
+    },
+    {
+      "reqId": "802-Signal#6",
+      "nl_text": "Request Number - 802 | Request Title - Feature Request: import and export keys to file, Bluetooth, QR, and NFC | Request Description - more specificly I'd like to be able to import and export the private key, and public keys to files. I'd also like to be able to import and export public keys via bluetooth, NFC, and QR code. Something like this: https://play.google.com/store/apps/details?id=org.sufficientlysecure.keychain The do key management pretty well, for GPG. (sadly no one writes apps that use their wonderful app, but seriously, best key management app there is.) its also open source, I wonder if you could steal some code from them, and use their key management interface. Reasons I need this new phone, I need to securely wipe the old key, export the old key to a file, and then re-import it. Lost phone, in case I loose my phone, I can reuse the same gpg key. Device immaterial - once I have a back up file of the private key, I can store that on an encrypted parition, or container, and bounce that around as I see fit between devices, PCs, internet storage, etc.. I can then bring it back when I need it. I can also switch between phones at will. For public keys. in addition to reasons 1-3, having a good back up of my friend's public keys, I can easily re-import them, and share them with other people as needed, to make the fewest amounts of key exchanges needed. I can set up phones for people with all the public keys they need. just load them up, and go. This would just make an already good app fucking awesome.",
+      "human_rimays": [
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user import \"public keys\" via \"Bluetooth\", \"NFC\", and \"QR code\".",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow the user to receive public keys over Bluetooth, NFC or a QR code.",
+        "<MISSING_SCOPE>, <MISSING_CONDITION>, the System must let the user import \"public keys\" using \"Bluetooth\", \"NFC\" or a \"QR code\"."
+      ],
+      "llm_rimay": "<MISSING_ACTOR> <MISSING_MODAL_VERB> import the \"public keys\" through \"Bluetooth\", \"NFC\", and \"QR code\".",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "missing",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "missing",
+        "modalVerb": "missing",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": false,
+        "condition": false,
+        "actor": false,
+        "modalVerb": false,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": true,
+      "verdict_match": false,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.6563068223657283,
+        "seq_ratio_max": 0.717948717948718,
+        "jaccard_mean": 0.47966976264189887,
+        "jaccard_max": 0.6,
+        "cosine_mean": 0.7933623407511751,
+        "cosine_max": 0.8437106211822096
+      },
+      "paska_passed": false,
+      "paska_smells": [
+        {
+          "segment_id": "802-Signal_u5_5",
+          "smell": "Not requirement",
+          "value": "The sentence does not contain a system response nor condition nor a scope phrase."
+        }
+      ]
+    },
+    {
+      "reqId": "5751-Signal#1",
+      "nl_text": "Request Number - 5751 | Request Title - Should a swiped-away notification reappear when new messages arrive? | Request Description - I have:   searched open and closed issues for duplicates  read https://github.com/WhisperSystems/Signal-Android/wiki/Submitting-useful-bug-reports  Bug description. A swiped away notification of a received SMS is displayed back after some time. Steps to reproduce.  Receive an SMS Without opening Signal, swipe away the new notification from the Android notification drawer Actual result: After some time the same notification is displayed back. I cannot tell exactly when. Maybe it is event related. Expected result: The notification should not be displayed, once it is swiped away. If another message is received from the same contact/number, a new notification should display the new message (or possibly the swiped away message and the new message). Device info. Device: LGE Nexus 5X (bullhead) Android: 7.0 (3141966, NRD90R) Memory: 15M (1.73% free, 192M max) Memclass: 192 OS Host: vped5.mtv.corp.google.com App: Signal 3.19.1 Link to debug log. https://gist.github.com/nagromc/c2a3a151ba09ed2f38265d3a723b8a52#file-issue-5751-comment-181395245-txt",
+      "human_rimays": [
+        "<MISSING_SCOPE>, when the user swipes away a \"notification\", then the App must not display that \"notification\" again.",
+        "<MISSING_SCOPE>, when the user swipes notification away, then the App must not show it again.",
+        "<MISSING_SCOPE>, when the user dismisses a \"notification\" by swiping, then the System must not bring that \"notification\" back."
+      ],
+      "llm_rimay": "When the User swipes away the \"notification of a received SMS\" from the \"Android notification drawer\", then Signal shall not display the \"swiped-away notification\" again.",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "present",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "filled",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": false,
+        "condition": true,
+        "actor": true,
+        "modalVerb": true,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": false,
+      "verdict_match": true,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.5422617560398054,
+        "seq_ratio_max": 0.6323529411764706,
+        "jaccard_mean": 0.36775362318840576,
+        "jaccard_max": 0.4782608695652174,
+        "cosine_mean": 0.7292541644576634,
+        "cosine_max": 0.770046370591308
+      },
+      "paska_passed": true,
+      "paska_smells": []
+    },
+    {
+      "reqId": "5751-Signal#2",
+      "nl_text": "Request Number - 5751 | Request Title - Should a swiped-away notification reappear when new messages arrive? | Request Description - I have:   searched open and closed issues for duplicates  read https://github.com/WhisperSystems/Signal-Android/wiki/Submitting-useful-bug-reports  Bug description. A swiped away notification of a received SMS is displayed back after some time. Steps to reproduce.  Receive an SMS Without opening Signal, swipe away the new notification from the Android notification drawer Actual result: After some time the same notification is displayed back. I cannot tell exactly when. Maybe it is event related. Expected result: The notification should not be displayed, once it is swiped away. If another message is received from the same contact/number, a new notification should display the new message (or possibly the swiped away message and the new message). Device info. Device: LGE Nexus 5X (bullhead) Android: 7.0 (3141966, NRD90R) Memory: 15M (1.73% free, 192M max) Memclass: 192 OS Host: vped5.mtv.corp.google.com App: Signal 3.19.1 Link to debug log. https://gist.github.com/nagromc/c2a3a151ba09ed2f38265d3a723b8a52#file-issue-5751-comment-181395245-txt",
+      "human_rimays": [
+        "<MISSING_SCOPE>, when the App receives a new message from the same contact, then the App must show a new \"notification\" with the new message.",
+        "<MISSING_SCOPE>, when the App receives another message from the same contact, then the App must post a new notification for it.",
+        "<MISSING_SCOPE>, when the same contact sends a new message, then the System must display a fresh \"notification\" containing that message."
+      ],
+      "llm_rimay": "If Signal receives another \"message\" from the \"same contact/number\", then Signal shall display a \"new notification\" containing the \"new message\".",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "present",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "filled",
+        "modalVerb": "filled",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": false,
+        "condition": true,
+        "actor": true,
+        "modalVerb": true,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": false,
+      "verdict_match": true,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.6519684137188348,
+        "seq_ratio_max": 0.7084870848708487,
+        "jaccard_mean": 0.4558629776021081,
+        "jaccard_max": 0.4782608695652174,
+        "cosine_mean": 0.7463439262372495,
+        "cosine_max": 0.8087848377086564
+      },
+      "paska_passed": true,
+      "paska_smells": []
+    },
+    {
+      "reqId": "5904-Signal#1",
+      "nl_text": "Request Number - 5904 | Request Title - archived/blocked flags are not part of xml backup | Request Description - After importing messages from .xml backup, previously archived messages are all placed in main folder. Also 'blocked' flag is gone. I'm talking about only those messages that were part of the backup (probably already received messages and their flags are intact). I was expecting that 'archive' and 'blocked' flags are part of .xml backup. This is part of my backup (entries from one thread). For sure I've moved all messages from this number to archive and blocked the conversation. <sms protocol=\"0\" address=\"<cut>\" date=\"<cut>\" type=\"1\" subject=\"null\" body=\"<cut>\" toa=\"null\" sc_toa=\"null\" service_center=\"null\" read=\"1\" status=\"-1\" locked=\"0\" />  <sms protocol=\"0\" address=\"<cut>\" date=\"<cut>\" type=\"2\" subject=\"null\" body=\"<cut>\" toa=\"null\" sc_toa=\"null\" service_center=\"null\" read=\"1\" status=\"-1\" locked=\"0\" />  <sms protocol=\"0\" address=\"<cut>\" date=\"<cut>\" type=\"1\" subject=\"null\" body=\"<cut>\" toa=\"null\" sc_toa=\"null\" service_center=\"null\" read=\"1\" status=\"-1\" locked=\"0\" />  <sms protocol=\"0\" address=\"<cut>\" date=\"<cut>\" type=\"2\" subject=\"null\" body=\"<cut>\" toa=\"null\" sc_toa=\"null\" service_center=\"null\" read=\"1\" status=\"-1\" locked=\"0\" />  <sms protocol=\"0\" address=\"<cut>\" date=\"<cut>\" type=\"1\" subject=\"null\" body=\"<cut>\" toa=\"null\" sc_toa=\"null\" service_center=\"null\" read=\"1\" status=\"-1\" locked=\"0\" />  <sms protocol=\"0\" address=\"<cut>\" date=\"<cut>\" type=\"1\" subject=\"null\" body=\"<cut>\" toa=\"null\" sc_toa=\"null\" service_center=\"null\" read=\"1\" status=\"-1\" locked=\"0\" />  <sms protocol=\"0\" address=\"<cut>\" date=\"<cut>\" type=\"1\" subject=\"null\" body=\"<cut>\" toa=\"null\" sc_toa=\"null\" service_center=\"null\" read=\"1\" status=\"-1\" locked=\"0\" />  <sms protocol=\"0\" address=\"<cut>\" date=\"<cut>\" type=\"2\" subject=\"null\" body=\"<cut>\" toa=\"null\" sc_toa=\"null\" service_center=\"null\" read=\"1\" status=\"-1\" locked=\"0\" />  <sms protocol=\"0\" address=\"<cut>\" date=\"<cut>\" type=\"1\" subject=\"null\" body=\"<cut>\" toa=\"null\" sc_toa=\"null\" service_center=\"null\" read=\"1\" status=\"-1\" locked=\"0\" />",
+      "human_rimays": [
+        "<MISSING_SCOPE>, when the App creates an \".xml backup\", then the App must include the \"archive\" and \"blocked\" flags of the messages.",
+        "<MISSING_SCOPE>, when the App creates an XML backup, then the App must store the archived and blocked flags of every message.",
+        "<MISSING_SCOPE>, when the System writes an \".xml backup\", then the System must save the \"archive\" and \"blocked\" flags for each message."
+      ],
+      "llm_rimay": "<MISSING_ACTOR> must include the \"archived\" flag of the messages in the \".xml backup\".",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "present",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "missing",
+        "modalVerb": "filled",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": false,
+        "condition": true,
+        "actor": false,
+        "modalVerb": true,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": true,
+      "verdict_match": false,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.38560423637823016,
+        "seq_ratio_max": 0.5240641711229946,
+        "jaccard_mean": 0.27601612727470853,
+        "jaccard_max": 0.3684210526315789,
+        "cosine_mean": 0.8197958840169761,
+        "cosine_max": 0.8518091328414881
+      },
+      "paska_passed": true,
+      "paska_smells": []
+    },
+    {
+      "reqId": "5904-Signal#2",
+      "nl_text": "Request Number - 5904 | Request Title - archived/blocked flags are not part of xml backup | Request Description - After importing messages from .xml backup, previously archived messages are all placed in main folder. Also 'blocked' flag is gone. I'm talking about only those messages that were part of the backup (probably already received messages and their flags are intact). I was expecting that 'archive' and 'blocked' flags are part of .xml backup. This is part of my backup (entries from one thread). For sure I've moved all messages from this number to archive and blocked the conversation. <sms protocol=\"0\" address=\"<cut>\" date=\"<cut>\" type=\"1\" subject=\"null\" body=\"<cut>\" toa=\"null\" sc_toa=\"null\" service_center=\"null\" read=\"1\" status=\"-1\" locked=\"0\" />  <sms protocol=\"0\" address=\"<cut>\" date=\"<cut>\" type=\"2\" subject=\"null\" body=\"<cut>\" toa=\"null\" sc_toa=\"null\" service_center=\"null\" read=\"1\" status=\"-1\" locked=\"0\" />  <sms protocol=\"0\" address=\"<cut>\" date=\"<cut>\" type=\"1\" subject=\"null\" body=\"<cut>\" toa=\"null\" sc_toa=\"null\" service_center=\"null\" read=\"1\" status=\"-1\" locked=\"0\" />  <sms protocol=\"0\" address=\"<cut>\" date=\"<cut>\" type=\"2\" subject=\"null\" body=\"<cut>\" toa=\"null\" sc_toa=\"null\" service_center=\"null\" read=\"1\" status=\"-1\" locked=\"0\" />  <sms protocol=\"0\" address=\"<cut>\" date=\"<cut>\" type=\"1\" subject=\"null\" body=\"<cut>\" toa=\"null\" sc_toa=\"null\" service_center=\"null\" read=\"1\" status=\"-1\" locked=\"0\" />  <sms protocol=\"0\" address=\"<cut>\" date=\"<cut>\" type=\"1\" subject=\"null\" body=\"<cut>\" toa=\"null\" sc_toa=\"null\" service_center=\"null\" read=\"1\" status=\"-1\" locked=\"0\" />  <sms protocol=\"0\" address=\"<cut>\" date=\"<cut>\" type=\"1\" subject=\"null\" body=\"<cut>\" toa=\"null\" sc_toa=\"null\" service_center=\"null\" read=\"1\" status=\"-1\" locked=\"0\" />  <sms protocol=\"0\" address=\"<cut>\" date=\"<cut>\" type=\"2\" subject=\"null\" body=\"<cut>\" toa=\"null\" sc_toa=\"null\" service_center=\"null\" read=\"1\" status=\"-1\" locked=\"0\" />  <sms protocol=\"0\" address=\"<cut>\" date=\"<cut>\" type=\"1\" subject=\"null\" body=\"<cut>\" toa=\"null\" sc_toa=\"null\" service_center=\"null\" read=\"1\" status=\"-1\" locked=\"0\" />",
+      "human_rimays": [
+        "<MISSING_SCOPE>, after importing \"messages\" from an \".xml backup\", then the App must preserve the \"archive\" and \"blocked\" flags.",
+        "<MISSING_SCOPE>, when the user imports messages from an .xml backup, then the App must keep the archive and blocked flags.",
+        "<MISSING_SCOPE>, when the App imports messages from an \".xml backup\", then the App must restore the \"archive\" and \"blocked\" flags."
+      ],
+      "llm_rimay": "<MISSING_ACTOR> must include the \"blocked\" flag of the messages in the \".xml backup\".",
+      "gold_slots": {
+        "scope": "missing",
+        "condition": "present",
+        "actor": "implied",
+        "modalVerb": "implied",
+        "action": "present"
+      },
+      "llm_slots": {
+        "scope": "filled",
+        "condition": "filled",
+        "actor": "missing",
+        "modalVerb": "filled",
+        "action": "filled"
+      },
+      "slot_match": {
+        "scope": false,
+        "condition": true,
+        "actor": false,
+        "modalVerb": true,
+        "action": true
+      },
+      "gold_overall": false,
+      "llm_overall": true,
+      "verdict_match": false,
+      "similarity": {
+        "n_humans": 3,
+        "seq_ratio_mean": 0.32172718585762067,
+        "seq_ratio_max": 0.375,
+        "jaccard_mean": 0.29523809523809524,
+        "jaccard_max": 0.3,
+        "cosine_mean": 0.782786231645619,
+        "cosine_max": 0.8119294553297989
+      },
+      "paska_passed": true,
+      "paska_smells": []
+    }
+  ],
+  "verdict": {
+    "text": "Track 1 cannot answer the fabrication question on this run, even though support is non-zero. The 56 \"silently filled\" slots are all scope (42) and condition (14). The model's outputs suggest these are not invented content but simple omission. In 222-Signal#1 and the whole 802 cluster, the LLM writes \"<MISSING_ACTOR> <MISSING_MODAL_VERB> export the \"public keys\" to a \"file\"\". There is no scope or condition text at all, only an absent placeholder. The human annotators instead write explicit \"<MISSING_SCOPE>, <MISSING_CONDITION>,\" prefixes. The scorer appears to classify an absent placeholder as \"filled\", so a 0.0 flag rate measures the zero-shot prompt's output format, not fabrication. This should be confirmed against the raw outputs before anything is reported. Scope and condition are also optional in Rimay, and the gold marks all 42 requirements as complete, so their absence was never a defect. For the obligatory slots (actor, modalVerb, action), gold-missing support is zero, so fabrication of core content is simply not testable on this subset.\n\nWhat the data does show is the opposite of the feared failure mode. Where humans treated actor and modal verb as implied and wrote \"the App must let the user…\", the model refused to infer them. It emitted MISSING_ACTOR in 15 cases and MISSING_MODAL_VERB in 29. This is over-conservatism, and it drives the 0.19 completeness agreement: 34 of 42 outputs were declared incomplete against a gold that called every one complete. Whether that counts as an error depends on a study-design decision you have not yet made: is inferring \"the App\" as actor legitimate implication or fabrication? The humans say implication.\n\nOn similarity, the LLM sits clearly below the human ceiling on every measure. Sequence ratio is 0.60 versus 0.79, cosine 0.76 versus 0.89, and Jaccard 0.45 versus 0.61. However, the worst examples show the action content is nearly identical to the humans'. 802-Signal#3, #4 and #6 match the annotators almost word for word after the prefix. Much of the gap is therefore template boilerplate: the humans share a long common prefix that inflates their agreement, and the LLM uses a different placeholder scheme. The 0.15–0.19 gap is real, but it mostly reflects format divergence rather than semantic disagreement.\n\nPaska largely re-detects the model's own placeholders rather than providing independent evidence. \"Modal verb is missing in the SR\" fires wherever the model emitted MISSING_MODAL_VERB. \"Not requirement\" fires on all 13 cases where both actor and modal verb were placeholders, which covers the entire 802 cluster plus 222-Signal#1, 226 and 6362#1–2. The perfect pass rate for llm_complete outputs (8/8) versus 5/34 is the same fact counted twice. The genuinely stylistic findings are few. There is passive voice in conditions for 6390-Signal#1 and #2, and actors missing from conditions for 222-Signal#2 and #3. That is four instances, too few to characterise.\n\nThe sample is small and heavily clustered. The 42 units come from about 14 source requests, and units from one request behave identically: all six 802 units fail the same way. The effective sample size is therefore closer to 14 than 42, and differences of a few points between strategies will be noise. As the brief notes, this is also the pre-filtered atomic subset, so none of this generalises to unfiltered feature requests.\n\nThe most useful next step is to fix the measurement before comparing strategies. First, check how the scorer labels absent scope and condition placeholders, and either make the prompt emit them explicitly or score absence as \"missing\". Second, decide and document whether \"the App\" counts as implied or fabricated, and align the prompt with that convention. Third, recompute similarity on the action segment alone so that template differences stop masking content agreement. Until those changes are made, comparing zsl against fsl or cot on these metrics would mostly compare output formats.",
+    "model": "claude-opus-5-5",
+    "scope": "run",
+    "generated_at": "2026-10-19T00:26:14+01:00",
+    "results_digest": "492e9ed1490e"
+  }
+}

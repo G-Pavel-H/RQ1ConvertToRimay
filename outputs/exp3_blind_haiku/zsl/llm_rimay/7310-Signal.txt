@@ -1,0 +1,1 @@
+For <MISSING_SCOPE>, the Signal app must support the custom URL scheme "signal://".

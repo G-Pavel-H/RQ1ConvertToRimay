@@ -1,0 +1,1 @@
+After the "participants were added", then <MISSING_ACTOR> shall remove the "participants" from the "TextSecure groups".

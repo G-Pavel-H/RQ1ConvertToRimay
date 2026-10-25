@@ -1,0 +1,1 @@
+For "Signal 3.0.3", the calling screen shall show the "full resolution contact photo".

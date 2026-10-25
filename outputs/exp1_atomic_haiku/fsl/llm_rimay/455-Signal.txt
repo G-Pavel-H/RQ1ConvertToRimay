@@ -1,1 +1,1 @@
-For each SMS message, the app must add a signature below the message content.
+<MISSING_SCOPE>, <MISSING_CONDITION>, the app must allow users to add a short signature below SMS messages.

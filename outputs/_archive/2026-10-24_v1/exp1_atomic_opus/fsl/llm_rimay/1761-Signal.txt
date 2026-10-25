@@ -1,0 +1,1 @@
+<MISSING_SCOPE>, when the app receives an incoming SMS from a "certain contact", then the app must forward the incoming SMS to <MISSING_ACTOR>.

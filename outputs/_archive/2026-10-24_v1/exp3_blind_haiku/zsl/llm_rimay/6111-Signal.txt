@@ -1,0 +1,4 @@
+For the Image gallery, when the user multiselects images or media, the system shall delete the selected images or media.
+For the Image gallery, when the user opens an image or media, the system shall provide the possibility to delete it in the opened view.
+For the Image gallery, when the user deletes images or media, the system shall display a confirmation dialog.
+For the Image gallery, when the user deletes images or media, the system shall contain information about the corresponding message or text with a hint to the deleted image or media.

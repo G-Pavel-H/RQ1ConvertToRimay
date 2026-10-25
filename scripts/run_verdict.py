@@ -19,7 +19,7 @@ Usage:
     # see exactly what would be sent, without calling the API
     python scripts/run_verdict.py --run main30/zsl --dry-run
 
-The report picks verdicts up automatically: rebuild it with bin/report.sh.
+The dashboard picks verdicts up automatically: rebuild it with bin/dashboard.sh.
 """
 from __future__ import annotations
 
@@ -124,7 +124,7 @@ def main(argv=None) -> int:
         except FileNotFoundError as err:
             print(err, file=sys.stderr)
             return 1
-        print("\nRebuild the report to see it: bin/report.sh")
+        print("\nRebuild the dashboard to see it: bin/dashboard.sh")
         return 0
 
     # --batch: one verdict per run, then a comparison across them.
@@ -173,7 +173,7 @@ def main(argv=None) -> int:
         encoding="utf-8",
     )
     print(f"  comparison: {len(comparison.text.split())} words -> {out}")
-    print("\nRebuild the report to see the per-run verdicts: bin/report.sh")
+    print("\nRebuild the dashboard to see the verdicts: bin/dashboard.sh")
     return 0
 
 

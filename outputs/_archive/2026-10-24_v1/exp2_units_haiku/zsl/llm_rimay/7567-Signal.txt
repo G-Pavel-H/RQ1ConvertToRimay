@@ -1,0 +1,2 @@
+For the Signal application, when the user enables SMS support, the Signal application shall use the Android notification profile for regular SMS/MMS.
+For the Signal application, when the user enables SMS support, the Signal application shall use Signal notification settings for secure messages and calls.

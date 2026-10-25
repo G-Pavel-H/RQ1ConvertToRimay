@@ -1,0 +1,2 @@
+<MISSING_SCOPE>, when the user swipes away a "notification" from the "Android notification drawer", then the App must not display that "notification" again.
+<MISSING_SCOPE>, when the App receives another message from the same "contact/number", then the App must display a new "notification" with the "new message".

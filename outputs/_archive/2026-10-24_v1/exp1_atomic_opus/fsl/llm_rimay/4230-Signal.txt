@@ -1,0 +1,1 @@
+<MISSING_SCOPE>, if the "text" exceeds the "maximum message length", then the app must split the "text" into multiple messages.

@@ -1,0 +1,1 @@
+When <MISSING_ACTOR> <MISSING_ACTION>, then Signal <MISSING_MODAL_VERB> show the "full resolution contact photo" in the "Calling screen".

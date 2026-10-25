@@ -1,0 +1,1 @@
+<MISSING_SCOPE>, when the user sends an SMS to a provider number through Signal, then Signal must successfully deliver the message.

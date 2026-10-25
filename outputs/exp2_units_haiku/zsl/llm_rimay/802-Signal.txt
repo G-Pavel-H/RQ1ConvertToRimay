@@ -1,6 +1,6 @@
-The system shall import the private key to a file.
-The system shall export the private key to a file.
-The system shall import the public keys to a file.
-The system shall export the public keys to a file.
-The system shall import and export the public keys via Bluetooth.
-The system shall import and export the public keys via NFC and QR code.
+The <MISSING_ACTOR> shall import the private key from a file.
+The <MISSING_ACTOR> shall export the private key to a file.
+The <MISSING_ACTOR> shall import the public key from a file.
+The <MISSING_ACTOR> shall export the public key to a file.
+The <MISSING_ACTOR> shall import the public key via Bluetooth.
+The <MISSING_ACTOR> shall import the public key via NFC or QR code.

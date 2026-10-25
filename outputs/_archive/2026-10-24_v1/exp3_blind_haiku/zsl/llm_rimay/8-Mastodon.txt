@@ -1,0 +1,2 @@
+The System must provide a way to access the local timeline.
+The System must provide a way to access the federated timeline.

@@ -1,1 +1,1 @@
-For each running media download, the System shall cancel the media download.
+The System shall provide an option to cancel running media downloads.

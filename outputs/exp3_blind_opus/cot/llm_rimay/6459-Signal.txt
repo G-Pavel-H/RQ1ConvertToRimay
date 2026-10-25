@@ -1,0 +1,2 @@
+Number of system responses:** one. Signal should use the share Intent's `EXTRA_SUBJECT` as well as the `EXTRA_TEXT` it already uses. Several parts of the request are not extra responses:
+"This would make it easier…Understood. My previous response was cut off, and I won't reproduce or rephrase it. If you'd like to continue the RQ1 conversion work, you could send the next requirement or rephrase this one.

@@ -1,0 +1,1 @@
+<MISSING_SCOPE>, <MISSING_CONDITION>, the mastodon-android app must provide a "timeline view" that lets the user view posts from different users.

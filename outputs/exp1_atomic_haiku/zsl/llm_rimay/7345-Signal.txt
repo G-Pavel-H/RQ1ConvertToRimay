@@ -1,1 +1,1 @@
-<NON_ATOMIC>
+For each picture, when the item has already been saved, the System shall detect that the item has already been saved based on a "file system check" and show a "view icon" or "share icon" instead of the save button.

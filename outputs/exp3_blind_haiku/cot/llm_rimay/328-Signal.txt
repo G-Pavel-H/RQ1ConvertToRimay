@@ -1,0 +1,7 @@
+TextSecure shall send a "dummy random message" to a random contact that uses TextSecure at a random time.
+The sender shall enable the "dummy messaging feature" with a defined quantity parameter.
+If battery level is below a threshold "eg. 30%", then TextSecure shall not send dummy messages.
+If roaming is detected and not explicitly enabled by the user, then TextSecure shall not send dummy messages.
+The recipient shall be able to opt-out of receiving dummy messages by notifying peers.
+TextSecure shall send a "clear text dummy message" to a random contact that does not use TextSecure to promote its use.
+TextSecure shall include a random peer's phone number in a dummy message without displaying it to the user.

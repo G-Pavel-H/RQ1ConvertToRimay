@@ -1,0 +1,5 @@
+<MISSING_CONDITION> The TextSecure app shall provide an option to edit a message from the Android Context Menu.
+The TextSecure app shall provide the ability to insert a new message next to an existing message.
+Wait, the output must follow Rimay format only with placeholders as specified. Corrected output:
+The TextSecure app shall provide an option to edit any message from the "Android Context Menu".
+The TextSecure app shall provide the ability to insert a new message next to a message.

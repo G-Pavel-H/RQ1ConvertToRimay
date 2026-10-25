@@ -1,0 +1,1 @@
+For <MISSING_SCOPE>, if <MISSING_CONDITION>, then <MISSING_ACTOR> <MISSING_MODAL_VERB> allow the copying of "partial text" from a "message".

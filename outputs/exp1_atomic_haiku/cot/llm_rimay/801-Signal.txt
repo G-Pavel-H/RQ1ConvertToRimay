@@ -1,1 +1,1 @@
-<NON_ATOMIC>
+The System shall provide the "Mute" feature with a configurable duration in minutes or hours.

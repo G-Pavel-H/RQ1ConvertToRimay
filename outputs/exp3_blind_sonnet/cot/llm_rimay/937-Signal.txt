@@ -1,0 +1,1 @@
+The Conversation View shall display the "messages" of a conversation in a "consistent order" for all chat participants.

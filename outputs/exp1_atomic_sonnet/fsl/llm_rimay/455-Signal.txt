@@ -1,1 +1,1 @@
-<MISSING_SCOPE>, <MISSING_CONDITION>, the app must provide an option to add a "short signature" below each sent SMS message.
+<MISSING_SCOPE>, <MISSING_CONDITION>, the app must allow users to add a "short signature" to the SMS messages they send.

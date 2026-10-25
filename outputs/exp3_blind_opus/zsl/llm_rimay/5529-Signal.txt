@@ -1,0 +1,2 @@
+If the user has not enabled the "passphrase" setting, then Signal must disable the "Screen security" feature by default.
+If the user has enabled the "passphrase" setting, then Signal must enable the "Screen security" feature by default.

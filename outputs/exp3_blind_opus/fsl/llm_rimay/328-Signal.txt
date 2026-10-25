@@ -1,0 +1,9 @@
+<MISSING_SCOPE>, if the user has enabled "dummy messaging", then TextSecure must send "dummy random messages" to "random recipients" at "random times".
+<MISSING_SCOPE>, before TextSecure sends a "dummy message", then TextSecure must select the recipient randomly from the "contacts that use TextSecure".
+<MISSING_SCOPE>, when TextSecure receives a "dummy message", then TextSecure must discard the "dummy message" after decryption.
+<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure must let the user enable "dummy messaging" as an "opt-in" feature.
+<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure must let the user define the "desired quantity of dummy messages".
+<MISSING_SCOPE>, if the device is roaming, then TextSecure must not send "dummy messages" unless the user has enabled "dummy messaging while roaming".
+<MISSING_SCOPE>, if the "battery level" is less than the "battery threshold", then TextSecure must not send "dummy messages".
+<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure must let recipients inform their peers that they do not want to receive "dummy messages".
+<MISSING_SCOPE>, <MISSING_CONDITION>, TextSecure must not show the "peer phone numbers" contained in "dummy messages" to the user.

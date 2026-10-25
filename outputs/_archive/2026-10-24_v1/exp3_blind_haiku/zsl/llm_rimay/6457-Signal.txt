@@ -1,0 +1,1 @@
+For the Signal-Android application, the System shall provide a single button to open and close the attachment window.

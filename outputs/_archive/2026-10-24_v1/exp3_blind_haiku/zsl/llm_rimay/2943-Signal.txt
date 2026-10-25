@@ -1,0 +1,1 @@
+Where <MISSING_SCOPE>, <MISSING_CONDITION> the System shall restore the old text-based smileys.

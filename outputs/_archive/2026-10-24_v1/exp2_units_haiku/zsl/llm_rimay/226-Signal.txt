@@ -1,0 +1,2 @@
+For <MISSING_SCOPE>, the TextSecure application shall provide the ability to edit a message from the Android Context Menu.
+For <MISSING_SCOPE>, the TextSecure application shall provide the ability to insert a new message next to an existing message.

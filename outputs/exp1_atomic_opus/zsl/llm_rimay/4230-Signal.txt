@@ -1,1 +1,1 @@
-If the "text" is "oversized", then <MISSING_ACTOR> <MISSING_MODAL_VERB> split the "oversized text" into "multiple messages".
+<MISSING_ACTOR> <MISSING_MODAL_VERB> split the "oversized texts" into "multiple messages".

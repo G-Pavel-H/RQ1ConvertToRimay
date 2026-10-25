@@ -1,1 +1,1 @@
-<MISSING_SCOPE>, <MISSING_CONDITION>, the app must allow users to share content directly to contacts through the "ChooserTargetService" of Android 6.0.
+<MISSING_SCOPE>, <MISSING_CONDITION>, the app must allow users to share content directly to contacts through the "ChooserTargetService".

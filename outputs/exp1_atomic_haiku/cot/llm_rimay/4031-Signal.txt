@@ -1,1 +1,1 @@
-<MISSING_ACTOR> <MISSING_MODAL_VERB> add an option to cancel running media downloads.
+The System shall add an "option to cancel running media downloads".

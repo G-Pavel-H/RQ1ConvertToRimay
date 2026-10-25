@@ -1,2 +1,2 @@
-<MISSING_SCOPE>, when a "secure message" has been "sent to the server" but not "delivered to the recipient" after some "timeout", then the App must trigger a "lack of delivery" notification to the sender.
+<MISSING_SCOPE>, after a timeout and if the message has been sent but not delivered to the recipient, then the App must send a "lack of delivery" notification to the sender.
 <MISSING_SCOPE>, when the sender receives a "lack of delivery" notification, then the App must offer the user the option to "resend via insecure SMS".

@@ -1,0 +1,2 @@
+<MISSING_SCOPE>, when the App receives a message from a "user-specified phone number" that is blocked, then the App must delete the message upon receipt.
+<MISSING_SCOPE>, when the App receives a message from a "user-specified phone number" that is blocked, then the App must not give a notification.

@@ -1,1 +1,1 @@
-<MISSING_SCOPE> <MISSING_CONDITION> The System shall allow the user to mute a group for a "specified duration in minutes or hours".
+For each group or user, the System must mute the "notifications" for a "user-specified duration in minutes or hours".

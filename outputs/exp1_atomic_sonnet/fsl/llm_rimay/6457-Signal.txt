@@ -1,1 +1,1 @@
-<MISSING_SCOPE>, In the conversation window, <MISSING_CONDITION>, the app must provide only a single way to open and close the "attachment window".
+<MISSING_SCOPE>, <MISSING_CONDITION>, the app must provide only a single control to open and close the "attachment window" in the conversation window.

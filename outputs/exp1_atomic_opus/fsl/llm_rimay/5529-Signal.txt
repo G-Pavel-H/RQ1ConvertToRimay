@@ -1,1 +1,1 @@
-<MISSING_SCOPE>, if the user has not enabled the "passphrase", then Signal must disable "Screen security" by default.
+<MISSING_SCOPE>, if the user does not have a "passphrase" enabled, then Signal must disable the "Screen security" setting by default.

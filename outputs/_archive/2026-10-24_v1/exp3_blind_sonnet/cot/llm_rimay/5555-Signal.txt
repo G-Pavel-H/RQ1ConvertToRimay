@@ -1,0 +1,1 @@
+When a user receives a long validation token or one-time password in a message, then the <MISSING_ACTOR> <MISSING_MODAL_VERB> allow the user to copy "partial text" from the message.

@@ -1,1 +1,1 @@
-For each media item, if the media item has already been saved, then the System shall display the view icon or the share icon to indicate the media item has been saved. <NON_ATOMIC>
+If the media item has already been saved, then the System shall display a "view" or "share" icon, otherwise the System shall display the "save" button.

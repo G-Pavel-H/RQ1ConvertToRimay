@@ -1,0 +1,2 @@
+For all media items, where the item has already been saved to the device gallery, the System shall display a view or share icon to indicate the item has been saved.
+For all media items, where the item has not been saved to the device gallery, the System shall display a save button.

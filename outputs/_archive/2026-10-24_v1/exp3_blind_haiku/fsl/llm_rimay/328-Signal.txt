@@ -1,0 +1,9 @@
+<MISSING_SCOPE>, if the user has enabled the "dummy message" feature, then the App must send "dummy random messages" to random TextSecure contacts at random times.
+<MISSING_SCOPE>, if the user has enabled the "dummy message" feature, then the App must choose recipients randomly from contacts that knowingly use TextSecure.
+<MISSING_SCOPE>, if the user has enabled the "dummy message" feature, then the App must allow the user to define the desired quantity of "dummy messages" (eg max 100 per month, 2 for every legitimate one, max 500 total).
+<MISSING_SCOPE>, if the user is roaming and has not explicitly enabled "dummy messaging" while roaming, then the App must not send "dummy messages".
+<MISSING_SCOPE>, if the battery level is below the threshold defined by the user (eg 30%), then the App must not send "dummy messages".
+<MISSING_SCOPE>, if a recipient has opted out from receiving "dummy messages", then the App must not send "dummy messages" to that recipient.
+<MISSING_SCOPE>, if the user has enabled the extension to send "dummy messages" to non-TextSecure contacts, then the App must send "dummy messages" in clear text with a "default message" or custom explanation.
+<MISSING_SCOPE>, if the user sends a "dummy message" to a non-TextSecure contact, then the App must limit this to a maximum of 1 message per contact per month and only during daytime.
+<MISSING_SCOPE>, <MISSING_CONDITION>, the App must allow recipients to opt-out from receiving "dummy messages" from their peers.

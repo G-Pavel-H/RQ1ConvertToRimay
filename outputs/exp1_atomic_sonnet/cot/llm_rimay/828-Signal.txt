@@ -1,1 +1,1 @@
-<MISSING_SCOPE> <MISSING_CONDITION> The TextSecure groups <MISSING_MODAL_VERB> remove the "participants" from the "group" after the "participants" were added.
+For each TextSecure group, the System shall allow the user to remove a participant from the group after the participant was added.

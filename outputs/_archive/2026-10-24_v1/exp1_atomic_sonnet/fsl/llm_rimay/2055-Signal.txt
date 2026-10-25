@@ -1,0 +1,1 @@
+<MISSING_SCOPE>, <MISSING_CONDITION>, the app must display the "received time" taken from the delivery receipt for outgoing messages in the message details.

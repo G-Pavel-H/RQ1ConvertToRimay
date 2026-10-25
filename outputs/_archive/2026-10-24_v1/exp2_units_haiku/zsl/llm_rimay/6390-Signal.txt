@@ -1,0 +1,2 @@
+When the Signal system sends a secure message to the server but the message has not been delivered to the recipient after some timeout, the Signal system shall trigger a "lack of delivery" notification to the sender's phone.
+When the sender receives a "lack of delivery" notification, the Signal system shall request the sender to confirm whether to resend the message via insecure SMS.

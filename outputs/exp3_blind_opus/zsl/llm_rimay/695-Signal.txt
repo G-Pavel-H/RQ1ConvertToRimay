@@ -1,0 +1,1 @@
+If the "SMS mode" is disabled, then the <MISSING_ACTOR> must not display the "letter count" in the "bottom left corner".

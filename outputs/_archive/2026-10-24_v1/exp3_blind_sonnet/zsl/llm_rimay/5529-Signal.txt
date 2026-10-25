@@ -1,0 +1,1 @@
+For each non-passphrase user, <MISSING_ACTOR> <MISSING_MODAL_VERB> disable the "Screen security" feature by default.

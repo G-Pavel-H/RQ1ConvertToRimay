@@ -1,0 +1,1 @@
+<MISSING_CONDITION> The system shall provide an option to "cancel running media downloads".

@@ -8,7 +8,7 @@ Convert it into exactly **{n_units}** atomic Rimay requirements, one per system 
 2. For each one, identify its **Scope** (otherwise `<MISSING_SCOPE>`), **Condition** (otherwise `<MISSING_CONDITION>`), **Actor** (otherwise `<MISSING_ACTOR>`), **Modal verb** (otherwise `<MISSING_MODAL_VERB>`) and **Action phrase** (otherwise `<MISSING_ACTION>`).
 3. Decide the Rimay pattern (1–10 from the system prompt) for each unit.
 
-After your private reasoning, write the line `Final Rimay:` followed by exactly {n_units} lines, one Rimay requirement per line. Do not include the scratchpad, the component list, or any commentary after `Final Rimay:`.
+After your private reasoning, write the `<rimay>` … `</rimay>` block with exactly {n_units} lines, one Rimay requirement per line. Do not put the scratchpad, the component list, or any commentary inside the block.
 
 ## NL Requirement
 

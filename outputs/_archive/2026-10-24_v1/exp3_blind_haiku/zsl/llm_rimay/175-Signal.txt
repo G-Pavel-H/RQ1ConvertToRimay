@@ -1,0 +1,2 @@
+For the System, when the user activates a button combination, then the System shall display a confirmation dialogue.
+For the System, when the user confirms the wiping action in the confirmation dialogue, then the System shall delete the text message database.

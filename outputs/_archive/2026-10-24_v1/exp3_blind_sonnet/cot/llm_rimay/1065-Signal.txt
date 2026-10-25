@@ -1,0 +1,3 @@
+When the user starts the app for the first time, then the app <MISSING_MODAL_VERB> ask the user to specify the "desired behaviour" from "only use push", "use SMS fallback" and "use as default SMS/MMS-App".
+When the app asks the user to specify the "desired behaviour", then the app <MISSING_MODAL_VERB> display a "what does that mean?" button.
+When the user selects the "what does that mean?" button, then the app <MISSING_MODAL_VERB> open a "pop-up that explains in simple words what every mode does".

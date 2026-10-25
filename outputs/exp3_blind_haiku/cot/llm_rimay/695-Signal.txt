@@ -1,0 +1,1 @@
+If SMS mode is disabled, then the system must not display the letter count at the bottom left corner.

@@ -1,0 +1,3 @@
+<MISSING_SCOPE>, <MISSING_CONDITION>, the App must support a "signal://" custom URL scheme.
+<MISSING_SCOPE>, when a webpage contains a "Signal share button", then the App must handle the "signal://" URL scheme to enable sharing.
+<MISSING_SCOPE>, when a user clicks a "Signal share button" on a webpage, then the App must open and allow the user to send a message.

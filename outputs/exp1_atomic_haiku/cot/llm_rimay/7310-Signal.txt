@@ -1,1 +1,1 @@
-Signal shall support the custom URL scheme "signal://" to enable share buttons on webpages.
+Signal shall add support for the "custom URL scheme signal://" to enable web share buttons.

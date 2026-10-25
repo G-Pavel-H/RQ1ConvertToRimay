@@ -1,1 +1,1 @@
-When the user views a saved media item, the Signal-Android application shall show a view icon or a share icon instead of the save button.
+For each media item, if the media item has already been saved on the device, then the Signal-Android application shall display a "view icon or share icon" instead of the "save button".

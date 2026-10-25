@@ -1,0 +1,1 @@
+<MISSING_SCOPE>, <MISSING_CONDITION>, the App must indicate in the "conversation overview" whether the last message of a conversation is from the user or from the conversation partner.

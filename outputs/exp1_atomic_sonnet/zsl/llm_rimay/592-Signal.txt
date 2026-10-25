@@ -1,1 +1,1 @@
-For all the requests, <MISSING_ACTOR> <MISSING_MODAL_VERB> <MISSING_ACTION>.
+<MISSING_ACTOR> <MISSING_MODAL_VERB> support the "emoji" feature.

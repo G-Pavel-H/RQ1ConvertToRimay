@@ -1,1 +1,1 @@
-The System shall display the image descriptions.
+The System shall display whether an image description exists for each image.

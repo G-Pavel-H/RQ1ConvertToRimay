@@ -1,1 +1,1 @@
-For the Signal application, when an Intent with ACTION_SEND is received, the Signal application shall include the EXTRA_SUBJECT in the shared content along with the EXTRA_TEXT.
+When Signal receives a share Intent with the EXTRA_SUBJECT, then Signal shall include the "EXTRA_SUBJECT" field in addition to the "EXTRA_TEXT" field when processing the shared content.

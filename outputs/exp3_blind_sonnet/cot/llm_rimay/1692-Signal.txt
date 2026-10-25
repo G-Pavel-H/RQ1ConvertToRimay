@@ -1,0 +1,2 @@
+When the System receives a "SMS delivery report", then the System shall save the "time the other user received the message".
+If the "time the other user received the message" is saved, then the System shall display the "time the other user received the message" in the "message details".

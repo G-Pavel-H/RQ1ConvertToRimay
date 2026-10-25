@@ -1,24 +1,36 @@
 # Cross-strategy verdict — exp2_units_sonnet
 
-Model: `claude-opus-5-5` · generated 2026-10-19T00:01:25+01:00 · runs: cot, fsl, zsl
+Model: `claude-opus-5-5` · generated 2026-10-25T20:10:24+00:00 · runs: cot, fsl, zsl
 
-Few-shot is the clear winner on every metric that has support, and on the main ones the gap is too large to be noise. The headline numbers still overstate how much is known, for reasons specific to this gold set.
+## Summary
+FSL is clearly best on every dimension. It flags 89% of genuinely missing slots, against 14% for CoT and 0% for ZSL, and it reaches roughly 90% of the human–human similarity ceiling with a 95% Paska pass rate. These gaps are far larger than noise, even at 42 units from 15 requirements. CoT and ZSL cannot be told apart on conversion quality.
 
-Track 1 can be measured only for scope (42 genuinely missing) and condition (14 missing). Actor, modalVerb and action have zero gold-missing support, so their 0.0 scores mean nothing. Scope is degenerate: it is missing in all 42 requirements, so there are no true negatives. Flagging scope as missing every time is a constant behaviour, which FSL may have copied from its examples without any real judgement. Because scope makes up 42 of the 56 missing cases, it dominates the micro F1 of 0.96. Condition is the only slot that actually discriminates. There FSL flags 12 of 14 with 2 false positives, CoT flags 4 of 14 and ZSL flags none. Even at n=14, 12 versus 0 is decisive and 12 versus 4 is very unlikely to be chance. ZSL is the clearest case of the fabrication risk: it silently fills 55 of 56 missing slots.
+## Missing-slot detection
+Track 1 can be measured only for scope (42 gold-missing) and condition (14). Actor, modalVerb and action have zero support, so their 0.0 scores mean nothing. The overall-verdict F1 is undefined because all 42 gold units are complete.
 
-The overall-verdict P/R/F1 of zero is also an artifact. The gold marks all 42 requirements complete, so only the agreement rate is informative there.
+The strategies fail in opposite directions:
+- **FSL** flags scope as missing almost perfectly (40/42) and condition reasonably (10/14). It fills all 84 implied actor and modal slots.
+- **ZSL and CoT** reverse this. They fill nearly every genuinely missing scope and condition slot (ZSL all 56, CoT 48), yet leave out the implied actor or modal verb in 15 (ZSL) and 18 (CoT) units. Those units are then marked incomplete even though the gold calls them complete.
 
-On Track 2, FSL gets close to the human ceiling: cosine 0.85 against 0.89, and seq_ratio 0.71 against 0.79. CoT and ZSL cannot be told apart (cosine 0.770 vs 0.769). The FSL gain of about 0.08 cosine is roughly five standard errors at 42 requirements, so it is real, even though the 126 pairs are not independent. One caveat matters, though: lexical similarity rewards matching the annotators' phrasing. Few-shot examples written in the same house style will inflate it whether or not the content is right. FSL also hits a maximum of 1.0, meaning at least one output is identical to a human conversion. Check that no few-shot example overlaps with the 42 test items before trusting this.
+Without examples, the model does not seem to understand the Rimay slot convention. CoT reasoning makes this worse, not better. A 0% flag rate on scope may partly be a scoring artefact if ZSL left scope empty without an explicit "missing" marker. That needs checking before anyone calls it fabrication.
 
-On Paska, FSL (38/42) against ZSL (34/42) is within noise.
+## Conversion quality
+On all three similarity measures, FSL comes within about 0.05–0.08 of the human–human ceiling (sequence ratio 0.71 vs 0.79). ZSL and CoT trail FSL by about 0.07–0.15 and differ from each other by less than one standard deviation.
 
-CoT has a distinct failure mode the others lack. It flags implied slots as missing (actor 15 times, modalVerb 21 times) while missing most of the genuinely absent scope, so it is cautious about the wrong slots. Its 21 "incomplete" verdicts coincide with all 21 modalVerb flags and every one of them fails Paska. The resulting smells are "Not requirement", "Incomplete requirement" and "Incomplete system response". This looks like an output-contract problem: when CoT decides something is missing, it seems to drop "shall" and emit a non-requirement. On the 21 outputs it considered complete, its Paska pass rate (86%) matches the other strategies. The reqIds behind these patterns are not in the data provided, so I cannot point to specific examples; pulling the 21 CoT incomplete cases is the obvious first inspection.
+Most of the Paska gap traces back to the dropped actor and modal slots. CoT's incomplete outputs pass 0/18, mostly with "Not requirement" and "Incomplete requirement" smells. Restricted to outputs the LLM itself judged complete, the pass rates are close: CoT 0.79, ZSL 0.81, FSL 0.95.
 
-FSL and ZSL each produce two "Non-atomic requirement" smells, even though the inputs were filtered to be atomic. That suggests the conversion itself sometimes adds coordinated content, which is worth checking, though two cases is too few to claim anything. None of this generalises to unfiltered requirements.
+## Units and atomicity
+All strategies returned exactly the requested number of units for all 15 requirements. Non-atomic detection is trivially perfect because the prompt states the count, so it tells us nothing here. There are no count disagreements between strategies.
 
-Next steps:
-1. Audit the gold labels. A uniform "scope missing, actor and modal implied" pattern on every item looks like a default rather than per-item judgement.
-2. Check for few-shot leakage into the test set.
-3. Change the CoT output contract so it always emits a well-formed Rimay requirement plus a separate missing-slot field.
-4. Rerun with several seeds and bootstrap confidence intervals.
-5. Add items where actor or modalVerb is genuinely missing, so those slots become measurable.
+The strategies differ only in unit ordering: CoT reordered units in 4 requirements, FSL in 3, ZSL in 1.
+
+## Anomalies and inconsistencies
+- **Missing actor/modal (ZSL, CoT):** 15 and 18 units respectively lack an implied actor or modal verb. The output does not identify which reqIds, so these need to be extracted.
+- **Unit reordering:** CoT 4, FSL 3, ZSL 1. If unit-to-gold alignment is positional, this could depress similarity scores, so verify how matching is done.
+- **Possible scoring artefact:** ZSL's 0% scope flag rate may reflect an empty-but-unmarked scope being scored as filled.
+- No format breaches or Paska errors in any strategy.
+
+## Next step
+- Read the ZSL and CoT outputs for the 15 and 18 incomplete units. Confirm whether "silently filled" scope means invented text or simply an empty field.
+- Check that unit matching is content-based rather than positional, then rescore if it is positional.
+- Add to the ZSL and CoT prompts the instruction that actor and modal are always required and scope is optional, then re-run to see whether the gap to FSL closes.

@@ -1,0 +1,3 @@
+The System shall include the "archive" flag and the "blocked" flag of each message in the ".xml backup".
+When the System imports messages from an ".xml backup", then the System shall place each previously archived message in the "archive" folder.
+When the System imports messages from an ".xml backup", then the System shall restore the "blocked" flag of each previously blocked message.

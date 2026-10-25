@@ -1,1 +1,1 @@
-TextSecure <MISSING_MODAL_VERB> support "themes".
+<MISSING_CONDITION> The TextSecure application shall support "themes".

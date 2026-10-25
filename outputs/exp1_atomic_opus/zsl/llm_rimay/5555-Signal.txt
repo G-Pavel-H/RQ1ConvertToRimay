@@ -1,1 +1,1 @@
-<MISSING_ACTOR> <MISSING_MODAL_VERB> allow the "copying of partial text" from a "message".
+The <MISSING_ACTOR> <MISSING_MODAL_VERB> allow the "copying of partial text" from a "message".

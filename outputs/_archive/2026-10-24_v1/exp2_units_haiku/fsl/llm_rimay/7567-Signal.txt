@@ -1,0 +1,2 @@
+For the App, when the user enables "SMS support" in Signal, then the App must use "Android notification profile" for "regular SMS/MMS".
+For the App, when the user receives a "secure message" or "call" in Signal, then the App must use "Signal notification settings" for that "secure message" or "call".

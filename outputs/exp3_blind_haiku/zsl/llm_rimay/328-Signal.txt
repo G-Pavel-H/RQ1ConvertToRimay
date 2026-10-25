@@ -1,0 +1,8 @@
+For each user, if the user has enabled dummy message generation, then the system shall generate a dummy random message to a randomly selected contact that uses TextSecure.
+For each user, if the user has enabled dummy message generation, then the system shall present a configuration interface to the user to define maximum dummy messages per month, ratio of dummy to legitimate messages, and maximum total message count.
+For each user, if the user has enabled dummy message generation and roaming is enabled, then the system shall send dummy messages during roaming periods.
+For each user, if the user has enabled dummy message generation and battery level is below a defined threshold, then the system shall not send dummy messages.
+For each recipient, if the recipient has opted out of receiving dummy messages, then the system shall exclude the recipient from dummy message recipient selection.
+For each user, if the user has enabled dummy message generation and promotional mode is enabled, then the system shall send a dummy message in clear text to a randomly selected contact that does not use TextSecure.
+For each dummy message, if obfuscation mode is enabled, then the system shall include randomly selected peer phone numbers from participating users in the dummy message payload.
+For each user, if the user has opted out of dummy messaging participation, then the system shall disseminate the opt-out status through dummy message channels or by setting a time-to-live value on the user's phone number.

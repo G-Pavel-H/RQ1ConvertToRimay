@@ -1,2 +1,2 @@
-After some timeout measured in minutes, then Signal must detect that the secure message has been sent but not delivered to the recipient.
-When a secure message has been sent but not delivered after some timeout, then Signal must send a "lack of delivery" notification to the sender offering to resend via insecure SMS.
+When a secure message has been sent to the server but not delivered to the recipient after some timeout, the System shall send a "lack of delivery" notification to the sender's phone.
+The notification shall present a prompt to the sender asking "Would you like to resend via insecure SMS?".

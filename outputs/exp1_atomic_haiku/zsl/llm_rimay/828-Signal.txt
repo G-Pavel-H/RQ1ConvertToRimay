@@ -1,1 +1,1 @@
-For each TextSecure group, when a participant has been added, the group administrator shall be able to remove the participant from the group.
+For TextSecure groups, the Administrator must remove a participant from the group.

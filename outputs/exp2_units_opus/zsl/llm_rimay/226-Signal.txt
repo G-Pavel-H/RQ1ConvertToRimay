@@ -1,2 +1,2 @@
-TextSecure <MISSING_MODAL_VERB> provide the option to edit "any message" from the "Android Context Menu".
-TextSecure <MISSING_MODAL_VERB> provide the ability to insert a "new message" next to the "edited message".
+TextSecure <MISSING_MODAL_VERB> provide an "option to edit any message" in the "Android Context Menu".
+TextSecure <MISSING_MODAL_VERB> provide an "option to insert a new message next to an existing message".

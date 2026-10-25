@@ -1,0 +1,1 @@
+<MISSING_SCOPE>, when the calling screen shows a "contact photo" during a call, then the App must show the "contact photo" in full resolution.

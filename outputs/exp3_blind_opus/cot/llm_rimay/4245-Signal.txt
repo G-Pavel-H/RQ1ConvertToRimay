@@ -1,0 +1,1 @@
+<MISSING_SCOPE>, while a call is in progress, then Signal <MISSING_MODAL_VERB> display the "full resolution contact photo" on the "calling screen".

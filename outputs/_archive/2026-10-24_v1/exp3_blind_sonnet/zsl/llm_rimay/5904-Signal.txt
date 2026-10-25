@@ -1,0 +1,2 @@
+<MISSING_SCOPE> <MISSING_CONDITION> <MISSING_ACTOR> <MISSING_MODAL_VERB> include the "archived flag" of each message in the ".xml backup".
+<MISSING_SCOPE> <MISSING_CONDITION> <MISSING_ACTOR> <MISSING_MODAL_VERB> include the "blocked flag" of each conversation in the ".xml backup".

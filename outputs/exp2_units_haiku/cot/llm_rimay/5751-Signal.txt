@@ -1,2 +1,2 @@
-After the user swipes away the notification, then the System shall not display the notification.
-When another message is received from the same contact or number, then the System shall display a new notification for the new message.
+When the user swipes away a notification, the Signal application shall not redisplay the notification.
+When a new message arrives from the same contact, the Signal application shall display a new notification for the received message.

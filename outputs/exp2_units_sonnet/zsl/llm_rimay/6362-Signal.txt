@@ -1,4 +1,4 @@
-For all the contacts, the Signal app must display a "pie chart that indicates how many of the contacts are on Signal".
-For all the messages, the Signal app must display a "pie chart that indicates how many of the sent messages are encrypted".
-When the user taps an element of the pie chart, then the Signal app must display a "list of people in that category".
-Where the app has gamification, when most but not all of the contacts are using Signal, then the Signal app must display a "message such as 'Almost there!'".
+The Signal app shall display a screen showing a "pie chart" that indicates how many of the user's contacts are on Signal.
+The Signal app shall display a "pie chart" that indicates how many of the messages the user sends are encrypted.
+When the user taps an element of the "pie chart", then the Signal app shall display a "list of people in the tapped category".
+Where gamification is available, when most but not all of the user's contacts are using Signal, then the Signal app shall display a message such as "Almost there! __".

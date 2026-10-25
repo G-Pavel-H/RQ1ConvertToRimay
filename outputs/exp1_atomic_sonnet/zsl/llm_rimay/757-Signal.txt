@@ -1,1 +1,1 @@
-For group chats, the <MISSING_ACTOR> <MISSING_MODAL_VERB> allow the user to "change the notification settings for group chats independently from personal chats".
+For all the group chats, the System shall allow the user to change the "notification settings" independently from the "personal chats".

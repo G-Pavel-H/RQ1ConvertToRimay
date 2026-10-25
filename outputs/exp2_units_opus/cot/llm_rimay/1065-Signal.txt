@@ -1,2 +1,2 @@
-For <MISSING_SCOPE>, when the app performs the "first start", then the app <MISSING_MODAL_VERB> request the user to "specify the desired behaviour" from the options "only use push", "use SMS fallback" and "use as default SMS/MMS-App".
-For <MISSING_SCOPE>, when the user clicks the "what does that mean?" button, then the app <MISSING_MODAL_VERB> open a "pop-up that explains in simple words what every mode does".
+<MISSING_SCOPE> When the user starts the app for the first time, then the app <MISSING_MODAL_VERB> ask the user to specify the "desired behaviour" from "only use push", "use SMS fallback" and "use as default SMS/MMS-App" right before or after "setting the passphrase".
+<MISSING_SCOPE> When the user selects the "what does that mean?" button, then the app <MISSING_MODAL_VERB> open a "pop-up that explains in simple words what every mode does".

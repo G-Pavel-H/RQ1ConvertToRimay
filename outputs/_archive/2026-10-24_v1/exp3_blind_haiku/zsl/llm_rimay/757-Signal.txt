@@ -1,0 +1,1 @@
+For each group chat, the User shall change the notification settings independently from the notification settings for personal chats.

@@ -1,1 +1,1 @@
-For <MISSING_SCOPE>, <MISSING_CONDITION>, the app must provide a "view from timeline" feature to allow users to see new posts and discover potential friends.
+<MISSING_SCOPE>, <MISSING_CONDITION>, the app must display a timeline view with trending posts and real-time updates about what other users are doing.

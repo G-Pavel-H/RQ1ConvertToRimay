@@ -1,0 +1,1 @@
+TextSecure shall support the addition of a short signature below SMS messages.

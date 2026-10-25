@@ -1,0 +1,1 @@
+For all the "incoming SMS from a certain contact", <MISSING_ACTOR> <MISSING_MODAL_VERB> forward the "incoming SMS" to "another contact".

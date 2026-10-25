@@ -1,0 +1,1 @@
+When an Intent is sent to Signal with an EXTRA_SUBJECT, then Signal shall use the "EXTRA_SUBJECT portion of the Intent" when sharing the Intent.

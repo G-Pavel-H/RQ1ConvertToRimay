@@ -1,3 +1,3 @@
 <MISSING_SCOPE>, <MISSING_CONDITION>, the App must let the user block a "user-specified phone number".
-<MISSING_SCOPE>, when the App receives a "message" from a "blocked phone number", then the App must delete the "message".
-<MISSING_SCOPE>, when the App receives a "message" from a "blocked phone number", then the App must not show a "notification".
+<MISSING_SCOPE>, when the App receives a message from a "blocked phone number", then the App must delete the message.
+<MISSING_SCOPE>, when the App receives a message from a "blocked phone number", then the App must not show a "notification".

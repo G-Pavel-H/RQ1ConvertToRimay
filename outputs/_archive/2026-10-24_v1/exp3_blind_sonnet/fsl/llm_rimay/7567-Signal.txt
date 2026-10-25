@@ -1,0 +1,2 @@
+<MISSING_SCOPE>, if Signal is the default SMS manager, then Signal must use the Android notification settings for regular SMS/MMS.
+<MISSING_SCOPE>, if Signal is the default SMS manager, then Signal must use the Signal notification settings for secure messages and calls only.

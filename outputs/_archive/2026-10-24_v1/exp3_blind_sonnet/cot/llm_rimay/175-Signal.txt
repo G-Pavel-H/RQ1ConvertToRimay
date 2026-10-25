@@ -1,0 +1,3 @@
+<MISSING_SCOPE> <MISSING_CONDITION> <MISSING_ACTOR> <MISSING_MODAL_VERB> provide a "button combo" to wipe the "text message database".
+<MISSING_SCOPE> When the user enters the "button combo", <MISSING_ACTOR> <MISSING_MODAL_VERB> display a "confirmation dialogue".
+<MISSING_SCOPE> When the user confirms the "confirmation dialogue", <MISSING_ACTOR> <MISSING_MODAL_VERB> wipe the "text message database".

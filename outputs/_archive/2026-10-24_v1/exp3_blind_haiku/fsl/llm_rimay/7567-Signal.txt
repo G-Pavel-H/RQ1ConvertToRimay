@@ -1,0 +1,3 @@
+<MISSING_SCOPE>, when Signal is set as the default SMS manager, then the App must use Android notification settings for regular SMS/MMS.
+<MISSING_SCOPE>, when Signal receives a secure message or call, then the App must use Signal notification settings for that secure message or call.
+<MISSING_SCOPE>, if the user has configured different ringtones in Android settings and Signal settings, then the App must enforce the Android notification profile ringtone for regular SMS/MMS and the Signal ringtone for secure messages.

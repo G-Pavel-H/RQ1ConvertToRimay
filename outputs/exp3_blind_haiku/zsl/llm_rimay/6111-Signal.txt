@@ -1,0 +1,4 @@
+For the image gallery, the System shall enable a user to multiselect images and delete the selected images.
+When an image is opened, the System shall provide a delete option in the opened image view.
+When the user initiates deletion of an image or images in the gallery mode, the System shall display a confirmation dialog requesting confirmation before proceeding with deletion.
+When the user deletes an image from the gallery mode or from the opened image view, the System shall preserve and indicate the associated message text to the user.

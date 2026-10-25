@@ -1,0 +1,1 @@
+The Mastodon-Android <MISSING_MODAL_VERB> display the timeline with trending posts.

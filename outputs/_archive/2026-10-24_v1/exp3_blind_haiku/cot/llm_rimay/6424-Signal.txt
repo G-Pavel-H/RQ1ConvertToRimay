@@ -1,0 +1,1 @@
+If the user enters a phone number in any format including full international number, national format, or partial number with area code, then the system shall search for non-contacts by prepending the calling code of the current user's phone number and the calling code corresponding to the default region of the current device to enable matching across multiple input formats.

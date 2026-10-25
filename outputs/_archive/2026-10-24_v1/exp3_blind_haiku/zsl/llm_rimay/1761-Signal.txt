@@ -1,0 +1,1 @@
+The System shall automatically forward all incoming SMS from a certain contact to another contact.

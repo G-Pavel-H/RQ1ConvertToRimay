@@ -1,0 +1,3 @@
+<MISSING_SCOPE>, <MISSING_CONDITION>, the app must provide a view of the "timeline" that shows "posts" from other users.
+<MISSING_SCOPE>, <MISSING_CONDITION>, the app must display "trending posts" so that the user can know what people are discussing.
+<MISSING_SCOPE>, when the user views a "post" from the "timeline", then the app must allow the user to navigate back to the "timeline".

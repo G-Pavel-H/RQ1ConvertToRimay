@@ -1,0 +1,2 @@
+When the user long-presses a "received message", then Signal <MISSING_MODAL_VERB> display the "acknowledge message" option.
+When the user selects the "acknowledge message" option for a "received message", then Signal <MISSING_MODAL_VERB> replace the "received" indicator with an "acknowledgement" indicator for the "message" to the conversation partner.

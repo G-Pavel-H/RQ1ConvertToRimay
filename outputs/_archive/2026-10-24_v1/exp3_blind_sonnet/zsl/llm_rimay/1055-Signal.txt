@@ -1,0 +1,6 @@
+The message-list shall automatically move the message drafts to the top of the message-list.
+Reading this as two system responses (move to top, mark), the output in Rimay is:
+<MISSING_SCOPE> <MISSING_CONDITION> The <MISSING_ACTOR> <MISSING_MODAL_VERB> ...
+Correction: output only the requirements, one per line, with placeholders where the source gives no information.
+<MISSING_ACTOR> <MISSING_MODAL_VERB> move the "message drafts" to the "top of the message-list".
+<MISSING_ACTOR> <MISSING_MODAL_VERB> mark the "message drafts" by using "another color or a text 'Draft'".

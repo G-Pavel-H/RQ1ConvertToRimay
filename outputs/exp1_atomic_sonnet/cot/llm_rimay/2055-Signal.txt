@@ -1,1 +1,1 @@
-For all the outgoing messages, when the user selects the info button after long pressing on a message, then the system shall display the received time for the message by taking the sent time from the delivery receipt. <NON_ATOMIC>
+When the user selects the "info button" after long pressing on a message, then <MISSING_ACTOR> <MISSING_MODAL_VERB> display the "received time" for the "outgoing messages" by using the "delivery receipt". <NON_ATOMIC>

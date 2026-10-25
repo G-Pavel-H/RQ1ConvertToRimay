@@ -94,6 +94,17 @@ def align(manifest: Dict[str, dict], gold: Dict[str, GoldRecord]) -> Tuple[Dict[
             "extraLlmUnits": [units[i]["rimay"] for i in range(m) if i not in used],
         })
 
+    # Non-atomicity detection (meaningful in experiment 3, where the model is not
+    # told): positive = the gold has more than one unit; predicted = it returned more than one.
+    det = {"tp": 0, "fp": 0, "fn": 0, "tn": 0}
+    for r in per_req:
+        gold_split, llm_split = r["expected"] > 1, r["returned"] > 1
+        det[("t" if gold_split == llm_split else "f") + ("p" if llm_split else "n")] += 1
+    prec = det["tp"] / (det["tp"] + det["fp"]) if det["tp"] + det["fp"] else None
+    rec = det["tp"] / (det["tp"] + det["fn"]) if det["tp"] + det["fn"] else None
+    det.update(precision=prec, recall=rec,
+               f1=(2 * prec * rec / (prec + rec) if prec and rec else (0.0 if rec is not None else None)))
+
     info = {
         "alignment": "max summed similarity to the annotators' units (cosine, seq_ratio fallback)",
         "requirements": len(per_req),
@@ -101,6 +112,7 @@ def align(manifest: Dict[str, dict], gold: Dict[str, GoldRecord]) -> Tuple[Dict[
         "expectedUnits": sum(r["expected"] for r in per_req),
         "returnedUnits": sum(r["returned"] for r in per_req),
         "reordered": sum(r["reordered"] for r in per_req),
+        "nonAtomicDetection": det,
         "perRequirement": per_req,
     }
     return out, info

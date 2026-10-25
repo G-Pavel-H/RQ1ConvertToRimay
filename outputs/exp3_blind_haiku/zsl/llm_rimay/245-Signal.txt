@@ -1,0 +1,1 @@
+For <MISSING_SCOPE>, when the User installs TextSecure on a dual SIM mobile device, then the System shall indicate to which SIM the message is sent.
