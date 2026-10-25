@@ -113,6 +113,25 @@ ul.anl{margin:6px 0;padding-left:18px;font-size:13px}ul.anl li{margin:2px 0}deta
 .filters button{font:inherit;font-size:12px;border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:6px;padding:3px 9px;cursor:pointer}
 .filters button.on{background:var(--accent-soft);color:var(--accent);border-color:var(--accent)}
 .filters input{font:inherit;font-size:12px;border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:6px;padding:3px 9px;min-width:200px}
+/* prompt pages */
+.pm{font-size:13px;line-height:1.55;max-width:980px}
+.pm h1{font-size:16px;margin:4px 0 8px}.pm h2{font-size:14.5px;margin:18px 0 6px;padding-top:10px;border-top:1px solid var(--line)}
+.pm h3{font-size:13.5px;margin:14px 0 4px}.pm h4{font-size:13px;margin:10px 0 4px;color:var(--muted)}
+.pm p{margin:0 0 8px}.pm ul,.pm ol{margin:0 0 8px;padding-left:22px}.pm li{margin:1px 0}
+.pm pre{background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:8px 10px;overflow-x:auto;font:12px/1.45 ui-monospace,SFMono-Regular,Menlo,monospace;margin:0 0 10px;white-space:pre-wrap}
+.pm table{width:auto;margin:0 0 10px}.pm td,.pm th{border:1px solid var(--line)}
+.pm .rb{background:var(--ok-soft);border-left:3px solid var(--ok);border-radius:4px;padding:6px 10px;margin:2px 0 10px;font:12px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;white-space:pre-wrap;word-break:break-word}
+.pm .rb .rt{color:var(--ok);font-weight:600}
+.pm .ph{color:var(--bad);font-weight:600}
+.pm .nl{background:var(--accent-soft);border-left:3px solid var(--accent);border-radius:4px;padding:6px 10px;margin:2px 0 10px}
+.pm .ex{border:1px solid var(--line);border-radius:8px;padding:8px 12px;margin:0 0 10px}
+.pplain{font:12px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;white-space:pre-wrap;word-break:break-word;background:var(--soft);border-radius:6px;padding:10px 12px;max-width:980px}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:7px;overflow:hidden}.seg a,.seg button{padding:3px 12px;font-size:12.5px;border:0;background:var(--panel);color:var(--ink);cursor:pointer}
+.seg a+a,.seg button+button{border-left:1px solid var(--line)}.seg .on{background:var(--accent-soft);color:var(--accent);font-weight:600}.seg a:hover{text-decoration:none;background:var(--soft)}
+.toc{display:flex;flex-wrap:wrap;gap:4px 6px;margin:4px 0 8px}.toc a{font-size:11.5px;border:1px solid var(--line);border-radius:5px;padding:0 7px;color:var(--muted)}
+.ptools{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:0 0 8px}
+.ptools select{font:inherit;font-size:12.5px;border:1px solid var(--line);border-radius:6px;padding:2px 6px;background:var(--panel);color:var(--ink);max-width:420px}
+.ptools button.b{font-size:12px;border:1px solid var(--line);border-radius:6px;padding:2px 9px;background:var(--panel);color:var(--ink);cursor:pointer}
 .md h1,.md h2{font-size:15px;margin:12px 0 4px}.md h3{font-size:13.5px;margin:10px 0 4px}
 .md p{margin:0 0 8px;max-width:900px}.md ul{margin:0 0 8px;padding-left:20px}
 #tip{position:fixed;display:none;pointer-events:none;z-index:20;max-width:340px;background:var(--ink);color:var(--bg);
@@ -354,7 +373,10 @@ function unitsTable(runs) {
 const anomChip = r => { const a = r && r.M.anom; if (!a) return r ? `<span class="hint">—</span>` : "";
   if (!a.affected) return `<span class="hint">0</span>`;
   return `<a class="chip bad" href="${href("run", r.batch, r.strat)}" data-tip="${esc(Object.entries(a.counts).map(([k, v]) => `${v} × ${a.kinds[k]}`).join("; "))}">${a.affected}</a>`; };
-const reqLink = (e, id) => `<a href="${href("req", e, e >= 2 ? id + "#1" : id)}">${esc(id)}</a>`;
+// Experiment 3 anomalies concern the whole requirement: open it in the anomaly viewer.
+const anomHref = id => `anomalies.html#/${encodeURIComponent(id.split("#")[0])}`;
+const unitAnom = id => String(id).includes("#") ? ` <a href="${anomHref(id)}">Open in the anomaly viewer</a>.` : "";
+const reqLink = (e, id) => e === 3 ? `<a href="${anomHref(id)}">${esc(id)}</a>` : `<a href="${href("req", e, e >= 2 ? id + "#1" : id)}">${esc(id)}</a>`;
 function anomalyItems(r) {
   const a = r.M.anom; if (!a || !a.items.length) return `<p class="hint">None.</p>`;
   return `<ul class="anl">${a.items.map(i => `<li><span class="tag inc">${esc(i.kind.replace(/_/g, " "))}</span> ${reqLink(r.exp, i.reqId)}${i.detail ? ` <span class="hint">${esc(i.detail)}</span>` : ""}</li>`).join("")}</ul>`;
@@ -458,7 +480,7 @@ function slotChips(q) {
   return `<div class="slots">${SLOTS.map(s => `<span class="chip ${q.slot_match[s] ? "ok" : "bad"}" data-tip="${esc(`${SLOT_LABEL[s]}: gold ${q.gold_slots[s]}, model ${q.llm_slots[s]}`)}">${q.slot_match[s] ? "✓" : "✗"} ${SLOT_LABEL[s]}</span>`).join("")}</div>`;
 }
 function reqBody(q, withHumans = true) {
-  return `<div><p class="lab-s">Model Rimay</p><div class="mono">${esc(q.llm_rimay || "(no unit returned)")}</div></div>
+  return `<div><p class="lab-s">Model Rimay</p><div class="mono">${q.llm_rimay ? esc(q.llm_rimay) : `<span class="hint">No model line aligned to this gold unit — the model merged or split the requirement differently.${unitAnom(q.reqId)}</span>`}</div></div>
     ${slotChips(q)}
     <div class="hint">Verdict: gold <b>${q.gold_overall ? "incomplete" : "complete"}</b>, model <b>${q.llm_overall ? "incomplete" : "complete"}</b> ·
       cosine to humans ${f3(q.similarity.cosine_mean)} (max ${f3(q.similarity.cosine_max)}) · seq_ratio ${f3(q.similarity.seq_ratio_mean)} ·
@@ -498,7 +520,7 @@ function viewExp(e) {
       <div class="tile"><b>${hh ? f3(hh.M.hhCos) : "—"}</b><span>human ↔ human cosine</span><small>median, the ceiling to compare against</small></div>
       <div class="tile"><b>${runs.length}</b><span>runs scored</span><small>of 9</small></div>
     </div>
-    <div class="card"><h3>Scoreboard</h3>${scoreboard(e)}</div>
+    <p class="hint" style="margin:-8px 0 12px"><a href="${href("prompts", e)}">See the prompts sent →</a></p><div class="card"><h3>Scoreboard</h3>${scoreboard(e)}</div>
     <div class="card"><h3>Models compared, per strategy</h3><p class="hint">Each dot is one run; click it to open the run. Values are in the scoreboard above.</p>${comparePanels(e)}</div>
     <div class="cols">
       <div class="card"><h3>Gold-missing slots the model flagged</h3><p class="hint">flagged / gold-missing, per slot. Scope and condition carry nearly all the support — read the others with their n in mind.</p>${slotTable(runs, "missing")}</div>
@@ -514,7 +536,7 @@ function viewExp(e) {
       ${e === 3 ? `<div class="card"><h3>Unit counts</h3>${unitsTable(runs)}</div>` : ""}
     </div>
     ${e === 3 ? `<div class="card" style="margin-top:14px"><h3>Did the model spot the non-atomic requirements?</h3>${detectionTable(runs)}</div>` : ""}
-    <div class="card" style="margin-top:14px"><h3>Anomalies</h3><p class="hint">What the models returned that breaks the expected shape. Each is listed with its requirement.</p>${anomalyTable(runs)}</div>
+    <div class="card" style="margin-top:14px"><h3>Anomalies</h3><p class="hint">What the models returned that breaks the expected shape. Each is listed with its requirement.${e === 3 ? ` <b><a href="anomalies.html">Open the anomaly viewer</a></b>: every requirement across the 9 runs, gold units against model lines, full replies.` : ""}</p>${anomalyTable(runs)}</div>
     ${e >= 2 ? `<div class="card" style="margin-top:14px"><h3>Unit counts that miss the gold or disagree between runs</h3>${countMatrix(e)}</div>` : ""}
     <div class="card" style="margin-top:14px"><h3>Every ${esc(X.unit)} × every run</h3>${matrix(e)}</div>
     ${MODELS.map(m => { const b = batchOf(e, m); return DATA.batchVerdicts[b]
@@ -587,7 +609,7 @@ function drawReqList() {
   $("#rqn").textContent = `${list.length} of ${r.requirements.length}`;
   host.innerHTML = list.map(q => `<details class="rq"><summary><span><a href="${href("req", r.exp ?? "b:" + r.batch, q.reqId)}">${esc(q.reqId)}</a>
       ${q.gold_overall ? `<span class="tag inc">incomplete</span>` : ""}</span>
-      <span class="mono" style="font-size:11.5px">${esc(q.llm_rimay || "(no unit returned)")}</span>
+      <span class="mono" style="font-size:11.5px">${q.llm_rimay ? esc(q.llm_rimay) : `<span class="hint">no model line aligned (see the anomaly viewer)</span>`}</span>
       <span class="slots">${SLOTS.map(s => `<i class="sw" style="border-radius:2px;background:var(--${q.slot_match[s] ? "ok" : "bad"})" data-tip="${esc(SLOT_LABEL[s] + (q.slot_match[s] ? " right" : " wrong"))}"></i>`).join("")}
         ${q.verdict_match ? "" : `<span class="chip bad">verdict</span>`}${q.paska_passed === false ? `<span class="chip bad">Paska</span>` : ""}</span></summary>
     <div class="body">${reqBody(q)}</div></details>`).join("") || `<p class="hint">Nothing matches.</p>`;
@@ -610,13 +632,92 @@ function viewReq(expKey, id) {
       ${rows.map(({r, q}) => `<div class="rq" style="padding:10px 0"><p style="margin:0 0 6px">${runLabel(r)}</p><div class="body" style="padding:0">${reqBody(q, false)}</div></div>`).join("")}</div>`;
 }
 
+// ---------- prompts ----------
+// Fuller markdown for the prompts: headings, fences, tables, lists, <rimay> blocks, NL lines; <MISSING_*> placeholders highlighted.
+function pmInline(t) {
+  return esc(t).replace(/`([^`]+)`/g, "<code>$1</code>").replace(/\*\*([^*]+)\*\*/g, "<b>$1</b>")
+    .replace(/(^|[^*])\*([^*\s][^*]*)\*/g, "$1<i>$2</i>").replace(/&lt;MISSING_[A-Z_]+&gt;/g, m => `<span class="ph">${m}</span>`);
+}
+// "Request Number - 802 | Request Title - … | Request Description - …" → labelled fields.
+function nlBox(t, label) {
+  const parts = String(t).split(/\s\|\s(?=Request (?:Title|Description) - )/), f = parts.map(x => x.match(/^Request (Number|Title|Description) - ([\s\S]*)$/));
+  const body = f.every(Boolean) ? f.map(m => `<div><b>${m[1]}</b> ${pmInline(m[2])}</div>`).join("") : pmInline(t);
+  return `<div class="nl">${label ? `<div class="hint" style="font-weight:600">${label}</div>` : ""}${body}</div>`;
+}
+function pmRender(text, slugPrefix) {
+  const L = String(text || "").split("\n"), out = []; let i = 0, para = [];
+  const flush = () => { if (para.length) { out.push(`<p>${para.map(pmInline).join("<br>")}</p>`); para = []; } };
+  const slug = h => slugPrefix + "-" + h.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+  while (i < L.length) {
+    const l = L[i], t = l.trim();
+    if (t.startsWith("```")) { flush(); const buf = []; i++; while (i < L.length && !L[i].trim().startsWith("```")) buf.push(L[i++]); i++;
+      out.push(`<pre>${esc(buf.join("\n")).replace(/&lt;MISSING_[A-Z_]+&gt;/g, m => `<span class="ph">${m}</span>`)}</pre>`); continue; }
+    if (t === "<rimay>") { flush(); const buf = []; i++; while (i < L.length && L[i].trim() !== "</rimay>") buf.push(L[i++]); i++;
+      out.push(`<div class="rb"><span class="rt">&lt;rimay&gt;</span>\n${buf.map(pmInline).join("\n")}\n<span class="rt">&lt;/rimay&gt;</span></div>`); continue; }
+    const h = t.match(/^(#{1,4})\s+(.*)/);
+    if (h) { flush(); const n = h[1].length; out.push(`<h${n} id="${slug(h[2])}">${pmInline(h[2])}</h${n}>`); i++;
+      if (/^NL Requirement/i.test(h[2])) { const buf = []; while (i < L.length && !/^#{1,4}\s/.test(L[i].trim())) buf.push(L[i++]);
+        out.push(nlBox(buf.join(" ").trim(), "The requirement converted")); }
+      else if (/^Rimay Output/i.test(h[2]) && !L.slice(i).some(x => x.trim())) out.push(`<p class="hint">↳ The model's answer starts here.</p>`);
+      continue; }
+    if (/^\|.*\|$/.test(t)) { flush(); const rows = []; while (i < L.length && /^\|.*\|$/.test(L[i].trim())) rows.push(L[i++].trim());
+      const cells = r => r.slice(1, -1).split("|").map(c => c.trim()), body = rows.filter(r => !/^\|[\s:|-]+\|$/.test(r));
+      out.push(`<table><tr>${cells(body[0]).map(c => `<th>${pmInline(c)}</th>`).join("")}</tr>${body.slice(1).map(r => `<tr>${cells(r).map(c => `<td>${pmInline(c)}</td>`).join("")}</tr>`).join("")}</table>`); continue; }
+    if (/^\s*([-*]|\d+\.)\s+/.test(l)) { flush(); const ord = /^\s*\d+\./.test(l), items = [];
+      while (i < L.length && /^\s*([-*]|\d+\.)\s+/.test(L[i])) { let it = L[i++].replace(/^\s*([-*]|\d+\.)\s+/, "");
+        while (i < L.length && /^\s{2,}\S/.test(L[i]) && !/^\s*([-*]|\d+\.)\s+/.test(L[i])) it += " " + L[i++].trim(); items.push(it); }
+      out.push(`<${ord ? "ol" : "ul"}>${items.map(x => `<li>${pmInline(x)}</li>`).join("")}</${ord ? "ol" : "ul"}>`); continue; }
+    if (/^NL:\s/.test(t)) { flush(); out.push(nlBox(t.slice(3).trim(), "NL")); i++; continue; }
+    if (/^Example \d+:$/.test(t)) { flush(); out.push(`<h4>${esc(t.slice(0, -1))}</h4>`); i++; continue; }
+    if (!t) { flush(); i++; continue; }
+    para.push(l); i++;
+  }
+  flush();
+  return out.join("");
+}
+const pmToc = (text, pre) => `<div class="toc">${[...String(text).matchAll(/^##\s+(.*)$|^###\s+(.*)$/gm)].map(m => { const h = m[1] || m[2];
+  return `<a href="javascript:void 0" onclick="document.getElementById('${pre}-${h.toLowerCase().replace(/[^a-z0-9]+/g, "-")}')?.scrollIntoView({behavior:'smooth'})" style="${m[2] ? "opacity:.8" : "font-weight:600"}">${esc(h)}</a>`; }).join("")}</div>`;
+let promptPlain = false;
+function viewPrompts(e, strat, req) {
+  const X = EXPS[e], P = (DATA.prompts || {})[String(e)] || {};
+  const strats = STRATS.filter(s => P[s]); strat = strats.includes(strat) ? strat : strats[0];
+  const crumbs = `<div class="crumbs"><a href="#/">Overview</a> › <a href="${href("exp", e)}">${esc(X.short)}</a> › Prompts</div>`;
+  if (!strat) return `${crumbs}<h2>Prompts — ${esc(X.title)}</h2><div class="card">No prompts found in MLflow (<code>mlruns/</code>) for this experiment.</div>`;
+  const p = P[strat], ids = Object.keys(p.users).sort((a, b) => parseInt(a) - parseInt(b) || a.localeCompare(b));
+  req = ids.includes(req) ? req : ids[0];
+  const k = ids.indexOf(req), go = id => href("prompts", e, strat, id);
+  const body = (t, pre) => promptPlain ? `<div class="pplain">${esc(t)}</div>` : `<div class="pm">${pmRender(t, pre)}</div>`;
+  const lines = t => t.split("\n").length;
+  return `${crumbs}<h2>Prompts — ${esc(X.title)}</h2>
+    <p class="lede">Exactly what was sent, read back from MLflow (<code>${esc(p.from)}</code>; identical for Haiku, Sonnet and Opus). The system prompt is the same for every requirement; the request prompt carries one requirement.</p>
+    <div class="ptools"><span class="seg">${strats.map(s => `<a href="${href("prompts", e, s, req)}" class="${s === strat ? "on" : ""}">${esc(STRAT_LABEL[s] || s)}</a>`).join("")}</span>
+      <span class="seg"><button data-pplain="0" class="${promptPlain ? "" : "on"}">Rendered</button><button data-pplain="1" class="${promptPlain ? "on" : ""}">Plain text</button></span></div>
+    <div class="card"><h3>Request prompt <span class="hint">· ${lines(p.users[req])} lines</span></h3>
+      <div class="ptools"><select data-pgo="${esc(href("prompts", e, strat, ""))}">${ids.map(id => `<option ${id === req ? "selected" : ""}>${esc(id)}</option>`).join("")}</select>
+        ${k > 0 ? `<a href="${go(ids[k - 1])}">← ${esc(ids[k - 1])}</a>` : ""}<span class="hint">${k + 1} of ${ids.length}</span>${k < ids.length - 1 ? `<a href="${go(ids[k + 1])}">${esc(ids[k + 1])} →</a>` : ""}
+        <button class="b" data-pcopy="u">Copy</button></div>
+      ${pmToc(p.users[req], "pu")}${body(p.users[req], "pu")}</div>
+    <details class="card" open><summary><b>System prompt</b> <span class="hint">· ${lines(p.system)} lines · same for all ${ids.length} ${esc(X.unit)}s${e > 1 ? "" : ""}</span>
+        <button class="b" data-pcopy="s" style="margin-left:8px;font-size:12px;border:1px solid var(--line);border-radius:6px;padding:0 8px;background:var(--panel);color:var(--ink)">Copy</button></summary>
+      ${pmToc(p.system, "ps")}${body(p.system, "ps")}</details>`;
+}
+document.addEventListener("click", ev => {
+  const t = ev.target.closest("[data-pplain]"); if (t) { promptPlain = t.dataset.pplain === "1"; route(); return; }
+  const c = ev.target.closest("[data-pcopy]"); if (!c) return; ev.preventDefault();
+  const [, , e, s, id] = location.hash.split("/").map(decodeURIComponent), P = DATA.prompts[e][s] || DATA.prompts[e][Object.keys(DATA.prompts[e])[0]];
+  const txt = c.dataset.pcopy === "s" ? P.system : P.users[id] || Object.values(P.users)[0];
+  navigator.clipboard && navigator.clipboard.writeText(txt).then(() => { c.textContent = "Copied"; setTimeout(() => (c.textContent = "Copy"), 1200); });
+});
+document.addEventListener("change", ev => { const t = ev.target.closest("[data-pgo]"); if (t) location.hash = t.dataset.pgo + encodeURIComponent(t.value); });
+
 // ---------- navigation ----------
 function sidebar(route) {
   const on = h => (route === h ? "on" : "");
   let html = `<h1>Rimay experiments</h1><p class="sub">${RUNS.filter(r => r.exp).length}/27 runs · ${esc(new Date(DATA.generatedAt).toLocaleDateString())}</p>
     <a href="#/" class="${on("#/")}">Overview</a>`;
   EXP_IDS.forEach(e => {
-    html += `<div class="grp">${esc(EXPS[e].title)}</div><a href="${href("exp", e)}" class="${on(href("exp", e))}">All models</a>`;
+    html += `<div class="grp">${esc(EXPS[e].title)}</div><a href="${href("exp", e)}" class="${on(href("exp", e))}">All models</a>
+      <a href="${href("prompts", e)}" class="${route.startsWith(href("prompts", e)) ? "on" : ""}">Prompts</a>`;
     MODELS.forEach(m => {
       const b = batchOf(e, m), has = RUNS.some(r => r.batch === b);
       html += `<a href="${href("batch", b)}" class="l2 ${on(href("batch", b))} ${has ? "" : "off"}">${swatch(m)}${esc(MODEL_LABEL[m])}</a>`;
@@ -634,6 +735,7 @@ function route() {
   else if (p[0] === "batch") html = viewBatch(p[1]);
   else if (p[0] === "run") html = viewRun(p[1], p[2]);
   else if (p[0] === "req") html = viewReq(p[1], p.slice(2).join("/"));
+  else if (p[0] === "prompts") html = viewPrompts(+p[1], p[2], p.slice(3).join("/"));
   else html = viewOverview();
   sidebar(h === "#" ? "#/" : h);
   $("#main").innerHTML = html;

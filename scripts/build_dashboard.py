@@ -16,7 +16,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
-from src import dashboard  # noqa: E402
+from src import anomaly_view, dashboard  # noqa: E402
 
 
 def main(argv=None) -> int:
@@ -26,6 +26,7 @@ def main(argv=None) -> int:
     args = p.parse_args(argv)
     out = dashboard.build(args.out)
     print(f"Dashboard: {out}")
+    print(f"Anomaly viewer: {anomaly_view.build(3)}")
     if args.open:
         webbrowser.open(out.resolve().as_uri())
     return 0

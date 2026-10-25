@@ -11,6 +11,7 @@ Rebuilt by ``scripts/run_scoring.py`` after every scoring and by
 from __future__ import annotations
 
 import json
+import sqlite3
 from datetime import datetime
 from pathlib import Path
 from typing import Optional
@@ -36,7 +37,50 @@ def collect(outputs_dir: Optional[Path] = None) -> dict:
         if not path.parent.name.startswith("_"):
             verdicts[path.parent.name] = path.read_text(encoding="utf-8")
     return {"generatedAt": datetime.now().astimezone().isoformat(timespec="seconds"),
-            "runs": runs, "batchVerdicts": verdicts}
+            "runs": runs, "batchVerdicts": verdicts, "prompts": collect_prompts()}
+
+
+_EXP_PREFIX = {"exp1_atomic": 1, "exp2_units": 2, "exp3_blind": 3}
+
+
+def collect_prompts() -> dict:
+    """The prompts each experiment sent, read back from MLflow's per-requirement artifacts.
+
+    {exp: {strategy: {"system": str, "users": {reqId: str}, "from": batch}}}. One
+    model's batch per experiment is enough: the prompts do not depend on the
+    model. The latest MLflow run per requirement wins, so prompts from older,
+    archived conversions (same batch name) are ignored.
+    """
+    db = config.MLFLOW_TRACKING_DB
+    if not db.exists():
+        return {}
+    con = sqlite3.connect(f"file:{db}?mode=ro", uri=True)
+    try:
+        rows = con.execute(
+            """select r.artifact_uri, r.start_time, o.value, q.value from runs r
+               join tags o on o.run_uuid = r.run_uuid and o.key = 'output_run_id'
+               join tags q on q.run_uuid = r.run_uuid and q.key = 'req_id'""").fetchall()
+    finally:
+        con.close()
+    latest = {}
+    for uri, start, out, req in rows:
+        if (out, req) not in latest or start > latest[(out, req)][0]:
+            latest[(out, req)] = (start, uri)
+    prompts: dict = {}
+    for (out, req), (start, uri) in sorted(latest.items()):
+        batch, _, strat = out.partition("/")
+        prefix, _, model = batch.rpartition("_")
+        exp = _EXP_PREFIX.get(prefix)
+        if not exp or model != "haiku":
+            continue
+        art = Path(uri.replace("file://", ""))
+        sys_p, user_p = art / "prompt_system.md", art / "prompt_user.md"
+        if not (sys_p.exists() and user_p.exists()):
+            continue
+        slot = prompts.setdefault(str(exp), {}).setdefault(strat, {"system": "", "users": {}, "from": out})
+        slot["system"] = slot["system"] or sys_p.read_text(encoding="utf-8")
+        slot["users"][req] = user_p.read_text(encoding="utf-8")
+    return prompts
 
 
 def render(payload: dict, template_path: Optional[Path] = None) -> str:

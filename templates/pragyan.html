@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Incompleteness vs Pragyan</title>
+<style>
+:root{--bg:#f6f7f9;--panel:#fff;--ink:#1b1d21;--muted:#6b717b;--line:#e3e6ea;--soft:#f0f2f5;--accent:#2a78d6;--accent-soft:#e6f0fc;
+  --bad:#b3261e;--bad-soft:#fbe9e7;--ok:#1e7a3c;--ok-soft:#e5f4ea;--warn:#9a5b00;--warn-soft:#fdf1dc;
+  /* code levels: categorical, validated set (same as the dashboard's models) */
+  --lv-requirement:#2a78d6;--lv-optional:#1baf7a;--lv-design:#eb6834;--lv-other:#8a8f98;--heat:#2a78d6}
+@media (prefers-color-scheme:dark){:root{--bg:#0f1113;--panel:#171a1d;--ink:#e7e9ec;--muted:#9aa1aa;--line:#2a2e33;--soft:#1f2327;--accent:#6aa6ef;--accent-soft:#1b2a3d;
+  --bad:#ef8a83;--bad-soft:#3a1a17;--ok:#5cc47e;--ok-soft:#15301e;--warn:#e0a54a;--warn-soft:#33270f;
+  --lv-requirement:#3987e5;--lv-optional:#199e70;--lv-design:#d95926;--lv-other:#7d838c;--heat:#3987e5}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:13.5px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+header{position:sticky;top:0;z-index:5;background:var(--panel);border-bottom:1px solid var(--line);padding:10px 24px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+header h1{font-size:15px;margin:0}
+header nav a{padding:4px 10px;border-radius:6px;color:var(--ink)}header nav a.on{background:var(--accent-soft);color:var(--accent);font-weight:600}
+header .grow{flex:1}#saved{font-size:12px;color:var(--muted)}
+.btn{font:inherit;font-size:12.5px;padding:4px 10px;border-radius:6px;border:1px solid var(--line);background:var(--panel);color:var(--ink);cursor:pointer}
+.btn:hover{background:var(--soft)}
+main{max-width:1250px;margin:0 auto;padding:18px 24px 60px}
+h2{font-size:19px;margin:0 0 4px}.lede{color:var(--muted);margin:0 0 14px;max-width:900px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-bottom:14px}
+.card>h3{font-size:13.5px;margin:0 0 6px}
+.hint{font-size:12px;color:var(--muted)}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:14px;align-items:start}.cols>.card{margin-bottom:0}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:14px}
+.tile{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.tile b{display:block;font-size:24px;font-weight:600;line-height:1.2}.tile span{font-size:11.5px;color:var(--muted)}.tile small{display:block;font-size:11px;color:var(--muted)}
+table{border-collapse:collapse;width:100%;font-size:12.5px}
+th,td{padding:5px 8px;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}
+th{font-size:11px;font-weight:600;color:var(--muted);white-space:nowrap}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.scroll{overflow-x:auto}
+.tag{display:inline-block;font-size:11px;font-weight:600;padding:0 6px;border-radius:4px;white-space:nowrap}
+.tag.inc{background:var(--bad-soft);color:var(--bad)}.tag.com{background:var(--ok-soft);color:var(--ok)}.tag.mut{background:var(--soft);color:var(--muted)}
+.tag.reqd{background:var(--bad-soft);color:var(--bad)}.tag.opt{background:var(--soft);color:var(--muted)}
+.lv{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;white-space:nowrap}
+.lv i{width:9px;height:9px;border-radius:2px;display:inline-block}
+.cm{width:auto}.cm td,.cm th{text-align:center;padding:6px 12px}.cm td.h{font-weight:700;font-size:15px}
+.bar{display:flex;height:16px;border-radius:4px;overflow:hidden;gap:2px;background:var(--panel)}
+.bar span{display:block;height:100%}
+.hb{display:grid;grid-template-columns:210px 1fr 70px;gap:8px;align-items:center;font-size:12.5px;margin:3px 0}
+.hb .t{height:12px;background:var(--soft);border-radius:3px;overflow:hidden}.hb .t span{display:block;height:100%;border-radius:0 3px 3px 0}
+.hb .v{text-align:right;font-variant-numeric:tabular-nums;color:var(--muted)}
+.filters{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}
+.filters button{font:inherit;font-size:12px;padding:3px 9px;border-radius:12px;border:1px solid var(--line);background:var(--panel);color:var(--ink);cursor:pointer}
+.filters button.on{background:var(--accent-soft);border-color:var(--accent);color:var(--accent);font-weight:600}
+tr.rq{cursor:pointer}tr.rq:hover td{background:var(--soft)}
+.nl{white-space:pre-wrap;background:var(--soft);border-radius:8px;padding:10px 12px;font-size:13px}
+.q{border-top:1px solid var(--line);padding:8px 0;display:grid;grid-template-columns:1fr 230px;gap:10px;align-items:start}
+.q:first-of-type{border-top:0}
+select,textarea{font:inherit;font-size:12.5px;padding:4px 6px;border-radius:6px;border:1px solid var(--line);background:var(--panel);color:var(--ink);width:100%}
+textarea{min-height:60px;resize:vertical}
+.slots{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;margin:6px 0}
+.slot{border:1px solid var(--line);border-radius:6px;padding:4px 6px;font-size:11.5px}
+.slot b{display:block;font-size:12px}.slot.missing.reqd{border-color:var(--bad);background:var(--bad-soft)}
+.ann{font-size:12.5px;margin:3px 0}.ann b{color:var(--muted);font-weight:600;margin-right:4px}
+.chips{display:flex;gap:4px;flex-wrap:wrap}
+.src{font-size:11px;color:var(--muted)}
+#tip{position:fixed;pointer-events:none;z-index:9;background:var(--ink);color:var(--panel);font-size:12px;padding:5px 8px;border-radius:6px;max-width:340px;display:none;white-space:pre-line}
+@media (max-width:700px){main{padding:14px 16px}.q{grid-template-columns:1fr}.slots{grid-template-columns:repeat(2,1fr)}.hb{grid-template-columns:120px 1fr 60px}}
+</style>
+</head>
+<body>
+<header><h1>Incompleteness: ours vs Pragyan et al.</h1>
+  <nav><a href="#insights" id="n-ins">Insights</a><a href="#list" id="n-list">Requirements</a></nav>
+  <span class="grow"></span><span id="saved"></span><a class="btn" href="/api/export.csv">Export CSV</a></header>
+<main id="main"><p class="hint">Loading…</p></main>
+<div id="tip"></div>
+<script>
+let D, CODING = {requirements: {}}, filter = "all";
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+const pct = (a, b) => b ? Math.round(100 * a / b) + "%" : "—";
+const f2 = x => typeof x === "number" ? x.toFixed(2) : "—";
+const SLOTS = ["scope", "condition", "actor", "modalVerb", "action"], REQ = new Set(["actor", "modalVerb", "action"]);
+const SLOT_LABEL = {scope: "Scope", condition: "Condition", actor: "Actor", modalVerb: "Modal verb", action: "Action"};
+const verdict = (inc, who) => `<span class="tag ${inc ? "inc" : "com"}" data-tip="${esc(who)}">${inc ? "incomplete" : "complete"}</span>`;
+const lvSwatch = lv => `<i style="background:var(--lv-${lv})"></i>`;
+const codeChip = c => c && D.codes[c] ? `<span class="lv" data-tip="${esc(D.codes[c].tip)}">${lvSwatch(D.codes[c].level)}${esc(D.codes[c].label)}</span>` : `<span class="hint">uncoded</span>`;
+// kappa bands (Landis & Koch 1977)
+const kappaWord = k => typeof k !== "number" ? "" : k < 0 ? "worse than chance" : k <= .20 ? "slight" : k <= .40 ? "fair" : k <= .60 ? "moderate" : k <= .80 ? "substantial" : "almost perfect";
+
+document.addEventListener("pointermove", e => {
+  const tip = $("#tip"), t = e.target.closest && e.target.closest("[data-tip]");
+  if (!t) { tip.style.display = "none"; return; }
+  tip.textContent = t.dataset.tip; tip.style.display = "block";
+  tip.style.left = Math.min(e.clientX + 12, innerWidth - tip.offsetWidth - 8) + "px"; tip.style.top = (e.clientY + 14) + "px";
+});
+
+const qsOf = r => r.pragyan.items.flatMap(it => it.questions);
+const codingOf = r => CODING.requirements[r.reqId] || {codes: [], judgement: "", note: "", source: ""};
+const category = r => r.pragyanIncomplete && r.oursIncomplete ? "both" : r.pragyanIncomplete ? "pragyan" : r.oursIncomplete ? "ours" : "neither";
+const CATS = {all: "All", pragyan: "Only Pragyan: incomplete", both: "Both: incomplete", ours: "Only ours: incomplete", neither: "Both: complete"};
+
+// ---------------- insights
+function confusion(s, title) {
+  return `<div><table class="cm"><tr><th></th><th>Ours: incomplete</th><th>Ours: complete</th></tr>
+    <tr><th>Pragyan: incomplete</th><td class="h">${s.both}</td><td class="h" style="color:var(--bad)">${s.onlyA}</td></tr>
+    <tr><th>Pragyan: complete</th><td class="h">${s.onlyB}</td><td class="h">${s.neither}</td></tr></table>
+    <p class="hint" style="margin:6px 0 0">${esc(title)} · n = ${s.n} · agreement ${pct(s.agreement * s.n, s.n)} · Cohen's κ ${f2(s.kappa)} (${kappaWord(s.kappa)})</p></div>`;
+}
+function codeCounts(reqs) {
+  const c = {}; let n = 0;
+  reqs.forEach(r => codingOf(r).codes.forEach(code => { if (code) { c[code] = (c[code] || 0) + 1; n++; } }));
+  return {c, n};
+}
+function viewInsights() {
+  const R = D.requirements, A = R.filter(r => r.group === "atomic"), s = D.stats;
+  const flagged = R.filter(r => r.pragyanIncomplete), {c, n} = codeCounts(flagged);
+  const lv = {}; Object.entries(c).forEach(([k, v]) => lv[D.codes[k].level] = (lv[D.codes[k].level] || 0) + v);
+  const order = ["requirement", "optional", "design", "other"];
+  const codes = Object.keys(D.codes).filter(k => c[k]).sort((a, b) => order.indexOf(D.codes[a].level) - order.indexOf(D.codes[b].level) || c[b] - c[a]);
+  const maxC = Math.max(1, ...Object.values(c));
+  const judg = {}; flagged.forEach(r => { const j = codingOf(r).judgement || "uncoded"; judg[j] = (judg[j] || 0) + 1; });
+  const confirmed = flagged.filter(r => codingOf(r).source === "you").length;
+  const onlyP = A.filter(r => r.pragyanIncomplete && !r.oursIncomplete);
+  return `<h2>Is Pragyan et al.'s incompleteness well defined?</h2>
+    <p class="lede">The same 50 requests labelled two ways. Their label is an open-ended judgement; ours is the absence of a slot the Rimay grammar requires. Codes below are ${confirmed === flagged.length ? "all confirmed by you" : `CL's first pass — ${confirmed}/${flagged.length} requirements confirmed by you so far`}.</p>
+    <div class="cols" style="margin-bottom:14px">
+      <div class="card"><h3>Pragyan et al.'s definition</h3><p style="margin:0">${esc(D.definitions.pragyan)}</p></div>
+      <div class="card"><h3>Ours</h3><p style="margin:0">${esc(D.definitions.ours)}</p></div></div>
+    <div class="tiles">
+      <div class="tile"><b>${A.filter(r => r.pragyanIncomplete).length} / ${A.length}</b><span>atomic flagged incomplete by Pragyan</span></div>
+      <div class="tile"><b>${A.filter(r => r.oursIncomplete).length} / ${A.length}</b><span>atomic incomplete by our definition</span><small>all inside Pragyan's set: ${s.atomic.onlyB === 0 ? "yes" : "no"}</small></div>
+      <div class="tile"><b>${f2(s.atomic.kappa)}</b><span>κ Pragyan vs ours (atomic)</span><small>${kappaWord(s.atomic.kappa)}</small></div>
+      <div class="tile"><b>${D.pragyanReportedKappa.map(f2).join(" · ")}</b><span>their own annotators' κ on incompleteness, per batch</span><small>as reported in the paper</small></div>
+      <div class="tile"><b>${pct((lv.design || 0) + (lv.other || 0), n)}</b><span>of their missing-information questions ask for design detail or non-behaviour</span><small>${n} questions coded</small></div>
+    </div>
+    <div class="card"><h3>Verdicts side by side</h3><div class="cols">${confusion(s.atomic, "35 atomic requirements (experiment 1)")}${confusion(s["non-atomic"], "15 non-atomic (ours incomplete if any unit is)")}</div>
+      <p class="hint" style="margin:10px 0 0">Red = flagged by Pragyan only: ${onlyP.length} atomic requirements where every required slot is present, yet they call the request incomplete. Open them under <a href="#list" onclick="filter='pragyan'">Requirements</a>.</p></div>
+    <div class="cols">
+      <div class="card"><h3>What their "missing information" asks for</h3>
+        <p class="hint">Each clarification question in their incompleteness notes, coded by what it asks for (${n} questions on ${flagged.length} requests). Hover a label for its definition.</p>
+        <div class="bar" style="margin:8px 0 6px">${order.filter(l => lv[l]).map(l => `<span style="width:${100 * lv[l] / n}%;background:var(--lv-${l})" data-tip="${esc(D.levels[l])}: ${lv[l]} (${pct(lv[l], n)})"></span>`).join("")}</div>
+        <div class="chips" style="margin-bottom:10px">${order.map(l => `<span class="lv">${lvSwatch(l)}${esc(D.levels[l])} <b>${lv[l] || 0}</b> <span class="hint">(${pct(lv[l] || 0, n)})</span></span>`).join("")}</div>
+        ${codes.map(k => `<div class="hb"><span data-tip="${esc(D.codes[k].tip)}">${esc(D.codes[k].label)}</span><div class="t"><span style="width:${100 * c[k] / maxC}%;background:var(--lv-${D.codes[k].level})"></span></div><span class="v">${c[k]} · ${pct(c[k], n)}</span></div>`).join("")}</div>
+      <div class="card"><h3>Is their "incomplete" label justified?</h3>
+        <p class="hint">Your judgement per request they flag (CL's suggestion until you change it).</p>
+        ${[...Object.keys(D.judgements), "uncoded"].filter(j => judg[j]).map(j => `<div class="hb"><span>${esc(D.judgements[j] || "Not judged yet")}</span><div class="t"><span style="width:${100 * judg[j] / flagged.length}%;background:var(--heat)"></span></div><span class="v">${judg[j]} · ${pct(judg[j], flagged.length)}</span></div>`).join("")}
+        <h3 style="margin-top:16px">Experiment 1 models, against each label</h3>
+        <div class="scroll"><table><tr><th>Run</th><th class="n">flagged</th><th class="n" data-tip="Cohen's κ with our gold verdict">κ vs ours</th><th class="n" data-tip="Cohen's κ with Pragyan's label">κ vs Pragyan</th></tr>
+          ${s.llm.map(x => `<tr><td>${esc(x.run)}</td><td class="n">${x.flagged}/${x.n}</td><td class="n" data-tip="${kappaWord(x.vsOurs)}">${f2(x.vsOurs)}</td><td class="n" data-tip="${kappaWord(x.vsPragyan)}">${f2(x.vsPragyan)}</td></tr>`).join("")}</table></div>
+        <p class="hint" style="margin:6px 0 0">The model marks a requirement incomplete when it leaves a required slot as a placeholder, i.e. it applies our definition.</p></div>
+    </div>`;
+}
+
+// ---------------- requirement list
+function viewList() {
+  const R = D.requirements.filter(r => filter === "all" || category(r) === filter);
+  const counts = {}; D.requirements.forEach(r => counts[category(r)] = (counts[category(r)] || 0) + 1);
+  return `<h2>Requirements</h2><p class="lede">Click a row to read both annotations and code Pragyan's questions.</p>
+    <div class="filters">${Object.entries(CATS).map(([k, v]) => `<button data-f="${k}" class="${filter === k ? "on" : ""}">${esc(v)} (${k === "all" ? D.requirements.length : counts[k] || 0})</button>`).join("")}</div>
+    <div class="card scroll"><table><tr><th>Request</th><th>Group</th><th>Pragyan</th><th>Ours</th><th>Missing required slots</th><th class="n">models: incomplete</th><th>Judgement</th><th>Their questions (coded)</th></tr>
+    ${R.map(r => { const c = codingOf(r), runs = Object.values(r.llm), miss = [...new Set(r.units.flatMap(u => u.missingRequired))];
+      return `<tr class="rq" data-go="${esc(r.reqId)}"><td><a href="#req/${encodeURIComponent(r.reqId)}">${esc(r.reqId)}</a></td><td>${esc(r.group)}${r.nUnits > 1 ? ` <span class="hint">${r.nUnits} units</span>` : ""}</td>
+        <td>${verdict(r.pragyanIncomplete, "Pragyan et al.")}</td><td>${verdict(r.oursIncomplete, "Our gold")}</td>
+        <td>${miss.map(s => SLOT_LABEL[s]).join(", ") || `<span class="hint">—</span>`}</td>
+        <td class="n">${runs.length ? `${runs.filter(Boolean).length}/${runs.length}` : `<span class="hint">—</span>`}</td>
+        <td>${c.judgement ? `<span class="hint" data-tip="${esc(D.judgements[c.judgement])}">${esc(c.judgement.replace(/_/g, " "))}${c.source === "CL" ? " (CL)" : ""}</span>` : ""}</td>
+        <td><div class="chips">${c.codes.map(codeChip).join("")}</div></td></tr>`; }).join("")}</table></div>`;
+}
+
+// ---------------- one requirement
+function viewReq(id) {
+  const R = D.requirements, i = R.findIndex(r => r.reqId === id), r = R[i];
+  if (!r) return `<p>Unknown requirement ${esc(id)}.</p>`;
+  const c = codingOf(r), qs = qsOf(r), runs = Object.entries(r.llm);
+  const prev = R[i - 1], next = R[i + 1];
+  let qi = 0;
+  const codeSelect = k => `<select data-q="${k}"><option value="">— code —</option>${Object.entries(D.codes).map(([code, d]) => `<option value="${code}" ${c.codes[k] === code ? "selected" : ""}>${esc(D.levels[d.level])} · ${esc(d.label)}</option>`).join("")}</select>`;
+  return `<p class="hint">${prev ? `<a href="#req/${encodeURIComponent(prev.reqId)}">← ${esc(prev.reqId)}</a>` : ""} · <a href="#list">all requirements</a> · ${next ? `<a href="#req/${encodeURIComponent(next.reqId)}">${esc(next.reqId)} →</a>` : ""}</p>
+    <h2>${esc(r.reqId)} <span class="hint">${esc(r.group)}${r.nUnits > 1 ? ` · ${r.nUnits} units` : ""}</span></h2>
+    <div class="nl" style="margin:8px 0 14px">${esc(r.nl)}</div>
+    <div class="cols">
+      <div class="card"><h3>Pragyan et al. ${verdict(r.pragyanIncomplete, "Pragyan et al.")} <span class="hint">${r.pragyan.ambiguities ? ` · ${r.pragyan.ambiguities} ambiguity annotation(s)` : ""}</span></h3>
+        ${r.pragyan.items.length ? r.pragyan.items.map(it => `<p style="margin:4px 0"><b>Missing information:</b> ${esc(it.comment)}</p>
+          ${it.affectDescription ? `<p class="hint" style="margin:2px 0">Affects downstream (${esc(it.affectsDownstream)}): ${esc(it.affectDescription)}</p>` : ""}
+          ${it.questions.map(q => { const k = qi++; return `<div class="q"><div>${esc(q)}</div><div>${codeSelect(k)}</div></div>`; }).join("")}`).join("")
+          : `<p class="hint">No incompleteness annotation.</p>`}</div>
+      <div class="card"><h3>Ours ${verdict(r.oursIncomplete, "Our gold: per-unit majority of three annotators")}</h3>
+        ${r.units.map(u => `<div style="margin-bottom:10px">${r.nUnits > 1 ? `<b>Unit ${u.unit}</b> ${verdict(u.incomplete, "this unit")}` : ""}
+          <div class="slots">${SLOTS.map(s => `<div class="slot ${u.slots[s]} ${REQ.has(s) ? "reqd" : ""}"><b>${SLOT_LABEL[s]}</b>${esc(u.slots[s])} <span class="tag ${REQ.has(s) ? "reqd" : "opt"}">${REQ.has(s) ? "req" : "opt"}</span></div>`).join("")}</div>
+          ${u.annotators.map(a => `<div class="ann"><b>${esc(a.name)}</b>${esc(a.rimay)}</div>`).join("")}</div>`).join("")}
+        ${runs.length ? `<h3 style="margin-top:8px">Experiment 1 models</h3><div class="chips">${runs.map(([k, v]) => `<span class="tag ${v ? "inc" : "com"}">${esc(k)}: ${v ? "incomplete" : "complete"}</span>`).join("")}</div>` : `<p class="hint">Non-atomic: not in experiment 1.</p>`}</div>
+    </div>
+    ${r.pragyanIncomplete ? `<div class="card" style="margin-top:14px"><h3>Your judgement of Pragyan's label <span class="src">${c.source === "CL" ? "· CL's suggestion — change it to confirm" : c.source === "you" ? "· yours" : ""}</span></h3>
+      <select id="judg"><option value="">— judgement —</option>${Object.entries(D.judgements).map(([k, v]) => `<option value="${k}" ${c.judgement === k ? "selected" : ""}>${esc(v)}</option>`).join("")}</select>
+      <textarea id="note" placeholder="Note (why), for the paper" style="margin-top:8px">${esc(c.note)}</textarea>
+      <p class="hint" style="margin:6px 0 0">Changes save automatically. <button class="btn" id="confirm">Confirm as is</button></p></div>` : ""}`;
+}
+
+// ---------------- saving
+let saveTimer;
+function edit(id, fn) {
+  const rec = CODING.requirements[id] ||= {codes: [], judgement: "", note: "", source: ""};
+  fn(rec); rec.source = "you";
+  clearTimeout(saveTimer); $("#saved").textContent = "Saving…";
+  saveTimer = setTimeout(async () => {
+    const res = await fetch("/api/coding", {method: "PUT", headers: {"Content-Type": "application/json"}, body: JSON.stringify(CODING)});
+    const out = await res.json();
+    $("#saved").textContent = res.ok ? `Saved ${new Date(out.savedAt).toLocaleTimeString()}` : `Not saved: ${out.error}`;
+    if (res.ok) CODING.savedAt = out.savedAt;
+  }, 400);
+}
+document.addEventListener("change", e => {
+  const id = decodeURIComponent((location.hash.match(/^#req\/(.+)/) || [])[1] || "");
+  if (!id) return;
+  if (e.target.dataset.q !== undefined) edit(id, rec => { rec.codes[+e.target.dataset.q] = e.target.value; });
+  if (e.target.id === "judg") edit(id, rec => { rec.judgement = e.target.value; });
+});
+document.addEventListener("input", e => {
+  const id = decodeURIComponent((location.hash.match(/^#req\/(.+)/) || [])[1] || "");
+  if (id && e.target.id === "note") edit(id, rec => { rec.note = e.target.value; });
+});
+document.addEventListener("click", e => {
+  const f = e.target.closest(".filters button"); if (f) { filter = f.dataset.f; route(); return; }
+  if (e.target.id === "confirm") { const id = decodeURIComponent(location.hash.slice(5)); edit(id, () => {}); route(); return; }
+  const row = e.target.closest("tr[data-go]"); if (row && !e.target.closest("a")) location.hash = "#req/" + encodeURIComponent(row.dataset.go);
+});
+
+function route() {
+  const h = location.hash || "#insights";
+  $("#n-ins").className = h === "#insights" ? "on" : ""; $("#n-list").className = h === "#list" || h.startsWith("#req/") ? "on" : "";
+  $("#main").innerHTML = h.startsWith("#req/") ? viewReq(decodeURIComponent(h.slice(5))) : h === "#list" ? viewList() : viewInsights();
+  if (h.startsWith("#req/")) scrollTo(0, 0);
+}
+addEventListener("hashchange", route);
+fetch("/api/data").then(r => r.json()).then(d => {
+  D = d;
+  D.requirements.forEach(r => { if (r.coding) CODING.requirements[r.reqId] = r.coding; });
+  $("#saved").textContent = d.savedAt ? `Saved ${new Date(d.savedAt).toLocaleString()}` : "";
+  route();
+}).catch(e => { $("#main").innerHTML = `<p>Could not load data: ${esc(e)}</p>`; });
+</script>
+</body>
+</html>

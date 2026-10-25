@@ -1,6 +1,6 @@
 # Experiment status — 2026-10-25 (v2)
 
-Details and changes: `EXPERIMENTS.md`. Results: `bin/dashboard.sh` (opens `outputs/dashboard.html`). Embeddings need Ollama running (`ollama serve`); without it cosine is blank and units are matched by seq_ratio.
+Details and changes: `EXPERIMENTS.md`. Results: `bin/dashboard.sh` (opens `outputs/dashboard.html`). Prompts sent: dashboard sidebar → each experiment → **Prompts** (read from MLflow). Exp 3 unit anomalies: `bin/anomalies.sh` (opens `outputs/anomalies.html`; built from saved replies). Embeddings need Ollama running (`ollama serve`); without it cosine is blank and units are matched by seq_ratio.
 
 | # | Data | Prompt says | State |
 |---|---|---|---|
@@ -43,9 +43,18 @@ Human ↔ human median cosine: Exp 1 .82 · Exp 2 .89 · Exp 3 .88.
 - **FSL splits more in Exp 3** (haiku 9, sonnet 7 atomic split): the 3 split examples likely bias it towards splitting.
 - **Exp 1 incomplete-F1 is unstable** (4/35 gold-incomplete). **Exp 2 incomplete-F1 is undefined** (all 42 units complete).
 - **Scope** is optional and gold-missing almost everywhere, so it dominates the missing-slot numbers.
+- **"No unit returned" was misleading:** it marks a gold unit with no model line aligned to it. In Exp 3, 23 of 24 such gold units (6 requirements: 802, 6390, 222, 6424, 4821, 6362) were merged into another line, and 1 looks dropped (6362). The model didn't omit the content.
 - **Unit matching** is by cosine to the annotators' units; requirements off the gold count are in the dashboard's unit-count table and each run's anomalies.
+
+## Pragyan et al. comparison (`python scripts/pragyan.py` → http://127.0.0.1:8766)
+
+- Source: `data/pragyan/100-FeatureRequests-Corpus-Reconciled.csv` (copy of `Datasets/Pragyan/`). Coding: `data/pragyan_coding.json`; export: one CSV row per clarification question.
+- Atomic (35): Pragyan 23 incomplete, ours 4 — all 4 inside theirs; agreement 46%, κ 0.13 (slight). Non-atomic (15): Pragyan 6, ours 0.
+- Their 67 clarification questions (CL first-pass codes, to confirm): 75% design detail (how it works 33%, where in the UI 18%, settings 13%), 9% optional slot (scope), 9% required slot (unclear action), 7% not behaviour.
+- Their own incompleteness κ per batch: 0.65 / 0.40 / 0.87. Definition is open-ended ("lack crucial information…"); no span, no sub-class.
+- Exp 1 models: κ vs ours up to .54 (haiku), vs Pragyan ≤ .39; over-flagging runs (opus/sonnet zsl, cot) correlate more with Pragyan.
 
 ## Pending
 
-- Verdicts regenerating with the cosine data (`outputs/_logs/regen_verdicts.sh`, log `outputs/_logs/experiments.log`); the dashboard rebuilds when done.
+- Pragyan tool: confirm or change CL's codes and judgements (0/29 confirmed).
 - Curation tool: press **Run Paska** to re-check the 59 reworded CL units.

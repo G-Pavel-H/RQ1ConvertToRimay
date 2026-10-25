@@ -1,0 +1,275 @@
+{
+  "savedAt": "2026-10-25T21:03:20+00:00",
+  "requirements": {
+    "4031-Signal": {
+      "codes": [
+        "ui_access",
+        "behaviour"
+      ],
+      "judgement": "design_detail",
+      "note": "",
+      "source": "CL"
+    },
+    "4333-Signal": {
+      "codes": [
+        "configuration",
+        "ui_access",
+        "rationale"
+      ],
+      "judgement": "design_detail",
+      "note": "",
+      "source": "CL"
+    },
+    "455-Signal": {
+      "codes": [
+        "configuration",
+        "configuration",
+        "behaviour"
+      ],
+      "judgement": "design_detail",
+      "note": "",
+      "source": "CL"
+    },
+    "107-Mastodon": {
+      "codes": [
+        "ui_presentation"
+      ],
+      "judgement": "design_detail",
+      "note": "",
+      "source": "CL"
+    },
+    "83-Signal": {
+      "codes": [
+        "req_action",
+        "req_action"
+      ],
+      "judgement": "genuine",
+      "note": "",
+      "source": "CL"
+    },
+    "801-Signal": {
+      "codes": [
+        "ui_access",
+        "configuration",
+        "opt_applicability",
+        "behaviour",
+        "behaviour"
+      ],
+      "judgement": "design_detail",
+      "note": "",
+      "source": "CL"
+    },
+    "1363-Signal": {
+      "codes": [
+        "ui_presentation"
+      ],
+      "judgement": "design_detail",
+      "note": "",
+      "source": "CL"
+    },
+    "6457-Signal": {
+      "codes": [
+        "behaviour"
+      ],
+      "judgement": "design_detail",
+      "note": "",
+      "source": "CL"
+    },
+    "828-Signal": {
+      "codes": [
+        "opt_applicability",
+        "behaviour",
+        "behaviour"
+      ],
+      "judgement": "design_detail",
+      "note": "",
+      "source": "CL"
+    },
+    "245-Signal": {
+      "codes": [
+        "req_action"
+      ],
+      "judgement": "genuine",
+      "note": "",
+      "source": "CL"
+    },
+    "1761-Signal": {
+      "codes": [
+        "configuration",
+        "ui_access",
+        "behaviour"
+      ],
+      "judgement": "design_detail",
+      "note": "",
+      "source": "CL"
+    },
+    "1504-Signal": {
+      "codes": [
+        "req_action",
+        "req_action"
+      ],
+      "judgement": "genuine",
+      "note": "",
+      "source": "CL"
+    },
+    "8-Mastodon": {
+      "codes": [
+        "ui_access",
+        "behaviour",
+        "terminology"
+      ],
+      "judgement": "design_detail",
+      "note": "",
+      "source": "CL"
+    },
+    "592-Signal": {
+      "codes": [
+        "req_action"
+      ],
+      "judgement": "genuine",
+      "note": "",
+      "source": "CL"
+    },
+    "6031-Signal": {
+      "codes": [
+        "configuration",
+        "behaviour",
+        "edge_case"
+      ],
+      "judgement": "design_detail",
+      "note": "",
+      "source": "CL"
+    },
+    "496-Signal": {
+      "codes": [
+        "ui_access",
+        "opt_applicability",
+        "parameter",
+        "behaviour",
+        "rationale"
+      ],
+      "judgement": "design_detail",
+      "note": "",
+      "source": "CL"
+    },
+    "4230-Signal": {
+      "codes": [
+        "behaviour",
+        "configuration",
+        "configuration",
+        "behaviour"
+      ],
+      "judgement": "design_detail",
+      "note": "",
+      "source": "CL"
+    },
+    "757-Signal": {
+      "codes": [
+        "ui_access",
+        "behaviour",
+        "opt_applicability",
+        "opt_applicability"
+      ],
+      "judgement": "design_detail",
+      "note": "",
+      "source": "CL"
+    },
+    "1283-Signal": {
+      "codes": [
+        "behaviour",
+        "behaviour"
+      ],
+      "judgement": "design_detail",
+      "note": "",
+      "source": "CL"
+    },
+    "7310-Signal": {
+      "codes": [
+        "behaviour",
+        "ui_presentation",
+        "behaviour"
+      ],
+      "judgement": "design_detail",
+      "note": "",
+      "source": "CL"
+    },
+    "42-Mastodon": {
+      "codes": [
+        "ui_access"
+      ],
+      "judgement": "design_detail",
+      "note": "",
+      "source": "CL"
+    },
+    "175-Signal": {
+      "codes": [
+        "ui_access"
+      ],
+      "judgement": "design_detail",
+      "note": "",
+      "source": "CL"
+    },
+    "2055-Signal": {
+      "codes": [
+        "edge_case"
+      ],
+      "judgement": "design_detail",
+      "note": "",
+      "source": "CL"
+    },
+    "6390-Signal": {
+      "codes": [
+        "ui_access",
+        "configuration"
+      ],
+      "judgement": "design_detail",
+      "note": "",
+      "source": "CL"
+    },
+    "222-Signal": {
+      "codes": [
+        "ui_access",
+        "behaviour"
+      ],
+      "judgement": "design_detail",
+      "note": "",
+      "source": "CL"
+    },
+    "6111-Signal": {
+      "codes": [
+        "behaviour"
+      ],
+      "judgement": "design_detail",
+      "note": "",
+      "source": "CL"
+    },
+    "6362-Signal": {
+      "codes": [
+        "ui_access",
+        "behaviour",
+        "opt_applicability"
+      ],
+      "judgement": "design_detail",
+      "note": "",
+      "source": "CL"
+    },
+    "7567-Signal": {
+      "codes": [
+        "requester_context",
+        "edge_case"
+      ],
+      "judgement": "design_detail",
+      "note": "",
+      "source": "CL"
+    },
+    "802-Signal": {
+      "codes": [
+        "terminology",
+        "behaviour"
+      ],
+      "judgement": "design_detail",
+      "note": "",
+      "source": "CL"
+    }
+  }
+}
