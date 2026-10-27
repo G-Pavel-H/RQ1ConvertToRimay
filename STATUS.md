@@ -1,6 +1,6 @@
 # Experiment status — 2026-10-25 (v2)
 
-Details and changes: `EXPERIMENTS.md`. Results: `bin/dashboard.sh` (opens `outputs/dashboard.html`). Prompts sent: dashboard sidebar → each experiment → **Prompts** (read from MLflow). Exp 3 unit anomalies: `bin/anomalies.sh` (opens `outputs/anomalies.html`; built from saved replies). Embeddings need Ollama running (`ollama serve`); without it cosine is blank and units are matched by seq_ratio.
+Mac apps (Dock): `bin/make_apps.sh` → `~/Applications/Rimay {Curation,Results,Anomalies,Pragyan}.app`; `--stop` stops the servers. Details and changes: `EXPERIMENTS.md`. Results: `bin/dashboard.sh` (opens `outputs/dashboard.html`). Prompts sent: dashboard sidebar → each experiment → **Prompts** (read from MLflow). Exp 3 unit anomalies: `bin/anomalies.sh` (opens `outputs/anomalies.html`; built from saved replies). Embeddings need Ollama running (`ollama serve`); without it cosine is blank and units are matched by seq_ratio.
 
 | # | Data | Prompt says | State |
 |---|---|---|---|
