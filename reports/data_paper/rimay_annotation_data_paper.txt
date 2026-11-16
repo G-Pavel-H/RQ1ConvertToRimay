@@ -1,0 +1,733 @@
+% =====================================================================
+% DRAFT -- Data paper: a slot-level incompleteness dataset of
+% feature requests converted to Rimay
+% Paste into Overleaf as main.tex. Swap \documentclass for the venue
+% template (Springer svjour3 / sn-jnl for REJ or EMSE, IEEEtran for TSE).
+% Every "TODO" comment is something to confirm or fill in before submission.
+% =====================================================================
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+
+\newcommand{\rim}[1]{\texttt{#1}}
+\newcommand{\slotP}{\textsc{Present}}
+\newcommand{\slotI}{\textsc{Implied}}
+\newcommand{\slotM}{\textsc{Missing}}
+\newcommand{\todo}[1]{\textcolor{red}{[TODO: #1]}}
+
+\title{From Feature Requests to Controlled Requirements:\\
+A Slot-Level Dataset for Requirement Incompleteness}
+% TODO: decide author list and order (annotators as co-authors or acknowledged?)
+\author{Pavel Ghazaryan \and \todo{co-authors / supervisors}}
+\date{}
+
+\begin{document}
+\maketitle
+
+% ---------------------------------------------------------------------
+\begin{abstract}
+Incompleteness is one of the most frequently cited requirement defects, yet the
+requirements engineering (RE) literature offers no shared operational definition
+of it. Existing datasets label a requirement as incomplete when it ``lacks
+crucial information'', a criterion that cannot be located in the text and that
+annotators apply inconsistently. We present a dataset that grounds
+incompleteness in the grammar of Rimay, a controlled natural language for
+functional requirements. Fifty feature requests from the issue trackers of two
+open-source messaging applications were annotated by three annotators, who
+converted each request into Rimay and judged each of its five structural slots
+(scope, condition, actor, modal verb, action) as \slotP, \slotI{} or \slotM. A
+requirement is incomplete when a slot the grammar requires (actor, modal verb or
+action) is missing. Requests that bundle several system responses were
+adjudicated as non-atomic and decomposed into atomic units, yielding 77 units in
+total (35 atomic requests and 15 non-atomic requests split into 42 units). Every
+gold unit was validated with Paska, a Rimay conformance and smell checker. We
+describe the annotation scheme, the tool, the training and pilot rounds, the
+agreement obtained, and the curation procedure, and we report the difficulties
+that converting informal, multi-request user text into a controlled language
+creates. Agreement on the incompleteness label is fair by Fleiss' $\kappa$
+(.32) but substantial by Gwet's AC1 (.72), a gap explained by the rarity of the
+label; agreement on atomicity is moderate ($\kappa=.60$). Under our definition,
+4 of the 35 atomic requests are incomplete, against 23 under the original
+corpus labels, all four of ours falling inside theirs. The dataset, the
+annotation guide, the tool and the curation provenance are released to support
+the evaluation of automated incompleteness detection and requirement
+conversion.
+\end{abstract}
+
+\noindent\textbf{Keywords:} requirements engineering, incompleteness,
+controlled natural language, Rimay, annotation, dataset, feature requests
+
+% ---------------------------------------------------------------------
+\section{Introduction}\label{sec:intro}
+
+Incomplete requirements are a long-standing cause of rework and
+misunderstanding in software projects~\cite{todo-incompleteness-survey}.
+Despite this, ``incomplete'' remains loosely defined. Studies either leave the
+judgement to the annotator (``the requirement lacks information needed to
+describe the intended behaviour'') or tie it to a specific artefact, such as a
+missing use-case step or an uncovered input. Neither gives a criterion that is
+both general and locatable: an annotator who calls a requirement incomplete
+cannot point to what is missing, and two annotators who disagree cannot tell
+whether they disagree about the requirement or about the definition.
+
+Large language models (LLMs) make this gap pressing. They are increasingly
+proposed as assistants that rewrite, structure or check requirements, and
+evaluating them requires a reference that says, for each requirement, whether
+it is incomplete and \emph{why}. A binary label cannot distinguish a model that
+correctly infers an obvious actor from one that invents a missing action.
+
+We address this by grounding incompleteness in a controlled natural language
+(CNL). Rimay~\cite{veizaga2021rimay} prescribes a fixed structure for
+functional requirements: an optional scope, an optional condition, and a
+mandatory system response formed by an actor, a modal verb and an action
+phrase. Converting a requirement into Rimay forces the annotator to fill each
+slot, and the slots that cannot be filled are exactly the information the
+requirement does not give. This yields an operational definition:
+\begin{quote}
+\emph{A requirement is incomplete when a slot that the Rimay grammar requires
+(actor, modal verb or action) is missing from it, i.e.\ is neither stated nor
+reasonably inferable from the text.}
+\end{quote}
+
+This paper describes a dataset built on this definition. Its contributions are:
+\begin{enumerate}[leftmargin=*]
+  \item An annotation scheme that records, for every requirement, a Rimay
+        conversion and a three-valued judgement (\slotP, \slotI, \slotM) for
+        each of the five Rimay slots, from which incompleteness is derived
+        rather than asserted (Section~\ref{sec:scheme}).
+  \item A curated gold standard of 50 feature requests (77 atomic units), with
+        the original per-annotator annotations, the adjudicated labels, the
+        Rimay conversions, Paska validation results and per-unit provenance
+        (Sections~\ref{sec:curation} and~\ref{sec:dataset}).
+  \item An account of the annotation process, including a pilot, agreement
+        statistics that are robust to label prevalence, and the practical
+        difficulties of converting informal user text into a CNL, notably
+        implicit slots and non-atomic requests
+        (Sections~\ref{sec:process}--\ref{sec:challenges}).
+  \item A comparison with the incompleteness labels of the source corpus, which
+        shows how much an unbounded definition inflates the label
+        (Section~\ref{sec:pragyan}).
+\end{enumerate}
+
+% ---------------------------------------------------------------------
+\section{Background}\label{sec:background}
+
+\subsection{Rimay}
+Rimay is a CNL for functional requirements, derived from an analysis of
+industrial requirements in the financial domain~\cite{veizaga2021rimay}. A
+Rimay requirement has up to three segments in a fixed order:
+\begin{center}
+\rim{[Scope] [Condition] Actor ModalVerb ActionPhrase}
+\end{center}
+The scope (e.g.\ ``For all the depositories,'') restricts what the requirement
+applies to; the condition gates the system response and is a precondition
+(``If \ldots''), a trigger (``When \ldots'') or a temporal clause (``Before
+\ldots'', ``Every day \ldots''); the actor, the modal verb (\emph{must},
+\emph{shall}, \emph{will}) and the action phrase form the system response.
+Scope and condition are optional; the system response is mandatory. Rimay
+requires each requirement to be \emph{atomic}: it expresses one system
+response. The combinations of segments define ten patterns.
+
+\subsection{Paska}
+Paska~\cite{veizaga2024paska} parses requirements against the Rimay grammar and
+reports \emph{smells}, i.e.\ quality issues such as a missing system response,
+a condition placed after the response, a non-atomic action or an imprecise
+verb. We use it as an automated conformance check on every gold conversion
+(Section~\ref{sec:paska}).
+
+\subsection{Source corpus}
+The requirements come from the corpus of Pragyan et
+al.~\cite{pragyan2025}: 100 feature requests collected from the public issue
+trackers of the Signal and Mastodon messaging applications. Each request was
+labelled by their annotators for incompleteness, defined as requests that
+``lack crucial information needed to fully describe the intended system
+behavior'', together with free-text notes and clarification questions. The
+labels carry no span and no sub-type. Their reported agreement on
+incompleteness varies across annotation batches ($\kappa$ = .65, .40 and .87).
+% TODO: check the exact wording and kappa values against the published paper
+
+\subsection{Agreement under skewed labels}
+Cohen's and Fleiss' $\kappa$~\cite{fleiss1971} correct observed agreement for
+chance using the marginal label distribution. When one category dominates,
+expected agreement approaches 1 and $\kappa$ can be low or negative even when
+annotators agree on almost every item, the so-called \emph{kappa
+paradox}~\cite{feinstein1990}. Gwet's AC1~\cite{gwet2008} uses a chance model
+that is far less sensitive to prevalence. Because several of our labels are
+heavily skewed (e.g.\ incompleteness is rare; the modal verb is almost always
+implied), we report raw agreement, the proportion of unanimous items, Fleiss'
+$\kappa$ and Gwet's AC1 together, and read them jointly. $\kappa$ values are
+interpreted with the bands of Landis and Koch~\cite{landis1977}.
+
+% ---------------------------------------------------------------------
+\section{Annotation scheme}\label{sec:scheme}
+
+For each feature request an annotator performs one task with two outputs: a
+Rimay conversion of the request and a judgement on each structural slot. The
+full guide (about 2{,}000 words, with worked examples) is embedded in the
+annotation tool and released with the dataset.
+
+\subsection{Slot judgements}
+Each of the five slots is judged as:
+\begin{description}[leftmargin=1.5em]
+  \item[\slotP] the information is explicitly stated;
+  \item[\slotI] it is not stated, but a reasonable reader infers it from
+        context (e.g.\ in ``I'd like a preview in the notification bar'' the
+        actor is obviously the application);
+  \item[\slotM] it is not stated and cannot reasonably be inferred; a developer
+        would need to ask a clarifying question to fill it.
+\end{description}
+The distinction between \slotI{} and \slotM{} is the central judgement of the
+scheme. A system that fills an implied slot has understood the context; a
+system that fills a missing slot has invented information.
+
+\subsection{Derived incompleteness}
+Annotators do not label incompleteness directly. The tool computes it: a
+requirement is incomplete if and only if at least one mandatory slot (actor,
+modal verb, action) is \slotM. A missing scope or condition does not make a
+requirement incomplete. Deriving the verdict from the slots means every
+incompleteness label points to the slot that causes it.
+
+\subsection{Further fields}
+\begin{itemize}[leftmargin=*]
+  \item \textbf{Condition type} (precondition, trigger, temporal, none), when a
+        condition is present or implied.
+  \item \textbf{Non-atomic flag} and the number of system responses, when the
+        request asks for two or more distinct actions. Several objects of a
+        single action (``send a confirmation and a settlement instruction'')
+        do not make a request non-atomic.
+  \item \textbf{Rimay conversion}, following the guide's rules: segment order;
+        \emph{must} as the default modal verb for wishes (``it would be nice
+        if \ldots''), with the modal slot marked \slotI; concrete names and
+        values in double quotes; generic actors (\emph{the App}); and a
+        placeholder for every missing slot (\rim{<MISSING\_SCOPE>},
+        \rim{<MISSING\_CONDITION>}, \rim{<MISSING\_ACTOR>},
+        \rim{<MISSING\_MODAL\_VERB>}, \rim{<MISSING\_ACTION>}), so that the
+        text and the slot grid agree. Implied slots are written out, not
+        replaced by a placeholder.
+  \item \textbf{Notes}, free text for judgement calls.
+\end{itemize}
+An earlier version of the form also asked for the Rimay pattern number. We
+removed it before the pilot: the pattern is fully determined by the slot and
+condition-type choices, so recording it separately would only add spurious
+disagreement.
+
+Table~\ref{tab:example} shows the scheme on three requests of the kind found in
+the corpus.
+
+\begin{table}[t]
+\centering
+\caption{The annotation scheme on three illustrative requests (S = scope,
+C = condition, A = actor, MV = modal verb, Act = action).}
+\label{tab:example}
+\small
+\begin{tabularx}{\linewidth}{@{}X ccccc c@{}}
+\toprule
+Request and Rimay conversion & S & C & A & MV & Act & Verdict\\
+\midrule
+``It would be great to have a dark mode option in settings.''\newline
+\rim{The App must provide a "dark mode" option in "settings".}
+ & M & M & I & I & P & complete\\
+\addlinespace
+``When I receive a new message, play a notification sound.''\newline
+\rim{When the user receives a "new message", then the App must play a "notification sound".}
+ & M & P & I & I & P & complete\\
+\addlinespace
+``The notification experience needs improvement.''\newline
+\rim{The App must <MISSING\_ACTION>.}
+ & M & M & I & I & M & incomplete\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+% ---------------------------------------------------------------------
+\section{Data and annotation process}\label{sec:process}
+
+\subsection{Sampling}
+From the 100 requests of the source corpus we drew three disjoint sets: 4 for
+training, 10 for the pilot and 50 for the main study (64 in total). The main
+set contains 47 Signal and 3 Mastodon requests; 29 of the 50 are labelled
+incomplete in the source corpus.
+% TODO: state how the 64 were selected (random? stratified by Pragyan label?)
+
+\subsection{Annotators}
+The training and pilot rounds were annotated by four people: the first author
+and three annotators with a background in software engineering, here A1, A2 and
+A3. The main set was annotated by A1, A2 and A3; the first author acted as
+administrator and adjudicator and did not contribute main-set annotations.
+% TODO: annotator background (degree level, RE experience), compensation,
+% and whether names may be released (currently pseudonymised as A1-A3)
+
+\subsection{Tool}
+Annotation was carried out in a purpose-built web application (Angular front
+end, Node.js/Express back end, MongoDB database), released with the dataset.
+Its main properties are:
+\begin{itemize}[leftmargin=*]
+  \item \textbf{Blind annotation.} Each annotator sees only their own work and
+        never sees the source-corpus labels or the other annotators' answers.
+  \item \textbf{Guided input.} The form presents the slot grid next to the
+        conversion box, offers one-click insertion of the missing-slot
+        placeholders, and displays the derived complete/incomplete verdict as
+        the annotator works.
+  \item \textbf{Phases.} Requirements are grouped by phase (training, pilot,
+        main) so that agreement and export are computed per phase.
+  \item \textbf{Built-in agreement.} An administrator view computes Fleiss'
+        and pairwise Cohen's $\kappa$, raw agreement and a disagreement
+        worksheet for any phase, and a majority-vote gold for adjudication.
+  \item \textbf{Export} of all annotations as CSV and JSON.
+\end{itemize}
+
+\subsection{Training}
+All four annotators annotated the four training requests and discussed every
+disagreement in a joint session, using the guide as the reference.
+
+\subsection{Pilot}\label{sec:pilot}
+The pilot (10 requests, four annotators, 40 annotations) was annotated
+independently. Table~\ref{tab:pilot} reports agreement. Raw agreement was high:
+on every slot at least three of the four annotators agreed on 90--100\% of the
+requests. $\kappa$ was nonetheless low or negative for scope, modal verb and
+action, the three slots dominated by a single value, which is the kappa
+paradox at work. Incompleteness and atomicity showed no variation at all (every
+annotation was complete and atomic), so $\kappa$ was undefined. Condition and
+condition type were the genuinely contested fields. Mean pairwise chrF between
+conversions was .56; the two most divergent requests were those containing
+several actions, where annotators differed on whether to write one or two
+system responses.
+
+\begin{table}[t]
+\centering
+\caption{Pilot agreement (10 requests, 4 annotators).}
+\label{tab:pilot}
+\small
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+Field & Fleiss' $\kappa$ & Unanimous & $\geq$3 of 4 agree\\
+\midrule
+Scope         & $-.09$ & 60\% & 100\%\\
+Condition     & .39    & 40\% & 90\%\\
+Actor         & .38    & 60\% & 90\%\\
+Modal verb    & .07    & 70\% & 90\%\\
+Action        & $-.03$ & 90\% & 100\%\\
+Condition type& .20    & 40\% & 80\%\\
+Incomplete    & n/a    & 100\% & 100\%\\
+Non-atomic    & n/a    & 100\% & 100\%\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The pilot exposed three gaps in the guide, which was revised before the main
+study: (i) how to treat a request that states no scope, (ii) what counts as a
+condition as opposed to context or rationale, and (iii) when the modal verb is
+\slotP{} rather than \slotI. For (i), annotators agreed at the time to record
+an unstated scope as \slotI{} (``for all users''); this convention was later
+revised during curation (Section~\ref{sec:scope}).
+% TODO: release the pilot-time and revised guide versions (or a changelog);
+% the repository only holds the final guide.
+
+\subsection{Main study}
+A1, A2 and A3 annotated all 50 main-set requests independently (150
+annotations).
+
+% ---------------------------------------------------------------------
+\section{Inter-annotator agreement}\label{sec:iaa}
+
+We report agreement on the \emph{original} main-set annotations, before any
+curation. Slot and incompleteness agreement is computed on the 30 requests that
+no annotator flagged as non-atomic, because a non-atomic request has no single
+set of slots to compare. Atomicity agreement is computed on all 50.
+
+\subsection{Slots and incompleteness}
+Table~\ref{tab:iaa} gives the results. Raw agreement on incompleteness is
+80\%, with 70\% of requests unanimous, yet Fleiss' $\kappa$ is only .32
+(fair). Only 16 of the 90 judgements (18\%) are \emph{incomplete}, and at this
+prevalence each disagreement weighs heavily on $\kappa$. Gwet's AC1, which is
+robust to prevalence, is .72. The pairwise picture is uneven: A1 and A3 reach
+$\kappa=.61$ (substantial), while A2 flags more requests (7, against 5 and 4)
+and agrees less with both ($\kappa$ = .17 and .23). The disagreements
+concentrate in the action slot, i.e.\ in deciding whether a vague wish states
+an action at all.
+% TODO: map A1/A2/A3 consistently to the real annotators in all tables
+
+\begin{table}[t]
+\centering
+\caption{Inter-annotator agreement on the original main-set annotations
+(30 atomic requests, 3 annotators). Distribution is the share of all 90
+judgements.}
+\label{tab:iaa}
+\small
+\begin{tabular}{@{}lrrrrl@{}}
+\toprule
+Field & Raw & Unanimous & Fleiss' $\kappa$ & AC1 & Distribution (P / I / M)\\
+\midrule
+Scope       & 84\% & 77\% & .04 & .83 & 0 / 91 / 9\\
+Condition   & 83\% & 77\% & .57 & .79 & 23 / 2 / 74\\
+Actor       & 60\% & 43\% & .03 & .50 & 16 / 74 / 10\\
+Modal verb  & 80\% & 70\% & .09 & .78 & 2 / 88 / 10\\
+Action      & 73\% & 60\% & .32 & .67 & 76 / 7 / 18\\
+\midrule
+Incomplete  & 80\% & 70\% & .32 & .72 & 18\% incomplete\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The slot results show the same pattern. Scope and modal verb, where almost
+every judgement takes one value, have near-zero $\kappa$ but AC1 near .8.
+Condition is the most reliably annotated slot by both measures. Actor is the
+weakest by both, and its errors are mostly \slotP{} versus \slotI: whether a
+request that mentions ``Signal'' or ``the app'' in passing states the actor or
+leaves it implied. This distinction does not affect incompleteness.
+
+\subsection{Atomicity}
+Twenty of the 50 requests were flagged as non-atomic by at least one annotator
+(8 by all three, 6 by two, 6 by one); the annotators flagged 13, 10 and 19.
+Agreement is moderate: raw agreement 84\%, 76\% unanimous, Fleiss' $\kappa$
+.60, AC1 .73, pairwise $\kappa$ between .58 and .64. Annotators did not all
+record the flag the same way: one used the dedicated checkbox, another wrote
+the placeholder \rim{<NON\_ATOMIC>} in the conversion and explained it in the
+notes without ticking the box. We therefore count a request as flagged when
+any of the three signals (checkbox, placeholder, note) is present; reading the
+checkbox alone would have reported this annotator as never flagging a
+non-atomic request.
+
+\subsection{Conversions}
+Conversion agreement was measured on the 30 atomic requests as the pairwise
+cosine similarity of sentence embeddings (all-MiniLM~\cite{todo-minilm}) and as
+a character-level sequence ratio. Median cosine similarity is .78 (mean .66)
+and the mean sequence ratio is .58. The low means are driven by a few pairs in
+which one annotator gave an empty or placeholder-only conversion.
+
+% ---------------------------------------------------------------------
+\section{Adjudication and curation}\label{sec:curation}
+
+The original annotations are released unchanged. Curation produced a separate
+gold layer in four steps, carried out by the first author with a dedicated
+local curation tool (released with the dataset) that records the original
+value, the curated value, the reason for each change and its provenance.
+% TODO: state whether disputed cases were discussed with A1-A3
+
+\subsection{Atomicity adjudication}
+Each of the 20 flagged requests was adjudicated with a single rule:
+\emph{distinct system responses are separate units; alternatives, examples,
+rationale, details of one action, and a condition together with its response
+are not}. For example, a request offering three alternative implementations of
+one behaviour (``Idea 1 / 2 / 3'') remains one unit. By this rule 15 requests
+are non-atomic and 5 are atomic, giving 35 atomic and 15 non-atomic requests.
+
+\subsection{Decomposition into units}
+Each non-atomic request was decomposed into atomic units, each with its own
+Rimay conversion, slot judgements and condition type. The 15 requests yield 42
+units (nine split into 2, three into 3, and one each into 4, 5 and 6). For a
+small number of requests, annotators had written per-response conversions,
+which were split into units directly. For most, annotators had marked the
+request non-atomic without writing the individual responses, as the guide
+instructed them to convert only the primary action. For these, unit texts and
+slot labels were produced during curation (Section~\ref{sec:ai}). Because the
+units of non-atomic requests were not produced independently by three
+annotators, we do not report inter-annotator agreement on them.
+
+\subsection{Slot gold and text refinement}
+For every unit and slot, the gold value is the strict majority of the three
+annotators; 32 of the 77 units had at least one slot on which annotators
+disagreed. Conversions were then refined so that each text agrees with its
+slot grid and with the guide. The recorded reasons for changes are: rewriting
+an ungrounded scope as a placeholder (82 changes, Section~\ref{sec:scope}),
+typographical fixes (41), aligning the text with the annotator's own slot
+judgements (26), word choice (17), adding the \emph{then} that Rimay requires
+after a condition (11), and correcting a conversion that misstated the request
+(3). Slot judgements were never changed to fit a text; where the two
+disagreed, the text was changed.
+
+\subsection{Scope convention}\label{sec:scope}
+Following the pilot convention, annotators recorded an unstated scope as
+\slotI{} in 91\% of their judgements. During curation we reversed this: a
+scope that the request does not state and that cannot be grounded in it is
+\slotM{} and is written \rim{<MISSING\_SCOPE>}. Writing an implied
+``For all users,'' adds content the user never expressed, and it makes every
+conversion begin with the same boilerplate, which inflates text similarity.
+Because scope is optional, the change does not affect any incompleteness label.
+In the gold, 76 of the 77 units have a missing scope.
+
+\subsection{Paska validation}\label{sec:paska}
+Paska was run on every curated conversion (231 annotator-unit records). For
+213 records the annotator judged the unit complete and Paska found no smell.
+For 14 records the annotator judged the unit incomplete and Paska rejected it,
+as expected, because the text contains a placeholder. This leaves 4
+disagreements (Paska and annotator verdicts agree on 98.3\%): three are the
+same conversion of one request, where a trailing ``unless'' clause is read as
+a condition placed after the system response, and one is a conversion with an
+unquoted conjunction (``keep the archive and blocked flags''), read as two
+actions (Section~\ref{sec:challenges}).
+% TODO: re-run Paska after the final round of text edits and update these numbers
+
+% ---------------------------------------------------------------------
+\section{The dataset}\label{sec:dataset}
+
+\subsection{Composition}
+Table~\ref{tab:gold} summarises the gold standard. Of the 77 units, 4 are
+incomplete, all of them atomic requests, and each is incomplete because the
+action is missing (in one case the actor and modal verb are missing too). The
+modal verb is implied in 76 units, the actor in 71: feature requests are
+written as wishes, and almost never name the system or use an obligation word.
+Conditions are present in about half of the units, mostly triggers.
+
+\begin{table}[t]
+\centering
+\caption{Gold standard: label distribution over the 77 units.}
+\label{tab:gold}
+\small
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+Slot & Present & Implied & Missing\\
+\midrule
+Scope (optional)      & 1  & 0  & 76\\
+Condition (optional)  & 41 & 1  & 35\\
+Actor                 & 5  & 71 & 1\\
+Modal verb            & 0  & 76 & 1\\
+Action                & 71 & 2  & 4\\
+\midrule
+\multicolumn{4}{@{}l}{Condition type: trigger 19, precondition 10, none 48}\\
+\multicolumn{4}{@{}l}{Incomplete: 4 of 77 units (4 of 35 atomic requests; 0 of 42 split units)}\\
+\multicolumn{4}{@{}l}{Units per request: 1 (35 requests), 2 (9), 3 (3), 4 (1), 5 (1), 6 (1)}\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Files and format}
+The release contains:
+\begin{itemize}[leftmargin=*]
+  \item \texttt{annotations\_original.csv}: all 150 main-set annotations as
+        exported from the tool (one row per request and annotator), plus the
+        training and pilot annotations;
+  \item \texttt{gold\_atomic.csv}: the 35 atomic requests, one row per
+        annotator, with curated conversions and slots and the gold columns;
+  \item \texttt{gold\_units.csv}: the 42 units of the 15 non-atomic requests,
+        with \texttt{unit} and \texttt{nUnits} columns;
+  \item \texttt{gold\_all\_units.csv}: all 77 units;
+  \item \texttt{curation.json}: the full curation record, i.e.\ for every unit
+        and annotator the original text and slots, the curated text and slots,
+        the reasons for each change and the provenance;
+  \item \texttt{paska\_results.json}: Paska's verdict and smells per unit;
+  \item the annotation guide, the annotation tool and the curation tool.
+\end{itemize}
+% TODO: rename files to the released names; add the DOI/Zenodo link
+Each row carries the request identifier, the source text, the source-corpus
+incompleteness label, the five slot values, the condition type, the derived
+verdict, the Rimay conversion and the notes, alongside the gold columns
+(\texttt{gold\_scope} \ldots{} \texttt{gold\_overallIncomplete},
+\texttt{gold\_hadDisagreement}).
+
+\subsection{Provenance}\label{sec:provenance}
+Every unit in \texttt{curation.json} carries a provenance value:
+\emph{annotator} (the annotator's text, unchanged), \emph{annotator-refined}
+(the annotator's text with curation edits), \emph{annotator-split} (the
+annotator's text split into units) or \emph{curation} (no usable annotator
+text existed for this unit; written during curation). Among the 105 atomic
+records, 9 are unchanged, 90 refined and 6 written during curation. Among the
+126 split-unit records, 12 derive from annotator text and 114 were written
+during curation. Users who need purely annotator-authored text can filter on
+this field; the original annotations are always available unchanged.
+
+% ---------------------------------------------------------------------
+\section{Comparison with the source labels}\label{sec:pragyan}
+
+The source corpus labels 23 of our 35 atomic requests as incomplete; our gold
+labels 4, and all 4 are among the 23 (agreement 46\%, Cohen's
+$\kappa=.13$). On the 15 non-atomic requests, the source labels 6 as
+incomplete and our gold none. The requests both label as incomplete contain no
+actionable request at all (e.g.\ ``Better identity key synchronization'').
+Most of the remaining source-labelled requests are clear, implementable
+requests whose clarification questions ask for design decisions (where in the
+interface, which default, how an edge case behaves) rather than for missing
+requirement content. A label that asks whether a request ``fully describes''
+the behaviour can always be pushed further, so it covers most feature requests
+and cannot be located in the text. Our slot-level label is deliberately
+narrow: it captures the requirement-level gap and leaves design
+underspecification to a separate category. We see the two as layers of one
+notion of incompleteness rather than as competing definitions.
+% TODO: optional -- add the layered model (structural / contextual / design)
+% and the coded breakdown of the 67 clarification questions once confirmed
+
+% ---------------------------------------------------------------------
+\section{Challenges and lessons learned}\label{sec:challenges}
+
+\paragraph{Informal text versus a controlled grammar.}
+Rimay was designed from formal financial specifications; feature requests are
+conversational, emotional and frequently mix the request with rationale,
+complaints and examples. The annotators' first task was to locate the
+requirement inside the text, and the remaining structure (who acts, under what
+condition) is almost always left to the reader. This is why the \slotI{}
+value is indispensable: without it, nearly every feature request would be
+incomplete, because almost none names the system or uses ``must''.
+
+\paragraph{Implied versus missing.}
+The boundary between a slot a reader can infer and a slot a developer would
+have to ask about is the hardest judgement in the scheme, and it is where the
+remaining incompleteness disagreements lie, almost all in the action slot.
+Typical cases are wishes that name a goal but no system behaviour (``the
+notifications are annoying'').
+
+\paragraph{Non-atomic requests.}
+Thirty percent of the main-set requests bundle several responses. Rimay cannot
+express them as one requirement, and deciding what counts as a separate
+response is itself contested (alternatives, examples and sub-steps of one
+action are not). Annotators also signalled non-atomicity inconsistently
+(checkbox, placeholder or note), which a checkbox-only analysis would have
+missed. In hindsight, the guide's instruction to convert only the primary
+action of a non-atomic request deferred the decomposition to curation; a future
+round should ask annotators to write every unit.
+
+\paragraph{Scope.}
+The optional scope slot is almost never stated in feature requests. Treating it
+as implied by default inserts content and boilerplate, so the convention was
+changed from \slotI{} to \slotM{} during curation (Section~\ref{sec:scope}).
+
+\paragraph{Tool behaviour.}
+Paska encodes conventions of its original domain. It treats some verbs,
+notably \emph{support}, as imprecise, a verb that is natural in feature
+requests (``support dark mode''). It groups quoted spans only when they use
+typographic quotation marks, so an unquoted or straight-quoted name containing
+``and'' is read as two actions. And it reads a trailing ``unless'' clause as a
+misplaced condition. Paska verdicts should therefore be read together with the
+smell type, separating structural smells from stylistic ones.
+
+\paragraph{Agreement statistics.}
+With rare labels, $\kappa$ alone understates agreement; with three annotators
+and a 15--20\% positive rate, a single disagreement moves $\kappa$
+considerably. Reporting raw agreement, unanimity and AC1 alongside $\kappa$,
+and reporting pairwise values, makes it possible to locate the source of
+disagreement (here, one annotator and one slot).
+
+% ---------------------------------------------------------------------
+\section{Threats to validity and limitations}\label{sec:threats}
+
+\begin{itemize}[leftmargin=*]
+  \item \textbf{Size and prevalence.} The gold contains 50 requests and only 4
+        incomplete units. Any classifier evaluated on it will have unstable
+        recall and F1 on the incomplete class; we recommend reporting hits and
+        false alarms as counts.
+  \item \textbf{Single domain.} All requests concern two messaging
+        applications; slot distributions will differ in other domains.
+  \item \textbf{Curation by one person.} Adjudication and decomposition were
+        performed by the first author. The original annotations are released so
+        that alternative gold standards can be derived.
+  \item \textbf{Units of non-atomic requests} were not independently
+        annotated; we report no agreement on them, and the provenance field
+        identifies them.
+  \item \textbf{Assisted curation and LLM evaluation.} Parts of the curated
+        text were drafted with an LLM (Section~\ref{sec:ai}). Studies that
+        evaluate LLMs against the gold should consider using the
+        annotator-authored subset or the original annotations, identified by
+        the provenance field.
+  \item \textbf{Guide revision.} The guide was revised after the pilot, and
+        the scope convention changed during curation; both changes are
+        documented here.
+\end{itemize}
+
+% ---------------------------------------------------------------------
+\section{Data availability}
+The dataset, annotation guide, annotation tool and curation tool are available
+at \todo{Zenodo DOI / repository URL} under \todo{licence, e.g.\ CC BY 4.0 for
+data, MIT for code}. The source requests are redistributed under the terms of
+the original corpus~\cite{pragyan2025}.
+% TODO: confirm the licence of the Pragyan et al. corpus permits redistribution
+
+\section{Ethics}
+\todo{State consent of the annotators to release their (pseudonymised)
+individual annotations, and ethics approval or exemption from the
+institution.} The source requests are public issue-tracker posts; user names
+were not collected.
+% TODO: check whether request texts contain user handles and remove them
+
+% ---------------------------------------------------------------------
+\section{Use of generative AI}\label{sec:ai}
+% NOTE TO SELF: IEEE requires naming the system and describing its use;
+% Springer (REJ, EMSE) requires it in the Methods. Keep this section.
+All annotations of the training, pilot and main rounds were produced by the
+human annotators without AI assistance. During curation, a large language
+model (Claude, Anthropic) was used as a drafting aid under the first author's
+direction: it proposed unit texts and slot values for non-atomic requests where
+annotators had marked the request non-atomic without writing its units, and it
+proposed typographical and consistency corrections and phrasing variants for
+existing conversions. Every proposal was reviewed by the first author and
+accepted, corrected or rejected; all gold labels are human decisions. Each
+affected unit is identified by its provenance value
+(Section~\ref{sec:provenance}). The annotation and curation tools were
+developed with AI coding assistance. \todo{Add writing assistance, if any.}
+
+% ---------------------------------------------------------------------
+\section{Conclusion}
+We release a dataset of feature requests converted into Rimay, in which
+incompleteness is defined by the grammar's required slots and every label
+points to the slot that causes it. The process showed that the definition can
+be applied by annotators with moderate-to-substantial agreement once
+prevalence is accounted for, that the \slotI{} category is what makes it
+workable on informal text, and that atomicity must be resolved before
+incompleteness can be judged. Compared with an open-ended definition, ours
+flags far fewer requests, all of them inside the open-ended set, and
+separates missing requirement content from open design decisions. We intend the
+dataset as a reproducible starting point for evaluating automated
+incompleteness detection and requirement conversion, including by LLMs.
+
+\section*{Acknowledgements}
+We thank the annotators for their time and care. \todo{funding}
+
+% ---------------------------------------------------------------------
+% TODO: verify every reference below (authors, venue, year, pages) and move
+% to a .bib file if the template uses BibTeX.
+\begin{thebibliography}{99}
+
+\bibitem{veizaga2021rimay}
+A.~Veizaga, M.~Alferez, D.~Torre, M.~Sabetzadeh, L.~Briand.
+\newblock On systematically building a controlled natural language for
+functional requirements.
+\newblock \emph{Empirical Software Engineering}, 26(4), 2021.
+
+\bibitem{veizaga2024paska}
+A.~Veizaga, S.~Y.~Shin, L.~C.~Briand.
+\newblock Automated smell detection and recommendation in natural language
+requirements.
+\newblock \emph{IEEE Transactions on Software Engineering}, 50(4), 2024.
+
+\bibitem{pragyan2025}
+\todo{Pragyan et al., 2025: full reference of the 100 feature-request corpus.}
+
+\bibitem{fleiss1971}
+J.~L.~Fleiss.
+\newblock Measuring nominal scale agreement among many raters.
+\newblock \emph{Psychological Bulletin}, 76(5):378--382, 1971.
+
+\bibitem{feinstein1990}
+A.~R.~Feinstein, D.~V.~Cicchetti.
+\newblock High agreement but low kappa: I.~The problems of two paradoxes.
+\newblock \emph{Journal of Clinical Epidemiology}, 43(6):543--549, 1990.
+
+\bibitem{gwet2008}
+K.~L.~Gwet.
+\newblock Computing inter-rater reliability and its variance in the presence
+of high agreement.
+\newblock \emph{British Journal of Mathematical and Statistical Psychology},
+61(1):29--48, 2008.
+
+\bibitem{landis1977}
+J.~R.~Landis, G.~G.~Koch.
+\newblock The measurement of observer agreement for categorical data.
+\newblock \emph{Biometrics}, 33(1):159--174, 1977.
+
+\bibitem{todo-minilm}
+\todo{Sentence-embedding model reference (all-MiniLM-L6-v2; Wang et al., 2020,
+MiniLM; Reimers and Gurevych, 2019, Sentence-BERT).}
+
+\bibitem{todo-incompleteness-survey}
+\todo{Reference(s) on incompleteness as a frequent requirement defect.}
+
+\end{thebibliography}
+
+\end{document}
