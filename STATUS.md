@@ -37,12 +37,13 @@ Human ↔ human median cosine: Exp 1 .82 · Exp 2 .89 · Exp 3 .88.
 ## Intricacies
 
 - **v1 → v2:** the answer block and the definition cut atomic over-splitting (v1 5–15/35 → v2 1–9) and raised exact counts. Exp 2: 9/9 runs exact on 15/15 (v1 Sonnet zsl 11/15 was chatter, now gone).
-- **FSL wins everywhere** (agreement .89–1.0, cosine at or near the human ceiling). Sonnet/opus zsl and cot mark *implied* actor/modal verb as `<MISSING_*>`, so complete requirements turn incomplete (opus cot .17–.19). Haiku does not.
+- **FSL wins on conversion quality, not on incompleteness** (agreement .89–1.0, cosine at or near the human ceiling, but it finds 0–1 of the 4 gold-incomplete: no FSL example shows a missing required slot). See `reports/meeting_2026-11-13/`. Sonnet/opus zsl and cot mark *implied* actor/modal verb as `<MISSING_*>`, so complete requirements turn incomplete (opus cot .17–.19). Haiku does not.
 - **Haiku zsl is the best atomicity detector** (F1 .93) but breaks the format most: text outside the block on 37/50 (parsed out, listed as anomalies).
 - **Format anomalies:** opus skips the block occasionally (Exp 1 cot 1, Exp 3 cot 2); every model adds `<NON_ATOMIC>` to 1–2 atomic requirements in Exp 1.
 - **FSL splits more in Exp 3** (haiku 9, sonnet 7 atomic split): the 3 split examples likely bias it towards splitting.
 - **Exp 1 incomplete-F1 is unstable** (4/35 gold-incomplete). **Exp 2 incomplete-F1 is undefined** (all 42 units complete).
 - **Scope** is optional and gold-missing almost everywhere, so it dominates the missing-slot numbers.
+- **Annotator agreement:** atomicity Fleiss κ .60 (pairwise .58–.64), flags Arthur 13 / Mko 10 / Rafo 19 — Rafo used the `<NON_ATOMIC>` tag and notes, never the checkbox, so a flag = checkbox, tag or notes. Incompleteness κ .32 → .37 (rare label), AC1 .72–.79. Details: `reports/meeting_2026-11-13/02_…` §3.1.
 - **"No unit returned" was misleading:** it marks a gold unit with no model line aligned to it. In Exp 3, 23 of 24 such gold units (6 requirements: 802, 6390, 222, 6424, 4821, 6362) were merged into another line, and 1 looks dropped (6362). The model didn't omit the content.
 - **Unit matching** is by cosine to the annotators' units; requirements off the gold count are in the dashboard's unit-count table and each run's anomalies.
 
