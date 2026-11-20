@@ -8,6 +8,7 @@ Data: 50 Signal/Mastodon feature requests (35 atomic, 15 non-atomic → 77 units
 | `01_anomalies_and_bottlenecks.md` | What went wrong in the runs, and whether the model or our setup was to blame |
 | `02_contribution_incompleteness_and_cost.md` | What this gives research and industry: a working definition of incompleteness, and the cheap-model result |
 | `03_pragyan_comparison.md` | Our definition against Pragyan et al.'s, side by side, with the evidence that theirs is too vague |
+| `04_talking_points.md` | What to say in the meeting, in order: one short talk track over files 01–03 |
 
 ## Six points to say in the meeting
 
